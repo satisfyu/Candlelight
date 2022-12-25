@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "candlelight_dinner",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "Candlelight Dinner",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
-    "Me!"
+    "satisfy_u, Cristelknight"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -19,20 +19,17 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.satisfy.candlelight.Candlelight"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "candlelight_dinner.mixins.json"
   ],
-
   "depends": {
+    "vinery": ">=1.1.2",
     "fabricloader": ">=0.14.11",
     "fabric-api": "*",
     "minecraft": "~1.19.3",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
