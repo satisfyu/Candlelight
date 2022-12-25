@@ -1,7 +1,7 @@
 package net.satisfy.candlelight;
 
-import daniking.vinery.Vinery;
 import net.fabricmc.api.ModInitializer;
+import net.satisfy.candlelight.registry.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +11,6 @@ public class Candlelight implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
 
 	}
 }
