@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#F"
+    ],
+    "key": {
+        "#": {
+       "item": "candlelight_dinner:note_paper_writeable"
+        },
+        "F": {
+            "item": "minecraft:feather"
+        }
+    },
+    "result": {
+        "item": "candlelight_dinner:note_paper_writeable",
+        "count": 2
+    }
+}

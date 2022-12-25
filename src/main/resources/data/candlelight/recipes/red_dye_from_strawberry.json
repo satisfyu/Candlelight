@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "pattern": [
+        "#  ",
+        "   ",
+        "   "
+    ],
+    "key": {
+        "#": {
+            "item": "candlelight_dinner:strawberry"
+        }
+    },
+    "result": {
+        "item": "minecraft:red_dye",
+        "count": 1
+    }
+}

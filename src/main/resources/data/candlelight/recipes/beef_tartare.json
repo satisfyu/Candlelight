@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "L "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:beef"
+        },
+        "L": {
+   	    "item": "candlelight_dinner:tray"
+        }
+    },
+    "result": {
+        "item": "candlelight_dinner:beef_tartare",
+        "count": 2
+    }
+}

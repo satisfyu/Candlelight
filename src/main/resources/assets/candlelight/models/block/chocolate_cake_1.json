@@ -1,0 +1,21 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "chocolate_cake",
+		"particle": "chocolate_cake"
+	},
+	"elements": [
+		{
+			"from": [8, 0, 8],
+			"to": [11, 4, 11],
+			"faces": {
+				"north": {"uv": [0, 11, 3, 15], "texture": "#0"},
+				"east": {"uv": [0, 6, 3, 10], "texture": "#0"},
+				"south": {"uv": [8, 6, 11, 10], "texture": "#0"},
+				"west": {"uv": [0, 11, 3, 15], "texture": "#0"},
+				"up": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"down": {"uv": [10, 0, 13, 3], "texture": "#0"}
+			}
+		}
+	]
+}

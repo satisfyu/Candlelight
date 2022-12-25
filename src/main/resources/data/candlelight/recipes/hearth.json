@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "# #",
+        "###",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:red_wool"
+        }
+    },
+    "result": {
+        "item": "candlelight_dinner:hearth",
+        "count": 1
+    }
+}

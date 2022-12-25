@@ -1,4 +1,4 @@
-{
+ {
   "schemaVersion": 1,
   "id": "candlelight_dinner",
   "version": "${version}",
@@ -9,11 +9,10 @@
     "satisfy_u, Cristelknight"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/members/satisfyl/projects"
   },
 
-  "license": "CC0-1.0",
+  "license": "All Rights Reserved",
   "icon": "assets/modid/icon.png",
 
   "environment": "*",
@@ -26,10 +25,10 @@
     "candlelight_dinner.mixins.json"
   ],
   "depends": {
-    "vinery": ">=1.1.2",
+    "vinery": ">=1.1.1",
     "fabricloader": ">=0.14.11",
     "fabric-api": "*",
-    "minecraft": "~1.19.3",
+    "minecraft": "~1.19.2",
     "java": ">=17"
   }
 }

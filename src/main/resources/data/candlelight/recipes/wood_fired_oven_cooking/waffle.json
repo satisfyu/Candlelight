@@ -1,0 +1,11 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "minecraft:dough"
+    }
+  ],
+  "item": "candlelight_dinner:waffle",
+  "count": 6,
+  "experience": 0.2
+}

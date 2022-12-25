@@ -1,0 +1,17 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "minecraft:raw_beef"
+    },
+    {
+      "tag": "minecraft:dough"
+    },
+    {
+      "item": "minecraft:mushrooms"
+    }
+  ],
+  "item": "candlelight_dinner:beef_wellington",
+  "count": 3,
+  "experience": 0.35
+}

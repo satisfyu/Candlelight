@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "ingredients": [
+    {
+      "tag": "vinery:milk"
+    }
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "item": "candlelight_dinner:mozzarella"
+        "count": 4
+  }
+}

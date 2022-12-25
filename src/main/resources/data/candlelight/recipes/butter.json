@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "ingredients": [
+    {
+      "tag": "vinery:milk"
+    }
+  ],
+  "result": {
+    "item": "candlelight_dinner:butter"
+        "count": 10
+  }
+}

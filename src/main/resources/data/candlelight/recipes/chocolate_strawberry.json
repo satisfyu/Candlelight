@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "   ",
+        " #W",
+        "   "
+    ],
+    "key": {
+        "#": {
+            "item": "candlelight_dinner:strawberry"
+        },
+        "W": {
+            "item": "candlelight_dinner:chocolate"
+        }
+    },
+    "result": {
+        "item": "candlelight_dinner:chocolate_strawberry",
+        "count": 1
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#CM"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:sugar"
+        },
+        "C": {
+            "item": "minecraft:cocoa_beans"
+        },
+        "M": {
+             "tag": "vinery:milk"
+        }
+    },
+    "result": {
+        "item": "candlelight_dinner:chocolate",
+        "count": 4
+    }
+}

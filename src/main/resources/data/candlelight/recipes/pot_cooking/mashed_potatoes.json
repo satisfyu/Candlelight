@@ -1,0 +1,20 @@
+{
+  "type": "vinery:pot_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:potatoes"
+    },
+    {
+      "item": "minecraft:potatoes"
+    },
+    {
+      "item": "minecraft:potatoes"
+    }
+  ],
+  "container": {
+    "item": "candlelight_dinner:tray"
+  },
+  "result": {
+    "item": "candlelight_dinner:mashed_potatoes"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "minecraft:dough"
+    },
+    {
+      "tag": "candlelight_dinner:seeds"
+    }
+  ],
+  "item": "candlelight_dinner:sesam_bread",
+  "count": 2,
+  "experience": 0.35
+}

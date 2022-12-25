@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        " C "
+    ],
+    "key": {
+        "#": {
+            "item": "candlelight_dinner:chocolate"
+        },
+        "C": {
+            "item": "minecraft:chest"
+        }
+    },
+    "result": {
+        "item": "candlelight_dinner:chocolate_box",
+        "count": 1
+    }
+}

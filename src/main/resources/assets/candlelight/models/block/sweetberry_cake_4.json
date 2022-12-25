@@ -1,0 +1,22 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "sweetberry_cakee",
+		"particle": "sweetberry_cake"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 4, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5, 0, 5]},
+			"faces": {
+				"north": {"uv": [5, 6, 11, 10], "texture": "#0"},
+				"east": {"uv": [0, 6, 6, 10], "texture": "#0"},
+				"south": {"uv": [5, 6, 11, 10], "texture": "#0"},
+				"west": {"uv": [0, 6, 6, 10], "texture": "#0"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#0"},
+				"down": {"uv": [10, 0, 16, 6], "texture": "#0"}
+			}
+		}
+	]
+}
