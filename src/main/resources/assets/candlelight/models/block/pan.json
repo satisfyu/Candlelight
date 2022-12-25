@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"3": "fine_dining:block/pan"
+		"3": "candlelight:block/pan"
 	},
 	"elements": [
 		{

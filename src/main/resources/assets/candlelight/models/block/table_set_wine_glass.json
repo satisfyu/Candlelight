@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "fine_dining:block/plate",
-		"particle": "fine_dining:block/wine_glass"
+		"1": "candlelight:block/plate",
+		"particle": "candlelight:block/wine_glass"
 	},
 	"elements": [
 		{

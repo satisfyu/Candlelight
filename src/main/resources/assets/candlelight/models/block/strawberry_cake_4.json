@@ -1,0 +1,23 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"1": "candlelight:block/cake_strawberry",
+		"particle": "candlelight:cake_sweetberry"
+
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 4, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5, 0, 5]},
+			"faces": {
+				"north": {"uv": [5, 6, 11, 10], "texture": "#1"},
+				"east": {"uv": [0, 6, 6, 10], "texture": "#1"},
+				"south": {"uv": [5, 6, 11, 10], "texture": "#1"},
+				"west": {"uv": [0, 6, 6, 10], "texture": "#1"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"down": {"uv": [10, 0, 16, 6], "texture": "#1"}
+			}
+		}
+	]
+}

@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "fine_dining:block/chocolate_box",
-		"particle": "fine_dining:block/chocolate_box"
+		"0": "candlelight:block/chocolate_box",
+		"particle": "candlelight:block/chocolate_box"
 	},
 	"elements": [
 		{

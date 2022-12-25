@@ -3,13 +3,13 @@ package net.satisfy.candlelight.registry;
 import com.mojang.datafixers.util.Pair;
 import daniking.vinery.VineryIdentifier;
 import daniking.vinery.block.*;
+import daniking.vinery.block.FacingBlock;
 import daniking.vinery.item.DrinkBlockBigItem;
 import daniking.vinery.item.DrinkBlockItem;
 import daniking.vinery.registry.VinerySoundEvents;
 import daniking.vinery.util.VineryFoodComponent;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.entity.effect.StatusEffect;
@@ -20,10 +20,9 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.Candlelight;
-import net.satisfy.candlelight.CandlelightIdentifier;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.DecorationBlock;
-import net.satisfy.candlelight.block.SofaBlock;
+import net.satisfy.candlelight.block.JewelryBoxBlock;
 import net.satisfy.candlelight.item.IngredientItem;
 
 import java.util.*;
@@ -50,9 +49,13 @@ public class ObjectRegistry {
     // public static final  Block    STRAWBERRY_CROP = register("strawberry_crop", new Bush(getBushSettings()), false);
     // public static final  Item     STRAWBERRY = register("strawberry", new IngredientItem().food(FoodComponents.SWEET_BERRIES))))
     public static final  Block    STRAWBERRY_CRATE = register("strawberry_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
+    // public static final  Block    WILD_STRAWBERRY_CROP = register("wild_strawberry_crop", new Bush(getBushSettings()), false);
+
+
     // public static final  Block    SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final  Block    CHAIR = register("chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final  Block    TABLE = register("table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
+    // public static final Block LAMP = register("lamp", new LampBlock(
     public static final  Block    WOOD_FIRED_OVEN = register("wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final  Block    STOVE = register("stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
     public static final  Block    KITCHEN_SINK = register("kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
@@ -109,16 +112,17 @@ public class ObjectRegistry {
     public static final  Block    CHOCOLATE_CAKE = register("chocolate_cake", new CakeBlock((FabricBlockSettings.copyOf(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
     public static final  Item     CHOCOLATE_MILKSHAKE = register("chocolate_milkshake", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final  Item     CHOCOLATE_ICECREAM = register("chocolate_icecream", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
-    public static final  Block    TABLE_SIGN = register("table_sign", new Block(FabricBlockSettings.of(Material.DECORATION)));
-    public static final  Block    STREET_SIGN = register("street_sign", new Block(FabricBlockSettings.of(Material.DECORATION)));
+    public static final  Block    TABLE_SIGN = register("table_sign", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
+    public static final  Block    STREET_SIGN = register("street_sign", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final  Block    PAINTING = register("painting", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    HEARTH = register("hearth", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
-    //  public static final  Block    CANDLE = register("candle", new CandleBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
-    // public static final  Block    JEWELRY_BOX = register("jewelry_box", new Block
-    // public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new Block
-
-
     public static final  Block    ROSE = register("rose", new FlowerBlock(StatusEffect.byRawId(6), 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final  Block    CANDLE = register("candle", new CandleBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
+    public static final  Block    JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
+    // public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new Block
+    public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
+
+
 
             //letter items
     public static final  Item     NOTE_PAPER = register("note_paper", new Item(getSettings()));
@@ -129,7 +133,7 @@ public class ObjectRegistry {
     public static final  Item     LOVE_LETTER = register("love_letter", new Item(getSettings()));
 
             //gold ring
-    //   public static final  Item     GOLD_RING = register("gold_ring", new))
+    public static final  Item     GOLD_RING = register("gold_ring", new Item(getSettings()));
 
 
 

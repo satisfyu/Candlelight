@@ -2,11 +2,11 @@
 	"credit": "Made by Satisfy",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "fine_dining:block/stove_top",
-		"3": "fine_dining:block/stove_side",
-		"4": "fine_dining:block/stove_bottom",
-		"5": "fine_dining:block/stove_front_on",
-		"particle": "fine_dining:block/stove_top"
+		"1": "candlelight:block/stove_top",
+		"3": "candlelight:block/stove_side",
+		"4": "candlelight:block/stove_bottom",
+		"5": "candlelight:block/stove_front_on",
+		"particle": "candlelight:block/stove_top"
 	},
 	"elements": [
 		{

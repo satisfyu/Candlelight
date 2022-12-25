@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"2": "book",
-		"particle": "book"
+		"2": "candlelight:book",
+		"particle": "candlelight:book"
 	},
 	"elements": [
 		{

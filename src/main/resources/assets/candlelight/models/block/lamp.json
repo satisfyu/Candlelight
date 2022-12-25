@@ -2,10 +2,10 @@
 	"credit": "Made by Satisfy",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"2": "fine_dining:block/stove_top",
-		"3": "fine_dining:block/table_cloth_side",
-		"4": "fine_dining:block/sideboard_back",
-		"particle": "fine_dining:block/stove_top"
+		"2": "candlelight:block/stove_top",
+		"3": "candlelight:block/table_cloth_side",
+		"4": "candlelight:block/sideboard_back",
+		"particle": "candlelight:block/stove_top"
 	},
 	"elements": [
 		{

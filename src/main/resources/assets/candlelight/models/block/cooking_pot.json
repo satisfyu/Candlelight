@@ -1,9 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "vinery:block/cooking_pot_side",
-		"1": "vinery:block/cooking_pot_inside",
-		"particle": "vinery:block/cooking_pot_side"
+		"0": "candlelight:block/cooking_pot_side",
+		"1": "candlelight:block/cooking_pot_inside",
+		"particle": "candlelight:block/cooking_pot_side"
 	},
 	"elements": [
 		{

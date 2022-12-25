@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "sweetberry_cakee",
-		"particle": "sweetberry_cake"
+		"0": "candlelight:cake_sweetberry",
+		"particle": "candlelight:cake_sweetberry"
 	},
 	"elements": [
 		{

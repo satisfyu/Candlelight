@@ -1,12 +1,12 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "sideboard_front_connected",
-		"1": "sideboard_top_connected",
-		"2": "Desktop/fine_dining/sideboard_side",
-		"3": "sideboard_back_connected",
-		"4": "Desktop/fine_dining/sideboard_bottom_connected",
-		"particle": "sideboard_front_connected"
+		"0": "candlelight:sideboard_front_connected",
+		"1": "candlelight:sideboard_top_connected",
+		"2": "candlelight:sideboard_side",
+		"3": "candlelight:sideboard_back_connected",
+		"4": "candlelight:sideboard_bottom_connected",
+		"particle": "candlelight:sideboard_front_connected"
 	},
 	"elements": [
 		{

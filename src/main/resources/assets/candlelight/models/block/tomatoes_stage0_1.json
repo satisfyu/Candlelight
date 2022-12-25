@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "candlelight:block/tomatoes_stage0_1"
+  }
+}

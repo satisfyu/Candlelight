@@ -1,0 +1,33 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"1": "candlelight:block/cake_strawberry",
+		"particle": "candlelight:cake_sweetberry"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 8],
+			"to": [11, 4, 11],
+			"faces": {
+				"north": {"uv": [0, 11, 6, 15], "texture": "#1"},
+				"east": {"uv": [0, 6, 3, 10], "texture": "#1"},
+				"south": {"uv": [5, 6, 11, 10], "texture": "#1"},
+				"west": {"uv": [3, 6, 6, 10], "texture": "#1"},
+				"up": {"uv": [0, 0, 6, 3], "texture": "#1"},
+				"down": {"uv": [10, 0, 16, 3], "texture": "#1"}
+			}
+		},
+		{
+			"from": [8, 0, 5],
+			"to": [11, 4, 8],
+			"faces": {
+				"north": {"uv": [5, 6, 8, 10], "texture": "#1"},
+				"east": {"uv": [3, 6, 6, 10], "texture": "#1"},
+				"south": {"uv": [0, 0, 3, 4], "texture": "#1"},
+				"west": {"uv": [0, 11, 3, 15], "texture": "#1"},
+				"up": {"uv": [0, 3, 3, 6], "texture": "#1"},
+				"down": {"uv": [10, 3, 13, 6], "texture": "#1"}
+			}
+		}
+	]
+}

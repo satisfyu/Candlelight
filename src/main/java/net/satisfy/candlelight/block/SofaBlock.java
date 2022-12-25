@@ -26,10 +26,6 @@ public class SofaBlock extends TableBlock {
     }
 
 
-    public static final VoxelShape[] SHAPE = {Block.createCuboidShape(0.0, 0.0, 0.0, 0.0, 0.0, 0.0), Block.createCuboidShape(0.0, 0.0, 0.0, 00.0, 0.0, 0.0),
-            Block.createCuboidShape(0.0, 0.0, 0.0, 00.0, 0.0, 0.0), Block.createCuboidShape(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)};
-
-
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         return ChairUtil.onUse(world, player, hand, hit, 0);
@@ -40,33 +36,5 @@ public class SofaBlock extends TableBlock {
         ChairUtil.onStateReplaced(world, pos);
     }
 
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        boolean isX = state.get(FACING).getAxis() == Direction.Axis.X;
-        Direction direction = state.get(FACING);
-        if (state.get(CHEST_TYPE) == ChestType.SINGLE) {
-            return VoxelShapes.union(isX ? TOP_SHAPE[0] : TOP_SHAPE[1], isX ? MINI_SHAPE[1] : MINI_SHAPE[0]);
-        }
 
-        int i;
-        ChestType chestType = state.get(CHEST_TYPE);
-
-        if((direction == Direction.NORTH && chestType == ChestType.LEFT) || (direction == Direction.SOUTH && chestType == ChestType.RIGHT)){
-            i = 0;
-        }
-        else if((direction == Direction.NORTH && chestType == ChestType.RIGHT) || (direction == Direction.SOUTH && chestType == ChestType.LEFT)){ //
-            i = 1;
-        }
-        else if((direction == Direction.EAST && chestType == ChestType.RIGHT) || (direction == Direction.WEST && chestType == ChestType.LEFT)){ //
-            i = 2;
-        }
-        else if((direction == Direction.EAST && chestType == ChestType.LEFT) || (direction == Direction.WEST && chestType == ChestType.RIGHT)){
-            i = 3;
-        }
-        else {
-            Candlelight.LOGGER.error("Sofa blockstate not correct!");
-            return TOP_SHAPE[0];
-        }
-        return VoxelShapes.union(isX ? TOP_SHAPE[0] : TOP_SHAPE[1], SHAPE[i]);
-    }
 }

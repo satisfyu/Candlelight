@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "fine_dining:block/wine/champagne",
-		"particle": "fine_dining:block/wine/champagne"
+		"0": "candlelight:block/wine/praetorian",
+		"particle": "candlelight:block/wine/praetorian"
 	},
 	"elements": [
 		{

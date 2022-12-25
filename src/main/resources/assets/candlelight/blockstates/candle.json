@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "candles=1,lit=true": {
+      "model": "candlelight:block/candle_stack1"
+    },
+    "candles=2,lit=true": {
+      "model": "candlelight:block/candle_stack2"
+    },
+    "candles=3,lit=true": {
+      "model": "candlelight:block/candle_stack3"
+    }
+  }
+}

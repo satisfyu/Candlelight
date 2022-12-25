@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"2": "fine_dining:block/sideboard_back",
-		"3": "fine_dining:block/cabinet_bottom",
-		"4": "fine_dining:block/cabinet_top",
-		"5": "fine_dining:block/cabinet_front_closed",
-		"particle": "fine_dining:block/sideboard_back"
+		"2": "candlelight:block/sideboard_back",
+		"3": "candlelight:block/cabinet_bottom",
+		"4": "candlelight:block/cabinet_top",
+		"5": "candlelight:block/cabinet_front_closed",
+		"particle": "candlelight:block/sideboard_back"
 	},
 	"elements": [
 		{

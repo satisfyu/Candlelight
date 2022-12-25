@@ -1,9 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight_dinner:block/plate_meal",
-		"2": "candlelight_dinner:block/plate_tomato_mozzarella_salad",
-		"particle": "candlelight_dinner:block/plate_meal"
+		"1": "candlelight:block/plate_meal",
+		"2": "candlelight:block/plate_tomato_mozzarella_salad",
+		"particle": "candlelight:block/plate_meal"
 	},
 	"elements": [
 		{

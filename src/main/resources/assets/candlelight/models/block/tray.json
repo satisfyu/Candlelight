@@ -1,9 +1,9 @@
 {
-	"credit": "Made with Blockbench",
+	"credit": "Made by Satisfy",
 	"parent": "block/block",
 	"textures": {
-		"particle": "vinery:block/bag_side",
-		"texture": "vinery:block/bag_side"
+		"particle": "candlelight:block/bag_side",
+		"texture": "candlelight:block/bag_side"
 	},
 	"elements": [
 		{

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "candlelight:drawer",
+    "candlelight:cabinet",
+    "candlelight:floorboard",
+    "candlelight:sideboard",
+    "candlelight:sofa",
+    "candlelight:table",
+    "candlelight:chair",
+    "candlelight:tomato_crate",
+    "candlelight:strawberry_crate",
+    "candlelight:broccoli_crate"
+  ]
+}

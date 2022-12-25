@@ -1,13 +1,13 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "vinery:block/sink_side",
-		"2": "vinery:block/stove_bottom",
-		"3": "vinery:block/sink_bottom",
-		"4": "vinery:block/water_still",
-		"5": "vinery:block/sink_top",
-		"6": "vinery:block/faucet",
-		"particle": "vinery:block/sink_side"
+		"1": "candlelight:block/sink_side",
+		"2": "candlelight:block/stove_bottom",
+		"3": "candlelight:block/sink_bottom",
+		"4": "candlelight:block/water_still",
+		"5": "candlelight:block/sink_top",
+		"6": "candlelight:block/faucet",
+		"particle": "candlelight:block/sink_side"
 	},
 	"elements": [
 		{

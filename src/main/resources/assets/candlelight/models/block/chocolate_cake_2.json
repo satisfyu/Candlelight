@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "chocolate_cake",
-		"particle": "chocolate_cake"
+		"0": "candlelight:cake_chocolate",
+		"particle": "candlelight:cake_chocolate"
 	},
 	"elements": [
 		{

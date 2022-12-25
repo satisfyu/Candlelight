@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "candlelight:wood_fired_oven",
+    "candlelight:stove",
+    "candlelight:kitchen_sink",
+    "candlelight:cooking_pot",
+    "candlelight:cooking_pan"
+  ]
+}
