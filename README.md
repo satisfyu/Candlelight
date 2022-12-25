@@ -1,9 +1,9 @@
-# Fabric Example Mod
+Candlelight Dinner
 
-## Setup
+## About 
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+An Addon for the "Let's Do Wine"-Mod which is themed all around Dinner
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+All Rights Reserved
