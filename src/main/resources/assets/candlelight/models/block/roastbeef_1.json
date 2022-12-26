@@ -1,9 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:plate",
+		"1": "candlelight:block/plate",
 		"2": "candlelight:block/roastbeef",
-		"particle": "candlelight:plate"
+		"particle": "candlelight:block/plate"
 	},
 	"elements": [
 		{

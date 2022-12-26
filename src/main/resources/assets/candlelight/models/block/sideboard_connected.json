@@ -1,12 +1,12 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "candlelight:sideboard_front_connected",
-		"1": "candlelight:sideboard_top_connected",
-		"2": "candlelight:sideboard_side",
-		"3": "candlelight:sideboard_back_connected",
-		"4": "candlelight:sideboard_bottom_connected",
-		"particle": "candlelight:sideboard_front_connected"
+		"0": "candlelight:block/sideboard_front_connected",
+		"1": "candlelight:block/sideboard_top_connected",
+		"2": "candlelight:block/sideboard_side",
+		"3": "candlelight:block/sideboard_back_connected",
+		"4": "candlelight:block/sideboard_bottom_connected",
+		"particle": "candlelight:block/sideboard_front_connected"
 	},
 	"elements": [
 		{

@@ -2,7 +2,7 @@
 	"credit": "Made by Satisfy",
 	"texture_size": [32, 32],
 	"textures": {
-		"1": "candlelight::chocolate_box"
+		"1": "candlelight:block/chocolate_box"
 	},
 	"elements": [
 		{

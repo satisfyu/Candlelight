@@ -2,11 +2,11 @@
 	"credit": "Made by Satisfy",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "fine_dining:block/stove_side",
-		"3": "fine_dining:block/stove_bottom",
-		"4": "fine_dining:block/wood_fired_oven_on_top",
-		"6": "fine_dining:block/wood_fired_oven_front_on",
-		"particle": "fine_dining:block/stove_side"
+		"1": "candlelight:block/stove_side",
+		"3": "candlelight:block/stove_bottom",
+		"4": "candlelight:block/wood_fired_oven_on_top",
+		"6": "candlelight:block/wood_fired_oven_front_on",
+		"particle": "candlelight:block/stove_side"
 	},
 	"elements": [
 		{
