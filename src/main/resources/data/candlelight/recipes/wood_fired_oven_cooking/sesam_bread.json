@@ -5,10 +5,10 @@
       "tag": "minecraft:dough"
     },
     {
-      "tag": "candlelight_dinner:seeds"
+      "tag": "minecraft:sunflower"
     }
   ],
   "item": "candlelight_dinner:sesam_bread",
   "count": 2,
-  "experience": 0.35
+  "experience": 0.4
 }

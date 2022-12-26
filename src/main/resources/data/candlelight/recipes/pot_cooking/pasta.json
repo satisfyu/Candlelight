@@ -6,6 +6,9 @@
     },
     {
       "item": "minecraft:water_bucket"
+    },
+    {
+      "tag": "minecraft:dough"
     }
   ],
   "container": {
