@@ -1,4 +1,4 @@
-package net.satisfy.candlelight;
+package net.satisfy.candlelight.util;
 
 import daniking.vinery.Vinery;
 import net.minecraft.util.Identifier;
