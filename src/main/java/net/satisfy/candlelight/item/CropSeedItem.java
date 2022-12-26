@@ -1,7 +1,8 @@
-package net.satisfy.candlelight.util;
+package net.satisfy.candlelight.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.AliasedBlockItem;
+import net.satisfy.candlelight.util.CropType;
 
 public class CropSeedItem extends AliasedBlockItem {
 
