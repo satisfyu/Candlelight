@@ -7,10 +7,12 @@ import daniking.vinery.block.FacingBlock;
 import daniking.vinery.item.DrinkBlockBigItem;
 import daniking.vinery.item.DrinkBlockItem;
 import daniking.vinery.registry.VinerySoundEvents;
+import daniking.vinery.util.GrapevineType;
 import daniking.vinery.util.VineryFoodComponent;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -20,10 +22,11 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.Candlelight;
+import net.satisfy.candlelight.block.*;
 import net.satisfy.candlelight.block.CakeBlock;
-import net.satisfy.candlelight.block.DecorationBlock;
-import net.satisfy.candlelight.block.JewelryBoxBlock;
 import net.satisfy.candlelight.item.IngredientItem;
+import net.satisfy.candlelight.util.CropSeedItem;
+import net.satisfy.candlelight.util.CropType;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -36,20 +39,22 @@ public class ObjectRegistry {
 
     private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
-
-    //public static final  Item     TOMATO_SEEDS = register("tomato_seeds", new TomatoCropSeedItem(TOMATO_CROP, getSettings()));
-    // public static final  Block    TOMATO_CROP = register("tomato_crop", new Bush(getBushSettings()), false);
+    public static final  Item     TOMATO_SEEDS = register("tomato_seeds", new CropSeedItem(TOMATO_CROP, getSettings(), CropType.TOMATO));
+    public static final  Block    TOMATO_CROP = register("tomato_crop", new PickCropBlock(getBushSettings(), CropType.TOMATO), false);
     public static final  Item     TOMATO = register("tomato", new IngredientItem(getSettings().food(FoodComponents.APPLE)));
     public static final  Block    TOMATO_CRATE = register("tomato_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
-    //public static final  Item     BROCCOLI_SEEDS = register("broccoli_seeds", new TomatoBushSeedItem(BROCCOLI_CROP, getSettings()));
-    // public static final  Block    BROCCOLI_CROP = register("broccoli_crop", new Bush(getBushSettings()), false);
-    //public static final  Item     BROCCOLI = register("broccoli", new IngredientItem().food(FoodComponents.APPLE))));
+    public static final  Item     BROCCOLI_SEEDS = register("broccoli_seeds", new AliasedBlockItem(ObjectRegistry.BROCCOLI_CROP, getSettings()));
+    public static final  Block    BROCCOLI_CROP = register("broccoli_crop", new BroccoliCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)), false);
+    public static final  Item     BROCCOLI = register("broccoli", new IngredientItem(getSettings().food(FoodComponents.POTATO)));
     public static final  Block    BROCCOLI_CRATE = register("broccoli_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
-    //public static final  Item     STRAWBERRY_SEEDS = register("strawberry_seeds", new StrawberryCropSeedItem(TOMATO_BUSH, getSettings()));
-    // public static final  Block    STRAWBERRY_CROP = register("strawberry_crop", new Bush(getBushSettings()), false);
-    // public static final  Item     STRAWBERRY = register("strawberry", new IngredientItem().food(FoodComponents.SWEET_BERRIES))))
+    public static final  Item     STRAWBERRY_SEEDS = register("strawberry_seeds", new CropSeedItem(STRAWBERRY_CROP, getSettings(), CropType.STRAWBERRY));
+    public static final  Block    STRAWBERRY_CROP = register("strawberry_crop", new PickCropBlock(getBushSettings(), CropType.STRAWBERRY), false);
+    public static final  Item     STRAWBERRY = register("strawberry", new IngredientItem(getSettings().food(FoodComponents.BEETROOT)));
     public static final  Block    STRAWBERRY_CRATE = register("strawberry_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
-    // public static final  Block    WILD_STRAWBERRY_CROP = register("wild_strawberry_crop", new Bush(getBushSettings()), false);
+
+    public static final  Block    STRAWBERRY_WILD_TAIGA = register("strawberry_wild_taiga", new PickCropBlock(getBushSettings(), CropType.STRAWBERRY), false);
+    public static final  Block    STRAWBERRY_WILD_JUNGLE = register("strawberry_wild_jungle", new PickCropBlock(getBushSettings(), CropType.STRAWBERRY), false);
+    public static final  Block    TOMATOES_WILD = register("tomatoes_wild", new PickCropBlock(getBushSettings(), CropType.TOMATO), false);
 
 
     // public static final  Block    SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
@@ -138,8 +143,7 @@ public class ObjectRegistry {
 
 
 
-    public static final  Block    POTTED_ROSE = registerBlockWithoutItem("potted_rose",
-            new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
+    public static final  Block    POTTED_ROSE = Block("potted_rose", new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)), );
 
 
 
@@ -255,6 +259,7 @@ public class ObjectRegistry {
     public static Map<Identifier, Item> getItems() {
         return Collections.unmodifiableMap(ITEMS);
     }
+
 
     private static Block registerBlockWithoutItem(String name, Block block) {
         return Registry.register(Registry.BLOCK, new Identifier(Candlelight.MOD_ID, name), block);
