@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#P",
+        "CS"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:carrot"
+        },
+        "P": {
+            "item": "minecraft:potato"
+        },
+        "C": {
+            "tag": "candlelight:tomato"
+        },
+        "S": {
+            "item": "candlelight:broccoli"
+        }
+    },
+    "result": {
+        "item": "candlelight_dinner:ring",
+        "count": 2
+    }
+}
+

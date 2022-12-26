@@ -2,7 +2,7 @@
   "type": "vinery:pot_cooking",
   "ingredients": [
     {
-      "tag":  "candlelight_dinner:tomato_sauce"
+      "tag":  "candlelight:tomato_sauce"
     },
     {
       "item": "minecraft:water_bucket"
@@ -12,9 +12,10 @@
     }
   ],
   "container": {
-    "item": "candlelight_dinner:tray"
+    "item": "candlelight:tray"
   },
   "result": {
-    "item": "candlelight_dinner:pasta"
+    "item": "candlelight:pasta",
+    "count": 4
   }
 }

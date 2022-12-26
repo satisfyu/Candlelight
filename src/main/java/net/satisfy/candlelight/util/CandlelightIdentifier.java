@@ -1,16 +1,16 @@
 package net.satisfy.candlelight.util;
 
-import daniking.vinery.Vinery;
 import net.minecraft.util.Identifier;
+import net.satisfy.candlelight.Candlelight;
 
 public class CandlelightIdentifier extends Identifier {
 
     public CandlelightIdentifier(String path) {
-        super(Vinery.MODID, path);
+        super(Candlelight.MOD_ID, path);
     }
 
     public static String asString(String path) {
-        return (Vinery.MODID + ":" + path);
+        return (Candlelight.MOD_ID + ":" + path);
     }
 }
 

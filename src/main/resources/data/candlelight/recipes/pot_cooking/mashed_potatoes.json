@@ -12,9 +12,10 @@
     }
   ],
   "container": {
-    "item": "candlelight_dinner:tray"
+    "item": "candlelight:tray"
   },
   "result": {
-    "item": "candlelight_dinner:mashed_potatoes"
+    "item": "candlelight:mashed_potatoes",
+    "count": 2
   }
 }

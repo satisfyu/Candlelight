@@ -2,10 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "ingredients": [
     {
-      "tag": "vinery:milk"
+      "tag": "candlelight:red_wine"
+    },
+    {
+      "item": "minecraft:raw_beef"
     }
   ],
   "result": {
-    "item": "candlelight_dinner:butter"
+    "item": "candlelight:cooked_beef",
+    "count": 2
   }
 }

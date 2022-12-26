@@ -5,7 +5,7 @@
       "tag": "minecraft:dough"
     },
     {
-      "tag": "minecraft:sunflower"
+      "item": "minecraft:sunflower"
     }
   ],
   "item": "candlelight_dinner:sesam_bread",
