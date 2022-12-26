@@ -45,9 +45,9 @@
   "item.candlelight.sweetberry_milkshake": "Sweetberry Milkshake",
   "item.candlelight.sweetberry_icecream": "Sweetberry Icecream",
   "item.candlelight.chocolate_cake_slice": "Slice of Chocolate Cake",
-  "item.candlelight.chocolate_cake": "Chocolate cake",
-  "item.candlelight.chocolate_milkshake": "Chocolate milkshake",
-  "item.candlelight.chocolate_icecream": "Chocolate icecream",
+  "item.candlelight.chocolate_cake": "Chocolate Cake",
+  "item.candlelight.chocolate_milkshake": "Chocolate Milkshake",
+  "item.candlelight.chocolate_icecream": "Chocolate Icecream",
   "block.candlelight.tomato_crate": "Tomato Crate",
   "block.candlelight.strawberry_crate": "Strawberry Crate",
   "block.candlelight.broccoli_crate": "Broccoli Crate",
@@ -70,13 +70,13 @@
   "block.candlelight.table_sign": "Table Sign",
   "block.candlelight.street_sign": "Street Sign",
   "block.candlelight.hearth": "Hearth",
-  "block.candlelight.painting": "Painting",
+  "block.candlelight.painting": "Small Painting",
   "block.candlelight.rose": "Rose",
   "block.candlelight.book": "Book",
   "block.candlelight.tray": "Tray",
   "block.candlelight.plate": "Plate",
   "block.candlelight.napkin": "Napkin",
-  "block.candlelight.wine_glass": "Wine"
+  "block.candlelight.wine_glass": "Wine Glass"
 }
 
 
