@@ -4,13 +4,11 @@ import daniking.vinery.VineryIdentifier;
 import daniking.vinery.block.GrapeBush;
 import daniking.vinery.world.feature.VineryVinesFeature;
 import net.fabricmc.fabric.api.biome.v1.*;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
@@ -48,6 +46,7 @@ public class ConfiguredFeatures {
         Predicate<BiomeSelectionContext> taigaBiomes = BiomeSelectors.includeByKey(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.TAIGA, BiomeKeys.DARK_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
         Predicate<BiomeSelectionContext> jungleBiomes = BiomeSelectors.includeByKey(BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE);
         Predicate<BiomeSelectionContext> dryBiomes = BiomeSelectors.includeByKey(BiomeKeys.RIVER, BiomeKeys.SWAMP, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.BEACH, BiomeKeys.WOODED_BADLANDS, BiomeKeys.SUNFLOWER_PLAINS);
+        Predicate<BiomeSelectionContext> coldBiomes = BiomeSelectors.includeByKey(BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_BEACH, BiomeKeys.SNOWY_PLAINS);
 
 
         world.add(ModificationPhase.ADDITIONS, taigaBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, STRAWBERRY_WILD_TAIGA_PATCH_CHANCE.value()));
