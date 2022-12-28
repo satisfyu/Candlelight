@@ -1,0 +1,17 @@
+{
+  "type": "vinery:wine_fermentation",
+  "ingredients": [
+    {
+      "item": "vinery:red_grapejuice_wine_botte"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "candlelight_dinner:strawberry"
+    }
+  ],
+  "result": {
+    "item": "candlelight_dinner:keydevy_wine"
+  }
+}
