@@ -101,7 +101,7 @@ public class CakeBlock extends FacingBlock {
 
     @Override
     public void appendTooltip(ItemStack itemStack, BlockView world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(Text.translatable("block.candlelight.cake.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
+        tooltip.add(Text.translatable("block.candlelight.canbeplaced.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
 
     }
 }

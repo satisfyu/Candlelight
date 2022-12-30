@@ -6,6 +6,9 @@ import daniking.vinery.block.*;
 import daniking.vinery.block.FacingBlock;
 import daniking.vinery.item.DrinkBlockBigItem;
 import daniking.vinery.item.DrinkBlockItem;
+import daniking.vinery.item.StrawHatItem;
+import daniking.vinery.item.WinemakerArmorItem;
+import daniking.vinery.registry.VineryMaterials;
 import daniking.vinery.registry.VinerySoundEvents;
 import daniking.vinery.util.VineryFoodComponent;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -13,12 +16,14 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.*;
@@ -73,11 +78,17 @@ public class ObjectRegistry {
     /**                           Food Items can be placed on it. Only Cakes (Candlelight_Cakes) will be displayed as 3D. 3 Items can be placed inside it.*/
     public static final  Block    COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
    // public static final  Block    COOKING_PAN = register("cooking_pan", new CookingPanBlock
-    /**                           Place it on a heated surface and youre ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
-     *                            e.g. place a raw_beef, broccoli and butter inside it and it will start cooking. Particles will show that its cooking.
+    /**                           Place it on a heated surface and you're ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
+     *                            e.g. place a raw_beef, broccoli and butter inside it and it will start cooking. Particles will show that it's cooking.
+     *                            Maybe an Item needed as an indicator that shows 'Hey it's done'. Or just particles and sound will go off telling the player its done.
      *                            Once done take a tray and right-click on the pan while holding the tray and you'll get the finished meal.*/
    // public static final  Block    TRAY = register("tray", new TrayDisplayBlock;
-            /**                   Another DisplayBlock: Place up to 6 items inside the tray.*/
+            /**                   Another DisplayBlock: Place up to 6 items inside the tray.
+             *
+             *                    Getting displayed like this:
+             *                    //////
+             *
+             * */
    // public static final  Block    PLATE = register("plate", new PlateDisplayBlock;
    // public static final  Block    NAPKIN = register("napkin", new PlateDisplayBlock();
    // public static final  Block    WINE_GLASS = register("wine_glass", new PlatedisplayBlock();
@@ -141,6 +152,13 @@ public class ObjectRegistry {
     public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new net.minecraft.block.CakeBlock(FabricBlockSettings.copy(Blocks.CAKE)));
     /**                           Not sure if this gonna work...
      */
+    public static final Item COOKING_HAT = register("straw_hat", new StrawHatItem(getSettings().rarity(Rarity.COMMON)));
+    /**                           Should be 3D rendered
+     *
+     */
+    public static final Item CHEFS_JACKET = register("chefs_jacket", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
+    public static final Item CHEFS_PANTS = register("chefs_pants", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
+    public static final Item CHEFS_BOOTS = register("chefs_boots", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
     public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
 
 

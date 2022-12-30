@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "candlelight:block/chocolate_box_0"
+    },
+    "bites=1": {
+      "model": "candlelight:block/chocolate_box_1"
+    },
+    "bites=2": {
+      "model": "candlelight:block/chocolate_box_2"
+    },
+    "bites=3": {
+      "model": "candlelight:block/chocolate_box_3"
+    },
+    "bites=4": {
+      "model": "candlelight:block/chocolate_box_4"
+    },
+    "bites=5": {
+      "model": "candlelight:block/chocolate_box_5"
+    },
+    "bites=6": {
+      "model": "candlelight:block/chocolate_box_6"
+    }
+  }
+}

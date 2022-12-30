@@ -3,10 +3,10 @@
 	"textures": {
 		"0": "candlelight:block/wood_fired_oven_top",
 		"1": "candlelight:block/bag_side",
-		"3": "candlelight:block/typewriter",
+		"3": "candlelight:block/typewriter_copper",
 		"4": "candlelight:block/typewriter_keys",
 		"6": "candlelight:block/typewriter_paper",
-		"particle": "candlelight:block/wood_fired_oven_top"
+		"particle": "candlelight:block/typewriter_copper"
 	},
 	"elements": [
 		{

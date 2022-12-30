@@ -76,7 +76,12 @@
   "block.candlelight.tray": "Tray",
   "block.candlelight.plate": "Plate",
   "block.candlelight.napkin": "Napkin",
-  "block.candlelight.wine_glass": "Wine Glass"
+  "block.candlelight.wine_glass": "Wine Glass",
+  "candlelight.tooltip.cook_armor_1": "",
+  "candlelight.tooltip.cook_armor_2": "",
+  "candlelight.tooltip.cook_armor_3": "",
+  "item.candlelight.ingredient.tooltip": "",
+  "block.candlelight.canbeplaced.tooltip": ""
 }
 
 
