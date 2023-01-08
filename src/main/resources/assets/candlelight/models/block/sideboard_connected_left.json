@@ -1,0 +1,26 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "candlelight:block/sideboard_front_connected",
+		"1": "candlelight:block/sideboard_top_connected",
+		"2": "candlelight:block/sideboard_side",
+		"3": "candlelight:block/sideboard_back_connected",
+		"4": "candlelight:block/sideboard_bottom_connected",
+		"particle": "candlelight:block/sideboard_front_connected"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 4],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, 0, 0]},
+			"faces": {
+				"north": {"uv": [16, 0, 0, 16], "texture": "#0"},
+				"east": {"uv": [14, 0, 2, 16], "texture": "#2"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#3"},
+				"west": {"uv": [14, 0, 2, 16], "texture": "#2"},
+				"up": {"uv": [0, 2, 16, 14], "texture": "#1"},
+				"down": {"uv": [2, 16, 14, 0], "rotation": 90, "texture": "#4"}
+			}
+		}
+	]
+}
