@@ -63,6 +63,7 @@ public class ObjectRegistry {
     public static final  Block    CHAIR = register("chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final  Block    TABLE = register("table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     // public static final Block LAMP = register("lamp", new LampBlock(
+    /**                           Works like a lantern, but can be turned on/off by right-clicking on it*/
     public static final  Block    WOOD_FIRED_OVEN = register("wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final  Block    STOVE = register("stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
 
@@ -104,7 +105,7 @@ public class ObjectRegistry {
     public static final  Item     COOKED_BEEF = register("cooked_beef", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final  Item     PASTA = register("pasta", new Item(getSettings().food(FoodComponents.COOKED_MUTTON)));
     public static final  Item     BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
-    // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock
+    // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock(
     /**             Meal Blocks will give an additional effect
      */
     public static final  Item     BROCCOLI_BEEF = register("broccoli_beef", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
