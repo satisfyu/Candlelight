@@ -1,7 +1,6 @@
 package net.satisfy.candlelight.item;
 
 import daniking.vinery.client.ClientSetup;
-import daniking.vinery.item.WinemakerArmorItem;
 import daniking.vinery.registry.ObjectRegistry;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.resource.language.I18n;
@@ -25,6 +24,7 @@ public class CookArmorItem extends ArmorItem {
 
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable World world, @NotNull List<Text> tooltip, TooltipContext context) {
+		/*
 		PlayerEntity player = ClientSetup.getClientPlayer();
 		if (player == null) return;
 		ItemStack helmet = player.getEquippedStack(EquipmentSlot.HEAD);
@@ -43,5 +43,7 @@ public class CookArmorItem extends ArmorItem {
 				chestplate != null && chestplate.getItem() instanceof WinemakerArmorItem &&
 				leggings != null && leggings.getItem() instanceof WinemakerArmorItem &&
 				boots != null && boots.getItem() instanceof WinemakerArmorItem) ? Formatting.DARK_GREEN.toString() : Formatting.GRAY.toString()) + I18n.translate("candlelight.tooltip.cook_armor_3")));
+
+		 */
 	}
 }

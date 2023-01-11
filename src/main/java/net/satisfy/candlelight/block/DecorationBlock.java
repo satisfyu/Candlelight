@@ -2,6 +2,7 @@ package net.satisfy.candlelight.block;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import daniking.vinery.block.FacingBlock;
 import net.minecraft.block.*;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemPlacementContext;

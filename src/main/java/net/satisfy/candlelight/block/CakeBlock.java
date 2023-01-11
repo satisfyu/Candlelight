@@ -34,7 +34,7 @@ import java.util.List;
 
 public class CakeBlock extends FacingBlock {
 
-    private static final VoxelShape SHAPE = Block.createCuboidShape(8, 8, 6, 12, 4, 12);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(8, 4, 6, 12, 8, 12);
     public static final IntProperty CUTS = IntProperty.of("cuts", 0, 3);
     private final Item slice;
 

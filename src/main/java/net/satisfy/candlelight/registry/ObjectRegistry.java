@@ -1,22 +1,18 @@
 package net.satisfy.candlelight.registry;
 
 import com.mojang.datafixers.util.Pair;
-import daniking.vinery.VineryIdentifier;
-import daniking.vinery.block.*;
 import daniking.vinery.block.FacingBlock;
+import daniking.vinery.block.*;
 import daniking.vinery.item.DrinkBlockBigItem;
 import daniking.vinery.item.DrinkBlockItem;
 import daniking.vinery.item.StrawHatItem;
-import daniking.vinery.item.WinemakerArmorItem;
-import daniking.vinery.registry.VineryMaterials;
 import daniking.vinery.registry.VinerySoundEvents;
 import daniking.vinery.util.VineryFoodComponent;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.minecraft.block.*;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -26,17 +22,18 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.Candlelight;
-import net.satisfy.candlelight.block.*;
 import net.satisfy.candlelight.block.CakeBlock;
-import net.satisfy.candlelight.item.IngredientItem;
+import net.satisfy.candlelight.block.*;
 import net.satisfy.candlelight.item.CropSeedItem;
+import net.satisfy.candlelight.item.IngredientItem;
+import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
 
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import static daniking.vinery.registry.ObjectRegistry.*;
+import static daniking.vinery.registry.ObjectRegistry.CHERRY_PLANKS;
 
 
 public class ObjectRegistry {
@@ -68,19 +65,23 @@ public class ObjectRegistry {
     // public static final Block LAMP = register("lamp", new LampBlock(
     public static final  Block    WOOD_FIRED_OVEN = register("wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final  Block    STOVE = register("stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
+
+    public static final  Block    SIDEBOARD = register("sideboard", new SideBoardBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
+
+    public static final  Block    DLANTERN = register("lantern", new DLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(s -> s.get(DLanternBlock.LUMINANCE) ? 15 : 0)));
     public static final  Block    KITCHEN_SINK = register("kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
     public static final  Block    DRAWER = register("drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final  Block    CABINET = register("cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
     // public static final  Block    SIDEBOARD = register("sideboard", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     /**                           Same function as a Chest. Can expand 2 Blocks wide. Different sound and voxel shape.*/
     public static final  Block    FLOORBOARD = register("floorboard", new Block(FabricBlockSettings.copy(CHERRY_PLANKS)));
-    // public static final  Block    CAKE_STAND = register("cake_stand", new CakeDisplayBlock
+    public static final  Block    CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     /**                           Food Items can be placed on it. Only Cakes (Candlelight_Cakes) will be displayed as 3D. 3 Items can be placed inside it.*/
     public static final  Block    COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
    // public static final  Block    COOKING_PAN = register("cooking_pan", new CookingPanBlock
-    /**                           Place it on a heated surface and you're ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
-     *                            e.g. place a raw_beef, broccoli and butter inside it and it will start cooking. Particles will show that it's cooking.
-     *                            Maybe an Item needed as an indicator that shows 'Hey it's done'. Or just particles and sound will go off telling the player its done.
+    /**                           Place it on a heated surface, and you're ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
+     *                            e.g. place a raw_beef, broccoli and butter inside it, and it will start cooking. Particles will show that it's cooking.
+     *                            Maybe an Item needed as an indicator that shows 'Hey it's done'. Or just particles and sound will go off telling the player it's done.
      *                            Once done take a tray and right-click on the pan while holding the tray and you'll get the finished meal.*/
    // public static final  Block    TRAY = register("tray", new TrayDisplayBlock;
             /**                   Another DisplayBlock: Place up to 6 items inside the tray.
@@ -89,9 +90,7 @@ public class ObjectRegistry {
              *                    //////
              *
              * */
-   // public static final  Block    PLATE = register("plate", new PlateDisplayBlock;
-   // public static final  Block    NAPKIN = register("napkin", new PlateDisplayBlock();
-   // public static final  Block    WINE_GLASS = register("wine_glass", new PlatedisplayBlock();
+   public static final  Block    TABLE_SET = register("table_set", new TableSetBlock(FabricBlockSettings.copyOf(COOKING_POT)));
     /**           Expandable table set.
      *
      *            You can place Food on the table and eat it when right-clicking on the table. You'll get an additional effect when you eat your Food like this.
@@ -156,12 +155,18 @@ public class ObjectRegistry {
     /**                           Should be 3D rendered
      *
      */
+    /*
     public static final Item CHEFS_JACKET = register("chefs_jacket", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_PANTS = register("chefs_pants", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_BOOTS = register("chefs_boots", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
+
+     */
+
+    public static final Item GLASS = register("glass", new Item(getSettings()));
+
+    public static final Item NAPKIN = register("napkin", new Item(getSettings()));
+
     public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
-
-
 
             //letter items
     public static final  Item     NOTE_PAPER = register("note_paper", new Item(getSettings()));
@@ -216,7 +221,7 @@ public class ObjectRegistry {
     }
 
     private static <T extends Block> T register(String path, T block, boolean registerItem, BiFunction<T, Item.Settings, ? extends BlockItem> function,  Consumer<Item.Settings> consumer) {
-        final Identifier id = new VineryIdentifier(path);
+        final Identifier id = new CandlelightIdentifier(path);
         BLOCKS.put(id, block);
         if (registerItem) {
             ITEMS.put(id, function.apply(block, getSettings(consumer)));
@@ -240,7 +245,7 @@ public class ObjectRegistry {
     }
 
     private static <T extends Item> T register(String path, T item) {
-        final Identifier id = new VineryIdentifier(path);
+        final Identifier id = new CandlelightIdentifier(path);
         ITEMS.put(id, item);
         return item;
     }
@@ -255,6 +260,7 @@ public class ObjectRegistry {
         FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
         flammableRegistry.add(FLOORBOARD, 5, 20);
     }
+
 
 
     private static Item.Settings getSettings(Consumer<Item.Settings> consumer) {

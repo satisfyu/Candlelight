@@ -2,10 +2,8 @@ package net.satisfy.candlelight.world.feature;
 
 import daniking.vinery.VineryIdentifier;
 import daniking.vinery.block.GrapeBush;
-import daniking.vinery.world.feature.VineryVinesFeature;
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
@@ -22,7 +20,6 @@ import java.util.function.Predicate;
 
 public class ConfiguredFeatures {
 
-    public static final Feature<SimpleBlockFeatureConfig> VINES_FEATURE = new VineryVinesFeature(SimpleBlockFeatureConfig.CODEC);
 
     public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> STRAWBERRY_WILD_TAIGA_PATCH =
             net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("strawberry_wild_taiga"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(net.satisfy.candlelight.registry.ObjectRegistry.STRAWBERRY_WILD_TAIGA.getDefaultState().with(GrapeBush.AGE, 3))), List.of(Blocks.GRASS_BLOCK), 36));
@@ -41,7 +38,6 @@ public class ConfiguredFeatures {
 
 
     public static void init() {
-        Registry.register(Registry.FEATURE, new VineryIdentifier("vines_feature"), VINES_FEATURE);
         BiomeModification world = BiomeModifications.create(new VineryIdentifier("world_features"));
         Predicate<BiomeSelectionContext> taigaBiomes = BiomeSelectors.includeByKey(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.TAIGA, BiomeKeys.DARK_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
         Predicate<BiomeSelectionContext> jungleBiomes = BiomeSelectors.includeByKey(BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE);

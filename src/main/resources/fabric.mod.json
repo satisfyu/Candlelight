@@ -19,6 +19,12 @@
   "entrypoints": {
     "main": [
       "net.satisfy.candlelight.Candlelight"
+    ],
+    "client": [
+      "net.satisfy.candlelight.client.CandlelightClient"
+    ],
+    "vinery": [
+      "net.satisfy.candlelight.registry.StorageTypes"
     ]
   },
   "mixins": [
