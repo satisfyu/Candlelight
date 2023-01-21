@@ -1,17 +1,29 @@
 package net.satisfy.candlelight.block;
 
 import daniking.vinery.block.StorageBlock;
+import daniking.vinery.block.entity.StorageBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.satisfy.candlelight.Candlelight;
+import net.minecraft.world.World;
 import net.satisfy.candlelight.registry.StorageTypes;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class CakeStandBlock extends StorageBlock {
 
@@ -38,6 +50,71 @@ public class CakeStandBlock extends StorageBlock {
         return SHAPE;
     }
 
+    public int findFirstEmpty(DefaultedList<ItemStack> inv){
+        for(int i = 0; i < 3; i++){
+            ItemStack stack = inv.get(i);
+            if (stack.isEmpty()) return i;
+        }
+        return Integer.MIN_VALUE;
+    }
+
+    public int findFirstFull(DefaultedList<ItemStack> inv){
+        for(int i = 0; i < 3; i++){
+            ItemStack stack = inv.get(i);
+            if (!stack.isEmpty()) return i;
+        }
+        return Integer.MIN_VALUE;
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof StorageBlockEntity shelfBlockEntity) {
+            List<Item> items = new LinkedList<>();
+            shelfBlockEntity.getInventory().forEach(stack -> {
+                if (!stack.isEmpty()) items.add(stack.getItem());
+            });
+            if (player.isSneaking()) {
+                boolean cCake = false;
+                for (Item item : items) {
+                    if (item instanceof BlockItem) {
+                        cCake = true;
+                        break;
+                    }
+                }
+                if (cCake) {
+                    remove(world, pos, player, shelfBlockEntity, 0);
+                    return ActionResult.success(world.isClient());
+                } else {
+                    int i = findFirstFull(shelfBlockEntity.getInventory());
+                    if (i != Integer.MIN_VALUE) {
+                        remove(world, pos, player, shelfBlockEntity, i);
+                        return ActionResult.success(world.isClient());
+                    }
+                }
+            } else {
+                ItemStack stack = player.getStackInHand(hand);
+                if(!stack.isEmpty() && canInsertStack(stack)) {
+                    if (stack.getItem() instanceof BlockItem) {
+                        if (items.isEmpty()) {
+                            add(world, pos, player, shelfBlockEntity, stack, 0);
+                            return ActionResult.success(world.isClient());
+                        }
+                    } else {
+                        if(!(shelfBlockEntity.getInventory().get(0).getItem() instanceof BlockItem)){
+                            int i = findFirstEmpty(shelfBlockEntity.getInventory());
+                            if (i != Integer.MIN_VALUE) {
+                                add(world, pos, player, shelfBlockEntity, stack, i);
+                                return ActionResult.success(world.isClient());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return ActionResult.PASS;
+    }
+
     @Override
     public int size() {
         return 3;
@@ -50,21 +127,16 @@ public class CakeStandBlock extends StorageBlock {
 
     @Override
     public Direction[] unAllowedDirections() {
-        return new Direction[]{Direction.DOWN};
+        return new Direction[0];
     }
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.isFood();
+        return stack.isFood() || stack.getItem() instanceof BlockItem;
     }
 
     @Override
     public int getSection(Float x, Float y) {
-        Candlelight.LOGGER.error(x);
-        if (x < 0.375F) {
-            return 0;
-        } else {
-            return x < 0.6875F ? 1 : 2;
-        }
+        return 0;
     }
 }
