@@ -76,7 +76,14 @@
   "block.candlelight.tray": "Tablett",
   "block.candlelight.plate": "Teller",
   "block.candlelight.napkin": "Serviette",
-  "block.candlelight.wine_glass": "Weinglas"
+  "block.candlelight.wine_glass": "Weinglas",
+  "item.candlelight.cooking_hat": "Kochhut",
+  "candlelight.tooltip.cook_armor_1": "",
+  "candlelight.tooltip.cook_armor_2": "",
+  "candlelight.tooltip.cook_armor_3": "",
+  "item.candlelight.ingredient.tooltip": "",
+  "block.candlelight.canbeplaced.tooltip": ""
+
 }
 
 

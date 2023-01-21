@@ -81,7 +81,8 @@
   "candlelight.tooltip.cook_armor_2": "",
   "candlelight.tooltip.cook_armor_3": "",
   "item.candlelight.ingredient.tooltip": "",
-  "block.candlelight.canbeplaced.tooltip": ""
+  "block.candlelight.canbeplaced.tooltip": "",
+  "item.candlelight.cooking_hat": "Cooking Hat"
 }
 
 
