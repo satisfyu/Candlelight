@@ -6,6 +6,7 @@
   "mixins": [
   ],
   "client": [
+    "ArmorRendererRegistryMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -24,6 +24,7 @@ import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
+import net.satisfy.candlelight.item.CookingHatItem;
 import net.satisfy.candlelight.item.CropSeedItem;
 import net.satisfy.candlelight.item.IngredientItem;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
@@ -152,7 +153,7 @@ public class ObjectRegistry {
     public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new net.minecraft.block.CakeBlock(FabricBlockSettings.copy(Blocks.CAKE)));
     /**                           Not sure if this gonna work...
      */
-    public static final Item COOKING_HAT = register("straw_hat", new StrawHatItem(getSettings().rarity(Rarity.COMMON)));
+    public static final Item COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
     /**                           Should be 3D rendered
      *
      */

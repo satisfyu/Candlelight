@@ -13,21 +13,21 @@ import net.minecraft.util.math.Vec3f;
 public class CakeStandRenderer implements StorageTypeRenderer {
     @Override
     public void render(StorageBlockEntity entity, MatrixStack matrices, VertexConsumerProvider vertexConsumers, DefaultedList<ItemStack> itemStacks) {
-
-
-        matrices.translate(-0.4, 0.5, 0.25);
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(90f));
-        matrices.scale(0.5f, 0.5f, 0.5f);
-
-
         for (int i = 0; i < itemStacks.size(); i++) {
             ItemStack stack = itemStacks.get(i);
             if(!stack.isEmpty()) {
                 matrices.push();
-                matrices.translate(0f, 0f, 0.2f * i);
+
                 if (stack.getItem() instanceof BlockItem blockItem) {
+                    matrices.scale(0.5f, 0.5f, 0.5f);
+                    matrices.translate(-0.5f, 1f, -0.5);
                     ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
                 } else {
+                    matrices.scale(0.4f, 0.4f, 0.4f);
+                    if(i == 0) matrices.translate(-0.4f, 1.3f, 0.4f);
+                    else if(i == 1) matrices.translate(-0.2f, 1.3f, -0.4f);
+                    else matrices.translate(0.4f, 1.3f, 0.2f);
+                    matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90f));
                     ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 }
                 matrices.pop();
