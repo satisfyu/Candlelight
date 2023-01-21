@@ -13,7 +13,7 @@
   },
 
   "license": "All Rights Reserved",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/candlelight/icon.png",
 
   "environment": "*",
   "entrypoints": {
