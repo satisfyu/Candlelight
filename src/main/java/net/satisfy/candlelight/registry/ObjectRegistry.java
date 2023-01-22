@@ -13,6 +13,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.*;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -24,9 +25,7 @@ import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
-import net.satisfy.candlelight.item.CookingHatItem;
-import net.satisfy.candlelight.item.CropSeedItem;
-import net.satisfy.candlelight.item.IngredientItem;
+import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
 
@@ -154,20 +153,11 @@ public class ObjectRegistry {
     /**                           Not sure if this gonna work...
      */
     public static final Item COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
-    /**                           Should be 3D rendered
-     *
-     */
-    /*
-    public static final Item CHEFS_JACKET = register("chefs_jacket", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
-    public static final Item CHEFS_PANTS = register("chefs_pants", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
-    public static final Item CHEFS_BOOTS = register("chefs_boots", new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
-
-     */
-
+    public static final Item CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
+    public static final Item CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
+    public static final Item CHEFS_BOOTS = register("chefs_boots", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
     public static final Item GLASS = register("glass", new Item(getSettings()));
-
     public static final Item NAPKIN = register("napkin", new Item(getSettings()));
-
     public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
 
             //letter items
