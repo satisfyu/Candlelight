@@ -1,6 +1,5 @@
 package net.satisfy.candlelight.registry;
 
-import daniking.vinery.block.entity.WoodFiredOvenBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
@@ -11,7 +10,7 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CBlockEntityTypes {
+public class BlockEntityTypes {
 
     private static final Map<Identifier, BlockEntityType<?>> BLOCK_ENTITY_TYPES = new HashMap<>();
 

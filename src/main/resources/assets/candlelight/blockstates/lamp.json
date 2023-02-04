@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "candlelight:block/lamp"
+    },
+    "hanging=true": {
+      "model": "candlelight:block/lamp_hanging"
+    }
+  }
+}

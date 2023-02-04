@@ -4,12 +4,12 @@
 		"1": "candlelight:block/cake_stand_plate",
 		"2": "candlelight:block/cake_stand_glass_top",
 		"3": "candlelight:block/cake_stand_glass_side",
-		"particle": "candlelight:block/cake_stand_support"
+		"particle": "candlelight:block/cake_stand_glass_side"
 	},
 	"elements": [
 		{
-			"from": [0, 8, 0],
-			"to": [16, 8, 16],
+			"from": [0, 8.01, 0],
+			"to": [16, 8.01, 16],
 			"faces": {
 				"north": {"uv": [0, 0, 16, 0], "texture": "#1"},
 				"east": {"uv": [0, 0, 16, 0], "texture": "#1"},

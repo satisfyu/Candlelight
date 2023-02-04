@@ -5,7 +5,6 @@ import daniking.vinery.block.FacingBlock;
 import daniking.vinery.block.*;
 import daniking.vinery.item.DrinkBlockBigItem;
 import daniking.vinery.item.DrinkBlockItem;
-import daniking.vinery.item.StrawHatItem;
 import daniking.vinery.registry.VinerySoundEvents;
 import daniking.vinery.util.VineryFoodComponent;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -25,6 +24,7 @@ import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
+import net.satisfy.candlelight.block.LanternBlock;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
@@ -37,6 +37,8 @@ import static daniking.vinery.registry.ObjectRegistry.CHERRY_PLANKS;
 
 
 public class ObjectRegistry {
+
+    Item.Settings settings = new Item.Settings();
 
     private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
@@ -52,32 +54,21 @@ public class ObjectRegistry {
     public static final  Item     STRAWBERRY_SEEDS = register("strawberry_seeds", new CropSeedItem(STRAWBERRY_CROP, getSettings(), CropType.STRAWBERRY));
     public static final  Item     STRAWBERRY = register("strawberry", new IngredientItem(getSettings().food(FoodComponents.BEETROOT)));
     public static final  Block    STRAWBERRY_CRATE = register("strawberry_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
-
     public static final  Block    STRAWBERRY_WILD_TAIGA = register("strawberry_wild_taiga", new PickCropBlock(getBushSettings(), CropType.STRAWBERRY), false);
     public static final  Block    STRAWBERRY_WILD_JUNGLE = register("strawberry_wild_jungle", new PickCropBlock(getBushSettings(), CropType.STRAWBERRY), false);
     public static final  Block    TOMATOES_WILD = register("tomatoes_wild", new PickCropBlock(getBushSettings(), CropType.TOMATO), false);
-
-
-    // public static final  Block    SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
-    /**                           Meadow:Bench_Block copy. Missing Voxel Shape.*/
+    public static final  Block    SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final  Block    CHAIR = register("chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final  Block    TABLE = register("table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
-    // public static final Block LAMP = register("lamp", new LampBlock(
-    /**                           Works like a lantern, but can be turned on/off by right-clicking on it*/
+    public static final  Block    LAMP = register("lamp", new LanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(s -> s.get(LanternBlock.LUMINANCE) ? 15 : 0).sounds(BlockSoundGroup.WOOD)));
     public static final  Block    WOOD_FIRED_OVEN = register("wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final  Block    STOVE = register("stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
-
-    public static final  Block    SIDEBOARD = register("sideboard", new SideBoardBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
-
-    public static final  Block    DLANTERN = register("lantern", new DLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(s -> s.get(DLanternBlock.LUMINANCE) ? 15 : 0)));
     public static final  Block    KITCHEN_SINK = register("kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
     public static final  Block    DRAWER = register("drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final  Block    CABINET = register("cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-    // public static final  Block    SIDEBOARD = register("sideboard", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
-    /**                           Same function as a Chest. Can expand 2 Blocks wide. Different sound and voxel shape.*/
+    public static final  Block    SIDEBOARD = register("sideboard", new SideBoardBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
     public static final  Block    FLOORBOARD = register("floorboard", new Block(FabricBlockSettings.copy(CHERRY_PLANKS)));
     public static final  Block    CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
-    /**                           Food Items can be placed on it. Only Cakes (Candlelight_Cakes) will be displayed as 3D. 3 Items can be placed inside it.*/
     public static final  Block    COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
    // public static final  Block    COOKING_PAN = register("cooking_pan", new CookingPanBlock
     /**                           Place it on a heated surface, and you're ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
@@ -85,23 +76,13 @@ public class ObjectRegistry {
      *                            Maybe an Item needed as an indicator that shows 'Hey it's done'. Or just particles and sound will go off telling the player it's done.
      *                            Once done take a tray and right-click on the pan while holding the tray and you'll get the finished meal.*/
    // public static final  Block    TRAY = register("tray", new TrayDisplayBlock;
-            /**                   Another DisplayBlock: Place up to 6 items inside the tray.
-             *
-             *                    Getting displayed like this:
-             *                    //////
-             *
-             * */
+
    public static final  Block    TABLE_SET = register("table_set", new TableSetBlock(FabricBlockSettings.copyOf(COOKING_POT)));
-    /**           Expandable table set.
-     *
-     *            You can place Food on the table and eat it when right-clicking on the table. You'll get an additional effect when you eat your Food like this.
-     *
-     */
     public static final  Item     BUTTER = register("butter", new IngredientItem(getSettings()));
     public static final  Item     CHOCOLATE = register("chocolate", new IngredientItem(getSettings().food(FoodComponents.COOKIE)));
     public static final  Item     MOZZARELLA = register("mozzarella", new IngredientItem(getSettings().food(FoodComponents.BREAD)));
     public static final  Item     TOMATO_SOUP = register("tomato_soup", new IngredientItem(getSettings().food(FoodComponents.BEETROOT_SOUP)));
-    public static final  Item     BEETROOT_SALAD = register("beetroot_salat", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
+    public static final  Item     BEETROOT_SALAD = register("beetroot_salad", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final  Item     COOKED_BEEF = register("cooked_beef", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final  Item     PASTA = register("pasta", new Item(getSettings().food(FoodComponents.COOKED_MUTTON)));
     public static final  Item     BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
@@ -121,8 +102,8 @@ public class ObjectRegistry {
     public static final  Item     FRIED_EGG = register("fried_egg", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final  Block    STRAWBERRY_JAM = register("strawberry_jam", new CherryJamBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque()));
     public static final  Item     VINEGAR = register("vinegar", new IngredientItem(getSettings()));
-    public static final  Block    RED_WINE = registerWine("clark_wine", new WineBottleBlock(getWineSettings()), StatusEffects.FIRE_RESISTANCE);
-    public static final  Block    PRAETORIAN_WINE = registerBigWine("chenet_wine", new ChenetBottleBlock(getWineSettings()), StatusEffects.JUMP_BOOST);
+    public static final  Block    RED_WINE = registerWine("red_wine", new WineBottleBlock(getWineSettings()), StatusEffects.FIRE_RESISTANCE);
+    public static final  Block    PRAETORIAN_WINE = registerBigWine("praetorian_wine", new ChenetBottleBlock(getWineSettings()), StatusEffects.JUMP_BOOST);
     public static final  Item     PANCAKE = register("pancake", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
     public static final  Item     WAFFLE = register("waffle", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
     public static final  Item     STRAWBERRY_GLAZED_COOKIE = register("strawberry_glazed_cookie", new Item(getSettings().food(FoodComponents.BREAD)));
@@ -159,8 +140,6 @@ public class ObjectRegistry {
     public static final Item GLASS = register("glass", new Item(getSettings()));
     public static final Item NAPKIN = register("napkin", new Item(getSettings()));
     public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
-
-            //letter items
     public static final  Item     NOTE_PAPER = register("note_paper", new Item(getSettings()));
     public static final  Item     NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new Item(getSettings()));
     public static final  Item     NOTE_PAPER_WRITTEN = register("note_paper_written", new Item(getSettings()));
@@ -265,10 +244,6 @@ public class ObjectRegistry {
         return getSettings(settings -> {});
     }
 
-    private static Block.Settings getVineSettings() {
-        return FabricBlockSettings.copyOf(Blocks.VINE);
-    }
-
     private static Block.Settings getBushSettings() {
         return FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH);
     }
@@ -304,6 +279,7 @@ public class ObjectRegistry {
         list.addAll(ITEMS.values());
         return list;
     }
+
 
     public static Map<Identifier, Block> getBlocks() {
         return Collections.unmodifiableMap(BLOCKS);

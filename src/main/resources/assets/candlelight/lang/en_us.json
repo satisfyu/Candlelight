@@ -77,12 +77,17 @@
   "block.candlelight.plate": "Plate",
   "block.candlelight.napkin": "Napkin",
   "block.candlelight.wine_glass": "Wine Glass",
+  "item.candlelight.cooking_hat": "Cooking Hat",
   "candlelight.tooltip.cook_armor_1": "",
   "candlelight.tooltip.cook_armor_2": "",
   "candlelight.tooltip.cook_armor_3": "",
   "item.candlelight.ingredient.tooltip": "",
-  "block.candlelight.canbeplaced.tooltip": "",
-  "item.candlelight.cooking_hat": "Cooking Hat"
+  "block.candlelight.canbeplaced.tooltip": "Can be placed.",
+
+
+  "block.candlelight.lamp.tooltip": "Can be turned on or off by Right-Clicking with an Empty Hand.",
+  "block.candlelight.meal1.tooltip": "Needs being placed down to eat.",
+  "block.candlelight.meal2.tooltip": "You need a Bowl or Tray to eat from a Feast."
 }
 
 

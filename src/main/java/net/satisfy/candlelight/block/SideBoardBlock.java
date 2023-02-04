@@ -6,11 +6,11 @@ import net.minecraft.block.ChestBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
 import net.satisfy.candlelight.block.entity.SideBoardBlockEntity;
-import net.satisfy.candlelight.registry.CBlockEntityTypes;
+import net.satisfy.candlelight.registry.BlockEntityTypes;
 
 public class SideBoardBlock extends ChestBlock {
     public SideBoardBlock(Settings settings) {
-        super(settings, () -> CBlockEntityTypes.SIDEBOARD);
+        super(settings, () -> BlockEntityTypes.SIDEBOARD);
     }
 
     @Override
