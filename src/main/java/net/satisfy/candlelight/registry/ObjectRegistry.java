@@ -69,10 +69,13 @@ public class ObjectRegistry {
     public static final  Block    SIDEBOARD = register("sideboard", new SideBoardBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
     public static final  Block    FLOORBOARD = register("floorboard", new Block(FabricBlockSettings.copy(CHERRY_PLANKS)));
     public static final  Block    CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+
+    public static final  Block    TRAY = register("tray", new TrayBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    /**                           Food Items can be placed on it. Only Cakes (Candlelight_Cakes) will be displayed as 3D. 3 Items can be placed inside it.*/
     public static final  Block    COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
    // public static final  Block    COOKING_PAN = register("cooking_pan", new CookingPanBlock
     /**                           Place it on a heated surface, and you're ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
-     *                            e.g. place a raw_beef, broccoli and butter inside it, and it will start cooking. Particles will show that it's cooking.
+     *      *                            e.g. place a raw_beef, broccoli and butter inside it, and it will start cooking. Particles will show that it's cooking.
      *                            Maybe an Item needed as an indicator that shows 'Hey it's done'. Or just particles and sound will go off telling the player it's done.
      *                            Once done take a tray and right-click on the pan while holding the tray and you'll get the finished meal.*/
    // public static final  Block    TRAY = register("tray", new TrayDisplayBlock;
@@ -158,11 +161,9 @@ public class ObjectRegistry {
      *              to TYPEWRITER_PAPER. Right-click again and a GUI will open and you're able to write a Letter. Once done,
      *              right-click again and you'll get a NOTE_PAPER_WRITTEN.
      *
-     *
      *              What do to with NOTE_PAPER_WRITTEN?
      *              Craft a LETTER_OPEN, right-click when holding and a GUI will open. Place a NOTE_PAPER_WRITTEN and a LETTER_OPEN
      *              in both boxes and you will get a LETTER_CLOSED.
-     *
      *
      */
 

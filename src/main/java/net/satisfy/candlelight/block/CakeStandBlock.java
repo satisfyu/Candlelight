@@ -37,7 +37,6 @@ public class CakeStandBlock extends StorageBlock {
         shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.3125, 0, 0.3125, 0.6875, 0.0625, 0.6875));
         shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.25, 0.4375, 0.25, 0.75, 0.5, 0.75));
         shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.34375, 0.0625, 0.34375, 0.65625, 0.1875, 0.65625));
-
         return shape;
     }
 
@@ -51,7 +50,7 @@ public class CakeStandBlock extends StorageBlock {
     }
 
     public int findFirstEmpty(DefaultedList<ItemStack> inv){
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < size(); i++){
             ItemStack stack = inv.get(i);
             if (stack.isEmpty()) return i;
         }
@@ -59,7 +58,7 @@ public class CakeStandBlock extends StorageBlock {
     }
 
     public int findFirstFull(DefaultedList<ItemStack> inv){
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < size(); i++){
             ItemStack stack = inv.get(i);
             if (!stack.isEmpty()) return i;
         }
