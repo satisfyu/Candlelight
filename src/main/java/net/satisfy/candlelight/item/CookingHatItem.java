@@ -25,7 +25,7 @@ public class CookingHatItem extends CustomModelArmorItem implements CookArmorIte
 
     @Override
     public Float getOffset() {
-        return -1.8f;
+        return -1.78f;
     }
 
     @Override

@@ -4,10 +4,11 @@ import daniking.vinery.VineryIdentifier;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
 import net.moddingplayground.frame.api.util.GUIIcon;
+import net.satisfy.candlelight.registry.CRecipeTypes;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.registry.StorageTypes;
 import org.apache.logging.log4j.LogManager;
@@ -120,6 +121,7 @@ public class Candlelight implements ModInitializer {
 					.build(new VineryIdentifier("vinery_tab"), g -> GUIIcon.of(() -> new ItemStack(daniking.vinery.registry.ObjectRegistry.RED_GRAPE)));
 	@Override
 	public void onInitialize() {
+		CRecipeTypes.init();
 		ObjectRegistry.init();
 		StorageTypes.init();
 	}
