@@ -1,6 +1,5 @@
 package net.satisfy.candlelight;
 
-import daniking.vinery.VineryIdentifier;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -13,6 +12,7 @@ import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.registry.StorageTypes;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import satisfyu.vinery.VineryIdentifier;
 
 import static net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab.Predicate.ALWAYS;
 import static net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab.Predicate.items;
@@ -118,7 +118,7 @@ public class Candlelight implements ModInitializer {
 							ObjectRegistry.LOVE_LETTER
 					)).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH))))
 
-					.build(new VineryIdentifier("vinery_tab"), g -> GUIIcon.of(() -> new ItemStack(daniking.vinery.registry.ObjectRegistry.RED_GRAPE)));
+					.build(new VineryIdentifier("vinery_tab"), g -> GUIIcon.of(() -> new ItemStack(satisfyu.vinery.registry.ObjectRegistry.RED_GRAPE)));
 	@Override
 	public void onInitialize() {
 		CRecipeTypes.init();

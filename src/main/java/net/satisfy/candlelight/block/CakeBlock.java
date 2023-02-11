@@ -1,7 +1,5 @@
 package net.satisfy.candlelight.block;
 
-import daniking.vinery.block.PieBlock;
-import daniking.vinery.util.VineryUtils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +11,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import satisfyu.vinery.block.PieBlock;
+import satisfyu.vinery.util.VineryUtils;
 
 import java.util.HashMap;
 import java.util.List;

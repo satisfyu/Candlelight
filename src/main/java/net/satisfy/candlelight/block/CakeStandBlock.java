@@ -1,7 +1,6 @@
 package net.satisfy.candlelight.block;
 
-import daniking.vinery.block.StorageBlock;
-import daniking.vinery.block.entity.StorageBlockEntity;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
@@ -21,6 +20,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.registry.StorageTypes;
+import satisfyu.vinery.block.StorageBlock;
+import satisfyu.vinery.block.entity.StorageBlockEntity;
 
 import java.util.LinkedList;
 import java.util.List;

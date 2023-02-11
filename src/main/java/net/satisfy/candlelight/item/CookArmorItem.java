@@ -1,6 +1,5 @@
 package net.satisfy.candlelight.item;
 
-import daniking.vinery.client.ClientSetup;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.satisfy.candlelight.registry.ObjectRegistry;
+import satisfyu.vinery.client.ClientSetup;
 
 import java.util.List;
 

@@ -1,8 +1,6 @@
 package net.satisfy.candlelight.block;
 
 import com.mojang.datafixers.util.Pair;
-import daniking.vinery.block.StorageBlock;
-import daniking.vinery.block.entity.StorageBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -28,6 +26,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.registry.StorageTypes;
+import satisfyu.vinery.block.StorageBlock;
+import satisfyu.vinery.block.entity.StorageBlockEntity;
 
 import java.util.List;
 

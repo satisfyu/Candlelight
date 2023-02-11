@@ -1,12 +1,6 @@
 package net.satisfy.candlelight.registry;
 
 import com.mojang.datafixers.util.Pair;
-import daniking.vinery.block.FacingBlock;
-import daniking.vinery.block.*;
-import daniking.vinery.item.DrinkBlockBigItem;
-import daniking.vinery.item.DrinkBlockItem;
-import daniking.vinery.registry.VinerySoundEvents;
-import daniking.vinery.util.VineryFoodComponent;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.CandleBlock;
@@ -28,12 +22,18 @@ import net.satisfy.candlelight.block.LanternBlock;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
+import satisfyu.vinery.block.*;
+import satisfyu.vinery.block.FacingBlock;
+import satisfyu.vinery.item.DrinkBlockBigItem;
+import satisfyu.vinery.item.DrinkBlockItem;
+import satisfyu.vinery.registry.VinerySoundEvents;
+import satisfyu.vinery.util.VineryFoodComponent;
 
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import static daniking.vinery.registry.ObjectRegistry.CHERRY_PLANKS;
+import static satisfyu.vinery.registry.ObjectRegistry.CHERRY_PLANKS;
 
 
 public class ObjectRegistry {
