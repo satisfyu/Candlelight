@@ -1,7 +1,5 @@
 package net.satisfy.candlelight.world.feature;
 
-import daniking.vinery.VineryIdentifier;
-import daniking.vinery.block.GrapeBush;
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.RegistryEntry;
@@ -14,6 +12,8 @@ import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
+import satisfyu.vinery.VineryIdentifier;
+import satisfyu.vinery.block.GrapeBush;
 
 import java.util.List;
 import java.util.function.Predicate;

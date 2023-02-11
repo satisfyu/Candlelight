@@ -1,6 +1,5 @@
 package net.satisfy.candlelight.item;
 
-import daniking.vinery.item.CustomModelArmorItem;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterials;
@@ -10,6 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.vinery.item.CustomModelArmorItem;
 
 import java.util.List;
 

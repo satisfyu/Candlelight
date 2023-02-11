@@ -2,7 +2,6 @@ package net.satisfy.candlelight.recipe;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import daniking.vinery.util.VineryUtils;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
@@ -12,6 +11,7 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.registry.CRecipeTypes;
+import satisfyu.vinery.util.VineryUtils;
 
 public class CookingPanRecipe implements Recipe<Inventory> {
 

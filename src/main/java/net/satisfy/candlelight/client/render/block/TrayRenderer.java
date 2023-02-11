@@ -1,14 +1,14 @@
 package net.satisfy.candlelight.client.render.block;
 
-import daniking.vinery.block.entity.StorageBlockEntity;
-import daniking.vinery.client.render.block.StorageTypeRenderer;
-import daniking.vinery.util.ClientUtil;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Vec3f;
+import satisfyu.vinery.block.entity.StorageBlockEntity;
+import satisfyu.vinery.client.render.block.StorageTypeRenderer;
+import satisfyu.vinery.util.ClientUtil;
 
 public class TrayRenderer implements StorageTypeRenderer {
     @Override
