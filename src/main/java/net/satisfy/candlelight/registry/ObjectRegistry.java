@@ -71,7 +71,6 @@ public class ObjectRegistry {
     public static final  Block    CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
 
     public static final  Block    TRAY = register("tray", new TrayBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
-    /**                           Food Items can be placed on it. Only Cakes (Candlelight_Cakes) will be displayed as 3D. 3 Items can be placed inside it.*/
     public static final  Block    COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
    // public static final  Block    COOKING_PAN = register("cooking_pan", new CookingPanBlock
     /**                           Place it on a heated surface, and you're ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
