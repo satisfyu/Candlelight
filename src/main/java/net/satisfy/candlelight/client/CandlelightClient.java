@@ -10,7 +10,7 @@ import net.satisfy.candlelight.registry.ObjectRegistry;
 public class CandlelightClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ObjectRegistry.CAKE_STAND
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ObjectRegistry.CAKE_STAND, ObjectRegistry.CHAIR, ObjectRegistry.TABLE
         );
         registerModels();
     }
