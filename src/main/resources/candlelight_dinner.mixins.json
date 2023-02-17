@@ -4,6 +4,7 @@
   "package": "net.satisfy.candlelight.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ServerPlayNetworkHandlerMixin"
   ],
   "client": [
   ],

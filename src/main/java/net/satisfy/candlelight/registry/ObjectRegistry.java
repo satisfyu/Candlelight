@@ -3,6 +3,7 @@ package net.satisfy.candlelight.registry;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.*;
@@ -11,6 +12,7 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -19,6 +21,7 @@ import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
 import net.satisfy.candlelight.block.LanternBlock;
+import net.satisfy.candlelight.client.screen.LetterScreenHandler;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
@@ -144,14 +147,15 @@ public class ObjectRegistry {
     public static final Item NAPKIN = register("napkin", new Item(getSettings()));
     public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final  Item     NOTE_PAPER = register("note_paper", new Item(getSettings()));
-    public static final  Item     NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new Item(getSettings()));
-    public static final  Item     NOTE_PAPER_WRITTEN = register("note_paper_written", new Item(getSettings()));
-   // public static final  Block    TYPEWRITTER_IRON = register("typewritter_iron", new Block);
-   // public static final  Block    TYPEWRITTER_COPPER = register("typewritter_copper", new Block);
-    public static final  Item     LETTER_OPEN = register("letter_open", new Item(getSettings()));
-    public static final  Item     LETTER_CLOSED = register("letter_closed", new Item(getSettings()));
+    public static final  Item     NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WriteablePaperItem(getSettings().maxCount(1)));
+    public static final  Item     NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenPaperItem(getSettings()));
+    public static final  Block    TYPEWRITER_IRON = register("typewriter_iron", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final  Block    TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
+    public static final  Item     LETTER_OPEN = register("letter_open", new LetterItem(getSettings()));
+    public static final  Item     LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
     public static final  Item     LOVE_LETTER = register("love_letter", new Item(getSettings()));
 
+    public static final ScreenHandlerType<LetterScreenHandler> LETTER_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new CandlelightIdentifier("letter_screen"), LetterScreenHandler::new);
     /**
      *              How does it work?
      *              NOTE_PAPER is a craftable item. When combining with a feather you'll get NOTE_PAPER_WRITEABLE - right-click
@@ -177,6 +181,8 @@ public class ObjectRegistry {
 
     public static final  Block    POTTED_ROSE = registerBlockWithoutItem("potted_rose", new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 
+
+    public static final Identifier NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
 
 
 

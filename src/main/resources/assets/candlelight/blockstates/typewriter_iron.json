@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=east": [
+      { "model": "candlelight:block/typewriter_iron",  "y": 90}
+    ],
+    "facing=north": [
+      { "model": "candlelight:block/typewriter_iron", "weight":1 }
+    ],
+    "facing=south": [
+      { "model": "candlelight:block/typewriter_iron",  "y": 180}
+    ],
+    "facing=west": [
+      { "model": "candlelight:block/typewriter_iron",  "y": 270}
+    ]
+  }
+}
