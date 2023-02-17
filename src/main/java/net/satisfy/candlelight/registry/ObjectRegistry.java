@@ -146,10 +146,6 @@ public class ObjectRegistry {
     public static final Item NAPKIN = register("napkin", new Item(getSettings()));
     public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final  Item     NOTE_PAPER = register("note_paper", new Item(getSettings()));
-    public static final  Item     NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WritableBookItem(getSettings()));
-    public static final  Item     NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenBookItem(getSettings()));
-    public static final  Item     LETTER_OPEN = register("letter_open", new Item(getSettings()));
-    public static final  Item     LETTER_CLOSED = register("letter_closed", new Item(getSettings()));
     public static final  Item     NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WriteablePaperItem(getSettings().maxCount(1)));
     public static final  Item     NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenPaperItem(getSettings()));
     public static final  Block    TYPEWRITER_IRON = register("typewriter_iron", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
