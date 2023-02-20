@@ -111,8 +111,8 @@ public class Candlelight implements ModInitializer {
 							ObjectRegistry.NOTE_PAPER,
 							ObjectRegistry.NOTE_PAPER_WRITEABLE,
 							ObjectRegistry.NOTE_PAPER_WRITTEN,
-							//ObjectRegistry.TYPEWRITTER_IRON,
-							//ObjectRegistry.TYPEWRITTER_COPPER,
+							ObjectRegistry.TYPEWRITER_COPPER,
+							ObjectRegistry.TYPEWRITER_IRON,
 							ObjectRegistry.LETTER_OPEN,
 							ObjectRegistry.LETTER_CLOSED,
 							ObjectRegistry.LOVE_LETTER
