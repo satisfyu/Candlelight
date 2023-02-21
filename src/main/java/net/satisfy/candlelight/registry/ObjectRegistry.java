@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -14,7 +15,10 @@ import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
@@ -22,12 +26,15 @@ import net.satisfy.candlelight.block.LanternBlock;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
+import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
+import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.block.FacingBlock;
 import satisfyu.vinery.item.DrinkBlockBigItem;
 import satisfyu.vinery.item.DrinkBlockItem;
 import satisfyu.vinery.registry.VinerySoundEvents;
 import satisfyu.vinery.util.VineryFoodComponent;
+import satisfyu.vinery.world.VineryConfiguredFeatures;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -127,6 +134,20 @@ public class ObjectRegistry {
     public static final  Block    PAINTING = register("painting", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    HEARTH = register("hearth", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    ROSE = register("rose", new FlowerBlock(StatusEffect.byRawId(6), 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final  Block    APPLE_TREE_SAPLING = register("apple_tree_sapling", new SaplingBlock(new SaplingGenerator() {
+        @Nullable
+        @Override
+        protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
+            if (random.nextBoolean()) {
+                if (bees) return ConfiguredFeatures.APPLE_TREE_BEE;
+                return ConfiguredFeatures.APPLE_TREE;
+            } else {
+                if (bees) return ConfiguredFeatures.APPLE_TREE_VARIANT_WITH_BEE;
+                return ConfiguredFeatures.APPLE_TREE_VARIANT;
+            }
+        }
+    }, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS)), true);
+    public static final  Block    APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
     public static final  Block    CANDLE = register("candle", new CandleBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new net.minecraft.block.CakeBlock(FabricBlockSettings.copy(Blocks.CAKE)));

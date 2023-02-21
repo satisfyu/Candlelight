@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "minecraft:block/cross",
   "textures": {
-    "crop": "candlelight:block/strawberries_wild_jungle"
+    "cross": "candlelight:block/strawberries_wild_jungle"
   }
 }
+
