@@ -15,7 +15,7 @@ import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 public class CandlelightClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ObjectRegistry.CAKE_STAND, ObjectRegistry.CHAIR, ObjectRegistry.TABLE);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ObjectRegistry.CAKE_STAND, ObjectRegistry.CHAIR, ObjectRegistry.TABLE, ObjectRegistry.ROSE, ObjectRegistry.POTTED_ROSE);
 
         registerModels();
 
