@@ -1,4 +1,4 @@
-package net.satisfy.candlelight.client.screen;
+package net.satisfy.candlelight.client.gui.handler;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -8,37 +8,31 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
-import net.minecraft.network.packet.c2s.play.RenameItemC2SPacket;
-import net.minecraft.screen.AnvilScreenHandler;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.filter.FilteredMessage;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 import net.satisfy.candlelight.registry.ObjectRegistry;
-import org.jetbrains.annotations.Nullable;
+import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
 
-public class LetterScreenHandler extends ScreenHandler {
+public class LetterGuiHandler extends ScreenHandler {
     private final Inventory inventory;
     public static String name = "";
 
     //This constructor gets called on the client when the server wants it to open the screenHandler,
     //The client will call the other constructor with an empty Inventory and the screenHandler will automatically
     //sync this empty inventory with the inventory on the server.
-    public LetterScreenHandler(int syncId, PlayerInventory playerInventory) {
+    public LetterGuiHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, new SimpleInventory(3));
     }
 
     //This constructor gets called from the BlockEntity on the server without calling the other constructor first, the server knows the inventory of the container
     //and can therefore directly provide it as an argument. This inventory will then be synced to the client.
-    public LetterScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
-        super(ObjectRegistry.LETTER_SCREEN_HANDLER, syncId);
+    public LetterGuiHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+        super(ScreenHandlerTypes.LETTER_SCREEN_HANDLER, syncId);
         checkSize(inventory, 3);
         this.inventory = inventory;
         //some inventories do custom logic when a player opens it.
@@ -187,9 +181,9 @@ public class LetterScreenHandler extends ScreenHandler {
     }
 
     public static class OutputSlot extends Slot{
-        LetterScreenHandler container;
+        LetterGuiHandler container;
 
-        public OutputSlot(Inventory itemHandler, int index, int xPosition, int yPosition, LetterScreenHandler container) {
+        public OutputSlot(Inventory itemHandler, int index, int xPosition, int yPosition, LetterGuiHandler container) {
             super(itemHandler, index, xPosition, yPosition);
             this.container = container;
         }

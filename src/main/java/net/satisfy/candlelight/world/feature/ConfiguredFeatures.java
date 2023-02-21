@@ -22,18 +22,22 @@ public class ConfiguredFeatures {
 
 
     public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> STRAWBERRY_WILD_TAIGA_PATCH =
-            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("strawberry_wild_taiga"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(net.satisfy.candlelight.registry.ObjectRegistry.STRAWBERRY_WILD_TAIGA.getDefaultState().with(GrapeBush.AGE, 3))), List.of(Blocks.GRASS_BLOCK), 36));
+            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("strawberry_wild_taiga"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(net.satisfy.candlelight.registry.ObjectRegistry.STRAWBERRY_WILD_TAIGA.getDefaultState())), List.of(Blocks.GRASS_BLOCK), 36));
     public static final RegistryEntry<PlacedFeature> STRAWBERRY_WILD_TAIGA_PATCH_CHANCE = PlacedFeatures.register(CandlelightIdentifier.asString("strawberry_wild_taiga_patch_chance"), STRAWBERRY_WILD_TAIGA_PATCH, RarityFilterPlacementModifier.of(92), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
 
     public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> STRAWBERRY_WILD_JUNGLE_PATCH =
-            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("strawberry_wild_jungle"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ObjectRegistry.STRAWBERRY_WILD_JUNGLE.getDefaultState().with(GrapeBush.AGE, 3))), List.of(Blocks.GRASS_BLOCK), 36));
+            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("strawberry_wild_jungle"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ObjectRegistry.STRAWBERRY_WILD_JUNGLE.getDefaultState())), List.of(Blocks.GRASS_BLOCK), 36));
     public static final RegistryEntry<PlacedFeature> STRAWBERRY_WILD_JUNGLE_PATCH_CHANCE = PlacedFeatures.register(CandlelightIdentifier.asString("strawberry_wild_jungle_patch_chance"), STRAWBERRY_WILD_JUNGLE_PATCH, RarityFilterPlacementModifier.of(92), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
 
     public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> TOMATOES_WILD_PATCH =
-            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("tomatoes_wild_patch"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ObjectRegistry.TOMATOES_WILD.getDefaultState().with(GrapeBush.AGE, 3))), List.of(Blocks.GRASS_BLOCK), 36));
+            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("tomatoes_wild_patch"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ObjectRegistry.TOMATOES_WILD.getDefaultState())), List.of(Blocks.GRASS_BLOCK), 36));
     public static final RegistryEntry<PlacedFeature> TOMATOES_WILD_PATCH_CHANCE = PlacedFeatures.register(CandlelightIdentifier.asString("tomatoes_wild_patch_chance"), TOMATOES_WILD_PATCH, RarityFilterPlacementModifier.of(92), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+
+    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> ROSE_PATCH =
+            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("rose"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ObjectRegistry.ROSE.getDefaultState())), List.of(Blocks.GRASS_BLOCK), 24));
+    public static final RegistryEntry<PlacedFeature> ROSE_PATCH_CHANCE = PlacedFeatures.register(CandlelightIdentifier.asString("rose_patch_chance"), ROSE_PATCH, RarityFilterPlacementModifier.of(92), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
 
 
@@ -44,10 +48,11 @@ public class ConfiguredFeatures {
         Predicate<BiomeSelectionContext> dryBiomes = BiomeSelectors.includeByKey(BiomeKeys.RIVER, BiomeKeys.SWAMP, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.BEACH, BiomeKeys.WOODED_BADLANDS, BiomeKeys.SUNFLOWER_PLAINS);
         Predicate<BiomeSelectionContext> coldBiomes = BiomeSelectors.includeByKey(BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_BEACH, BiomeKeys.SNOWY_PLAINS);
 
-
+        world.add(ModificationPhase.ADDITIONS, dryBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, ROSE_PATCH_CHANCE.value()));
         world.add(ModificationPhase.ADDITIONS, taigaBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, STRAWBERRY_WILD_TAIGA_PATCH_CHANCE.value()));
         world.add(ModificationPhase.ADDITIONS, jungleBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, STRAWBERRY_WILD_JUNGLE_PATCH_CHANCE.value()));
         world.add(ModificationPhase.ADDITIONS, dryBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, TOMATOES_WILD_PATCH_CHANCE.value()));
+        world.add(ModificationPhase.ADDITIONS, coldBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, STRAWBERRY_WILD_TAIGA_PATCH_CHANCE.value()));
 
     }
 }

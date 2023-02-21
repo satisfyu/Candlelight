@@ -11,13 +11,13 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CRecipeTypes {
+public class RecipeTypes {
 
     private static final Map<Identifier, RecipeSerializer<?>> RECIPE_SERIALIZERS = new HashMap<>();
     private static final Map<Identifier, RecipeType<?>> RECIPE_TYPES = new HashMap<>();
 
-    public static final RecipeType<CookingPanRecipe> COOKING_POT_RECIPE_TYPE = create("pan_cooking");
-    public static final RecipeSerializer<CookingPanRecipe> COOKING_POT_RECIPE_SERIALIZER = create("pan_cooking", new CookingPanRecipe.Serializer());
+    public static final RecipeType<CookingPanRecipe> COOKING_PAN_RECIPE_TYPE = create("pan_cooking");
+    public static final RecipeSerializer<CookingPanRecipe> COOKING_PAN_RECIPE_SERIALIZER = create("pan_cooking", new CookingPanRecipe.Serializer());
 
 
     private static <T extends Recipe<?>> RecipeSerializer<T> create(String name, RecipeSerializer<T> serializer) {

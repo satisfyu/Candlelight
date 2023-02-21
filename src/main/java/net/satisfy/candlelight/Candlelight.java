@@ -7,9 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
 import net.moddingplayground.frame.api.util.GUIIcon;
-import net.satisfy.candlelight.registry.CRecipeTypes;
+import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.registry.ObjectRegistry;
+import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import net.satisfy.candlelight.registry.StorageTypes;
+import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.vinery.VineryIdentifier;
@@ -42,16 +44,18 @@ public class Candlelight implements ModInitializer {
 							ObjectRegistry.STOVE,
 							ObjectRegistry.SIDEBOARD,
 							ObjectRegistry.DRAWER,
+							ObjectRegistry.CABINET,
 							ObjectRegistry.KITCHEN_SINK,
 							ObjectRegistry.FLOORBOARD,
 							ObjectRegistry.CAKE_STAND,
 							ObjectRegistry.COOKING_POT,
-							//ObjectRegistry.COOKING_PAN,
-							//ObjectRegistry.TRAY,
+							ObjectRegistry.COOKING_PAN,
+							ObjectRegistry.TRAY,
 							ObjectRegistry.TABLE_SET,
-							ObjectRegistry.BUTTER,
 							ObjectRegistry.CAKE_STAND,
 							ObjectRegistry.COOKING_POT,
+							ObjectRegistry.BUTTER,
+							ObjectRegistry.CHOCOLATE,
 							ObjectRegistry.MOZZARELLA,
 							ObjectRegistry.TOMATO_SOUP,
 							ObjectRegistry.BEETROOT_SALAD,
@@ -77,6 +81,8 @@ public class Candlelight implements ModInitializer {
 							ObjectRegistry.PANCAKE,
 							ObjectRegistry.WAFFLE,
 							ObjectRegistry.STRAWBERRY_GLAZED_COOKIE,
+							ObjectRegistry.SWEETBERRY_GLAZED_COOKIE,
+							ObjectRegistry.CHOCOLATE_GLAZED_COOKIE,
 							ObjectRegistry.CROISSANT,
 							ObjectRegistry.BUNDT_CAKE,
 							ObjectRegistry.SESAM_BREAD,
@@ -121,8 +127,10 @@ public class Candlelight implements ModInitializer {
 					.build(new VineryIdentifier("vinery_tab"), g -> GUIIcon.of(() -> new ItemStack(satisfyu.vinery.registry.ObjectRegistry.RED_GRAPE)));
 	@Override
 	public void onInitialize() {
-		CRecipeTypes.init();
+		RecipeTypes.init();
 		ObjectRegistry.init();
 		StorageTypes.init();
+		ScreenHandlerTypes.init();
+		ConfiguredFeatures.init();
 	}
 }
