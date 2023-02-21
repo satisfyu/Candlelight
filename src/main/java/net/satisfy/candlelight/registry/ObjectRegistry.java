@@ -90,9 +90,7 @@ public class ObjectRegistry {
     public static final  Item     COOKED_BEEF = register("cooked_beef", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final  Item     PASTA = register("pasta", new Item(getSettings().food(FoodComponents.COOKED_MUTTON)));
     public static final  Item     BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
-    // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock(
-    /**             Meal Blocks will give an additional effect
-     */
+   // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock(getSettings()
     public static final  Item     BROCCOLI_BEEF = register("broccoli_beef", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final  Item     BROCCOLI_TOMATO = register("broccoli_tomato", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     // public static final  Item     ROASTBEEF_CARROTS = register("roastbeef_carrots", new MealBlock;

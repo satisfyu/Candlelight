@@ -21,6 +21,8 @@ public class CandlelightClient implements ClientModInitializer {
 
         );
 
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), ObjectRegistry.TABLE_SET);
+
         registerModels();
 
         HandledScreens.register(ScreenHandlerTypes.COOKING_PAN_SCREEN_HANDLER, CookingPanGui::new);
