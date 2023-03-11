@@ -9,6 +9,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.satisfy.candlelight.client.screen.NoteEditScreen;
 
 public class WriteablePaperItem extends Item {
     public WriteablePaperItem(Settings settings) {
@@ -20,7 +21,7 @@ public class WriteablePaperItem extends Item {
         //user.useBook(itemStack, hand);
         if(world.isClient())
         {
-            MinecraftClient.getInstance().setScreen(new BookEditScreen(user, itemStack, hand));
+            MinecraftClient.getInstance().setScreen(new NoteEditScreen(user, itemStack, hand));
         }
         else
         {

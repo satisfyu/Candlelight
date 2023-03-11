@@ -48,8 +48,11 @@ public class ClosedLetterItem extends Item {
 //            user.currentScreenHandler.sendContentUpdates();
 //        }
         ItemStack output = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN);
-        output.setNbt(itemStack.getNbt().copy());
-        output.getNbt().remove("letter_title");
+        if(itemStack.hasNbt())
+        {
+            output.setNbt(itemStack.getNbt().copy());
+            output.getNbt().remove("letter_title");
+        }
         user.setStackInHand(hand, output);
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         return TypedActionResult.success(itemStack, world.isClient());
