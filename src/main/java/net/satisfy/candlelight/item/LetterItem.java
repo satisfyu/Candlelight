@@ -6,12 +6,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerFactory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.satisfy.candlelight.client.screen.LetterScreenHandler;
+import net.satisfy.candlelight.client.gui.handler.LetterGuiHandler;
 import org.jetbrains.annotations.Nullable;
 
 public class LetterItem extends Item {
@@ -32,7 +31,7 @@ public class LetterItem extends Item {
                 @Nullable
                 @Override
                 public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-                    return new LetterScreenHandler(syncId, inv);
+                    return new LetterGuiHandler(syncId, inv);
                 }
             };
             if(screenHandlerFactory != null)

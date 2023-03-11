@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
-import net.satisfy.candlelight.registry.CRecipeTypes;
+import net.satisfy.candlelight.registry.RecipeTypes;
 import satisfyu.vinery.util.VineryUtils;
 
 public class CookingPanRecipe implements Recipe<Inventory> {
@@ -29,7 +29,7 @@ public class CookingPanRecipe implements Recipe<Inventory> {
 
     @Override
     public boolean matches(Inventory inventory, World world) {
-        return true;
+        return VineryUtils.matchesRecipe(inventory, inputs, 0, 6);
     }
 
     @Override
@@ -58,12 +58,12 @@ public class CookingPanRecipe implements Recipe<Inventory> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return CRecipeTypes.COOKING_POT_RECIPE_SERIALIZER;
+        return RecipeTypes.COOKING_PAN_RECIPE_SERIALIZER;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return CRecipeTypes.COOKING_POT_RECIPE_TYPE;
+        return RecipeTypes.COOKING_PAN_RECIPE_TYPE;
     }
 
     @Override
@@ -82,9 +82,9 @@ public class CookingPanRecipe implements Recipe<Inventory> {
         public CookingPanRecipe read(Identifier id, JsonObject json) {
             final var ingredients = VineryUtils.deserializeIngredients(JsonHelper.getArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for CookingPot Recipe");
+                throw new JsonParseException("No ingredients for CookingPan Recipe");
             } else if (ingredients.size() > 6) {
-                throw new JsonParseException("Too many ingredients for CookingPot Recipe");
+                throw new JsonParseException("Too many ingredients for CookingPan Recipe");
             } else {
                 return new CookingPanRecipe(id, ingredients,  ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "container")), ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "result")));
             }

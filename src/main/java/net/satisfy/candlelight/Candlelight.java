@@ -8,9 +8,11 @@ import net.minecraft.item.Items;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
 import net.moddingplayground.frame.api.util.GUIIcon;
-import net.satisfy.candlelight.registry.CRecipeTypes;
+import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.registry.ObjectRegistry;
+import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import net.satisfy.candlelight.registry.StorageTypes;
+import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.vinery.Vinery;
@@ -44,16 +46,18 @@ public class Candlelight implements ModInitializer {
 							ObjectRegistry.STOVE,
 							ObjectRegistry.SIDEBOARD,
 							ObjectRegistry.DRAWER,
+							ObjectRegistry.CABINET,
 							ObjectRegistry.KITCHEN_SINK,
 							ObjectRegistry.FLOORBOARD,
 							ObjectRegistry.CAKE_STAND,
 							ObjectRegistry.COOKING_POT,
-							//ObjectRegistry.COOKING_PAN,
-							//ObjectRegistry.TRAY,
+							ObjectRegistry.COOKING_PAN,
+							ObjectRegistry.TRAY,
 							ObjectRegistry.TABLE_SET,
-							ObjectRegistry.BUTTER,
 							ObjectRegistry.CAKE_STAND,
 							ObjectRegistry.COOKING_POT,
+							ObjectRegistry.BUTTER,
+							ObjectRegistry.CHOCOLATE,
 							ObjectRegistry.MOZZARELLA,
 							ObjectRegistry.TOMATO_SOUP,
 							ObjectRegistry.BEETROOT_SALAD,
@@ -79,6 +83,8 @@ public class Candlelight implements ModInitializer {
 							ObjectRegistry.PANCAKE,
 							ObjectRegistry.WAFFLE,
 							ObjectRegistry.STRAWBERRY_GLAZED_COOKIE,
+							ObjectRegistry.SWEETBERRY_GLAZED_COOKIE,
+							ObjectRegistry.CHOCOLATE_GLAZED_COOKIE,
 							ObjectRegistry.CROISSANT,
 							ObjectRegistry.BUNDT_CAKE,
 							ObjectRegistry.SESAM_BREAD,
@@ -113,8 +119,8 @@ public class Candlelight implements ModInitializer {
 							ObjectRegistry.NOTE_PAPER,
 							ObjectRegistry.NOTE_PAPER_WRITEABLE,
 							ObjectRegistry.NOTE_PAPER_WRITTEN,
-							//ObjectRegistry.TYPEWRITTER_IRON,
-							//ObjectRegistry.TYPEWRITTER_COPPER,
+							ObjectRegistry.TYPEWRITER_COPPER,
+							ObjectRegistry.TYPEWRITER_IRON,
 							ObjectRegistry.LETTER_OPEN,
 							ObjectRegistry.LETTER_CLOSED,
 							ObjectRegistry.LOVE_LETTER
@@ -125,9 +131,10 @@ public class Candlelight implements ModInitializer {
  */
 	@Override
 	public void onInitialize() {
-		CRecipeTypes.init();
+		RecipeTypes.init();
 		ObjectRegistry.init();
 		StorageTypes.init();
+
 		Tab tab = Tab.builder().predicate(
 
 				Tab.Predicate.items(
@@ -227,5 +234,9 @@ public class Candlelight implements ModInitializer {
 		)).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.TOMATO)));
 		((TabbedItemGroup) Vinery.CREATIVE_TAB).getTabs().add(tab);
 		tab.addToGroup(((TabbedItemGroup) Vinery.CREATIVE_TAB));
+
+		ScreenHandlerTypes.init();
+		ConfiguredFeatures.init();
+
 	}
 }

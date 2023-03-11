@@ -3,7 +3,6 @@ package net.satisfy.candlelight.registry;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.*;
@@ -12,7 +11,6 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -21,7 +19,6 @@ import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
 import net.satisfy.candlelight.block.LanternBlock;
-import net.satisfy.candlelight.client.screen.LetterScreenHandler;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
@@ -74,16 +71,10 @@ public class ObjectRegistry {
     public static final  Block    CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
 
     public static final  Block    TRAY = register("tray", new TrayBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
-    /**                           Food Items can be placed on it. Only Cakes (Candlelight_Cakes) will be displayed as 3D. 3 Items can be placed inside it.*/
     public static final  Block    COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
-   // public static final  Block    COOKING_PAN = register("cooking_pan", new CookingPanBlock
-    /**                           Place it on a heated surface, and you're ready to cook. No GUI. You have to put the correct ingredients inside it to start cooking.
-     *      *                            e.g. place a raw_beef, broccoli and butter inside it, and it will start cooking. Particles will show that it's cooking.
-     *                            Maybe an Item needed as an indicator that shows 'Hey it's done'. Or just particles and sound will go off telling the player it's done.
-     *                            Once done take a tray and right-click on the pan while holding the tray and you'll get the finished meal.*/
-   // public static final  Block    TRAY = register("tray", new TrayDisplayBlock;
+    public static final  Block    COOKING_PAN = register("cooking_pan", new CookingPanBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
 
-   public static final  Block    TABLE_SET = register("table_set", new TableSetBlock(FabricBlockSettings.copyOf(COOKING_POT)));
+    public static final  Block    TABLE_SET = register("table_set", new TableSetBlock(FabricBlockSettings.copyOf(COOKING_POT)));
     public static final  Item     BUTTER = register("butter", new IngredientItem(getSettings()));
     public static final  Item     CHOCOLATE = register("chocolate", new IngredientItem(getSettings().food(FoodComponents.COOKIE)));
     public static final  Item     MOZZARELLA = register("mozzarella", new IngredientItem(getSettings().food(FoodComponents.BREAD)));
@@ -113,6 +104,8 @@ public class ObjectRegistry {
     public static final  Item     PANCAKE = register("pancake", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
     public static final  Item     WAFFLE = register("waffle", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
     public static final  Item     STRAWBERRY_GLAZED_COOKIE = register("strawberry_glazed_cookie", new Item(getSettings().food(FoodComponents.BREAD)));
+    public static final  Item     SWEETBERRY_GLAZED_COOKIE = register("sweetberry_glazed_cookie", new Item(getSettings().food(FoodComponents.BREAD)));
+    public static final  Item     CHOCOLATE_GLAZED_COOKIE = register("chocolate_glazed_cookie", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final  Item     CROISSANT = register("croissant", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final  Item     BUNDT_CAKE = register("bundt_cake", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final  Block    SESAM_BREAD = register("sesam_bread", new BreadBlock(AbstractBlock.Settings.copy(Blocks.CAKE).nonOpaque()));
@@ -137,14 +130,12 @@ public class ObjectRegistry {
     public static final  Block    CANDLE = register("candle", new CandleBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new net.minecraft.block.CakeBlock(FabricBlockSettings.copy(Blocks.CAKE)));
-    /**                           Not sure if this gonna work...
-     */
-    public static final Item COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
-    public static final Item CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
-    public static final Item CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
-    public static final Item CHEFS_BOOTS = register("chefs_boots", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
-    public static final Item GLASS = register("glass", new Item(getSettings()));
-    public static final Item NAPKIN = register("napkin", new Item(getSettings()));
+    public static final  Item     COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
+    public static final  Item     CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
+    public static final  Item     CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
+    public static final  Item     CHEFS_BOOTS = register("chefs_boots", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
+    public static final  Item     GLASS = register("glass", new Item(getSettings()));
+    public static final  Item     NAPKIN = register("napkin", new Item(getSettings()));
     public static final  Block    BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final  Item     NOTE_PAPER = register("note_paper", new Item(getSettings()));
     public static final  Item     NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WriteablePaperItem(getSettings().maxCount(1)));
@@ -155,23 +146,8 @@ public class ObjectRegistry {
     public static final  Item     LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
     public static final  Item     LOVE_LETTER = register("love_letter", new Item(getSettings()));
 
-    public static final ScreenHandlerType<LetterScreenHandler> LETTER_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new CandlelightIdentifier("letter_screen"), LetterScreenHandler::new);
-    /**
-     *              How does it work?
-     *              NOTE_PAPER is a craftable item. When combining with a feather you'll get NOTE_PAPER_WRITEABLE - right-click
-     *              when holding it, a GUI will open and you're able to write a letter. Once done you'll get a NOTE_PAPER_WRITTEN.
-     *              Similar function to a Writeable_Book.
-     *              TYPEWRITER will work similar: Craft and place it, right-click with NOTE_PAPER in Hand and it will change it state
-     *              to TYPEWRITER_PAPER. Right-click again and a GUI will open and you're able to write a Letter. Once done,
-     *              right-click again and you'll get a NOTE_PAPER_WRITTEN.
-     *
-     *              What do to with NOTE_PAPER_WRITTEN?
-     *              Craft a LETTER_OPEN, right-click when holding and a GUI will open. Place a NOTE_PAPER_WRITTEN and a LETTER_OPEN
-     *              in both boxes and you will get a LETTER_CLOSED.
-     *
-     */
 
-            //gold ring
+
     public static final  Item     GOLD_RING = register("gold_ring", new Item(getSettings()));
     /**
      * Armor Item: Usable on Chest. Will give Luck +2.

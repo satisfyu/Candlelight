@@ -1,4 +1,4 @@
-package net.satisfy.candlelight.client.screen;
+package net.satisfy.candlelight.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -6,21 +6,19 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.network.packet.c2s.play.RenameItemC2SPacket;
-import net.minecraft.screen.AnvilScreenHandler;
-import net.minecraft.screen.ForgingScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.satisfy.candlelight.client.gui.handler.LetterGuiHandler;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 
-public class LetterScreen extends HandledScreen<LetterScreenHandler> {
+public class LetterGui extends HandledScreen<LetterGuiHandler> {
 
     private static final Identifier TEXTURE = new CandlelightIdentifier("textures/gui/letter_gui.png");
     private TextFieldWidget nameField;
 
 
-    public LetterScreen(LetterScreenHandler handler, PlayerInventory inventory, Text title) {
+    public LetterGui(LetterGuiHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
@@ -88,12 +86,12 @@ public class LetterScreen extends HandledScreen<LetterScreenHandler> {
     private void onRenamed(String name) {
        // if (!name.isEmpty()) {
             String string = name;
-            Slot slot = ((LetterScreenHandler)this.handler).getSlot(0);
+            Slot slot = ((LetterGuiHandler)this.handler).getSlot(0);
 //            if (slot != null && slot.hasStack() && !slot.getStack().hasCustomName() && name.equals(slot.getStack().getName().getString())) {
 //                string = "";
 //            }
             //System.out.println(name + " screne");
-            LetterScreenHandler.name = name;
+            LetterGuiHandler.name = name;
             //this.client.player.networkHandler.sendPacket(new RenameItemC2SPacket(string));
       //  }
     }
