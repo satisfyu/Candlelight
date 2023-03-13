@@ -84,10 +84,13 @@
   "item.candlelight.ingredient.tooltip": "",
   "block.candlelight.canbeplaced.tooltip": "Can be placed.",
 
+  "block.candlelight.wine_station": "Wine Station",
+
 
   "block.candlelight.lamp.tooltip": "Can be turned on or off by Right-Clicking with an Empty Hand.",
   "block.candlelight.meal1.tooltip": "Needs being placed down to eat.",
   "block.candlelight.meal2.tooltip": "You need a Bowl or Tray to eat from a Feast."
+
 }
 
 

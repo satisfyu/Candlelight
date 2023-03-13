@@ -145,15 +145,13 @@ public class ObjectRegistry {
     public static final  Item     LETTER_OPEN = register("letter_open", new LetterItem(getSettings()));
     public static final  Item     LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
     public static final  Item     LOVE_LETTER = register("love_letter", new Item(getSettings()));
-
+    public static final  Block    WINE_STATION = register("wine_station", new WineStationBlock(FabricBlockSettings.of(Material.WOOD).nonOpaque()));
 
 
     public static final  Item     GOLD_RING = register("gold_ring", new Item(getSettings()));
     /**
      * Armor Item: Usable on Chest. Will give Luck +2.
      */
-
-
 
     public static final  Block    POTTED_ROSE = registerBlockWithoutItem("potted_rose", new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 

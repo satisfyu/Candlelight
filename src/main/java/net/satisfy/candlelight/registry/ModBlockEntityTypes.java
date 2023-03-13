@@ -6,18 +6,18 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.satisfy.candlelight.block.entity.CookingPanEntity;
 import net.satisfy.candlelight.block.entity.SideBoardBlockEntity;
+import net.satisfy.candlelight.block.entity.WineStationBlockEntity;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
-import satisfyu.vinery.block.entity.CookingPotEntity;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class BlockEntityTypes {
+public class ModBlockEntityTypes {
 
     private static final Map<Identifier, BlockEntityType<?>> BLOCK_ENTITY_TYPES = new HashMap<>();
-
     public static final BlockEntityType<SideBoardBlockEntity> SIDEBOARD = create("sideboard", FabricBlockEntityTypeBuilder.create(SideBoardBlockEntity::new, ObjectRegistry.SIDEBOARD).build());
     public static final BlockEntityType<CookingPanEntity> COOKING_PAN_BLOCK_ENTITY = create("cooking_pan", FabricBlockEntityTypeBuilder.create(CookingPanEntity::new, ObjectRegistry.COOKING_PAN).build());
+    public static final BlockEntityType<WineStationBlockEntity> WINE_STATION_BLOCK_ENTITY = create("wine_station", FabricBlockEntityTypeBuilder.create(WineStationBlockEntity::new, ObjectRegistry.WINE_STATION).build());
 
 
 

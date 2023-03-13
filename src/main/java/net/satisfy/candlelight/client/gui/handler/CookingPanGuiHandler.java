@@ -22,6 +22,7 @@ public class CookingPanGuiHandler extends ScreenHandler {
 
     private final PropertyDelegate propertyDelegate;
     private final World world;
+
     public CookingPanGuiHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, new SimpleInventory(8), new ArrayPropertyDelegate(2));
     }

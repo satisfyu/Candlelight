@@ -1,0 +1,21 @@
+
+{
+  "variants": {
+    "facing=north": {
+      "model": "candlelight:block/wine_station",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "candlelight:block/wine_station"
+
+    },
+    "facing=west": {
+      "model": "candlelight:block/wine_station",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "candlelight:block/wine_station",
+      "y": 270
+    }
+  }
+}
