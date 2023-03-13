@@ -140,7 +140,8 @@ public class WineStationBlockEntity extends BlockEntity implements BlockEntityTi
     }
 
     public List<ItemStack> getWine() {
-        return this.inventory.stream().filter((itemstack) -> itemstack.isIn(CandlelightTags.WINE)).toList();
+        return this.inventory.stream().toList();
+        //return this.inventory.stream().filter((itemstack) -> itemstack.isIn(CandlelightTags.WINE)).toList();
     }
 
     public void setInventory(DefaultedList<ItemStack> inventory) {
