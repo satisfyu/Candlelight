@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/sweetberry_cake"
+    "layer0": "candlelight:item/sweetberry_milkshake"
   }
 }

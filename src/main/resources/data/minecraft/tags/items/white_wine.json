@@ -1,10 +1,6 @@
 {
   "replace": false,
   "values": [
-    {"id":"candlelight:praetorian_wine","required":false},
-    {"id":"vinery:clark_wine","required":false},
-    {"id":"vinery:mellohi_wine","required":false},
-    {"id":"vinery:aegis_wine","required":false},
-    {"id":"vinery:solaris_wine","required":false}
+    {"id":"candlelight:praetorian_wine","required":false}
   ]
 }

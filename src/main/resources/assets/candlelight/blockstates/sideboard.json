@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "candlelight:block/sideboard_connected"
+      "model": "candlelight:block/sideboard"
     }
   }
 }

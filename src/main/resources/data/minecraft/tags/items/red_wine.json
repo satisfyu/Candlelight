@@ -1,12 +1,6 @@
 {
   "replace": false,
   "values": [
-    {"id":"candlelight:red_wine","required":false},
-    {"id":"vinery:chenet_wine","required":false},
-    {"id":"vinery:noir_wine","required":false},
-    {"id":"vinery:king_danis_wine","required":false},
-    {"id":"vinery:cherry_wine","required":false},
-    {"id":"vinery:bolvar_wine","required":false},
-    {"id":"vinery:jellie_wine","required":false}
+    {"id":"candlelight:red_wine","required":false}
   ]
 }
