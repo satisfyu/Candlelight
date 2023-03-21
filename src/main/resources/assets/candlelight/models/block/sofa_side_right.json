@@ -21,32 +21,6 @@
 		},
 		{
 			"name": "leg",
-			"from": [11, 0, 2],
-			"to": [14, 3, 5],
-			"faces": {
-				"north": {"uv": [3, 9, 6, 12], "texture": "#3"},
-				"east": {"uv": [11, 9, 14, 12], "texture": "#3"},
-				"south": {"uv": [6, 9, 9, 12], "texture": "#3"},
-				"west": {"uv": [11, 9, 14, 12], "texture": "#3"},
-				"up": {"uv": [2, 1, 5, 4], "texture": "#3"},
-				"down": {"uv": [12, 10, 15, 13], "texture": "#3"}
-			}
-		},
-		{
-			"name": "leg",
-			"from": [11, 0, 11],
-			"to": [14, 3, 14],
-			"faces": {
-				"north": {"uv": [3, 9, 6, 12], "texture": "#3"},
-				"east": {"uv": [11, 9, 14, 12], "texture": "#3"},
-				"south": {"uv": [6, 9, 9, 12], "texture": "#3"},
-				"west": {"uv": [11, 9, 14, 12], "texture": "#3"},
-				"up": {"uv": [2, 1, 5, 4], "texture": "#3"},
-				"down": {"uv": [12, 10, 15, 13], "texture": "#3"}
-			}
-		},
-		{
-			"name": "leg",
 			"from": [2, 0, 2],
 			"to": [5, 3, 5],
 			"faces": {

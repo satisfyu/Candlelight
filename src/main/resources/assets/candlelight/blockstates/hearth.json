@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "candlelight:block/hearth",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "candlelight:block/hearth"
+    },
+    "facing=south": {
+      "model": "candlelight:block/hearth",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "candlelight:block/hearth",
+      "y": 270
+    }
+  }
+}
