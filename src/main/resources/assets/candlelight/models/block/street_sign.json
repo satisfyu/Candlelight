@@ -1,10 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/sign",
-		"2": "candlelight:block/sign_back",
+		"1": "candlelight:block/street_sign_front",
+		"2": "candlelight:block/street_sign_back",
 		"particle": "candlelight:block/sideboard_top"
-
 	},
 	"elements": [
 		{

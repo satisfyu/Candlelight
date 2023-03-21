@@ -10,7 +10,6 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -35,7 +34,6 @@ import satisfyu.vinery.item.DrinkBlockItem;
 import satisfyu.vinery.registry.VineryEffects;
 import satisfyu.vinery.registry.VinerySoundEvents;
 import satisfyu.vinery.util.VineryFoodComponent;
-import satisfyu.vinery.world.VineryConfiguredFeatures;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -128,8 +126,8 @@ public class ObjectRegistry {
     public static final  Block    CHOCOLATE_CAKE = register("chocolate_cake", new CakeBlock((FabricBlockSettings.copyOf(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
     public static final  Item     CHOCOLATE_MILKSHAKE = register("chocolate_milkshake", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final  Item     CHOCOLATE_ICECREAM = register("chocolate_icecream", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
-    public static final  Block    TABLE_SIGN = register("table_sign", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
-    public static final  Block    STREET_SIGN = register("street_sign", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
+    public static final  Block    TABLE_SIGN = register("table_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), false));
+    public static final  Block    STREET_SIGN = register("street_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), true));
     public static final  Block    PAINTING = register("painting", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    HEARTH = register("hearth", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    ROSE = register("rose", new FlowerBlock(StatusEffect.byRawId(6), 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
