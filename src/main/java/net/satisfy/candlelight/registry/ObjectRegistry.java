@@ -147,7 +147,7 @@ public class ObjectRegistry {
     public static final  Block    APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
     public static final  Block    CANDLE = register("candle", new CandleBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
-    public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new net.minecraft.block.CakeBlock(FabricBlockSettings.copy(Blocks.CAKE)));
+    public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new ChocolateBoxBlock(FabricBlockSettings.copy(Blocks.CAKE)));
     public static final  Item     COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
     public static final  Item     CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final  Item     CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
