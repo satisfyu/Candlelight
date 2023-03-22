@@ -19,8 +19,8 @@ public class CakeStandRenderer implements StorageTypeRenderer {
                 matrices.push();
 
                 if (stack.getItem() instanceof BlockItem blockItem) {
-                    matrices.scale(0.5f, 0.5f, 0.5f);
-                    matrices.translate(-0.5f, 1f, -0.5);
+                    matrices.scale(0.65f, 0.65f, 0.65f);
+                    matrices.translate(-0.5f, 0.8f, -0.5);
                     ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
                 } else {
                     matrices.scale(0.4f, 0.4f, 0.4f);

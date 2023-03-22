@@ -1,21 +1,23 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/cake_strawberry",
-		"particle": "candlelight:block/cake_sweetberry"
-
+		"0": "candlelight:block/strawberry_cake_side",
+		"2": "candlelight:block/strawberry_cake_top",
+		"3": "candlelight:block/cake_bottom",
+		"particle": "candlelight:block/strawberry_cake_side"
 	},
 	"elements": [
 		{
+			"name": "bite4",
 			"from": [8, 0, 8],
-			"to": [11, 4, 11],
+			"to": [15, 8, 15],
 			"faces": {
-				"north": {"uv": [0, 11, 3, 15], "texture": "#1"},
-				"east": {"uv": [0, 6, 3, 10], "texture": "#1"},
-				"south": {"uv": [8, 6, 11, 10], "texture": "#1"},
-				"west": {"uv": [0, 11, 3, 15], "texture": "#1"},
-				"up": {"uv": [0, 0, 3, 3], "texture": "#1"},
-				"down": {"uv": [10, 0, 13, 3], "texture": "#1"}
+				"north": {"uv": [1, 0, 8, 8], "texture": "#0"},
+				"east": {"uv": [1, 8, 8, 16], "texture": "#0"},
+				"south": {"uv": [8, 8, 15, 16], "texture": "#0"},
+				"west": {"uv": [8, 0, 15, 8], "texture": "#0"},
+				"up": {"uv": [8, 8, 15, 15], "texture": "#2"},
+				"down": {"uv": [8, 1, 15, 8], "texture": "#3"}
 			}
 		}
 	]

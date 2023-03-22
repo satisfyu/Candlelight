@@ -1,39 +1,34 @@
 package net.satisfy.candlelight.block;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Util;
-import net.minecraft.util.function.BooleanBiFunction;
-import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import satisfyu.vinery.block.PieBlock;
-import satisfyu.vinery.util.VineryUtils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
 
 public class CakeBlock extends PieBlock {
 
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+    public static VoxelShape SHAPE = makeShape();
+
+    public static VoxelShape makeShape() {
         VoxelShape shape = VoxelShapes.empty();
-        shape = VoxelShapes.combine(shape, VoxelShapes.cuboid(0.3125, 0, 0.3125, 0.6875, 0.25, 0.6875), BooleanBiFunction.OR);
+        shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0, 0.0625, 0.9375, 0.5, 0.9375));
         return shape;
-    };
+    }
 
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Type.HORIZONTAL.stream().toList()) {
-            map.put(direction, VineryUtils.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
-
-
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
 
 
     public CakeBlock(Settings settings, Item slice) {
