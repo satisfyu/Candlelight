@@ -1,13 +1,22 @@
 {
   "variants": {
     "candles=1,lit=true": {
-      "model": "candlelight:block/candle_stack1"
+      "model": "candlelight:block/candles_stack1"
     },
     "candles=2,lit=true": {
-      "model": "candlelight:block/candle_stack2"
+      "model": "candlelight:block/candles_stack2"
     },
     "candles=3,lit=true": {
-      "model": "candlelight:block/candle_stack3"
+      "model": "candlelight:block/candles_stack3"
+    },
+    "candles=1,lit=false": {
+      "model": "candlelight:block/candles_stack1"
+    },
+    "candles=2,lit=false": {
+      "model": "candlelight:block/candles_stack2"
+    },
+    "candles=3,lit=false": {
+      "model": "candlelight:block/candles_stack3"
     }
   }
 }
