@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "minecraft:block/cross",
   "textures": {
-    "crop": "candlelight:block/tomatoes_wild"
+    "cross": "candlelight:block/tomatoes_wild"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "itemgroup.candlelight.creative_tab": "Candlelight Dinner",
+  "itemgroup.vinery.vinery_tab.tab": "Candlelight Dinner",
   "item.candlelight.tomato_seeds": "Tomato Seeds",
   "item.candlelight.strawberry_seeds": "Strawberry Seeds",
   "item.candlelight.broccoli_seeds": "Broccoli Seeds",
@@ -78,8 +78,8 @@
   "block.candlelight.napkin": "Napkin",
   "block.candlelight.wine_glass": "Wine Glass",
   "item.candlelight.cooking_hat": "Cooking Hat",
-  "candlelight.tooltip.cook_armor_1": "",
-  "candlelight.tooltip.cook_armor_2": "",
+  "candlelight.tooltip.cook_armor_1": "Chefs Clothing:",
+  "candlelight.tooltip.cook_armor_2": "You're looking great and ready to cook some awesome Food!",
   "candlelight.tooltip.cook_armor_3": "",
   "item.candlelight.ingredient.tooltip": "",
   "block.candlelight.canbeplaced.tooltip": "Can be placed.",

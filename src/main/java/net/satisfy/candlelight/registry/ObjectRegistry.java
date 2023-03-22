@@ -6,15 +6,18 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
@@ -22,10 +25,13 @@ import net.satisfy.candlelight.block.LanternBlock;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
+import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
+import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.block.FacingBlock;
 import satisfyu.vinery.item.DrinkBlockBigItem;
 import satisfyu.vinery.item.DrinkBlockItem;
+import satisfyu.vinery.registry.VineryEffects;
 import satisfyu.vinery.registry.VinerySoundEvents;
 import satisfyu.vinery.util.VineryFoodComponent;
 
@@ -83,9 +89,7 @@ public class ObjectRegistry {
     public static final  Item     COOKED_BEEF = register("cooked_beef", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final  Item     PASTA = register("pasta", new Item(getSettings().food(FoodComponents.COOKED_MUTTON)));
     public static final  Item     BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
-    // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock(
-    /**             Meal Blocks will give an additional effect
-     */
+   // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock(getSettings()
     public static final  Item     BROCCOLI_BEEF = register("broccoli_beef", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final  Item     BROCCOLI_TOMATO = register("broccoli_tomato", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     // public static final  Item     ROASTBEEF_CARROTS = register("roastbeef_carrots", new MealBlock;
@@ -97,10 +101,10 @@ public class ObjectRegistry {
     public static final  Item     MASHED_POTATOES = register("mashed_potatoes", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final  Item     FRICASSE = register("fricasse", new Item(getSettings().food(FoodComponents.GOLDEN_APPLE)));
     public static final  Item     FRIED_EGG = register("fried_egg", new Item(getSettings().food(FoodComponents.BREAD)));
-    public static final  Block    STRAWBERRY_JAM = register("strawberry_jam", new CherryJamBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque()));
+    public static final  Block    STRAWBERRY_JAM = register("strawberry_jam", new StackableBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque().sounds(BlockSoundGroup.GLASS)));
     public static final  Item     VINEGAR = register("vinegar", new IngredientItem(getSettings()));
-    public static final  Block    RED_WINE = registerWine("red_wine", new WineBottleBlock(getWineSettings()), StatusEffects.FIRE_RESISTANCE);
-    public static final  Block    PRAETORIAN_WINE = registerBigWine("praetorian_wine", new ChenetBottleBlock(getWineSettings()), StatusEffects.JUMP_BOOST);
+    public static final  Block    RED_WINE = registerWine("red_wine", new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_FIRE_RESISTANCE);
+    public static final  Block    PRAETORIAN_WINE = registerBigWine("praetorian_wine", new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_JUMP_BOOST);
     public static final  Item     PANCAKE = register("pancake", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
     public static final  Item     WAFFLE = register("waffle", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
     public static final  Item     STRAWBERRY_GLAZED_COOKIE = register("strawberry_glazed_cookie", new Item(getSettings().food(FoodComponents.BREAD)));
@@ -122,14 +126,28 @@ public class ObjectRegistry {
     public static final  Block    CHOCOLATE_CAKE = register("chocolate_cake", new CakeBlock((FabricBlockSettings.copyOf(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
     public static final  Item     CHOCOLATE_MILKSHAKE = register("chocolate_milkshake", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final  Item     CHOCOLATE_ICECREAM = register("chocolate_icecream", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
-    public static final  Block    TABLE_SIGN = register("table_sign", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
-    public static final  Block    STREET_SIGN = register("street_sign", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
+    public static final  Block    TABLE_SIGN = register("table_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), false));
+    public static final  Block    STREET_SIGN = register("street_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), true));
     public static final  Block    PAINTING = register("painting", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    HEARTH = register("hearth", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    ROSE = register("rose", new FlowerBlock(StatusEffect.byRawId(6), 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final  Block    APPLE_TREE_SAPLING = register("apple_tree_sapling", new SaplingBlock(new SaplingGenerator() {
+        @Nullable
+        @Override
+        protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
+            if (random.nextBoolean()) {
+                if (bees) return ConfiguredFeatures.APPLE_TREE_BEE;
+                return ConfiguredFeatures.APPLE_TREE;
+            } else {
+                if (bees) return ConfiguredFeatures.APPLE_TREE_VARIANT_WITH_BEE;
+                return ConfiguredFeatures.APPLE_TREE_VARIANT;
+            }
+        }
+    }, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS)), true);
+    public static final  Block    APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
     public static final  Block    CANDLE = register("candle", new CandleBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final  Block    JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
-    public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new net.minecraft.block.CakeBlock(FabricBlockSettings.copy(Blocks.CAKE)));
+    public static final  Block    CHOCOLATE_BOX = register("chocolate_box", new ChocolateBoxBlock(FabricBlockSettings.copy(Blocks.CAKE)));
     public static final  Item     COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
     public static final  Item     CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final  Item     CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));

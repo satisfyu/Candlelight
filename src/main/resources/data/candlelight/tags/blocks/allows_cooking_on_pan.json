@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:smoker",
+    "vinery:stove",
+    "vinery:wood_fired_oven",
+    "candlelight:stove",
+    "candlelight:wood_fired_oven",
+    "farmersdelight:stove"
+  ]
+}
