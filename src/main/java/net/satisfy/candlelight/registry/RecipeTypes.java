@@ -11,6 +11,8 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.satisfy.candlelight.recipe.CookingPanRecipe.registerDefaults;
+
 public class RecipeTypes {
 
     private static final Map<Identifier, RecipeSerializer<?>> RECIPE_SERIALIZERS = new HashMap<>();
@@ -37,6 +39,7 @@ public class RecipeTypes {
     }
 
     public static void init() {
+        registerDefaults();
         for (Map.Entry<Identifier, RecipeSerializer<?>> entry : RECIPE_SERIALIZERS.entrySet()) {
             Registry.register(Registry.RECIPE_SERIALIZER, entry.getKey(), entry.getValue());
         }

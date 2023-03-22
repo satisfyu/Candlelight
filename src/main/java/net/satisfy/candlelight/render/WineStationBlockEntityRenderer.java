@@ -11,7 +11,6 @@ import net.minecraft.util.math.Vec3f;
 import net.satisfy.candlelight.block.WineStationBlock;
 import net.satisfy.candlelight.block.entity.WineStationBlockEntity;
 import net.satisfy.candlelight.util.CandlelightTags;
-import satisfyu.vinery.block.FlowerBoxBlock;
 
 import java.util.List;
 
@@ -42,8 +41,8 @@ public class WineStationBlockEntityRenderer implements BlockEntityRenderer<WineS
                     renderBlock(state, matrices, vertexConsumers, entity);
                 }
             }
+            matrices.pop();
         }
-        matrices.pop();
     }
 
     public static void applyBlockPlace(MatrixStack matrices, int slot) {

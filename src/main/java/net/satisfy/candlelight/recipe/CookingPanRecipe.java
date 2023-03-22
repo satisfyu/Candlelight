@@ -2,15 +2,24 @@ package net.satisfy.candlelight.recipe;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Material;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.Potions;
 import net.minecraft.recipe.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
+import net.satisfy.candlelight.item.IngredientItem;
 import net.satisfy.candlelight.registry.RecipeTypes;
+import satisfyu.vinery.VineryIdentifier;
 import satisfyu.vinery.util.VineryUtils;
 
 public class CookingPanRecipe implements Recipe<Inventory> {
@@ -75,6 +84,18 @@ public class CookingPanRecipe implements Recipe<Inventory> {
     public boolean isIgnoredInRecipeBook() {
         return true;
     }
+
+    /*
+    public static void registerDefaults() {
+        DefaultedList<Ingredient> dL = DefaultedList.of();
+        dL.add(Ingredient.ofStacks(Items.DIAMOND.getDefaultStack()));
+        registerCookingPanRecipe(new VineryIdentifier("test"), dL, Items.EMERALD.getDefaultStack(), Items.REDSTONE.getDefaultStack());
+    }
+
+    public static void registerCookingPanRecipe(Identifier id, DefaultedList<Ingredient> inputs, ItemStack container, ItemStack output) {
+        new CookingPanRecipe(id, inputs, container, output);
+    }
+*/
 
     public static class Serializer implements RecipeSerializer<CookingPanRecipe> {
 

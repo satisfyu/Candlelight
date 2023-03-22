@@ -130,7 +130,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		final ItemStack recipeOutput = recipe.getOutput();
 		final ItemStack outputSlotStack = this.getStack(OUTPUT_SLOT);
 		if (outputSlotStack.isEmpty()) {
-			setStack(OUTPUT_SLOT, recipeOutput.copy());
+			setStack(OUTPUT_SLOT, recipeOutput.copy().setCustomName(Text.of("TEST")));
 		} else if (outputSlotStack.isOf(recipeOutput.getItem())) {
 			outputSlotStack.increment(recipeOutput.getCount());
 		}
