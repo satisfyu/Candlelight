@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "candlelight:block/oak_wine_rack_1",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "candlelight:block/oak_wine_rack_1"
+    },
+    "facing=south": {
+      "model": "candlelight:block/oak_wine_rack_1",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "candlelight:block/oak_wine_rack_1",
+      "y": 270
+    }
+  }
+}
