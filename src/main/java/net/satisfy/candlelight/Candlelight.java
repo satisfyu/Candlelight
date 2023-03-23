@@ -150,7 +150,15 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.MANGROVE_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.MANGROVE_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.MANGROVE_DRAWER.asItem(),
-                        ObjectRegistry.MANGROVE_CABINET.asItem()
+                        ObjectRegistry.MANGROVE_CABINET.asItem(),
+                        ObjectRegistry.CRIMSON_WINE_RACK_BIG.asItem(),
+                        ObjectRegistry.CRIMSON_WINE_RACK_SMALL.asItem(),
+                        ObjectRegistry.CRIMSON_DRAWER.asItem(),
+                        ObjectRegistry.CRIMSON_CABINET.asItem(),
+                        ObjectRegistry.WARPED_WINE_RACK_BIG.asItem(),
+                        ObjectRegistry.WARPED_WINE_RACK_SMALL.asItem(),
+                        ObjectRegistry.WARPED_DRAWER.asItem(),
+                        ObjectRegistry.WARPED_CABINET.asItem()
 
                 )).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH)));
         ((TabbedItemGroup) Vinery.CREATIVE_TAB).getTabs().add(tab);
