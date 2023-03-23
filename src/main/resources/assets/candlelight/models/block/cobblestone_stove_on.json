@@ -1,23 +1,22 @@
 {
 	"credit": "Made by Satisfy",
-	"texture_size": [64, 64],
 	"textures": {
-		"1": "candlelight:block/stove_side",
-		"3": "candlelight:block/stove_bottom",
-		"4": "candlelight:block/wood_fired_oven_on_top",
-		"6": "candlelight:block/wood_fired_oven_front_on",
-		"particle": "candlelight:block/stove_side"
+		"1": "candlelight:block/kitchen_hardware/cobblestone_stove_side",
+		"3": "candlelight:block/kitchen_hardware/cobblestone_stove_bottom",
+		"4": "candlelight:block/kitchen_hardware/cobblestone_stove_front_on",
+		"6": "candlelight:block/kitchen_hardware/stove_top",
+		"particle": "candlelight:block/kitchen_hardware/cobblestone_stove_side"
 	},
 	"elements": [
 		{
 			"from": [0, 0, 0],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#6"},
+				"north": {"uv": [0, 0, 16, 16], "texture": "#4"},
 				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
 				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#1"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#6"},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#3"}
 			}
 		}

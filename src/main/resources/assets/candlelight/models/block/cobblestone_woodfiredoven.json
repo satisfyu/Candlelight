@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/stove_side",
-		"4": "candlelight:block/stove_bottom",
-		"5": "candlelight:block/wood_fired_oven_front",
-		"6": "candlelight:block/wood_fired_oven_top",
-		"particle": "candlelight:block/stove_side"
+		"1": "candlelight:block/kitchen_hardware/cobblestone_stove_side",
+		"4": "candlelight:block/kitchen_hardware/cobblestone_stove_bottom",
+		"5": "candlelight:block/kitchen_hardware/cobblestone_woodfiredoven_front",
+		"6": "candlelight:block/kitchen_hardware/stove_top",
+		"particle": "candlelight:block/kitchen_hardware/cobblestone_stove_side"
 	},
 	"elements": [
 		{
