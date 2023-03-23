@@ -1,11 +1,12 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"3": "candlelight:block/jungle_cabinet_side",
-		"4": "candlelight:block/jungle_drawer_front",
-		"5": "candlelight:block/jungle_cabinet_open",
-		"6": "candlelight:block/jungle_cabinet_top",
-		"particle": "candlelight:block/jungle_drawer_front"
+		"3": "candlelight:block/acacia_drawer_side",
+		"4": "candlelight:block/acacia_drawer_front",
+		"5": "candlelight:block/acacia_cabinet_open",
+		"6": "candlelight:block/acacia_cabinet_top",
+		"7": "candlelight:block/acacia_drawer_bottom",
+		"particle": "candlelight:block/acacia_drawer_front"
 	},
 	"elements": [
 		{
@@ -17,7 +18,7 @@
 				"south": {"uv": [0, 0, 16, 16], "texture": "#3"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#3"},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#6"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#6"}
+				"down": {"uv": [0, 0, 16, 16], "texture": "#7"}
 			}
 		},
 		{
@@ -29,7 +30,7 @@
 				"east": {"uv": [15, 8, 9, 2], "rotation": 180, "texture": "#4"},
 				"south": {"uv": [0, 0, 0, 0], "texture": "#5"},
 				"west": {"uv": [9, 8, 15, 2], "rotation": 180, "texture": "#4"},
-				"up": {"uv": [1, 15, 15, 10], "texture": "#5"},
+				"up": {"uv": [15, 1, 10, 15], "rotation": 90, "texture": "#5"},
 				"down": {"uv": [1, 10, 15, 15], "texture": "#6"}
 			}
 		}
