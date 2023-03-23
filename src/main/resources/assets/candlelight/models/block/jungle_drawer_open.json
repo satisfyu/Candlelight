@@ -2,10 +2,10 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"3": "candlelight:block/jungle_cabinet_side",
-		"4": "candlelight:block/jungle_drawer",
+		"4": "candlelight:block/jungle_drawer_front",
 		"5": "candlelight:block/jungle_cabinet_open",
 		"6": "candlelight:block/jungle_cabinet_top",
-		"particle": "candlelight:block/jungle_drawer"
+		"particle": "candlelight:block/jungle_drawer_front"
 	},
 	"elements": [
 		{
