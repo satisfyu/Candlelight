@@ -3,6 +3,7 @@
 	"textures": {
 		"0": "candlelight:block/mangrove_cabinet_side",
 		"1": "candlelight:block/mangrove_cabinet_top",
+		"2": "candlelight:block/mangrove_drawer_bottom",
 		"particle": "candlelight:block/mangrove_cabinet_side"
 	},
 	"elements": [
@@ -40,7 +41,7 @@
 				"south": {"uv": [15, 0, 16, 16], "texture": "#0"},
 				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
 				"up": {"uv": [15, 0, 16, 16], "texture": "#0"},
-				"down": {"uv": [16, 0, 15, 16], "texture": "#0"}
+				"down": {"uv": [16, 0, 15, 16], "texture": "#2"}
 			}
 		},
 		{
@@ -53,7 +54,7 @@
 				"south": {"uv": [15, 0, 16, 16], "texture": "#0"},
 				"west": {"uv": [16, 16, 0, 0], "rotation": 90, "texture": "#0"},
 				"up": {"uv": [15, 0, 16, 16], "texture": "#0"},
-				"down": {"uv": [16, 0, 15, 16], "texture": "#0"}
+				"down": {"uv": [16, 0, 15, 16], "texture": "#2"}
 			}
 		},
 		{
@@ -66,7 +67,7 @@
 				"south": {"uv": [1, 15, 15, 16], "texture": "#0"},
 				"west": {"uv": [0, 0, 0, 0], "texture": "#0"},
 				"up": {"uv": [1, 0, 15, 16], "texture": "#0"},
-				"down": {"uv": [1, 0, 15, 16], "texture": "#1"}
+				"down": {"uv": [1, 0, 15, 16], "texture": "#2"}
 			}
 		},
 		{

@@ -2,7 +2,7 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"2": "candlelight:block/acacia_cabinet",
-		"3": "candlelight:block/acacia_cabinet_side",
+		"3": "candlelight:block/acacia_drawer_side",
 		"4": "candlelight:block/acacia_cabinet_top",
 		"5": "candlelight:block/acacia_drawer_bottom",
 		"particle": "candlelight:block/acacia_cabinet"
