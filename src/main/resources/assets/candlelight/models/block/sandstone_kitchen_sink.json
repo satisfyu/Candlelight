@@ -1,11 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/cobblestone_sink_side",
-		"2": "candlelight:block/kitchen_hardware/cobblestone_sink_bottom",
-		"3": "block/water_flow",
+		"1": "candlelight:block/kitchen_hardware/sandstone_sink_side",
+		"2": "candlelight:block/kitchen_hardware/sandstone_sink_bottom",
 		"5": "candlelight:block/kitchen_hardware/sink_top",
-		"particle": "candlelight:block/kitchen_hardware/cobblestone_sink_side"
+		"particle": "candlelight:block/kitchen_hardware/sandstone_sink_side"
 	},
 	"elements": [
 		{
@@ -18,16 +17,6 @@
 				"west": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [0, 1, 16, 15], "texture": "#2"},
 				"down": {"uv": [0, 1, 16, 15], "texture": "#2", "cullface": "down"}
-			}
-		},
-		{
-			"name": "water",
-			"from": [3, 15, 2],
-			"to": [13, 15, 12],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.5, 7.99375]},
-			"faces": {
-				"up": {"uv": [0, 0, 10, 10], "texture": "#3"},
-				"down": {"uv": [0, 0, 4, 5], "texture": "#3"}
 			}
 		},
 		{

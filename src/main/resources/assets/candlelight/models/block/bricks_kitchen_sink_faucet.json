@@ -1,11 +1,12 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/cobblestone_sink_side",
-		"2": "candlelight:block/kitchen_hardware/cobblestone_sink_bottom",
+		"1": "candlelight:block/kitchen_hardware/bricks_sink_side",
 		"3": "candlelight:block/faucet",
+		"4": "candlelight:block/kitchen_hardware/cobblestone_sink_bottom",
 		"5": "candlelight:block/kitchen_hardware/sink_top",
-		"particle": "candlelight:block/kitchen_hardware/cobblestone_sink_side"
+		"6": "candlelight:block/kitchen_hardware/bricks_stove_bottom",
+		"particle": "candlelight:block/kitchen_hardware/bricks_sink_side"
 	},
 	"elements": [
 		{
@@ -16,8 +17,8 @@
 				"east": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "east"},
 				"south": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "south"},
 				"west": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "west"},
-				"up": {"uv": [0, 1, 16, 15], "texture": "#2"},
-				"down": {"uv": [0, 1, 16, 15], "texture": "#2", "cullface": "down"}
+				"up": {"uv": [0, 1, 16, 15], "texture": "#4"},
+				"down": {"uv": [0, 0, 16, 14], "texture": "#6", "cullface": "down"}
 			}
 		},
 		{
