@@ -151,11 +151,11 @@ public class ObjectRegistry {
     public static final Item CHEFS_BOOTS = register("chefs_boots", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
     public static final Item GLASS = register("glass", new Item(getSettings()));
     public static final Item NAPKIN = register("napkin", new Item(getSettings()));
+    public static final Block TYPEWRITER_IRON = register("typewriter_iron", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Item NOTE_PAPER = register("note_paper", new Item(getSettings()));
     public static final Item NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WriteablePaperItem(getSettings().maxCount(1)));
     public static final Item NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenPaperItem(getSettings()));
-    public static final Block TYPEWRITER_IRON = register("typewriter_iron", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-    public static final Block TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Item LETTER_OPEN = register("letter_open", new LetterItem(getSettings()));
     public static final Item LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
     public static final Item LOVE_LETTER_CLOSED = register("love_letter", new ClosedLetterItem(getSettings()));

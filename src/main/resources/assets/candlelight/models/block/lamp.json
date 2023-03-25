@@ -2,10 +2,10 @@
 	"credit": "Made by Satisfy",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"2": "candlelight:block/stove_top",
+		"2": "candlelight:block/kitchen_hardware/stove_top",
 		"3": "candlelight:block/table_cloth_side",
 		"4": "candlelight:block/sideboard_back",
-		"particle": "candlelight:block/stove_top"
+		"particle": "candlelight:block/sideboard_back"
 	},
 	"elements": [
 		{
@@ -26,10 +26,10 @@
 			"from": [7, 6, 7],
 			"to": [9, 16, 9],
 			"faces": {
-				"north": {"uv": [10, 0, 8, 10], "texture": "#2"},
-				"east": {"uv": [8, 0, 10, 10], "texture": "#2"},
-				"south": {"uv": [10, 0, 8, 10], "texture": "#2"},
-				"west": {"uv": [8, 0, 10, 10], "texture": "#2"}
+				"north": {"uv": [16, 0, 14, 10], "texture": "#2"},
+				"east": {"uv": [16, 0, 14, 10], "texture": "#2"},
+				"south": {"uv": [16, 0, 14, 10], "texture": "#2"},
+				"west": {"uv": [16, 0, 14, 10], "texture": "#2"}
 			}
 		},
 		{
