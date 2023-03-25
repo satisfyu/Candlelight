@@ -80,8 +80,9 @@ public class ObjectRegistry {
     public static final Block TRAY = register("tray", new TrayBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final Block COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
     public static final Block COOKING_PAN = register("cooking_pan", new CookingPanBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
-
     public static final Block TABLE_SET = register("table_set", new TableSetBlock(FabricBlockSettings.copyOf(COOKING_POT)));
+    public static final Item GLASS = register("glass", new Item(getSettings()));
+    public static final Item NAPKIN = register("napkin", new Item(getSettings()));
     public static final Item BUTTER = register("butter", new IngredientItem(getSettings()));
     public static final Item MOZZARELLA = register("mozzarella", new IngredientItem(getSettings().food(FoodComponents.BREAD)));
     public static final Item TOMATO_SOUP = register("tomato_soup", new Meal(getSettings().food(CandlelightFoods.TOMATO_SOUP)));
@@ -93,7 +94,7 @@ public class ObjectRegistry {
     public static final Item COOKED_BEEF = register("cooked_beef", new Meal(getSettings().food(CandlelightFoods.COOKED_BEEF)));
     public static final Item BROCCOLI_BEEF = register("broccoli_beef", new Meal(getSettings().food(CandlelightFoods.BROCCOLI_BEEF)));
     public static final Item BROCCOLI_TOMATO = register("broccoli_tomato", new Meal(getSettings().food(CandlelightFoods.BROCCOLI_TOMATO)));
-    public static final Item SALMON_ON_WHITE_WINE = register("salmon_on_white_wine", new Meal(getSettings().food(CandlelightFoods.SALMON_ON_WHITE_WINE)));
+    public static final Item SALMON_WINE = register("salmon_wine", new Meal(getSettings().food(CandlelightFoods.SALMON_ON_WHITE_WINE)));
     public static final Item VEGGIE_PLATE = register("veggie_plate", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Item PORK_RIBS = register("pork_ribs", new Meal(getSettings().food(CandlelightFoods.PORK_RIBS)));
     public static final Item MASHED_POTATOES = register("mashed_potatoes", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
@@ -114,7 +115,6 @@ public class ObjectRegistry {
     public static final Item CHOCOLATE_GLAZED_COOKIE = register("chocolate_glazed_cookie", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Item CROISSANT = register("croissant", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Item BUNDT_CAKE = register("bundt_cake", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
-    public static final Block SESAM_BREAD = register("sesam_bread", new BreadBlock(AbstractBlock.Settings.copy(Blocks.CAKE).nonOpaque()));
     public static final Item CHOCOLATE = register("chocolate", new IngredientItem(getSettings().food(FoodComponents.COOKIE)));
     public static final Item STRAWBERRY_CHOCOLATE = register("strawberry_chocolate", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Item STRAWBERRY_CAKE_SLICE = register("strawberry_cake_slice", new Item(getSettings().food(FoodComponents.BREAD)));
@@ -155,8 +155,6 @@ public class ObjectRegistry {
     public static final Item CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_BOOTS = register("chefs_boots", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
-    public static final Item GLASS = register("glass", new Item(getSettings()));
-    public static final Item NAPKIN = register("napkin", new Item(getSettings()));
     public static final Block TYPEWRITER_IRON = register("typewriter_iron", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
     public static final Block TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Item NOTE_PAPER = register("note_paper", new Item(getSettings()));
