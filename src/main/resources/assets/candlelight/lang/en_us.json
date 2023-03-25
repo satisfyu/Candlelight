@@ -45,9 +45,9 @@
   "block.candlelight.wine_glass": "Wine Glass",
   "block.candlelight.wine_station": "Wine Station",
   "block.candlelight.wood_fired_oven": "Wood Fired Oven",
-  "candlelight.tooltip.cook_armor_1": "Chefs Clothing:",
-  "candlelight.tooltip.cook_armor_2": "You're looking great and ready to cook some awesome Food!",
-  "candlelight.tooltip.cook_armor_3": "",
+  "candlelight.tooltip.cook_armor": "Chefs Clothing:",
+  "candlelight.tooltip.cook_armor2": "You're looking great and ready to cook some awesome Food!",
+  "candlelight.tooltip.cook_armor3": "",
   "item.candlelight.beef": "Cooked Beef",
   "item.candlelight.beef_tartare": "Beef Tartare",
   "item.candlelight.beef_wellington": "Beef Wellington",
@@ -194,7 +194,8 @@
   "block.candlelight.red_nether_bricks_kitchen_sink": "Red_nether_bricks Sink",
   "block.candlelight.mud_wood_fired_oven": "Mud Wood Fired Oven",
   "block.candlelight.mud_stove": "Mud Stove",
-  "block.candlelight.mud_kitchen_sink": "Mud Sink"
+  "block.candlelight.mud_kitchen_sink": "Mud Sink",
+  "block.candlelight.decoration.tooltip": "Can be placed on Walls."
 
 
 
