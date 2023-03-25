@@ -52,7 +52,7 @@ public class ObjectRegistry {
     public static final Item TOMATO_SEEDS = register("tomato_seeds", new CropSeedItem(TOMATO_CROP, getSettings(), CropType.TOMATO));
     public static final Item TOMATO = register("tomato", new IngredientItem(getSettings().food(FoodComponents.APPLE)));
     public static final Block TOMATO_CRATE = register("tomato_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
-    public static final Item BROCCOLI_SEEDS = register("broccoli_seeds", new AliasedBlockItem(ObjectRegistry.BROCCOLI_CROP, getSettings()));
+    public static final Item BROCCOLI_SEEDS = register("broccoli_seeds", new Item(getSettings()));
     public static final Block BROCCOLI_CROP = register("broccoli_crop", new BroccoliCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)), false);
     public static final Item BROCCOLI = register("broccoli", new IngredientItem(getSettings().food(FoodComponents.POTATO)));
     public static final Block BROCCOLI_CRATE = register("broccoli_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
@@ -86,15 +86,15 @@ public class ObjectRegistry {
     public static final Item COOKED_BEEF = register("cooked_beef", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Item PASTA = register("pasta", new Item(getSettings().food(FoodComponents.COOKED_MUTTON)));
     public static final Item BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
-    // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock(getSettings()
     public static final Item BROCCOLI_BEEF = register("broccoli_beef", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Item BROCCOLI_TOMATO = register("broccoli_tomato", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
-    // public static final  Item     ROASTBEEF_CARROTS = register("roastbeef_carrots", new MealBlock;
     public static final Item SALMON = register("salmon", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Item VEGGIE_PLATE = register("veggie_plate", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Item PORK_RIB = register("pork_rib", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
-    // public static final  Block    LASAGNA = register("lasagna", new MealBlock
-    // public static final  Block    BEEF_WELLINGTON = register("beef_wellington", new MealBlock
+    public static final Block LASAGNA = register("lasagna", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
+    public static final Block ROASTBEEF_CARROTS = register("roastbeef_carrots", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
+    public static final Block TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
+    public static final Block BEEF_WELLINGTON = register("beef_wellington", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Item MASHED_POTATOES = register("mashed_potatoes", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Item FRICASSE = register("fricasse", new Item(getSettings().food(FoodComponents.GOLDEN_APPLE)));
     public static final Item FRIED_EGG = register("fried_egg", new Item(getSettings().food(FoodComponents.BREAD)));
@@ -171,27 +171,25 @@ public class ObjectRegistry {
     public static final Block OAK_WINE_RACK_SMALL = register("oak_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block OAK_CABINET = register("oak_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block OAK_DRAWER = register("oak_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-
+    public static final Block OAK_TABLE = register("oak_table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block OAK_CHAIR = register("oak_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block COBBLESTONE_WOOD_FIRED_OVEN = register("cobblestone_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final Block COBBLESTONE_STOVE = register("cobblestone_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
     public static final Block COBBLESTONE_KITCHEN_SINK = register("cobblestone_kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
-
     public static final Block BIRCH_WINE_RACK_BIG = register("birch_wine_rack_big", new NineBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block BIRCH_WINE_RACK_SMALL = register("birch_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block BIRCH_CABINET = register("birch_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block BIRCH_DRAWER = register("birch_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-   
+    public static final Block BIRCH_TABLE = register("birch_table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block BIRCH_CHAIR = register("birch_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block SANDSTONE_WOOD_FIRED_OVEN = register("sandstone_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final Block SANDSTONE_STOVE = register("sandstone_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
     public static final Block SANDSTONE_KITCHEN_SINK = register("sandstone_kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
-
     public static final Block SPRUCE_WINE_RACK_BIG = register("spruce_wine_rack_big", new NineBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block SPRUCE_WINE_RACK_SMALL = register("spruce_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block SPRUCE_CABINET = register("spruce_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block SPRUCE_DRAWER = register("spruce_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-    
+    public static final Block SPRUCE_TABLE = register("spruce_table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_CHAIR = register("spruce_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block BRICKS_WOOD_FIRED_OVEN = register("bricks_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final Block BRICKS_STOVE = register("bricks_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
@@ -201,7 +199,7 @@ public class ObjectRegistry {
     public static final Block DARK_OAK_WINE_RACK_SMALL = register("dark_oak_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block DARK_OAK_CABINET = register("dark_oak_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block DARK_OAK_DRAWER = register("dark_oak_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-    
+    public static final Block DARK_OAK_TABLE = register("dark_oak_table", new TableBlock(FabricBlockSettings.copy(Blocks.ACACIA_PLANKS)));
     public static final Block DARK_OAK_CHAIR = register("dark_oak_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block DEEPSLATE_WOOD_FIRED_OVEN = register("deepslate_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final Block DEEPSLATE_STOVE = register("deepslate_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
@@ -212,7 +210,7 @@ public class ObjectRegistry {
     public static final Block ACACIA_WINE_RACK_SMALL = register("acacia_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block ACACIA_CABINET = register("acacia_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block ACACIA_DRAWER = register("acacia_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-
+    public static final Block ACACIA_TABLE = register("acacia_table", new TableBlock(FabricBlockSettings.copy(Blocks.ACACIA_PLANKS)));
     public static final Block ACACIA_CHAIR = register("acacia_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block GRANITE_WOOD_FIRED_OVEN = register("granite_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final Block GRANITE_STOVE = register("granite_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
@@ -223,7 +221,7 @@ public class ObjectRegistry {
     public static final Block JUNGLE_WINE_RACK_SMALL = register("jungle_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block JUNGLE_CABINET = register("jungle_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block JUNGLE_DRAWER = register("jungle_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-    
+    public static final Block JUNGLE_TABLE = register("jungle_table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block JUNGLE_CHAIR = register("jungle_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
 
 
@@ -231,7 +229,7 @@ public class ObjectRegistry {
     public static final Block MANGROVE_WINE_RACK_SMALL = register("mangrove_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block MANGROVE_CABINET = register("mangrove_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block MANGROVE_DRAWER = register("mangrove_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-    
+    public static final Block MANGROVE_TABLE = register("mangrove_table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block MANGROVE_CHAIR = register("mangrove_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block MUD_WOOD_FIRED_OVEN = register("mud_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final Block MUD_STOVE = register("mud_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
@@ -241,19 +239,18 @@ public class ObjectRegistry {
     public static final Block WARPED_WINE_RACK_SMALL = register("warped_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block WARPED_CABINET = register("warped_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block WARPED_DRAWER = register("warped_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-
+    public static final Block WARPED_TABLE = register("warped_table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block WARPED_CHAIR = register("warped_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
 
     public static final Block CRIMSON_WINE_RACK_BIG = register("crimson_wine_rack_big", new NineBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block CRIMSON_WINE_RACK_SMALL = register("crimson_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block CRIMSON_CABINET = register("crimson_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block CRIMSON_DRAWER = register("crimson_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
-   
+
     public static final Block CRIMSON_CHAIR = register("crimson_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block RED_NETHER_BRICKS_WOOD_FIRED_OVEN = register("red_nether_bricks_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
     public static final Block RED_NETHER_BRICKS_STOVE = register("red_nether_bricks_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
     public static final Block RED_NETHER_BRICKS_KITCHEN_SINK = register("red_nether_bricks_kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
-
 
 
     public static final Block POTTED_ROSE = registerBlockWithoutItem("potted_rose", new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));

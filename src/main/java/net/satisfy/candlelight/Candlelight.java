@@ -36,6 +36,7 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.TOMATO_SEEDS.asItem(),
                         ObjectRegistry.TOMATO.asItem(),
                         ObjectRegistry.TOMATO_CRATE.asItem(),
+                        ObjectRegistry.BROCCOLI_SEEDS.asItem(),
                         ObjectRegistry.BROCCOLI.asItem(),
                         ObjectRegistry.BROCCOLI_CRATE.asItem(),
                         ObjectRegistry.STRAWBERRY_SEEDS.asItem(),
@@ -60,15 +61,15 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.COOKED_BEEF.asItem(),
                         ObjectRegistry.PASTA.asItem(),
                         ObjectRegistry.BEEF_TARTARE.asItem(),
-                        //ObjectRegistry.TOMATO_MOZZARELLA_SALAT.asItem(),
                         ObjectRegistry.BROCCOLI_BEEF.asItem(),
                         ObjectRegistry.BROCCOLI_TOMATO.asItem(),
-                        //ObjectRegistry.ROASTBEEF_CARROTS.asItem(),
                         ObjectRegistry.SALMON.asItem(),
                         ObjectRegistry.VEGGIE_PLATE.asItem(),
                         ObjectRegistry.PORK_RIB.asItem(),
-                        //ObjectRegistry.LASAGNA.asItem(),
-                        //ObjectRegistry.BEEF_WELLINGTON.asItem(),
+                        ObjectRegistry.TOMATO_MOZZARELLA_SALAT.asItem(),
+                        ObjectRegistry.LASAGNA.asItem(),
+                        ObjectRegistry.BEEF_WELLINGTON.asItem(),
+                        ObjectRegistry.ROASTBEEF_CARROTS.asItem(),
                         ObjectRegistry.MASHED_POTATOES.asItem(),
                         ObjectRegistry.FRICASSE.asItem(),
                         ObjectRegistry.FRIED_EGG.asItem(),
@@ -125,64 +126,59 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.OAK_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.OAK_DRAWER.asItem(),
                         ObjectRegistry.OAK_CABINET.asItem(),
-
+                        ObjectRegistry.OAK_TABLE.asItem(),
                         ObjectRegistry.OAK_CHAIR.asItem(),
                         ObjectRegistry.COBBLESTONE_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.COBBLESTONE_STOVE.asItem(),
                         ObjectRegistry.COBBLESTONE_KITCHEN_SINK.asItem(),
-                        
                         ObjectRegistry.BIRCH_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.BIRCH_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.BIRCH_DRAWER.asItem(),
                         ObjectRegistry.BIRCH_CABINET.asItem(),
-
+                        ObjectRegistry.BIRCH_TABLE.asItem(),
                         ObjectRegistry.BIRCH_CHAIR.asItem(),
                         ObjectRegistry.SANDSTONE_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.SANDSTONE_STOVE.asItem(),
                         ObjectRegistry.SANDSTONE_KITCHEN_SINK.asItem(),
-                        
                         ObjectRegistry.SPRUCE_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.SPRUCE_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.SPRUCE_DRAWER.asItem(),
                         ObjectRegistry.SPRUCE_CABINET.asItem(),
-
+                        ObjectRegistry.SPRUCE_TABLE.asItem(),
                         ObjectRegistry.SPRUCE_CHAIR.asItem(),
                         ObjectRegistry.BRICKS_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.BRICKS_STOVE.asItem(),
                         ObjectRegistry.BRICKS_KITCHEN_SINK.asItem(),
-                        
                         ObjectRegistry.DARK_OAK_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.DARK_OAK_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.DARK_OAK_DRAWER.asItem(),
                         ObjectRegistry.DARK_OAK_CABINET.asItem(),
-
+                        ObjectRegistry.DARK_OAK_TABLE.asItem(),
                         ObjectRegistry.DARK_OAK_CHAIR.asItem(),
                         ObjectRegistry.DEEPSLATE_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.DEEPSLATE_STOVE.asItem(),
                         ObjectRegistry.DEEPSLATE_KITCHEN_SINK.asItem(),
-                        
                         ObjectRegistry.ACACIA_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.ACACIA_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.ACACIA_DRAWER.asItem(),
                         ObjectRegistry.ACACIA_CABINET.asItem(),
-
+                        ObjectRegistry.ACACIA_TABLE.asItem(),
                         ObjectRegistry.ACACIA_CHAIR.asItem(),
                         ObjectRegistry.GRANITE_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.GRANITE_STOVE.asItem(),
                         ObjectRegistry.GRANITE_KITCHEN_SINK.asItem(),
-                        
                         ObjectRegistry.JUNGLE_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.JUNGLE_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.JUNGLE_DRAWER.asItem(),
                         ObjectRegistry.JUNGLE_CABINET.asItem(),
-
+                        ObjectRegistry.JUNGLE_TABLE.asItem(),
                         ObjectRegistry.JUNGLE_CHAIR.asItem(),
 
                         ObjectRegistry.MANGROVE_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.MANGROVE_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.MANGROVE_DRAWER.asItem(),
                         ObjectRegistry.MANGROVE_CABINET.asItem(),
-
+                        ObjectRegistry.MANGROVE_TABLE.asItem(),
                         ObjectRegistry.MANGROVE_CHAIR.asItem(),
                         ObjectRegistry.MUD_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.MUD_STOVE.asItem(),
@@ -202,7 +198,8 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.WARPED_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.WARPED_DRAWER.asItem(),
                         ObjectRegistry.WARPED_CABINET.asItem(),
-                        ObjectRegistry.WARPED_CHAIR.asItem()
+                        ObjectRegistry.WARPED_CHAIR.asItem(),
+                        ObjectRegistry.WARPED_TABLE.asItem()
 
 
                         )).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH)));
