@@ -69,7 +69,7 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.SALMON_WINE.asItem(),
                         ObjectRegistry.BOLOGNESE.asItem(),
                         ObjectRegistry.VEGGIE_PLATE.asItem(),
-                        ObjectRegistry.TOMATO_MOZZARELLA_SALAD_SERVING.asItem(),
+                        ObjectRegistry.CHICKEN.asItem(),
                         ObjectRegistry.PORK_RIBS.asItem(),
                         ObjectRegistry.TOMATO_MOZZARELLA_SALAD.asItem(),
                         ObjectRegistry.LASAGNA.asItem(),

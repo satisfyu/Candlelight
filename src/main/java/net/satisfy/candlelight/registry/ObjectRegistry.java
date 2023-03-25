@@ -99,7 +99,7 @@ public class ObjectRegistry {
     public static final Item PORK_RIBS = register("pork_ribs", new Meal(getSettings().food(CandlelightFoods.PORK_RIBS)));
     public static final Item MASHED_POTATOES = register("mashed_potatoes", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Item FRICASSE = register("fricasse", new Feast(getSettings().food(CandlelightFoods.FRICASSE)));
-    public static final Item TOMATO_MOZZARELLA_SALAD_SERVING = register("tomato_mozzarella_salad_serving", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
+    public static final Item CHICKEN = register("chicken", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Item TOMATO_MOZZARELLA_SALAD = register("tomato_mozzarella_salad", new Meal(getSettings().food(CandlelightFoods.TOMATO_MOZZARELLA_SALAD)));
     public static final Item LASAGNA = register("lasagna", new BigFeast(getSettings().food(CandlelightFoods.LASAGNE)));
     public static final Item ROASTBEEF_CARROTS = register("roastbeef_carrots", new Meal(getSettings().food(CandlelightFoods.ROASTBEEF_CARROTS)));

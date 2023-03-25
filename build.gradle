@@ -41,10 +41,6 @@ dependencies {
 	//modImplementation "curse.maven:vinery-704465:${project.vinery_version}"
 	modImplementation "daniking:vinery:${project.vinery_version}"
 	include(modImplementation ("net.moddingplayground.frame:frame-tabbed-item-groups-v0:0.2.4+0aca9b56a9"))
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 }
 
 processResources {
