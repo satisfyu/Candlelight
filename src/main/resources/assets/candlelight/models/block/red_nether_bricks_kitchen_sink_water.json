@@ -3,7 +3,7 @@
 	"textures": {
 		"1": "candlelight:block/kitchen_hardware/red_nether_bricks_sink_side",
 		"2": "candlelight:block/kitchen_hardware/red_nether_bricks_sink_bottom",
-		"3": "block/water_flow",
+		"3": "block/water_still",
 		"4": "candlelight:block/kitchen_hardware/red_nether_bricks_stove_top",
 		"particle": "candlelight:block/kitchen_hardware/red_nether_bricks_sink_side"
 	},
@@ -13,9 +13,9 @@
 			"to": [16, 12, 16],
 			"faces": {
 				"north": {"uv": [0, 4, 16, 16], "texture": "#1"},
-				"east": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "east"},
+				"east": {"uv": [0, 4, 14, 16], "texture": "#1", "cullface": "west"},
 				"south": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "south"},
-				"west": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "west"},
+				"west": {"uv": [0, 4, 14, 16], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [0, 1, 16, 15], "texture": "#2"},
 				"down": {"uv": [0, 1, 16, 15], "texture": "#2", "cullface": "down"}
 			}

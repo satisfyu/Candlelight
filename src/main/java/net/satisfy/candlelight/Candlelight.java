@@ -175,7 +175,9 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.JUNGLE_CABINET.asItem(),
                         ObjectRegistry.JUNGLE_TABLE.asItem(),
                         ObjectRegistry.JUNGLE_CHAIR.asItem(),
-
+                        ObjectRegistry.END_WOOD_FIRED_OVEN.asItem(),
+                        ObjectRegistry.END_STOVE.asItem(),
+                        ObjectRegistry.END_KITCHEN_SINK.asItem(),
                         ObjectRegistry.MANGROVE_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.MANGROVE_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.MANGROVE_DRAWER.asItem(),
@@ -185,7 +187,6 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.MUD_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.MUD_STOVE.asItem(),
                         ObjectRegistry.MUD_KITCHEN_SINK.asItem(),
-
                         ObjectRegistry.CRIMSON_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.CRIMSON_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.CRIMSON_DRAWER.asItem(),
@@ -195,13 +196,15 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.RED_NETHER_BRICKS_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.RED_NETHER_BRICKS_STOVE.asItem(),
                         ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK.asItem(),
-
                         ObjectRegistry.WARPED_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.WARPED_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.WARPED_DRAWER.asItem(),
                         ObjectRegistry.WARPED_CABINET.asItem(),
                         ObjectRegistry.WARPED_CHAIR.asItem(),
-                        ObjectRegistry.WARPED_TABLE.asItem()
+                        ObjectRegistry.WARPED_TABLE.asItem(),
+                        ObjectRegistry.QUARTZ_WOOD_FIRED_OVEN.asItem(),
+                        ObjectRegistry.QUARTZ_STOVE.asItem(),
+                        ObjectRegistry.QUARTZ_KITCHEN_SINK.asItem()
 
 
                 )).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH)));
