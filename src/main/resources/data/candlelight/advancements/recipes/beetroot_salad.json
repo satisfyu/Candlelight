@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "candlelight:beetroot_salad"
+    ]
+  },
+  "criteria": {
+    "has_vinegar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:vinegar"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "candlelight:beetroot_salad"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_vinegar",
+      "has_the_recipe"
+    ]
+  ]
+}
