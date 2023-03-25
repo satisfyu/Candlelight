@@ -177,9 +177,9 @@
   "block.candlelight.sandstone_wood_fired_oven": "Sandstone Wood Fired Oven",
   "block.candlelight.sandstone_stove": "Sandstone Stove",
   "block.candlelight.sandstone_kitchen_sink": "Sandstone Sink",
-  "block.candlelight.bricks_wood_fired_oven": "Bricks Wood Fired Oven",
-  "block.candlelight.bricks_stove": "Bricks Stove",
-  "block.candlelight.bricks_kitchen_sink": "Bricks Sink",
+  "block.candlelight.bricks_wood_fired_oven": "Stone Bricks Wood Fired Oven",
+  "block.candlelight.bricks_stove": "Stone Bricks Stove",
+  "block.candlelight.bricks_kitchen_sink": "Stone Bricks Sink",
   "block.candlelight.deepslate_wood_fired_oven": "Deepslate Wood Fired Oven",
   "block.candlelight.deepslate_stove": "Deepslate Stove",
   "block.candlelight.deepslate_kitchen_sink": "Deepslate Sink",
@@ -191,7 +191,10 @@
   "block.candlelight.quartz_kitchen_sink": "Quartz Sink",
   "block.candlelight.red_nether_bricks_wood_fired_oven": "Red_nether_bricks Wood Fired Oven",
   "block.candlelight.red_nether_bricks_stove": "Red_nether_bricks Stove",
-  "block.candlelight.red_nether_bricks_kitchen_sink": "Red_nether_bricks Sink"
+  "block.candlelight.red_nether_bricks_kitchen_sink": "Red_nether_bricks Sink",
+  "block.candlelight.mud_wood_fired_oven": "Mud Wood Fired Oven",
+  "block.candlelight.mud_stove": "Mud Stove",
+  "block.candlelight.mud_kitchen_sink": "Mud Sink"
 
 
 
