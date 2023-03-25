@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wine_rack",
+  "pattern": [
+    "# #",
+    " _ ",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:warped_planks"
+    },
+    "_": {
+      "item": "minecraft:warped_slabs"
+    }
+  },
+  "result": {
+    "item": "candlelight:warped_wine_rack_small"
+  }
+}

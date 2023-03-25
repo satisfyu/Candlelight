@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wine_rack",
+  "pattern": [
+    "#_#",
+    "_B_",
+    "#B#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:mangrove_planks"
+    },
+    "_": {
+      "item": "minecraft:mangrove_slabs"
+    }
+    },
+    "B": {
+      "item": "minecraft:barrel"
+
+  },
+  "result": {
+    "item": "candlelight:mangrove_cabinet"
+  }
+}

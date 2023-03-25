@@ -1,0 +1,21 @@
+{
+  "type": "vinery:pot_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "tag": "vinery:milk"
+    }
+  ],
+  "container": {
+    "item": "minecraft:paper"
+  },
+  "result": {
+    "item": "candlelight:chocolate",
+    "count": 4
+  }
+}

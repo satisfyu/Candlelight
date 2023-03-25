@@ -3,9 +3,6 @@
     "ingredients": [
         {
             "item": "candlelight:chocolate"
-        },
-        {
-            "item": "minecraft:white_dye"
         }
     ],
     "result": {
