@@ -17,7 +17,10 @@ public class CandlelightClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ObjectRegistry.CAKE_STAND, ObjectRegistry.CHAIR,
                 ObjectRegistry.TABLE, ObjectRegistry.ROSE, ObjectRegistry.POTTED_ROSE, ObjectRegistry.STRAWBERRY_WILD_JUNGLE,
-                ObjectRegistry.STRAWBERRY_WILD_TAIGA, ObjectRegistry.TOMATOES_WILD, ObjectRegistry.APPLE_TREE_SAPLING
+                ObjectRegistry.STRAWBERRY_WILD_TAIGA, ObjectRegistry.TOMATOES_WILD, ObjectRegistry.APPLE_TREE_SAPLING,
+                ObjectRegistry.OAK_CHAIR, ObjectRegistry.DARK_OAK_CHAIR, ObjectRegistry.SPRUCE_CHAIR, ObjectRegistry.WARPED_CHAIR,
+                ObjectRegistry.BIRCH_CHAIR, ObjectRegistry.MANGROVE_CHAIR, ObjectRegistry.ACACIA_CHAIR, ObjectRegistry.CRIMSON_CHAIR,
+                ObjectRegistry.JUNGLE_CHAIR
 
         );
 
