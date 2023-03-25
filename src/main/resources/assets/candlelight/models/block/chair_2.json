@@ -2,11 +2,11 @@
 	"credit": "Made by Satisfy",
 	"parent": "block/block",
 	"textures": {
-		"2": "candlelight:block/decor",
+		"2": "candlelight:block/decor_4",
 		"3": "candlelight:block/chair",
 		"4": "candlelight:block/cabinet_front_closed",
 		"5": "candlelight:block/sideboard_back",
-		"6": "candlelight:block/sofa_seat_side",
+		"6": "candlelight:block/chair_2",
 		"particle": "candlelight:block/cabinet_front_closed"
 	},
 	"elements": [
@@ -20,7 +20,7 @@
 				"east": {"uv": [15, 2, 5, 3], "texture": "#5"},
 				"south": {"uv": [12, 1, 2, 2], "texture": "#5"},
 				"west": {"uv": [10, 1, 0, 2], "texture": "#5"},
-				"up": {"uv": [3, 13, 13, 3], "texture": "#3"},
+				"up": {"uv": [3, 13, 13, 3], "texture": "#6"},
 				"down": {"uv": [3, 13, 13, 3], "texture": "#5"}
 			}
 		},
@@ -170,25 +170,12 @@
 			"to": [11, 21, 12],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 16]},
 			"faces": {
-				"north": {"uv": [12, 1, 5, 13], "texture": "#2"},
+				"north": {"uv": [11, 2, 5, 14], "texture": "#2"},
 				"east": {"uv": [0, 0, 0, 11], "texture": "#3"},
-				"south": {"uv": [12, 1, 5, 13], "texture": "#2"},
+				"south": {"uv": [11, 2, 5, 14], "texture": "#2"},
 				"west": {"uv": [0, 0, 0, 11], "texture": "#3"},
 				"up": {"uv": [0, 0, 6, 0], "texture": "#3"},
 				"down": {"uv": [0, 0, 6, 0], "texture": "#3"}
-			}
-		},
-		{
-			"from": [6, 10, -1],
-			"to": [14, 11, 7],
-			"rotation": {"angle": -22.5, "axis": "y", "origin": [0, 0, 0]},
-			"faces": {
-				"north": {"uv": [4, 4, 12, 5], "texture": "#6"},
-				"east": {"uv": [4, 13, 12, 14], "texture": "#6"},
-				"south": {"uv": [4, 13, 12, 14], "texture": "#6"},
-				"west": {"uv": [4, 4, 12, 5], "texture": "#6"},
-				"up": {"uv": [2, 4, 10, 12], "texture": "#6"},
-				"down": {"uv": [4, 5, 12, 13], "texture": "#6"}
 			}
 		}
 	],
