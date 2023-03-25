@@ -7,14 +7,14 @@
     ],
     "key": {
         "#": {
-     	    "item": "candlelight_dinner:strawberry"
+     	    "item": "candlelight:strawberry"
      },
         "C": {
             "item": "minecraft:cookie"
         }
     },
     "result": {
-        "item": "candlelight_dinner:strawberry_glazed_cookie",
+        "item": "candlelight:strawberry_glazed_cookie",
         "count": 1
     }
 }

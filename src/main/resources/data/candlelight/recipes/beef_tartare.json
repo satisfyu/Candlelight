@@ -9,11 +9,11 @@
             "item": "minecraft:beef"
         },
         "L": {
-   	    "item": "candlelight_dinner:tray"
+   	    "item": "candlelight:tray"
         }
     },
     "result": {
-        "item": "candlelight_dinner:beef_tartare",
+        "item": "candlelight:beef_tartare",
         "count": 2
     }
 }

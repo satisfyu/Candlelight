@@ -4,8 +4,7 @@
     "minecraft:smoker",
     "vinery:stove",
     "vinery:wood_fired_oven",
-    "candlelight:stove",
-    "candlelight:wood_fired_oven",
-    "farmersdelight:stove"
+    "#candlelight:stoves",
+    "#candlelight:wood_fired_ovens"
   ]
 }

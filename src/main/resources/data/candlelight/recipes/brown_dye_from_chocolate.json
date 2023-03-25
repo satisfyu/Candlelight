@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "candlelight_dinner:chocolate"
+            "item": "candlelight:chocolate"
         },
         {
             "item": "minecraft:white_dye"

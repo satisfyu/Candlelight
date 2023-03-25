@@ -6,14 +6,14 @@
     ],
     "key": {
         "#": {
-            "item": "candlelight_dinner:chocolate"
+            "item": "candlelight:chocolate"
         },
         "I": {
             "item": "minecraft:ice"
         }
     },
     "result": {
-        "item": "candlelight_dinner:chocolate_icecream",
+        "item": "candlelight:chocolate_icecream",
         "count": 1
     }
 }

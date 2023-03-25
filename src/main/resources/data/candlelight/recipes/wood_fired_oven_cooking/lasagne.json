@@ -2,16 +2,16 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "item": "candlelight:cooked_beef"
+      "item": "candlelight:bolognese"
     },
     {
       "item": "candlelight:pasta"
     },
     {
-      "item": "candlelight:mushroom_soup"
+      "item": "candlelight:mozzarella"
     }
   ],
-  "item": "candlelight:beef_wellington",
+  "item": "candlelight:lasagne",
   "count": 1,
-  "experience": 0.5
+  "experience": 0.7
 }

@@ -1,10 +1,11 @@
 package net.satisfy.candlelight.food;
 
-import net.minecraft.item.Item;
 
-public class Meal extends Item {
+public class Meal extends CandlelightFood {
 
     public Meal(Settings settings) {
         super(settings);
     }
+
+
 }

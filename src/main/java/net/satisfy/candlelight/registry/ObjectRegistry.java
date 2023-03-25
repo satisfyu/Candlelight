@@ -23,6 +23,10 @@ import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.*;
 import net.satisfy.candlelight.block.LanternBlock;
 import net.satisfy.candlelight.block.*;
+import net.satisfy.candlelight.food.BigFeast;
+import net.satisfy.candlelight.food.CandlelightFoods;
+import net.satisfy.candlelight.food.Feast;
+import net.satisfy.candlelight.food.Meal;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
@@ -83,22 +87,12 @@ public class ObjectRegistry {
     public static final Item BUTTER = register("butter", new IngredientItem(getSettings()));
     public static final Item CHOCOLATE = register("chocolate", new IngredientItem(getSettings().food(FoodComponents.COOKIE)));
     public static final Item MOZZARELLA = register("mozzarella", new IngredientItem(getSettings().food(FoodComponents.BREAD)));
-    public static final Item TOMATO_SOUP = register("tomato_soup", new IngredientItem(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final Item BEETROOT_SALAD = register("beetroot_salad", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
-    public static final Item COOKED_BEEF = register("cooked_beef", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
-    public static final Item PASTA = register("pasta", new Item(getSettings().food(FoodComponents.COOKED_MUTTON)));
     public static final Item BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
-    // public static final  Block    TOMATO_MOZZARELLA_SALAT = register("tomato_mozzarella_salat", new MealBlock(getSettings()
-    public static final Item BROCCOLI_BEEF = register("broccoli_beef", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
-    public static final Item BROCCOLI_TOMATO = register("broccoli_tomato", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     // public static final  Item     ROASTBEEF_CARROTS = register("roastbeef_carrots", new MealBlock;
     public static final Item SALMON = register("salmon", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
-    public static final Item VEGGIE_PLATE = register("veggie_plate", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Item PORK_RIB = register("pork_rib", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
-    // public static final  Block    LASAGNA = register("lasagna", new MealBlock
-    // public static final  Block    BEEF_WELLINGTON = register("beef_wellington", new MealBlock
     public static final Item MASHED_POTATOES = register("mashed_potatoes", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
-    public static final Item FRICASSE = register("fricasse", new Item(getSettings().food(FoodComponents.GOLDEN_APPLE)));
     public static final Item FRIED_EGG = register("fried_egg", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Block STRAWBERRY_JAM = register("strawberry_jam", new StackableBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque().sounds(BlockSoundGroup.GLASS)));
     public static final Item VINEGAR = register("vinegar", new IngredientItem(getSettings()));
@@ -163,6 +157,29 @@ public class ObjectRegistry {
     public static final Item LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
     public static final Item LOVE_LETTER = register("love_letter", new Item(getSettings()));
     public static final Block WINE_STATION = register("wine_station", new WineStationBlock(FabricBlockSettings.of(Material.WOOD).nonOpaque()));
+
+
+    //TIER 1
+    public static final Item TOMATO_SOUP = register("tomato_soup", new Meal(getSettings().food(CandlelightFoods.TOMATO_SOUP)));
+    public static final Item COOKED_BEEF = register("cooked_beef", new Meal(getSettings().food(CandlelightFoods.COOKED_BEEF)));
+    //public static final Item VINEGAR = register("vinegar", new Meal(getSettings().food(CandlelightFoods.VINEGAR)));
+    public static final Item BROCCOLI_BEEF = register("broccoli_beef", new Meal(getSettings().food(CandlelightFoods.BROCCOLI_BEEF)));
+    public static final Item BROCCOLI_TOMATO = register("broccoli_tomato", new Meal(getSettings().food(CandlelightFoods.BROCCOLI_TOMATO)));
+    public static final Item CAKE_SLICES = register("cake_slices", new Meal(getSettings().food(CandlelightFoods.CAKE_SLICES)));
+    public static final Item PORK_RIBS = register("pork_ribs", new Meal(getSettings().food(CandlelightFoods.PORK_RIBS)));
+    public static final Item MUSHROOM_SOUP = register("mushroom_soup", new Meal(getSettings().food(CandlelightFoods.MUSHROOM_SOUP)));
+    public static final Item ROASTBEEF_CARROTS = register("roastbeef_carrots", new Meal(getSettings().food(CandlelightFoods.ROASTBEEF_CARROTS)));
+    public static final Item TOMATO_MOZZARELLA_SALAD = register("tomato_mozzarella_salad", new Meal(getSettings().food(CandlelightFoods.TOMATO_MOZZARELLA_SALAD)));
+    public static final Item SALMON_ON_WHITE_WINE = register("salmon_on_white_wine", new Meal(getSettings().food(CandlelightFoods.SALMON_ON_WHITE_WINE)));
+    public static final Item VEGGIE_PLATE = register("veggie_plate", new Meal(getSettings().food(CandlelightFoods.VEGGIE_PLATE)));
+    //TIER 2
+    public static final Item BOLOGNESE = register("bolognese", new Feast(getSettings().food(CandlelightFoods.BOLOGNESE)));
+    public static final Item PASTA = register("pasta", new Feast(getSettings().food(CandlelightFoods.PASTA)));
+    public static final Item FRICASSE = register("fricasse", new Feast(getSettings().food(CandlelightFoods.FRICASSE)));
+    // TIER 3
+    public static final Item LASAGNE = register("lasagne", new BigFeast(getSettings().food(CandlelightFoods.LASAGNE)));
+    public static final Item BEEF_WELLINGTON = register("beef_wellington", new BigFeast(getSettings().food(CandlelightFoods.BEEF_WELLINGTON)));
+
 
     public static final Item GOLD_RING = register("gold_ring", new Item(getSettings()));
     /**

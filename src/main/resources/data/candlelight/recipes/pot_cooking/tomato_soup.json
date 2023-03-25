@@ -2,20 +2,20 @@
   "type": "vinery:pot_cooking",
   "ingredients": [
     {
-      "item":  "vinery:dough"
+      "item": "candlelight:tomato"
     },
     {
-      "item": "candlelight:tomato_soup"
+      "item": "candlelight:tray"
     },
     {
       "tag": "vinery:wine"
     }
   ],
   "container": {
-    "item": "candlelight:tray"
+  "item": "candlelight:tray"
   },
   "result": {
-    "item": "candlelight:pasta",
-    "count": 4
+    "item": "candlelight:tomato_soup",
+    "count": 1
   }
 }
