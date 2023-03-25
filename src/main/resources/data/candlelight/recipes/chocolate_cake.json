@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "candlelight:chocolate"
+    },
+    "B": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
+      "tag": "vinery:dough"
+    },
+    "E": {
+      "item": "minecraft:egg"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BEB",
+    "CCC"
+  ],
+  "result": {
+    "item": "candlelight:chocolate_cake",
+    "count": 2
+  }
+}

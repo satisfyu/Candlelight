@@ -9,6 +9,9 @@
     },
     {
       "tag": "vinery:milk"
+    },
+    {
+      "item": "candlelight:butter"
     }
   ],
   "container": {

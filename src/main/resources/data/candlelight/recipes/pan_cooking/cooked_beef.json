@@ -1,5 +1,5 @@
 {
-  "type": "vinery:pot_cooking",
+  "type": "candlelight:pan_cooking",
   "ingredients": [
     {
       "item": "minecraft:beef"

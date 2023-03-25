@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "candlelight:floorboard"
+    }
+  },
+  "result": {
+    "item": "candlelight:chair",
+    "count": 2
+  }
+}

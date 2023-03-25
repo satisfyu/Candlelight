@@ -1,8 +1,8 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "minecraft:crafting_shapeless",
     "pattern": [
         "#P",
-        "CS"
+        "CSB"
     ],
     "key": {
         "#": {
@@ -16,10 +16,13 @@
         },
         "S": {
             "item": "candlelight:broccoli"
+        },
+        "B": {
+            "item": "candlelight:tray"
         }
     },
     "result": {
-        "item": "candlelight:gold_ring",
+        "item": "candlelight:veggie_plate",
         "count": 2
     }
 }

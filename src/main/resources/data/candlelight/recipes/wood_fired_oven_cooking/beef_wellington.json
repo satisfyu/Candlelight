@@ -2,7 +2,7 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "item": "candlelight:cooked_beef"
+      "item": "candlelight:bolognese"
     },
     {
       "item": "candlelight:pasta"

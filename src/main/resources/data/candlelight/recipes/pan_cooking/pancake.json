@@ -2,17 +2,17 @@
   "type": "candlelight:pan_cooking",
   "ingredients": [
     {
-      "item": "minecraft:salmon"
+      "item":  "vinery:dough"
     },
     {
-      "tag": "vinery:white_wine"
+      "item": "candlelight:butter"
     }
   ],
   "container": {
     "item": "candlelight:tray"
   },
   "result": {
-    "item": "candlelight:salmon_on_white_wine",
-    "count": 1
+    "item": "candlelight:pancake",
+    "count": 6
   }
 }

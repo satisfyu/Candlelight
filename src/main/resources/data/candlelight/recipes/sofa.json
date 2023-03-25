@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "candlelight:floorboard"
+    },
+    "B": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "candlelight:sofa",
+    "count": 3
+  }
+}

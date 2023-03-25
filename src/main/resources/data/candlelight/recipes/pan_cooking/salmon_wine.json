@@ -1,11 +1,8 @@
 {
-  "type": "vinery:pot_cooking",
+  "type": "candlelight:pan_cooking",
   "ingredients": [
     {
-      "item": "candlelight:mashed_potatoes"
-    },
-    {
-      "item": "candlelight:cooked_beef"
+      "item": "minecraft:raw_salmon"
     },
     {
       "tag": "vinery:white_wine"
@@ -15,7 +12,7 @@
     "item": "candlelight:tray"
   },
   "result": {
-    "item": "candlelight:fricasse",
+    "item": "candlelight:salmon_wine",
     "count": 1
   }
 }

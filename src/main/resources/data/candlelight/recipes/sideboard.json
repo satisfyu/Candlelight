@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wine_rack",
+  "pattern": [
+    "   ",
+    "###",
+    "#B#"
+  ],
+  "key": {
+    "#": {
+      "item": "candlelight:floorboard"
+    },
+    "B": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "candlelight:sideboard"
+  }
+}
