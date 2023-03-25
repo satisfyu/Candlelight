@@ -1,0 +1,25 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "vinery:dough"
+    },
+    {
+      "item": "candlelight:butter"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:waffle",
+    "count": 6,
+    "experience": 0.3
+  }
+}

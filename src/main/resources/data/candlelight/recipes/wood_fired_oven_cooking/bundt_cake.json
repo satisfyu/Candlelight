@@ -1,0 +1,25 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "vinery:dough"
+    },
+    {
+      "item": "candlelight:butter"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:bundt_cake",
+    "count": 1,
+    "experience": 0.25
+  }
+}

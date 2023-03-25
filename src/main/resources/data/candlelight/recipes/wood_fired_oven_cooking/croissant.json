@@ -2,21 +2,18 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "item": "candlelight:bolognese"
+      "tag": "vinery:dough"
     },
     {
-      "item": "candlelight:pasta"
-    },
-    {
-      "item": "candlelight:mozzarella"
+      "item": "candlelight:butter"
     }
   ],
   "container": {
     "item": "candlelight:tray"
   },
   "result": {
-    "item": "candlelight:lasagne",
+    "item": "candlelight:croissant",
     "count": 1,
-    "experience": 0.5
+    "experience": 0.15
   }
 }
