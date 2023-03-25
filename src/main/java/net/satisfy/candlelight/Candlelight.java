@@ -188,7 +188,7 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.CRIMSON_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.CRIMSON_DRAWER.asItem(),
                         ObjectRegistry.CRIMSON_CABINET.asItem(),
-
+                        ObjectRegistry.CRIMSON_TABLE.asItem(),
                         ObjectRegistry.CRIMSON_CHAIR.asItem(),
                         ObjectRegistry.RED_NETHER_BRICKS_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.RED_NETHER_BRICKS_STOVE.asItem(),
