@@ -1,0 +1,24 @@
+{
+  "type": "candlelight:pan_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:broccoli"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "tag": "vinery:wine"
+    },
+    {
+      "item": "candlelight:butter"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:broccoli_beef",
+    "count": 1
+  }
+}

@@ -6,14 +6,14 @@
     ],
     "key": {
         "#": {
-   	     "item": "candlelight_dinner:sweetberry_icecream"
+   	     "item": "candlelight:sweetberry_icecream"
         },
         "I": {
              "tag": "vinery:milk"
         }
     },
     "result": {
-        "item": "candlelight_dinner:sweetberry_milkshake",
+        "item": "candlelight:sweetberry_milkshake",
         "count": 1
     }
 }

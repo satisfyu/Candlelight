@@ -1,0 +1,21 @@
+{
+  "type": "vinery:pot_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:tomato"
+    },
+    {
+      "item": "candlelight:tray"
+    },
+    {
+      "tag": "vinery:wine"
+    }
+  ],
+  "container": {
+  "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:tomato_soup",
+    "count": 1
+  }
+}

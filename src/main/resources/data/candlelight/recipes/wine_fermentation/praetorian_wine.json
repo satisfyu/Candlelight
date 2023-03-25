@@ -5,13 +5,13 @@
       "item": "vinery:white_grapejuice_wine_botte"
     },
     {
-      "item": "candlelight_dinner:strawberry"
+      "item": "candlelight:strawberry"
     },
     {
-      "item": "candlelight_dinner:rose"
+      "item": "candlelight:rose"
     }
   ],
   "result": {
-    "item": "candlelight_dinner:praetorian_wine"
+    "item": "candlelight:praetorian_wine"
   }
 }

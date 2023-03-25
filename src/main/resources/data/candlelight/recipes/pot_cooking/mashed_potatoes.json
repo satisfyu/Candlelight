@@ -2,13 +2,13 @@
   "type": "vinery:pot_cooking",
   "ingredients": [
     {
-      "item": "minecraft:potatoes"
+      "item": "minecraft:potato"
     },
     {
-      "item": "minecraft:potatoes"
+      "item": "minecraft:potato"
     },
     {
-      "item": "minecraft:potatoes"
+      "item": "minecraft:potato"
     }
   ],
   "container": {

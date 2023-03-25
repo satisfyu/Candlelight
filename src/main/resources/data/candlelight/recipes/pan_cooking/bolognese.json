@@ -1,0 +1,21 @@
+{
+  "type": "candlelight:pan_cooking",
+
+  "ingredients": [
+    {
+      "item": "candlelight:tomato_soup"
+    },
+    {
+      "item": "candlelight:cooked_beef"
+    },
+    {
+      "tag": "candlelight:wine"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:bolognese"
+  }
+}

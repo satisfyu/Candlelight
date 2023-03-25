@@ -1,0 +1,24 @@
+{
+  "type": "vinery:pot_cooking",
+  "ingredients": [
+    {
+      "tag": "minecraft:mushroom"
+    },
+    {
+      "tag": "vinery:red_wine"
+    },
+    {
+      "tag": "candlelight:butter"
+    },
+    {
+      "item": "minecraft:milk"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:mushroom_soup",
+    "count": 1
+  }
+}

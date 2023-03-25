@@ -10,7 +10,7 @@
         }
     },
     "result": {
-        "item": "candlelight_dinner:candle",
+        "item": "candlelight:candle",
         "count": 2
     }
 }

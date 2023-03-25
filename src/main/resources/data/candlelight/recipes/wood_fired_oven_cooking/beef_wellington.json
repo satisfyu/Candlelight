@@ -2,16 +2,16 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "tag": "minecraft:raw_beef"
+      "item": "candlelight:cooked_beef"
     },
     {
-      "tag": "minecraft:dough"
+      "item": "candlelight:pasta"
     },
     {
-      "item": "minecraft:mushrooms"
+      "item": "candlelight:mushroom_soup"
     }
   ],
-  "item": "candlelight_dinner:beef_wellington",
-  "count": 2,
-  "experience": 0.35
+  "item": "candlelight:beef_wellington",
+  "count": 1,
+  "experience": 0.5
 }

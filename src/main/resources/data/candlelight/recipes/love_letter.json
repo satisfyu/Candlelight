@@ -5,14 +5,14 @@
     ],
     "key": {
         "#": {
-            "item": "candlelight_dinner:letter"
+            "item": "candlelight:letter"
         },
         "P": {
             "item": "minecraft:pink_dye"
         }
     },
     "result": {
-        "item": "candlelight_dinner:love_letter"
+        "item": "candlelight:love_letter",
         "count": 1
     }
 }

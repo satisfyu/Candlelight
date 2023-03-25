@@ -7,14 +7,14 @@
     ],
     "key": {
         "#": {
-            "item": "candlelight_dinner:strawberry"
+            "item": "candlelight:strawberry"
         },
         "W": {
-            "item": "candlelight_dinner:chocolate"
+            "item": "candlelight:chocolate"
         }
     },
     "result": {
-        "item": "candlelight_dinner:chocolate_strawberry",
+        "item": "candlelight:chocolate_strawberry",
         "count": 1
     }
 }

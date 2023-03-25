@@ -28,10 +28,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.entity.CookingPanEntity;
-import net.satisfy.candlelight.registry.BlockEntityTypes;
+import net.satisfy.candlelight.registry.ModBlockEntityTypes;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.vinery.block.entity.CookingPotEntity;
-import satisfyu.vinery.registry.VineryBlockEntityTypes;
 import satisfyu.vinery.registry.VinerySoundEvents;
 import satisfyu.vinery.util.VineryUtils;
 
@@ -152,7 +150,7 @@ public class CookingPanBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, BlockEntityTypes.COOKING_PAN_BLOCK_ENTITY, (world1, pos, state1, be) -> be.tick(world1, pos, state1, be));
+        return checkType(type, ModBlockEntityTypes.COOKING_PAN_BLOCK_ENTITY, (world1, pos, state1, be) -> be.tick(world1, pos, state1, be));
     }
 
     @Nullable

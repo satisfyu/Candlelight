@@ -6,17 +6,17 @@
     ],
     "key": {
         "#": {
-   	    "item": "candlelight_dinner:mozzarella"
+   	    "item": "candlelight:mozzarella"
         },
         "L": {
-   	    "tag": "candlelight_dinner:tomato"
+   	    "tag": "candlelight:tomato"
         },
         "B": {
-   	    "item": "candlelight_dinner:tray"
+   	    "item": "candlelight:tray"
         }
     },
     "result": {
-        "item": "candlelight_dinner:tomato_mozzarella_salat",
+        "item": "candlelight:tomato_mozzarella_salad",
         "count": 2
     }
 }

@@ -3,13 +3,13 @@
   "ingredients": [
     {
       "tag": "vinery:milk"
-    }
+    },
     {
       "item": "minecraft:water_bucket"
     }
   ],
   "result": {
-    "item": "candlelight_dinner:mozzarella"
-        "count": 4
+    "item": "candlelight:mozzarella",
+    "count": 4
   }
 }

@@ -4,14 +4,14 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
-import net.minecraft.item.Items;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
 import net.moddingplayground.frame.api.util.GUIIcon;
-import net.satisfy.candlelight.registry.RecipeTypes;
-import net.satisfy.candlelight.registry.ObjectRegistry;
-import net.satisfy.candlelight.registry.ScreenHandlerTypes;
-import net.satisfy.candlelight.registry.StorageTypes;
+import net.satisfy.candlelight.networking.CandlelightMessages;
+import net.satisfy.candlelight.registry.*;
+import net.satisfy.candlelight.villager.memory.ModMemoryModuleType;
+import net.satisfy.candlelight.villager.poi.ModPointOfInterestTypes;
+import net.satisfy.candlelight.villager.task.ModTaskListProvider;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -209,6 +209,9 @@ public class Candlelight implements ModInitializer {
 
         ScreenHandlerTypes.init();
         ConfiguredFeatures.init();
+        ModBlockEntityTypes.init();
 
-    }
+		CandlelightMessages.registerC2SPackets();
+
+	}
 }
