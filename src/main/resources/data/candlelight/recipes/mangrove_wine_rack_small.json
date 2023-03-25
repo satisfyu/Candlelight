@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wine_rack",
+  "group": "mangrove_rack",
   "pattern": [
     "# #",
     " _ ",
@@ -11,7 +11,7 @@
       "item": "minecraft:mangrove_planks"
     },
     "_": {
-      "item": "minecraft:mangrove_slabs"
+      "item": "minecraft:mangrove_slab"
     }
   },
   "result": {

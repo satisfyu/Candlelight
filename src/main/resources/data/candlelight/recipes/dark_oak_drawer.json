@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wine_rack",
+  "group": "dark_oak_rack",
   "pattern": [
     "# #",
     " B ",
@@ -10,7 +10,7 @@
     "#": {
       "item": "minecraft:dark_oak_planks"
     },
-    "_": {
+    "B": {
       "item": "minecraft:barrel"
     }
   },
