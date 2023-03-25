@@ -71,8 +71,8 @@ public class ObjectRegistry {
     public static final Block CABINET = register("cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
     public static final Block SIDEBOARD = register("sideboard", new SideBoardBlock(FabricBlockSettings.copyOf(Blocks.CHEST)));
     public static final Block FLOORBOARD = register("floorboard", new Block(FabricBlockSettings.copy(CHERRY_PLANKS)));
-    public static final Block CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
 
+    public static final Block CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final Block TRAY = register("tray", new TrayBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final Block COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
     public static final Block COOKING_PAN = register("cooking_pan", new CookingPanBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
@@ -144,7 +144,6 @@ public class ObjectRegistry {
         }
     }, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS)), true);
     public static final Block APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
-    public static final Block CANDLE = register("candle", new CandleBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final Block JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final Block CHOCOLATE_BOX = register("chocolate_box", new ChocolateBoxBlock(FabricBlockSettings.copy(Blocks.CAKE)));
     public static final Item COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
@@ -153,7 +152,6 @@ public class ObjectRegistry {
     public static final Item CHEFS_BOOTS = register("chefs_boots", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
     public static final Item GLASS = register("glass", new Item(getSettings()));
     public static final Item NAPKIN = register("napkin", new Item(getSettings()));
-    public static final Block BOOK = register("book", new FacingBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final Item NOTE_PAPER = register("note_paper", new Item(getSettings()));
     public static final Item NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WriteablePaperItem(getSettings().maxCount(1)));
     public static final Item NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenPaperItem(getSettings()));
@@ -325,21 +323,11 @@ public class ObjectRegistry {
     }
 
 
-    private static AbstractBlock.Settings getGrassSettings() {
-        return FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).nonOpaque();
-    }
-
-    private static AbstractBlock.Settings getGrapevineSettings() {
-        return FabricBlockSettings.of(Material.WOOD).strength(2.0F).ticksRandomly().sounds(BlockSoundGroup.WOOD);
-    }
 
     private static AbstractBlock.Settings getLogBlockSettings() {
         return AbstractBlock.Settings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD);
     }
 
-    private static AbstractBlock.Settings getSlabSettings() {
-        return getLogBlockSettings().resistance(3.0F);
-    }
 
     private static AbstractBlock.Settings getWineSettings() {
         return AbstractBlock.Settings.copy(Blocks.GLASS).nonOpaque().breakInstantly();
