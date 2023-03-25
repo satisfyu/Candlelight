@@ -170,7 +170,28 @@
   "block.candlelight.oak_cabinet": "Oak Cabinet",
   "block.candlelight.oak_drawer": "Oak Drawer",
   "block.candlelight.oak_chair": "Oak Chair",
-  "block.candlelight.oak_table": "Oak Table"
+  "block.candlelight.oak_table": "Oak Table",
+  "block.candlelight.cobblestone_wood_fired_oven": "Cobblestone Wood Fired Oven",
+  "block.candlelight.cobblestone_stove": "Cobblestone Stove",
+  "block.candlelight.cobblestone_kitchen_sink": "Cobblestone Sink",
+  "block.candlelight.sandstone_wood_fired_oven": "Sandstone Wood Fired Oven",
+  "block.candlelight.sandstone_stove": "Sandstone Stove",
+  "block.candlelight.sandstone_kitchen_sink": "Sandstone Sink",
+  "block.candlelight.bricks_wood_fired_oven": "Bricks Wood Fired Oven",
+  "block.candlelight.bricks_stove": "Bricks Stove",
+  "block.candlelight.bricks_kitchen_sink": "Bricks Sink",
+  "block.candlelight.deepslate_wood_fired_oven": "Deepslate Wood Fired Oven",
+  "block.candlelight.deepslate_stove": "Deepslate Stove",
+  "block.candlelight.deepslate_kitchen_sink": "Deepslate Sink",
+  "block.candlelight.granite_wood_fired_oven": "Granite Wood Fired Oven",
+  "block.candlelight.granite_stove": "Granite Stove",
+  "block.candlelight.granite_kitchen_sink": "Granite Sink",
+  "block.candlelight.quartz_wood_fired_oven": "Quartz Wood Fired Oven",
+  "block.candlelight.quartz_stove": "Quartz Stove",
+  "block.candlelight.quartz_kitchen_sink": "Quartz Sink",
+  "block.candlelight.red_nether_bricks_wood_fired_oven": "Red_nether_bricks Wood Fired Oven",
+  "block.candlelight.red_nether_bricks_stove": "Red_nether_bricks Stove",
+  "block.candlelight.red_nether_bricks_kitchen_sink": "Red_nether_bricks Sink"
 
 
 
