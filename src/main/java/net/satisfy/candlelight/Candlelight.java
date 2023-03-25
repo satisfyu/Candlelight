@@ -4,14 +4,14 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
+import net.minecraft.item.Items;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
 import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
 import net.moddingplayground.frame.api.util.GUIIcon;
-import net.satisfy.candlelight.networking.CandlelightMessages;
-import net.satisfy.candlelight.registry.*;
-import net.satisfy.candlelight.villager.memory.ModMemoryModuleType;
-import net.satisfy.candlelight.villager.poi.ModPointOfInterestTypes;
-import net.satisfy.candlelight.villager.task.ModTaskListProvider;
+import net.satisfy.candlelight.registry.RecipeTypes;
+import net.satisfy.candlelight.registry.ObjectRegistry;
+import net.satisfy.candlelight.registry.ScreenHandlerTypes;
+import net.satisfy.candlelight.registry.StorageTypes;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,6 +50,7 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.DRAWER.asItem(),
                         ObjectRegistry.CABINET.asItem(),
                         ObjectRegistry.FLOORBOARD.asItem(),
+                        ObjectRegistry.WINE_STATION.asItem(),
                         ObjectRegistry.CAKE_STAND.asItem(),
                         ObjectRegistry.COOKING_POT.asItem(),
                         ObjectRegistry.COOKING_PAN.asItem(),
@@ -65,10 +66,10 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.BEEF_TARTARE.asItem(),
                         ObjectRegistry.BROCCOLI_BEEF.asItem(),
                         ObjectRegistry.BROCCOLI_TOMATO.asItem(),
-                        ObjectRegistry.SALMON.asItem(),
+                        ObjectRegistry.SALMON_ON_WHITE_WINE.asItem(),
                         ObjectRegistry.VEGGIE_PLATE.asItem(),
                         ObjectRegistry.TOMATO_MOZZARELLA_SALAD_SERVING.asItem(),
-                        ObjectRegistry.PORK_RIB.asItem(),
+                        ObjectRegistry.PORK_RIBS.asItem(),
                         ObjectRegistry.TOMATO_MOZZARELLA_SALAD.asItem(),
                         ObjectRegistry.LASAGNA.asItem(),
                         ObjectRegistry.BEEF_WELLINGTON.asItem(),
@@ -194,7 +195,7 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.RED_NETHER_BRICKS_WOOD_FIRED_OVEN.asItem(),
                         ObjectRegistry.RED_NETHER_BRICKS_STOVE.asItem(),
                         ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK.asItem(),
-                        
+
                         ObjectRegistry.WARPED_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.WARPED_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.WARPED_DRAWER.asItem(),
@@ -203,15 +204,12 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.WARPED_TABLE.asItem()
 
 
-                        )).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH)));
+                )).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH)));
         ((TabbedItemGroup) Vinery.CREATIVE_TAB).getTabs().add(tab);
         tab.addToGroup(((TabbedItemGroup) Vinery.CREATIVE_TAB));
 
         ScreenHandlerTypes.init();
         ConfiguredFeatures.init();
-        ModBlockEntityTypes.init();
 
-		CandlelightMessages.registerC2SPackets();
-
-	}
+    }
 }
