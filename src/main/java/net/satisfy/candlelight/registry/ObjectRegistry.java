@@ -3,7 +3,6 @@ package net.satisfy.candlelight.registry;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.minecraft.block.CandleBlock;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.sapling.SaplingGenerator;
@@ -48,6 +47,7 @@ public class ObjectRegistry {
 
     private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
+    public static final Identifier NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
     public static final Block TOMATO_CROP = register("tomato_crop", new PickCropBlock(getBushSettings(), CropType.TOMATO), false);
     public static final Item TOMATO_SEEDS = register("tomato_seeds", new CropSeedItem(TOMATO_CROP, getSettings(), CropType.TOMATO));
     public static final Item TOMATO = register("tomato", new IngredientItem(getSettings().food(FoodComponents.APPLE)));
@@ -63,9 +63,9 @@ public class ObjectRegistry {
     public static final Block STRAWBERRY_WILD_TAIGA = register("strawberry_wild_taiga", new PickCropBlock(getBushSettings(), CropType.STRAWBERRY), false);
     public static final Block STRAWBERRY_WILD_JUNGLE = register("strawberry_wild_jungle", new PickCropBlock(getBushSettings(), CropType.STRAWBERRY), false);
     public static final Block TOMATOES_WILD = register("tomatoes_wild", new PickCropBlock(getBushSettings(), CropType.TOMATO), false);
-    public static final Block SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block CHAIR = register("chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block TABLE = register("table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
+    public static final Block SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block LAMP = register("lamp", new LanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(s -> s.get(LanternBlock.LUMINANCE) ? 15 : 0).sounds(BlockSoundGroup.WOOD)));
     public static final Block DRAWER = register("drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block CABINET = register("cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
@@ -79,7 +79,6 @@ public class ObjectRegistry {
 
     public static final Block TABLE_SET = register("table_set", new TableSetBlock(FabricBlockSettings.copyOf(COOKING_POT)));
     public static final Item BUTTER = register("butter", new IngredientItem(getSettings()));
-    public static final Item CHOCOLATE = register("chocolate", new IngredientItem(getSettings().food(FoodComponents.COOKIE)));
     public static final Item MOZZARELLA = register("mozzarella", new IngredientItem(getSettings().food(FoodComponents.BREAD)));
     public static final Item TOMATO_SOUP = register("tomato_soup", new IngredientItem(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final Item MUSHROOM_SOUP = register("mushroom_soup", new IngredientItem(getSettings().food(FoodComponents.BEETROOT_SOUP)));
@@ -92,14 +91,13 @@ public class ObjectRegistry {
     public static final Item SALMON = register("salmon", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Item VEGGIE_PLATE = register("veggie_plate", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Item PORK_RIB = register("pork_rib", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
+    public static final Item MASHED_POTATOES = register("mashed_potatoes", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
+    public static final Item FRICASSE = register("fricasse", new Item(getSettings().food(FoodComponents.GOLDEN_APPLE)));
     public static final Item TOMATO_MOZZARELLA_SALAD_SERVING = register("tomato_mozzarella_salad_serving", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Block LASAGNA = register("lasagna", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block ROASTBEEF_CARROTS = register("roastbeef_carrots", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block TOMATO_MOZZARELLA_SALAD = register("tomato_mozzarella_salad", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block BEEF_WELLINGTON = register("beef_wellington", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
-    public static final Item MASHED_POTATOES = register("mashed_potatoes", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
-    public static final Item FRICASSE = register("fricasse", new Item(getSettings().food(FoodComponents.GOLDEN_APPLE)));
-    public static final Item FRIED_EGG = register("fried_egg", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Item VINEGAR = register("vinegar", new IngredientItem(getSettings()));
     public static final Block RED_WINE = registerWine("red_wine", new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_FIRE_RESISTANCE);
     public static final Block PRAETORIAN_WINE = registerBigWine("praetorian_wine", new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_JUMP_BOOST);
@@ -112,6 +110,7 @@ public class ObjectRegistry {
     public static final Item CROISSANT = register("croissant", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Item BUNDT_CAKE = register("bundt_cake", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Block SESAM_BREAD = register("sesam_bread", new BreadBlock(AbstractBlock.Settings.copy(Blocks.CAKE).nonOpaque()));
+    public static final Item CHOCOLATE = register("chocolate", new IngredientItem(getSettings().food(FoodComponents.COOKIE)));
     public static final Item STRAWBERRY_CHOCOLATE = register("strawberry_chocolate", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Item STRAWBERRY_CAKE_SLICE = register("strawberry_cake_slice", new Item(getSettings().food(FoodComponents.BREAD)));
     public static final Block STRAWBERRY_CAKE = register("strawberry_cake", new CakeBlock((FabricBlockSettings.copyOf(Blocks.CAKE)), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
@@ -159,7 +158,8 @@ public class ObjectRegistry {
     public static final Block TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     public static final Item LETTER_OPEN = register("letter_open", new LetterItem(getSettings()));
     public static final Item LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
-    public static final Item LOVE_LETTER = register("love_letter", new Item(getSettings()));
+    public static final Item LOVE_LETTER_CLOSED = register("love_letter", new ClosedLetterItem(getSettings()));
+    public static final Item LOVE_LETTER_OPEN = register("love_letter_open", new LetterItem(getSettings()));
 
 
     public static final Item GOLD_RING = register("gold_ring", new Item(getSettings()));
@@ -249,7 +249,6 @@ public class ObjectRegistry {
     public static final Block POTTED_ROSE = registerBlockWithoutItem("potted_rose", new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 
 
-    public static final Identifier NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
 
 
     private static <T extends Block> T register(String path, T block) {

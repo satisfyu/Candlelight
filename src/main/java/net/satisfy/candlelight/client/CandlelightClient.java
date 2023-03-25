@@ -22,7 +22,8 @@ public class CandlelightClient implements ClientModInitializer {
                 ObjectRegistry.BIRCH_CHAIR, ObjectRegistry.MANGROVE_CHAIR, ObjectRegistry.ACACIA_CHAIR, ObjectRegistry.CRIMSON_CHAIR,
                 ObjectRegistry.JUNGLE_CHAIR, ObjectRegistry.OAK_TABLE, ObjectRegistry.ACACIA_TABLE, ObjectRegistry.DARK_OAK_TABLE,
                 ObjectRegistry.BIRCH_TABLE, ObjectRegistry.SPRUCE_TABLE, ObjectRegistry.JUNGLE_TABLE, ObjectRegistry.MANGROVE_TABLE,
-                ObjectRegistry.WARPED_TABLE, ObjectRegistry.CRIMSON_TABLE
+                ObjectRegistry.WARPED_TABLE, ObjectRegistry.CRIMSON_TABLE, ObjectRegistry.TOMATO_CROP, ObjectRegistry.BROCCOLI_CROP,
+                ObjectRegistry.STRAWBERRY_CROP
 
         );
 
