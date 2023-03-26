@@ -4,7 +4,7 @@ import net.minecraft.item.FoodComponent;
 
 public class CandlelightFoods {
     //TIER 1
-    public static final FoodComponent TOMATO_SOUP = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
+    public static final FoodComponent TOMATO_SOUP = (new FoodComponent.Builder()).hunger(6).saturationModifier(0.6F).build();
     public static final FoodComponent COOKED_BEEF = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
     public static final FoodComponent VINEGAR = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
     public static final FoodComponent BROCCOLI_BEEF = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();

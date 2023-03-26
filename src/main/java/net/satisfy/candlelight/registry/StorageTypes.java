@@ -42,6 +42,23 @@ public class StorageTypes implements VineryApi {
         blocks.add(ObjectRegistry.TABLE_SET);
         blocks.add(ObjectRegistry.TRAY);
         blocks.add(ObjectRegistry.ACACIA_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.ACACIA_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.OAK_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.OAK_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.DARK_OAK_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.DARK_OAK_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.SPRUCE_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.SPRUCE_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.BIRCH_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.BIRCH_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.MANGROVE_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.MANGROVE_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.JUNGLE_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.JUNGLE_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.WARPED_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.WARPED_WINE_RACK_SMALL);
+        blocks.add(ObjectRegistry.CRIMSON_WINE_RACK_BIG);
+        blocks.add(ObjectRegistry.CRIMSON_WINE_RACK_SMALL);
     }
 
     @Override
