@@ -2,6 +2,7 @@
 	"credit": "Made by Satisfy",
 	"parent": "block/block",
 	"textures": {
+		"1": "candlelight:block/tomato_mozzarella",
 		"particle": "candlelight:block/bag_side",
 		"texture": "candlelight:block/bag_side"
 	},
@@ -16,6 +17,19 @@
 				"south": {"uv": [8, 15, 16, 16], "texture": "#texture"},
 				"west": {"uv": [0, 15, 11, 16], "texture": "#texture"},
 				"up": {"uv": [2.5, 4.5, 13.5, 12.5], "rotation": 90, "texture": "#texture"},
+				"down": {"uv": [2, 5, 13, 13], "rotation": 270, "texture": "#texture"}
+			}
+		},
+		{
+			"name": "bottom",
+			"from": [4.49, 1.01, 1.99],
+			"to": [12.49, 2.51, 12.99],
+			"faces": {
+				"north": {"uv": [2, 15, 10, 16], "texture": "#texture"},
+				"east": {"uv": [5, 15, 16, 16], "texture": "#texture"},
+				"south": {"uv": [8, 15, 16, 16], "texture": "#texture"},
+				"west": {"uv": [0, 15, 11, 16], "texture": "#texture"},
+				"up": {"uv": [4, 2, 12, 13], "texture": "#1"},
 				"down": {"uv": [2, 5, 13, 13], "rotation": 270, "texture": "#texture"}
 			}
 		},
