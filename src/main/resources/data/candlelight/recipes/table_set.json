@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#W#",
+        " # "
+
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:brick"
+        },
+        "W": {
+            "item": "minecraft:white_dye"
+        }
+    },
+    "result": {
+        "item": "candlelight:table_set",
+        "count": 6
+    }
+}

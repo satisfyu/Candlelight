@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wine_rack",
+  "group": "warped_rack",
   "pattern": [
     "#_#",
     "_B_",
@@ -11,11 +11,11 @@
       "item": "minecraft:warped_planks"
     },
     "_": {
-      "item": "minecraft:warped_slabs"
-    }
+      "item": "minecraft:warped_slab"
     },
     "B": {
       "item": "minecraft:barrel"
+    }
   },
   "result": {
     "item": "candlelight:warped_cabinet"

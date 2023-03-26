@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#P"
+    ],
+    "key": {
+        "#": {
+            "item": "candlelight:letter_open"
+        },
+        "P": {
+            "item": "minecraft:pink_dye"
+        }
+    },
+    "result": {
+        "item": "candlelight:love_letter_open",
+        "count": 1
+    }
+}

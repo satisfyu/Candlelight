@@ -1,0 +1,18 @@
+{
+  "type": "candlelight:pan_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "tag": "vinery:white_wine"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:salmon_wine",
+    "count": 1
+  }
+}

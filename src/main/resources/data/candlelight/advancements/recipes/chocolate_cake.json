@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "candlelight:chocolate_cake"
+    ]
+  },
+  "criteria": {
+    "has_chocolate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:chocolate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "candlelight:chocolate_cake"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chocolate",
+      "has_the_recipe"
+    ]
+  ]
+}

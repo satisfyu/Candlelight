@@ -2,7 +2,7 @@
   "type": "vinery:wine_fermentation",
   "ingredients": [
     {
-      "item": "vinery:white_grapejuice_wine_botte"
+      "tag": "minecraft:grapejuice_white"
     },
     {
       "item": "candlelight:strawberry"

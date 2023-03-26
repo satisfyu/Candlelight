@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Candlelight Dinner",
-  "description": "An Food Themed Expansion for the 'Let's Do Wine' Mod",
+  "description": "A Food Themed Expansion for the 'Let's Do Wine' Mod focusing on cooking with Wine",
   "authors": [
     "satisfy_u, Cristelknight"
   ],
@@ -20,6 +20,10 @@
     "main": [
       "net.satisfy.candlelight.Candlelight"
     ],
+    "fabric-datagen": [
+      "net.satisfy.candlelight.datagen.DataGeneration"
+    ],
+
     "client": [
       "net.satisfy.candlelight.client.CandlelightClient"
     ],
@@ -31,7 +35,7 @@
     "candlelight_dinner.mixins.json"
   ],
   "depends": {
-    "vinery": ">=1.1.1",
+    "vinery": ">=1.2.0",
     "fabricloader": ">=0.14.11",
     "fabric-api": "*",
     "minecraft": "~1.19.2",

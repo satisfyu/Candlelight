@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "candlelight:veggie_plate"
+    ]
+  },
+  "criteria": {
+    "has_carrot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:carrot"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "candlelight:veggie_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_carrot",
+      "has_the_recipe"
+    ]
+  ]
+}

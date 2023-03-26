@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cabinet",
+  "pattern": [
+    "   ",
+    "###",
+    "#B#"
+  ],
+  "key": {
+    "#": {
+      "item": "candlelight:floorboard"
+    },
+    "B": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "candlelight:sideboard"
+  }
+}

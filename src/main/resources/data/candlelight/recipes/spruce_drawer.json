@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wine_rack",
+  "group": "spruce_rack",
   "pattern": [
     "# #",
     " B ",
@@ -10,7 +10,7 @@
     "#": {
       "item": "minecraft:spruce_planks"
     },
-    "_": {
+    "B": {
       "item": "minecraft:barrel"
     }
   },

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wine_rack",
+  "group": "oak_rack",
   "pattern": [
     "#_#",
     "_B_",
@@ -11,11 +11,11 @@
       "item": "minecraft:oak_planks"
     },
     "_": {
-      "item": "minecraft:oak_slabs"
-    }
+      "item": "minecraft:oak_slab"
   },
   "B": {
     "item": "minecraft:barrel"
+  }
   },
   "result": {
     "item": "candlelight:oak_cabinet"

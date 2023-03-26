@@ -1,14 +1,32 @@
 package net.satisfy.candlelight.block;
 
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ChestBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.satisfy.candlelight.block.entity.SideBoardBlockEntity;
 import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SideBoardBlock extends ChestBlock {
+
+    public static final Map<Direction, VoxelShape> SHAPES = Util.make(new HashMap<>(), map -> {
+        map.put(Direction.NORTH, Block.createCuboidShape(0,0,4, 16, 16, 16));
+        map.put(Direction.SOUTH, Block.createCuboidShape(0,0,0, 16, 16, 12));
+        map.put(Direction.WEST, Block.createCuboidShape(4,0,0, 16, 16, 16));
+        map.put(Direction.EAST, Block.createCuboidShape(0,0,0, 12, 16, 16));
+
+    });
+
     public SideBoardBlock(Settings settings) {
         super(settings, () -> ModBlockEntityTypes.SIDEBOARD);
     }
@@ -21,5 +39,17 @@ public class SideBoardBlock extends ChestBlock {
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new SideBoardBlockEntity(pos, state);
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPES.get(state.get(FACING));
+    }
+
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return null;
     }
 }

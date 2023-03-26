@@ -1,0 +1,14 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "tag": "vinery:dough"
+    },
+    {
+      "item": "candlelight:butter"
+    }
+  ],
+  "item": "candlelight:croissant",
+  "count": 6,
+  "experience": 0.15
+}

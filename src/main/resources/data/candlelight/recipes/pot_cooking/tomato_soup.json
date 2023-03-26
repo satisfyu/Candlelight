@@ -5,14 +5,14 @@
       "item": "candlelight:tomato"
     },
     {
-      "item": "candlelight:tray"
+      "item": "minecraft:sugar"
     },
     {
       "tag": "vinery:wine"
     }
   ],
   "container": {
-  "item": "candlelight:tray"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:tomato_soup",

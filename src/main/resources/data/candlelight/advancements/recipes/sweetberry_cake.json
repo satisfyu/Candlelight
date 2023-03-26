@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "candlelight:sweetberry_cake"
+    ]
+  },
+  "criteria": {
+    "has_sweet_berries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:sweet_berries"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "candlelight:sweetberry_cake"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sweet_berries",
+      "has_the_recipe"
+    ]
+  ]
+}

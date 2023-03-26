@@ -11,10 +11,17 @@ import net.satisfy.candlelight.registry.*;
 import net.satisfy.candlelight.villager.memory.ModMemoryModuleType;
 import net.satisfy.candlelight.villager.poi.ModPointOfInterestTypes;
 import net.satisfy.candlelight.villager.task.ModTaskListProvider;
+import net.satisfy.candlelight.registry.ObjectRegistry;
+import net.satisfy.candlelight.registry.RecipeTypes;
+import net.satisfy.candlelight.registry.ScreenHandlerTypes;
+import net.satisfy.candlelight.registry.StorageTypes;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.vinery.Vinery;
+import satisfyu.vinery.util.tab.GUIIcon;
+import satisfyu.vinery.util.tab.Tab;
+import satisfyu.vinery.util.tab.TabbedItemGroup;
 
 public class Candlelight implements ModInitializer {
     public static final String MOD_ID = "candlelight";
@@ -143,9 +150,9 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.SPRUCE_CABINET.asItem(),
                         ObjectRegistry.SPRUCE_TABLE.asItem(),
                         ObjectRegistry.SPRUCE_CHAIR.asItem(),
-                        ObjectRegistry.BRICKS_WOOD_FIRED_OVEN.asItem(),
-                        ObjectRegistry.BRICKS_STOVE.asItem(),
-                        ObjectRegistry.BRICKS_KITCHEN_SINK.asItem(),
+                        ObjectRegistry.STONE_BRICKS_WOOD_FIRED_OVEN.asItem(),
+                        ObjectRegistry.STONE_BRICKS_STOVE.asItem(),
+                        ObjectRegistry.STONE_BRICKS_KITCHEN_SINK.asItem(),
                         ObjectRegistry.DARK_OAK_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.DARK_OAK_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.DARK_OAK_DRAWER.asItem(),
@@ -170,7 +177,9 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.JUNGLE_CABINET.asItem(),
                         ObjectRegistry.JUNGLE_TABLE.asItem(),
                         ObjectRegistry.JUNGLE_CHAIR.asItem(),
-
+                        ObjectRegistry.END_WOOD_FIRED_OVEN.asItem(),
+                        ObjectRegistry.END_STOVE.asItem(),
+                        ObjectRegistry.END_KITCHEN_SINK.asItem(),
                         ObjectRegistry.MANGROVE_WINE_RACK_BIG.asItem(),
                         ObjectRegistry.MANGROVE_WINE_RACK_SMALL.asItem(),
                         ObjectRegistry.MANGROVE_DRAWER.asItem(),
@@ -196,7 +205,10 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.WARPED_DRAWER.asItem(),
                         ObjectRegistry.WARPED_CABINET.asItem(),
                         ObjectRegistry.WARPED_CHAIR.asItem(),
-                        ObjectRegistry.WARPED_TABLE.asItem()
+                        ObjectRegistry.WARPED_TABLE.asItem(),
+                        ObjectRegistry.QUARTZ_WOOD_FIRED_OVEN.asItem(),
+                        ObjectRegistry.QUARTZ_STOVE.asItem(),
+                        ObjectRegistry.QUARTZ_KITCHEN_SINK.asItem()
 
 
                 )).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH)));
