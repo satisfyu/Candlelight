@@ -4,8 +4,6 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectUtil;
@@ -15,18 +13,16 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Map;
 
-public class CandlelightFood extends Item {
+public class EffectFood extends Item {
 
     public static final String STORED_EFFECTS_KEY = "StoredEffects";
 
-    public CandlelightFood(Settings settings) {
+    public EffectFood(Settings settings) {
         super(settings);
     }
 
@@ -50,8 +46,8 @@ public class CandlelightFood extends Item {
 
         for(int i = 0; i < nbtList.size(); ++i) {
             NbtCompound nbtCompound = nbtList.getCompound(i);
-            Identifier identifier2 = Identifier.tryParse(nbtCompound.getString("id"));
-            if (identifier2 != null && identifier2.equals(id)) {
+            int idTemp = nbtCompound.getInt("id");
+            if (idTemp == id) {
                 bl = false;
                 break;
             }
@@ -79,7 +75,7 @@ public class CandlelightFood extends Item {
     }
 
     public static List<Pair<StatusEffectInstance, Float>> getEffects(ItemStack stack) {
-        if (stack.getItem() instanceof CandlelightFood) {
+        if (stack.getItem() instanceof EffectFood) {
             return fromNbt(getEffectNbt(stack));
         }
         FoodComponent foodComponent = stack.getItem().getFoodComponent();
@@ -102,25 +98,12 @@ public class CandlelightFood extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         List<Pair<StatusEffectInstance, Float>> effects = getEffects(stack);
-        List<Pair<EntityAttribute, EntityAttributeModifier>> list3 = Lists.newArrayList();
         if (effects.isEmpty()) {
             tooltip.add(Text.translatable("effect.none").formatted(Formatting.GRAY));
         } else {
             for (Pair<StatusEffectInstance, Float> statusEffectInstance : effects) {
                 MutableText mutableText = Text.translatable(statusEffectInstance.getFirst().getTranslationKey());
                 StatusEffect statusEffect = statusEffectInstance.getFirst().getEffectType();
-                Map<EntityAttribute, EntityAttributeModifier> map = statusEffect.getAttributeModifiers();
-                if (!map.isEmpty()) {
-                    for (Map.Entry<EntityAttribute, EntityAttributeModifier> entry : map.entrySet()) {
-                        EntityAttributeModifier entityAttributeModifier = entry.getValue();
-                        EntityAttributeModifier entityAttributeModifier2 = new EntityAttributeModifier(
-                                entityAttributeModifier.getName(),
-                                statusEffect.adjustModifierAmount(statusEffectInstance.getFirst().getAmplifier(), entityAttributeModifier),
-                                entityAttributeModifier.getOperation()
-                        );
-                        list3.add(new Pair<>(entry.getKey(), entityAttributeModifier2));
-                    }
-                }
 
                 if (statusEffectInstance.getFirst().getDuration() > 20) {
                     mutableText = Text.translatable(

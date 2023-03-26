@@ -25,7 +25,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.CookingPanBlock;
 import net.satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
-import net.satisfy.candlelight.food.CandlelightFood;
+import net.satisfy.candlelight.food.EffectFood;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.ModBlockEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
@@ -168,22 +168,15 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	private ItemStack generateOutputItem(Recipe<?> recipe) {
 		ItemStack outputStack = recipe.getOutput();
 
-		DefaultedList<Ingredient> ingredients = recipe.getIngredients();
-		CandlelightFood candlelightOutputFood = outputStack.getItem() instanceof CandlelightFood cF ? cF : null;
-		if (candlelightOutputFood == null) {
+		if (!(outputStack.getItem() instanceof EffectFood)) {
 			return outputStack;
 		}
 
-		for (int i = 0; i < recipe.getIngredients().size(); i++) {
-			Ingredient ingredient = ingredients.get(i);
-
+		for (Ingredient ingredient : recipe.getIngredients()) {
 			for (int j = 0; j < 6; j++) {
 				ItemStack stack = this.getStack(j);
 				if (ingredient.test(stack)) {
-					List<Pair<StatusEffectInstance, Float>> statusEffects = CandlelightFood.getEffects(stack);
-					for (Pair<StatusEffectInstance, Float> effect : statusEffects) {
-						CandlelightFood.addEffect(outputStack, effect);
-					}
+					EffectFood.getEffects(stack).forEach(effect -> EffectFood.addEffect(outputStack, effect));
 				}
 			}
 		}

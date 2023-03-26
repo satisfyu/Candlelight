@@ -249,7 +249,7 @@ public class ObjectRegistry {
     public static final Block POTTED_ROSE = registerBlockWithoutItem("potted_rose", new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 
 
-
+    public static final Item TEST = register("test", new Test(getSettings()));
 
     private static <T extends Block> T register(String path, T block) {
         return register(path, block, true);
