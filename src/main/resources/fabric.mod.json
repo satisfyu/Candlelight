@@ -20,6 +20,10 @@
     "main": [
       "net.satisfy.candlelight.Candlelight"
     ],
+    "fabric-datagen": [
+      "net.satisfy.candlelight.datagen.DataGeneration"
+    ],
+
     "client": [
       "net.satisfy.candlelight.client.CandlelightClient"
     ],
