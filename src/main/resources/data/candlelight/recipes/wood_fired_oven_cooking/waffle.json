@@ -3,10 +3,7 @@
   "ingredients": [
     {
       "tag": "vinery:dough"
-    },
-    {
-      "item": "candlelight:butter"
-    },
+    }
     {
       "item": "minecraft:sugar"
     },

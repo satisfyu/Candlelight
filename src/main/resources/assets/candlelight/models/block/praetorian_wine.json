@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "candlelight:block/wine/praetorian",
-		"particle": "candlelight:block/wine/praetorian"
+		"0": "candlelight:block/wine/praetorian_wine",
+		"particle": "candlelight:block/wine/praetorian_wine"
 	},
 	"elements": [
 		{

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "minecraft:sweetberry"
+      "item": "minecraft:sweet_berries"
     },
     "B": {
       "item": "minecraft:sugar"

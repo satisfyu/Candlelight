@@ -2,7 +2,7 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "item": "minecraft:raw_porkchop"
+      "item": "minecraft:porkchop"
     },
     {
       "item": "minecraft:honey_bottle"

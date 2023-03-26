@@ -2,7 +2,7 @@
   "type": "candlelight:pan_cooking",
   "ingredients": [
     {
-      "item": "minecraft:raw_salmon"
+      "item": "minecraft:salmon"
     },
     {
       "tag": "vinery:white_wine"

@@ -106,7 +106,7 @@ public class ObjectRegistry {
     public static final Item BEEF_WELLINGTON = register("beef_wellington", new BigFeast(getSettings().food(CandlelightFoods.BEEF_WELLINGTON)));
     public static final Item VINEGAR = register("vinegar", new IngredientItem(getSettings()));
     public static final Block RED_WINE = registerWine("red_wine", new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_FIRE_RESISTANCE);
-    public static final Block PRAETORIAN_WINE = registerBigWine("praetorian_wine", new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_JUMP_BOOST);
+    public static final Block PRAETORIAN_WINE = registerBigWine("praetorian_wine", new WineBottleBlock(getWineSettings(), 2), VineryEffects.IMPROVED_SPEED);
     public static final Block STRAWBERRY_JAM = register("strawberry_jam", new StackableBlock(FabricBlockSettings.of(Material.GLASS).breakInstantly().nonOpaque().sounds(BlockSoundGroup.GLASS)));
     public static final Item PANCAKE = register("pancake", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
     public static final Item WAFFLE = register("waffle", new Item(getSettings().food(FoodComponents.BAKED_POTATO)));
