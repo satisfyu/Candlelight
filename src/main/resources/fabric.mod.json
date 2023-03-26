@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Candlelight Dinner",
-  "description": "An Food Themed Expansion for the 'Let's Do Wine' Mod",
+  "description": "A Food Themed Expansion for the 'Let's Do Wine' Mod focusing on cooking with Wine",
   "authors": [
     "satisfy_u, Cristelknight"
   ],
