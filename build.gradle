@@ -37,7 +37,7 @@ dependencies {
 	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${terraform_wood_api_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "daniking:vinery:${project.vinery_version}"
-	include(modImplementation ("net.moddingplayground.frame:frame-tabbed-item-groups-v0:0.2.4+0aca9b56a9"))
+	//include(modImplementation ("net.moddingplayground.frame:frame-tabbed-item-groups-v0:0.2.4+0aca9b56a9"))
 }
 
 processResources {

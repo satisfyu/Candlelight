@@ -41,6 +41,7 @@ public class StorageTypes implements VineryApi {
         blocks.add(ObjectRegistry.CAKE_STAND);
         blocks.add(ObjectRegistry.TABLE_SET);
         blocks.add(ObjectRegistry.TRAY);
+        blocks.add(ObjectRegistry.ACACIA_WINE_RACK_BIG);
     }
 
     @Override
