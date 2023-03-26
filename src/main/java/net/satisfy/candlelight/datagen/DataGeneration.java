@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 public class DataGeneration implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-        fabricDataGenerator.addProvider(LootTableGenerator::new);
-
+        fabricDataGenerator.addProvider(new LootTableGenerator(fabricDataGenerator));
     }
 }
