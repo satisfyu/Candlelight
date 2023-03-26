@@ -6,12 +6,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.FoodComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
@@ -24,20 +22,18 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryEntryList;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.CookingPanBlock;
 import net.satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
+import net.satisfy.candlelight.food.CandlelightFood;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.ModBlockEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.block.CookingPotBlock;
-import satisfyu.vinery.util.VineryTags;
 
 import java.util.List;
-import java.util.Optional;
 
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Inventory, NamedScreenHandlerFactory {
 
@@ -173,24 +169,20 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		ItemStack outputStack = recipe.getOutput();
 
 		DefaultedList<Ingredient> ingredients = recipe.getIngredients();
-		FoodComponent outputFoodComponent = outputStack.getItem().getFoodComponent();
-		if (outputFoodComponent == null) {
+		CandlelightFood candlelightOutputFood = outputStack.getItem() instanceof CandlelightFood cF ? cF : null;
+		if (candlelightOutputFood == null) {
 			return outputStack;
 		}
-		FoodComponent.Builder effectFoodComponentBuilder = new FoodComponent.Builder().hunger(outputFoodComponent.getHunger()).saturationModifier(outputFoodComponent.getSaturationModifier());
+
 		for (int i = 0; i < recipe.getIngredients().size(); i++) {
 			Ingredient ingredient = ingredients.get(i);
 
 			for (int j = 0; j < 6; j++) {
 				ItemStack stack = this.getStack(j);
 				if (ingredient.test(stack)) {
-					FoodComponent foodComponent = stack.getItem().getFoodComponent();
-					if (foodComponent != null) {
-						List<Pair<StatusEffectInstance, Float>> statusEffects = foodComponent.getStatusEffects();
-						for (Pair<StatusEffectInstance, Float> statusEffect : statusEffects) {
-							System.out.println("effect");
-							effectFoodComponentBuilder.statusEffect(statusEffect.getFirst(), statusEffect.getSecond());
-						}
+					List<Pair<StatusEffectInstance, Float>> statusEffects = CandlelightFood.getEffects(stack);
+					for (Pair<StatusEffectInstance, Float> effect : statusEffects) {
+						CandlelightFood.addEffect(outputStack, effect);
 					}
 				}
 			}

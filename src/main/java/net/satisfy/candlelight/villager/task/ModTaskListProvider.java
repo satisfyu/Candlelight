@@ -7,15 +7,13 @@ import net.minecraft.entity.ai.brain.task.FindPointOfInterestTask;
 import net.minecraft.entity.ai.brain.task.ForgetCompletedPointOfInterestTask;
 import net.minecraft.entity.ai.brain.task.Task;
 import net.minecraft.entity.passive.VillagerEntity;
+import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.villager.memory.ModMemoryModuleType;
 import net.satisfy.candlelight.villager.poi.ModPointOfInterestTypes;
-import net.satisfy.candlelight.villager.task.ShopAtVineryStandTask;
 
 import java.util.Optional;
 
 public class ModTaskListProvider {
-    public ModTaskListProvider() {
-    }
 
     public static ImmutableList<Pair<Integer, ? extends Task<? super VillagerEntity>>> createVineryStandTasks(Brain<VillagerEntity> brain, float speed) {
         return ImmutableList.of(
@@ -25,6 +23,6 @@ public class ModTaskListProvider {
     }
 
     public static void init() {
-        System.out.println("Init ModTaskListProvider"); //TODO LOGGER
+        Candlelight.LOGGER.debug("Register " + ModTaskListProvider.class);
     }
 }
