@@ -4,7 +4,7 @@
 		"1": "candlelight:block/kitchen_hardware/quartz_stove_side",
 		"3": "candlelight:block/kitchen_hardware/quartz_stove_bottom",
 		"4": "candlelight:block/kitchen_hardware/quartz_stove_on",
-		"6": "candlelight:block/kitchen_hardware/quartz_stove_top",
+		"6": "candlelight:block/kitchen_hardware/quartz_stove_top_on",
 		"particle": "candlelight:block/kitchen_hardware/quartz_stove_side"
 	},
 	"elements": [

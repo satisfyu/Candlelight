@@ -4,7 +4,7 @@
 		"1": "candlelight:block/kitchen_hardware/end_stove_side",
 		"2": "candlelight:block/kitchen_hardware/end_woodfiredoven_on",
 		"3": "candlelight:block/kitchen_hardware/end_stove_bottom",
-		"6": "candlelight:block/kitchen_hardware/end_stove_top",
+		"6": "candlelight:block/kitchen_hardware/end_stove_top_on",
 		"particle": "candlelight:block/kitchen_hardware/end_stove_side"
 	},
 	"elements": [
