@@ -45,8 +45,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ObjectRegistry.APPLE_TREE_SAPLING);
         this.addDrop(ObjectRegistry.APPLE_LEAVES, b -> leavesDrop(b, ObjectRegistry.APPLE_TREE_SAPLING, SAPLING_DROP_CHANCE));
         this.addDrop(ObjectRegistry.JEWELRY_BOX);
-        this.addDrop(ObjectRegistry.TYPEWRITER_IRON);
-        this.addDrop(ObjectRegistry.TYPEWRITER_COPPER);
+        //this.addDrop(ObjectRegistry.TYPEWRITER_IRON);
+        //this.addDrop(ObjectRegistry.TYPEWRITER_COPPER);
         this.addDrop(ObjectRegistry.OAK_WINE_RACK_BIG);
         this.addDrop(ObjectRegistry.OAK_WINE_RACK_SMALL);
         this.addDrop(ObjectRegistry.OAK_DRAWER);

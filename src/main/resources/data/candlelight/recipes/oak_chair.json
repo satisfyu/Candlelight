@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "result": {
+    "item": "candlelight:oak_chair",
+    "count": 2
+  }
+}
