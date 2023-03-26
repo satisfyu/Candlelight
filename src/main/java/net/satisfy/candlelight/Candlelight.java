@@ -1,25 +1,18 @@
 package net.satisfy.candlelight;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-
-import net.minecraft.item.Items;
-import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
-import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
-import net.moddingplayground.frame.api.util.GUIIcon;
-import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.registry.ObjectRegistry;
+import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import net.satisfy.candlelight.registry.StorageTypes;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.vinery.Vinery;
-import satisfyu.vinery.VineryIdentifier;
-
-import static net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab.Predicate.ALWAYS;
-import static net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab.Predicate.items;
+import satisfyu.vinery.util.tab.GUIIcon;
+import satisfyu.vinery.util.tab.Tab;
+import satisfyu.vinery.util.tab.TabbedItemGroup;
 
 public class Candlelight implements ModInitializer {
     public static final String MOD_ID = "candlelight";

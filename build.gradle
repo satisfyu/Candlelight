@@ -40,7 +40,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	//modImplementation "curse.maven:vinery-704465:${project.vinery_version}"
 	modImplementation "daniking:vinery:${project.vinery_version}"
-	include(modImplementation ("net.moddingplayground.frame:frame-tabbed-item-groups-v0:0.2.4+0aca9b56a9"))
+	//include(modImplementation ("net.moddingplayground.frame:frame-tabbed-item-groups-v0:0.2.4+0aca9b56a9"))
 }
 
 processResources {
