@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "end_stone_bricks_kitchen",
+  "pattern": [
+    "iCi",
+    "BBB"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:cauldron"
+    },
+    "B": {
+      "item": "minecraft:end_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "candlelight:end_kitchen_sink"
+  }
+}

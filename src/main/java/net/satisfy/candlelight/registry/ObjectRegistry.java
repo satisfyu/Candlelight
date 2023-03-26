@@ -195,9 +195,9 @@ public class ObjectRegistry {
     public static final Block SPRUCE_DRAWER = register("spruce_drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
     public static final Block SPRUCE_TABLE = register("spruce_table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block SPRUCE_CHAIR = register("spruce_chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
-    public static final Block BRICKS_WOOD_FIRED_OVEN = register("bricks_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    public static final Block BRICKS_STOVE = register("bricks_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
-    public static final Block BRICKS_KITCHEN_SINK = register("bricks_kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
+    public static final Block STONE_BRICKS_WOOD_FIRED_OVEN = register("stone_bricks_wood_fired_oven", new WoodFiredOvenBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(state -> state.get(WoodFiredOvenBlock.LIT) ? 13 : 0)));
+    public static final Block STONE_BRICKS_STOVE = register("stone_bricks_stove", new StoveBlock(FabricBlockSettings.copyOf(Blocks.BRICKS).luminance(12)));
+    public static final Block STONE_BRICKS_KITCHEN_SINK = register("stone_bricks_kitchen_sink", new KitchenSinkBlock(FabricBlockSettings.copy(Blocks.STONE).nonOpaque()));
     public static final Block DARK_OAK_WINE_RACK_BIG = register("dark_oak_wine_rack_big", new NineBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block DARK_OAK_WINE_RACK_SMALL = register("dark_oak_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block DARK_OAK_CABINET = register("dark_oak_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));

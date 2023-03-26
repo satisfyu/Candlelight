@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "mud_bricks_kitchen",
+  "pattern": [
+    "iCi",
+    "BBB"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:cauldron"
+    },
+    "B": {
+      "item": "minecraft:mud_bricks"
+    }
+  },
+  "result": {
+    "item": "candlelight:mud_kitchen_sink"
+  }
+}
