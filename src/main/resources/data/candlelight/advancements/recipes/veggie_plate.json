@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_tray": {
+    "has_carrot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:tray"
+              "minecraft:carrot"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_tray",
+      "has_carrot",
       "has_the_recipe"
     ]
   ]

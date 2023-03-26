@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "tag": "vinery:dough"
-    }
+    },
     {
       "item": "minecraft:sugar"
     },
@@ -11,12 +11,7 @@
       "item": "minecraft:egg"
     }
   ],
-  "container": {
-    "item": "candlelight:tray"
-  },
-  "result": {
-    "item": "candlelight:waffle",
-    "count": 6,
-    "experience": 0.3
-  }
+  "item": "candlelight:waffle",
+  "count": 6,
+  "experience": 0.3
 }

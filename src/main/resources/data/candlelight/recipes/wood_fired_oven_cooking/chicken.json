@@ -2,27 +2,16 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "item": "minecraft:carrot"
+      "item": "candlelight:veggie_plate"
     },
     {
       "item": "minecraft:chicken"
     },
     {
-      "item": "minecraft:beetroot"
-    },
-    {
       "tag": "vinery:white_wine"
-    },
-    {
-      "item": "candlelight:broccoli"
     }
   ],
-  "container": {
-    "item": "candlelight:tray"
-  },
-  "result": {
-    "item": "candlelight:chicken",
-    "count": 2,
-    "experience": 0.75
-  }
+  "item": "candlelight:chicken",
+  "count": 1,
+  "experience": 0.4
 }

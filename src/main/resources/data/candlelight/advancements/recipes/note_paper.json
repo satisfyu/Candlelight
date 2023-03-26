@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "candlelight:sweetberry_cake"
+      "candlelight:note_paper"
     ]
   },
   "criteria": {
-    "has_sweet_berries": {
+    "has_note_paper": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:sweet_berries"
+              "candlelight:note_paper"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "candlelight:sweetberry_cake"
+        "recipe": "candlelight:note_paper"
       }
     }
   },
   "requirements": [
     [
-      "has_sweet_berries",
+      "has_note_paper",
       "has_the_recipe"
     ]
   ]

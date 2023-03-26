@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "candlelight:sweetberry_cake"
+      "candlelight:granite_wood_fired_oven"
     ]
   },
   "criteria": {
-    "has_sweet_berries": {
+    "has_granite": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:sweet_berries"
+              "minecraft:granite"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "candlelight:sweetberry_cake"
+        "recipe": "candlelight:granite_wood_fired_oven"
       }
     }
   },
   "requirements": [
     [
-      "has_sweet_berries",
+      "has_granite",
       "has_the_recipe"
     ]
   ]

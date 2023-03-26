@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "candlelight:sweetberry_cake"
+      "candlelight:red_nether_bricks_kitchen_sink"
     ]
   },
   "criteria": {
-    "has_sweet_berries": {
+    "has_red_nether_bricks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:sweet_berries"
+              "minecraft:red_nether_bricks"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "candlelight:sweetberry_cake"
+        "recipe": "candlelight:red_nether_bricks_kitchen_sink"
       }
     }
   },
   "requirements": [
     [
-      "has_sweet_berries",
+      "has_red_nether_bricks",
       "has_the_recipe"
     ]
   ]

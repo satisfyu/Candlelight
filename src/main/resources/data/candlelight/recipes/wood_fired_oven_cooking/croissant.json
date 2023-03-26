@@ -8,12 +8,7 @@
       "item": "candlelight:butter"
     }
   ],
-  "container": {
-    "item": "candlelight:tray"
-  },
-  "result": {
-    "item": "candlelight:croissant",
-    "count": 1,
-    "experience": 0.15
-  }
+  "item": "candlelight:croissant",
+  "count": 6,
+  "experience": 0.15
 }

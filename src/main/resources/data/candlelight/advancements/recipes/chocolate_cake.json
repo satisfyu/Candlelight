@@ -6,13 +6,13 @@
     ]
   },
   "criteria": {
-    "has_sugar": {
+    "has_chocolate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:sugar"
+              "candlelight:chocolate"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_sugar",
+      "has_chocolate",
       "has_the_recipe"
     ]
   ]
