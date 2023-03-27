@@ -3,7 +3,9 @@
 	"textures": {
 		"3": "candlelight:block/dark_oak_cabinet_side",
 		"4": "candlelight:block/dark_oak_cabinet_top",
-		"5": "candlelight:block/dark_oak_cabinet_open"
+		"5": "candlelight:block/dark_oak_cabinet_open",
+		"particle": "candlelight:block/dark_oak_cabinet_open"
+
 	},
 	"elements": [
 		{

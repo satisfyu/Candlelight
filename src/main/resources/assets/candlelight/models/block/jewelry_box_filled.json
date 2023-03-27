@@ -1,7 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"4": "candlelight:block/jewelry_box"
+		"4": "candlelight:block/jewelry_box",
+		"particle": "candlelight:block/jewelry_box"
+
 	},
 	"elements": [
 		{
