@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "candlelight:apple_leaves"
+    "candlelight:apple_leaves",
+    "candlelight:wild_broccoli"
   ]
 }

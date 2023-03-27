@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "candlelight:block/strawberries_wild_jungle_stage1"
+  }
+}

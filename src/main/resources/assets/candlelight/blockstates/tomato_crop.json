@@ -9,10 +9,10 @@
                    {   "model": "candlelight:block/tomatoes_stage3_3", "weight": 1 },
                    {   "model": "candlelight:block/tomatoes_stage3_4", "weight": 1 },
                    {   "model": "candlelight:block/tomatoes_stage3_5", "weight": 1 } ],
-        "age=4": [ {   "model": "candlelight:block/tomatoes_stage3_1", "weight": 1 },
-	        	   {   "model": "candlelight:block/tomatoes_stage3_2", "weight": 1 },
-		           {   "model": "candlelight:block/tomatoes_stage3_3", "weight": 1 },
-		           {   "model": "candlelight:block/tomatoes_stage3_4", "weight": 1 },
-		           {   "model": "candlelight:block/tomatoes_stage3_5", "weight": 1 } ]
+        "age=4": [ {   "model": "candlelight:block/tomatoes_stage4_1", "weight": 4 },
+	        	   {   "model": "candlelight:block/tomatoes_stage4_2", "weight": 1 },
+		           {   "model": "candlelight:block/tomatoes_stage4_3", "weight": 1 },
+		           {   "model": "candlelight:block/tomatoes_stage4_4", "weight": 3 },
+		           {   "model": "candlelight:block/tomatoes_stage4_5", "weight": 1 } ]
   }
 }

@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": {
-      "model": "candlelight:block/strawberry_wild_taiga"
+    "age=0": {
+      "model": "candlelight:block/strawberries_wild_taiga_stage0"
+    },
+    "age=1": {
+      "model": "candlelight:block/strawberries_wild_taiga_stage1"
+    },
+    "age=2": {
+      "model": "candlelight:block/strawberries_wild_taiga_stage2"
+    },
+    "age=3": {
+      "model": "candlelight:block/strawberries_wild_taiga_stage3"
     }
   }
 }

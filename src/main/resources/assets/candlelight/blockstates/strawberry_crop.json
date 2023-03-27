@@ -14,9 +14,8 @@
                    {   "model": "candlelight:block/strawberry_stage2_3", "weight": 1 } ],
         "age=3": [
                    {   "model": "candlelight:block/strawberry_stage3_1", "weight": 1 }  , 
-                   {   "model": "candlelight:block/strawberry_stage3_2", "weight": 1 }  ,
-                   {   "model": "candlelight:block/strawberry_stage3_3", "weight": 1 } ],
-        "age=4": [ 
+                   {   "model": "candlelight:block/strawberry_stage3_2", "weight": 1 } ],
+        "age=4": [
                    {   "model": "candlelight:block/strawberry_stage4_1", "weight": 1 }  ,
 	        	   {   "model": "candlelight:block/strawberry_stage4_2", "weight": 1 }  ,
 		           {   "model": "candlelight:block/strawberry_stage4_3", "weight": 1 } ]
