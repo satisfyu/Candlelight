@@ -28,7 +28,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.entity.CookingPanEntity;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.registry.VinerySoundEvents;
 import satisfyu.vinery.util.VineryUtils;
@@ -110,7 +110,7 @@ public class CookingPanBlock extends BlockWithEntity {
             double e = pos.getY() + 0.3;
             double f = (double)pos.getZ() + 1.0;
             if (random.nextDouble() < 0.3) {
-                world.playSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_POT_JUICE_BOILING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+                world.playSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_PAN_FRYING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
             Direction direction = state.get(FACING);
             Direction.Axis axis = direction.getAxis();
@@ -124,9 +124,6 @@ public class CookingPanBlock extends BlockWithEntity {
             double d = (double)pos.getX() + 0.5;
             double e = pos.getY() + 0.3;
             double f = (double)pos.getZ() + 1.0;
-            if (random.nextDouble() < 0.3) {
-                world.playSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_POT_JUICE_BOILING, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
-            }
             Direction direction = state.get(FACING);
             Direction.Axis axis = direction.getAxis();
             double h = random.nextDouble() * 0.6 - 0.3;
@@ -150,7 +147,7 @@ public class CookingPanBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntityTypes.COOKING_PAN_BLOCK_ENTITY, (world1, pos, state1, be) -> be.tick(world1, pos, state1, be));
+        return checkType(type, CandlelightEntityTypes.COOKING_PAN_BLOCK_ENTITY, (world1, pos, state1, be) -> be.tick(world1, pos, state1, be));
     }
 
     @Nullable

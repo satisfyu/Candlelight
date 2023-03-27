@@ -11,7 +11,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.entity.SideBoardBlockEntity;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class SideBoardBlock extends ChestBlock {
     });
 
     public SideBoardBlock(Settings settings) {
-        super(settings, () -> ModBlockEntityTypes.SIDEBOARD);
+        super(settings, () -> CandlelightEntityTypes.SIDEBOARD);
     }
 
     @Override
