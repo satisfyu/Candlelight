@@ -128,7 +128,6 @@ public class ObjectRegistry {
     public static final Block CHOCOLATE_CAKE = register("chocolate_cake", new CakeBlock((FabricBlockSettings.copyOf(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
     public static final Item CHOCOLATE_MILKSHAKE = register("chocolate_milkshake", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final Item CHOCOLATE_ICECREAM = register("chocolate_icecream", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
-    public static final Item CAKE_SLICES = register("cake_slices", new Meal(getSettings().food(CandlelightFoods.CAKE_SLICES)));
     public static final Block TABLE_SIGN = register("table_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), false));
     public static final Block STREET_SIGN = register("street_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), true));
     public static final Block PAINTING = register("painting", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
