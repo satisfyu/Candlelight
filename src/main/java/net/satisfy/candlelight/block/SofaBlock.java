@@ -7,6 +7,8 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Util;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -15,46 +17,40 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import satisfyu.vinery.block.entity.chair.ChairUtil;
+import satisfyu.vinery.util.GeneralUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class SofaBlock extends LineConnectingBlock {
 
-    public static final VoxelShape[] TOP_SHAPE;
-    public static final VoxelShape[] BOTTOM_SINGLE_SHAPE;
-    public static final VoxelShape[] BOTTOM_MULTI_SHAPE;
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = VoxelShapes.empty();
+        shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0.1875, 0, 1, 0.4375, 1));
+        shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.0625, 0.4375, 0.875, 1, 1, 1));
+        shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0, 0.1875, 0, 0.0625, 0.4375, 1));
+        shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0, 0.4375, 0.875, 0.0625, 1, 1));
+        return shape;
+    };
+
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Type.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE.get(state.get(FACING));
+    }
+
 
     public SofaBlock(AbstractBlock.Settings settings) {
         super(settings);
     }
 
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        boolean isX = state.get(FACING).getAxis() == Direction.Axis.X;
-        Direction direction = state.get(FACING);
 
-        if (state.get(TYPE) == LineConnectingType.NONE) {
-            return VoxelShapes.union(isX ? TOP_SHAPE[0] : TOP_SHAPE[1], isX ? BOTTOM_SINGLE_SHAPE[0] : BOTTOM_SINGLE_SHAPE[1]);
-        }
-        if (state.get(TYPE) == LineConnectingType.MIDDLE) {
-            return isX ? TOP_SHAPE[0] : TOP_SHAPE[1];
-        }
-
-        int i = 0;
-        LineConnectingType type = state.get(TYPE);
-
-        if((direction == Direction.NORTH && type == LineConnectingType.LEFT) || (direction == Direction.SOUTH && type == LineConnectingType.RIGHT)){
-            i = 0;
-        }
-        else if((direction == Direction.NORTH && type == LineConnectingType.RIGHT) || (direction == Direction.SOUTH && type == LineConnectingType.LEFT)){
-            i = 1;
-        }
-        else if((direction == Direction.EAST && type == LineConnectingType.RIGHT) || (direction == Direction.WEST && type == LineConnectingType.LEFT)){
-            i = 2;
-        }
-        else if((direction == Direction.EAST && type == LineConnectingType.LEFT) || (direction == Direction.WEST && type == LineConnectingType.RIGHT)){
-            i = 3;
-        }
-        return VoxelShapes.union(isX ? TOP_SHAPE[0] : TOP_SHAPE[1], BOTTOM_MULTI_SHAPE[i]);
-    }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
@@ -64,22 +60,5 @@ public class SofaBlock extends LineConnectingBlock {
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         ChairUtil.onStateReplaced(world, pos);
-    }
-
-    static {
-        TOP_SHAPE = new VoxelShape[]{
-                Block.createCuboidShape(2.0, 4.0, 0.0, 14.0, 8.0, 16.0), // X
-                Block.createCuboidShape(0.0, 4.0, 2.0, 16.0, 8.0, 14.0)  // Y
-        };
-        BOTTOM_SINGLE_SHAPE = new VoxelShape[]{
-                VoxelShapes.union(Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 4.0, 5.0), Block.createCuboidShape(1.0, 0.0, 11.0, 15.0, 4.0, 15.0)),// X
-                VoxelShapes.union(Block.createCuboidShape(1.0, 0.0, 1.0, 5.0, 4.0, 15.0), Block.createCuboidShape(11.0, 0.0, 1.0, 15.0, 4.0, 15.0)) // Z
-        };
-        BOTTOM_MULTI_SHAPE = new VoxelShape[]{
-                Block.createCuboidShape(1.0, 0.0, 1.0, 9.0, 4.0, 15.0), //left X
-                Block.createCuboidShape(7.0, 0.0, 1.0, 15.0, 4.0, 15.0),//left Z
-                Block.createCuboidShape(1.0, 0.0, 7.0, 15.0, 4.0, 15.0),//right X
-                Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 4.0, 9.0), //right Z
-        };
     }
 }
