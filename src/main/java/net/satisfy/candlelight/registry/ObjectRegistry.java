@@ -89,7 +89,6 @@ public class ObjectRegistry {
     public static final Item PASTA = register("pasta", new EffectFoodItem(getSettings().food(CandlelightFoods.PASTA)));
     public static final Block BOLOGNESE_BLOCK = registerBlockWithoutItem("bolognese", new EffectFoodBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 3,CandlelightFoods.BOLOGNESE));
     public static final Item BOLOGNESE = register("bolognese", new EffectFoodBlockItem(BOLOGNESE_BLOCK, getSettings().food(CandlelightFoods.BOLOGNESE), 3));
-
     public static final Item BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Item COOKED_BEEF = register("cooked_beef", new EffectFoodItem(getSettings().food(CandlelightFoods.COOKED_BEEF)));
     public static final Item BROCCOLI_BEEF = register("broccoli_beef", new EffectFoodItem(getSettings().food(CandlelightFoods.BROCCOLI_BEEF)));
@@ -155,8 +154,8 @@ public class ObjectRegistry {
     public static final Item CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_BOOTS = register("chefs_boots", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
-    public static final Block TYPEWRITER_IRON = register("typewriter_iron", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-    public static final Block TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
+    public static final Block TYPEWRITER_IRON = register("typewriter_iron", new TypeWriterBlock(FabricBlockSettings.of(Material.METAL).strength(2.0F, 3.0F).sounds(BlockSoundGroup.METAL)));
+    public static final Block TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.of(Material.METAL).strength(2.0F, 3.0F).sounds(BlockSoundGroup.METAL)));
     public static final Item NOTE_PAPER = register("note_paper", new Item(getSettings()));
     public static final Item NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WriteablePaperItem(getSettings().maxCount(1)));
     public static final Item NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenPaperItem(getSettings()));
