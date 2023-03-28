@@ -305,7 +305,7 @@ public class ObjectRegistry {
 
 
     private static Item.Settings getSettings(Consumer<Item.Settings> consumer) {
-        Item.Settings settings = new Item.Settings().group(Vinery.CREATIVE_TAB);
+        Item.Settings settings = new Item.Settings();
         consumer.accept(settings);
         return settings;
     }
