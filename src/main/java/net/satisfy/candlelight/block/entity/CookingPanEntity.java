@@ -1,11 +1,9 @@
 package net.satisfy.candlelight.block.entity;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -25,15 +23,14 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.CookingPanBlock;
 import net.satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
-import net.satisfy.candlelight.food.EffectFood;
+import net.satisfy.candlelight.item.EffectFood;
+import net.satisfy.candlelight.item.EffectFoodHelper;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.ModBlockEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.block.CookingPotBlock;
-
-import java.util.List;
 
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Inventory, NamedScreenHandlerFactory {
 
@@ -114,7 +111,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			} else if (this.getStack(OUTPUT_SLOT).isEmpty()) {
 				return true;
 			} else {
-				final ItemStack recipeOutput = generateOutputItem(recipe);;
+				final ItemStack recipeOutput = generateOutputItem(recipe);
 				final ItemStack outputSlotStack = this.getStack(OUTPUT_SLOT);
 				final int outputSlotCount = outputSlotStack.getCount();
 				if (!outputSlotStack.isItemEqualIgnoreDamage(recipeOutput)) {
@@ -176,7 +173,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			for (int j = 0; j < 6; j++) {
 				ItemStack stack = this.getStack(j);
 				if (ingredient.test(stack)) {
-					EffectFood.getEffects(stack).forEach(effect -> EffectFood.addEffect(outputStack, effect));
+					EffectFoodHelper.getEffects(stack).forEach(effect -> EffectFoodHelper.addEffect(outputStack, effect));
 				}
 			}
 		}

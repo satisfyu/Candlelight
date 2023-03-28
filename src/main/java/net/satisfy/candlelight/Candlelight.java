@@ -3,9 +3,6 @@ package net.satisfy.candlelight;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.ItemStack;
 
-import net.moddingplayground.frame.api.tabbeditemgroups.v0.Tab;
-import net.moddingplayground.frame.api.tabbeditemgroups.v0.TabbedItemGroup;
-import net.moddingplayground.frame.api.util.GUIIcon;
 import net.satisfy.candlelight.networking.CandlelightMessages;
 import net.satisfy.candlelight.registry.*;
 import net.satisfy.candlelight.villager.memory.ModMemoryModuleType;

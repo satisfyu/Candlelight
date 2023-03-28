@@ -2,5 +2,19 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "candlelight:item/bolognese"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "layer0": "item/emerald"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "layer0": "item/diamond"
+    }
+  ]
 }
