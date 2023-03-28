@@ -31,6 +31,7 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.util.CropType;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.vinery.Vinery;
 import satisfyu.vinery.block.FacingBlock;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.item.DrinkBlockBigItem;
@@ -314,7 +315,7 @@ public class ObjectRegistry {
 
 
     private static Item.Settings getSettings(Consumer<Item.Settings> consumer) {
-        Item.Settings settings = new Item.Settings();
+        Item.Settings settings = new Item.Settings().group(Vinery.CREATIVE_TAB);
         consumer.accept(settings);
         return settings;
     }
