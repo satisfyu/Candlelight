@@ -4,11 +4,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 
 public class SideBoardBlockEntity extends ChestBlockEntity {
     public SideBoardBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ModBlockEntityTypes.SIDEBOARD, blockPos, blockState);
+        super(CandlelightEntityTypes.SIDEBOARD, blockPos, blockState);
     }
 
     @Override

@@ -149,6 +149,7 @@ public class ObjectRegistry {
     public static final Block APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
     public static final Block JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final Block CHOCOLATE_BOX = register("chocolate_box", new ChocolateBoxBlock(FabricBlockSettings.copy(Blocks.CAKE)));
+    public static final Item GOLD_RING = register("gold_ring", new Item(getSettings()));
     public static final Item COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
@@ -162,13 +163,6 @@ public class ObjectRegistry {
     public static final Item LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
     public static final Item LOVE_LETTER_CLOSED = register("love_letter", new ClosedLetterItem(getSettings()));
     public static final Item LOVE_LETTER_OPEN = register("love_letter_open", new LetterItem(getSettings()));
-
-
-    public static final Item GOLD_RING = register("gold_ring", new Item(getSettings()));
-    /**
-     * Armor Item: Usable on Chest. Will give Luck +2.
-     */
-
     public static final Block OAK_WINE_RACK_BIG = register("oak_wine_rack_big", new NineBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block OAK_WINE_RACK_SMALL = register("oak_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block OAK_CABINET = register("oak_cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
@@ -253,7 +247,7 @@ public class ObjectRegistry {
     public static final Block POTTED_ROSE = registerBlockWithoutItem("potted_rose", new FlowerPotBlock(ObjectRegistry.ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
 
 
-    public static final Item TEST = register("test", new Test(getSettings()));
+
 
     private static <T extends Block> T register(String path, T block) {
         return register(path, block, true);
@@ -311,7 +305,7 @@ public class ObjectRegistry {
 
 
     private static Item.Settings getSettings(Consumer<Item.Settings> consumer) {
-        Item.Settings settings = new Item.Settings();
+        Item.Settings settings = new Item.Settings().group(Vinery.CREATIVE_TAB);
         consumer.accept(settings);
         return settings;
     }

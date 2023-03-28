@@ -16,7 +16,7 @@ import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.satisfy.candlelight.block.entity.WineStationBlockEntity;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.villager.memory.ModMemoryModuleType;
 
@@ -56,7 +56,7 @@ public class ShopAtVineryStandTask<E extends VillagerEntity> extends Task<E> {
             return false;
         }
         BlockState blockState = world.getBlockState(globalPos.getPos());
-        Optional<WineStationBlockEntity> optionalBlockEntity = world.getBlockEntity(globalPos.getPos(), ModBlockEntityTypes.WINE_STATION_BLOCK_ENTITY);
+        Optional<WineStationBlockEntity> optionalBlockEntity = world.getBlockEntity(globalPos.getPos(), CandlelightEntityTypes.WINE_STATION_BLOCK_ENTITY);
         if (optionalBlockEntity.isPresent() && !optionalBlockEntity.get().hasWine()) {
             return false;
         }
@@ -97,7 +97,7 @@ public class ShopAtVineryStandTask<E extends VillagerEntity> extends Task<E> {
                         brain.remember(MemoryModuleType.WALK_TARGET, new WalkTarget(pos.getPos(), this.speed, this.completionRange));
                     } else {
                         // Is at Shop
-                        Optional<WineStationBlockEntity> optionalBlockEntity = villagerEntity.world.getBlockEntity(pos.getPos(), ModBlockEntityTypes.WINE_STATION_BLOCK_ENTITY);
+                        Optional<WineStationBlockEntity> optionalBlockEntity = villagerEntity.world.getBlockEntity(pos.getPos(), CandlelightEntityTypes.WINE_STATION_BLOCK_ENTITY);
                         if (optionalBlockEntity.isPresent()) {
                             optionalBlockEntity.get().buyWine(villagerEntity);
                         }

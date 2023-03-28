@@ -4,7 +4,8 @@
 		"3": "candlelight:block/mangrove_cabinet_top",
 		"4": "candlelight:block/mangrove_cabinet_side",
 		"5": "candlelight:block/mangrove_cabinet_open",
-		"6": "candlelight:block/mangrove_drawer_bottom"
+		"6": "candlelight:block/mangrove_drawer_bottom",
+		"particle": "candlelight:block/mangrove_drawer_bottom"
 	},
 	"elements": [
 		{

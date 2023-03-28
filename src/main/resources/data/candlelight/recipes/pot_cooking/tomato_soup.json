@@ -12,7 +12,7 @@
     }
   ],
   "container": {
-    "item": "minecraft:bowl"
+    "item": "candlelight:tray"
   },
   "result": {
     "item": "candlelight:tomato_soup",

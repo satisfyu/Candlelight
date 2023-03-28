@@ -26,11 +26,13 @@ import net.satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
 import net.satisfy.candlelight.item.EffectFood;
 import net.satisfy.candlelight.item.EffectFoodHelper;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.block.CookingPotBlock;
+
+import java.util.List;
 
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Inventory, NamedScreenHandlerFactory {
 
@@ -47,7 +49,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	private final PropertyDelegate delegate;
 
 	public CookingPanEntity(BlockPos pos, BlockState state) {
-		super(ModBlockEntityTypes.COOKING_PAN_BLOCK_ENTITY, pos, state);
+		super(CandlelightEntityTypes.COOKING_PAN_BLOCK_ENTITY, pos, state);
 		this.delegate = new PropertyDelegate() {
 			@Override
 			public int get(int index) {

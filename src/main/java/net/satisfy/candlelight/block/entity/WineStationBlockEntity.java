@@ -28,7 +28,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.client.gui.handler.WineStationGuiHandler;
 import net.satisfy.candlelight.networking.CandlelightMessages;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.registry.ObjectRegistry;
@@ -64,7 +64,7 @@ public class WineStationBlockEntity extends BlockEntity implements BlockEntityTi
     };
 
     public WineStationBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.WINE_STATION_BLOCK_ENTITY, pos, state);
+        super(CandlelightEntityTypes.WINE_STATION_BLOCK_ENTITY, pos, state);
     }
 
     @Override

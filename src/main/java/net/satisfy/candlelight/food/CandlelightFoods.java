@@ -9,7 +9,6 @@ public class CandlelightFoods {
     public static final FoodComponent VINEGAR = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
     public static final FoodComponent BROCCOLI_BEEF = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
     public static final FoodComponent BROCCOLI_TOMATO = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
-    public static final FoodComponent CAKE_SLICES = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
     public static final FoodComponent PORK_RIBS = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
     public static final FoodComponent MUSHROOM_SOUP = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();
     public static final FoodComponent ROASTBEEF_CARROTS = (new FoodComponent.Builder()).hunger(3).saturationModifier(0.6F).build();

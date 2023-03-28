@@ -1,6 +1,9 @@
 package net.satisfy.candlelight;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemStack;
 
 import net.satisfy.candlelight.networking.CandlelightMessages;
@@ -12,10 +15,12 @@ import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import net.satisfy.candlelight.registry.StorageTypes;
+import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.vinery.Vinery;
+import satisfyu.vinery.VineryIdentifier;
 import satisfyu.vinery.util.tab.GUIIcon;
 import satisfyu.vinery.util.tab.Tab;
 import satisfyu.vinery.util.tab.TabbedItemGroup;
@@ -107,7 +112,7 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.HEARTH.asItem(),
                         ObjectRegistry.ROSE.asItem(),
                         ObjectRegistry.APPLE_TREE_SAPLING.asItem(),
-                        ObjectRegistry.APPLE_LEAVES.asItem(),
+                        ObjectRegistry.GOLD_RING.asItem(),
                         ObjectRegistry.JEWELRY_BOX.asItem(),
                         ObjectRegistry.CHOCOLATE_BOX.asItem(),
                         ObjectRegistry.COOKING_HAT.asItem(),
@@ -212,6 +217,9 @@ public class Candlelight implements ModInitializer {
         ((TabbedItemGroup) Vinery.CREATIVE_TAB).getTabs().add(tab);
         tab.addToGroup(((TabbedItemGroup) Vinery.CREATIVE_TAB));
 
+        FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(container -> {
+            ResourceManagerHelper.registerBuiltinResourcePack(new CandlelightIdentifier("apple_leaves"), container, ResourcePackActivationType.DEFAULT_ENABLED);
+        });
         ScreenHandlerTypes.init();
         ConfiguredFeatures.init();
         ModBlockEntityTypes.init();

@@ -2,7 +2,9 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"2": "candlelight:block/jungle_table_top",
-		"side": "candlelight:block/jungle_table"
+		"side": "candlelight:block/jungle_table",
+		"particle": "candlelight:block/jungle_table"
+
 	},
 	"elements": [
 		{
