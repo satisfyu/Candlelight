@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -24,20 +23,16 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryEntryList;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.CookingPanBlock;
 import net.satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.vinery.block.CookingPotBlock;
-import satisfyu.vinery.util.VineryTags;
 
 import java.util.List;
-import java.util.Optional;
 
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Inventory, NamedScreenHandlerFactory {
 
@@ -54,7 +49,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	private final PropertyDelegate delegate;
 
 	public CookingPanEntity(BlockPos pos, BlockState state) {
-		super(ModBlockEntityTypes.COOKING_PAN_BLOCK_ENTITY, pos, state);
+		super(CandlelightEntityTypes.COOKING_PAN_BLOCK_ENTITY, pos, state);
 		this.delegate = new PropertyDelegate() {
 			@Override
 			public int get(int index) {
@@ -227,8 +222,8 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		} else if (state.get(CookingPanBlock.COOKING)) {
 			world.setBlockState(pos, this.getCachedState().getBlock().getDefaultState().with(CookingPanBlock.COOKING, false).with(CookingPanBlock.LIT, true), Block.NOTIFY_ALL);
 		}
-		else if(state.get(CookingPotBlock.LIT) != isBeingBurned){
-			world.setBlockState(pos, state.with(CookingPotBlock.LIT, isBeingBurned), Block.NOTIFY_ALL);
+		else if(state.get(CookingPanBlock.LIT) != isBeingBurned){
+			world.setBlockState(pos, state.with(CookingPanBlock.LIT, isBeingBurned), Block.NOTIFY_ALL);
 		}
 	}
 

@@ -12,7 +12,7 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ModBlockEntityTypes {
+public class CandlelightEntityTypes {
 
     private static final Map<Identifier, BlockEntityType<?>> BLOCK_ENTITY_TYPES = new HashMap<>();
     public static final BlockEntityType<SideBoardBlockEntity> SIDEBOARD = create("sideboard", FabricBlockEntityTypeBuilder.create(SideBoardBlockEntity::new, ObjectRegistry.SIDEBOARD).build());

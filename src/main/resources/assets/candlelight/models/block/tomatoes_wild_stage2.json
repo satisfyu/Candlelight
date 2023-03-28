@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "candlelight:block/tomatoes_wild_stage2"
+  }
+}

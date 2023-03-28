@@ -11,6 +11,7 @@ import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
@@ -57,6 +58,10 @@ public class ConfiguredFeatures {
             net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("rose"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ObjectRegistry.ROSE.getDefaultState())), List.of(Blocks.GRASS_BLOCK), 24));
     public static final RegistryEntry<PlacedFeature> ROSE_PATCH_CHANCE = PlacedFeatures.register(CandlelightIdentifier.asString("rose_patch_chance"), ROSE_PATCH, RarityFilterPlacementModifier.of(92), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
+    public static final RegistryEntry<ConfiguredFeature<RandomPatchFeatureConfig, ?>> BROCCOLI_PATCH =
+            net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("broccoli"), Feature.RANDOM_PATCH, net.minecraft.world.gen.feature.ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ObjectRegistry.WILD_BROCCOLI.getDefaultState())), List.of(Blocks.GRASS_BLOCK), 24));
+    public static final RegistryEntry<PlacedFeature> BROCCOLI_PATCH_CHANCE = PlacedFeatures.register(CandlelightIdentifier.asString("broccoli_patch_chance"), BROCCOLI_PATCH, RarityFilterPlacementModifier.of(92), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+
     public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> APPLE_TREE = net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("apple_tree"), Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.OAK_LOG), new LargeOakTrunkPlacer(4, 14, 2), appleLeaveProvider(), new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 50), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of()).forceDirt().build());
     public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> APPLE_TREE_BEE = net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("apple_tree_bee"), Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.OAK_LOG), new LargeOakTrunkPlacer(4, 14, 2), appleLeaveProvider(), new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 50), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f))).forceDirt().build());
     public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> APPLE_TREE_VARIANT = net.minecraft.world.gen.feature.ConfiguredFeatures.register(CandlelightIdentifier.asString("apple_tree_variant"), Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(Blocks.OAK_LOG), new LargeOakTrunkPlacer(4, 14, 2), appleLeaveProvider(), new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 50), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of()).forceDirt().build());
@@ -76,10 +81,12 @@ public class ConfiguredFeatures {
         BiomeModification world = BiomeModifications.create(new VineryIdentifier("world_features"));
         Predicate<BiomeSelectionContext> taigaBiomes = BiomeSelectors.includeByKey(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.TAIGA, BiomeKeys.DARK_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
         Predicate<BiomeSelectionContext> jungleBiomes = BiomeSelectors.includeByKey(BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE);
-        Predicate<BiomeSelectionContext> dryBiomes = BiomeSelectors.includeByKey(BiomeKeys.RIVER, BiomeKeys.SWAMP, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.BEACH, BiomeKeys.WOODED_BADLANDS, BiomeKeys.SUNFLOWER_PLAINS);
+        Predicate<BiomeSelectionContext> dryBiomes = BiomeSelectors.includeByKey(BiomeKeys.SAVANNA, BiomeKeys.RIVER, BiomeKeys.SWAMP, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.BEACH, BiomeKeys.WOODED_BADLANDS, BiomeKeys.SUNFLOWER_PLAINS, BiomeKeys.PLAINS);
         Predicate<BiomeSelectionContext> coldBiomes = BiomeSelectors.includeByKey(BiomeKeys.SNOWY_TAIGA, BiomeKeys.SNOWY_BEACH, BiomeKeys.SNOWY_PLAINS);
+        Predicate<BiomeSelectionContext> plainsBiomes = BiomeSelectors.includeByKey(BiomeKeys.FOREST, BiomeKeys.PLAINS, BiomeKeys.SWAMP, BiomeKeys.BIRCH_FOREST, BiomeKeys.MEADOW, BiomeKeys.SUNFLOWER_PLAINS, BiomeKeys.RIVER);
 
-        world.add(ModificationPhase.ADDITIONS, dryBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, ROSE_PATCH_CHANCE.value()));
+        world.add(ModificationPhase.ADDITIONS, plainsBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, BROCCOLI_PATCH_CHANCE.value()));
+        world.add(ModificationPhase.ADDITIONS, plainsBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, ROSE_PATCH_CHANCE.value()));
         world.add(ModificationPhase.ADDITIONS, taigaBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, STRAWBERRY_WILD_TAIGA_PATCH_CHANCE.value()));
         world.add(ModificationPhase.ADDITIONS, jungleBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, STRAWBERRY_WILD_JUNGLE_PATCH_CHANCE.value()));
         world.add(ModificationPhase.ADDITIONS, dryBiomes, ctx -> ctx.getGenerationSettings().addBuiltInFeature(GenerationStep.Feature.VEGETAL_DECORATION, TOMATOES_WILD_PATCH_CHANCE.value()));

@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": {
-      "model": "candlelight:block/tomatoes_wild"
+    "age=0": {
+      "model": "candlelight:block/tomatoes_wild_stage0"
+    },
+    "age=1": {
+      "model": "candlelight:block/tomatoes_wild_stage1"
+    },
+    "age=2": {
+      "model": "candlelight:block/tomatoes_wild_stage2"
+    },
+    "age=3": {
+      "model": "candlelight:block/tomatoes_wild_stage3"
     }
   }
 }

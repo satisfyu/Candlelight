@@ -58,11 +58,11 @@
     },
     "facing=south,type=right": {
       "model": "candlelight:block/sofa_side_left",
-      "y": 270
+      "y": 180
     },
     "facing=west,type=right": {
       "model": "candlelight:block/sofa_side_left",
-      "y": 180
+      "y": 270
     }
   }
 }

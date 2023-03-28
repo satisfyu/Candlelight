@@ -11,7 +11,7 @@ import net.satisfy.candlelight.client.gui.LetterGui;
 import net.satisfy.candlelight.client.gui.WineStationGui;
 import net.satisfy.candlelight.client.model.CookingHatModel;
 import net.satisfy.candlelight.networking.CandlelightMessages;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import net.satisfy.candlelight.render.WineStationBlockEntityRenderer;
@@ -28,7 +28,7 @@ public class CandlelightClient implements ClientModInitializer {
                 ObjectRegistry.JUNGLE_CHAIR, ObjectRegistry.OAK_TABLE, ObjectRegistry.ACACIA_TABLE, ObjectRegistry.DARK_OAK_TABLE,
                 ObjectRegistry.BIRCH_TABLE, ObjectRegistry.SPRUCE_TABLE, ObjectRegistry.JUNGLE_TABLE, ObjectRegistry.MANGROVE_TABLE,
                 ObjectRegistry.WARPED_TABLE, ObjectRegistry.CRIMSON_TABLE, ObjectRegistry.TOMATO_CROP, ObjectRegistry.BROCCOLI_CROP,
-                ObjectRegistry.STRAWBERRY_CROP
+                ObjectRegistry.STRAWBERRY_CROP, ObjectRegistry.WILD_BROCCOLI
 
         );
 
@@ -42,7 +42,7 @@ public class CandlelightClient implements ClientModInitializer {
         HandledScreens.register(ScreenHandlerTypes.WINE_STATION_SCREEN_HANDLER, WineStationGui::new);
 
 
-        BlockEntityRendererRegistry.register(ModBlockEntityTypes.WINE_STATION_BLOCK_ENTITY, WineStationBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(CandlelightEntityTypes.WINE_STATION_BLOCK_ENTITY, WineStationBlockEntityRenderer::new);
     }
 
 

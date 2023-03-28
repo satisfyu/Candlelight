@@ -1,7 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:item/hearth"
+		"1": "candlelight:item/hearth",
+		"particle": "candlelight:item/hearth"
+
 	},
 	"elements": [
 		{
