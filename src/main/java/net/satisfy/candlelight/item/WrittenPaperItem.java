@@ -1,7 +1,6 @@
 package net.satisfy.candlelight.item;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.ingame.BookEditScreen;
 import net.minecraft.client.gui.screen.ingame.BookScreen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,6 +14,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.StringHelper;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.satisfy.candlelight.client.ClientUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class WrittenPaperItem extends Item {
         ItemStack itemStack = user.getStackInHand(hand);
         if(world.isClient())
         {
-            MinecraftClient.getInstance().setScreen(new BookScreen(new BookScreen.WrittenBookContents(itemStack)));
+            ClientUtil.setBookScreen(itemStack);
         }
         else
         {

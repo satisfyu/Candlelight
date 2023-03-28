@@ -19,6 +19,7 @@ import java.util.stream.Stream;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.SharedConstants;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextHandler;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
@@ -658,6 +659,8 @@ public class NoteEditScreen extends Screen {
         int i = Arrays.binarySearch(lineStarts, position);
         return i < 0 ? -(i + 2) : i;
     }
+
+
 
     private Rect2i getLineSelectionRectangle(String string, TextHandler handler, int selectionStart, int selectionEnd, int lineY, int lineStart) {
         String string2 = string.substring(lineStart, selectionStart);
