@@ -222,7 +222,7 @@ public class Candlelight implements ModInitializer {
         });
         ScreenHandlerTypes.init();
         ConfiguredFeatures.init();
-        ModBlockEntityTypes.init();
+        CandlelightEntityTypes.init();
         ModTaskListProvider.init();
         ModMemoryModuleType.init();
         ModPointOfInterestTypes.init();

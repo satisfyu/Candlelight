@@ -9,7 +9,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.util.math.BlockPos;
 import net.satisfy.candlelight.item.EffectFoodHelper;
-import net.satisfy.candlelight.registry.ModBlockEntityTypes;
+import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class EffectFoodBlockEntity extends BlockEntity  {
 
 
 	public EffectFoodBlockEntity(BlockPos pos, BlockState state) {
-		super(ModBlockEntityTypes.COOKING_PAN_BLOCK_ENTITY, pos, state);
+		super(CandlelightEntityTypes.COOKING_PAN_BLOCK_ENTITY, pos, state);
 	}
 
 	public void addEffects(List<Pair<StatusEffectInstance, Float>> effects) {
