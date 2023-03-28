@@ -1,0 +1,77 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "candlelight:table_set"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:alternative",
+          "terms": [
+            {
+              "block": "candlelight:table_set",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "plate": "glass"
+              }
+            },
+            {
+              "block": "candlelight:table_set",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "plate": "all"
+              }
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "candlelight:glass"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:alternative",
+          "terms": [
+            {
+              "block": "candlelight:table_set",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "plate": "napkin"
+              }
+            },
+            {
+              "block": "candlelight:table_set",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "plate": "all"
+              }
+            }
+          ]
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "candlelight:napkin"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

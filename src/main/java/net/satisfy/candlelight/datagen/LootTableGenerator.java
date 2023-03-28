@@ -2,6 +2,14 @@ package net.satisfy.candlelight.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.block.Block;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.AlternativeLootCondition;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.predicate.StatePredicate;
+import net.satisfy.candlelight.block.TableSetBlock;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 
 
@@ -12,6 +20,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
     protected LootTableGenerator(FabricDataGenerator dataGenerator) {
         super(dataGenerator);
     }
+
 
     @Override
     protected void generateBlockLootTables() {
@@ -32,7 +41,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ObjectRegistry.COOKING_POT);
         this.addDrop(ObjectRegistry.COOKING_PAN);
         this.addDrop(ObjectRegistry.TRAY);
-        this.addDrop(ObjectRegistry.TABLE_SET);
+        this.addDrop(ObjectRegistry.TABLE_SET, LootTableGenerator::tableSetDrops);
         this.addDrop(ObjectRegistry.STRAWBERRY_JAM);
         this.addDrop(ObjectRegistry.RED_WINE);
         this.addDrop(ObjectRegistry.PRAETORIAN_WINE);
@@ -128,5 +137,19 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ObjectRegistry.QUARTZ_WOOD_FIRED_OVEN);
         this.addDrop(ObjectRegistry.QUARTZ_STOVE);
         this.addDrop(ObjectRegistry.QUARTZ_KITCHEN_SINK);
+    }
+
+    public static LootTable.Builder tableSetDrops(Block block) {
+        BlockStatePropertyLootCondition.Builder all = BlockStatePropertyLootCondition.builder(ObjectRegistry.TABLE_SET).properties(StatePredicate.Builder.create().exactMatch(TableSetBlock.PLATE_TYPE, TableSetBlock.PlateType.ALL));
+        AlternativeLootCondition.Builder glass = BlockStatePropertyLootCondition.builder(ObjectRegistry.TABLE_SET).properties(StatePredicate.Builder.create().exactMatch(TableSetBlock.PLATE_TYPE, TableSetBlock.PlateType.GLASS)).or(all);
+        AlternativeLootCondition.Builder napkin = BlockStatePropertyLootCondition.builder(ObjectRegistry.TABLE_SET).properties(StatePredicate.Builder.create().exactMatch(TableSetBlock.PLATE_TYPE, TableSetBlock.PlateType.NAPKIN)).or(all);
+
+        return LootTable.builder().pool(LootPool.builder().with(
+                ItemEntry.builder(ObjectRegistry.TABLE_SET)
+        )).pool(LootPool.builder().with(
+                ItemEntry.builder(ObjectRegistry.GLASS)
+        ).conditionally(glass)).pool(LootPool.builder().with(
+                ItemEntry.builder(ObjectRegistry.NAPKIN)
+        ).conditionally(napkin));
     }
 }

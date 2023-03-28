@@ -18,10 +18,6 @@ repositories {
 		}
 	}
 	maven {
-		name = "Modding Playground"
-		url  = "https://raw.githubusercontent.com/moddingplayground/maven/main/"
-	}
-	maven {
 		name "terraform wood api, trinkets"
 		url "https://maven.terraformersmc.com"
 	}
@@ -36,7 +32,8 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${terraform_wood_api_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "daniking:vinery:${project.vinery_version}"
+	modImplementation "satisfy:vinery:${project.vinery_version}"
+	//include(modImplementation ("net.moddingplayground.frame:frame-tabbed-item-groups-v0:0.2.4+0aca9b56a9"))
 }
 
 processResources {
@@ -46,6 +43,7 @@ processResources {
 		expand "version": project.version
 	}
 }
+
 
 
 def dataOutput = 'src/main/generated'

@@ -1,4 +1,4 @@
-// 1.19.2	2023-03-28T14:23:11.7703045	Block Loot Tables
+// 1.19.2	2023-03-28T19:11:47.8150885	Block Loot Tables
 59eb2f3a263e72c5c9fdbe7386e2c00a6028a31a data\candlelight\loot_tables\blocks\acacia_chair.json
 daf415705c9888e4c304feb7a0db7a14de119e94 data\candlelight\loot_tables\blocks\jungle_wine_rack_small.json
 af8bfbbaa159cf8f7a41fed8ba0b1ad8a3e7923a data\candlelight\loot_tables\blocks\jungle_wine_rack_big.json
@@ -29,7 +29,7 @@ dda81367d6facaa1fcf34b339c004807d3765e87 data\candlelight\loot_tables\blocks\dee
 1f92366386e7560c54224edc08d39c3ea9d0a02f data\candlelight\loot_tables\blocks\dark_oak_cabinet.json
 d215e5f41f4797c0ed8d3fe98ee3aede1f32b79d data\candlelight\loot_tables\blocks\wine_station.json
 3b3cbed668c5138e097ac5016b591cc8846bdfd2 data\candlelight\loot_tables\blocks\red_nether_bricks_kitchen_sink.json
-d3186951cc3f4ce03c3a534a09555fa2fda1004a data\candlelight\loot_tables\blocks\table_set.json
+7ab2ddfdb4101514a44983e14f5673d0804b7fef data\candlelight\loot_tables\blocks\table_set.json
 8f54e85d209f5c45f8d2b7db0767bc4d496cfe1a data\candlelight\loot_tables\blocks\praetorian_wine.json
 85c3588ffc00dbd0069295ad5c022dd5a142e867 data\candlelight\loot_tables\blocks\mangrove_wine_rack_small.json
 5d4e71db3b66275a70fda242ffbb5f55364ab567 data\candlelight\loot_tables\blocks\cooking_pot.json
@@ -40,6 +40,7 @@ d3186951cc3f4ce03c3a534a09555fa2fda1004a data\candlelight\loot_tables\blocks\tab
 cd083d62779bcc7659bf60cd17be78de6c47c902 data\candlelight\loot_tables\blocks\tray.json
 c445c86995f9fc3e287d57c536eb54e239e01f46 data\candlelight\loot_tables\blocks\jewelry_box.json
 5adfa5ae5f65bdc6ff2c387449a0290af728764f data\candlelight\loot_tables\blocks\quartz_wood_fired_oven.json
+d9c68aa6ab74cca0a3486b9f3b804d965ab65111 data\candlelight\loot_tables\blocks\typewriter_copper.json
 028a1a868c2d72c04ba9ef8c0caa0a09f6df1d3d data\candlelight\loot_tables\blocks\sideboard.json
 d35b50b38480f29b2cd92b5b4ff580c42836aa60 data\candlelight\loot_tables\blocks\red_nether_bricks_wood_fired_oven.json
 f86b4b6563cbb58793e7d1258c3703e0de6ed41b data\candlelight\loot_tables\blocks\jungle_cabinet.json
@@ -97,6 +98,7 @@ fdc1b5357c635a369f1d0bab3d880372cef64e8a data\candlelight\loot_tables\blocks\gra
 d5b3d8bde4b202420497fbd88952cfbc5144198b data\candlelight\loot_tables\blocks\red_wine.json
 11f0a67e54bd4af243f9808e4e7b8c7779e893f6 data\candlelight\loot_tables\blocks\warped_wine_rack_small.json
 c0f75c40a200da917a95eb5ce0f2e768c8bd48a0 data\candlelight\loot_tables\blocks\hearth.json
+8a3ebd3a81bd3cf1bf0f26e7211b3aff7d508455 data\candlelight\loot_tables\blocks\typewriter_iron.json
 72e1d72bd19f860dee43371ad54d8dc9e93ab1a8 data\candlelight\loot_tables\blocks\spruce_table.json
 525d6a7c86c57e1f62c335fd813c5dc848e32553 data\candlelight\loot_tables\blocks\spruce_chair.json
 c19dcf3c22e546a0fb89f08edec1b837aca4e227 data\candlelight\loot_tables\blocks\mangrove_drawer.json
