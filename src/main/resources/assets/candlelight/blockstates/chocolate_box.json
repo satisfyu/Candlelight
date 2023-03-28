@@ -1,107 +1,107 @@
 {
   "variants": {
-    "bites=6,facing=north": {
+    "cuts=6,facing=north": {
       "model": "candlelight:block/chocolate_box_0"
     },
-    "bites=5,facing=north": {
+    "cuts=5,facing=north": {
       "model": "candlelight:block/chocolate_box_1"
     },
-    "bites=4,facing=north": {
+    "cuts=4,facing=north": {
       "model": "candlelight:block/chocolate_box_2"
     },
-    "bites=3,facing=north": {
+    "cuts=3,facing=north": {
       "model": "candlelight:block/chocolate_box_3"
     },
-    "bites=2,facing=north": {
+    "cuts=2,facing=north": {
       "model": "candlelight:block/chocolate_box_4"
     },
-    "bites=1,facing=north": {
+    "cuts=1,facing=north": {
       "model": "candlelight:block/chocolate_box_5"
     },
-    "bites=0,facing=north": {
+    "cuts=0,facing=north": {
       "model": "candlelight:block/chocolate_box_6"
     },
-    "bites=6,facing=east": {
+    "cuts=6,facing=east": {
       "model": "candlelight:block/chocolate_box_0",
       "y": 90
     },
-    "bites=5,facing=east": {
+    "cuts=5,facing=east": {
       "model": "candlelight:block/chocolate_box_1",
       "y": 90
     },
-    "bites=4,facing=east": {
+    "cuts=4,facing=east": {
       "model": "candlelight:block/chocolate_box_2",
       "y": 90
     },
-    "bites=3,facing=east": {
+    "cuts=3,facing=east": {
       "model": "candlelight:block/chocolate_box_3",
       "y": 90
     },
-    "bites=2,facing=east": {
+    "cuts=2,facing=east": {
       "model": "candlelight:block/chocolate_box_4",
       "y": 90
     },
-    "bites=1,facing=east": {
+    "cuts=1,facing=east": {
       "model": "candlelight:block/chocolate_box_5",
       "y": 90
     },
-    "bites=0,facing=east": {
+    "cuts=0,facing=east": {
       "model": "candlelight:block/chocolate_box_6",
       "y": 90
     },
-    "bites=6,facing=south": {
+    "cuts=6,facing=south": {
       "model": "candlelight:block/chocolate_box_0",
       "y": 180
     },
-    "bites=5,facing=south": {
+    "cuts=5,facing=south": {
       "model": "candlelight:block/chocolate_box_1",
       "y": 180
     },
-    "bites=4,facing=south": {
+    "cuts=4,facing=south": {
       "model": "candlelight:block/chocolate_box_2",
       "y": 180
     },
-    "bites=3,facing=south": {
+    "cuts=3,facing=south": {
       "model": "candlelight:block/chocolate_box_3",
       "y": 180
     },
-    "bites=2,facing=south": {
+    "cuts=2,facing=south": {
       "model": "candlelight:block/chocolate_box_4",
       "y": 180
     },
-    "bites=1,facing=south": {
+    "cuts=1,facing=south": {
       "model": "candlelight:block/chocolate_box_5",
       "y": 180
     },
-    "bites=0,facing=south": {
+    "cuts=0,facing=south": {
       "model": "candlelight:block/chocolate_box_6",
       "y": 180
     },
-    "bites=6,facing=west": {
+    "cuts=6,facing=west": {
       "model": "candlelight:block/chocolate_box_0",
       "y": 270
     },
-    "bites=5,facing=west": {
+    "cuts=5,facing=west": {
       "model": "candlelight:block/chocolate_box_1",
       "y": 270
     },
-    "bites=4,facing=west": {
+    "cuts=4,facing=west": {
       "model": "candlelight:block/chocolate_box_2",
       "y": 270
     },
-    "bites=3,facing=west": {
+    "cuts=3,facing=west": {
       "model": "candlelight:block/chocolate_box_3",
       "y": 270
     },
-    "bites=2,facing=west": {
+    "cuts=2,facing=west": {
       "model": "candlelight:block/chocolate_box_4",
       "y": 270
     },
-    "bites=1,facing=west": {
+    "cuts=1,facing=west": {
       "model": "candlelight:block/chocolate_box_5",
       "y": 270
     },
-    "bites=0,facing=west": {
+    "cuts=0,facing=west": {
       "model": "candlelight:block/chocolate_box_6",
       "y": 270
     }
