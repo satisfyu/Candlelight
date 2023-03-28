@@ -6,9 +6,12 @@
     },
     {
       "item": "candlelight:butter"
+    },
+    {
+      "item": "minecraft:sugar"
     }
   ],
   "item": "candlelight:croissant",
-  "count": 6,
+  "count": 8,
   "experience": 0.15
 }

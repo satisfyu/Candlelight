@@ -6,9 +6,12 @@
     },
     {
       "tag": "vinery:white_wine"
+    },
+    {
+      "item": "candlelight:butter"
     }
   ],
-  "item": "candlelight:pork_ribs",
+  "item": "candlelight:salmon_wine",
   "count": 2,
   "experience": 0.25
 }

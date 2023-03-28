@@ -3,7 +3,9 @@ package net.satisfy.candlelight.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.satisfy.candlelight.client.gui.CookingPanGui;
@@ -28,11 +30,12 @@ public class CandlelightClient implements ClientModInitializer {
                 ObjectRegistry.JUNGLE_CHAIR, ObjectRegistry.OAK_TABLE, ObjectRegistry.ACACIA_TABLE, ObjectRegistry.DARK_OAK_TABLE,
                 ObjectRegistry.BIRCH_TABLE, ObjectRegistry.SPRUCE_TABLE, ObjectRegistry.JUNGLE_TABLE, ObjectRegistry.MANGROVE_TABLE,
                 ObjectRegistry.WARPED_TABLE, ObjectRegistry.CRIMSON_TABLE, ObjectRegistry.TOMATO_CROP, ObjectRegistry.BROCCOLI_CROP,
-                ObjectRegistry.STRAWBERRY_CROP, ObjectRegistry.WILD_BROCCOLI
+                ObjectRegistry.STRAWBERRY_CROP, ObjectRegistry.WILD_BROCCOLI, ObjectRegistry.APPLE_LEAVES
 
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), ObjectRegistry.TABLE_SET);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> BiomeColors.getFoliageColor(world, pos), ObjectRegistry.APPLE_LEAVES);
 
         registerModels();
         CandlelightMessages.registerS2CPackets();

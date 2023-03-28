@@ -2,6 +2,8 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"0": "candlelight:block/apple_leaves_0",
+		"1": "candlelight:block/apple_leaves_bushy2",
+		"2": "candlelight:block/apple_leaves_bushy3",
 		"particle": "candlelight:block/apple_leaves_0"
 	},
 	"elements": [
@@ -16,6 +18,26 @@
 				"west": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0}
+			}
+		},
+		{
+			"from": [14, -6, -7],
+			"to": [14, 22, 25],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [14.125, -8, -6.8125]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#2", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#2", "tintindex": 0}
+			}
+		},
+		{
+			"from": [-7, -6, 2],
+			"to": [25, 22, 2],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [-6.8125, -8, 1.875]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1", "tintindex": 0}
 			}
 		}
 	],
