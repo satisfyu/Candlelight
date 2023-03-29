@@ -62,7 +62,7 @@ public class ObjectRegistry {
     public static final Block STRAWBERRY_WILD_TAIGA = register("strawberry_wild_taiga", new WildBush(getBushSettings()), false);
     public static final Block STRAWBERRY_WILD_JUNGLE = register("strawberry_wild_jungle", new WildBushJungle(getBushSettings()), false);
     public static final Block TOMATOES_WILD = register("tomatoes_wild", new WildBushTomato(getBushSettings()), false);
-    public static final Block WILD_BROCCOLI = register("wild_broccoli", new WildBroccoli(getBushSettings()), false);
+    public static final Block WILD_BROCCOLI = register("wild_broccoli", new WildBroccoli(getBushSettings()));
     public static final Block CHAIR = register("chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block TABLE = register("table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
