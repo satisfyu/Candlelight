@@ -27,7 +27,6 @@ import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.vinery.Vinery;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.item.DrinkBlockBigItem;
 import satisfyu.vinery.item.DrinkBlockItem;
@@ -39,7 +38,6 @@ import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import static satisfyu.vinery.registry.ObjectRegistry.CHERRY_PLANKS;
 
 
 public class ObjectRegistry {
@@ -72,7 +70,7 @@ public class ObjectRegistry {
     public static final Block DRAWER = register("drawer", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_3_OPEN, VinerySoundEvents.WINE_RACK_3_CLOSE));
     public static final Block CABINET = register("cabinet", new WineRackStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD), VinerySoundEvents.WINE_RACK_5_OPEN, VinerySoundEvents.WINE_RACK_5_CLOSE));
     public static final Block SIDEBOARD = register("sideboard", new SideBoardBlock(FabricBlockSettings.of(Material.WOOD).strength(2.5f).sounds(BlockSoundGroup.WOOD)));
-    public static final Block FLOORBOARD = register("floorboard", new Block(FabricBlockSettings.copy(CHERRY_PLANKS)));
+    public static final Block FLOORBOARD = register("floorboard", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final Block WINE_STATION = register("wine_station", new WineStationBlock(FabricBlockSettings.of(Material.WOOD).nonOpaque()));
     public static final Block CAKE_STAND = register("cake_stand", new CakeStandBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     public static final Block TRAY = register("tray", new TrayBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
@@ -87,8 +85,7 @@ public class ObjectRegistry {
     public static final Item MUSHROOM_SOUP = register("mushroom_soup", new EffectFoodItem(getSettings().food(CandlelightFoods.MUSHROOM_SOUP)));
     public static final Item BEETROOT_SALAD = register("beetroot_salad", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final Item PASTA = register("pasta", new EffectFoodItem(getSettings().food(CandlelightFoods.PASTA)));
-    public static final Block BOLOGNESE_BLOCK = registerBlockWithoutItem("bolognese", new EffectFoodBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 3,CandlelightFoods.BOLOGNESE));
-    public static final Item BOLOGNESE = register("bolognese", new EffectFoodBlockItem(BOLOGNESE_BLOCK, getSettings().food(CandlelightFoods.BOLOGNESE), 3));
+    public static final Item BOLOGNESE = register("bolognese", new EffectFoodItem(getSettings().food(CandlelightFoods.COOKED_BEEF)));
     public static final Item BEEF_TARTARE = register("beef_tartare", new Item(getSettings().food(FoodComponents.COOKED_BEEF)));
     public static final Item COOKED_BEEF = register("cooked_beef", new EffectFoodItem(getSettings().food(CandlelightFoods.COOKED_BEEF)));
     public static final Item BROCCOLI_BEEF = register("broccoli_beef", new EffectFoodItem(getSettings().food(CandlelightFoods.BROCCOLI_BEEF)));
@@ -100,7 +97,8 @@ public class ObjectRegistry {
     public static final Item FRICASSE = register("fricasse", new EffectFoodItem(getSettings().food(CandlelightFoods.FRICASSE)));
     public static final Item CHICKEN = register("chicken", new Item(getSettings().food(FoodComponents.GOLDEN_CARROT)));
     public static final Item TOMATO_MOZZARELLA_SALAD = register("tomato_mozzarella_salad", new EffectFoodItem(getSettings().food(CandlelightFoods.TOMATO_MOZZARELLA_SALAD)));
-    public static final Item LASAGNA = register("lasagna", new EffectFoodItem(getSettings().food(CandlelightFoods.LASAGNE)));
+    public static final Block LASAGNA_BLOCK = registerBlockWithoutItem("lasagne_block", new EffectFoodBlock(FabricBlockSettings.copyOf(Blocks.CAKE), 3,CandlelightFoods.LASAGNE));
+    public static final Item LASAGNA = register("lasagna", new EffectFoodBlockItem(LASAGNA_BLOCK, getSettings().food(CandlelightFoods.LASAGNE), 3));
     public static final Item ROASTBEEF_CARROTS = register("roastbeef_carrots", new EffectFoodItem(getSettings().food(CandlelightFoods.ROASTBEEF_CARROTS)));
     public static final Item BEEF_WELLINGTON = register("beef_wellington", new EffectFoodItem(getSettings().food(CandlelightFoods.BEEF_WELLINGTON)));
     public static final Item VINEGAR = register("vinegar", new IngredientItem(getSettings()));

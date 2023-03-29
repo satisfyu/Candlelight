@@ -1,8 +1,5 @@
 {
   "variants": {
-    "cuts=6,facing=north": {
-      "model": "candlelight:block/chocolate_box_0"
-    },
     "cuts=5,facing=north": {
       "model": "candlelight:block/chocolate_box_1"
     },
@@ -20,10 +17,6 @@
     },
     "cuts=0,facing=north": {
       "model": "candlelight:block/chocolate_box_6"
-    },
-    "cuts=6,facing=east": {
-      "model": "candlelight:block/chocolate_box_0",
-      "y": 90
     },
     "cuts=5,facing=east": {
       "model": "candlelight:block/chocolate_box_1",
@@ -49,10 +42,6 @@
       "model": "candlelight:block/chocolate_box_6",
       "y": 90
     },
-    "cuts=6,facing=south": {
-      "model": "candlelight:block/chocolate_box_0",
-      "y": 180
-    },
     "cuts=5,facing=south": {
       "model": "candlelight:block/chocolate_box_1",
       "y": 180
@@ -76,10 +65,6 @@
     "cuts=0,facing=south": {
       "model": "candlelight:block/chocolate_box_6",
       "y": 180
-    },
-    "cuts=6,facing=west": {
-      "model": "candlelight:block/chocolate_box_0",
-      "y": 270
     },
     "cuts=5,facing=west": {
       "model": "candlelight:block/chocolate_box_1",

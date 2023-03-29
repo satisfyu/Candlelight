@@ -2,10 +2,10 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "candlelight:block/typewriter_iron",
+		"0": "candlelight:block/typewriter_bronze",
 		"1": "candlelight:block/pan_handle",
 		"2": "candlelight:block/oak_cabinet_top",
-		"particle": "candlelight:block/typewriter_iron"
+		"particle": "candlelight:block/typewriter_bronze"
 	},
 	"elements": [
 		{

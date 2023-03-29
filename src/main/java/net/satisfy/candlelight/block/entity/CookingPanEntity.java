@@ -30,9 +30,6 @@ import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.vinery.block.CookingPotBlock;
-
-import java.util.List;
 
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Inventory, NamedScreenHandlerFactory {
 
@@ -211,8 +208,8 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		} else if (state.get(CookingPanBlock.COOKING)) {
 			world.setBlockState(pos, this.getCachedState().getBlock().getDefaultState().with(CookingPanBlock.COOKING, false).with(CookingPanBlock.LIT, true), Block.NOTIFY_ALL);
 		}
-		else if(state.get(CookingPotBlock.LIT) != isBeingBurned){
-			world.setBlockState(pos, state.with(CookingPotBlock.LIT, isBeingBurned), Block.NOTIFY_ALL);
+		else if(state.get(CookingPanBlock.LIT) != isBeingBurned){
+			world.setBlockState(pos, state.with(CookingPanBlock.LIT, isBeingBurned), Block.NOTIFY_ALL);
 		}
 	}
 

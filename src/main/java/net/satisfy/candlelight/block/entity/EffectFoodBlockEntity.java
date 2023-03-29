@@ -20,9 +20,10 @@ public class EffectFoodBlockEntity extends BlockEntity  {
 	private List<Pair<StatusEffectInstance, Float>> effects;
 
 
-	public EffectFoodBlockEntity(BlockPos pos, BlockState state) {
-		super(CandlelightEntityTypes.COOKING_PAN_BLOCK_ENTITY, pos, state);
+	public EffectFoodBlockEntity(BlockPos blockPos, BlockState blockState) {
+		super(CandlelightEntityTypes.EFFECT_FOOD_BLOCK_ENTITY, blockPos, blockState);
 	}
+
 
 	public void addEffects(List<Pair<StatusEffectInstance, Float>> effects) {
 		this.effects = effects;

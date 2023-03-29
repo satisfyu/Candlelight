@@ -28,7 +28,7 @@ public class CookingPanGuiHandler extends RecipeGUIHandler {
     }
 
     private void buildBlockEntityContainer(Inventory inventory) {
-        this.addSlot(new ExtendedSlot(inventory, 6,95, 55, stack -> stack.isOf(Item.fromBlock(ObjectRegistry.CHERRY_JAR)) || stack.isOf(Items.BOWL)));
+        this.addSlot(new ExtendedSlot(inventory, 6,95, 55, stack -> stack.isOf(Item.fromBlock(ObjectRegistry.CHERRY_JAR)) || stack.isOf(Items.BOWL)|| stack.isOf(Item.fromBlock(net.satisfy.candlelight.registry.ObjectRegistry.TRAY))));
 
         for (int row = 0; row < 2; row++) {
             for (int slot = 0; slot < 3; slot++) {

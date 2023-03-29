@@ -60,7 +60,7 @@ public class ChocolateBoxBlock extends FacingBlock {
     }
 
     private ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
-        world.playSound(null, pos, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5f, world.getRandom().nextFloat() * 0.1f + 0.9f);
+        world.playSound(null, pos, SoundEvents.ENTITY_FOX_EAT, SoundCategory.PLAYERS, 0.5f, world.getRandom().nextFloat() * 0.1f + 0.9f);
         player.getHungerManager().add(1, 0.4f);
         int i = state.get(CUTS);
         world.emitGameEvent(player, GameEvent.EAT, pos);
