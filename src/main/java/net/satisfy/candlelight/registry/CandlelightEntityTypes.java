@@ -18,7 +18,7 @@ public class CandlelightEntityTypes {
     private static final Map<Identifier, BlockEntityType<?>> BLOCK_ENTITY_TYPES = new HashMap<>();
     public static final BlockEntityType<SideBoardBlockEntity> SIDEBOARD = create("sideboard", FabricBlockEntityTypeBuilder.create(SideBoardBlockEntity::new, ObjectRegistry.SIDEBOARD).build());
     public static final BlockEntityType<CookingPanEntity> COOKING_PAN_BLOCK_ENTITY = create("cooking_pan", FabricBlockEntityTypeBuilder.create(CookingPanEntity::new, ObjectRegistry.COOKING_PAN).build());
-    public static final BlockEntityType<EffectFoodBlockEntity> EFFECT_FOOD_BLOCK_ENTITY = create("effect_food_block", FabricBlockEntityTypeBuilder.create(EffectFoodBlockEntity::new, ObjectRegistry.LASAGNA_BLOCK).build());
+    public static final BlockEntityType<EffectFoodBlockEntity> EFFECT_FOOD_BLOCK_ENTITY = create("effect_food_block", FabricBlockEntityTypeBuilder.create(EffectFoodBlockEntity::new, ObjectRegistry.LASAGNA_BLOCK, ObjectRegistry.TOMATO_MOZZARELLA_BLOCK, ObjectRegistry.PORK_RIBS_BLOCK, ObjectRegistry.BROCCOLI_TOMATO_BLOCK, ObjectRegistry.BEEF_WELLINGTON_BLOCK).build());
     public static final BlockEntityType<WineStationBlockEntity> WINE_STATION_BLOCK_ENTITY = create("wine_station", FabricBlockEntityTypeBuilder.create(WineStationBlockEntity::new, ObjectRegistry.WINE_STATION).build());
 
 

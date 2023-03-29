@@ -9,23 +9,30 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import net.satisfy.candlelight.block.entity.CookingPanEntity;
 import net.satisfy.candlelight.block.entity.EffectFoodBlockEntity;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.vinery.util.GeneralUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
 import static net.satisfy.candlelight.item.EffectFoodHelper.getEffects;
 
@@ -73,7 +80,11 @@ public class EffectFoodBlock extends BlockWithEntity {
         return tryEat(world, pos, state, player);
     }
 
+
+
     private ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
+        world.playSound(null, pos, SoundEvents.ENTITY_FOX_EAT, SoundCategory.PLAYERS, 0.5f, world.getRandom().nextFloat() * 0.1f + 0.9f);
+        player.getHungerManager().add(1, 0.4f);
         if (!player.canConsume(false)) {
             return ActionResult.PASS;
         } else {
@@ -89,12 +100,13 @@ public class EffectFoodBlock extends BlockWithEntity {
             if (bites < maxBites) {
                 world.setBlockState(pos, state.with(BITES, bites + 1), 3);
             } else {
-                world.removeBlock(pos, false);
+                world.breakBlock(pos, false);
                 world.emitGameEvent(player, GameEvent.BLOCK_DESTROY, pos);
             }
             return ActionResult.SUCCESS;
         }
     }
+
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
         return state.with(FACING, rotation.rotate(state.get(FACING)));
@@ -114,6 +126,32 @@ public class EffectFoodBlock extends BlockWithEntity {
         FACING = Properties.HORIZONTAL_FACING;
         BITES = IntProperty.of("bites", 0, 3);
     }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = VoxelShapes.empty();
+        shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.125, 0, 0.125, 0.875, 0.0625, 0.875));
+        shape = VoxelShapes.union(shape, VoxelShapes.cuboid(0.1875, 0.0625, 0.1875, 0.8125, 0.4375, 0.8125));
+
+
+        return shape;
+    };
+
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Type.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE.get(state.get(FACING));
+    }
+
 
     @Nullable
     @Override
