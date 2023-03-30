@@ -158,5 +158,7 @@ public class TableSetBlock extends StorageBlock {
     @Override
     public void appendTooltip(ItemStack itemStack, BlockView world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(Text.translatable("block.candlelight.canbeplaced.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
+        tooltip.add(Text.translatable("block.candlelight.table_set.tooltip").formatted(Formatting.ITALIC, Formatting.GOLD));
+        tooltip.add(Text.translatable("block.candlelight.table_set2.tooltip").formatted(Formatting.ITALIC, Formatting.GOLD));
     }
 }

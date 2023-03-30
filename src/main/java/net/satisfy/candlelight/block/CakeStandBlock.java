@@ -4,11 +4,14 @@ package net.satisfy.candlelight.block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
@@ -147,5 +150,12 @@ public class CakeStandBlock extends StorageBlock {
     @Override
     public int getSection(Float x, Float y) {
         return 0;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack itemStack, BlockView world, List<Text> tooltip, TooltipContext tooltipContext) {
+        tooltip.add(Text.translatable("block.candlelight.canbeplaced.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
+        tooltip.add(Text.translatable("block.candlelight.cakestand.tooltip").formatted(Formatting.ITALIC, Formatting.WHITE));
+        tooltip.add(Text.translatable("block.candlelight.cakestand2.tooltip").formatted(Formatting.ITALIC, Formatting.WHITE));
     }
 }
