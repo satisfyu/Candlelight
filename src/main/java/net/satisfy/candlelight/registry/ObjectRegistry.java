@@ -48,15 +48,15 @@ public class ObjectRegistry {
     private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
     public static final Identifier NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
     public static final Block TOMATO_CROP = register("tomato_crop", new TomatoCropBlock(getBushSettings()), false);
-    public static final Item TOMATO_SEEDS = register("tomato_seeds", new AliasedBlockItem(TOMATO_CROP, getSettings()));
+    public static final Item TOMATO_SEEDS = register("tomato_seeds", new SeedItemBlock(TOMATO_CROP, getSettings()));
     public static final Item TOMATO = register("tomato", new IngredientItem(getSettings().food(FoodComponents.APPLE)));
     public static final Block TOMATO_CRATE = register("tomato_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block BROCCOLI_CROP = register("broccoli_crop", new BroccoliCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)), false);
-    public static final Item BROCCOLI_SEEDS = register("broccoli_seeds", new AliasedBlockItem(BROCCOLI_CROP, getSettings()));
+    public static final Item BROCCOLI_SEEDS = register("broccoli_seeds", new SeedItemBlock(BROCCOLI_CROP, getSettings()));
     public static final Item BROCCOLI = register("broccoli", new IngredientItem(getSettings().food(FoodComponents.POTATO)));
     public static final Block BROCCOLI_CRATE = register("broccoli_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block STRAWBERRY_CROP = register("strawberry_crop", new StrawberryCropBlock(getBushSettings()), false);
-    public static final Item STRAWBERRY_SEEDS = register("strawberry_seeds", new AliasedBlockItem(STRAWBERRY_CROP, getSettings()));
+    public static final Item STRAWBERRY_SEEDS = register("strawberry_seeds", new SeedItemBlock(STRAWBERRY_CROP, getSettings()));
     public static final Item STRAWBERRY = register("strawberry", new IngredientItem(getSettings().food(FoodComponents.BEETROOT)));
     public static final Block STRAWBERRY_CRATE = register("strawberry_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block STRAWBERRY_WILD_TAIGA = register("strawberry_wild_taiga", new WildBush(getBushSettings()), false);
@@ -134,7 +134,7 @@ public class ObjectRegistry {
     public static final Block STREET_SIGN = register("street_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), true));
     public static final Block PAINTING = register("painting", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final Block HEARTH = register("hearth", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
-    public static final Block ROSE = register("rose", new FlowerBlock(StatusEffect.byRawId(6), 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final Block ROSE = register("rose", new RoseBushBlock(StatusEffect.byRawId(6), 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
     public static final Block APPLE_TREE_SAPLING = register("apple_tree_sapling", new SaplingBlock(new SaplingGenerator() {
         @Nullable
         @Override
@@ -151,7 +151,7 @@ public class ObjectRegistry {
     public static final Block APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
     public static final Block JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final Block CHOCOLATE_BOX = register("chocolate_box", new ChocolateBoxBlock(FabricBlockSettings.copy(Blocks.CAKE)));
-    public static final Item GOLD_RING = register("gold_ring", new Item(getSettings()));
+    public static final Item GOLD_RING = register("gold_ring", new RingItem(CandlelightMaterials.RING_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.EPIC)));
     public static final Item COOKING_HAT = register("cooking_hat", new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_JACKET = register("chefs_jacket", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final Item CHEFS_PANTS = register("chefs_pants", new CookDefaultArmorItem(CandlelightMaterials.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));

@@ -96,6 +96,8 @@ public class WineStationBlock extends BlockWithEntity {
 
     @Override
     public void appendTooltip(ItemStack itemStack, BlockView world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(Text.translatable("block.candlelight.canbeplaced.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
+        tooltip.add(Text.translatable("block.candlelight.winestation.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
+        tooltip.add(Text.translatable("block.candlelight.winestation1.tooltip").formatted(Formatting.ITALIC, Formatting.WHITE));
+        tooltip.add(Text.translatable("block.candlelight.winestation2.tooltip").formatted(Formatting.ITALIC, Formatting.RED));
     }
 }
