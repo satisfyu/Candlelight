@@ -151,7 +151,7 @@
   "block.candlelight.red_nether_bricks_stove": "Roter Netherziegelofen",
   "block.candlelight.red_nether_bricks_wood_fired_oven": "Roter Netherziegelholzofen",
   "block.candlelight.red_wine": "Rotwein",
-  "block.candlelight.rose.tooltip": "Eine stachelige Blume. Verursacht Schaden bei Berührung",
+  "block.candlelight.rose.tooltip": "Eine stachelige Blume - verursacht Schaden bei Berührung",
   "block.candlelight.sandstone_kitchen_sink": "Sandsteinspüle",
   "block.candlelight.sandstone_stove": "Sandsteinofen",
   "block.candlelight.sandstone_wood_fired_oven": "Sandsteinholzofen",
@@ -184,7 +184,7 @@
   "block.candlelight.wine_station": "Weinstation",
   "block.candlelight.winestation.tooltip": "Kann genutzt werden, um Wein an Dorfbewohner zu verkaufen",
   "block.candlelight.winestation1.tooltip": "Fülle die Weinstation mit Wein und Dorfbewohner kommen von Zeit zu Zeit, um Wein zu kaufen",
-  "block.candlelight.winestation2.tooltip": "Aber Vorsicht: Nicht alle Dorfbewohner zahlen für ihren Wein",
+  "block.candlelight.winestation2.tooltip": "Aber Vorsicht: Nicht alle Dorfbewohner bezahlen für ihren Wein",
   "candlelight.tooltip.cook_armor": "Kochkleidung:",
   "candlelight.tooltip.cook_armor2": "Du siehst großartig aus und bist bereit, fantastisches Essen zu kochen!",
   "candlelight.tooltip.cook_armor3": "",
@@ -209,7 +209,7 @@
   "item.candlelight.ingredientitem.tooltip.item.candlelight.tomato_seeds": "Kann auf Ackerland oder Stämmen angebaut werden",
   "item.candlelight.ingredientitem.tooltip.item.candlelight.vinegar": "Handwerkszutat",
   "item.candlelight.letter": "Briefumschlag",
-  "item.candlelight.letter.tooltip": "Klicke mit einer leeren Hand, um ihn zu öffnen",
+  "item.candlelight.letter.tooltip": "Rechts-Klick!",
   "item.candlelight.letter_open": "Offener Briefumschlag",
   "item.candlelight.love_letter": "Liebesbrief",
   "item.candlelight.love_letter_open": "Offener rosa Briefumschlag",
@@ -219,7 +219,7 @@
   "item.candlelight.note_paper_written": "Beschriebenes Notizpapier",
   "item.candlelight.pork_ribs": "Schweinerippchen",
   "item.candlelight.ring1.tooltip": "Verbessertes Glück: Glück +2",
-  "item.candlelight.ring2.tooltip": "Bietet keinen Schutz, hat aber einen starken Effekt",
+  "item.candlelight.ring2.tooltip": "Bietet nur wenig Schutz, hat aber einen starken Effekt",
   "item.candlelight.ring3.tooltip": "Kann in einer Schmuckschatulle aufbewahrt werden",
   "item.candlelight.salmon_wine": "Lachs an Weissweinsosse",
   "item.candlelight.sweetberry_glazed_cookie": "Mit Süssbeeren glasierter Keks",
@@ -227,8 +227,11 @@
   "item.candlelight.white_wine": "Weißwein",
   "item.vinery.juice.tooltip.block.candlelight.strawberry_jam": "Kombiniere es mit Brot, um Brotscheiben zu erhalten",
   "itemGroup.vinery.vinery_tab.tab": "Candlelight Dinner",
-  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner"
-
+  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner",
+  "item.candlelight.table_set.tooltip": "Teil des Tischsets",
+  "block.candlelight.tomato_crop": "Tomatonpflanze",
+  "block.candlelight.broccoli_crop": "Brokkolipflanze",
+  "block.candlelight.strawberry_crop": "Erdbeerenpflanze"
 }
 
 

@@ -77,8 +77,8 @@ public class ObjectRegistry {
     public static final Block COOKING_POT = register("cooking_pot", new CookingPotBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
     public static final Block COOKING_PAN = register("cooking_pan", new CookingPanBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()));
     public static final Block TABLE_SET = register("table_set", new TableSetBlock(FabricBlockSettings.copyOf(COOKING_POT)));
-    public static final Item GLASS = register("glass", new Item(getSettings()));
-    public static final Item NAPKIN = register("napkin", new Item(getSettings()));
+    public static final Item GLASS = register("glass", new TableSetItem(getSettings()));
+    public static final Item NAPKIN = register("napkin", new TableSetItem(getSettings()));
     public static final Item BUTTER = register("butter", new IngredientItem(getSettings()));
     public static final Item MOZZARELLA = register("mozzarella", new IngredientItem(getSettings().food(FoodComponents.BREAD)));
     public static final Item TOMATO_SOUP = register("tomato_soup", new EffectFoodItem(getSettings().food(CandlelightFoods.TOMATO_SOUP)));
