@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/beef_wellington"
+    "layer0": "candlelight:item/beef_wellington_3"
   }
 }

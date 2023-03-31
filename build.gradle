@@ -33,7 +33,6 @@ dependencies {
 	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${terraform_wood_api_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "satisfy:vinery:${project.vinery_version}"
-	//include(modImplementation ("net.moddingplayground.frame:frame-tabbed-item-groups-v0:0.2.4+0aca9b56a9"))
 }
 
 processResources {
@@ -43,26 +42,6 @@ processResources {
 		expand "version": project.version
 	}
 }
-
-
-
-def dataOutput = 'src/main/generated'
-
-loom {
-	runs {
-		datagen {
-			server()
-
-			name "Data Generation"
-			vmArg "-Dfabric-api.datagen"
-			vmArg "-Dfabric-api.datagen.output-dir=${file(dataOutput)}"
-
-			runDir "build/datagen"
-		}
-	}
-}
-
-sourceSets { main { resources { srcDirs += dataOutput } } }
 
 
 tasks.withType(JavaCompile).configureEach {

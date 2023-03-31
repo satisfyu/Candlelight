@@ -95,7 +95,7 @@
   "block.candlelight.red_nether_bricks_wood_fired_oven": "Red Nether Bricks Wood Fired Oven",
   "block.candlelight.red_wine": "Red Wine",
   "block.candlelight.rose": "Rose",
-  "block.candlelight.rose.tooltip": "A prickly flower. Causes damage upon touch",
+  "block.candlelight.rose.tooltip": "A prickly flower - causes damage upon touch",
   "block.candlelight.sandstone_kitchen_sink": "Sandstone Sink",
   "block.candlelight.sandstone_stove": "Sandstone Stove",
   "block.candlelight.sandstone_wood_fired_oven": "Sandstone Wood Fired Oven",
@@ -182,7 +182,7 @@
   "item.candlelight.ingredientitem.tooltip.item.candlelight.vinegar": "Crafting Ingredient",
   "item.candlelight.lasagna": "Lasagna",
   "item.candlelight.letter": "Envelope",
-  "item.candlelight.letter.tooltip": "Right-Click with an empty Hand to open it",
+  "item.candlelight.letter.tooltip": "Right-Click!",
   "item.candlelight.letter_open": "Open Envelope",
   "item.candlelight.love_letter": "Love Envelope",
   "item.candlelight.love_letter_open": "Open Love Envelope",
@@ -230,5 +230,11 @@
   "item.candlelight.white_wine": "White Wine",
   "item.vinery.juice.tooltip.block.candlelight.strawberry_jam": "Combine it with Bread to get Bread Slices",
   "itemGroup.vinery.vinery_tab.tab": "Candlelight Dinner",
-  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner"
+  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner",
+  "item.candlelight.table_set.tooltip": "Part of the Table Set",
+  "block.candlelight.tomato_crop": "Tomato Crop",
+  "block.candlelight.broccoli_crop": "Broccoli Crop",
+  "block.candlelight.strawberry_crop": "Strawberry Crop"
+
+
 }
