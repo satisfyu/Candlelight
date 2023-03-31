@@ -18,6 +18,7 @@ import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
+
 public class LetterGuiHandler extends ScreenHandler {
     private final Inventory inventory;
     public static String name = "";
@@ -28,6 +29,7 @@ public class LetterGuiHandler extends ScreenHandler {
     public LetterGuiHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, new SimpleInventory(3));
     }
+
 
     //This constructor gets called from the BlockEntity on the server without calling the other constructor first, the server knows the inventory of the container
     //and can therefore directly provide it as an argument. This inventory will then be synced to the client.
@@ -44,10 +46,10 @@ public class LetterGuiHandler extends ScreenHandler {
         int l;
         //Our inventory
 
-        this.addSlot(new Slot(inventory, 0, 62 + 18 - 100 + 30 + 5, 17 + 0 * 18 - 2));
-        this.addSlot(new Slot(inventory, 1, 62 + 18 - 100 + 30 + 5, 17 + 1 * 18 + 25 - 8));
+        this.addSlot(new Slot(inventory, 0, 80 + 18 - 100 + 30 + 5, 15 + 0 * 18 - 2));
+        this.addSlot(new Slot(inventory, 1, 80 + 18 - 100 + 30 + 5, 15 + 1 * 18 + 25 - 8));
 
-        this.addSlot(new OutputSlot(inventory, 2, 62 + 18 + 50 - 30 + 8, 17 + 2 * 18 - 10 + 4, this));
+        this.addSlot(new OutputSlot(inventory, 2, 64 + 18 + 50 - 30 + 8, 18 + 2 * 18 - 10 + 4, this));
         //The player inventory
         for (m = 0; m < 3; ++m) {
             for (l = 0; l < 9; ++l) {
@@ -58,6 +60,7 @@ public class LetterGuiHandler extends ScreenHandler {
         for (m = 0; m < 9; ++m) {
             this.addSlot(new Slot(playerInventory, m, 8 + m * 18, 142));
         }
+
 
     }
 
