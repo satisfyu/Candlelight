@@ -23,7 +23,7 @@
   "block.candlelight.candle": "蜡烛",
   "block.candlelight.chair": "椅子",
   "block.candlelight.chocolate_box": "巧克力盒",
-  "block.candlelight.chocolate_box.tooltip": "两人间最完美的礼物 - 或着甜点",
+  "block.candlelight.chocolate_box.tooltip": "两人间最完美的礼物 - 或着说甜点",
   "block.candlelight.chocolate_cake": "巧克力蛋糕",
   "block.candlelight.cobblestone_kitchen_sink": "圆石水槽",
   "block.candlelight.cobblestone_stove": "圆石炉灶",
@@ -182,10 +182,10 @@
   "item.candlelight.ingredientitem.tooltip.item.candlelight.vinegar": "配方原料",
   "item.candlelight.lasagna": "千层面",
   "item.candlelight.letter": "信",
-  "item.candlelight.letter.tooltip": "空手时右击即可打开",
-  "item.candlelight.letter_open": "拆开的信",
+  "item.candlelight.letter.tooltip": "右击！",
+  "item.candlelight.letter_open": "拆封的信",
   "item.candlelight.love_letter": "情书",
-  "item.candlelight.love_letter_open": "拆开的情书",
+  "item.candlelight.love_letter_open": "拆封的情书",
   "item.candlelight.mashed_potatoes": "土豆碎",
   "item.candlelight.mozzarella": "干酪",
   "item.candlelight.mushroom_soup": "蘑菇汤",
@@ -230,5 +230,9 @@
   "item.candlelight.white_wine": "白葡萄酒",
   "item.vinery.juice.tooltip.block.candlelight.strawberry_jam": "与面包混合以获取面包片",
   "itemGroup.vinery.vinery_tab.tab": "烛火晩宴",
-  "itemGroup.vinery.vinery_tab.tab.candlelight": "烛火晩宴"
+  "itemGroup.vinery.vinery_tab.tab.candlelight": "烛火晩宴",
+  "item.candlelight.table_set.tooltip": "餐具套件的一部分",
+  "block.candlelight.tomato_crop": "番茄",
+  "block.candlelight.broccoli_crop": "西兰花",
+  "block.candlelight.strawberry_crop": "草莓"
 }
