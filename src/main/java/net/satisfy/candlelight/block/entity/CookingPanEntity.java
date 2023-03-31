@@ -173,9 +173,11 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 				ItemStack stack = this.getStack(j);
 				if (ingredient.test(stack)) {
 					EffectFoodHelper.getEffects(stack).forEach(effect -> EffectFoodHelper.addEffect(outputStack, effect));
+					break;
 				}
 			}
 		}
+		System.out.println(EffectFoodHelper.getEffects(outputStack));
 		return outputStack;
 	}
 

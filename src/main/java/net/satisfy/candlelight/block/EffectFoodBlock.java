@@ -25,7 +25,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
-import net.satisfy.candlelight.block.entity.CookingPanEntity;
 import net.satisfy.candlelight.block.entity.EffectFoodBlockEntity;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.util.GeneralUtil;
@@ -52,7 +51,6 @@ public class EffectFoodBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        ctx.getStack().getNbt();
         return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 
@@ -62,7 +60,6 @@ public class EffectFoodBlock extends BlockWithEntity {
         if (blockEntity instanceof EffectFoodBlockEntity effectFoodBlockEntity) {
             effectFoodBlockEntity.addEffects(getEffects(itemStack));
         }
-
     }
 
     @Override
@@ -83,26 +80,28 @@ public class EffectFoodBlock extends BlockWithEntity {
 
 
     private ActionResult tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player) {
-        world.playSound(null, pos, SoundEvents.ENTITY_FOX_EAT, SoundCategory.PLAYERS, 0.5f, world.getRandom().nextFloat() * 0.1f + 0.9f);
-        player.getHungerManager().add(1, 0.4f);
         if (!player.canConsume(false)) {
             return ActionResult.PASS;
         } else {
             player.getHungerManager().add(foodComponent.getHunger(), foodComponent.getSaturationModifier());
-            int bites = state.get(BITES);
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof EffectFoodBlockEntity effectFoodBlockEntity) {
-                for (Pair<StatusEffectInstance, Float> effect : effectFoodBlockEntity.getEffects()) {
-                    player.addStatusEffect(effect.getFirst());
-                }
-            }
+            world.playSound(null, pos, SoundEvents.ENTITY_FOX_EAT, SoundCategory.PLAYERS, 0.5f, world.getRandom().nextFloat() * 0.1f + 0.9f);
             world.emitGameEvent(player, GameEvent.EAT, pos);
+
+            int bites = state.get(BITES);
             if (bites < maxBites) {
                 world.setBlockState(pos, state.with(BITES, bites + 1), 3);
             } else {
                 world.breakBlock(pos, false);
                 world.emitGameEvent(player, GameEvent.BLOCK_DESTROY, pos);
             }
+
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof EffectFoodBlockEntity effectFoodBlockEntity) {
+                for (Pair<StatusEffectInstance, Float> effect : effectFoodBlockEntity.getEffects()) {
+                    player.addStatusEffect(effect.getFirst());
+                }
+            }
+
             return ActionResult.SUCCESS;
         }
     }
@@ -152,10 +151,14 @@ public class EffectFoodBlock extends BlockWithEntity {
         return SHAPE.get(state.get(FACING));
     }
 
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
 
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new CookingPanEntity(pos, state);
+        return new EffectFoodBlockEntity(pos, state);
     }
 }

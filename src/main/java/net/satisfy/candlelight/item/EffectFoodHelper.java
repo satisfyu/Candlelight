@@ -8,7 +8,6 @@ import net.minecraft.item.FoodComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.satisfy.candlelight.food.EffectFoodBlockItem;
 
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class EffectFoodHelper {
     }
 
     public static List<Pair<StatusEffectInstance, Float>> getEffects(ItemStack stack) {
-        if (stack.getItem() instanceof EffectFoodBlockItem) {
+        if (stack.getItem() instanceof EffectFood) {
             return fromNbt(getEffectNbt(stack));
         }
         FoodComponent foodComponent = stack.getItem().getFoodComponent();

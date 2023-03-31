@@ -10,6 +10,7 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.util.math.BlockPos;
 import net.satisfy.candlelight.item.EffectFoodHelper;
 import net.satisfy.candlelight.registry.CandlelightEntityTypes;
+import org.apache.commons.compress.utils.Lists;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class EffectFoodBlockEntity extends BlockEntity  {
 	}
 
 	public List<Pair<StatusEffectInstance, Float>> getEffects() {
-		return effects;
+		return effects != null ? effects : Lists.newArrayList();
 	}
 
 	@Override
@@ -42,6 +43,9 @@ public class EffectFoodBlockEntity extends BlockEntity  {
 	@Override
 	protected void writeNbt(NbtCompound nbt) {
 		super.writeNbt(nbt);
+		if (effects == null) {
+			return;
+		}
 		NbtList nbtList = new NbtList();
 		for (Pair<StatusEffectInstance, Float> effect : effects) {
 			nbtList.add(EffectFoodHelper.createNbt((short) StatusEffect.getRawId(effect.getFirst().getEffectType()), effect));
