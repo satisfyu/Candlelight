@@ -4,7 +4,7 @@
 	"textures": {
 		"1": "candlelight:block/pan_cooking",
 		"3": "candlelight:block/cooking_pan",
-		"particle": "candlelight:block/pan_cooking"
+		"particle": "candlelight:block/cooking_pan"
 	},
 	"elements": [
 		{
@@ -87,12 +87,12 @@
 			"to": [6, 6.25, 10.25],
 			"rotation": {"angle": 22.5, "axis": "x", "origin": [0, 0, 0]},
 			"faces": {
-				"north": {"uv": [4, 4, 5, 16], "rotation": 270, "texture": "#3"},
+				"north": {"uv": [4, 15, 5, 16], "rotation": 270, "texture": "#3"},
 				"east": {"uv": [5, 4, 6, 16], "rotation": 270, "texture": "#3"},
 				"south": {"uv": [4, 4, 5, 16], "rotation": 270, "texture": "#3"},
 				"west": {"uv": [5, 4, 6, 16], "rotation": 270, "texture": "#3"},
-				"up": {"uv": [5, 15, 6, 16], "rotation": 270, "texture": "#3"},
-				"down": {"uv": [5, 15, 6, 16], "rotation": 270, "texture": "#3"}
+				"up": {"uv": [4, 4, 5, 16], "texture": "#3"},
+				"down": {"uv": [4, 4, 5, 16], "texture": "#3"}
 			}
 		},
 		{

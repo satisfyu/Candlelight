@@ -132,7 +132,7 @@ public class ObjectRegistry {
     public static final Item CHOCOLATE_ICECREAM = register("chocolate_icecream", new Item(getSettings().food(FoodComponents.BEETROOT_SOUP)));
     public static final Block TABLE_SIGN = register("table_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), false));
     public static final Block STREET_SIGN = register("street_sign", new BoardBlock(FabricBlockSettings.of(Material.DECORATION), true));
-    public static final Block PAINTING = register("painting", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
+    public static final Block PAINTING = register("painting", new SmallPaintingBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final Block HEARTH = register("hearth", new DecorationBlock(FabricBlockSettings.of(Material.DECORATION).noCollision()));
     public static final Block ROSE = register("rose", new RoseBushBlock(StatusEffect.byRawId(6), 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
     public static final Block APPLE_TREE_SAPLING = register("apple_tree_sapling", new SaplingBlock(new SaplingGenerator() {
