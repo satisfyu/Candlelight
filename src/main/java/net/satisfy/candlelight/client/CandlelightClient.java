@@ -8,8 +8,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
-import net.satisfy.candlelight.block.entity.EffectFoodBlockEntity;
-import net.satisfy.candlelight.client.gui.CookingPanGui;
+import net.satisfy.candlelight.client.gui.CookingPanScreen;
 import net.satisfy.candlelight.client.gui.LetterGui;
 import net.satisfy.candlelight.client.gui.WineStationGui;
 import net.satisfy.candlelight.client.model.CookingHatModel;
@@ -49,7 +48,7 @@ public class CandlelightClient implements ClientModInitializer {
         registerModels();
         CandlelightMessages.registerS2CPackets();
 
-        HandledScreens.register(ScreenHandlerTypes.COOKING_PAN_SCREEN_HANDLER, CookingPanGui::new);
+        HandledScreens.register(ScreenHandlerTypes.COOKING_PAN_SCREEN_HANDLER, CookingPanScreen::new);
         HandledScreens.register(ScreenHandlerTypes.LETTER_SCREEN_HANDLER, LetterGui::new);
         HandledScreens.register(ScreenHandlerTypes.WINE_STATION_SCREEN_HANDLER, WineStationGui::new);
 

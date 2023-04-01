@@ -14,7 +14,7 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 
 public class LetterGui extends HandledScreen<LetterGuiHandler> {
 
-    private static final Identifier TEXTURE = new CandlelightIdentifier("textures/gui/letter_gui.png");
+    private static final Identifier TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private TextFieldWidget nameField;
 
 

@@ -2,6 +2,10 @@ package net.satisfy.candlelight.block;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.function.BooleanBiFunction;
@@ -14,6 +18,7 @@ import net.satisfy.candlelight.registry.StorageTypes;
 import satisfyu.vinery.util.VineryUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -85,5 +90,12 @@ public class TrayBlock extends CakeStandBlock {
 
         return 5 - nSection;
          */
+    }
+
+    @Override
+    public void appendTooltip(ItemStack itemStack, BlockView world, List<Text> tooltip, TooltipContext tooltipContext) {
+        tooltip.add(Text.translatable("block.candlelight.canbeplaced.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
+        tooltip.add(Text.translatable("block.candlelight.cakestand.tooltip").formatted(Formatting.ITALIC, Formatting.WHITE));
+        tooltip.add(Text.translatable("block.candlelight.tray.tooltip").formatted(Formatting.ITALIC, Formatting.WHITE));
     }
 }

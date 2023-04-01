@@ -82,7 +82,7 @@ public class CookingPanRecipe implements Recipe<Inventory> {
 
     @Override
     public boolean isIgnoredInRecipeBook() {
-        return true;
+        return false;
     }
 
     /*

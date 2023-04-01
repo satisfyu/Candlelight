@@ -22,7 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.CookingPanBlock;
-import net.satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
+import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
 import net.satisfy.candlelight.item.EffectFood;
 import net.satisfy.candlelight.item.EffectFoodHelper;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
@@ -274,7 +274,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	@Nullable
 	@Override
 	public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-		return new CookingPanGuiHandler(syncId, inv, this, this.delegate);
+		return new CookingPanScreenHandler(syncId, inv, this, this.delegate);
 	}
 }
 

@@ -17,11 +17,8 @@ public class IngredientItem extends Item {
         super(settings);
     }
 
-    @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, @NotNull List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable(  "item.candlelight.ingredient.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
-
-
+        tooltip.add(Text.translatable("item.candlelight.ingredientitem.tooltip." + this.getTranslationKey()).formatted(Formatting.ITALIC, Formatting.GRAY));
     }
 
 }
