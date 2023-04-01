@@ -231,7 +231,13 @@
   "item.candlelight.table_set.tooltip": "Teil des Tischsets",
   "block.candlelight.tomato_crop": "Tomatonpflanze",
   "block.candlelight.broccoli_crop": "Brokkolipflanze",
-  "block.candlelight.strawberry_crop": "Erdbeerenpflanze"
+  "block.candlelight.strawberry_crop": "Erdbeerenpflanze",
+  "item.candlelight.thankyou1.press_shift": "Diese Gemälde zeigen nicht nur Alex und Steve, sondern auch die Mitwirkenden zu den 'Let's Do'-Mods.",
+  "item.candlelight.thankyou2.press_shift": "Vielen Dank an alle, die zur Erstellung der 'Let's Do'-Mods beigetragen haben:",
+  "item.candlelight.lilitu.press_shift": "- Miss Lilitu",
+  "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJo",
+  "item.candlelight.satisfyu.press_shift": "- Satisfy",
+  "item.candlelight.cristelknight.press_shift": "- CristelKnight"
 }
 
 
