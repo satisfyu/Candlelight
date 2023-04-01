@@ -213,13 +213,15 @@ public class Candlelight implements ModInitializer {
                         ObjectRegistry.QUARTZ_KITCHEN_SINK.asItem()
 
 
+
                 )).build("candlelight", GUIIcon.of(() -> new ItemStack(ObjectRegistry.HEARTH)));
         ((TabbedItemGroup) Vinery.CREATIVE_TAB).getTabs().add(tab);
         tab.addToGroup(((TabbedItemGroup) Vinery.CREATIVE_TAB));
 
         FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(container -> {
-            ResourceManagerHelper.registerBuiltinResourcePack(new CandlelightIdentifier("apple_leaves"), container, ResourcePackActivationType.DEFAULT_ENABLED);
+            ResourceManagerHelper.registerBuiltinResourcePack(new CandlelightIdentifier("apple_leaves"), container, ResourcePackActivationType.NORMAL);
         });
+
         ScreenHandlerTypes.init();
         ConfiguredFeatures.init();
         CandlelightEntityTypes.init();

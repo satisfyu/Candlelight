@@ -6,7 +6,7 @@
   "name": "Candlelight Dinner",
   "description": "A Food Themed Expansion for the 'Let's Do Wine' Mod focusing on cooking with Wine",
   "authors": [
-    "satisfy_u, Cristelknight"
+    "satisfy_u, Cristelknight, BaumeisterJo"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/members/satisfyl/projects"
@@ -20,10 +20,6 @@
     "main": [
       "net.satisfy.candlelight.Candlelight"
     ],
-    "fabric-datagen": [
-      "net.satisfy.candlelight.datagen.DataGeneration"
-    ],
-
     "client": [
       "net.satisfy.candlelight.client.CandlelightClient"
     ],

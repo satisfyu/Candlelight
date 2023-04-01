@@ -234,7 +234,12 @@
   "item.candlelight.table_set.tooltip": "Part of the Table Set",
   "block.candlelight.tomato_crop": "Tomato Crop",
   "block.candlelight.broccoli_crop": "Broccoli Crop",
-  "block.candlelight.strawberry_crop": "Strawberry Crop"
-
+  "block.candlelight.strawberry_crop": "Strawberry Crop",
+  "item.candlelight.thankyou1.press_shift": "These Paintings do not only depict Alex and Steve but also the contributors to the 'Let's Do'-Mods.",
+  "item.candlelight.thankyou2.press_shift": "Thank you to everyone who contributed to the creation of the 'Let's Do' mods:",
+  "item.candlelight.lilitu.press_shift": "- Miss Lilitu",
+  "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJo",
+  "item.candlelight.satisfyu.press_shift": "- Satisfy",
+  "item.candlelight.cristelknight.press_shift": "- CristelKnight"
 
 }

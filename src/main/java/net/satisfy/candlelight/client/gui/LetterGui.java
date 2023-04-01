@@ -14,9 +14,9 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 
 public class LetterGui extends HandledScreen<LetterGuiHandler> {
 
-    private static final Identifier TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
+    private static final Identifier TEXTURE = new CandlelightIdentifier("textures/gui/letter_gui.png");
     private TextFieldWidget nameField;
-
+    private static final Text FOR = Text.translatable("candlelight.repair");
 
     public LetterGui(LetterGuiHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -27,12 +27,11 @@ public class LetterGui extends HandledScreen<LetterGuiHandler> {
         this.nameField.tick();
     }
 
-
     protected void setup() {
         this.client.keyboard.setRepeatEvents(true);
         int i = (this.width - this.backgroundWidth) / 2;
         int j = (this.height - this.backgroundHeight) / 2;
-        this.nameField = new TextFieldWidget(this.textRenderer, i + 62 + 30, j + 24, 50, 12, Text.translatable("container.repair"));
+        this.nameField = new TextFieldWidget(this.textRenderer, i + 62 + 30, j + 24, 50, 12, FOR);
         this.nameField.setFocusUnlocked(false);
         this.nameField.setEditableColor(-1);
         this.nameField.setUneditableColor(-1);
@@ -84,15 +83,15 @@ public class LetterGui extends HandledScreen<LetterGuiHandler> {
     }
 
     private void onRenamed(String name) {
-       // if (!name.isEmpty()) {
-            String string = name;
-            Slot slot = ((LetterGuiHandler)this.handler).getSlot(0);
+        // if (!name.isEmpty()) {
+        String string = name;
+        Slot slot = ((LetterGuiHandler)this.handler).getSlot(0);
 //            if (slot != null && slot.hasStack() && !slot.getStack().hasCustomName() && name.equals(slot.getStack().getName().getString())) {
 //                string = "";
 //            }
-            //System.out.println(name + " screne");
-            LetterGuiHandler.name = name;
-            //this.client.player.networkHandler.sendPacket(new RenameItemC2SPacket(string));
-      //  }
+        //System.out.println(name + " screne");
+        LetterGuiHandler.name = name;
+        //this.client.player.networkHandler.sendPacket(new RenameItemC2SPacket(string));
+        //  }
     }
 }
