@@ -36,5 +36,9 @@
     "fabric-api": "*",
     "minecraft": "~1.19.2",
     "java": ">=17"
-  }
+  },
+   "resource_pack": {
+     "type": "builtin",
+     "name": "apple_leaves"
+   }
 }
