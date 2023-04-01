@@ -234,5 +234,11 @@
   "item.candlelight.table_set.tooltip": "餐具套件的一部分",
   "block.candlelight.tomato_crop": "番茄",
   "block.candlelight.broccoli_crop": "西兰花",
-  "block.candlelight.strawberry_crop": "草莓"
+  "block.candlelight.strawberry_crop": "草莓",
+  "item.candlelight.thankyou1.press_shift": "这些画不仅是在描述艾利克斯和史蒂夫，也包括“Let's Do”系列模组的贡献者们。",
+  "item.candlelight.thankyou2.press_shift": "感谢所有为“Let's Do”系列模组的制作做出过贡献的人们：",
+  "item.candlelight.lilitu.press_shift": "- Miss Lilitu",
+  "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJo",
+  "item.candlelight.satisfyu.press_shift": "- Satisfy",
+  "item.candlelight.cristelknight.press_shift": "- CristelKnight"
 }
