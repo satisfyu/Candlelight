@@ -9,30 +9,23 @@ import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
-import net.minecraft.client.gui.screen.recipebook.RecipeAlternativesWidget;
 import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeGridAligner;
-import net.minecraft.screen.AbstractFurnaceScreenHandler;
-import net.minecraft.screen.AbstractRecipeScreenHandler;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.satisfy.candlelight.Candlelight;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class VineryRecipeAlternativesWidget extends DrawableHelper implements Drawable, Element {
     static final Identifier BACKGROUND_TEXTURE = new Identifier("textures/gui/recipe_book.png");
-    private static final int field_32406 = 4;
-    private static final int field_32407 = 5;
-    private static final float field_33739 = 0.375F;
     private final List<VineryAlternativeButtonWidget> alternativeButtons = Lists.newArrayList();
     private boolean visible;
     private int buttonX;
@@ -42,7 +35,6 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
     @Nullable
     private Recipe<?> lastClickedRecipe;
     float time;
-    boolean furnace;
 
     public VineryRecipeAlternativesWidget() {
     }
@@ -50,20 +42,17 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
     public void showAlternativesForResult(MinecraftClient client, VineryRecipeResultCollection results, int buttonX, int buttonY, int areaCenterX, int areaCenterY, float delta) {
         this.client = client;
         this.resultCollection = results;
-        if (client.player.currentScreenHandler instanceof AbstractFurnaceScreenHandler) {
-            this.furnace = true;
-        }
 
         boolean bl = Candlelight.rememberedCraftableToggle;
-        List<Recipe<?>> list = results.getRecipes(true);
-        List<Recipe<?>> list2 = bl ? Collections.emptyList() : results.getRecipes(false);
-        int i = list.size();
-        int j = i + list2.size();
-        int k = j <= 16 ? 4 : 5;
-        int l = (int)Math.ceil((double)((float)j / (float)k));
+        Recipe<?> recipe = results.getRecipe();
+
+        int k = 4;
+        int l = (int)Math.ceil(((float)1 / (float)k));
+
         this.buttonX = buttonX;
         this.buttonY = buttonY;
-        float f = (float)(this.buttonX + Math.min(j, k) * 25);
+
+        float f = (float)(this.buttonX + 25);
         float g = (float)(areaCenterX + 50);
         if (f > g) {
             this.buttonX = (int)((float)this.buttonX - delta * (float)((int)((f - g) / delta)));
@@ -72,7 +61,7 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
         float h = (float)(this.buttonY + l * 25);
         float n = (float)(areaCenterY + 50);
         if (h > n) {
-            this.buttonY = (int)((float)this.buttonY - delta * (float) MathHelper.ceil((h - n) / delta));
+            this.buttonY = (int)((float)this.buttonY - delta * (float)MathHelper.ceil((h - n) / delta));
         }
 
         float o = (float)this.buttonY;
@@ -84,17 +73,7 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
         this.visible = true;
         this.alternativeButtons.clear();
 
-        for(int q = 0; q < j; ++q) {
-            boolean bl2 = q < i;
-            Recipe<?> recipe = bl2 ? (Recipe)list.get(q) : (Recipe)list2.get(q - i);
-            int r = this.buttonX + 4 + 25 * (q % k);
-            int s = this.buttonY + 5 + 25 * (q / k);
-            if (this.furnace) {
-                this.alternativeButtons.add(new VineryFurnaceAlternativeButtonWidget(r, s, recipe, bl2));
-            } else {
-                this.alternativeButtons.add(new VineryAlternativeButtonWidget(r, s, recipe, bl2));
-            }
-        }
+        this.alternativeButtons.add(new VineryAlternativeButtonWidget(this.buttonX + 6, this.buttonY+ 6, recipe, bl));
 
         this.lastClickedRecipe = null;
     }
@@ -201,18 +180,6 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
     }
 
     @Environment(EnvType.CLIENT)
-    private class VineryFurnaceAlternativeButtonWidget extends VineryAlternativeButtonWidget {
-        public VineryFurnaceAlternativeButtonWidget(int i, int j, Recipe<?> recipe, boolean bl) {
-            super(i, j, recipe, bl);
-        }
-
-        protected void alignRecipe(Recipe<?> recipe) {
-            ItemStack[] itemStacks = (recipe.getIngredients().get(0)).getMatchingStacks();
-            this.slots.add(new VineryAlternativeButtonWidget.InputSlot(10, 10, itemStacks));
-        }
-    }
-
-    @Environment(EnvType.CLIENT)
     private class VineryAlternativeButtonWidget extends ClickableWidget implements RecipeGridAligner<Ingredient> {
         final Recipe<?> recipe;
         private final boolean craftable;
@@ -250,7 +217,7 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
                 i += 26;
             }
 
-            int j = VineryRecipeAlternativesWidget.this.furnace ? 130 : 78;
+            int j = 78;
             if (this.isHovered()) {
                 j += 26;
             }

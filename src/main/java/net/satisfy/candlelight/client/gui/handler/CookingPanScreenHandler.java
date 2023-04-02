@@ -26,7 +26,7 @@ public class CookingPanScreenHandler extends AbstractRecipeScreenHandler<Invento
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;
-    private final RecipeType<? extends Recipe> recipeType;
+    private final RecipeType<? extends Recipe<?>> recipeType;
     private final VineryRecipeBookCategory category;
     private final int inputSlots;
 
@@ -136,10 +136,6 @@ public class CookingPanScreenHandler extends AbstractRecipeScreenHandler<Invento
     @Override
     public RecipeBookCategory getCategory() {
         return null;
-    }
-
-    public RecipeType<Recipe<?>> getRecipeType() {
-        return (RecipeType<Recipe<?>>) recipeType;
     }
 
     public VineryRecipeBookCategory getVineryCategory() {

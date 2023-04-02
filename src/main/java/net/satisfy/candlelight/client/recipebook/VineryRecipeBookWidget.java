@@ -2,12 +2,9 @@ package net.satisfy.candlelight.client.recipebook;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.Selectable;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.screen.recipebook.*;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -19,9 +16,9 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeMatcher;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -29,7 +26,7 @@ import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
 import net.satisfy.candlelight.client.screen.VineryRecipeBookResults;
 import net.satisfy.candlelight.client.screen.VineryRecipeResultCollection;
-import net.satisfy.candlelight.client.search.VinerySearchManager;
+import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import org.jetbrains.annotations.Nullable;
 
@@ -46,7 +43,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
     private int leftOffset;
     private int parentWidth;
     private int parentHeight;
-    protected final RecipeBookGhostSlots ghostSlots = new RecipeBookGhostSlots();
+    protected final VineryRecipeBookGhostSlots ghostSlots = new VineryRecipeBookGhostSlots();
     private final List<VineryRecipeGroupButtonWidget> tabButtons = Lists.newArrayList();
     @Nullable
     private VineryRecipeGroupButtonWidget currentTab;
@@ -103,7 +100,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         this.searchField.setVisible(true);
         this.searchField.setEditableColor(16777215);
         this.searchField.setText(string);
-        this.recipesArea.initialize(this.client, i, j);
+        this.recipesArea.initialize(this.client, i, j, this.craftingScreenHandler);
         this.recipesArea.setGui(this);
         this.toggleCraftableButton = new ToggleButtonWidget(i + 110, j + 12, 26, 16, Candlelight.rememberedCraftableToggle);
         this.setBookButtonTexture();
@@ -172,8 +169,6 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         if (!opened) {
             this.recipesArea.hideAlternates();
         }
-
-        this.sendBookDataPacket();
     }
 
     public void slotClicked(@Nullable Slot slot) {
@@ -190,20 +185,19 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         if (this.currentTab == null) return;
         if (this.searchField == null) return;
 
-        List<VineryRecipeResultCollection> list = this.recipeBook.getResultsForGroup(currentTab.getGroup(), client.world.getRecipeManager().listAllOfType(RecipeTypes.COOKING_PAN_RECIPE_TYPE));
+        List<VineryRecipeResultCollection> recipes = this.recipeBook.getResultsForGroup(currentTab.getGroup(), client.world.getRecipeManager().listAllOfType(RecipeTypes.COOKING_PAN_RECIPE_TYPE));
 
         String string = this.searchField.getText();
 
         if (!string.isEmpty()) {
-            ObjectSet<VineryRecipeResultCollection> objectSet = new ObjectLinkedOpenHashSet<>(this.client.getSearchProvider(VinerySearchManager.VINERY_RECIPE_OUTPUT).findAll(string.toLowerCase(Locale.ROOT))); //TODO GAME CRASH
-            list.removeIf((recipeResultCollection) -> !objectSet.contains(recipeResultCollection));
+            recipes.removeIf((collection) -> !collection.getRecipe().getOutput().getName().getString().toLowerCase(Locale.ROOT).contains(string.toLowerCase(Locale.ROOT)));
         }
 
         if (Candlelight.rememberedCraftableToggle) {
-            list.removeIf((resultCollection) -> !resultCollection.hasCraftableRecipes());
+            recipes.removeIf((resultCollection) -> !resultCollection.hasIngredient(craftingScreenHandler));
         }
 
-        this.recipesArea.setResults(list, resetCurrentPage, currentTab.getGroup());
+        this.recipesArea.setResults(recipes, resetCurrentPage, currentTab.getGroup());
     }
 
     private void refreshTabButtons() {
@@ -212,19 +206,8 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         int l = 0;
 
         for (VineryRecipeGroupButtonWidget recipeGroupButtonWidget : this.tabButtons) {
-            VineryRecipeBookGroup recipeBookGroup = recipeGroupButtonWidget.getGroup();
-            if (recipeBookGroup != VineryRecipeBookGroup.SEARCH) {
-                recipeGroupButtonWidget.visible = true;
-                recipeGroupButtonWidget.setPos(i, j + 27 * l++);
-                /*
-                if (recipeGroupButtonWidget.hasKnownRecipes(this.recipeBook)) { //TODO recipes
-                    recipeGroupButtonWidget.checkForNewRecipes(this.client);
-                }
-                 */
-            } else {
-                recipeGroupButtonWidget.visible = true;
-                recipeGroupButtonWidget.setPos(i, j + 27 * l++);
-            }
+            recipeGroupButtonWidget.visible = true;
+            recipeGroupButtonWidget.setPos(i, j + 27 * l++);
         }
     }
 
@@ -303,7 +286,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         ItemStack itemStack = null;
 
         for(int i = 0; i < this.ghostSlots.getSlotCount(); ++i) {
-            RecipeBookGhostSlots.GhostInputSlot ghostInputSlot = this.ghostSlots.getSlot(i);
+            VineryRecipeBookGhostSlots.VineryGhostInputSlot ghostInputSlot = this.ghostSlots.getSlot(i);
             int j = ghostInputSlot.getX() + x;
             int k = ghostInputSlot.getY() + y;
             if (mouseX >= j && mouseY >= k && mouseX < j + 16 && mouseY < k + 16) {
@@ -321,6 +304,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         this.ghostSlots.draw(matrices, this.client, x, y, bl, delta);
     }
 
+    /*
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (this.isOpen() && !this.client.player.isSpectator()) {
             if (this.recipesArea.mouseClicked(mouseX, mouseY, button, (this.parentWidth - 147) / 2 - this.leftOffset, (this.parentHeight - 166) / 2, 147, 166)) {
@@ -376,8 +360,106 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         }
     }
 
+     */
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (this.open && !Objects.requireNonNull(this.client.player).isSpectator()) {
+            if (this.recipesArea.mouseClicked(mouseX, mouseY, button, (this.parentWidth - 147) / 2 - this.leftOffset, (this.parentHeight - 166) / 2, 147, 166)) {
+                Recipe<?> recipe = this.recipesArea.getLastClickedRecipe();
+                VineryRecipeResultCollection recipeResultCollection = this.recipesArea.getLastClickedResults();
+                if (recipe != null) {
+                    if (this.currentTab == null) return false;
+                    this.ghostSlots.reset();
+
+                    assert recipeResultCollection != null;
+                    if (!recipeResultCollection.hasIngredient(craftingScreenHandler)) {
+                        showGhostRecipe(recipe, craftingScreenHandler.slots);
+                        return false;
+                    }
+
+                    int slotIndex = 0;
+                    this.ghostSlots.reset();
+                    MinecraftClient.getInstance().interactionManager.clickSlot(craftingScreenHandler.syncId, slotIndex, 0, SlotActionType.PICKUP, MinecraftClient.getInstance().player);
+                    MinecraftClient.getInstance().interactionManager.clickSlot(craftingScreenHandler.syncId, craftingScreenHandler.getSlot(slotIndex).id, 0, SlotActionType.PICKUP, MinecraftClient.getInstance().player);
+
+                    insertRecipe(recipe);
+
+                    this.refreshResults(false);
+                }
+
+                return true;
+            } else {
+                assert this.searchField != null;
+                if (this.searchField.mouseClicked(mouseX, mouseY, button)) {
+                    return true;
+                } else if (this.toggleCraftableButton.mouseClicked(mouseX, mouseY, button)) {
+                    boolean bl = this.toggleFilteringCraftable();
+                    this.toggleCraftableButton.setToggled(bl);
+                    Candlelight.rememberedCraftableToggle = bl;
+                    this.refreshResults(false);
+                    return true;
+                }
+
+                Iterator<VineryRecipeGroupButtonWidget> var6 = this.tabButtons.iterator();
+
+                VineryRecipeGroupButtonWidget vineryRecipeGroupButtonWidget;
+                do {
+                    if (!var6.hasNext()) {
+                        return false;
+                    }
+
+                    vineryRecipeGroupButtonWidget = var6.next();
+                } while (!vineryRecipeGroupButtonWidget.mouseClicked(mouseX, mouseY, button));
+
+                if (this.currentTab != vineryRecipeGroupButtonWidget) {
+                    if (this.currentTab != null) {
+                        this.currentTab.setToggled(false);
+                    }
+
+                    this.currentTab = vineryRecipeGroupButtonWidget;
+                    this.currentTab.setToggled(true);
+                    this.refreshResults(true);
+                }
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    private void insertRecipe(Recipe<?> recipe) {
+        if (recipe instanceof CookingPanRecipe cookingPanRecipe) {
+            int slotIndex = 0;
+            for (Slot slot : craftingScreenHandler.slots) {
+                if (cookingPanRecipe.getContainer().getItem() == slot.getStack().getItem()) {
+                    MinecraftClient.getInstance().interactionManager.clickSlot(craftingScreenHandler.syncId, slotIndex, 0, SlotActionType.PICKUP, MinecraftClient.getInstance().player);
+                    MinecraftClient.getInstance().interactionManager.clickSlot(craftingScreenHandler.syncId, 0, 0, SlotActionType.PICKUP, MinecraftClient.getInstance().player);
+                    break;
+                }
+                ++slotIndex;
+            }
+        }
+        int usedInputSlots = 1;
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            int slotIndex = 0;
+            for (Slot slot : craftingScreenHandler.slots) {
+                ItemStack itemStack = slot.getStack();
+
+                if (ingredient.test(itemStack) && usedInputSlots < 7) {
+                    assert MinecraftClient.getInstance().interactionManager != null;
+                    //take
+                    MinecraftClient.getInstance().interactionManager.clickSlot(craftingScreenHandler.syncId, slotIndex, 0, SlotActionType.PICKUP, MinecraftClient.getInstance().player);
+                    //place
+                    MinecraftClient.getInstance().interactionManager.clickSlot(craftingScreenHandler.syncId, usedInputSlots, 0, SlotActionType.PICKUP, MinecraftClient.getInstance().player);
+                    ++usedInputSlots;
+                    break;
+                }
+                ++slotIndex;
+            }
+        }
+
+    }
+
     private boolean toggleFilteringCraftable() {
-        //VineryRecipeBookCategory recipeBookCategory = this.craftingScreenHandler.getVineryCategory();
         boolean bl = !Candlelight.rememberedCraftableToggle;
         Candlelight.rememberedCraftableToggle = bl;
         return bl;
@@ -482,32 +564,15 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
     }
 
     public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots) {
-        ItemStack itemStack = recipe.getOutput();
-        this.ghostSlots.setRecipe(recipe);
-        this.ghostSlots.addSlot(Ingredient.ofStacks(itemStack), (slots.get(0)).x, (slots.get(0)).y);
-        this.alignRecipeToGrid(this.craftingScreenHandler.getCraftingWidth(), this.craftingScreenHandler.getCraftingHeight(), this.craftingScreenHandler.getCraftingResultSlotIndex(), recipe, recipe.getIngredients().iterator(), 0);
-    }
-
-    public void acceptAlignedInput(Iterator<Ingredient> inputs, int slot, int amount, int gridX, int gridY) {
-        Ingredient ingredient = (inputs.next());
-        if (!ingredient.isEmpty()) {
-            Slot slot2 = this.craftingScreenHandler.slots.get(slot);
-            this.ghostSlots.addSlot(ingredient, slot2.x, slot2.y);
+        this.ghostSlots.addSlot(recipe.getOutput(), slots.get(7).x, slots.get(7).y);
+        if (recipe instanceof CookingPanRecipe cookingPanRecipe) {
+            this.ghostSlots.addSlot(cookingPanRecipe.getContainer(), slots.get(0).x, slots.get(0).y);
         }
-
-    }
-
-    protected void sendBookDataPacket() {
-        if (this.client.getNetworkHandler() != null) {
-            /*
-            VineryRecipeBookCategory recipeBookCategory = this.craftingScreenHandler.getVineryCategory();
-            boolean bl = this.recipeBook.isGuiOpen(recipeBookCategory);
-            boolean bl2 = this.recipeBook.isFilteringCraftable();
-            this.client.getNetworkHandler().sendPacket(new RecipeCategoryOptionsC2SPacket(recipeBookCategory, bl, bl2));
-
-             */
+        int j = 1;
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            ItemStack inputStack = ingredient.getMatchingStacks()[0];
+            this.ghostSlots.addSlot(inputStack, slots.get(j).x, slots.get(j++).y);
         }
-
     }
 
     public Selectable.SelectionType getType() {

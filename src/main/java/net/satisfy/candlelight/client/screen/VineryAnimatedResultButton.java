@@ -6,25 +6,16 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.screen.narration.NarrationPart;
-import net.minecraft.client.gui.screen.recipebook.RecipeBookResults;
-import net.minecraft.client.gui.screen.recipebook.RecipeResultCollection;
 import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.book.RecipeBook;
-import net.minecraft.screen.AbstractRecipeScreenHandler;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
-import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
-import net.satisfy.candlelight.client.recipebook.VineryRecipeBook;
-import net.satisfy.candlelight.client.recipebook.VineryRecipeBookGroup;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class VineryAnimatedResultButton extends ClickableWidget {
@@ -32,18 +23,14 @@ public class VineryAnimatedResultButton extends ClickableWidget {
     private static final Text MORE_RECIPES_TEXT = Text.translatable("gui.recipebook.moreRecipes");
     private CookingPanScreenHandler craftingScreenHandler;
     private VineryRecipeResultCollection resultCollection;
-    private float time;
     private float bounce;
-    private int currentResultIndex;
-    private VineryRecipeBookGroup group;
 
     public VineryAnimatedResultButton() {
         super(0, 0, 25, 25, ScreenTexts.EMPTY);
     }
 
-    public void showResultCollection(VineryRecipeResultCollection resultCollection, VineryRecipeBookGroup group, CookingPanScreenHandler craftingScreenHandler) {
+    public void showResultCollection(VineryRecipeResultCollection resultCollection, CookingPanScreenHandler craftingScreenHandler) {
         this.resultCollection = resultCollection;
-        this.group = group;
         this.craftingScreenHandler = craftingScreenHandler;
     }
 
@@ -57,22 +44,15 @@ public class VineryAnimatedResultButton extends ClickableWidget {
     }
 
     public void renderButton(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        if (!Screen.hasControlDown()) {
-            this.time += delta;
-        }
-
         MinecraftClient minecraftClient = MinecraftClient.getInstance();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
         int i = 29;
-        if (!this.resultCollection.hasCraftableRecipes()) {
+        if (!this.resultCollection.hasIngredient(craftingScreenHandler)) {
             i += 25;
         }
 
         int j = 206;
-        if (this.resultCollection.getResults(Candlelight.rememberedCraftableToggle).size() > 1) {
-            j += 25;
-        }
 
         boolean bl = this.bounce > 0.0F;
         MatrixStack matrixStack = RenderSystem.getModelViewStack();
@@ -87,17 +67,10 @@ public class VineryAnimatedResultButton extends ClickableWidget {
         }
 
         this.drawTexture(matrices, this.x, this.y, i, j, this.width, this.height);
-        List<Recipe<?>> list = this.getResults();
-        System.out.println("size" + list.size());
-        this.currentResultIndex = MathHelper.floor(this.time / 30.0F) % list.size();
-        ItemStack itemStack = (list.get(this.currentResultIndex)).getOutput();
+        Recipe<?> recipe = this.getResult();
         int k = 4;
-        if (this.resultCollection.hasSingleOutput() && this.getResults().size() > 1) {
-            minecraftClient.getItemRenderer().renderInGuiWithOverrides(itemStack, this.x + k + 1, this.y + k + 1, 0, 10);
-            --k;
-        }
 
-        minecraftClient.getItemRenderer().renderInGui(itemStack, this.x + k, this.y + k);
+        minecraftClient.getItemRenderer().renderInGui(recipe.getOutput(), this.x + k, this.y + k);
         if (bl) {
             matrixStack.pop();
             RenderSystem.applyModelViewMatrix();
@@ -105,43 +78,29 @@ public class VineryAnimatedResultButton extends ClickableWidget {
 
     }
 
-    private List<Recipe<?>> getResults() {
-        List<Recipe<?>> list = this.resultCollection.getRecipes(true);
-        if (!Candlelight.rememberedCraftableToggle) {
-            list.addAll(this.resultCollection.getRecipes(false));
-        }
-
+    private Recipe<?> getResult() {
+        Recipe<?> list = this.resultCollection.getRecipe();
         return list;
     }
 
-    public boolean hasResults() {
-        return this.getResults().size() == 1;
+    public boolean hasResult() {
+        return this.getResult() != null;
     }
 
     public Recipe<?> currentRecipe() {
-        List<Recipe<?>> list = this.getResults();
-        return (Recipe)list.get(this.currentResultIndex);
+        return this.getResult();
     }
 
     public List<Text> getTooltip(Screen screen) {
-        ItemStack itemStack = (this.getResults().get(this.currentResultIndex)).getOutput();
-        List<Text> list = Lists.newArrayList(screen.getTooltipFromItem(itemStack));
-        if (this.resultCollection.getResults(Candlelight.rememberedCraftableToggle).size() > 1) {
-            list.add(MORE_RECIPES_TEXT);
-        }
-
-        return list;
+        ItemStack itemStack = this.getResult().getOutput();
+        return Lists.newArrayList(screen.getTooltipFromItem(itemStack));
     }
 
     public void appendNarrations(NarrationMessageBuilder builder) {
-        ItemStack itemStack = (this.getResults().get(this.currentResultIndex)).getOutput();
+        ItemStack itemStack = this.getResult().getOutput();
         builder.put(NarrationPart.TITLE, Text.translatable("narration.recipe", itemStack.getName()));
-        if (this.resultCollection.getResults(Candlelight.rememberedCraftableToggle).size() > 1) {
-            builder.put(NarrationPart.USAGE, Text.translatable("narration.button.usage.hovered"), Text.translatable("narration.recipe.usage.more"));
-        } else {
-            builder.put(NarrationPart.USAGE, Text.translatable("narration.button.usage.hovered"));
-        }
 
+        builder.put(NarrationPart.USAGE, Text.translatable("narration.button.usage.hovered"));
     }
 
     public int getWidth() {

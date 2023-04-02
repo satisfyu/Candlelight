@@ -6,21 +6,16 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.recipebook.*;
-import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.client.gui.widget.ToggleButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.book.RecipeBook;
-import net.satisfy.candlelight.client.gui.CookingPanScreen;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
-import net.satisfy.candlelight.client.recipebook.VineryRecipeBook;
 import net.satisfy.candlelight.client.recipebook.VineryRecipeBookGroup;
 import net.satisfy.candlelight.client.recipebook.VineryRecipeBookWidget;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
 
 @Environment(EnvType.CLIENT)
 public class VineryRecipeBookResults {
@@ -35,7 +30,6 @@ public class VineryRecipeBookResults {
     private ToggleButtonWidget prevPageButton;
     private int pageCount;
     private int currentPage;
-    private VineryRecipeBook recipeBook;
     @Nullable
     private Recipe<?> lastClickedRecipe;
     @Nullable
@@ -50,9 +44,9 @@ public class VineryRecipeBookResults {
 
     }
 
-    public void initialize(MinecraftClient client, int parentLeft, int parentTop) {
+    public void initialize(MinecraftClient client, int parentLeft, int parentTop, CookingPanScreenHandler cookingPanScreenHandler) {
         this.client = client;
-        this.recipeBook = new VineryRecipeBook(); //TODO from client
+        this.cookingPanScreenHandler = cookingPanScreenHandler;
 
         for(int i = 0; i < this.resultButtons.size(); ++i) {
             this.resultButtons.get(i).setPos(parentLeft + 11 + 25 * (i % 5), parentTop + 31 + 25 * (i / 5));
@@ -87,7 +81,7 @@ public class VineryRecipeBookResults {
             VineryAnimatedResultButton animatedResultButton = this.resultButtons.get(j);
             if (i + j < this.resultCollections.size()) {
                 VineryRecipeResultCollection recipeResultCollection = this.resultCollections.get(i + j);
-                animatedResultButton.showResultCollection(recipeResultCollection, group, cookingPanScreenHandler);
+                animatedResultButton.showResultCollection(recipeResultCollection, cookingPanScreenHandler);
                 animatedResultButton.visible = true;
             } else {
                 animatedResultButton.visible = false;
@@ -179,8 +173,11 @@ public class VineryRecipeBookResults {
 
             if (button == 0) {
                 this.lastClickedRecipe = animatedResultButton.currentRecipe();
+                System.out.println(lastClickedRecipe);
                 this.resultCollection = animatedResultButton.getResultCollection();
-            } else if (button == 1 && !this.alternatesWidget.isVisible() && !animatedResultButton.hasResults()) {
+                System.out.println(resultCollection);
+            } else if (button == 1 && !this.alternatesWidget.isVisible() && animatedResultButton.hasResult()) {
+                // Implement maybe later
                 this.alternatesWidget.showAlternativesForResult(this.client, animatedResultButton.getResultCollection(), animatedResultButton.x, animatedResultButton.y, areaLeft + areaWidth / 2, areaTop + 13 + areaHeight / 2, (float)animatedResultButton.getWidth());
             }
 
@@ -188,23 +185,7 @@ public class VineryRecipeBookResults {
         }
     }
 
-    public void onRecipesDisplayed(List<Recipe<?>> recipes) {
-        for (RecipeDisplayListener recipeDisplayListener : this.recipeDisplayListeners) {
-            recipeDisplayListener.onRecipesDisplayed(recipes);
-        }
-    }
-
     public MinecraftClient getClient() {
         return this.client;
-    }
-
-    public VineryRecipeBook getRecipeBook() {
-        return this.recipeBook;
-    }
-
-    protected void forEachButton(Consumer<ClickableWidget> consumer) {
-        consumer.accept(this.nextPageButton);
-        consumer.accept(this.prevPageButton);
-        this.resultButtons.forEach(consumer);
     }
 }
