@@ -3,15 +3,13 @@ package net.satisfy.candlelight.client.screen;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.IntList;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeMatcher;
-import net.minecraft.recipe.book.RecipeBook;
+import net.satisfy.candlelight.client.recipebook.VineryRecipeBook;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -51,35 +49,31 @@ public class VineryRecipeResultCollection {
         return !this.unlockedRecipes.isEmpty();
     }
 
-    public void initialize(RecipeBook recipeBook) {
-
+    public void initialize(VineryRecipeBook recipeBook) {
         for (Recipe<?> value : this.recipes) {
-            Recipe<?> recipe = (Recipe) value;
-            if (recipeBook.contains(recipe)) {
-                this.unlockedRecipes.add(recipe);
+            if (recipeBook.contains(value)) {
+                this.unlockedRecipes.add(value);
             }
         }
 
     }
 
-    public void computeCraftables(RecipeMatcher recipeFinder, int gridWidth, int gridHeight, RecipeBook recipeBook) {
-        for (Recipe<?> value : this.recipes) {
-            Recipe<?> recipe = (Recipe) value;
-            boolean bl = recipe.fits(gridWidth, gridHeight) && recipeBook.contains(recipe);
+    public void computeCraftables(RecipeMatcher recipeFinder, int gridWidth, int gridHeight, VineryRecipeBook recipeBook) {
+        for (Recipe<?> recipe : this.recipes) {
+            boolean bl = recipe.fits(gridWidth, gridHeight) && recipeBook.contains(recipe); //TODO
             if (bl) {
                 this.fittingRecipes.add(recipe);
             } else {
                 this.fittingRecipes.remove(recipe);
             }
 
-            if (bl && recipeFinder.match(recipe, null)) {
+            //if (bl && recipeFinder.match(recipe, null)) {
+            if(bl) {
                 this.craftableRecipes.add(recipe);
             } else {
                 this.craftableRecipes.remove(recipe);
             }
         }
-
-        return;
     }
 
     public boolean isCraftable(Recipe<?> recipe) {
@@ -103,9 +97,8 @@ public class VineryRecipeResultCollection {
         Set<Recipe<?>> set = craftableOnly ? this.craftableRecipes : this.fittingRecipes;
 
         for (Recipe<?> value : this.recipes) {
-            Recipe<?> recipe = (Recipe) value;
-            if (set.contains(recipe)) {
-                list.add(recipe);
+            if (set.contains(value)) {
+                list.add(value);
             }
         }
 

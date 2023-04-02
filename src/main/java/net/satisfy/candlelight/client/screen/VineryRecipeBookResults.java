@@ -11,7 +11,10 @@ import net.minecraft.client.gui.widget.ToggleButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.book.RecipeBook;
+import net.satisfy.candlelight.client.gui.CookingPanScreen;
+import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
 import net.satisfy.candlelight.client.recipebook.VineryRecipeBook;
+import net.satisfy.candlelight.client.recipebook.VineryRecipeBookGroup;
 import net.satisfy.candlelight.client.recipebook.VineryRecipeBookWidget;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,6 +40,8 @@ public class VineryRecipeBookResults {
     private Recipe<?> lastClickedRecipe;
     @Nullable
     private VineryRecipeResultCollection resultCollection;
+    VineryRecipeBookGroup group;
+    private CookingPanScreenHandler cookingPanScreenHandler;
 
     public VineryRecipeBookResults() {
         for(int i = 0; i < 20; ++i) {
@@ -64,8 +69,9 @@ public class VineryRecipeBookResults {
         this.recipeDisplayListeners.add(widget);
     }
 
-    public void setResults(List<VineryRecipeResultCollection> resultCollections, boolean resetCurrentPage) {
+    public void setResults(List<VineryRecipeResultCollection> resultCollections, boolean resetCurrentPage, VineryRecipeBookGroup group) {
         this.resultCollections = resultCollections;
+        this.group = group;
         this.pageCount = (int)Math.ceil((double)resultCollections.size() / 20.0);
         if (this.pageCount <= this.currentPage || resetCurrentPage) {
             this.currentPage = 0;
@@ -81,7 +87,7 @@ public class VineryRecipeBookResults {
             VineryAnimatedResultButton animatedResultButton = this.resultButtons.get(j);
             if (i + j < this.resultCollections.size()) {
                 VineryRecipeResultCollection recipeResultCollection = this.resultCollections.get(i + j);
-                animatedResultButton.showResultCollection(recipeResultCollection, this);
+                animatedResultButton.showResultCollection(recipeResultCollection, group, cookingPanScreenHandler);
                 animatedResultButton.visible = true;
             } else {
                 animatedResultButton.visible = false;
@@ -105,10 +111,8 @@ public class VineryRecipeBookResults {
         }
 
         this.hoveredResultButton = null;
-        Iterator<VineryAnimatedResultButton> var9 = this.resultButtons.iterator();
 
-        while(var9.hasNext()) {
-            VineryAnimatedResultButton animatedResultButton = var9.next();
+        for (VineryAnimatedResultButton animatedResultButton : this.resultButtons) {
             animatedResultButton.render(matrices, mouseX, mouseY, delta);
             if (animatedResultButton.visible && animatedResultButton.isHovered()) {
                 this.hoveredResultButton = animatedResultButton;

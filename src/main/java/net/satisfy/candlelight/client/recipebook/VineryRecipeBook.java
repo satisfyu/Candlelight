@@ -84,21 +84,4 @@ public class VineryRecipeBook extends RecipeBook {
     public boolean isFilteringCraftable(VineryRecipeBookCategory category) {
         return this.options.isFilteringCraftable(category);
     }
-
-    public void setFilteringCraftable(VineryRecipeBookCategory category, boolean filteringCraftable) {
-        this.options.setFilteringCraftable(category, filteringCraftable);
-    }
-
-    public void setOptions(VineryRecipeBookOptions options) {
-        this.options.copyFrom(options);
-    }
-
-    public VineryRecipeBookOptions getVineryOptions() {
-        return this.options.copy();
-    }
-
-    public void setCategoryOptions(VineryRecipeBookCategory category, boolean guiOpen, boolean filteringCraftable) {
-        this.options.setGuiOpen(category, guiOpen);
-        this.options.setFilteringCraftable(category, filteringCraftable);
-    }
 }

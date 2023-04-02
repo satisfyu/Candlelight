@@ -9,9 +9,6 @@ import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.screen.AbstractRecipeScreenHandler;
-import net.satisfy.candlelight.client.screen.VineryRecipeResultCollection;
 
 import java.util.List;
 
@@ -24,24 +21,6 @@ public class VineryRecipeGroupButtonWidget extends ToggleButtonWidget {
         super(0, 0, 35, 27, false);
         this.category = category;
         this.setTextureUV(153, 2, 35, 0, VineryRecipeBookWidget.TEXTURE);
-    }
-
-    public void checkForNewRecipes(MinecraftClient client) {
-        VineryClientRecipeBook clientRecipeBook = new VineryClientRecipeBook();
-        List<VineryRecipeResultCollection> list = clientRecipeBook.getResultsForGroup(this.category);
-        if (client.player.currentScreenHandler instanceof AbstractRecipeScreenHandler) {
-
-            for (VineryRecipeResultCollection recipeResultCollection : list) {
-
-                for (Recipe<?> value : recipeResultCollection.getResults(clientRecipeBook.isFilteringCraftable((AbstractRecipeScreenHandler) client.player.currentScreenHandler))) {
-                    if (clientRecipeBook.shouldDisplay(value)) {
-                        this.bounce = 15.0F;
-                        return;
-                    }
-                }
-            }
-
-        }
     }
 
     public void renderButton(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -94,22 +73,7 @@ public class VineryRecipeGroupButtonWidget extends ToggleButtonWidget {
 
     }
 
-    public VineryRecipeBookGroup getVineryCategory() {
+    public VineryRecipeBookGroup getGroup() {
         return this.category;
-    }
-
-    public boolean hasKnownRecipes(VineryClientRecipeBook recipeBook) {
-        this.visible = false;
-        List<VineryRecipeResultCollection> list = recipeBook.getResultsForGroup(this.category);
-        if (list != null) {
-
-            for (VineryRecipeResultCollection recipeResultCollection : list) {
-                if (recipeResultCollection.isInitialized() && recipeResultCollection.hasFittingRecipes()) {
-                    this.visible = true;
-                    break;
-                }
-            }
-        }
-        return this.visible;
     }
 }

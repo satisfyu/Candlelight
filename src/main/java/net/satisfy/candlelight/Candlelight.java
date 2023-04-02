@@ -29,6 +29,9 @@ public class Candlelight implements ModInitializer {
     public static final String MOD_ID = "candlelight";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
+    public static boolean rememberedRecipeBookOpen = false;
+    public static boolean rememberedCraftableToggle = true;
+
     @Override
     public void onInitialize() {
         RecipeTypes.init();

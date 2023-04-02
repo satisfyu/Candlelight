@@ -21,6 +21,7 @@ import net.minecraft.screen.AbstractRecipeScreenHandler;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.satisfy.candlelight.Candlelight;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
@@ -53,7 +54,7 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
             this.furnace = true;
         }
 
-        boolean bl = client.player.getRecipeBook().isFilteringCraftable((AbstractRecipeScreenHandler)client.player.currentScreenHandler); //TODO Cannot read field "filteringCraftable" because the return value of "java.util.Map.get(Object)" is null
+        boolean bl = Candlelight.rememberedCraftableToggle;
         List<Recipe<?>> list = results.getRecipes(true);
         List<Recipe<?>> list2 = bl ? Collections.emptyList() : results.getRecipes(false);
         int i = list.size();

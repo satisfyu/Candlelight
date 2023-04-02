@@ -35,7 +35,7 @@ public abstract class AbstractCookingRecipeBookScreen extends VineryRecipeBookWi
 
     }
 
-    public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots) {
+    public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots) { //TODO
         ItemStack itemStack = recipe.getOutput();
         this.ghostSlots.setRecipe(recipe);
         this.ghostSlots.addSlot(Ingredient.ofStacks(itemStack), (slots.get(2)).x, (slots.get(2)).y);

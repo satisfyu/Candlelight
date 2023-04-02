@@ -25,6 +25,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
 import net.satisfy.candlelight.client.screen.VineryRecipeBookResults;
 import net.satisfy.candlelight.client.screen.VineryRecipeResultCollection;
@@ -104,7 +105,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         this.searchField.setText(string);
         this.recipesArea.initialize(this.client, i, j);
         this.recipesArea.setGui(this);
-        this.toggleCraftableButton = new ToggleButtonWidget(i + 110, j + 12, 26, 16, this.recipeBook.isFilteringCraftable(this.craftingScreenHandler));
+        this.toggleCraftableButton = new ToggleButtonWidget(i + 110, j + 12, 26, 16, Candlelight.rememberedCraftableToggle);
         this.setBookButtonTexture();
         this.tabButtons.clear();
 
@@ -113,7 +114,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         }
 
         if (this.currentTab != null) {
-            this.currentTab = this.tabButtons.stream().filter((button) -> button.getVineryCategory().equals(this.currentTab.getVineryCategory())
+            this.currentTab = this.tabButtons.stream().filter((button) -> button.getGroup().equals(this.currentTab.getGroup())
             ).findFirst().orElse(null);
         }
 
@@ -158,7 +159,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
     }
 
     private boolean isGuiOpen() {
-        return this.recipeBook.isGuiOpen(this.craftingScreenHandler.getVineryCategory());
+        return Candlelight.rememberedRecipeBookOpen;
     }
 
     protected void setOpen(boolean opened) {
@@ -167,7 +168,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         }
 
         this.open = opened;
-        this.recipeBook.setGuiOpen(this.craftingScreenHandler.getVineryCategory(), opened);
+        Candlelight.rememberedRecipeBookOpen = opened;
         if (!opened) {
             this.recipesArea.hideAlternates();
         }
@@ -186,30 +187,23 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
     }
 
     private void refreshResults(boolean resetCurrentPage) {
-        System.out.println(client.world.getRecipeManager().listAllOfType(RecipeTypes.COOKING_PAN_RECIPE_TYPE));
-        recipeBook.reload(client.world.getRecipeManager().listAllOfType(RecipeTypes.COOKING_PAN_RECIPE_TYPE));
-        List<VineryRecipeResultCollection> list = this.recipeBook.getResultsForGroup(this.currentTab.getVineryCategory());
-        System.out.println("list" + list);
-        /*
-        list.forEach((resultCollection) ->
-            resultCollection.computeCraftables(this.recipeFinder, this.craftingScreenHandler.getCraftingWidth(), this.craftingScreenHandler.getCraftingHeight(), this.recipeBook));
-        List<VineryRecipeResultCollection> list2 = Lists.newArrayList(list);
-        list2.removeIf((resultCollection) -> !resultCollection.isInitialized());
-        list2.removeIf((resultCollection) -> !resultCollection.hasFittingRecipes());
+        if (this.currentTab == null) return;
+        if (this.searchField == null) return;
 
-         */
+        List<VineryRecipeResultCollection> list = this.recipeBook.getResultsForGroup(currentTab.getGroup(), client.world.getRecipeManager().listAllOfType(RecipeTypes.COOKING_PAN_RECIPE_TYPE));
+
         String string = this.searchField.getText();
 
         if (!string.isEmpty()) {
-            ObjectSet<VineryRecipeResultCollection> objectSet = new ObjectLinkedOpenHashSet<>(this.client.getSearchProvider(VinerySearchManager.VINERY_RECIPE_OUTPUT).findAll(string.toLowerCase(Locale.ROOT)));
-            //list2.removeIf((recipeResultCollection) -> !objectSet.contains(recipeResultCollection));
+            ObjectSet<VineryRecipeResultCollection> objectSet = new ObjectLinkedOpenHashSet<>(this.client.getSearchProvider(VinerySearchManager.VINERY_RECIPE_OUTPUT).findAll(string.toLowerCase(Locale.ROOT))); //TODO GAME CRASH
+            list.removeIf((recipeResultCollection) -> !objectSet.contains(recipeResultCollection));
         }
 
-        if (this.recipeBook.isFilteringCraftable(this.craftingScreenHandler)) {
-            //list2.removeIf((resultCollection) -> !resultCollection.hasCraftableRecipes());
+        if (Candlelight.rememberedCraftableToggle) {
+            list.removeIf((resultCollection) -> !resultCollection.hasCraftableRecipes());
         }
 
-        this.recipesArea.setResults(list, resetCurrentPage); // list -> list2
+        this.recipesArea.setResults(list, resetCurrentPage, currentTab.getGroup());
     }
 
     private void refreshTabButtons() {
@@ -218,7 +212,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
         int l = 0;
 
         for (VineryRecipeGroupButtonWidget recipeGroupButtonWidget : this.tabButtons) {
-            VineryRecipeBookGroup recipeBookGroup = recipeGroupButtonWidget.getVineryCategory();
+            VineryRecipeBookGroup recipeBookGroup = recipeGroupButtonWidget.getGroup();
             if (recipeBookGroup != VineryRecipeBookGroup.SEARCH) {
                 recipeGroupButtonWidget.visible = true;
                 recipeGroupButtonWidget.setPos(i, j + 27 * l++);
@@ -273,10 +267,7 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
                 this.searchField.render(matrices, mouseX, mouseY, delta);
             }
 
-            Iterator var7 = this.tabButtons.iterator();
-
-            while (var7.hasNext()) {
-                VineryRecipeGroupButtonWidget recipeGroupButtonWidget = (VineryRecipeGroupButtonWidget)var7.next();
+            for (VineryRecipeGroupButtonWidget recipeGroupButtonWidget : this.tabButtons) {
                 recipeGroupButtonWidget.render(matrices, mouseX, mouseY, delta);
             }
 
@@ -386,9 +377,9 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
     }
 
     private boolean toggleFilteringCraftable() {
-        VineryRecipeBookCategory recipeBookCategory = this.craftingScreenHandler.getVineryCategory();
-        boolean bl = !this.recipeBook.isFilteringCraftable(recipeBookCategory);
-        this.recipeBook.setFilteringCraftable(recipeBookCategory, bl);
+        //VineryRecipeBookCategory recipeBookCategory = this.craftingScreenHandler.getVineryCategory();
+        boolean bl = !Candlelight.rememberedCraftableToggle;
+        Candlelight.rememberedCraftableToggle = bl;
         return bl;
     }
 
@@ -485,7 +476,6 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
     }
 
     public void onRecipesDisplayed(List<Recipe<?>> recipes) {
-        System.out.println("onRecipesDisplayed");
         for (Recipe<?> recipe : recipes) {
             this.client.player.onRecipeDisplayed(recipe);
         }
@@ -509,10 +499,13 @@ public class VineryRecipeBookWidget extends RecipeBookWidget {
 
     protected void sendBookDataPacket() {
         if (this.client.getNetworkHandler() != null) {
+            /*
             VineryRecipeBookCategory recipeBookCategory = this.craftingScreenHandler.getVineryCategory();
-            boolean bl = this.recipeBook.getVineryOptions().isGuiOpen(recipeBookCategory);
-            boolean bl2 = this.recipeBook.getVineryOptions().isFilteringCraftable(recipeBookCategory);
-            //this.client.getNetworkHandler().sendPacket(new RecipeCategoryOptionsC2SPacket(recipeBookCategory, bl, bl2));
+            boolean bl = this.recipeBook.isGuiOpen(recipeBookCategory);
+            boolean bl2 = this.recipeBook.isFilteringCraftable();
+            this.client.getNetworkHandler().sendPacket(new RecipeCategoryOptionsC2SPacket(recipeBookCategory, bl, bl2));
+
+             */
         }
 
     }

@@ -48,7 +48,7 @@ public class CookingPanRecipe implements Recipe<Inventory> {
 
     @Override
     public boolean fits(int width, int height) {
-        return false;
+        return true;
     }
 
     @Override

@@ -19,8 +19,10 @@ import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
 import net.satisfy.candlelight.client.recipebook.VineryRecipeBook;
+import net.satisfy.candlelight.client.recipebook.VineryRecipeBookGroup;
 
 import java.util.Iterator;
 import java.util.List;
@@ -29,30 +31,20 @@ public class VineryAnimatedResultButton extends ClickableWidget {
     private static final Identifier BACKGROUND_TEXTURE = new Identifier("textures/gui/recipe_book.png");
     private static final Text MORE_RECIPES_TEXT = Text.translatable("gui.recipebook.moreRecipes");
     private CookingPanScreenHandler craftingScreenHandler;
-    private VineryRecipeBook recipeBook;
     private VineryRecipeResultCollection resultCollection;
     private float time;
     private float bounce;
     private int currentResultIndex;
+    private VineryRecipeBookGroup group;
 
     public VineryAnimatedResultButton() {
         super(0, 0, 25, 25, ScreenTexts.EMPTY);
     }
 
-    public void showResultCollection(VineryRecipeResultCollection resultCollection, VineryRecipeBookResults results) {
+    public void showResultCollection(VineryRecipeResultCollection resultCollection, VineryRecipeBookGroup group, CookingPanScreenHandler craftingScreenHandler) {
         this.resultCollection = resultCollection;
-        this.craftingScreenHandler = (CookingPanScreenHandler) results.getClient().player.currentScreenHandler;
-        this.recipeBook = results.getRecipeBook();
-        List<Recipe<?>> list = resultCollection.getResults(this.recipeBook.isFilteringCraftable(this.craftingScreenHandler));
-
-        for (Recipe<?> value : list) {
-            if (this.recipeBook.shouldDisplay(value)) {
-                results.onRecipesDisplayed(list);
-                this.bounce = 15.0F;
-                break;
-            }
-        }
-
+        this.group = group;
+        this.craftingScreenHandler = craftingScreenHandler;
     }
 
     public VineryRecipeResultCollection getResultCollection() {
@@ -78,7 +70,7 @@ public class VineryAnimatedResultButton extends ClickableWidget {
         }
 
         int j = 206;
-        if (this.resultCollection.getResults(this.recipeBook.isFilteringCraftable(this.craftingScreenHandler)).size() > 1) {
+        if (this.resultCollection.getResults(Candlelight.rememberedCraftableToggle).size() > 1) {
             j += 25;
         }
 
@@ -115,7 +107,7 @@ public class VineryAnimatedResultButton extends ClickableWidget {
 
     private List<Recipe<?>> getResults() {
         List<Recipe<?>> list = this.resultCollection.getRecipes(true);
-        if (!this.recipeBook.isFilteringCraftable(this.craftingScreenHandler)) {
+        if (!Candlelight.rememberedCraftableToggle) {
             list.addAll(this.resultCollection.getRecipes(false));
         }
 
@@ -134,7 +126,7 @@ public class VineryAnimatedResultButton extends ClickableWidget {
     public List<Text> getTooltip(Screen screen) {
         ItemStack itemStack = (this.getResults().get(this.currentResultIndex)).getOutput();
         List<Text> list = Lists.newArrayList(screen.getTooltipFromItem(itemStack));
-        if (this.resultCollection.getResults(this.recipeBook.isFilteringCraftable(this.craftingScreenHandler)).size() > 1) {
+        if (this.resultCollection.getResults(Candlelight.rememberedCraftableToggle).size() > 1) {
             list.add(MORE_RECIPES_TEXT);
         }
 
@@ -144,7 +136,7 @@ public class VineryAnimatedResultButton extends ClickableWidget {
     public void appendNarrations(NarrationMessageBuilder builder) {
         ItemStack itemStack = (this.getResults().get(this.currentResultIndex)).getOutput();
         builder.put(NarrationPart.TITLE, Text.translatable("narration.recipe", itemStack.getName()));
-        if (this.resultCollection.getResults(this.recipeBook.isFilteringCraftable(this.craftingScreenHandler)).size() > 1) {
+        if (this.resultCollection.getResults(Candlelight.rememberedCraftableToggle).size() > 1) {
             builder.put(NarrationPart.USAGE, Text.translatable("narration.button.usage.hovered"), Text.translatable("narration.recipe.usage.more"));
         } else {
             builder.put(NarrationPart.USAGE, Text.translatable("narration.button.usage.hovered"));
