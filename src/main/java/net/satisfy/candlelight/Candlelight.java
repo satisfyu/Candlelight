@@ -20,7 +20,6 @@ import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.vinery.Vinery;
-import satisfyu.vinery.VineryIdentifier;
 import satisfyu.vinery.util.tab.GUIIcon;
 import satisfyu.vinery.util.tab.Tab;
 import satisfyu.vinery.util.tab.TabbedItemGroup;
@@ -28,9 +27,6 @@ import satisfyu.vinery.util.tab.TabbedItemGroup;
 public class Candlelight implements ModInitializer {
     public static final String MOD_ID = "candlelight";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-
-    public static boolean rememberedRecipeBookOpen = false;
-    public static boolean rememberedCraftableToggle = true;
 
     @Override
     public void onInitialize() {

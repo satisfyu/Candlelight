@@ -1,4 +1,4 @@
-package net.satisfy.candlelight.client.screen;
+package net.satisfy.candlelight.client.screen.recipe;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -18,33 +18,50 @@ import net.minecraft.recipe.RecipeGridAligner;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.satisfy.candlelight.Candlelight;
+import net.satisfy.candlelight.client.CandlelightClient;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class VineryRecipeAlternativesWidget extends DrawableHelper implements Drawable, Element {
+public class CustomRecipeAlternativesWidget extends DrawableHelper implements Drawable, Element {
     static final Identifier BACKGROUND_TEXTURE = new Identifier("textures/gui/recipe_book.png");
-    private final List<VineryAlternativeButtonWidget> alternativeButtons = Lists.newArrayList();
+    private final List<CustomAlternativeButtonWidget> alternativeButtons = Lists.newArrayList();
     private boolean visible;
     private int buttonX;
     private int buttonY;
-    MinecraftClient client;
-    private VineryRecipeResultCollection resultCollection;
+    private MinecraftClient client;
+    private CustomRecipeBookRecipe resultCollection;
     @Nullable
     private Recipe<?> lastClickedRecipe;
     float time;
 
-    public VineryRecipeAlternativesWidget() {
+    public CustomRecipeAlternativesWidget() {
     }
 
-    public void showAlternativesForResult(MinecraftClient client, VineryRecipeResultCollection results, int buttonX, int buttonY, int areaCenterX, int areaCenterY, float delta) {
-        this.client = client;
-        this.resultCollection = results;
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
-        boolean bl = Candlelight.rememberedCraftableToggle;
-        Recipe<?> recipe = results.getRecipe();
+    public boolean isVisible() {
+        return this.visible;
+    }
+
+    public CustomRecipeBookRecipe getResults() {
+        return this.resultCollection;
+    }
+
+    @Nullable
+    public Recipe<?> getLastClickedRecipe() {
+        return this.lastClickedRecipe;
+    }
+
+    public void showAlternativesForResult(MinecraftClient client, CustomRecipeBookRecipe recipeBookRecipe, int buttonX, int buttonY, int areaCenterX, int areaCenterY, float delta) {
+        this.client = client;
+        this.resultCollection = recipeBookRecipe;
+
+        boolean bl = CandlelightClient.rememberedCraftableToggle;
+        Recipe<?> recipe = recipeBookRecipe.recipe();
 
         int k = 4;
         int l = (int)Math.ceil(((float)1 / (float)k));
@@ -73,31 +90,18 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
         this.visible = true;
         this.alternativeButtons.clear();
 
-        this.alternativeButtons.add(new VineryAlternativeButtonWidget(this.buttonX + 6, this.buttonY+ 6, recipe, bl));
+        this.alternativeButtons.add(new CustomAlternativeButtonWidget(this.buttonX + 6, this.buttonY+ 6, recipe, bl));
 
         this.lastClickedRecipe = null;
-    }
-
-    public boolean changeFocus(boolean lookForwards) {
-        return false;
-    }
-
-    public VineryRecipeResultCollection getResults() {
-        return this.resultCollection;
-    }
-
-    @Nullable
-    public Recipe<?> getLastClickedRecipe() {
-        return this.lastClickedRecipe;
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button != 0) {
             return false;
         } else {
-            Iterator<VineryAlternativeButtonWidget> var6 = this.alternativeButtons.iterator();
+            Iterator<CustomAlternativeButtonWidget> var6 = this.alternativeButtons.iterator();
 
-            VineryAlternativeButtonWidget alternativeButtonWidget;
+            CustomAlternativeButtonWidget alternativeButtonWidget;
             do {
                 if (!var6.hasNext()) {
                     return false;
@@ -109,10 +113,6 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
             this.lastClickedRecipe = alternativeButtonWidget.recipe;
             return true;
         }
-    }
-
-    public boolean isMouseOver(double mouseX, double mouseY) {
-        return false;
     }
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -128,10 +128,8 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
             int k = MathHelper.ceil((float)this.alternativeButtons.size() / (float)i);
             this.renderGrid(matrices, j, k, 24, 4, 82, 208);
             RenderSystem.disableBlend();
-            Iterator<VineryAlternativeButtonWidget> var12 = this.alternativeButtons.iterator();
 
-            while(var12.hasNext()) {
-                VineryAlternativeButtonWidget alternativeButtonWidget = var12.next();
+            for (CustomAlternativeButtonWidget alternativeButtonWidget : this.alternativeButtons) {
                 alternativeButtonWidget.render(matrices, mouseX, mouseY, delta);
             }
 
@@ -171,21 +169,13 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
 
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public boolean isVisible() {
-        return this.visible;
-    }
-
     @Environment(EnvType.CLIENT)
-    private class VineryAlternativeButtonWidget extends ClickableWidget implements RecipeGridAligner<Ingredient> {
+    private class CustomAlternativeButtonWidget extends ClickableWidget implements RecipeGridAligner<Ingredient> {
         final Recipe<?> recipe;
         private final boolean craftable;
         protected final List<InputSlot> slots = Lists.newArrayList();
 
-        public VineryAlternativeButtonWidget(int x, int y, Recipe<?> recipe, boolean craftable) {
+        public CustomAlternativeButtonWidget(int x, int y, Recipe<?> recipe, boolean craftable) {
             super(x, y, 200, 20, ScreenTexts.EMPTY);
             this.width = 24;
             this.height = 24;
@@ -203,7 +193,7 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
         }
 
         public void acceptAlignedInput(Iterator<Ingredient> inputs, int slot, int amount, int gridX, int gridY) {
-            ItemStack[] itemStacks = ((Ingredient) inputs.next()).getMatchingStacks();
+            ItemStack[] itemStacks = inputs.next().getMatchingStacks();
             if (itemStacks.length != 0) {
                 this.slots.add(new InputSlot(3 + gridY * 7, 3 + gridX * 7, itemStacks));
             }
@@ -225,15 +215,15 @@ public class VineryRecipeAlternativesWidget extends DrawableHelper implements Dr
             this.drawTexture(matrices, this.x, this.y, i, j, this.width, this.height);
             MatrixStack matrixStack = RenderSystem.getModelViewStack();
             matrixStack.push();
-            matrixStack.translate((double) (this.x + 2), (double) (this.y + 2), 125.0);
+            matrixStack.translate( (this.x + 2), (this.y + 2), 125.0);
 
-            for (InputSlot inputSlot : (Iterable<InputSlot>) this.slots) {
+            for (InputSlot inputSlot : this.slots) {
                 matrixStack.push();
-                matrixStack.translate((double) inputSlot.y, (double) inputSlot.x, 0.0);
+                matrixStack.translate(inputSlot.y, inputSlot.x, 0.0);
                 matrixStack.scale(0.375F, 0.375F, 1.0F);
                 matrixStack.translate(-8.0, -8.0, 0.0);
                 RenderSystem.applyModelViewMatrix();
-                VineryRecipeAlternativesWidget.this.client.getItemRenderer().renderInGuiWithOverrides(inputSlot.stacks[MathHelper.floor(VineryRecipeAlternativesWidget.this.time / 30.0F) % inputSlot.stacks.length], 0, 0);
+                CustomRecipeAlternativesWidget.this.client.getItemRenderer().renderInGuiWithOverrides(inputSlot.stacks[MathHelper.floor(CustomRecipeAlternativesWidget.this.time / 30.0F) % inputSlot.stacks.length], 0, 0);
                 matrixStack.pop();
             }
 

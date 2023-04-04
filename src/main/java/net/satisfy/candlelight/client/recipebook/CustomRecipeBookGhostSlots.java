@@ -10,45 +10,31 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.Recipe;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class VineryRecipeBookGhostSlots {
-    @Nullable
-    private Recipe<?> recipe;
-    private final List<VineryGhostInputSlot> slots = Lists.newArrayList();
+public class CustomRecipeBookGhostSlots {
+    private final List<CustomGhostInputSlot> slots = Lists.newArrayList();
     float time;
 
-    public VineryRecipeBookGhostSlots() {
+    public CustomRecipeBookGhostSlots() {
     }
 
     public void reset() {
-        this.recipe = null;
         this.slots.clear();
         this.time = 0.0F;
     }
 
     public void addSlot(ItemStack itemStack, int x, int y) {
-        this.slots.add(new VineryGhostInputSlot(itemStack, x, y));
+        this.slots.add(new CustomGhostInputSlot(itemStack, x, y));
     }
 
-    public VineryGhostInputSlot getSlot(int index) {
+    public CustomGhostInputSlot getSlot(int index) {
         return this.slots.get(index);
     }
 
     public int getSlotCount() {
         return this.slots.size();
-    }
-
-    @Nullable
-    public Recipe<?> getRecipe() {
-        return this.recipe;
-    }
-
-    public void setRecipe(Recipe<?> recipe) {
-        this.recipe = recipe;
     }
 
     public void draw(MatrixStack matrices, MinecraftClient client, int i, int j, boolean bl, float f) {
@@ -57,7 +43,7 @@ public class VineryRecipeBookGhostSlots {
         }
 
         for(int k = 0; k < this.slots.size(); ++k) {
-            VineryGhostInputSlot ghostInputSlot = this.slots.get(k);
+            CustomGhostInputSlot ghostInputSlot = this.slots.get(k);
             int l = ghostInputSlot.getX() + i;
             int m = ghostInputSlot.getY() + j;
             if (k == 0 && bl) {
@@ -80,12 +66,12 @@ public class VineryRecipeBookGhostSlots {
     }
 
     @Environment(EnvType.CLIENT)
-    public static class VineryGhostInputSlot {
+    public static class CustomGhostInputSlot {
         private final ItemStack itemStack;
         private final int x;
         private final int y;
 
-        public VineryGhostInputSlot(ItemStack itemStack, int x, int y) {
+        public CustomGhostInputSlot(ItemStack itemStack, int x, int y) {
             this.itemStack = itemStack;
             this.x = x;
             this.y = y;

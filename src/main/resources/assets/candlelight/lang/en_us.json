@@ -180,7 +180,7 @@
   "item.candlelight.ingredientitem.tooltip.item.candlelight.tomato": "Crafting Ingredient - Wild Tomatoes can be found in warm biomes",
   "item.candlelight.ingredientitem.tooltip.item.candlelight.tomato_seeds": "Can be grown on farmland or grapevine stems",
   "item.candlelight.ingredientitem.tooltip.item.candlelight.vinegar": "Crafting Ingredient",
-  "item.candlelight.lasagna": "Lasagna",
+  "item.candlelight.lasagne": "Lasagna",
   "item.candlelight.letter": "Envelope",
   "item.candlelight.letter.tooltip": "Right-Click!",
   "item.candlelight.letter_open": "Open Envelope",
@@ -238,8 +238,10 @@
   "item.candlelight.thankyou1.press_shift": "These Paintings do not only depict Alex and Steve but also the contributors to the 'Let's Do'-Mods.",
   "item.candlelight.thankyou2.press_shift": "Thank you to everyone who contributed to the creation of the 'Let's Do' mods:",
   "item.candlelight.lilitu.press_shift": "- Miss Lilitu",
-  "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJo",
+  "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJO",
   "item.candlelight.satisfyu.press_shift": "- Satisfy",
-  "item.candlelight.cristelknight.press_shift": "- CristelKnight"
+  "item.candlelight.cristelknight.press_shift": "- CristelKnight",
+
+  "gui.candlelight.recipebook.toggleRecipes.cookable": "Showing Cookable"
 
 }

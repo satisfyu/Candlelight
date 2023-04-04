@@ -24,9 +24,6 @@ public class EffectFoodItem extends Item implements EffectFood {
 
     private final int foodStages;
 
-    public EffectFoodItem(Settings settings) {
-        this(settings, 0);
-    }
     public EffectFoodItem(Settings settings, int foodStages) {
         super(settings);
         this.foodStages = foodStages;
@@ -36,7 +33,6 @@ public class EffectFoodItem extends Item implements EffectFood {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient) {
             List<Pair<StatusEffectInstance, Float>> effects = getEffects(stack);
-            System.out.println(effects);
             for (Pair<StatusEffectInstance, Float> effect : effects) {
                 if (effect.getFirst() != null && world.random.nextFloat() < effect.getSecond()) {
                     user.addStatusEffect(new StatusEffectInstance(effect.getFirst()));

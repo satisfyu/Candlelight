@@ -3,24 +3,22 @@ package net.satisfy.candlelight.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.gui.screen.recipebook.RecipeBookProvider;
-import net.minecraft.client.gui.screen.recipebook.RecipeBookWidget;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
-import net.satisfy.candlelight.client.screen.AbstractCookingRecipeBookScreen;
-import net.satisfy.candlelight.client.screen.CookingPanRecipeBook;
+import net.satisfy.candlelight.client.recipebook.CustomRecipeBookWidget;
+import net.satisfy.candlelight.client.screen.recipe.CookingPanRecipeBook;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler> implements RecipeBookProvider {
+public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler>{
     private static final Identifier RECIPE_BUTTON_TEXTURE;
-    public final AbstractCookingRecipeBookScreen recipeBook;
+    public final CustomRecipeBookWidget recipeBook;
     private boolean narrow;
     private static final Identifier BACKGROUND;
 
@@ -30,8 +28,7 @@ public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler> imp
         this.recipeBook = new CookingPanRecipeBook();
     }
 
-
-    public void renderProgressArrow(MatrixStack matrices, int posX, int posY) {
+    public void renderProgressArrow(MatrixStack matrices) {
         int progress = this.handler.getScaledProgress(18);
         this.drawTexture(matrices, x + 95, y + 14, 178, 15, progress, 30); //Position Arrow
     }
@@ -88,7 +85,7 @@ public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler> imp
         final int posY = this.y;
         this.drawTexture(matrices, posX, posY, 0, 0, this.backgroundWidth - 1, this.backgroundHeight);
 
-        renderProgressArrow(matrices, posX, posY);
+        renderProgressArrow(matrices);
         renderBurnIcon(matrices, posX, posY);
     }
 
@@ -114,22 +111,12 @@ public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler> imp
     @Override
     protected boolean isClickOutsideBounds(double mouseX, double mouseY, int left, int top, int button) {
         boolean bl = mouseX < (double)left || mouseY < (double)top || mouseX >= (double)(left + this.backgroundWidth) || mouseY >= (double)(top + this.backgroundHeight);
-        return this.recipeBook.isClickOutsideBounds(mouseX, mouseY, this.x, this.y, this.backgroundWidth, this.backgroundHeight, button) && bl;
+        return this.recipeBook.isClickOutsideBounds(mouseX, mouseY, this.x, this.y, this.backgroundWidth, this.backgroundHeight) && bl;
     }
 
     @Override
     public boolean charTyped(char chr, int modifiers) {
         return this.recipeBook.charTyped(chr, modifiers) || super.charTyped(chr, modifiers);
-    }
-
-    @Override
-    public void refreshRecipeBook() {
-        this.recipeBook.refresh();
-    }
-
-    @Override
-    public RecipeBookWidget getRecipeBookWidget() {
-        return this.recipeBook;
     }
 
     @Override
@@ -140,6 +127,6 @@ public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler> imp
 
     static {
         BACKGROUND = new CandlelightIdentifier("textures/gui/pan_gui.png");
-        RECIPE_BUTTON_TEXTURE = new Identifier("textures/gui/recipe_button.png");
+        RECIPE_BUTTON_TEXTURE = new CandlelightIdentifier("textures/gui/recipe_button.png");
     }
 }

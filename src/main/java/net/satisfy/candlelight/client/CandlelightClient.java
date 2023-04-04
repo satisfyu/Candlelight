@@ -20,6 +20,8 @@ import net.satisfy.candlelight.render.WineStationBlockEntityRenderer;
 
 
 public class CandlelightClient implements ClientModInitializer {
+    public static boolean rememberedRecipeBookOpen = false;
+    public static boolean rememberedCraftableToggle = true;
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ObjectRegistry.CAKE_STAND, ObjectRegistry.CHAIR,

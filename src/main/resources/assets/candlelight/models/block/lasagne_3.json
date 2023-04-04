@@ -2,8 +2,8 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"1": "candlelight:block/plate_meal",
-		"2": "candlelight:block/plate_lasagna",
-		"3": "candlelight:block/lasagna",
+		"2": "candlelight:block/plate_lasagne",
+		"3": "candlelight:block/lasagne",
 		"particle": "candlelight:block/plate_meal"
 	},
 	"elements": [

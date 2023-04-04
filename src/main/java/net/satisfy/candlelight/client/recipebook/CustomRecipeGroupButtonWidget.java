@@ -13,14 +13,14 @@ import net.minecraft.item.ItemStack;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
-public class VineryRecipeGroupButtonWidget extends ToggleButtonWidget {
-    private final VineryRecipeBookGroup category;
+public class CustomRecipeGroupButtonWidget extends ToggleButtonWidget {
+    private final IRecipeBookGroup group;
     private float bounce;
 
-    public VineryRecipeGroupButtonWidget(VineryRecipeBookGroup category) {
+    public CustomRecipeGroupButtonWidget(IRecipeBookGroup group) {
         super(0, 0, 35, 27, false);
-        this.category = category;
-        this.setTextureUV(153, 2, 35, 0, VineryRecipeBookWidget.TEXTURE);
+        this.group = group;
+        this.setTextureUV(153, 2, 35, 0, CustomRecipeBookWidget.TEXTURE);
     }
 
     public void renderButton(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -62,7 +62,7 @@ public class VineryRecipeGroupButtonWidget extends ToggleButtonWidget {
     }
 
     private void renderIcons(ItemRenderer itemRenderer) {
-        List<ItemStack> list = this.category.getIcons();
+        List<ItemStack> list = this.group.getIcons();
         int i = this.toggled ? -2 : 0;
         if (list.size() == 1) {
             itemRenderer.renderInGui( list.get(0), this.x + 9 + i, this.y + 5);
@@ -73,7 +73,7 @@ public class VineryRecipeGroupButtonWidget extends ToggleButtonWidget {
 
     }
 
-    public VineryRecipeBookGroup getGroup() {
-        return this.category;
+    public IRecipeBookGroup getGroup() {
+        return this.group;
     }
 }

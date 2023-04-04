@@ -1,4 +1,4 @@
-package net.satisfy.candlelight.client.screen;
+package net.satisfy.candlelight.client.screen.recipe;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -9,23 +9,21 @@ import net.minecraft.client.gui.screen.recipebook.*;
 import net.minecraft.client.gui.widget.ToggleButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.recipe.Recipe;
-import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
-import net.satisfy.candlelight.client.recipebook.VineryRecipeBookGroup;
-import net.satisfy.candlelight.client.recipebook.VineryRecipeBookWidget;
+import net.satisfy.candlelight.client.recipebook.AbstractCustomRecipeScreenHandler;
+import net.satisfy.candlelight.client.recipebook.CustomRecipeBookWidget;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
-public class VineryRecipeBookResults {
-    private final List<VineryAnimatedResultButton> resultButtons = Lists.newArrayListWithCapacity(20);
+public class CustomRecipeBookRecipeArea {
+    private final List<CustomAnimatedResultButton> resultButtons = Lists.newArrayListWithCapacity(20);
     @Nullable
-    private VineryAnimatedResultButton hoveredResultButton;
-    private final VineryRecipeAlternativesWidget alternatesWidget = new VineryRecipeAlternativesWidget();
+    private CustomAnimatedResultButton hoveredResultButton;
+    private final CustomRecipeAlternativesWidget alternatesWidget = new CustomRecipeAlternativesWidget();
     private MinecraftClient client;
-    private final List<RecipeDisplayListener> recipeDisplayListeners = Lists.newArrayList();
-    private List<VineryRecipeResultCollection> resultCollections = ImmutableList.of();
+    private List<CustomRecipeBookRecipe> resultCollections = ImmutableList.of();
     private ToggleButtonWidget nextPageButton;
     private ToggleButtonWidget prevPageButton;
     private int pageCount;
@@ -33,18 +31,17 @@ public class VineryRecipeBookResults {
     @Nullable
     private Recipe<?> lastClickedRecipe;
     @Nullable
-    private VineryRecipeResultCollection resultCollection;
-    VineryRecipeBookGroup group;
-    private CookingPanScreenHandler cookingPanScreenHandler;
+    private CustomRecipeBookRecipe resultCollection;
+    private AbstractCustomRecipeScreenHandler<?> cookingPanScreenHandler;
 
-    public VineryRecipeBookResults() {
+    public CustomRecipeBookRecipeArea() {
         for(int i = 0; i < 20; ++i) {
-            this.resultButtons.add(new VineryAnimatedResultButton());
+            this.resultButtons.add(new CustomAnimatedResultButton());
         }
 
     }
 
-    public void initialize(MinecraftClient client, int parentLeft, int parentTop, CookingPanScreenHandler cookingPanScreenHandler) {
+    public void initialize(MinecraftClient client, int parentLeft, int parentTop, AbstractCustomRecipeScreenHandler<?> cookingPanScreenHandler) {
         this.client = client;
         this.cookingPanScreenHandler = cookingPanScreenHandler;
 
@@ -53,19 +50,13 @@ public class VineryRecipeBookResults {
         }
 
         this.nextPageButton = new ToggleButtonWidget(parentLeft + 93, parentTop + 137, 12, 17, false);
-        this.nextPageButton.setTextureUV(1, 208, 13, 18, VineryRecipeBookWidget.TEXTURE);
+        this.nextPageButton.setTextureUV(1, 208, 13, 18, CustomRecipeBookWidget.TEXTURE);
         this.prevPageButton = new ToggleButtonWidget(parentLeft + 38, parentTop + 137, 12, 17, true);
-        this.prevPageButton.setTextureUV(1, 208, 13, 18, VineryRecipeBookWidget.TEXTURE);
+        this.prevPageButton.setTextureUV(1, 208, 13, 18, CustomRecipeBookWidget.TEXTURE);
     }
 
-    public void setGui(VineryRecipeBookWidget widget) {
-        this.recipeDisplayListeners.remove(widget);
-        this.recipeDisplayListeners.add(widget);
-    }
-
-    public void setResults(List<VineryRecipeResultCollection> resultCollections, boolean resetCurrentPage, VineryRecipeBookGroup group) {
+    public void setResults(List<CustomRecipeBookRecipe> resultCollections, boolean resetCurrentPage) {
         this.resultCollections = resultCollections;
-        this.group = group;
         this.pageCount = (int)Math.ceil((double)resultCollections.size() / 20.0);
         if (this.pageCount <= this.currentPage || resetCurrentPage) {
             this.currentPage = 0;
@@ -78,9 +69,9 @@ public class VineryRecipeBookResults {
         int i = 20 * this.currentPage;
 
         for(int j = 0; j < this.resultButtons.size(); ++j) {
-            VineryAnimatedResultButton animatedResultButton = this.resultButtons.get(j);
+            CustomAnimatedResultButton animatedResultButton = this.resultButtons.get(j);
             if (i + j < this.resultCollections.size()) {
-                VineryRecipeResultCollection recipeResultCollection = this.resultCollections.get(i + j);
+                CustomRecipeBookRecipe recipeResultCollection = this.resultCollections.get(i + j);
                 animatedResultButton.showResultCollection(recipeResultCollection, cookingPanScreenHandler);
                 animatedResultButton.visible = true;
             } else {
@@ -106,7 +97,7 @@ public class VineryRecipeBookResults {
 
         this.hoveredResultButton = null;
 
-        for (VineryAnimatedResultButton animatedResultButton : this.resultButtons) {
+        for (CustomAnimatedResultButton animatedResultButton : this.resultButtons) {
             animatedResultButton.render(matrices, mouseX, mouseY, delta);
             if (animatedResultButton.visible && animatedResultButton.isHovered()) {
                 this.hoveredResultButton = animatedResultButton;
@@ -131,7 +122,7 @@ public class VineryRecipeBookResults {
     }
 
     @Nullable
-    public VineryRecipeResultCollection getLastClickedResults() {
+    public CustomRecipeBookRecipe getLastClickedResults() {
         return this.resultCollection;
     }
 
@@ -160,30 +151,27 @@ public class VineryRecipeBookResults {
             this.refreshResultButtons();
             return true;
         } else {
-            Iterator<VineryAnimatedResultButton> var10 = this.resultButtons.iterator();
+            Iterator<CustomAnimatedResultButton> var10 = this.resultButtons.iterator();
 
-            VineryAnimatedResultButton animatedResultButton;
+            CustomAnimatedResultButton animatedResultButton;
             do {
                 if (!var10.hasNext()) {
                     return false;
                 }
-
                 animatedResultButton = var10.next();
             } while(!animatedResultButton.mouseClicked(mouseX, mouseY, button));
-
             if (button == 0) {
                 this.lastClickedRecipe = animatedResultButton.currentRecipe();
-                System.out.println(lastClickedRecipe);
                 this.resultCollection = animatedResultButton.getResultCollection();
-                System.out.println(resultCollection);
-            } else if (button == 1 && !this.alternatesWidget.isVisible() && animatedResultButton.hasResult()) {
+            }
+            if (button == 1 && !this.alternatesWidget.isVisible() && animatedResultButton.hasResult()) {
                 // Implement maybe later
                 this.alternatesWidget.showAlternativesForResult(this.client, animatedResultButton.getResultCollection(), animatedResultButton.x, animatedResultButton.y, areaLeft + areaWidth / 2, areaTop + 13 + areaHeight / 2, (float)animatedResultButton.getWidth());
             }
-
             return true;
         }
     }
+
 
     public MinecraftClient getClient() {
         return this.client;
