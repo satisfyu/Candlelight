@@ -7,7 +7,7 @@ import net.minecraft.recipe.*;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.entity.CookingPanEntity;
 import net.satisfy.candlelight.client.recipebook.AbstractCustomRecipeScreenHandler;
-import net.satisfy.candlelight.client.recipebook.CookingPanRecipeBookGroup;
+import net.satisfy.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
 import net.satisfy.candlelight.client.recipebook.IRecipeBookGroup;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.ScreenHandlerTypes;

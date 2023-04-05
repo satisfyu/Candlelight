@@ -1,4 +1,4 @@
-package net.satisfy.candlelight.client.screen.recipe;
+package net.satisfy.candlelight.client.screen.recipe.custom;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.inventory.Inventory;
@@ -9,6 +9,7 @@ import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.random.Random;
 import net.satisfy.candlelight.client.recipebook.CustomRecipeBookWidget;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.RecipeTypes;
@@ -30,7 +31,8 @@ public class CookingPanRecipeBook extends CustomRecipeBookWidget {
         }
         int j = 1;
         for (Ingredient ingredient : recipe.getIngredients()) {
-            ItemStack inputStack = ingredient.getMatchingStacks()[0]; //TODO
+            ItemStack[] inputStacks = ingredient.getMatchingStacks();
+            ItemStack inputStack = inputStacks[Random.create().nextBetween(0, inputStacks.length - 1)];
             this.ghostSlots.addSlot(inputStack, slots.get(j).x, slots.get(j++).y);
         }
     }

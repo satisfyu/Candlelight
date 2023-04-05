@@ -10,12 +10,6 @@ import com.mojang.blaze3d.platform.GlStateManager.LogicOp;
 import com.mojang.blaze3d.systems.RenderSystem;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.SharedConstants;
@@ -29,8 +23,8 @@ import net.minecraft.client.gui.widget.PageTurnWidget;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.render.VertexFormat.DrawMode;
+import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.NarratorManager;
 import net.minecraft.client.util.SelectionManager;
 import net.minecraft.client.util.SelectionManager.SelectionType;
@@ -56,8 +50,11 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.*;
+import java.util.stream.Stream;
+
 @Environment(EnvType.CLIENT)
-public class NoteEditScreen extends Screen {
+public class NotePaperScreen extends Screen {
     public static final Identifier BOOK_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private static final Text EDIT_TITLE_TEXT = Text.literal("Enter Note Title");
     private static final Text FINALIZE_WARNING_TEXT = Text.translatable("book.finalizeWarning");
@@ -68,7 +65,6 @@ public class NoteEditScreen extends Screen {
     private boolean dirty;
     private boolean signing;
     private int tickCounter;
-    private int currentPage;
     private final List<String> pages = Lists.newArrayList();
     private String title = "";
     private final SelectionManager currentPageSelectionManager = new SelectionManager(this::getCurrentPageContent, this::setPageContent, this::getClipboard, this::setClipboard, (string) -> string.length() < 1024 && this.textRenderer.getWrappedLinesHeight(string, 114) <= 128);
@@ -77,8 +73,6 @@ public class NoteEditScreen extends Screen {
     }, this::getClipboard, this::setClipboard, (string) -> string.length() < 16);
     private long lastClickTime;
     private int lastClickIndex = -1;
-    private PageTurnWidget nextPageButton;
-    private PageTurnWidget previousPageButton;
     private ButtonWidget doneButton;
     private ButtonWidget signButton;
     private ButtonWidget finalizeButton;
@@ -86,13 +80,11 @@ public class NoteEditScreen extends Screen {
     private final Hand hand;
     @Nullable
     private PageContent pageContent;
-    private Text pageIndicatorText;
     private final Text signedByText;
 
-    public NoteEditScreen(PlayerEntity player, ItemStack itemStack, Hand hand) {
+    public NotePaperScreen(PlayerEntity player, ItemStack itemStack, Hand hand) {
         super(NarratorManager.EMPTY);
-        this.pageContent = NoteEditScreen.PageContent.EMPTY;
-        this.pageIndicatorText = ScreenTexts.EMPTY;
+        this.pageContent = NotePaperScreen.PageContent.EMPTY;
         this.player = player;
         this.itemStack = itemStack;
         this.hand = hand;
@@ -155,38 +147,7 @@ public class NoteEditScreen extends Screen {
 
             this.updateButtons();
         }));
-        int i = (this.width - 192) / 2;
-        boolean j = true;
-        this.nextPageButton = this.addDrawableChild(new PageTurnWidget(i + 116, 159, true, (button) -> {
-            this.openNextPage();
-        }, true));
-        this.previousPageButton = this.addDrawableChild(new PageTurnWidget(i + 43, 159, false, (button) -> {
-            this.openPreviousPage();
-        }, true));
         this.updateButtons();
-    }
-
-    private void openPreviousPage() {
-        if (this.currentPage > 0) {
-            --this.currentPage;
-        }
-
-        this.updateButtons();
-        this.changePage();
-    }
-
-    private void openNextPage() {
-        if (this.currentPage < this.countPages() - 1) {
-            ++this.currentPage;
-        } else {
-            this.appendNewPage();
-            if (this.currentPage < this.countPages() - 1) {
-                ++this.currentPage;
-            }
-        }
-
-        this.updateButtons();
-        this.changePage();
     }
 
     public void removed() {
@@ -194,8 +155,6 @@ public class NoteEditScreen extends Screen {
     }
 
     private void updateButtons() {
-        this.previousPageButton.visible = !this.signing && this.currentPage > 0;
-        this.nextPageButton.visible = !this.signing;
         this.doneButton.visible = !this.signing;
         this.signButton.visible = !this.signing;
         this.cancelButton.visible = this.signing;
@@ -225,7 +184,7 @@ public class NoteEditScreen extends Screen {
         NbtList nbtList = new NbtList();
         Stream<NbtString> nbts = this.pages.stream().map(NbtString::of);
         Objects.requireNonNull(nbtList);
-        nbts.forEach(nbtList::add);
+        nbts.forEach((nbt) -> nbtList.add(nbt));
         if (!this.pages.isEmpty()) {
             this.itemStack.setSubNbt("pages", nbtList);
         }
@@ -235,13 +194,6 @@ public class NoteEditScreen extends Screen {
             this.itemStack.setSubNbt("title", NbtString.of(this.title.trim()));
         }
 
-    }
-
-    private void appendNewPage() {
-        if (this.countPages() < 100) {
-            this.pages.add("");
-            this.dirty = true;
-        }
     }
 
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
@@ -295,7 +247,7 @@ public class NoteEditScreen extends Screen {
             this.currentPageSelectionManager.cut();
             return true;
         } else {
-            SelectionManager.SelectionType selectionType = Screen.hasControlDown() ? SelectionType.WORD : SelectionType.CHARACTER;
+            SelectionType selectionType = Screen.hasControlDown() ? SelectionType.WORD : SelectionType.CHARACTER;
             switch (keyCode) {
                 case 257, 335 -> {
                     this.currentPageSelectionManager.insert("\n");
@@ -323,14 +275,6 @@ public class NoteEditScreen extends Screen {
                 }
                 case 265 -> {
                     this.moveUpLine();
-                    return true;
-                }
-                case 266 -> {
-                    this.previousPageButton.onPress();
-                    return true;
-                }
-                case 267 -> {
-                    this.nextPageButton.onPress();
                     return true;
                 }
                 case 268 -> {
@@ -407,12 +351,12 @@ public class NoteEditScreen extends Screen {
     }
 
     private String getCurrentPageContent() {
-        return this.currentPage >= 0 && this.currentPage < this.pages.size() ? (String)this.pages.get(this.currentPage) : "";
+        return 0 < this.pages.size() ? this.pages.get(0) : "";
     }
 
     private void setPageContent(String newContent) {
-        if (this.currentPage >= 0 && this.currentPage < this.pages.size()) {
-            this.pages.set(this.currentPage, newContent);
+        if (0 < this.pages.size()) {
+            this.pages.set(0, newContent);
             this.dirty = true;
             this.invalidatePageContent();
         }
@@ -441,8 +385,6 @@ public class NoteEditScreen extends Screen {
             this.textRenderer.draw(matrices, this.signedByText, (float)(i + 36 + (114 - m) / 2), 60.0F, 0);
             this.textRenderer.drawTrimmed(FINALIZE_WARNING_TEXT, i + 36, 82, 114, 0);
         } else {
-            int n = this.textRenderer.getWidth(this.pageIndicatorText);
-            this.textRenderer.draw(matrices, this.pageIndicatorText, (float)(i - n + 192 - 44), 18.0F, 0);
             PageContent pageContent = this.getPageContent();
             Line[] var15 = pageContent.lines;
             l = var15.length;
@@ -485,19 +427,18 @@ public class NoteEditScreen extends Screen {
         RenderSystem.enableColorLogicOp();
         RenderSystem.logicOp(LogicOp.OR_REVERSE);
         bufferBuilder.begin(DrawMode.QUADS, VertexFormats.POSITION);
-        Rect2i[] var4 = selectionRectangles;
         int var5 = selectionRectangles.length;
 
         for(int var6 = 0; var6 < var5; ++var6) {
-            Rect2i rect2i = var4[var6];
+            Rect2i rect2i = selectionRectangles[var6];
             int i = rect2i.getX();
             int j = rect2i.getY();
             int k = i + rect2i.getWidth();
             int l = j + rect2i.getHeight();
-            bufferBuilder.vertex((double)i, (double)l, 0.0).next();
-            bufferBuilder.vertex((double)k, (double)l, 0.0).next();
-            bufferBuilder.vertex((double)k, (double)j, 0.0).next();
-            bufferBuilder.vertex((double)i, (double)j, 0.0).next();
+            bufferBuilder.vertex(i, l, 0.0).next();
+            bufferBuilder.vertex(k, l, 0.0).next();
+            bufferBuilder.vertex(k, j, 0.0).next();
+            bufferBuilder.vertex(i, j, 0.0).next();
         }
 
         tessellator.draw();
@@ -566,7 +507,6 @@ public class NoteEditScreen extends Screen {
     private PageContent getPageContent() {
         if (this.pageContent == null) {
             this.pageContent = this.createPageContent();
-            this.pageIndicatorText = Text.translatable("book.pageIndicator", this.currentPage + 1, this.countPages());
         }
 
         return this.pageContent;
@@ -584,7 +524,7 @@ public class NoteEditScreen extends Screen {
     private PageContent createPageContent() {
         String string = this.getCurrentPageContent();
         if (string.isEmpty()) {
-            return NoteEditScreen.PageContent.EMPTY;
+            return NotePaperScreen.PageContent.EMPTY;
         } else {
             int i = this.currentPageSelectionManager.getSelectionStart();
             int j = this.currentPageSelectionManager.getSelectionEnd();
@@ -723,7 +663,7 @@ public class NoteEditScreen extends Screen {
         }
 
         public int getVerticalOffset(int position, int lines) {
-            int i = NoteEditScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NotePaperScreen.getLineFromOffset(this.lineStarts, position);
             int j = i + lines;
             int m;
             if (0 <= j && j < this.lineStarts.length) {
@@ -738,12 +678,12 @@ public class NoteEditScreen extends Screen {
         }
 
         public int getLineStart(int position) {
-            int i = NoteEditScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NotePaperScreen.getLineFromOffset(this.lineStarts, position);
             return this.lineStarts[i];
         }
 
         public int getLineEnd(int position) {
-            int i = NoteEditScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NotePaperScreen.getLineFromOffset(this.lineStarts, position);
             return this.lineStarts[i] + this.lines[i].content.length();
         }
 

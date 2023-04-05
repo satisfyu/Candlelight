@@ -31,6 +31,8 @@ import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
 
+import static net.minecraft.item.ItemStack.canCombine;
+
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Inventory, NamedScreenHandlerFactory {
 
 	private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(MAX_CAPACITY, ItemStack.EMPTY);
@@ -110,10 +112,16 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			} else if (this.getStack(OUTPUT_SLOT).isEmpty()) {
 				return true;
 			} else {
-				final ItemStack recipeOutput = generateOutputItem(recipe);
+				if (this.getStack(OUTPUT_SLOT).isEmpty()) {
+					return true;
+				}
+				final ItemStack recipeOutput = this.generateOutputItem(recipe);
 				final ItemStack outputSlotStack = this.getStack(OUTPUT_SLOT);
 				final int outputSlotCount = outputSlotStack.getCount();
-				if (!outputSlotStack.isItemEqualIgnoreDamage(recipeOutput)) {
+				if (this.getStack(OUTPUT_SLOT).isEmpty()) {
+					return true;
+				}
+				else if (!canCombine(outputSlotStack, recipeOutput)) {
 					return false;
 				} else if (outputSlotCount < this.getMaxCountPerStack() && outputSlotCount < outputSlotStack.getMaxCount()) {
 					return true;
@@ -213,8 +221,6 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			world.setBlockState(pos, state.with(CookingPanBlock.LIT, isBeingBurned), Block.NOTIFY_ALL);
 		}
 	}
-
-
 	
 	@Override
 	public int size() {

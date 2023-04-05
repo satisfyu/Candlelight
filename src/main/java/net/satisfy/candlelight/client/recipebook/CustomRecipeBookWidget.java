@@ -17,11 +17,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.recipe.*;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -402,38 +399,28 @@ public abstract class  CustomRecipeBookWidget extends DrawableHelper implements 
     }
 
     private void triggerCustomEasterEgg(String search) {
-        ItemStack itemStack;
         String name;
         switch (search) {
             case "misslilitu" -> {
-                itemStack = new ItemStack(Items.DIAMOND);
                 name = "MissLilitu";
             }
             case "satisfy" -> {
-                itemStack = new ItemStack(Items.EMERALD);
                 name = "satisfy";
             }
             case "crystalknight" -> {
-                itemStack = new ItemStack(Items.GOLD_INGOT);
                 name = "CrystalKnight";
             }
             case "bmjo" -> {
-                itemStack = new ItemStack(Items.REDSTONE);
                 name = "BaumeisterJO";
             }
             default -> {
                 return;
             }
         }
-        MinecraftServer minecraftServer = MinecraftClient.getInstance().getServer();
         PlayerEntity playerEntity = client.player;
-        if (minecraftServer != null && client.player != null) {
-            playerEntity.sendMessage(Text.of("<" + name + "> I have something special for you <3"));
-            ServerPlayerEntity serverPlayer = minecraftServer.getPlayerManager().getPlayer(playerEntity.getUuid());
-            serverPlayer.getInventory().offerOrDrop(itemStack);
-            playerEntity.playSound(SoundEvents.ENTITY_FIREWORK_ROCKET_TWINKLE, 0.5f, 1f);
-
-        }
+        assert playerEntity != null;
+        playerEntity.sendMessage(Text.of("<" + name + "> Boo! ;)"));
+        playerEntity.playSound(SoundEvents.ENTITY_FIREWORK_ROCKET_TWINKLE, 0.5f, 1f);
     }
 
     public boolean isClickOutsideBounds(double mouseX, double mouseY, int x, int y, int backgroundWidth, int backgroundHeight) {

@@ -9,14 +9,14 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
 import net.satisfy.candlelight.client.recipebook.CustomRecipeBookWidget;
-import net.satisfy.candlelight.client.screen.recipe.CookingPanRecipeBook;
+import net.satisfy.candlelight.client.screen.recipe.custom.CookingPanRecipeBook;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler>{
+public class CookingPanScreen extends HandledScreen<CookingPanScreenHandler> {
     private static final Identifier RECIPE_BUTTON_TEXTURE;
     public final CustomRecipeBookWidget recipeBook;
     private boolean narrow;

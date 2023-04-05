@@ -1,4 +1,4 @@
-package net.satisfy.candlelight.client.recipebook;
+package net.satisfy.candlelight.client.recipebook.custom;
 
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.api.EnvType;
@@ -6,6 +6,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Recipe;
+import net.satisfy.candlelight.client.recipebook.IRecipeBookGroup;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 
 import java.util.List;
