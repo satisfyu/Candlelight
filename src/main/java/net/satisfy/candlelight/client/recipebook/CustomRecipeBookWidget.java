@@ -28,7 +28,6 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.satisfy.candlelight.client.CandlelightClient;
 import net.satisfy.candlelight.client.screen.recipe.CustomRecipeBookRecipeArea;
-import net.satisfy.candlelight.client.screen.recipe.CustomRecipeBookRecipe;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
@@ -37,7 +36,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
-public abstract class CustomRecipeBookWidget extends DrawableHelper implements RecipeGridAligner<Ingredient>, Drawable, Element, RecipeDisplayListener {
+public abstract class  CustomRecipeBookWidget extends DrawableHelper implements RecipeGridAligner<Ingredient>, Drawable, Element, RecipeDisplayListener {
     public static final Identifier TEXTURE = new Identifier("textures/gui/recipe_book.png");
     private static final Text SEARCH_HINT_TEXT;
     private static final Text TOGGLE_CRAFTABLE_RECIPES_TEXT;
@@ -47,7 +46,7 @@ public abstract class CustomRecipeBookWidget extends DrawableHelper implements R
     @Nullable
     private CustomRecipeGroupButtonWidget currentTab;
     protected ToggleButtonWidget toggleCraftableButton;
-    protected AbstractCustomRecipeScreenHandler<?> screenHandler;
+    protected AbstractCustomRecipeScreenHandler screenHandler;
     @Nullable
     private TextFieldWidget searchField;
     private int leftOffset;
@@ -69,7 +68,7 @@ public abstract class CustomRecipeBookWidget extends DrawableHelper implements R
     public abstract void insertRecipe(Recipe<?> recipe) ;
     public abstract void showGhostRecipe(Recipe<?> recipe, List<Slot> slots);
 
-    public void initialize(int parentWidth, int parentHeight, MinecraftClient client, boolean narrow, AbstractCustomRecipeScreenHandler<?> craftingScreenHandler) {
+    public void initialize(int parentWidth, int parentHeight, MinecraftClient client, boolean narrow, AbstractCustomRecipeScreenHandler craftingScreenHandler) {
         this.client = client;
         this.parentWidth = parentWidth;
         this.parentHeight = parentHeight;
@@ -197,26 +196,26 @@ public abstract class CustomRecipeBookWidget extends DrawableHelper implements R
         if (this.currentTab == null) return;
         if (this.searchField == null) return;
 
-        List<CustomRecipeBookRecipe> recipes = getResultsForGroup(currentTab.getGroup(), client.world.getRecipeManager().listAllOfType(getRecipeType()));
+        List<? extends Recipe<Inventory>> recipes = getResultsForGroup(currentTab.getGroup(), client.world.getRecipeManager().listAllOfType(getRecipeType()));
 
         String string = this.searchField.getText();
 
         if (!string.isEmpty()) {
-            recipes.removeIf((collection) -> !collection.recipe().getOutput().getName().getString().toLowerCase(Locale.ROOT).contains(string.toLowerCase(Locale.ROOT)));
+            recipes.removeIf((recipe) -> !recipe.getOutput().getName().getString().toLowerCase(Locale.ROOT).contains(string.toLowerCase(Locale.ROOT)));
         }
 
         if (CandlelightClient.rememberedCraftableToggle) {
-            recipes.removeIf((resultCollection) -> !resultCollection.hasIngredient(screenHandler));
+            recipes.removeIf((recipe) -> !screenHandler.hasIngredient(recipe));
         }
 
         this.recipesArea.setResults(recipes, resetCurrentPage);
     }
 
-    private <T extends Recipe<Inventory>> List<CustomRecipeBookRecipe> getResultsForGroup(IRecipeBookGroup group, List<T> recipes) {
-        List<CustomRecipeBookRecipe> results = Lists.newArrayList();
+    private <T extends Recipe<Inventory>> List<T> getResultsForGroup(IRecipeBookGroup group, List<T> recipes) {
+        List<T> results = Lists.newArrayList();
         for (T recipe : recipes) {
             if (group.fitRecipe(recipe)) {
-                results.add(new CustomRecipeBookRecipe(recipe));
+                results.add(recipe);
             }
         }
         return results;
@@ -293,16 +292,16 @@ public abstract class CustomRecipeBookWidget extends DrawableHelper implements R
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (this.open && !Objects.requireNonNull(this.client.player).isSpectator()) {
+        if (this.open && !this.client.player.isSpectator()) {
             if (this.recipesArea.mouseClicked(mouseX, mouseY, button, (this.parentWidth - 147) / 2 - this.leftOffset, (this.parentHeight - 166) / 2, 147, 166)) {
                 Recipe<?> recipe = this.recipesArea.getLastClickedRecipe();
-                CustomRecipeBookRecipe recipeBookRecipe = this.recipesArea.getLastClickedResults();
+                Recipe<?> recipeBookRecipe = this.recipesArea.getLastClickedRecipe();
                 if (recipe != null) {
                     if (this.currentTab == null) return false;
                     this.ghostSlots.reset();
 
                     assert recipeBookRecipe != null;
-                    if (!recipeBookRecipe.hasIngredient(screenHandler)) {
+                    if (!screenHandler.hasIngredient(recipe)) {
                         showGhostRecipe(recipe, screenHandler.slots);
                         return false;
                     }

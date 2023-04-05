@@ -5,9 +5,9 @@ import com.google.common.collect.Lists;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.recipebook.*;
 import net.minecraft.client.gui.widget.ToggleButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.recipe.Recipe;
 import net.satisfy.candlelight.client.recipebook.AbstractCustomRecipeScreenHandler;
 import net.satisfy.candlelight.client.recipebook.CustomRecipeBookWidget;
@@ -23,16 +23,14 @@ public class CustomRecipeBookRecipeArea {
     private CustomAnimatedResultButton hoveredResultButton;
     private final CustomRecipeAlternativesWidget alternatesWidget = new CustomRecipeAlternativesWidget();
     private MinecraftClient client;
-    private List<CustomRecipeBookRecipe> resultCollections = ImmutableList.of();
+    private List<? extends Recipe<Inventory>> resultCollections = ImmutableList.of();
     private ToggleButtonWidget nextPageButton;
     private ToggleButtonWidget prevPageButton;
     private int pageCount;
     private int currentPage;
     @Nullable
     private Recipe<?> lastClickedRecipe;
-    @Nullable
-    private CustomRecipeBookRecipe resultCollection;
-    private AbstractCustomRecipeScreenHandler<?> cookingPanScreenHandler;
+    private AbstractCustomRecipeScreenHandler cookingPanScreenHandler;
 
     public CustomRecipeBookRecipeArea() {
         for(int i = 0; i < 20; ++i) {
@@ -41,7 +39,7 @@ public class CustomRecipeBookRecipeArea {
 
     }
 
-    public void initialize(MinecraftClient client, int parentLeft, int parentTop, AbstractCustomRecipeScreenHandler<?> cookingPanScreenHandler) {
+    public void initialize(MinecraftClient client, int parentLeft, int parentTop, AbstractCustomRecipeScreenHandler cookingPanScreenHandler) {
         this.client = client;
         this.cookingPanScreenHandler = cookingPanScreenHandler;
 
@@ -55,7 +53,7 @@ public class CustomRecipeBookRecipeArea {
         this.prevPageButton.setTextureUV(1, 208, 13, 18, CustomRecipeBookWidget.TEXTURE);
     }
 
-    public void setResults(List<CustomRecipeBookRecipe> resultCollections, boolean resetCurrentPage) {
+    public void setResults(List<? extends Recipe<Inventory>> resultCollections, boolean resetCurrentPage) {
         this.resultCollections = resultCollections;
         this.pageCount = (int)Math.ceil((double)resultCollections.size() / 20.0);
         if (this.pageCount <= this.currentPage || resetCurrentPage) {
@@ -71,8 +69,8 @@ public class CustomRecipeBookRecipeArea {
         for(int j = 0; j < this.resultButtons.size(); ++j) {
             CustomAnimatedResultButton animatedResultButton = this.resultButtons.get(j);
             if (i + j < this.resultCollections.size()) {
-                CustomRecipeBookRecipe recipeResultCollection = this.resultCollections.get(i + j);
-                animatedResultButton.showResultCollection(recipeResultCollection, cookingPanScreenHandler);
+                Recipe<?> recipe = this.resultCollections.get(i + j);
+                animatedResultButton.showResultCollection(recipe, cookingPanScreenHandler);
                 animatedResultButton.visible = true;
             } else {
                 animatedResultButton.visible = false;
@@ -121,22 +119,15 @@ public class CustomRecipeBookRecipeArea {
         return this.lastClickedRecipe;
     }
 
-    @Nullable
-    public CustomRecipeBookRecipe getLastClickedResults() {
-        return this.resultCollection;
-    }
-
     public void hideAlternates() {
         this.alternatesWidget.setVisible(false);
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button, int areaLeft, int areaTop, int areaWidth, int areaHeight) {
         this.lastClickedRecipe = null;
-        this.resultCollection = null;
         if (this.alternatesWidget.isVisible()) {
             if (this.alternatesWidget.mouseClicked(mouseX, mouseY, button)) {
                 this.lastClickedRecipe = this.alternatesWidget.getLastClickedRecipe();
-                this.resultCollection = this.alternatesWidget.getResults();
             } else {
                 this.alternatesWidget.setVisible(false);
             }
@@ -162,11 +153,10 @@ public class CustomRecipeBookRecipeArea {
             } while(!animatedResultButton.mouseClicked(mouseX, mouseY, button));
             if (button == 0) {
                 this.lastClickedRecipe = animatedResultButton.currentRecipe();
-                this.resultCollection = animatedResultButton.getResultCollection();
             }
             if (button == 1 && !this.alternatesWidget.isVisible() && animatedResultButton.hasResult()) {
                 // Implement maybe later
-                this.alternatesWidget.showAlternativesForResult(this.client, animatedResultButton.getResultCollection(), animatedResultButton.x, animatedResultButton.y, areaLeft + areaWidth / 2, areaTop + 13 + areaHeight / 2, (float)animatedResultButton.getWidth());
+                this.alternatesWidget.showAlternativesForResult(this.client, animatedResultButton.getRecipe(), animatedResultButton.x, animatedResultButton.y, areaLeft + areaWidth / 2, areaTop + 13 + areaHeight / 2, (float)animatedResultButton.getWidth());
             }
             return true;
         }

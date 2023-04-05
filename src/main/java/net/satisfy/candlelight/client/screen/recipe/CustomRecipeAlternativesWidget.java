@@ -31,7 +31,7 @@ public class CustomRecipeAlternativesWidget extends DrawableHelper implements Dr
     private int buttonX;
     private int buttonY;
     private MinecraftClient client;
-    private CustomRecipeBookRecipe resultCollection;
+    private Recipe<?> recipe;
     @Nullable
     private Recipe<?> lastClickedRecipe;
     float time;
@@ -47,8 +47,8 @@ public class CustomRecipeAlternativesWidget extends DrawableHelper implements Dr
         return this.visible;
     }
 
-    public CustomRecipeBookRecipe getResults() {
-        return this.resultCollection;
+    public Recipe<?> getResults() {
+        return this.recipe;
     }
 
     @Nullable
@@ -56,12 +56,11 @@ public class CustomRecipeAlternativesWidget extends DrawableHelper implements Dr
         return this.lastClickedRecipe;
     }
 
-    public void showAlternativesForResult(MinecraftClient client, CustomRecipeBookRecipe recipeBookRecipe, int buttonX, int buttonY, int areaCenterX, int areaCenterY, float delta) {
+    public void showAlternativesForResult(MinecraftClient client, Recipe<?> recipe, int buttonX, int buttonY, int areaCenterX, int areaCenterY, float delta) {
         this.client = client;
-        this.resultCollection = recipeBookRecipe;
+        this.recipe = recipe;
 
         boolean bl = CandlelightClient.rememberedCraftableToggle;
-        Recipe<?> recipe = recipeBookRecipe.recipe();
 
         int k = 4;
         int l = (int)Math.ceil(((float)1 / (float)k));
@@ -90,7 +89,7 @@ public class CustomRecipeAlternativesWidget extends DrawableHelper implements Dr
         this.visible = true;
         this.alternativeButtons.clear();
 
-        this.alternativeButtons.add(new CustomAlternativeButtonWidget(this.buttonX + 6, this.buttonY+ 6, recipe, bl));
+        this.alternativeButtons.add(new CustomAlternativeButtonWidget(this.buttonX + 6, this.buttonY+ 6, this.recipe, bl));
 
         this.lastClickedRecipe = null;
     }

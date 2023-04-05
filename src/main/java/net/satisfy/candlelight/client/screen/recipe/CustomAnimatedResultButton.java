@@ -20,21 +20,21 @@ import java.util.List;
 
 public class CustomAnimatedResultButton extends ClickableWidget {
     private static final Identifier BACKGROUND_TEXTURE = new Identifier("textures/gui/recipe_book.png");
-    private AbstractCustomRecipeScreenHandler<?> craftingScreenHandler;
-    private CustomRecipeBookRecipe resultCollection;
+    private AbstractCustomRecipeScreenHandler craftingScreenHandler;
+    private Recipe<?> recipe;
     private float bounce;
 
     public CustomAnimatedResultButton() {
         super(0, 0, 25, 25, ScreenTexts.EMPTY);
     }
 
-    public void showResultCollection(CustomRecipeBookRecipe resultCollection, AbstractCustomRecipeScreenHandler<?> craftingScreenHandler) {
-        this.resultCollection = resultCollection;
+    public void showResultCollection(Recipe<?> recipe, AbstractCustomRecipeScreenHandler craftingScreenHandler) {
+        this.recipe = recipe;
         this.craftingScreenHandler = craftingScreenHandler;
     }
 
-    public CustomRecipeBookRecipe getResultCollection() {
-        return this.resultCollection;
+    public Recipe<?> getRecipe() {
+        return this.recipe;
     }
 
     public void setPos(int x, int y) {
@@ -48,7 +48,7 @@ public class CustomAnimatedResultButton extends ClickableWidget {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
         int i = 29;
-        if (!this.resultCollection.hasIngredient(craftingScreenHandler)) {
+        if (!craftingScreenHandler.hasIngredient(this.recipe)) {
             i += 25;
         }
 
@@ -79,7 +79,7 @@ public class CustomAnimatedResultButton extends ClickableWidget {
     }
 
     private Recipe<?> getResult() {
-        return this.resultCollection.recipe();
+        return this.recipe;
     }
 
     public boolean hasResult() {

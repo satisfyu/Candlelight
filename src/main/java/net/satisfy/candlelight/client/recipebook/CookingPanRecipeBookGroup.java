@@ -16,7 +16,7 @@ public enum CookingPanRecipeBookGroup implements IRecipeBookGroup {
     WINE(new ItemStack(satisfyu.vinery.registry.ObjectRegistry.NOIR_WINE)),
     MISC(new ItemStack(ObjectRegistry.TRAY), new ItemStack(Items.SUGAR));
 
-    public static final List<IRecipeBookGroup> PAN = ImmutableList.of(SEARCH, WINE, MISC);
+    public static final List<IRecipeBookGroup> PAN_GROUPS = ImmutableList.of(SEARCH, WINE, MISC);
 
     private final List<ItemStack> icons;
 

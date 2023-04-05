@@ -9,6 +9,7 @@ import net.satisfy.candlelight.block.entity.CookingPanEntity;
 import net.satisfy.candlelight.client.recipebook.AbstractCustomRecipeScreenHandler;
 import net.satisfy.candlelight.client.recipebook.CookingPanRecipeBookGroup;
 import net.satisfy.candlelight.client.recipebook.IRecipeBookGroup;
+import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import satisfyu.vinery.client.gui.handler.slot.ExtendedSlot;
 import satisfyu.vinery.registry.ObjectRegistry;
@@ -22,7 +23,7 @@ import net.minecraft.screen.slot.Slot;
 
 import java.util.List;
 
-public class CookingPanScreenHandler extends AbstractCustomRecipeScreenHandler<Inventory> {
+public class CookingPanScreenHandler extends AbstractCustomRecipeScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;
@@ -89,8 +90,33 @@ public class CookingPanScreenHandler extends AbstractCustomRecipeScreenHandler<I
         return progress * arrowWidth/ totalProgress + 1;
     }
 
+    @Override
     public List<IRecipeBookGroup> getGroups() {
-        return CookingPanRecipeBookGroup.PAN;
+        return CookingPanRecipeBookGroup.PAN_GROUPS;
+    }
+
+    @Override
+    public boolean hasIngredient(Recipe<?> recipe) {
+        if (recipe instanceof CookingPanRecipe cookingPanRecipe) {
+            for (Ingredient ingredient : cookingPanRecipe.getIngredients()) {
+                boolean found = false;
+                for (Slot slot : this.slots) {
+                    if (ingredient.test(slot.getStack())) {
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    return false;
+                }
+            }
+            ItemStack container = cookingPanRecipe.getContainer();
+            for (Slot slot : this.slots) {
+                if (container.getItem() == slot.getStack().getItem()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
