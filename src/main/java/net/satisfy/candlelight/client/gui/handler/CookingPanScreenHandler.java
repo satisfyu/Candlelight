@@ -6,12 +6,12 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.*;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.entity.CookingPanEntity;
-import net.satisfy.candlelight.client.recipebook.AbstractCustomRecipeScreenHandler;
 import net.satisfy.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
-import net.satisfy.candlelight.client.recipebook.IRecipeBookGroup;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.ScreenHandlerTypes;
 import satisfyu.vinery.client.gui.handler.slot.ExtendedSlot;
+import satisfyu.vinery.client.recipebook.AbstractPrivateRecipeScreenHandler;
+import satisfyu.vinery.client.recipebook.IRecipeBookGroup;
 import satisfyu.vinery.registry.ObjectRegistry;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -23,7 +23,8 @@ import net.minecraft.screen.slot.Slot;
 
 import java.util.List;
 
-public class CookingPanScreenHandler extends AbstractCustomRecipeScreenHandler {
+
+public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;
@@ -162,13 +163,6 @@ public class CookingPanScreenHandler extends AbstractCustomRecipeScreenHandler {
     @Override
     public boolean canUse(PlayerEntity player) {
         return this.inventory.canPlayerUse(player);
-    }
-
-    @Override
-    public void populateRecipeFinder(RecipeMatcher finder) {
-        if (this.inventory instanceof RecipeInputProvider) {
-            ((RecipeInputProvider)this.inventory).provideRecipeInputs(finder);
-        }
     }
 
     @Override

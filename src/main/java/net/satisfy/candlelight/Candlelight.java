@@ -36,8 +36,8 @@ public class Candlelight implements ModInitializer {
 
         Tab tab = Tab.builder().predicate(
                 Tab.Predicate.items(
-                        ObjectRegistry.TOMATO_SEEDS.asItem(),
-                        ObjectRegistry.TOMATO.asItem(),
+                        satisfyu.vinery.registry.ObjectRegistry.TOMATO_SEEDS.asItem(),
+                        satisfyu.vinery.registry.ObjectRegistry.TOMATO.asItem(),
                         ObjectRegistry.TOMATO_CRATE.asItem(),
                         ObjectRegistry.BROCCOLI_SEEDS.asItem(),
                         ObjectRegistry.BROCCOLI.asItem(),

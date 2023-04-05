@@ -16,15 +16,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.EffectFoodBlock;
-import net.satisfy.candlelight.item.EffectFood;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 import static net.satisfy.candlelight.block.EffectFoodBlock.BITES;
-import static net.satisfy.candlelight.item.EffectFoodHelper.*;
+import static satisfyu.vinery.item.food.EffectFoodHelper.*;
 
-public class EffectFoodBlockItem extends BlockItem implements EffectFood {
+public class EffectFoodBlockItem extends BlockItem {
 
     private final int foodStages;
 

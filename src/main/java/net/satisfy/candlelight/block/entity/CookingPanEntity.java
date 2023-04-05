@@ -23,13 +23,13 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.CookingPanBlock;
 import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
-import net.satisfy.candlelight.item.EffectFood;
-import net.satisfy.candlelight.item.EffectFoodHelper;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.vinery.item.food.EffectFood;
+import satisfyu.vinery.item.food.EffectFoodHelper;
 
 import static net.minecraft.item.ItemStack.canCombine;
 

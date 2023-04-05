@@ -30,6 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.item.DrinkBlockBigItem;
 import satisfyu.vinery.item.DrinkBlockItem;
+import satisfyu.vinery.item.food.EffectFoodItem;
 import satisfyu.vinery.registry.VineryEffects;
 import satisfyu.vinery.registry.VinerySoundEvents;
 import satisfyu.vinery.util.VineryFoodComponent;
@@ -47,9 +48,6 @@ public class ObjectRegistry {
     private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
     public static final Identifier NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
-    public static final Block TOMATO_CROP = register("tomato_crop", new TomatoCropBlock(getBushSettings()), false);
-    public static final Item TOMATO_SEEDS = register("tomato_seeds", new SeedItemBlock(TOMATO_CROP, getSettings()));
-    public static final Item TOMATO = register("tomato", new IngredientItem(getSettings().food(FoodComponents.APPLE)));
     public static final Block TOMATO_CRATE = register("tomato_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block BROCCOLI_CROP = register("broccoli_crop", new BroccoliCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)), false);
     public static final Item BROCCOLI_SEEDS = register("broccoli_seeds", new SeedItemBlock(BROCCOLI_CROP, getSettings()));

@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static net.satisfy.candlelight.item.EffectFoodHelper.getEffects;
+import static satisfyu.vinery.item.food.EffectFoodHelper.getEffects;
 
 public class EffectFoodBlock extends BlockWithEntity {
     public static final DirectionProperty FACING;

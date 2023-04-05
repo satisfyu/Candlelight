@@ -2,7 +2,7 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "tag": "vinery:dough"
+      "item": "vinery:dough"
     },
     {
       "item": "candlelight:butter"

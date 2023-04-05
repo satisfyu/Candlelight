@@ -8,13 +8,13 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.util.math.BlockPos;
-import net.satisfy.candlelight.item.EffectFoodHelper;
 import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import org.apache.commons.compress.utils.Lists;
+import satisfyu.vinery.item.food.EffectFoodHelper;
 
 import java.util.List;
 
-import static net.satisfy.candlelight.item.EffectFoodHelper.fromNbt;
+import static satisfyu.vinery.item.food.EffectFoodHelper.fromNbt;
 
 public class EffectFoodBlockEntity extends BlockEntity  {
 	public static final String STORED_EFFECTS_KEY = "StoredEffects";

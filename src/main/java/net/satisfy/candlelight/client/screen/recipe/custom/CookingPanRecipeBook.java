@@ -10,14 +10,14 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.random.Random;
-import net.satisfy.candlelight.client.recipebook.CustomRecipeBookWidget;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.vinery.client.recipebook.PrivateRecipeBookWidget;
 
 import java.util.List;
 
-public class CookingPanRecipeBook extends CustomRecipeBookWidget {
+public class CookingPanRecipeBook extends PrivateRecipeBookWidget {
     private static final Text TOGGLE_COOKABLE_TEXT;
 
     public CookingPanRecipeBook() {
