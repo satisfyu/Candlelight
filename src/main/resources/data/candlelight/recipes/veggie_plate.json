@@ -12,7 +12,7 @@
             "item": "minecraft:potato"
         },
         "C": {
-            "tag": "candlelight:tomato"
+            "item": "vinery:tomato"
         },
         "S": {
             "item": "candlelight:broccoli"

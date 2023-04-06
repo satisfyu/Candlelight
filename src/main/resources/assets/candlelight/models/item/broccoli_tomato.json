@@ -8,13 +8,13 @@
       "predicate": {
         "custom_model_data": 1
       },
-      "model": "candlelight:item/broccoli_tomato_2"
+      "model": "candlelight:item/food/broccoli_tomato_2"
     },
     {
       "predicate": {
         "custom_model_data": 2
       },
-      "model": "candlelight:item/broccoli_tomato_1"
+      "model": "candlelight:item/food/broccoli_tomato_1"
     }
   ]
 }

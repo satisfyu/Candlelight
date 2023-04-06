@@ -35,6 +35,7 @@ import java.util.function.Supplier;
 
 import static satisfyu.vinery.item.food.EffectFoodHelper.getEffects;
 
+
 public class EffectFoodBlock extends BlockWithEntity {
     public static final DirectionProperty FACING;
     public static final IntProperty BITES;
