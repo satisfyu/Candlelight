@@ -19,11 +19,9 @@ import java.util.stream.Stream;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.SharedConstants;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextHandler;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.BookScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -41,7 +39,6 @@ import net.minecraft.client.util.math.Rect2i;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.network.packet.c2s.play.BookUpdateC2SPacket;
@@ -51,7 +48,9 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
+import net.satisfy.candlelight.util.CandlelightIdentifier;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -59,10 +58,7 @@ import org.jetbrains.annotations.Nullable;
 
 @Environment(EnvType.CLIENT)
 public class NoteEditScreen extends Screen {
-    private static final int MAX_TEXT_WIDTH = 114;
-    private static final int MAX_TEXT_HEIGHT = 128;
-    private static final int WIDTH = 192;
-    private static final int HEIGHT = 192;
+    public static final Identifier BOOK_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private static final Text EDIT_TITLE_TEXT = Text.literal("Enter Note Title");
     private static final Text FINALIZE_WARNING_TEXT = Text.translatable("book.finalizeWarning");
     private static final OrderedText BLACK_CURSOR_TEXT;
@@ -75,16 +71,10 @@ public class NoteEditScreen extends Screen {
     private int currentPage;
     private final List<String> pages = Lists.newArrayList();
     private String title = "";
-    private final SelectionManager currentPageSelectionManager = new SelectionManager(this::getCurrentPageContent, this::setPageContent, this::getClipboard, this::setClipboard, (string) -> {
-        return string.length() < 1024 && this.textRenderer.getWrappedLinesHeight(string, 114) <= 128;
-    });
-    private final SelectionManager bookTitleSelectionManager = new SelectionManager(() -> {
-        return this.title;
-    }, (title) -> {
+    private final SelectionManager currentPageSelectionManager = new SelectionManager(this::getCurrentPageContent, this::setPageContent, this::getClipboard, this::setClipboard, (string) -> string.length() < 1024 && this.textRenderer.getWrappedLinesHeight(string, 114) <= 128);
+    private final SelectionManager bookTitleSelectionManager = new SelectionManager(() -> this.title, (title) -> {
         this.title = title;
-    }, this::getClipboard, this::setClipboard, (string) -> {
-        return string.length() < 16;
-    });
+    }, this::getClipboard, this::setClipboard, (string) -> string.length() < 16);
     private long lastClickTime;
     private int lastClickIndex = -1;
     private PageTurnWidget nextPageButton;
@@ -108,16 +98,16 @@ public class NoteEditScreen extends Screen {
         this.hand = hand;
         NbtCompound nbtCompound = itemStack.getNbt();
         if (nbtCompound != null) {
-            List var10001 = this.pages;
-            Objects.requireNonNull(var10001);
-            BookScreen.filterPages(nbtCompound, var10001::add);
+            List<String> string = this.pages;
+            Objects.requireNonNull(string);
+            BookScreen.filterPages(nbtCompound, string::add);
         }
 
         if (this.pages.isEmpty()) {
             this.pages.add("");
         }
 
-        this.signedByText = Text.translatable("book.byAuthor", new Object[]{player.getName()}).formatted(Formatting.DARK_GRAY);
+        this.signedByText = Text.translatable("book.byAuthor", player.getName()).formatted(Formatting.DARK_GRAY);
     }
 
     private void setClipboard(String clipboard) {
@@ -143,22 +133,22 @@ public class NoteEditScreen extends Screen {
     protected void init() {
         this.invalidatePageContent();
         this.client.keyboard.setRepeatEvents(true);
-        this.signButton = (ButtonWidget)this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 196, 98, 20, Text.translatable("book.signButton"), (button) -> {
+        this.signButton = this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 196, 98, 20, Text.translatable("book.signButton"), (button) -> {
             this.signing = true;
             this.updateButtons();
         }));
-        this.doneButton = (ButtonWidget)this.addDrawableChild(new ButtonWidget(this.width / 2 + 2, 196, 98, 20, ScreenTexts.DONE, (button) -> {
-            this.client.setScreen((Screen)null);
+        this.doneButton = this.addDrawableChild(new ButtonWidget(this.width / 2 + 2, 196, 98, 20, ScreenTexts.DONE, (button) -> {
+            this.client.setScreen(null);
             this.finalizeBook(false);
         }));
-        this.finalizeButton = (ButtonWidget)this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 196, 98, 20, Text.translatable("book.finalizeButton"), (button) -> {
+        this.finalizeButton = this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 196, 98, 20, Text.translatable("book.finalizeButton"), (button) -> {
             if (this.signing) {
                 this.finalizeBook(true);
-                this.client.setScreen((Screen)null);
+                this.client.setScreen(null);
             }
 
         }));
-        this.cancelButton = (ButtonWidget)this.addDrawableChild(new ButtonWidget(this.width / 2 + 2, 196, 98, 20, ScreenTexts.CANCEL, (button) -> {
+        this.cancelButton = this.addDrawableChild(new ButtonWidget(this.width / 2 + 2, 196, 98, 20, ScreenTexts.CANCEL, (button) -> {
             if (this.signing) {
                 this.signing = false;
             }
@@ -167,10 +157,10 @@ public class NoteEditScreen extends Screen {
         }));
         int i = (this.width - 192) / 2;
         boolean j = true;
-        this.nextPageButton = (PageTurnWidget)this.addDrawableChild(new PageTurnWidget(i + 116, 159, true, (button) -> {
+        this.nextPageButton = this.addDrawableChild(new PageTurnWidget(i + 116, 159, true, (button) -> {
             this.openNextPage();
         }, true));
-        this.previousPageButton = (PageTurnWidget)this.addDrawableChild(new PageTurnWidget(i + 43, 159, false, (button) -> {
+        this.previousPageButton = this.addDrawableChild(new PageTurnWidget(i + 43, 159, false, (button) -> {
             this.openPreviousPage();
         }, true));
         this.updateButtons();
@@ -216,7 +206,7 @@ public class NoteEditScreen extends Screen {
     private void removeEmptyPages() {
         ListIterator<String> listIterator = this.pages.listIterator(this.pages.size());
 
-        while(listIterator.hasPrevious() && ((String)listIterator.previous()).isEmpty()) {
+        while(listIterator.hasPrevious() && listIterator.previous().isEmpty()) {
             listIterator.remove();
         }
 
@@ -233,9 +223,9 @@ public class NoteEditScreen extends Screen {
 
     private void writeNbtData(boolean signBook) {
         NbtList nbtList = new NbtList();
-        Stream var10000 = this.pages.stream().map(NbtString::of);
+        Stream<NbtString> nbts = this.pages.stream().map(NbtString::of);
         Objects.requireNonNull(nbtList);
-        var10000.forEach((a) -> nbtList.add((NbtElement) a));
+        nbts.forEach(nbtList::add);
         if (!this.pages.isEmpty()) {
             this.itemStack.setSubNbt("pages", nbtList);
         }
@@ -307,42 +297,53 @@ public class NoteEditScreen extends Screen {
         } else {
             SelectionManager.SelectionType selectionType = Screen.hasControlDown() ? SelectionType.WORD : SelectionType.CHARACTER;
             switch (keyCode) {
-                case 257:
-                case 335:
+                case 257, 335 -> {
                     this.currentPageSelectionManager.insert("\n");
                     return true;
-                case 259:
+                }
+                case 259 -> {
                     this.currentPageSelectionManager.delete(-1, selectionType);
                     return true;
-                case 261:
+                }
+                case 261 -> {
                     this.currentPageSelectionManager.delete(1, selectionType);
                     return true;
-                case 262:
+                }
+                case 262 -> {
                     this.currentPageSelectionManager.moveCursor(1, Screen.hasShiftDown(), selectionType);
                     return true;
-                case 263:
+                }
+                case 263 -> {
                     this.currentPageSelectionManager.moveCursor(-1, Screen.hasShiftDown(), selectionType);
                     return true;
-                case 264:
+                }
+                case 264 -> {
                     this.moveDownLine();
                     return true;
-                case 265:
+                }
+                case 265 -> {
                     this.moveUpLine();
                     return true;
-                case 266:
+                }
+                case 266 -> {
                     this.previousPageButton.onPress();
                     return true;
-                case 267:
+                }
+                case 267 -> {
                     this.nextPageButton.onPress();
                     return true;
-                case 268:
+                }
+                case 268 -> {
                     this.moveToLineStart();
                     return true;
-                case 269:
+                }
+                case 269 -> {
                     this.moveToLineEnd();
                     return true;
-                default:
+                }
+                default -> {
                     return false;
+                }
             }
         }
     }
@@ -386,21 +387,22 @@ public class NoteEditScreen extends Screen {
 
     private boolean keyPressedSignMode(int keyCode, int scanCode, int modifiers) {
         switch (keyCode) {
-            case 257:
-            case 335:
+            case 257, 335 -> {
                 if (!this.title.isEmpty()) {
                     this.finalizeBook(true);
-                    this.client.setScreen((Screen)null);
+                    this.client.setScreen(null);
                 }
-
                 return true;
-            case 259:
+            }
+            case 259 -> {
                 this.bookTitleSelectionManager.delete(-1);
                 this.updateButtons();
                 this.dirty = true;
                 return true;
-            default:
+            }
+            default -> {
                 return false;
+            }
         }
     }
 
@@ -419,10 +421,10 @@ public class NoteEditScreen extends Screen {
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         this.renderBackground(matrices);
-        this.setFocused((Element)null);
+        this.setFocused(null);
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, BookScreen.BOOK_TEXTURE);
+        RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
         int i = (this.width - 192) / 2;
         boolean j = true;
         this.drawTexture(matrices, i, 2, 0, 0, 192, 192);
@@ -564,7 +566,7 @@ public class NoteEditScreen extends Screen {
     private PageContent getPageContent() {
         if (this.pageContent == null) {
             this.pageContent = this.createPageContent();
-            this.pageIndicatorText = Text.translatable("book.pageIndicator", new Object[]{this.currentPage + 1, this.countPages()});
+            this.pageIndicatorText = Text.translatable("book.pageIndicator", this.currentPage + 1, this.countPages());
         }
 
         return this.pageContent;

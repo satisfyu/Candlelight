@@ -8,10 +8,10 @@
       "tag": "vinery:red_wine"
     },
     {
-      "tag": "candlelight:butter"
+      "item": "candlelight:butter"
     },
     {
-      "tag": "vinery:milk"
+      "item": "minecraft:milk_bucket"
     }
   ],
   "container": {

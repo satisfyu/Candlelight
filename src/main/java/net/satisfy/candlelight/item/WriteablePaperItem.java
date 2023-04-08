@@ -19,7 +19,7 @@ public class WriteablePaperItem extends Item {
         //user.useBook(itemStack, hand);
         if(world.isClient())
         {
-            ClientUtil.setNoteEditScreen(user, itemStack, hand);
+            ClientUtil.setNotePaperScreen(user, itemStack, hand);
         }
         else
         {

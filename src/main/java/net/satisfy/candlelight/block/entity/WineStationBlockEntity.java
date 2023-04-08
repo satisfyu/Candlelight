@@ -35,8 +35,8 @@ import satisfyu.vinery.registry.ObjectRegistry;
 
 import java.util.List;
 
-public class WineStationBlockEntity extends BlockEntity implements BlockEntityTicker<WineStationBlockEntity>, Inventory, NamedScreenHandlerFactory {
-    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(CAPACITY, ItemStack.EMPTY);;
+public class WineStationBlockEntity extends BlockEntity implements BlockEntityTicker<WineStationBlockEntity>, Inventory, NamedScreenHandlerFactory { //TODO
+    private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(CAPACITY, ItemStack.EMPTY);
     protected static final int[] SELL_SLOTS = {0, 1, 2};
     protected static final int[] OUTPUT_SLOTS = {3, 4};
     public static final int CAPACITY = 5;
@@ -44,17 +44,11 @@ public class WineStationBlockEntity extends BlockEntity implements BlockEntityTi
     private final PropertyDelegate propertyDelegate = new PropertyDelegate() {
         @Override
         public int get(int index) {
-            return switch (index) {
-                default -> 0;
-            };
+            return 0;
         }
 
         @Override
         public void set(int index, int value) {
-            switch (index) {
-                default -> {
-                }
-            }
         }
 
         @Override
@@ -225,12 +219,11 @@ public class WineStationBlockEntity extends BlockEntity implements BlockEntityTi
     }
 
     private void sendInventory() {
-        System.out.println(world);
         if (world != null && !world.isClient()) {
             PacketByteBuf data = PacketByteBufs.create();
             data.writeInt(inventory.size());
-            for (int i = 0; i < inventory.size(); i++) {
-                data.writeItemStack(inventory.get(i));
+            for (ItemStack itemStack : inventory) {
+                data.writeItemStack(itemStack);
             }
             data.writeBlockPos(getPos());
 

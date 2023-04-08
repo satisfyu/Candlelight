@@ -7,14 +7,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.satisfy.candlelight.registry.ObjectRegistry;
-import satisfyu.vinery.client.ClientSetup;
+import satisfyu.vinery.client.VineryClient;
 
 import java.util.List;
 
 public interface CookArmorItem {
 
 	default void tooltip(List<Text> tooltip){
-		PlayerEntity player = ClientSetup.getClientPlayer();
+		PlayerEntity player = VineryClient.getClientPlayer();
 		if (player == null) return;
 		ItemStack helmet = player.getEquippedStack(EquipmentSlot.HEAD);
 		ItemStack chestplate = player.getEquippedStack(EquipmentSlot.CHEST);

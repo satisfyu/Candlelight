@@ -67,7 +67,6 @@ public class LetterGuiHandler extends ScreenHandler {
     @Override
     public void sendContentUpdates() {
         super.sendContentUpdates();
-        //System.out.println(name);
         if((this.inventory.getStack(0).getItem() == ObjectRegistry.LETTER_OPEN && this.inventory.getStack(1).getItem() == ObjectRegistry.NOTE_PAPER_WRITTEN))
         {
             ItemStack stack = new ItemStack(ObjectRegistry.LETTER_CLOSED);
@@ -103,7 +102,6 @@ public class LetterGuiHandler extends ScreenHandler {
 
     @Override
     public void onContentChanged(Inventory inventory) {
-        System.out.println("es");
         super.onContentChanged(inventory);
 
     }

@@ -1,6 +1,20 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/fricassee_with_hash_browns"
-  }
+    "layer0": "candlelight:item/food/fricasse_with_hash_browns_3"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "candlelight:item/food/fricasse_2"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "candlelight:item/food/fricasse_1"
+    }
+  ]
 }

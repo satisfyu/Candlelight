@@ -1,9 +1,6 @@
 package net.satisfy.candlelight.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -33,27 +30,10 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class TypeWriterBlock extends Block {
-    public TypeWriterBlock(Settings settings) {
-        super(settings);
-    }
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+    public static final DirectionProperty FACING;
 
-    public boolean hasSidedTransparency(BlockState state) {
-        return true;
-    }
+    public static final Map<Direction, VoxelShape> SHAPE;
 
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack stack = player.getStackInHand(hand);
-        if(stack.getItem() == ObjectRegistry.NOTE_PAPER)
-        {
-            stack.setCount(stack.getCount() - 1);
-            player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
-            return ActionResult.SUCCESS;
-        }
-
-
-        return super.onUse(state, world, pos, player, hand, hit);
-    }
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = VoxelShapes.empty();
         shape = VoxelShapes.combine(shape, VoxelShapes.cuboid(0.0625, 0, 0.125, 0.9375, 0.125, 0.875), BooleanBiFunction.OR);
@@ -69,11 +49,19 @@ public class TypeWriterBlock extends Block {
         return shape;
     };
 
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Type.HORIZONTAL.stream().toList()) {
-            map.put(direction, VineryUtils.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+    public TypeWriterBlock(Settings settings) {
+        super(settings);
+    }
+
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (stack.getItem() == ObjectRegistry.NOTE_PAPER) {
+            stack.decrement(1);
+            player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+            return ActionResult.SUCCESS;
         }
-    });
+        return super.onUse(state, world, pos, player, hand, hit);
+    }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -93,8 +81,22 @@ public class TypeWriterBlock extends Block {
 
     @Override
     public void appendTooltip(ItemStack itemStack, BlockView world, List<Text> tooltip, TooltipContext tooltipContext) {
+        tooltip.add(Text.translatable("block.candlelight.wip.tooltip").formatted(Formatting.BOLD, Formatting.RED));
         tooltip.add(Text.translatable("block.candlelight.canbeplaced.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
         tooltip.add(Text.translatable("block.candlelight.typewriter.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
 
+    }
+
+    public boolean hasSidedTransparency(BlockState state) {
+        return true;
+    }
+
+    static {
+        FACING = HorizontalFacingBlock.FACING;
+        SHAPE = Util.make(new HashMap<>(), map -> {
+            for (Direction direction : Direction.Type.HORIZONTAL.stream().toList()) {
+                map.put(direction, VineryUtils.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            }
+        });
     }
 }

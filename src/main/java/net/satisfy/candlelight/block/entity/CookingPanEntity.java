@@ -22,14 +22,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.satisfy.candlelight.block.CookingPanBlock;
-import net.satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
-import net.satisfy.candlelight.item.EffectFood;
-import net.satisfy.candlelight.item.EffectFoodHelper;
+import net.satisfy.candlelight.client.gui.handler.CookingPanScreenHandler;
 import net.satisfy.candlelight.recipe.CookingPanRecipe;
 import net.satisfy.candlelight.registry.CandlelightEntityTypes;
 import net.satisfy.candlelight.registry.RecipeTypes;
 import net.satisfy.candlelight.util.CandlelightTags;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.vinery.item.food.EffectFood;
+import satisfyu.vinery.item.food.EffectFoodHelper;
+
+import static net.minecraft.item.ItemStack.canCombine;
 
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Inventory, NamedScreenHandlerFactory {
 
@@ -110,10 +112,16 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			} else if (this.getStack(OUTPUT_SLOT).isEmpty()) {
 				return true;
 			} else {
-				final ItemStack recipeOutput = generateOutputItem(recipe);
+				if (this.getStack(OUTPUT_SLOT).isEmpty()) {
+					return true;
+				}
+				final ItemStack recipeOutput = this.generateOutputItem(recipe);
 				final ItemStack outputSlotStack = this.getStack(OUTPUT_SLOT);
 				final int outputSlotCount = outputSlotStack.getCount();
-				if (!outputSlotStack.isItemEqualIgnoreDamage(recipeOutput)) {
+				if (this.getStack(OUTPUT_SLOT).isEmpty()) {
+					return true;
+				}
+				else if (!canCombine(outputSlotStack, recipeOutput)) {
 					return false;
 				} else if (outputSlotCount < this.getMaxCountPerStack() && outputSlotCount < outputSlotStack.getMaxCount()) {
 					return true;
@@ -173,6 +181,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 				ItemStack stack = this.getStack(j);
 				if (ingredient.test(stack)) {
 					EffectFoodHelper.getEffects(stack).forEach(effect -> EffectFoodHelper.addEffect(outputStack, effect));
+					break;
 				}
 			}
 		}
@@ -212,8 +221,6 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			world.setBlockState(pos, state.with(CookingPanBlock.LIT, isBeingBurned), Block.NOTIFY_ALL);
 		}
 	}
-
-
 	
 	@Override
 	public int size() {
@@ -272,7 +279,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	@Nullable
 	@Override
 	public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-		return new CookingPanGuiHandler(syncId, inv, this, this.delegate);
+		return new CookingPanScreenHandler(syncId, inv, this, this.delegate);
 	}
 }
 
