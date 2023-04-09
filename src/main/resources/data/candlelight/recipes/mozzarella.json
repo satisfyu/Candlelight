@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "vinery:milk"
+      "item": "minecraft:milk_bucket"
     },
     {
       "item": "minecraft:water_bucket"
