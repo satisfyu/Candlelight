@@ -1,12 +1,23 @@
 package net.satisfy.candlelight.block;
 
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
+import net.minecraft.server.filter.FilteredMessage;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
@@ -20,6 +31,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.satisfy.candlelight.block.entity.TypeWriterEntity;
+import net.satisfy.candlelight.client.screen.NotePaperScreen;
+import net.satisfy.candlelight.client.screen.TypeWriterScreen;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.vinery.util.VineryUtils;
@@ -29,8 +43,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class TypeWriterBlock extends Block {
+public class TypeWriterBlock extends BlockWithEntity {
     public static final DirectionProperty FACING;
+
+    public static final IntProperty FULL = IntProperty.of("full", 0, 2);
 
     public static final Map<Direction, VoxelShape> SHAPE;
 
@@ -55,9 +71,45 @@ public class TypeWriterBlock extends Block {
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack stack = player.getStackInHand(hand);
-        if (stack.getItem() == ObjectRegistry.NOTE_PAPER) {
-            stack.decrement(1);
-            player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+        if (stack.getItem() == ObjectRegistry.NOTE_PAPER && state.get(FULL) == 0) {
+            world.setBlockState(pos, state.with(FULL, 1), 2);
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
+            {
+                typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+            }
+            //stack.decrement(1);
+            //player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+            return ActionResult.SUCCESS;
+        }
+        else if (state.get(FULL) == 1) {
+            //world.setBlockState(pos, state.with(FULL, 1), 2);
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
+            {
+                if(player instanceof ClientPlayerEntity)
+                    MinecraftClient.getInstance().setScreen(new TypeWriterScreen(player, typeWriterEntity.getPaper(), hand, pos));
+                //typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+            }
+
+            //stack.decrement(1);
+            //player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+            return ActionResult.SUCCESS;
+        }
+        else if (state.get(FULL) == 2) {
+            world.setBlockState(pos, state.with(FULL, 0), 2);
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
+            {
+                ItemStack paper = typeWriterEntity.getPaper();
+                ItemStack result = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN);
+
+                result.setNbt(paper.getNbt().copy());
+                result.setSubNbt("author", NbtString.of(player.getName().getString()));
+                player.giveItemStack(result);
+
+                typeWriterEntity.removePaper();
+            }
             return ActionResult.SUCCESS;
         }
         return super.onUse(state, world, pos, player, hand, hit);
@@ -71,12 +123,12 @@ public class TypeWriterBlock extends Block {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite()).with(FULL, 0);
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING).add(FULL);
     }
 
     @Override
@@ -98,5 +150,11 @@ public class TypeWriterBlock extends Block {
                 map.put(direction, VineryUtils.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
             }
         });
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new TypeWriterEntity(pos, state);
     }
 }

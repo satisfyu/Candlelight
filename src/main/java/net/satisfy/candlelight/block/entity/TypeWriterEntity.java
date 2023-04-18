@@ -13,7 +13,7 @@ public class TypeWriterEntity extends BlockEntity {
     public static final String PAPER_KEY ="paper";
 
     @Nullable
-    ItemStack paper;
+    ItemStack paper = ItemStack.EMPTY;
 
     public TypeWriterEntity(BlockPos pos, BlockState state) {
         super(CandlelightEntityTypes.TYPE_WRITER_BLOCK_ENTITY, pos, state);
@@ -29,7 +29,7 @@ public class TypeWriterEntity extends BlockEntity {
 
     public ItemStack removePaper() {
         ItemStack returnStack = paper.copy();
-        this.paper = null;
+        this.paper = ItemStack.EMPTY;
         return returnStack;
     }
 
