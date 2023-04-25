@@ -1,41 +1,41 @@
 {
   "variants": {
-    "facing=east,full=0": [
+    "facing=east,full=0": 
       { "model": "candlelight:block/typewriter_copper",  "y": 90}
-    ],
-    "facing=north,full=0": [
+    ,
+    "facing=north,full=0":
       { "model": "candlelight:block/typewriter_copper", "weight":1 }
-    ],
-    "facing=south,full=0": [
+    ,
+    "facing=south,full=0":
       { "model": "candlelight:block/typewriter_copper",  "y": 180}
-    ],
-    "facing=west,full=0": [
+    ,
+    "facing=west,full=0":
       { "model": "candlelight:block/typewriter_copper",  "y": 270}
-    ],
-    "facing=east,full=1": [
+    ,
+    "facing=east,full=1": 
       { "model": "candlelight:block/typewriter_copper_notepaper",  "y": 90}
-    ],
-    "facing=north,full=1": [
+    ,
+    "facing=north,full=1": 
       { "model": "candlelight:block/typewriter_copper_notepaper", "weight":1 }
-    ],
-    "facing=south,full=1": [
+    ,
+    "facing=south,full=1": 
       { "model": "candlelight:block/typewriter_copper_notepaper",  "y": 180}
-    ],
-    "facing=west,full=1": [
+    ,
+    "facing=west,full=1": 
       { "model": "candlelight:block/typewriter_copper_notepaper",  "y": 270}
-    ],
-    "facing=east,full=2": [
+    ,
+    "facing=east,full=2": 
       { "model": "candlelight:block/typewriter_copper_written",  "y": 90}
-    ],
-    "facing=north,full=2": [
+    ,
+    "facing=north,full=2": 
       { "model": "candlelight:block/typewriter_copper_written", "weight":1 }
-    ],
-    "facing=south,full=2": [
+    ,
+    "facing=south,full=2": 
       { "model": "candlelight:block/typewriter_copper_written",  "y": 180}
-    ],
-    "facing=west,full=2": [
+    ,
+    "facing=west,full=2": 
       { "model": "candlelight:block/typewriter_copper_written",  "y": 270}
-    ]
+    
 
   }
 }
