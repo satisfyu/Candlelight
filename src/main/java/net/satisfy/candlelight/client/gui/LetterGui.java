@@ -5,6 +5,7 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
@@ -50,12 +51,13 @@ public class LetterGui extends HandledScreen<LetterGuiHandler> {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
+        int y = (int) ((height - backgroundHeight) / 2);
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
     }
 
     public void renderForeground(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         this.nameField.render(matrices, mouseX, mouseY, delta);
+        this.textRenderer.draw(matrices, Text.translatable("block.candlelight.typewriter.translatable.text"), this.width/1.95F, (int)(this.height/4.65F), 0x5A5A5A);
     }
 
     @Override

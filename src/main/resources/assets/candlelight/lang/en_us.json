@@ -242,5 +242,6 @@
   "item.candlelight.cristelknight.press_shift": "- CristelKnight",
   "block.candlelight.wip.tooltip": "This block is a work in progress and may have bugs or unintended effects that may damage your world.",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "Showing Cookable",
-  "item.candlelight.letter_closed": "Sealed Letter"
+  "item.candlelight.letter_closed": "Sealed Letter",
+  "block.candlelight.typewriter.translatable.text": "Name letter"
 }
