@@ -14,6 +14,7 @@ public class ScreenHandlerTypes {
     public static final ScreenHandlerType<LetterGuiHandler> LETTER_SCREEN_HANDLER = new ScreenHandlerType<>(LetterGuiHandler::new);
     public static final ScreenHandlerType<WineStationGuiHandler> WINE_STATION_SCREEN_HANDLER = new ScreenHandlerType<>(WineStationGuiHandler::new);
 
+
     public static void init() {
         Registry.register(Registry.SCREEN_HANDLER, new CandlelightIdentifier("cooking_pan_gui_handler"), COOKING_PAN_SCREEN_HANDLER);
         Registry.register(Registry.SCREEN_HANDLER, new CandlelightIdentifier("letter_screen"), LETTER_SCREEN_HANDLER);

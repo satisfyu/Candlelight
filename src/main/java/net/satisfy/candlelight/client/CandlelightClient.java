@@ -44,7 +44,7 @@ public class CandlelightClient implements ClientModInitializer {
             return BiomeColors.getWaterColor(world, pos);
         }, ObjectRegistry.MUD_KITCHEN_SINK, ObjectRegistry.SANDSTONE_KITCHEN_SINK, ObjectRegistry.DEEPSLATE_KITCHEN_SINK, ObjectRegistry.END_KITCHEN_SINK,
                 ObjectRegistry.STONE_BRICKS_KITCHEN_SINK, ObjectRegistry.COBBLESTONE_KITCHEN_SINK, ObjectRegistry.GRANITE_KITCHEN_SINK,
-                ObjectRegistry.QUARTZ_KITCHEN_SINK);
+                ObjectRegistry.QUARTZ_KITCHEN_SINK, ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK);
 
         registerModels();
         CandlelightMessages.registerS2CPackets();
@@ -52,7 +52,6 @@ public class CandlelightClient implements ClientModInitializer {
         HandledScreens.register(ScreenHandlerTypes.COOKING_PAN_SCREEN_HANDLER, CookingPanScreen::new);
         HandledScreens.register(ScreenHandlerTypes.LETTER_SCREEN_HANDLER, LetterGui::new);
         HandledScreens.register(ScreenHandlerTypes.WINE_STATION_SCREEN_HANDLER, WineStationGui::new);
-
 
         BlockEntityRendererRegistry.register(CandlelightEntityTypes.WINE_STATION_BLOCK_ENTITY, WineStationBlockEntityRenderer::new);
     }

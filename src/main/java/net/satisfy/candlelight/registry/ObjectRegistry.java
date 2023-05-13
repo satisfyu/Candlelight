@@ -27,6 +27,8 @@ import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.vinery.Vinery;
+import satisfyu.vinery.VineryIdentifier;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.item.DrinkBlockBigItem;
 import satisfyu.vinery.item.DrinkBlockItem;
@@ -146,7 +148,7 @@ public class ObjectRegistry {
             }
         }
     }, AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS)), true);
-    public static final Block APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
+    public static final Block APPLE_LEAVES = register("apple_leaves", new AppleLeaves(FabricBlockSettings.copy(Blocks.OAK_LEAVES)), false);
     public static final Block JEWELRY_BOX = register("jewelry_box", new JewelryBoxBlock(FabricBlockSettings.of(Material.DECORATION)));
     public static final Block CHOCOLATE_BOX = register("chocolate_box", new ChocolateBoxBlock(FabricBlockSettings.copy(Blocks.CAKE)));
     public static final Item GOLD_RING = register("gold_ring", new RingItem(CandlelightMaterials.RING_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.EPIC)));
@@ -272,6 +274,7 @@ public class ObjectRegistry {
     }
 
 
+
     private static <T extends Block> T registerWine(String path, T block, StatusEffect effect) {
         return register(path, block, true, DrinkBlockItem::new, settings -> settings.food(wineFoodComponent(effect)));
     }
@@ -305,7 +308,7 @@ public class ObjectRegistry {
 
 
     private static Item.Settings getSettings(Consumer<Item.Settings> consumer) {
-        Item.Settings settings = new Item.Settings();
+        Item.Settings settings = new Item.Settings().group(Candlelight.CREATIVE_TAB);
         consumer.accept(settings);
         return settings;
     }

@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/sandstone_stove_side",
-		"4": "candlelight:block/kitchen_hardware/sandstone_stove_bottom",
-		"5": "candlelight:block/kitchen_hardware/sandstone_woodfiredoven_front_on",
-		"7": "candlelight:block/kitchen_hardware/sandstone_woodfiredoven_top_on",
-		"particle": "candlelight:block/kitchen_hardware/sandstone_stove_side"
+		"1": "candlelight:block/kitchen_hardware/deepslate_stove_side",
+		"4": "candlelight:block/kitchen_hardware/deeplsate_stove_stove_bottom",
+		"5": "candlelight:block/kitchen_hardware/deepslate_woodfiredoven_front_on",
+		"7": "candlelight:block/kitchen_hardware/deepslate_stove_top_on",
+		"particle": "candlelight:block/kitchen_hardware/deepslate_stove_side"
 	},
 	"elements": [
 		{

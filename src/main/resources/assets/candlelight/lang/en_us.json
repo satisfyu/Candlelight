@@ -228,8 +228,7 @@
   "item.candlelight.waffle": "Waffle",
   "item.candlelight.white_wine": "White Wine",
   "item.vinery.juice.tooltip.block.candlelight.strawberry_jam": "Combine it with Bread to get Bread Slices",
-  "itemGroup.vinery.vinery_tab.tab": "Candlelight Dinner",
-  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner",
+  "itemGroup.candlelight.candlelight_tab": "Candlelight Dinner",
   "item.candlelight.table_set.tooltip": "Part of the Table Set",
   "block.candlelight.tomato_crop": "Tomato Crop",
   "block.candlelight.broccoli_crop": "Broccoli Crop",
@@ -242,5 +241,10 @@
   "item.candlelight.cristelknight.press_shift": "- CristelKnight",
   "block.candlelight.wip.tooltip": "This block is a work in progress and may have bugs or unintended effects that may damage your world.",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "Showing Cookable",
-  "item.candlelight.letter_closed": "Sealed Letter"
+  "item.candlelight.letter_closed": "Sealed Letter",
+"block.candlelight.wild_broccoli": "Wild Broccoli", 
+"block.candlelight.strawberry_wild_taiga": "Wild Strawberries",
+"block.candlelight.strawberry_wild_jungle": "Wild Strawberries",
+"block.candlelight.tomatoes_wild":"Wild Tomatoes"
+
 }

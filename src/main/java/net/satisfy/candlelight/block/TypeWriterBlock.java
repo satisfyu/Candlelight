@@ -133,7 +133,6 @@ public class TypeWriterBlock extends BlockWithEntity {
 
     @Override
     public void appendTooltip(ItemStack itemStack, BlockView world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(Text.translatable("block.candlelight.wip.tooltip").formatted(Formatting.BOLD, Formatting.RED));
         tooltip.add(Text.translatable("block.candlelight.canbeplaced.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
         tooltip.add(Text.translatable("block.candlelight.typewriter.tooltip").formatted(Formatting.ITALIC, Formatting.GRAY));
 
