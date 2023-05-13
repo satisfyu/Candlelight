@@ -77,6 +77,7 @@ public class TypeWriterBlock extends BlockWithEntity {
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
             {
                 typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+                stack.setCount(stack.getCount() - 1);
             }
             //stack.decrement(1);
             //player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
