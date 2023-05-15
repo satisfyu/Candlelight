@@ -20,7 +20,6 @@ public class CandlelightEntityTypes {
     public static final BlockEntityType<WineStationBlockEntity> WINE_STATION_BLOCK_ENTITY = create("wine_station", FabricBlockEntityTypeBuilder.create(WineStationBlockEntity::new, ObjectRegistry.WINE_STATION).build());
 
 
-
     private static <T extends BlockEntityType<?>> T create(final String path, final T type) {
         BLOCK_ENTITY_TYPES.put(new CandlelightIdentifier(path), type);
         return type;

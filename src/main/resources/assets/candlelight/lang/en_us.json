@@ -1,3 +1,4 @@
+{
 "block.candlelight.acacia_cabinet": "Acacia Cabinet",
 "block.candlelight.acacia_chair": "Acacia Chair",
 "block.candlelight.acacia_drawer": "Acacia Drawer",
@@ -132,7 +133,7 @@
 "block.candlelight.tray": "Tray",
 "block.candlelight.tray.tooltip": "Offers space for nine food items",
 "block.candlelight.typewriter.tooltip": "Can be filled with notepaper to write Letters",
-"block.candlelight.typewriter.translatable.text": "Name letter"
+"block.candlelight.typewriter.translatable.text": "For:",
 "block.candlelight.typewriter_copper": "Copper Typewriter",
 "block.candlelight.typewriter_iron": "Iron Typewriter",
 "block.candlelight.warped_cabinet": "Warped Cabinet",
@@ -245,6 +246,5 @@
 "block.candlelight.strawberry_wild_jungle": "Wild Strawberries",
 "block.candlelight.strawberry_wild_taiga": "Wild Strawberries",
 "block.candlelight.tomatoes_wild": "Wild Tomatoes",
-"block.candlelight.wild_broccoli": "Wild Broccoli",
-{
+"block.candlelight.wild_broccoli": "Wild Broccoli"
 }

@@ -22,19 +22,20 @@ import net.satisfy.candlelight.block.CakeBlock;
 import net.satisfy.candlelight.block.LanternBlock;
 import net.satisfy.candlelight.block.*;
 import net.satisfy.candlelight.block.crops.*;
-import net.satisfy.candlelight.food.*;
+import net.satisfy.candlelight.food.CandlelightFoods;
+import net.satisfy.candlelight.food.EffectFoodBlockItem;
 import net.satisfy.candlelight.item.*;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import net.satisfy.candlelight.world.feature.ConfiguredFeatures;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.vinery.Vinery;
-import satisfyu.vinery.VineryIdentifier;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.item.DrinkBlockBigItem;
 import satisfyu.vinery.item.DrinkBlockItem;
+import satisfyu.vinery.item.GrapeBushSeedItem;
 import satisfyu.vinery.item.food.EffectFoodItem;
 import satisfyu.vinery.registry.VineryEffects;
 import satisfyu.vinery.registry.VinerySoundEvents;
+import satisfyu.vinery.util.GrapevineType;
 import satisfyu.vinery.util.VineryFoodComponent;
 
 import java.util.*;
@@ -50,6 +51,9 @@ public class ObjectRegistry {
     private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
     private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
     public static final Identifier NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
+    public static final Block TOMATO_CROP = register("tomato_crop", new TomatoCropBlock( getBushSettings()), false);
+    public static final Item TOMATO_SEEDS = register("tomato_seeds", new GrapeBushSeedItem(TOMATO_CROP, getSettings(), GrapevineType.TOMATO));
+    public static final Item TOMATO = register("tomato", new Item(getSettings().food(FoodComponents.APPLE)));
     public static final Block TOMATO_CRATE = register("tomato_crate", new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
     public static final Block BROCCOLI_CROP = register("broccoli_crop", new BroccoliCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)), false);
     public static final Item BROCCOLI_SEEDS = register("broccoli_seeds", new SeedItemBlock(BROCCOLI_CROP, getSettings()));
@@ -62,7 +66,7 @@ public class ObjectRegistry {
     public static final Block STRAWBERRY_WILD_TAIGA = register("strawberry_wild_taiga", new WildBush(getBushSettings()), false);
     public static final Block STRAWBERRY_WILD_JUNGLE = register("strawberry_wild_jungle", new WildBushJungle(getBushSettings()), false);
     public static final Block TOMATOES_WILD = register("tomatoes_wild", new WildBushTomato(getBushSettings()), false);
-    public static final Block WILD_BROCCOLI = register("wild_broccoli", new WildBroccoli(getBushSettings()));
+    public static final Block WILD_BROCCOLI = register("wild_broccoli", new WildBroccoli(getBushSettings()), false);
     public static final Block CHAIR = register("chair", new ChairBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
     public static final Block TABLE = register("table", new TableBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
     public static final Block SOFA = register("sofa", new SofaBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0f, 3.0f).sounds(BlockSoundGroup.WOOD)));
@@ -160,10 +164,10 @@ public class ObjectRegistry {
     public static final Block TYPEWRITER_COPPER = register("typewriter_copper", new TypeWriterBlock(FabricBlockSettings.of(Material.METAL).strength(2.0F, 3.0F).sounds(BlockSoundGroup.METAL)));
     public static final Item NOTE_PAPER = register("note_paper", new Item(getSettings()));
     public static final Item NOTE_PAPER_WRITEABLE = register("note_paper_writeable", new WriteablePaperItem(getSettings().maxCount(1)));
-    public static final Item NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenPaperItem(getSettings()));
+    public static final Item NOTE_PAPER_WRITTEN = register("note_paper_written", new WrittenPaperItem(getSettingsWithoutTab()));
     public static final Item LETTER_OPEN = register("letter_open", new LetterItem(getSettings()));
-    public static final Item LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettings().maxCount(1)));
-    public static final Item LOVE_LETTER_CLOSED = register("love_letter", new ClosedLetterItem(getSettings()));
+    public static final Item LETTER_CLOSED = register("letter_closed", new ClosedLetterItem(getSettingsWithoutTab().maxCount(1)));
+    public static final Item LOVE_LETTER_CLOSED = register("love_letter", new ClosedLetterItem(getSettingsWithoutTab()));
     public static final Item LOVE_LETTER_OPEN = register("love_letter_open", new LetterItem(getSettings()));
     public static final Block OAK_WINE_RACK_BIG = register("oak_wine_rack_big", new NineBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
     public static final Block OAK_WINE_RACK_SMALL = register("oak_wine_rack_small", new FourBottleStorageBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()));
@@ -308,7 +312,13 @@ public class ObjectRegistry {
 
 
     private static Item.Settings getSettings(Consumer<Item.Settings> consumer) {
-        Item.Settings settings = new Item.Settings().group(Candlelight.CREATIVE_TAB);
+        Item.Settings settings = new Item.Settings().group(Candlelight.CANDLELIGHT_TAB);
+        consumer.accept(settings);
+        return settings;
+    }
+
+    private static Item.Settings getSettingsWithoutTab(Consumer<Item.Settings> consumer) {
+        Item.Settings settings = new Item.Settings();
         consumer.accept(settings);
         return settings;
     }
@@ -317,6 +327,13 @@ public class ObjectRegistry {
         return getSettings(settings -> {
         });
     }
+
+    private static Item.Settings getSettingsWithoutTab() {
+        return getSettingsWithoutTab(settings -> {
+        });
+    }
+
+
 
     private static Block.Settings getBushSettings() {
         return FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH);
