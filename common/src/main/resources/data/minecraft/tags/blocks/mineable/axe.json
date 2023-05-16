@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "beachparty:palm_beam",
+    "beachparty:palm_floorboard",
+    "beachparty:table",
+    "beachparty:chair",
+    "beachparty:palm_fence_gate",
+    "beachparty:stripped_palm_log",
+    "beachparty:stripped_palm_wood",
+    "beachparty:palm_log",
+    "beachparty:palm_wood",
+    "beachparty:palm_planks",
+    "beachparty:palm_slab",
+    "beachparty:palm_stairs",
+    "beachparty:palm_fence",
+    "beachparty:palm_button",
+    "beachparty:palm_door",
+    "beachparty:palm_trapdoor",
+    "beachparty:beach_chair",
+    "beachparty:tiki_chair",
+    "beachparty:tiki_bar",
+    "beachparty:lounge_chair",
+    "beachparty:radio"
+  ]
+}

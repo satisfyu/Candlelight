@@ -4,30 +4,30 @@ loaderVersion = "[43,)"
 license = "Insert License Here"
 
 [[mods]]
-modId = "examplemod"
+modId = "candlelight"
 version = "${version}"
-displayName = "Example Mod"
+displayName = "Candlelight"
 authors = "Me!"
 description = '''
 This is an example description! Tell everyone what your mod is about!
 '''
 #logoFile = ""
 
-[[dependencies.examplemod]]
+[[dependencies.candlelight]]
 modId = "forge"
 mandatory = true
 versionRange = "[43,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.candlelight]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19.2,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.candlelight]]
 modId = "architectury"
 mandatory = true
 versionRange = "[6.5.77,)"

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "beachparty:block/palm_tall_torch_bottom"
+    },
+    "half=upper": {
+      "model": "beachparty:block/palm_tall_torch_top"
+    }
+  }
+}

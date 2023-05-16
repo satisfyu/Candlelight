@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "beachparty:block/palm_floorboard",
+        "weight": 1
+      }
+    ]
+  }
+}

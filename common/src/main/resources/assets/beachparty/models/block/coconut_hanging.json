@@ -1,0 +1,50 @@
+{
+	"credit": "Made by Satisfy",
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"1": "beachparty:block/palm_leaves",
+		"particle": "beachparty:block/coconut",
+		"all": "beachparty:block/coconut"
+	},
+	"elements": [
+		{
+			"from": [4, 7, 4],
+			"to": [12, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 4]},
+			"faces": {
+				"north": {"uv": [0, 8, 8, 16], "texture": "#all"},
+				"east": {"uv": [0, 8, 8, 16], "texture": "#all"},
+				"south": {"uv": [0, 8, 8, 16], "texture": "#all"},
+				"west": {"uv": [0, 8, 8, 16], "texture": "#all"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#all"},
+				"down": {"uv": [8, 8, 16, 16], "texture": "#all"}
+			}
+		},
+		{
+			"from": [5.87868, 15, 5.87868],
+			"to": [11.87868, 16, 5.87868],
+			"rotation": {"angle": -45, "axis": "y", "origin": [5.87868, 0, 5.87868]},
+			"faces": {
+				"north": {"uv": [5, 7, 11, 8], "texture": "#1"},
+				"east": {"uv": [0, 0, 0, 1], "texture": "#1"},
+				"south": {"uv": [5, 7, 11, 8], "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 1], "texture": "#1"},
+				"up": {"uv": [0, 0, 6, 0], "texture": "#1"},
+				"down": {"uv": [0, 0, 6, 0], "texture": "#1"}
+			}
+		},
+		{
+			"from": [4.12132, 15, 5.87868],
+			"to": [10.12132, 16, 5.87868],
+			"rotation": {"angle": 45, "axis": "y", "origin": [10.12132, 0, 5.87868]},
+			"faces": {
+				"north": {"uv": [5, 12, 11, 13], "texture": "#1"},
+				"east": {"uv": [0, 0, 0, 1], "texture": "#1"},
+				"south": {"uv": [5, 12, 11, 13], "texture": "#1"},
+				"west": {"uv": [0, 0, 0, 1], "texture": "#1"},
+				"up": {"uv": [0, 0, 6, 0], "rotation": 180, "texture": "#1"},
+				"down": {"uv": [0, 0, 6, 0], "rotation": 180, "texture": "#1"}
+			}
+		}
+	]
+}

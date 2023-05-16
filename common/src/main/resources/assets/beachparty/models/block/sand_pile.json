@@ -1,0 +1,22 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"1": "block/sand",
+		"particle": "block/sand"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 3, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 12, 3], "texture": "#1"},
+				"east": {"uv": [0, 0, 12, 3], "texture": "#1"},
+				"south": {"uv": [0, 0, 12, 3], "texture": "#1"},
+				"west": {"uv": [0, 0, 12, 3], "texture": "#1"},
+				"up": {"uv": [0, 0, 12, 12], "texture": "#1"},
+				"down": {"uv": [0, 0, 12, 12], "texture": "#1"}
+			}
+		}
+	]
+}

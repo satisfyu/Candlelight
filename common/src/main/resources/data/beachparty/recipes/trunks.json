@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "DDD",
+        "D D"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "D": {
+            "item": "minecraft:dried_kelp"
+        }
+    },
+    "result": {
+        "item": "beachparty:trunks",
+        "count": 1
+    }
+}

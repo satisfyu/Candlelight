@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "beachparty:sand_bucket_block"
+    ]
+  },
+  "criteria": {
+    "has_wooden_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:wooden_shovel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "beachparty:sand_bucket_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wooden_shovel",
+      "has_the_recipe"
+    ]
+  ]
+}

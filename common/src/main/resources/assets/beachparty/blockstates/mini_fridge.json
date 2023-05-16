@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "beachparty:block/mini_fridge",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "beachparty:block/mini_fridge"
+    },
+    "facing=south": {
+      "model": "beachparty:block/mini_fridge",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "beachparty:block/mini_fridge",
+      "y": 270
+    }
+  }
+}

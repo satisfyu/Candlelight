@@ -1,0 +1,72 @@
+{
+  "variants": {
+    "facing=north,on=true,searching=true": {
+      "model": "beachparty:block/radio_antenna-on_button-pressed",
+      "y": 0
+    },
+    "facing=south,on=true,searching=true": {
+      "model": "beachparty:block/radio_antenna-on_button-pressed",
+      "y": 180
+    },
+    "facing=east,on=true,searching=true": {
+      "model": "beachparty:block/radio_antenna-on_button-pressed",
+      "y": 90
+    },
+    "facing=west,on=true,searching=true": {
+      "model": "beachparty:block/radio_antenna-on_button-pressed",
+      "y": 270
+    },
+
+    "facing=north,on=false,searching=true": {
+      "model": "beachparty:block/radio_antenna-off_button-pressed",
+      "y": 0
+    },
+    "facing=south,on=false,searching=true": {
+      "model": "beachparty:block/radio_antenna-off_button-pressed",
+      "y": 180
+    },
+    "facing=east,on=false,searching=true": {
+      "model": "beachparty:block/radio_antenna-off_button-pressed",
+      "y": 90
+    },
+    "facing=west,on=false,searching=true": {
+      "model": "beachparty:block/radio_antenna-off_button-pressed",
+      "y": 270
+    },
+
+
+    "facing=north,on=true,searching=false": {
+      "model": "beachparty:block/radio_antenna-on_button-normal",
+      "y": 0
+    },
+    "facing=south,on=true,searching=false": {
+      "model": "beachparty:block/radio_antenna-on_button-normal",
+      "y": 180
+    },
+    "facing=east,on=true,searching=false": {
+      "model": "beachparty:block/radio_antenna-on_button-normal",
+      "y": 90
+    },
+    "facing=west,on=true,searching=false": {
+      "model": "beachparty:block/radio_antenna-on_button-normal",
+      "y": 270
+    },
+
+    "facing=north,on=false,searching=false": {
+      "model": "beachparty:block/radio_antenna-off_button-normal",
+      "y": 0
+    },
+    "facing=south,on=false,searching=false": {
+      "model": "beachparty:block/radio_antenna-off_button-normal",
+      "y": 180
+    },
+    "facing=east,on=false,searching=false": {
+      "model": "beachparty:block/radio_antenna-off_button-normal",
+      "y": 90
+    },
+    "facing=west,on=false,searching=false": {
+      "model": "beachparty:block/radio_antenna-off_button-normal",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "beachparty:palm_wood"
+    ]
+  },
+  "criteria": {
+    "has_palm_wood": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "beachparty:palm_log"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "beachparty:palm_wood"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_palm_wood",
+      "has_the_recipe"
+    ]
+  ]
+}

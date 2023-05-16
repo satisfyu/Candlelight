@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "beachparty:block/palm_pressure_plate"
+    },
+    "powered=true": {
+      "model": "beachparty:block/palm_pressure_plate_down"
+    }
+  }
+}

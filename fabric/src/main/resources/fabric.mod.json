@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "candlelight",
   "version": "${version}",
-  "name": "Example Mod",
+  "name": "Candlelight",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Me!"
@@ -16,15 +16,15 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.examplemod.fabric.ExampleModFabric"
+      "satisfyu.candlelight.fabric.CandlelightFabric"
     ],
     "doapi": [
-      "satisfyu.ca"
+      "satisfyu.candlelight.registry.StorageTypes"
     ]
   },
   "mixins": [
-    "examplemod.mixins.json",
-    "examplemod-common.mixins.json"
+    "candlelight.mixins.json",
+    "candlelight-common.mixins.json"
   ],
   "depends": {
     "fabric": "*",

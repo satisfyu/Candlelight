@@ -1,0 +1,36 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "beachparty:item/pool_noodle"
+  },
+  "display": {
+        "thirdperson_righthand": {
+            "rotation": [ 0, -90, 55 ],
+            "translation": [ 0, 7.2, 0.5 ],
+            "scale": [ 0.95625, 0.95625, 0.85 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [ 0, 90, -55 ],
+            "translation": [ 0, 7.2, 0.5 ],
+            "scale": [ 0.95625, 0.95625, 0.85 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, -90, 25 ],
+            "translation": [ 1.13, 3.8, 1.13 ],
+            "scale": [ 0.765, 0.765, 0.68 ]
+        },
+        "firstperson_lefthand": {
+            "rotation": [ 0, 90, -25 ],
+            "translation": [ 1.13, 3.8, 1.13 ],
+            "scale": [ 0.765, 0.765, 0.68 ]
+        },
+		"gui": {
+			"rotation": [0, 0, 0],
+			"translation": [0, 0, 0],
+			"scale": [ 1.125, 1.125, 1.125]
+		},
+		"fixed": {
+			"scale": [1.125, 1.125, 1.125]
+		}
+    }
+}

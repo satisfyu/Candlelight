@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SXS",
+    "SSS",
+    "B B"
+  ],
+  "key": {
+    "S": {
+      "item": "beachparty:palm_slab"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "beachparty:palm_planks"
+    }
+  },
+  "result": {
+    "item": "beachparty:chair"
+  }
+}

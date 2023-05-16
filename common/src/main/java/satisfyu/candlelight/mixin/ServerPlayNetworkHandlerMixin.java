@@ -31,7 +31,7 @@ public class ServerPlayNetworkHandlerMixin {
     @Inject(method = "updateBookContent", at = @At("HEAD"))
     private void updateBookContent(List<FilteredText> pages, int slotId, CallbackInfo ci) {
         ItemStack itemStack = this.player.getInventory().getItem(slotId);
-        if (itemStack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE)) {
+        if (itemStack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get())) {
             this.setTextToBook(pages, UnaryOperator.identity(), itemStack);
 
         }
@@ -40,8 +40,8 @@ public class ServerPlayNetworkHandlerMixin {
     @Inject(method = "addBook", at = @At("HEAD"), cancellable = true)
     private void addBook(FilteredText title, List<FilteredText> pages, int slotId, CallbackInfo ci) {
         ItemStack itemStack = this.player.getInventory().getItem(slotId);
-        if (itemStack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE)) {
-            ItemStack itemStack2 = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN);
+        if (itemStack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get())) {
+            ItemStack itemStack2 = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
             CompoundTag nbtCompound = itemStack.getTag();
             if (nbtCompound != null) {
                 itemStack2.setTag(nbtCompound.copy());

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "## ",
+    "BB "
+  ],
+  "key": {
+    "#": {
+      "item": "beachparty:palm_slab"
+    },
+    "B": {
+      "item": "beachparty:palm_planks"
+    }
+  },
+  "result": {
+    "item": "beachparty:palm_floorboard",
+    "count": 2
+  }
+}

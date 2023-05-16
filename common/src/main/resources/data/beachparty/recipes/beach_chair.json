@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "///",
+        "/W/",
+        "OOO"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:stick"
+        },
+        "W": {
+            "tag": "minecraft:wool"
+        },
+        "O": {
+            "item": "beachparty:palm_planks"
+        }
+    },
+    "result": {
+        "item": "beachparty:beach_chair",
+        "count": 2
+    }
+}

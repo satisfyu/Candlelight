@@ -1,0 +1,55 @@
+{
+  "variants": {
+    "facing=east,part=middle": {
+      "y": 90,
+      "model": "beachparty:block/hammock_middle"
+    },
+    "facing=east,part=left": {
+      "y": 90,
+      "model": "beachparty:block/hammock_left"
+    },
+    "facing=east,part=right": {
+      "y": 90,
+      "model": "beachparty:block/hammock_right"
+    },
+
+    "facing=north,part=middle": {
+      "y": 0,
+      "model": "beachparty:block/hammock_middle"
+    },
+    "facing=north,part=left": {
+      "y": 0,
+      "model": "beachparty:block/hammock_left"
+    },
+    "facing=north,part=right": {
+      "y": 0,
+      "model": "beachparty:block/hammock_right"
+    },
+
+    "facing=south,part=middle": {
+      "y": 180,
+      "model": "beachparty:block/hammock_middle"
+    },
+    "facing=south,part=left": {
+      "y": 180,
+      "model": "beachparty:block/hammock_left"
+    },
+    "facing=south,part=right": {
+      "y": 180,
+      "model": "beachparty:block/hammock_right"
+    },
+
+    "facing=west,part=middle": {
+      "y": 270,
+      "model": "beachparty:block/hammock_middle"
+    },
+    "facing=west,part=left": {
+      "y": 270,
+      "model": "beachparty:block/hammock_left"
+    },
+    "facing=west,part=right": {
+      "y": 270,
+      "model": "beachparty:block/hammock_right"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"particle": "beachparty:block/palm_planks0",
+		"texture": "beachparty:block/palm_planks0"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 1, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -1]},
+			"faces": {
+				"north": {"uv": [1, 12, 7, 13], "texture": "#texture"},
+				"east": {"uv": [7, 11, 13, 12], "texture": "#texture"},
+				"south": {"uv": [5, 7, 11, 8], "texture": "#texture"},
+				"west": {"uv": [3, 4, 9, 5], "texture": "#texture"},
+				"up": {"uv": [0, 6, 6, 0], "texture": "#texture"},
+				"down": {"uv": [0, 15, 6, 9], "texture": "#texture"}
+			}
+		}
+	]
+}

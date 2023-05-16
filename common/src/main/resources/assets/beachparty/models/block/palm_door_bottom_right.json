@@ -1,0 +1,21 @@
+{
+	"credit": "Made by Satisfy",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "beachparty:block/palm_door_bottom",
+		"bottom": "beachparty:block/palm_door_bottom"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [3, 16, 16],
+			"faces": {
+				"north": {"uv": [3, 0, 0, 16], "texture": "#bottom", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#bottom"},
+				"south": {"uv": [0, 0, 3, 16], "texture": "#bottom", "cullface": "south"},
+				"west": {"uv": [16, 0, 0, 16], "texture": "#bottom", "cullface": "west"},
+				"down": {"uv": [0, 13, 16, 16], "rotation": 90, "texture": "#bottom", "cullface": "down"}
+			}
+		}
+	]
+}
