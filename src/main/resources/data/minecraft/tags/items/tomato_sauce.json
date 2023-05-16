@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {"id":"candlelight:tomato_sauce","required":false},
-    {"id":"farmersdelight:tomato_sauce","required":false}
-  ]
-}

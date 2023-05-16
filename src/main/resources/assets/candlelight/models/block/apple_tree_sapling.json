@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "candlelight:block/apple_tree_sapling"
-  }
-}

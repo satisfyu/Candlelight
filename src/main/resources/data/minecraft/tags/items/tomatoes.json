@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {"id":"candlelight:tomato","required":false},
-    {"id":"farmersdelight:tomato","required":false}
-  ]
-}
