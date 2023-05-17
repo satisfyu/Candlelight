@@ -14,8 +14,8 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
-        mixinConfig "examplemod-common.mixins.json"
-        mixinConfig "examplemod.mixins.json"
+        mixinConfig "candlelight-common.mixins.json"
+        mixinConfig "candlelight.mixins.json"
     }
 }
 

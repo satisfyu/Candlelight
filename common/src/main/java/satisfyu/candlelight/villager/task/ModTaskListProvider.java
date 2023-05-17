@@ -17,9 +17,9 @@ public class ModTaskListProvider {
 
     public static ImmutableList<Pair<Integer, ? extends Behavior<? super Villager>>> createVineryStandTasks(Brain<Villager> brain, float speed) {
         return ImmutableList.of(
-                Pair.of(0, new ShopAtVineryStandTask(speed, 2, 25, 1200)),
-                Pair.of(0, new ValidateNearbyPoi((registryEntry) -> registryEntry.is(ModPointOfInterestTypes.SHOP_KEY), ModMemoryModuleType.SHOP)),
-                Pair.of(10, new AcquirePoi((registryEntry) -> registryEntry.is(ModPointOfInterestTypes.SHOP_KEY), ModMemoryModuleType.SHOP, false, Optional.of((byte)0))));
+                Pair.of(0, new ShopAtVineryStandTask<>(speed, 2, 25, 1200)),
+                Pair.of(0, new ValidateNearbyPoi((registryEntry) -> registryEntry.is(ModPointOfInterestTypes.SHOP_KEY), ModMemoryModuleType.SHOP.get())),
+                Pair.of(10, new AcquirePoi((registryEntry) -> registryEntry.is(ModPointOfInterestTypes.SHOP_KEY), ModMemoryModuleType.SHOP.get(), false, Optional.of((byte)0))));
     }
 
     public static void init() {

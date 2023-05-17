@@ -1,17 +1,17 @@
 modLoader = "javafml"
 loaderVersion = "[43,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "All Rights Reserved"
 
 [[mods]]
 modId = "candlelight"
 version = "${version}"
-displayName = "Candlelight"
-authors = "Me!"
+displayName = "Candlelight Dinner"
+authors = "satisfy_u, Cristelknight, BaumeisterJo"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+A Food Themed Expansion for the 'Let's Do Wine' Mod focusing on cooking with Wine
 '''
-#logoFile = ""
+logoFile = "assets/candlelight/icon.png"
 
 [[dependencies.candlelight]]
 modId = "forge"
@@ -24,6 +24,13 @@ side = "BOTH"
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.candlelight]]
+modId = "vinery"
+mandatory = true
+versionRange = "[1.2.6,)"
 ordering = "NONE"
 side = "BOTH"
 

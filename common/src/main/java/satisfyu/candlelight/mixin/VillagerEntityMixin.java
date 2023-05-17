@@ -27,7 +27,7 @@ import java.util.function.BiPredicate;
 public abstract class VillagerEntityMixin {
     @Shadow
     private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(
-            ModMemoryModuleType.SHOP, ModMemoryModuleType.LAST_SHOPED,
+            ModMemoryModuleType.SHOP.get(), ModMemoryModuleType.LAST_SHOPED.get(),
             //Minecraft
             MemoryModuleType.HOME, MemoryModuleType.JOB_SITE, MemoryModuleType.POTENTIAL_JOB_SITE,
             MemoryModuleType.MEETING_POINT, MemoryModuleType.NEAREST_LIVING_ENTITIES, MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
@@ -45,7 +45,9 @@ public abstract class VillagerEntityMixin {
             MemoryModuleType.JOB_SITE, (villager, registryEntry) -> villager.getVillagerData().getProfession().heldJobSite().test(registryEntry),
             MemoryModuleType.POTENTIAL_JOB_SITE, (villager, registryEntry) -> VillagerProfession.ALL_ACQUIRABLE_JOBS.test(registryEntry),
             MemoryModuleType.MEETING_POINT, (villager, registryEntry) -> registryEntry.is(PoiTypes.MEETING),
-            ModMemoryModuleType.SHOP, (villager, registryEntry) -> registryEntry.is(ModPointOfInterestTypes.SHOP_KEY));
+            ModMemoryModuleType.SHOP.get(), (villager, registryEntry) -> registryEntry.is(ModPointOfInterestTypes.SHOP_KEY));
+
+
 
 
     @Shadow public abstract void releaseTicketFor(MemoryModuleType<GlobalPos> memoryModuleType);

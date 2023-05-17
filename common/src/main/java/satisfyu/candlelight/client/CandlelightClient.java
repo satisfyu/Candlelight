@@ -5,15 +5,12 @@ import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
-import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import satisfyu.candlelight.client.gui.CookingPanScreen;
 import satisfyu.candlelight.client.gui.LetterGui;
 import satisfyu.candlelight.client.gui.WineStationGui;
 import satisfyu.candlelight.client.model.CookingHatModel;
-import satisfyu.candlelight.networking.CandlelightMessages;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypes;
@@ -21,7 +18,8 @@ import satisfyu.candlelight.render.WineStationBlockEntityRenderer;
 
 
 public class CandlelightClient {
-    public void onInitializeClient() {
+
+    public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.CAKE_STAND.get(), ObjectRegistry.CHAIR.get(),
                 ObjectRegistry.TABLE.get(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(), ObjectRegistry.STRAWBERRY_WILD_JUNGLE.get(),
                 ObjectRegistry.STRAWBERRY_WILD_TAIGA.get(), ObjectRegistry.TOMATOES_WILD.get(), ObjectRegistry.APPLE_TREE_SAPLING.get(),
