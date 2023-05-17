@@ -36,8 +36,8 @@ public class ShopAtVineryStandTask<E extends Villager> extends Behavior<E> {
 
     public ShopAtVineryStandTask(float speed, int completionRange, int maxRange, int maxRunTime) {
         super(ImmutableMap.of(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryStatus.REGISTERED, MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT,
-                ModMemoryModuleType.SHOP, MemoryStatus.VALUE_PRESENT, ModMemoryModuleType.LAST_SHOPED, MemoryStatus.REGISTERED));
-        this.destination = ModMemoryModuleType.SHOP;
+                ModMemoryModuleType.SHOP.get(), MemoryStatus.VALUE_PRESENT, ModMemoryModuleType.LAST_SHOPED.get(), MemoryStatus.REGISTERED));
+        this.destination = ModMemoryModuleType.SHOP.get();
         this.speed = speed;
         this.completionRange = completionRange;
         this.maxRange = maxRange;
@@ -53,7 +53,7 @@ public class ShopAtVineryStandTask<E extends Villager> extends Behavior<E> {
         }
         Brain<?> brain = villager.getBrain();
 
-        GlobalPos globalPos = brain.getMemory(ModMemoryModuleType.SHOP).get();
+        GlobalPos globalPos = brain.getMemory(ModMemoryModuleType.SHOP.get()).get();
         if (world.dimension() != globalPos.dimension()) {
             return false;
         }
@@ -63,7 +63,7 @@ public class ShopAtVineryStandTask<E extends Villager> extends Behavior<E> {
             return false;
         }
 
-        Optional<Long> optionalLastShopped = brain.getMemory(ModMemoryModuleType.LAST_SHOPED);
+        Optional<Long> optionalLastShopped = brain.getMemory(ModMemoryModuleType.LAST_SHOPED.get());
         if (optionalLastShopped.isPresent()) {
             long l = world.getGameTime() - optionalLastShopped.get();
             if (l > 0L && l < shopCooldown) {
@@ -100,9 +100,7 @@ public class ShopAtVineryStandTask<E extends Villager> extends Behavior<E> {
                     } else {
                         // Is at Shop
                         Optional<WineStationBlockEntity> optionalBlockEntity = villagerEntity.level.getBlockEntity(pos.pos(), BlockEntityRegistry.WINE_STATION_BLOCK_ENTITY.get());
-                        if (optionalBlockEntity.isPresent()) {
-                            optionalBlockEntity.get().buyWine(villagerEntity);
-                        }
+                        optionalBlockEntity.ifPresent(wineStationBlockEntity -> wineStationBlockEntity.buyWine(villagerEntity));
 
                         forgetVineryStand(serverWorld, villagerEntity, brain);
                     }
@@ -122,18 +120,14 @@ public class ShopAtVineryStandTask<E extends Villager> extends Behavior<E> {
 
     private boolean shouldGiveUp(ServerLevel world, Villager villager) {
         Optional<Long> optional = villager.getBrain().getMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-        if (optional.isPresent()) {
-            return world.getGameTime() - optional.get() > (long)this.maxRunTime;
-        } else {
-            return false;
-        }
+        return optional.filter(aLong -> world.getGameTime() - aLong > (long) this.maxRunTime).isPresent();
     }
 
     private void forgetVineryStand(ServerLevel world, Villager villager, Brain<?> brain) {
-        villager.releasePoi(ModMemoryModuleType.SHOP);
+        villager.releasePoi(ModMemoryModuleType.SHOP.get());
 
         brain.eraseMemory(this.destination);
-        brain.setMemory(ModMemoryModuleType.LAST_SHOPED, world.getGameTime());
+        brain.setMemory(ModMemoryModuleType.LAST_SHOPED.get(), world.getGameTime());
         shopCooldown = RandomSource.create().nextIntBetweenInclusive(minTimeToShop, maxTimeToShop);
     }
 

@@ -24,20 +24,20 @@ public class ServerPlayNetworkHandlerMixin {
     private ServerPlayer player;
 
     @Shadow
-    private void setTextToBook(List<FilteredText> messages, UnaryOperator<String> postProcessor, ItemStack book) {
+    private void updateBookPages(List<FilteredText> messages, UnaryOperator<String> postProcessor, ItemStack book) {
 
     }
 
-    @Inject(method = "updateBookContent", at = @At("HEAD"))
+    @Inject(method = "updateBookContents", at = @At("HEAD"))
     private void updateBookContent(List<FilteredText> pages, int slotId, CallbackInfo ci) {
         ItemStack itemStack = this.player.getInventory().getItem(slotId);
         if (itemStack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get())) {
-            this.setTextToBook(pages, UnaryOperator.identity(), itemStack);
+            this.updateBookPages(pages, UnaryOperator.identity(), itemStack);
 
         }
     }
 
-    @Inject(method = "addBook", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "signBook", at = @At("HEAD"), cancellable = true)
     private void addBook(FilteredText title, List<FilteredText> pages, int slotId, CallbackInfo ci) {
         ItemStack itemStack = this.player.getInventory().getItem(slotId);
         if (itemStack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get())) {
@@ -55,7 +55,7 @@ public class ServerPlayNetworkHandlerMixin {
                 itemStack2.addTagElement("title", StringTag.valueOf(title.raw()));
             }
 
-            this.setTextToBook(pages, (text) -> {
+            this.updateBookPages(pages, (text) -> {
                 return Component.Serializer.toJson(Component.literal(text));
             }, itemStack2);
             this.player.getInventory().setItem(slotId, itemStack2);

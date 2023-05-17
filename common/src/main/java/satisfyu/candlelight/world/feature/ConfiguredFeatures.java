@@ -6,7 +6,6 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -31,7 +30,6 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import satisfyu.candlelight.block.AppleLeaves;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-import satisfyu.vinery.VineryIdentifier;
 
 import java.util.List;
 
@@ -79,7 +77,7 @@ public class ConfiguredFeatures {
     }
 
     public static void init() {
-        BiomeModification world = BiomeModifications.create(new VineryIdentifier("world_features"));
+        BiomeModification world = BiomeModifications.create(new CandlelightIdentifier("world_features"));
         Predicate<BiomeSelectionContext> taigaBiomes = BiomeSelectors.includeByKey(Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.TAIGA, Biomes.DARK_FOREST, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA);
         Predicate<BiomeSelectionContext> jungleBiomes = BiomeSelectors.includeByKey(Biomes.JUNGLE, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE);
         Predicate<BiomeSelectionContext> dryBiomes = BiomeSelectors.includeByKey(Biomes.SAVANNA, Biomes.RIVER, Biomes.SWAMP, Biomes.SAVANNA_PLATEAU, Biomes.BEACH, Biomes.WOODED_BADLANDS, Biomes.SUNFLOWER_PLAINS, Biomes.PLAINS);

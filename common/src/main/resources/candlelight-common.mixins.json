@@ -6,7 +6,6 @@
   "client": [
   ],
   "mixins": [
-    "ChestSoundMixin",
     "ServerPlayNetworkHandlerMixin"
   ],
   "injectors": {

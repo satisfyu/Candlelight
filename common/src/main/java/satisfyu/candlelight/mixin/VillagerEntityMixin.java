@@ -26,7 +26,7 @@ import java.util.function.BiPredicate;
 @Mixin(Villager.class)
 public abstract class VillagerEntityMixin {
     @Shadow
-    private static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(
+    private static final ImmutableList<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(
             ModMemoryModuleType.SHOP.get(), ModMemoryModuleType.LAST_SHOPED.get(),
             //Minecraft
             MemoryModuleType.HOME, MemoryModuleType.JOB_SITE, MemoryModuleType.POTENTIAL_JOB_SITE,
@@ -40,7 +40,7 @@ public abstract class VillagerEntityMixin {
             MemoryModuleType.LAST_SLEPT, MemoryModuleType.LAST_WOKEN, MemoryModuleType.LAST_WORKED_AT_POI);
 
     @Shadow
-    public static final Map<MemoryModuleType<GlobalPos>, BiPredicate<Villager, Holder<PoiType>>> POINTS_OF_INTEREST = ImmutableMap.of(
+    public static final Map<MemoryModuleType<GlobalPos>, BiPredicate<Villager, Holder<PoiType>>> POI_MEMORIES = ImmutableMap.of(
             MemoryModuleType.HOME, (villager, registryEntry) -> registryEntry.is(PoiTypes.HOME),
             MemoryModuleType.JOB_SITE, (villager, registryEntry) -> villager.getVillagerData().getProfession().heldJobSite().test(registryEntry),
             MemoryModuleType.POTENTIAL_JOB_SITE, (villager, registryEntry) -> VillagerProfession.ALL_ACQUIRABLE_JOBS.test(registryEntry),
@@ -50,15 +50,15 @@ public abstract class VillagerEntityMixin {
 
 
 
-    @Shadow public abstract void releaseTicketFor(MemoryModuleType<GlobalPos> memoryModuleType);
+    @Shadow public abstract void releasePoi(MemoryModuleType<GlobalPos> memoryModuleType);
 
-    @Inject(method = "initBrain", at = @At("TAIL"))
+    @Inject(method = "registerBrainGoals", at = @At("TAIL"))
     private void injectMethod(Brain<Villager> brain, CallbackInfo ci) {
         brain.addActivity(Activity.CORE, ModTaskListProvider.createVineryStandTasks(brain, 0.5f));
     }
 
-    @Inject(method = "releaseAllTickets", at = @At("TAIL"))
+    @Inject(method = "releaseAllPois", at = @At("TAIL"))
     private void releaseShopTicket(CallbackInfo ci) {
-            this.releaseTicketFor(ModMemoryModuleType.SHOP);
+            this.releasePoi(ModMemoryModuleType.SHOP.get());
     }
 }

@@ -1,6 +1,5 @@
 package satisfyu.candlelight.block;
 
-import net.minecraft.sounds.SoundEvent;
 import satisfyu.vinery.block.WineRackStorageBlock;
 import satisfyu.vinery.registry.VinerySoundEvents;
 
