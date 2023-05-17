@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "grape_crate",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "candlelight:broccoli"
+    }
+  },
+  "result": {
+    "item": "candlelight:broccoli_crate"
+  }
+}

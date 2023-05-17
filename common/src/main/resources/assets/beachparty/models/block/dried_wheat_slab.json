@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "beachparty:block/dried_wheat_top",
-    "top": "beachparty:block/dried_wheat_top",
-    "side": "beachparty:block/dried_wheat_side"
-  }
-}

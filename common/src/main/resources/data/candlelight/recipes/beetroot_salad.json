@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#C#",
+        " B "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:beetroot"
+        },
+        "B": {
+            "item": "candlelight:tray"
+        },
+        "C": {
+            "item": "candlelight:vinegar"
+        }
+    },
+    "result": {
+        "item": "candlelight:beetroot_salad",
+        "count": 2
+    }
+}
+

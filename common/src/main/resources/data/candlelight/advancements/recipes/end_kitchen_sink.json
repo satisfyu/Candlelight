@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "candlelight:end_kitchen_sink"
+    ]
+  },
+  "criteria": {
+    "has_end_stone_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:end_stone_bricks"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "candlelight:end_kitchen_sink"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_end_stone_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

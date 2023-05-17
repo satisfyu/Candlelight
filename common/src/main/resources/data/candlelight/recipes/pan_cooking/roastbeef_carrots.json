@@ -1,0 +1,21 @@
+{
+  "type": "candlelight:pan_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "tag": "vinery:red_wine"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:roastbeef_carrots",
+    "count": 1
+  }
+}

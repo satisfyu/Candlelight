@@ -26,11 +26,10 @@ public class Candlelight {
         ObjectRegistry.init();
         StorageTypes.init();
         ScreenHandlerTypes.init();
-        ConfiguredFeatures.init();
-        ModTaskListProvider.init();
+        //ConfiguredFeatures.init();
+        BlockEntityRegistry.init();
         ModMemoryModuleType.init();
-        ModPointOfInterestTypes.init();
-        ModTaskListProvider.init();
+        ModPointOfInterestTypes.initU();
         CandlelightMessages.registerC2SPackets();
     }
 

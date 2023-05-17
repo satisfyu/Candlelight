@@ -56,7 +56,7 @@ public class JewelryBoxBlock extends Block {
             return InteractionResult.SUCCESS;
         } else if (state.getValue(RING) && state.getValue(OPEN)) {
             world.setBlock(pos, state.setValue(RING, false), Block.UPDATE_ALL);
-            player.addItem(new ItemStack(ObjectRegistry.GOLD_RING));
+            player.addItem(new ItemStack(ObjectRegistry.GOLD_RING.get()));
             return InteractionResult.SUCCESS;
         }
         return super.use(state, world, pos, player, hand, hit);

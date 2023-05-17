@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "iRi",
+        "iii"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:redstone"
+        },
+        "i": {
+            "item": "minecraft:copper_ingot"
+        },
+        "R": {
+            "item": "minecraft:repeater"
+        }
+    },
+    "result": {
+        "item": "candlelight:typewriter_copper",
+        "count": 1
+    }
+}

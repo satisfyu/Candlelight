@@ -1,0 +1,51 @@
+{
+  "variants": {
+    "facing=north,type=single": {
+      "model": "candlelight:block/sideboard"
+    },
+    "facing=east,type=single": {
+      "model": "candlelight:block/sideboard",
+      "y": 90
+    },
+    "facing=south,type=single": {
+      "model": "candlelight:block/sideboard",
+      "y": 180
+    },
+    "facing=west,type=single": {
+      "model": "candlelight:block/sideboard",
+      "y": 270
+    },
+
+    "facing=north,type=left": {
+      "model": "candlelight:block/sideboard_connected_left"
+    },
+    "facing=east,type=left": {
+      "model": "candlelight:block/sideboard_connected_left",
+      "y": 90
+    },
+    "facing=south,type=left": {
+      "model": "candlelight:block/sideboard_connected_left",
+      "y": 180
+    },
+    "facing=west,type=left": {
+      "model": "candlelight:block/sideboard_connected_left",
+      "y": 270
+    },
+
+    "facing=north,type=right": {
+      "model": "candlelight:block/sideboard_connected_right"
+    },
+    "facing=east,type=right": {
+      "model": "candlelight:block/sideboard_connected_right",
+      "y": 90
+    },
+    "facing=south,type=right": {
+      "model": "candlelight:block/sideboard_connected_right",
+      "y": 180
+    },
+    "facing=west,type=right": {
+      "model": "candlelight:block/sideboard_connected_right",
+      "y": 270
+    }
+  }
+}

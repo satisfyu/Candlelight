@@ -57,7 +57,7 @@ public class WildBush extends BushBlock implements BonemealableBlock {
             return InteractionResult.PASS;
         } else if (i > 1) {
             int x = world.random.nextInt(2);
-            popResource(world, pos, new ItemStack(ObjectRegistry.STRAWBERRY, x + (bl ? 1 : 0)));
+            popResource(world, pos, new ItemStack(ObjectRegistry.STRAWBERRY.get(), x + (bl ? 1 : 0)));
             world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             world.setBlock(pos, state.setValue(AGE, 1), 2);
             return InteractionResult.sidedSuccess(world.isClientSide);

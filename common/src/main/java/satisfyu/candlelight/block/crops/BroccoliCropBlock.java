@@ -17,7 +17,7 @@ public class BroccoliCropBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ObjectRegistry.BROCCOLI_SEEDS;
+        return ObjectRegistry.BROCCOLI_SEEDS.get();
     }
 
     @Override

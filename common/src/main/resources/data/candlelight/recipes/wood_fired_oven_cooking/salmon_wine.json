@@ -1,0 +1,17 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "tag": "vinery:white_wine"
+    },
+    {
+      "item": "candlelight:butter"
+    }
+  ],
+  "item": "candlelight:salmon_wine",
+  "count": 2,
+  "experience": 0.25
+}

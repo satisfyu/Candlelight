@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "candlelight:tomato_mozzarella_salad"
+    ]
+  },
+  "criteria": {
+    "has_mozzarella": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:mozzarella"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "candlelight:tomato_mozzarella_salad"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mozzarella",
+      "has_the_recipe"
+    ]
+  ]
+}

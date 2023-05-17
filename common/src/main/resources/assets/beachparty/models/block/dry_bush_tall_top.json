@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "beachparty:block/dry_bush_tall_top"
-  }
-}

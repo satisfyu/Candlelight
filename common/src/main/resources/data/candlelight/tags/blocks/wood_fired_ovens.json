@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "candlelight:cobblestone_wood_fired_oven",
+    "candlelight:end_wood_fired_oven",
+    "candlelight:granite_wood_fired_oven",
+    "candlelight:stone_bricks_wood_fired_oven",
+    "candlelight:mud_wood_fired_oven",
+    "candlelight:deepslate_wood_fired_oven",
+    "candlelight:sandstone_wood_fired_oven",
+    "candlelight:red_nether_bricks_wood_fired_oven",
+    "candlelight:quartz_wood_fired_oven"  ]
+}

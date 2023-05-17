@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "beachparty:item/trunks",
-    "layer1": "beachparty:item/trunks_overlay"
-  }
-}

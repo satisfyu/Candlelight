@@ -20,6 +20,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.entity.SideBoardBlockEntity;
+import satisfyu.candlelight.registry.BlockEntityRegistry;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,7 +37,7 @@ public class SideBoardBlock extends ChestBlock {
     });
 
     public SideBoardBlock(Properties settings) {
-        super(settings, () -> EntityTypeRegistry.SIDEBOARD);
+        super(settings, BlockEntityRegistry.SIDEBOARD::get);
     }
 
     @Override

@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.registry.BlockEntityRegistry;
 
 public class TypeWriterEntity extends BlockEntity {
 
@@ -15,7 +16,7 @@ public class TypeWriterEntity extends BlockEntity {
     ItemStack paper = ItemStack.EMPTY;
 
     public TypeWriterEntity(BlockPos pos, BlockState state) {
-        super(EntityTypeRegistry.TYPE_WRITER_BLOCK_ENTITY, pos, state);
+        super(BlockEntityRegistry.TYPE_WRITER_BLOCK_ENTITY.get(), pos, state);
     }
 
     public ItemStack getPaper() {

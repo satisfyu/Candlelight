@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " C ",
+        "   "
+    ],
+    "key": {
+        "#": {
+     	    "item": "candlelight:chocolate"
+     },
+        "C": {
+            "item": "minecraft:cookie"
+        }
+    },
+    "result": {
+        "item": "candlelight:chocolate_glazed_cookie",
+        "count": 1
+    }
+}

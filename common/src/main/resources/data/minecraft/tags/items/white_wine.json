@@ -1,0 +1,6 @@
+{
+  "replace": false,
+  "values": [
+    {"id":"candlelight:praetorian_wine","required":false}
+  ]
+}

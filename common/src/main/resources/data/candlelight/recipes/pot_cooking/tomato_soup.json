@@ -1,0 +1,21 @@
+{
+  "type": "vinery:pot_cooking",
+  "ingredients": [
+    {
+      "item": "vinery:tomato"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "vinery:wine"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:tomato_soup",
+    "count": 1
+  }
+}

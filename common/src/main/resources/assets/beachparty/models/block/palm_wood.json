@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:block/cube_column",
-	"textures": {
-		"end": "beachparty:block/palm_log_side",
-		"side": "beachparty:block/palm_log_side"
-	}
-}

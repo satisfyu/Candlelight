@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#gg",
+        "g g",
+        "ggg"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:diamond"
+        },
+        "g": {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    "result": {
+        "item": "candlelight:gold_ring",
+        "count": 1
+    }
+}

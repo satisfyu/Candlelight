@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "facing=east": [
+      { "model": "candlelight:block/chair_1", "weight":1, "y": 90},
+      { "model": "candlelight:block/chair_2", "weight":1, "y": 90},
+      { "model": "candlelight:block/chair_3", "weight":1, "y": 90},
+      { "model": "candlelight:block/chair_4", "weight":1, "y": 90},
+      { "model": "candlelight:block/chair_5", "weight":1, "y": 90},
+      { "model": "candlelight:block/chair_6", "weight":1, "y": 90}
+
+    ],
+    "facing=north": [
+      { "model": "candlelight:block/chair_1", "weight":1 },
+      { "model": "candlelight:block/chair_2", "weight":1 },
+      { "model": "candlelight:block/chair_3", "weight":1 },
+      { "model": "candlelight:block/chair_4", "weight":1 },
+      { "model": "candlelight:block/chair_5", "weight":1 },
+      { "model": "candlelight:block/chair_6", "weight":1 }
+
+    ],
+    "facing=south": [
+      { "model": "candlelight:block/chair_1", "weight":1, "y": 180},
+      { "model": "candlelight:block/chair_2", "weight":1, "y": 180},
+      { "model": "candlelight:block/chair_3", "weight":1, "y": 180},
+      { "model": "candlelight:block/chair_4", "weight":1, "y": 180},
+      { "model": "candlelight:block/chair_5", "weight":1, "y": 180},
+      { "model": "candlelight:block/chair_6", "weight":1, "y": 180}
+
+    ],
+    "facing=west": [
+      { "model": "candlelight:block/chair_1", "weight":1, "y": 270},
+      { "model": "candlelight:block/chair_2", "weight":1, "y": 270},
+      { "model": "candlelight:block/chair_3", "weight":1, "y": 270},
+      { "model": "candlelight:block/chair_4", "weight":1, "y": 270},
+      { "model": "candlelight:block/chair_5", "weight":1, "y": 270},
+      { "model": "candlelight:block/chair_6", "weight":1, "y": 270}
+
+    ]
+  }
+}

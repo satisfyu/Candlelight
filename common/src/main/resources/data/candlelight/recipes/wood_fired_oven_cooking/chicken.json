@@ -1,0 +1,17 @@
+{
+  "type": "vinery:wood_fired_oven_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:veggie_plate"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "tag": "vinery:white_wine"
+    }
+  ],
+  "item": "candlelight:chicken",
+  "count": 1,
+  "experience": 0.4
+}

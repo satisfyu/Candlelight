@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "cookingtime": 600,
-  "experience": 0.35,
-  "ingredient": {
-    "item": "beachparty:raw_mussel_meat"
-  },
-  "result": "beachparty:cooked_mussel_meat"
-}

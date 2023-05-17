@@ -1,0 +1,21 @@
+{
+  "type": "candlelight:pan_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:mashed_potatoes"
+    },
+    {
+      "item": "candlelight:cooked_beef"
+    },
+    {
+      "tag": "vinery:white_wine"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:fricasse",
+    "count": 1
+  }
+}

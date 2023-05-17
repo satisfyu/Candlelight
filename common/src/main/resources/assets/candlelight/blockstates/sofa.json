@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "facing=north,type=none": {
+      "model": "candlelight:block/sofa"
+    },
+    "facing=east,type=none": {
+      "model": "candlelight:block/sofa",
+      "y": 90
+    },
+    "facing=south,type=none": {
+      "model": "candlelight:block/sofa",
+      "y": 180
+    },
+    "facing=west,type=none": {
+      "model": "candlelight:block/sofa",
+      "y": 270
+    },
+
+    "facing=north,type=middle": {
+      "model": "candlelight:block/sofa_middle"
+    },
+    "facing=east,type=middle": {
+      "model": "candlelight:block/sofa_middle",
+      "y": 90
+    },
+    "facing=south,type=middle": {
+      "model": "candlelight:block/sofa_middle",
+      "y": 180
+    },
+    "facing=west,type=middle": {
+      "model": "candlelight:block/sofa_middle",
+      "y": 270
+    },
+
+    "facing=north,type=left": {
+      "model": "candlelight:block/sofa_side_right"
+    },
+    "facing=east,type=left": {
+      "model": "candlelight:block/sofa_side_right",
+      "y": 90
+    },
+    "facing=south,type=left": {
+      "model": "candlelight:block/sofa_side_right",
+      "y": 180
+    },
+    "facing=west,type=left": {
+      "model": "candlelight:block/sofa_side_right",
+      "y": 270
+    },
+
+    "facing=north,type=right": {
+      "model": "candlelight:block/sofa_side_left",
+      "y": 0
+    },
+    "facing=east,type=right": {
+      "model": "candlelight:block/sofa_side_left",
+      "y": 90
+    },
+    "facing=south,type=right": {
+      "model": "candlelight:block/sofa_side_left",
+      "y": 180
+    },
+    "facing=west,type=right": {
+      "model": "candlelight:block/sofa_side_left",
+      "y": 270
+    }
+  }
+}

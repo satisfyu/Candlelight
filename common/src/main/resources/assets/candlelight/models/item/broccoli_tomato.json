@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "candlelight:item/food/broccoli_tomato_3"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "candlelight:item/food/broccoli_tomato_2"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "candlelight:item/food/broccoli_tomato_1"
+    }
+  ]
+}

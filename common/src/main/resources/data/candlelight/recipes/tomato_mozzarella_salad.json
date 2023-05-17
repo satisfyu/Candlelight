@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B##",
+    "XL "
+  ],
+  "key": {
+    "#": {
+      "item": "candlelight:mozzarella"
+    },
+    "L": {
+      "item": "vinery:tomato"
+    },
+    "B": {
+      "item": "candlelight:tray"
+    },
+    "X": {
+      "item": "candlelight:vinegar"
+    }
+  },
+  "result": {
+    "item": "candlelight:tomato_mozzarella_salad",
+    "count": 2
+  }
+}

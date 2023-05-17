@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "I"
+    ],
+    "key": {
+        "#": {
+   	     "item": "candlelight:sweetberry_icecream"
+        },
+        "I": {
+             "tag": "vinery:milk"
+        }
+    },
+    "result": {
+        "item": "candlelight:sweetberry_milkshake",
+        "count": 1
+    }
+}

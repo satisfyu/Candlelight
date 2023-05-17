@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#P ",
+        "CSB"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:carrot"
+        },
+        "P": {
+            "item": "minecraft:potato"
+        },
+        "C": {
+            "item": "vinery:tomato"
+        },
+        "S": {
+            "item": "candlelight:broccoli"
+        },
+        "B": {
+            "item": "candlelight:tray"
+        }
+    },
+    "result": {
+        "item": "candlelight:veggie_plate",
+        "count": 2
+    }
+}
+

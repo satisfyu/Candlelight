@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": [
+      { "model": "candlelight:block/spruce_chair", "weight":1, "y": 90}
+
+    ],
+    "facing=north": [
+      { "model": "candlelight:block/spruce_chair", "weight":1 }
+
+    ],
+    "facing=south": [
+      { "model": "candlelight:block/spruce_chair", "weight":1, "y": 180}
+
+    ],
+    "facing=west": [
+      { "model": "candlelight:block/spruce_chair", "weight":1, "y": 270}
+    ]
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "values": [
-    "minecraft:desert",
-    "minecraft:beach",
-    "#minecraft:is_badlands",
-    "#minecraft:is_nether"
-  ]
-}

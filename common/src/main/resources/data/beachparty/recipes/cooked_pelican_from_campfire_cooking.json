@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "cookingtime": 600,
-  "experience": 0.35,
-  "ingredient": {
-    "item": "beachparty:raw_pelican"
-  },
-  "result": "beachparty:cooked_pelican"
-}

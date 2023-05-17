@@ -74,7 +74,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
             {
-                typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+                typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE.get()));
                 stack.setCount(stack.getCount() - 1);
             }
             //stack.decrement(1);
@@ -101,7 +101,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
             {
                 ItemStack paper = typeWriterEntity.getPaper();
-                ItemStack result = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN);
+                ItemStack result = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
 
                 result.setTag(paper.getTag().copy());
                 result.addTagElement("author", StringTag.valueOf(player.getName().getString()));

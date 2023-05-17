@@ -20,6 +20,9 @@
     "main": [
       "satisfyu.candlelight.fabric.CandlelightFabric"
     ],
+    "client": [
+      "satisfyu.candlelight.fabric.client.CandlelightClientFabric"
+    ],
     "doapi": [
       "satisfyu.candlelight.registry.StorageTypes"
     ]
@@ -32,6 +35,6 @@
     "fabric": "*",
     "minecraft": ">=1.19.2",
     "architectury": ">=6.5.77",
-    "vienry": ">=1.2.6"
+    "vinery": ">=1.2.6"
   }
 }

@@ -7,7 +7,6 @@ import net.minecraft.world.entity.ai.behavior.AcquirePoi;
 import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.behavior.ValidateNearbyPoi;
 import net.minecraft.world.entity.npc.Villager;
-import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.villager.memory.ModMemoryModuleType;
 import satisfyu.candlelight.villager.poi.ModPointOfInterestTypes;
 
@@ -22,7 +21,4 @@ public class ModTaskListProvider {
                 Pair.of(10, new AcquirePoi((registryEntry) -> registryEntry.is(ModPointOfInterestTypes.SHOP_KEY), ModMemoryModuleType.SHOP.get(), false, Optional.of((byte)0))));
     }
 
-    public static void init() {
-        Candlelight.LOGGER.debug("Register " + ModTaskListProvider.class);
-    }
 }

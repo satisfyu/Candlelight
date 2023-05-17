@@ -45,7 +45,7 @@ public class ClosedLetterItem extends Item {
 //        {
 //            user.currentScreenHandler.sendContentUpdates();
 //        }
-        ItemStack output = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN);
+        ItemStack output = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
         if(itemStack.hasTag())
         {
             output.setTag(itemStack.getTag().copy());

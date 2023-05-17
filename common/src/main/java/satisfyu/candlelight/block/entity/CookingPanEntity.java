@@ -1,15 +1,19 @@
 package satisfyu.candlelight.block.entity;
 
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
@@ -22,15 +26,20 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.block.CookingPanBlock;
 import satisfyu.candlelight.client.gui.handler.CookingPanScreenHandler;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
+import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.RecipeTypes;
 import satisfyu.candlelight.util.CandlelightTags;
 import satisfyu.vinery.item.food.EffectFood;
 import satisfyu.vinery.item.food.EffectFoodHelper;
 
+import java.util.List;
+
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
+import static satisfyu.vinery.item.food.EffectFoodHelper.STORED_EFFECTS_KEY;
 
 public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Container, MenuProvider {
 
@@ -47,7 +56,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	private final ContainerData delegate;
 
 	public CookingPanEntity(BlockPos pos, BlockState state) {
-		super(EntityTypeRegistry.COOKING_PAN_BLOCK_ENTITY, pos, state);
+		super(BlockEntityRegistry.COOKING_PAN_BLOCK_ENTITY.get(), pos, state);
 		this.delegate = new ContainerData() {
 			@Override
 			public int get(int index) {
@@ -186,6 +195,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		}
 		return outputStack;
 	}
+
 
 	@Override
 	public void tick(Level world, BlockPos pos, BlockState state, CookingPanEntity blockEntity) {

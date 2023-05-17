@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "beachparty:block/dried_wheat_top",
-    "side": "beachparty:block/dried_wheat_side"
-  }
-}

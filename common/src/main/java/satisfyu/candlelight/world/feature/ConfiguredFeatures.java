@@ -38,6 +38,7 @@ import static satisfyu.candlelight.block.AppleLeaves.VARIANT;
 
 public class ConfiguredFeatures {
 
+    /*
 
     public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> STRAWBERRY_WILD_TAIGA_PATCH =
             net.minecraft.data.worldgen.features.FeatureUtils.register(CandlelightIdentifier.asString("strawberry_wild_taiga"), Feature.RANDOM_PATCH, net.minecraft.data.worldgen.features.FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ObjectRegistry.STRAWBERRY_WILD_TAIGA.defaultBlockState())), List.of(Blocks.GRASS_BLOCK), 36));
@@ -100,6 +101,8 @@ public class ConfiguredFeatures {
     private static BlockPredicate createBlockPredicate(List<Block> validGround) {
         return !validGround.isEmpty() ? BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(validGround)) : BlockPredicate.ONLY_IN_AIR_PREDICATE;
     }
+
+     */
 
 }
 

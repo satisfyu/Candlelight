@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "cookingtime": 200,
-  "experience": 0.35,
-  "ingredient": {
-    "item": "beachparty:raw_mussel_meat"
-  },
-  "result": "beachparty:cooked_mussel_meat"
-}

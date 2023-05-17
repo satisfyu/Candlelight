@@ -1,0 +1,21 @@
+{
+  "type": "candlelight:pan_cooking",
+  "ingredients": [
+    {
+      "item":  "vinery:dough"
+    },
+    {
+      "item": "candlelight:butter"
+    },
+    {
+      "item": "candlelight:strawberry"
+    }
+  ],
+  "container": {
+    "item": "candlelight:tray"
+  },
+  "result": {
+    "item": "candlelight:pancake",
+    "count": 6
+  }
+}

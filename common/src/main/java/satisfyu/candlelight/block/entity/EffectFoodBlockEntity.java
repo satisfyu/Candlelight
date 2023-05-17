@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.apache.commons.compress.utils.Lists;
+import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.vinery.item.food.EffectFoodHelper;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class EffectFoodBlockEntity extends BlockEntity  {
 
 
 	public EffectFoodBlockEntity(BlockPos blockPos, BlockState blockState) {
-		super(EntityTypeRegistry.EFFECT_FOOD_BLOCK_ENTITY, blockPos, blockState);
+		super(BlockEntityRegistry.EFFECT_FOOD_BLOCK_ENTITY.get(), blockPos, blockState);
 	}
 
 

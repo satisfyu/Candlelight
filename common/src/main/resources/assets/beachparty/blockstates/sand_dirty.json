@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "": [
-      { "model": "beachparty:block/sand_dirty_1", "weight":1 }
-     ,{ "model": "beachparty:block/sand_dirty_2", "weight":1 }
-    ]   }
-}
