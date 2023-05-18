@@ -1,13 +1,12 @@
 package satisfyu.candlelight.registry;
 
 import com.mojang.datafixers.util.Pair;
-import de.cristelknight.doapi.DoApiExpectPlatform;
 import de.cristelknight.doapi.Util;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
@@ -15,16 +14,15 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.Material;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.block.CakeBlock;
@@ -35,7 +33,7 @@ import satisfyu.candlelight.food.CandlelightFoods;
 import satisfyu.candlelight.food.EffectFoodBlockItem;
 import satisfyu.candlelight.item.*;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-import satisfyu.candlelight.world.feature.ConfiguredFeatures;
+import satisfyu.candlelight.world.feature.CandlelightConfiguredFeatures;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.block.storage.FourBottleStorageBlock;
 import satisfyu.vinery.block.storage.NineBottleStorageBlock;
@@ -44,9 +42,9 @@ import satisfyu.vinery.item.DrinkBlockItem;
 import satisfyu.vinery.item.GrapeBushSeedItem;
 import satisfyu.vinery.item.food.EffectFoodItem;
 import satisfyu.vinery.registry.VineryEffects;
-import satisfyu.vinery.registry.VinerySoundEvents;
 import satisfyu.vinery.util.GrapevineType;
 import satisfyu.vinery.util.VineryFoodComponent;
+import satisfyu.vinery.util.generators.ConfiguredFeatureSaplingGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,22 +149,14 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> PAINTING = registerWithItem("painting", () -> new SmallPaintingBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission()));
     public static final RegistrySupplier<Block> HEARTH = registerWithItem("hearth", () -> new DecorationBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission()));
     public static final RegistrySupplier<Block> ROSE = registerWithItem("rose", () -> new RoseBushBlock(MobEffect.byId(6), 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
-    /*
-    public static final RegistrySupplier<Block> APPLE_TREE_SAPLING = registerWithItem("apple_tree_sapling", () -> new SaplingBlock(new AbstractTreeGrower() {
-        @Nullable
+    public static final RegistrySupplier<Block> APPLE_TREE_SAPLING = registerWithItem("apple_tree_sapling", () -> new SaplingBlock(new ConfiguredFeatureSaplingGenerator() {
+
         @Override
-        protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean bees) {
-            if (random.nextBoolean()) {
-                if (bees) return ConfiguredFeatures.APPLE_TREE_BEE;
-                return ConfiguredFeatures.APPLE_TREE;
-            } else {
-                if (bees) return ConfiguredFeatures.APPLE_TREE_VARIANT_WITH_BEE;
-                return ConfiguredFeatures.APPLE_TREE_VARIANT;
-            }
+        protected @NotNull ResourceKey<ConfiguredFeature<?, ?>> getTreeConfiguredFeature(RandomSource random, boolean bees) {
+            if (random.nextBoolean()) return CandlelightConfiguredFeatures.APPLE_KEY;
+            return CandlelightConfiguredFeatures.APPLE_VARIANT_KEY;
         }
     }, BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-
-     */
     public static final RegistrySupplier<Block> APPLE_LEAVES = registerWithoutItem("apple_leaves", () -> new AppleLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistrySupplier<Block> JEWELRY_BOX = registerWithItem("jewelry_box", () -> new JewelryBoxBlock(BlockBehaviour.Properties.of(Material.DECORATION)));
     public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new ChocolateBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));

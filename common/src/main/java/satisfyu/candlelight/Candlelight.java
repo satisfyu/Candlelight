@@ -10,8 +10,6 @@ import satisfyu.candlelight.networking.CandlelightMessages;
 import satisfyu.candlelight.registry.*;
 import satisfyu.candlelight.villager.memory.ModMemoryModuleType;
 import satisfyu.candlelight.villager.poi.ModPointOfInterestTypes;
-import satisfyu.candlelight.villager.task.ModTaskListProvider;
-import satisfyu.candlelight.world.feature.ConfiguredFeatures;
 
 public class Candlelight {
     public static final String MOD_ID = "candlelight";
