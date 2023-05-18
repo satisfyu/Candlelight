@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#candlelight:spawns_strawberry_taiga",
+  "features": "candlelight:strawberry_taiga_patch",
+  "step": "vegetal_decoration"
+}

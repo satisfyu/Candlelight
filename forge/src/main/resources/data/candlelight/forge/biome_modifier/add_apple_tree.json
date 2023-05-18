@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#candlelight:spawns_apple_tree",
+  "features": "candlelight:apple_tree",
+  "step": "vegetal_decoration"
+}

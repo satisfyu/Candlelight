@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#candlelight:spawns_broccoli",
+  "features": "candlelight:broccoli_patch",
+  "step": "vegetal_decoration"
+}
