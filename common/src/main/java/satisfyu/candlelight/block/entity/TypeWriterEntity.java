@@ -2,6 +2,9 @@ package satisfyu.candlelight.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -62,5 +65,14 @@ public class TypeWriterEntity extends BlockEntity {
             }
         }
         return null;
+    }
+
+    @Nullable
+    public Packet<ClientGamePacketListener> toUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public CompoundTag toInitialChunkDataNbt() {
+        return saveWithoutMetadata();
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import satisfyu.candlelight.block.TypeWriterBlock;
 import satisfyu.candlelight.block.entity.TypeWriterEntity;
@@ -46,6 +47,8 @@ public class SyncTypewriterDataC2SPacket implements NetworkManager.NetworkReceiv
         if(sign)
         {
             player.level.setBlock(pos, player.level.getBlockState(pos).setValue(TypeWriterBlock.FULL, 2), 2);
+            player.level.sendBlockUpdated(pos, player.level.getBlockState(pos),
+                    player.level.getBlockState(pos).setValue(TypeWriterBlock.FULL, 2), Block.UPDATE_CLIENTS);
         }
     }
 }

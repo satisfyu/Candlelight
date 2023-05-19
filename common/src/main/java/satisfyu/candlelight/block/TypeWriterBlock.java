@@ -32,6 +32,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.entity.TypeWriterEntity;
+import satisfyu.candlelight.client.ClientUtil;
 import satisfyu.candlelight.client.screen.TypeWriterScreen;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.vinery.util.VineryUtils;
@@ -86,8 +87,8 @@ public class TypeWriterBlock extends BaseEntityBlock {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
             {
-                if(player instanceof LocalPlayer)
-                    Minecraft.getInstance().setScreen(new TypeWriterScreen(player, typeWriterEntity.getPaper(), hand, pos));
+                if(world.isClientSide)
+                    ClientUtil.setTypeWriterScreen(player, typeWriterEntity, hand, pos);
                 //typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
             }
 
@@ -103,7 +104,8 @@ public class TypeWriterBlock extends BaseEntityBlock {
                 ItemStack paper = typeWriterEntity.getPaper();
                 ItemStack result = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
 
-                result.setTag(paper.getTag().copy());
+                if(paper.getTag() != null)
+                    result.setTag(paper.getTag().copy());
                 result.addTagElement("author", StringTag.valueOf(player.getName().getString()));
                 player.addItem(result);
 
