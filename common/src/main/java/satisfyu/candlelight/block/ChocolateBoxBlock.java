@@ -1,5 +1,6 @@
 package satisfyu.candlelight.block;
 
+import de.cristelknight.doapi.block.FacingBlock;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -27,7 +28,6 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.vinery.block.FacingBlock;
 import satisfyu.vinery.util.VineryUtils;
 
 import java.util.HashMap;
@@ -43,7 +43,7 @@ public class ChocolateBoxBlock extends FacingBlock {
 
     public ChocolateBoxBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(CUTS, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(CUTS, 0));
     }
 
 
