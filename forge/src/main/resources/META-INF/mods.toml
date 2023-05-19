@@ -11,7 +11,7 @@ authors = "satisfy_u, Cristelknight, BaumeisterJo"
 description = '''
 A Food Themed Expansion for the 'Let's Do Wine' Mod focusing on cooking with Wine
 '''
-logoFile = "assets/candlelight/icon.png"
+#logoFile = "assets/candlelight/icon.png"
 
 [[dependencies.candlelight]]
 modId = "forge"

@@ -2,6 +2,8 @@ package satisfyu.candlelight.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -11,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import satisfyu.candlelight.client.gui.handler.LetterGuiHandler;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-
+@Environment(EnvType.CLIENT)
 public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
 
     private static final ResourceLocation TEXTURE = new CandlelightIdentifier("textures/gui/letter_gui.png");

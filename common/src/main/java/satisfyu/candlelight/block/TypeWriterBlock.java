@@ -2,7 +2,6 @@ package satisfyu.candlelight.block;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,7 +32,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.entity.TypeWriterEntity;
 import satisfyu.candlelight.client.ClientUtil;
-import satisfyu.candlelight.client.screen.TypeWriterScreen;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.vinery.util.VineryUtils;
 
@@ -70,7 +68,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
 
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.getItem() == ObjectRegistry.NOTE_PAPER && state.getValue(FULL) == 0) {
+        if (stack.getItem() == ObjectRegistry.NOTE_PAPER.get() && state.getValue(FULL) == 0) {
             world.setBlock(pos, state.setValue(FULL, 1), 2);
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)

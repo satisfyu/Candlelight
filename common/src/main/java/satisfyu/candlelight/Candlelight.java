@@ -22,7 +22,6 @@ public class Candlelight {
     public static void init() {
         RecipeTypes.init();
         ObjectRegistry.init();
-        StorageTypes.init();
         ScreenHandlerTypes.init();
         //ConfiguredFeatures.init();
         BlockEntityRegistry.init();

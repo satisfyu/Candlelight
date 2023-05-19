@@ -5,6 +5,8 @@ import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import satisfyu.candlelight.client.gui.CookingPanScreen;
@@ -16,7 +18,7 @@ import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypes;
 import satisfyu.candlelight.render.WineStationBlockEntityRenderer;
 
-
+@Environment(EnvType.CLIENT)
 public class CandlelightClient {
 
     public static void initClient() {
@@ -31,6 +33,7 @@ public class CandlelightClient {
                 ObjectRegistry.WILD_BROCCOLI.get(), ObjectRegistry.APPLE_LEAVES.get(), ObjectRegistry.STRAWBERRY_JAM.get()
         );
 
+        StorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get());
 
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> BiomeColors.getAverageFoliageColor(world, pos), ObjectRegistry.APPLE_LEAVES);

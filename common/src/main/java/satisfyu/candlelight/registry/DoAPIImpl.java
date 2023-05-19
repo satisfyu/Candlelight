@@ -2,41 +2,27 @@ package satisfyu.candlelight.registry;
 
 import de.cristelknight.doapi.api.DoApiAPI;
 import de.cristelknight.doapi.api.DoApiPlugin;
-import de.cristelknight.doapi.client.render.block.storage.StorageBlockEntityRenderer;
-import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.client.model.CookingHatModel;
-import satisfyu.candlelight.client.render.block.CakeStandRenderer;
-import satisfyu.candlelight.client.render.block.TableSetRenderer;
-import satisfyu.candlelight.client.render.block.TrayRenderer;
 import satisfyu.candlelight.util.CandlelightIdentifier;
+import satisfyu.vinery.VineryIdentifier;
 
 import java.util.Map;
 import java.util.Set;
 
 @DoApiPlugin
-public class StorageTypes implements DoApiAPI {
+public class DoAPIImpl implements DoApiAPI {
 
-    public static final ResourceLocation CAKE_STAND = registerStorageType("cake_stand", new CakeStandRenderer());
+    public static final ResourceLocation CAKE_STAND = new CandlelightIdentifier("cake_stand");
 
-    public static final ResourceLocation TABLE_SET = registerStorageType("table_set", new TableSetRenderer());
+    public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
 
-    public static final ResourceLocation TRAY = registerStorageType("tray", new TrayRenderer());
-
-
-    public static void init(){
-        Candlelight.LOGGER.debug("Registering Storage Block Renderers!");
-    }
-
-    public static ResourceLocation registerStorageType(String string, StorageTypeRenderer renderer){
-        return StorageBlockEntityRenderer.registerStorageType(new CandlelightIdentifier(string), renderer);
-    }
+    public static final ResourceLocation TRAY = new CandlelightIdentifier("tray");
 
     @Override
     public void registerBlocks(Set<Block> blocks) {

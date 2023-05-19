@@ -15,7 +15,7 @@ dependencies {
     modApi ("dev.architectury:architectury:${rootProject.architectury_version}")
             { exclude group: 'net.fabricmc', module: 'fabric-loader' }
     modApi "de:doapi:${project.doapi_version}"
-    modApi "satisfyu:vinery:${project.vinery_version}"
+    modImplementation "satisfyu:vinery:${project.vinery_version}"
 }
 
 publishing {

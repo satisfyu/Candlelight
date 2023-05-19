@@ -1,5 +1,7 @@
 package satisfyu.candlelight.client.screen.recipe.custom;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
@@ -16,7 +18,7 @@ import satisfyu.candlelight.registry.RecipeTypes;
 import satisfyu.vinery.client.recipebook.PrivateRecipeBookWidget;
 
 import java.util.List;
-
+@Environment(EnvType.CLIENT)
 public class CookingPanRecipeBook extends PrivateRecipeBookWidget {
     private static final Component TOGGLE_COOKABLE_TEXT;
 

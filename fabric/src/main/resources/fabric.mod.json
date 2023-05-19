@@ -24,7 +24,7 @@
       "satisfyu.candlelight.fabric.client.CandlelightClientFabric"
     ],
     "doapi": [
-      "satisfyu.candlelight.registry.StorageTypes"
+      "satisfyu.candlelight.registry.DoAPIImpl"
     ]
   },
   "mixins": [

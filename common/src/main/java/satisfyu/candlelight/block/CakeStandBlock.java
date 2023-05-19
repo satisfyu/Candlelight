@@ -24,7 +24,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.candlelight.registry.StorageTypes;
+import satisfyu.candlelight.registry.DoAPIImpl;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -134,7 +134,7 @@ public class CakeStandBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return StorageTypes.CAKE_STAND;
+        return DoAPIImpl.CAKE_STAND;
     }
 
     @Override

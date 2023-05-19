@@ -48,7 +48,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
 import java.util.stream.Stream;
-
+@Environment(EnvType.CLIENT)
 public class TypeWriterScreen extends Screen {
     public static final ResourceLocation BOOK_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private static final Component EDIT_TITLE_TEXT = Component.literal("Enter Note Title");

@@ -2,6 +2,8 @@ package satisfyu.candlelight.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
@@ -10,6 +12,7 @@ import de.cristelknight.doapi.block.entity.StorageBlockEntity;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import satisfyu.vinery.client.ClientUtil;
 
+@Environment(EnvType.CLIENT)
 public class TrayRenderer implements StorageTypeRenderer {
     @Override
     public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {

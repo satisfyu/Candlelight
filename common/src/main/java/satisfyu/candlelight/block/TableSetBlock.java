@@ -33,7 +33,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfyu.candlelight.registry.ObjectRegistry;
-import satisfyu.candlelight.registry.StorageTypes;
+import satisfyu.candlelight.registry.DoAPIImpl;
 import satisfyu.vinery.util.GeneralUtil;
 
 import java.util.HashMap;
@@ -122,7 +122,7 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return StorageTypes.TABLE_SET;
+        return DoAPIImpl.TABLE_SET;
     }
 
     @Override

@@ -13,6 +13,7 @@ import satisfyu.candlelight.client.screen.SignedPaperScreen;
 import satisfyu.candlelight.client.screen.TypeWriterScreen;
 
 public class ClientUtil {
+
     public static void setNoteEditScreen(Player user, ItemStack stack, InteractionHand hand){
         Minecraft.getInstance().setScreen(new NoteEditScreen(user, stack, hand));
     }
