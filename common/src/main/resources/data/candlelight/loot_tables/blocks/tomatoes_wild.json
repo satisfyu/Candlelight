@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "vinery:tomato"
+          "name": "candlelight:tomato"
         }
       ],
       "rolls": 1.0
@@ -26,10 +26,8 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "vinery:tomato_seeds"
+          "name": "candlelight:tomato_seeds"
         }
       ],
       "rolls": 1.0
     }
-  ]
-}
