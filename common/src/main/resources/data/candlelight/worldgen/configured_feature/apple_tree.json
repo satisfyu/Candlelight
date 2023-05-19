@@ -21,9 +21,9 @@
           "data": {
             "Name": "candlelight:apple_leaves",
             "Properties": {
-              "can_have_cherries": "false",
+              "can_have_apples": "false",
               "distance": "7",
-              "has_cherries": "false",
+              "has_apples": "false",
               "persistent": "false",
               "waterlogged": "false"
             }
@@ -34,9 +34,9 @@
           "data": {
             "Name": "candlelight:apple_leaves",
             "Properties": {
-              "can_have_cherries": "true",
+              "can_have_apples": "true",
               "distance": "7",
-              "has_cherries": "false",
+              "has_apples": "false",
               "persistent": "false",
               "waterlogged": "false"
             }
@@ -47,9 +47,9 @@
           "data": {
             "Name": "candlelight:apple_leaves",
             "Properties": {
-              "can_have_cherries": "true",
+              "can_have_apples": "true",
               "distance": "7",
-              "has_cherries": "true",
+              "has_apples": "true",
               "persistent": "false",
               "waterlogged": "false"
             }

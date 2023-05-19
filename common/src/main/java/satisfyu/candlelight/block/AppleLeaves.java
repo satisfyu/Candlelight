@@ -35,10 +35,10 @@ public class AppleLeaves extends LeavesBlock {
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
-        if(state.getValue(VARIANT) && state.getValue(HAS_APPLES) && stack.getItem() instanceof ShearsItem) {
+        if(state.getValue(VARIANT) && state.getValue(HAS_APPLES) && stack.isEmpty()) {
             if(!world.isClientSide()) {
-                stack.hurtAndBreak(1, player, playerEntity ->  playerEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-                AppleLeaves.popResourceFromFace(world, pos, hit.getDirection(), new ItemStack(Items.APPLE, world.getRandom().nextIntBetweenInclusive(1, 3)));
+                ItemStack appleStack = new ItemStack(Items.APPLE, world.getRandom().nextIntBetweenInclusive(1, 3));
+                player.addItem(appleStack);
                 world.playSound(null, pos, SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1F, 1F);
                 world.setBlockAndUpdate(pos, state.setValue(HAS_APPLES, false));
             }

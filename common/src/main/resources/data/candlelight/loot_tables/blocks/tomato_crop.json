@@ -16,18 +16,18 @@
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "block": "vinery:tomato_crop",
+                  "block": "candlelight:tomato_crop",
                   "condition": "minecraft:block_state_property",
                   "properties": {
                     "age": "4"
                   }
                 }
               ],
-              "name": "vinery:tomato"
+              "name": "candlelight:tomato"
             },
             {
               "type": "minecraft:item",
-              "name": "vinery:tomato_seeds"
+              "name": "candlelight:tomato_seeds"
             }
           ]
         }
@@ -38,7 +38,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "vinery:tomato_crop",
+          "block": "candlelight:tomato_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "4"
@@ -59,10 +59,12 @@
               }
             }
           ],
-          "name": "vinery:tomato_seeds"
+          "name": "candlelight:tomato_seeds"
         }
       ],
       "rolls": 1.0
     }
   ]
 }
+
+ 
