@@ -9,7 +9,7 @@
    	     "item": "candlelight:sweetberry_icecream"
         },
         "I": {
-             "tag": "vinery:milk"
+             "item": "minecraft:milk_bucket"
         }
     },
     "result": {

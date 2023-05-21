@@ -120,8 +120,8 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> BEEF_WELLINGTON_BLOCK = registerWithoutItem("beef_wellington_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.BEEF_WELLINGTON));
     public static final RegistrySupplier<Item> BEEF_WELLINGTON = registerItem("beef_wellington", () -> new EffectFoodBlockItem(BEEF_WELLINGTON_BLOCK.get(), getSettings().food(CandlelightFoods.BEEF_WELLINGTON), 2));
     public static final RegistrySupplier<Item> VINEGAR = registerItem("vinegar", () -> new IngredientItem(getSettings()));
-    //public static final RegistrySupplier<Block> RED_WINE = registerWine("red_wine", () -> new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_FIRE_RESISTANCE);
-    //public static final RegistrySupplier<Block> PRAETORIAN_WINE = registerBigWine("praetorian_wine", () -> new WineBottleBlock(getWineSettings(), 2), VineryEffects.IMPROVED_SPEED);
+    public static final RegistrySupplier<Block> RED_WINE = registerWine("red_wine", () -> new WineBottleBlock(getWineSettings(), 3), VineryEffects.IMPROVED_FIRE_RESISTANCE);
+    public static final RegistrySupplier<Block> PRAETORIAN_WINE = registerBigWine("praetorian_wine", () -> new WineBottleBlock(getWineSettings(), 2), VineryEffects.IMPROVED_SPEED);
     public static final RegistrySupplier<Block> STRAWBERRY_JAM = registerWithItem("strawberry_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion().sound(SoundType.GLASS)));
     public static final RegistrySupplier<Item> PANCAKE = registerItem("pancake", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
     public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));

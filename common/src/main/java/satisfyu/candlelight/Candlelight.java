@@ -23,7 +23,6 @@ public class Candlelight {
         RecipeTypes.init();
         ObjectRegistry.init();
         ScreenHandlerTypes.init();
-        //ConfiguredFeatures.init();
         BlockEntityRegistry.init();
         ModMemoryModuleType.init();
         ModPointOfInterestTypes.initU();

@@ -30,7 +30,7 @@ public class CandlelightClient {
                 ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),
                 ObjectRegistry.BIRCH_TABLE.get(), ObjectRegistry.SPRUCE_TABLE.get(), ObjectRegistry.JUNGLE_TABLE.get(), ObjectRegistry.MANGROVE_TABLE.get(),
                 ObjectRegistry.WARPED_TABLE.get(), ObjectRegistry.CRIMSON_TABLE.get(), ObjectRegistry.BROCCOLI_CROP.get(), ObjectRegistry.STRAWBERRY_CROP.get(),
-                ObjectRegistry.WILD_BROCCOLI.get(), ObjectRegistry.APPLE_LEAVES.get(), ObjectRegistry.STRAWBERRY_JAM.get()
+                ObjectRegistry.WILD_BROCCOLI.get(), ObjectRegistry.APPLE_LEAVES.get(), ObjectRegistry.STRAWBERRY_JAM.get(), ObjectRegistry.TOMATO_CROP.get()
         );
 
         StorageTypes.init();
