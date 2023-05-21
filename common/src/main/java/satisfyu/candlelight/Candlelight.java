@@ -13,9 +13,7 @@ import satisfyu.candlelight.villager.poi.ModPointOfInterestTypes;
 
 public class Candlelight {
     public static final String MOD_ID = "candlelight";
-    // We can use this if we don't want to use DeferredRegister
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-    // Registering a new creative tab
     public static final CreativeModeTab CANDLELIGHT_TAB = CreativeTabRegistry.create(new ResourceLocation(MOD_ID, "candlelight_tab"), () ->
             new ItemStack(ObjectRegistry.HEARTH.get()));
     

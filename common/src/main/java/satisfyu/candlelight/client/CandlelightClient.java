@@ -13,6 +13,7 @@ import satisfyu.candlelight.client.gui.CookingPanScreen;
 import satisfyu.candlelight.client.gui.LetterGui;
 import satisfyu.candlelight.client.gui.WineStationGui;
 import satisfyu.candlelight.client.model.CookingHatModel;
+import satisfyu.candlelight.client.render.block.WineBottleRenderer;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypes;
@@ -30,7 +31,8 @@ public class CandlelightClient {
                 ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),
                 ObjectRegistry.BIRCH_TABLE.get(), ObjectRegistry.SPRUCE_TABLE.get(), ObjectRegistry.JUNGLE_TABLE.get(), ObjectRegistry.MANGROVE_TABLE.get(),
                 ObjectRegistry.WARPED_TABLE.get(), ObjectRegistry.CRIMSON_TABLE.get(), ObjectRegistry.BROCCOLI_CROP.get(), ObjectRegistry.STRAWBERRY_CROP.get(),
-                ObjectRegistry.WILD_BROCCOLI.get(), ObjectRegistry.APPLE_LEAVES.get(), ObjectRegistry.STRAWBERRY_JAM.get(), ObjectRegistry.TOMATO_CROP.get()
+                ObjectRegistry.WILD_BROCCOLI.get(), ObjectRegistry.APPLE_LEAVES.get(), ObjectRegistry.STRAWBERRY_JAM.get(), ObjectRegistry.TOMATO_CROP.get(),
+                ObjectRegistry.RED_WINE.get(), ObjectRegistry.PRAETORIAN_WINE.get()
         );
 
         StorageTypes.init();
@@ -52,6 +54,7 @@ public class CandlelightClient {
         MenuRegistry.registerScreenFactory(ScreenHandlerTypes.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypes.WINE_STATION_SCREEN_HANDLER.get(), WineStationGui::new);
 
+        BlockEntityRendererRegistry.register(BlockEntityRegistry.WINE_BOTTLE_ENTITY.get(), WineBottleRenderer::new);
         BlockEntityRendererRegistry.register(BlockEntityRegistry.WINE_STATION_BLOCK_ENTITY.get(), WineStationBlockEntityRenderer::new);
     }
 

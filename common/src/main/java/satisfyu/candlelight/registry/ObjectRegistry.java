@@ -28,6 +28,7 @@ import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.block.CakeBlock;
 import satisfyu.candlelight.block.LanternBlock;
 import satisfyu.candlelight.block.*;
+import satisfyu.candlelight.block.WineBottleBlock;
 import satisfyu.candlelight.block.crops.*;
 import satisfyu.candlelight.food.CandlelightFoods;
 import satisfyu.candlelight.food.EffectFoodBlockItem;
