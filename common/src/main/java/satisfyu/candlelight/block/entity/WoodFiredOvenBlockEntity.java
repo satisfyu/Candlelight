@@ -301,12 +301,21 @@ public class WoodFiredOvenBlockEntity extends BlockEntity implements BlockEntity
         if (stack.getCount() > this.getMaxStackSize()) {
             stack.setCount(this.getMaxStackSize());
         }
-        if (slot == INGREDIENT_SLOTS[0] || slot == INGREDIENT_SLOTS[1] || slot == INGREDIENT_SLOTS[2] && !dirty) {
+        // Check if there's a change in the ingredients and reset cooking process if necessary
+        boolean hasIngredientChange = false;
+        for (int ingredientSlot : INGREDIENT_SLOTS) {
+            if (!ItemStack.isSameItemSameTags(this.getItem(ingredientSlot), stackInSlot)) {
+                hasIngredientChange = true;
+                break;
+            }
+        }
+        if (hasIngredientChange && !dirty) {
             this.cookTimeTotal = TOTAL_COOKING_TIME;
             this.cookTime = 0;
             this.setChanged();
         }
     }
+
 
     @Override
     public boolean stillValid(Player player) {

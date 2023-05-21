@@ -20,6 +20,9 @@
     "main": [
       "satisfyu.candlelight.fabric.CandlelightFabric"
     ],
+    "rei_client": [
+      "satisfyu.candlelight.compat.rei.CandlelightReiClientPlugin"
+    ],
     "client": [
       "satisfyu.candlelight.fabric.client.CandlelightClientFabric"
     ],

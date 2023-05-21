@@ -12,13 +12,13 @@
             "item": "minecraft:potato"
         },
         "C": {
-            "item": "candlelight:tomato"
+      "tag": "c:crops/tomato"
         },
         "S": {
-            "item": "candlelight:broccoli"
+      "tag": "c:crops/tomato"
         },
         "B": {
-            "item": "candlelight:tray"
+          "tag": "c:bowls"
         }
     },
     "result": {

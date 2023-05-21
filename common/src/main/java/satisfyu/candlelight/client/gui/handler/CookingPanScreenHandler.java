@@ -24,7 +24,6 @@ import satisfyu.vinery.registry.ObjectRegistry;
 
 import java.util.List;
 
-
 public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler {
     private final Container inventory;
     private final ContainerData propertyDelegate;
@@ -38,7 +37,6 @@ public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler 
     public CookingPanScreenHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
         super(ScreenHandlerTypes.COOKING_PAN_SCREEN_HANDLER.get(), syncId);
         checkContainerSize(inventory, 8);
-        checkContainerDataCount(propertyDelegate, 2);
         this.inventory = inventory;
         this.propertyDelegate = propertyDelegate;
         this.world = playerInventory.player.level;
@@ -89,7 +87,7 @@ public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler 
         if (progress == 0) {
             return 0;
         }
-        return progress * arrowWidth/ totalProgress + 1;
+        return progress * arrowWidth / totalProgress + 1;
     }
 
     @Override
@@ -129,7 +127,6 @@ public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler 
         final int hotbarStart = inventoryStart + 9 * 3;
         final int hotbarEnd = hotbarStart + 9;
 
-
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
         if (slot.hasItem()) {
@@ -159,7 +156,6 @@ public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler 
         }
         return itemStack;
     }
-
 
     @Override
     public boolean stillValid(Player player) {

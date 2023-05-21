@@ -2,7 +2,7 @@
   "type": "vinery:pot_cooking",
   "ingredients": [
     {
-      "item": "candlelight:tomato"
+      "tag": "c:crops/tomato"
     },
     {
       "item": "minecraft:sugar"

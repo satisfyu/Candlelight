@@ -9,10 +9,10 @@
       "item": "candlelight:mozzarella"
     },
     "L": {
-      "item": "candlelight:tomato"
+      "tag": "c:crops/tomato"
     },
     "B": {
-      "item": "candlelight:tray"
+      "tag": "c:bowls"
     },
     "X": {
       "item": "candlelight:vinegar"

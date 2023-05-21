@@ -6,13 +6,13 @@
     ],
     "key": {
         "#": {
-            "item": "candlelight:broccoli"
+            "tag": "c:crops/cabbage"
         },
         "V": {
-            "item": "candlelight:tomato"
+            "tag": "c:crops/tomato"
         },
         "B": {
-            "item": "candlelight:tray"
+            "tag": "c:bowls"
         },
         "C": {
             "item": "candlelight:vinegar"

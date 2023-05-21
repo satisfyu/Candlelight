@@ -11,7 +11,7 @@
       "item": "vinery:dough"
     },
     "E": {
-      "item": "minecraft:egg"
+      "tag": "c:eggs"
     }
   },
   "pattern": [

@@ -9,7 +9,7 @@
             "item": "minecraft:beetroot"
         },
         "B": {
-            "item": "candlelight:tray"
+            "tag": "c:bowls"
         },
         "C": {
             "item": "candlelight:vinegar"

@@ -2,7 +2,7 @@
   "type": "vinery:wood_fired_oven_cooking",
   "ingredients": [
     {
-      "item": "minecraft:egg"
+      "tag": "c:eggs"
     },
     {
       "item": "minecraft:sugar"

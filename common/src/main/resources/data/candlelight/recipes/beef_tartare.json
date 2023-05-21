@@ -9,7 +9,7 @@
       "item": "minecraft:beef"
     },
     "L": {
-      "item": "candlelight:tray"
+      "tag": "c:bowls"
     }
   },
   "result": {

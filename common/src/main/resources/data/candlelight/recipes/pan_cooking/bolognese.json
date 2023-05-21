@@ -6,7 +6,7 @@
       "item": "candlelight:tomato_soup"
     },
     {
-      "item": "candlelight:cooked_beef"
+      "tag": "c:cooked_beef"
     },
     {
       "tag": "vinery:red_wine"
