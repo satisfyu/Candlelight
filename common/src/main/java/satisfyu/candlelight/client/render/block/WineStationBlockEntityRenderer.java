@@ -1,4 +1,4 @@
-package satisfyu.candlelight.render;
+package satisfyu.candlelight.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;

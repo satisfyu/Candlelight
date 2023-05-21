@@ -16,7 +16,7 @@ import satisfyu.candlelight.client.model.CookingHatModel;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypes;
-import satisfyu.candlelight.render.WineStationBlockEntityRenderer;
+import satisfyu.candlelight.client.render.block.WineStationBlockEntityRenderer;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {

@@ -106,12 +106,8 @@ public class WineStationBlockEntity extends BlockEntity implements BlockEntityTi
         if (wineItemStack.getItem() == ObjectRegistry.KING_DANIS_WINE.get().asItem()) {
             ItemStack emeraldItemStack = Items.EMERALD.getDefaultInstance();
             switch (random) {
-                case 5, 6, 7 -> {
-                    emeraldItemStack.setCount(2);
-                }
-                case 8, 9 -> {
-                    emeraldItemStack.setCount(3);
-                }
+                case 5, 6, 7 -> emeraldItemStack.setCount(2);
+                case 8, 9 -> emeraldItemStack.setCount(3);
                 default -> {
 
                 }

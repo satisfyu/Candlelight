@@ -88,7 +88,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> WINE_STATION = registerWithItem("wine_station", () -> new WineStationBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion()));
     public static final RegistrySupplier<Block> CAKE_STAND = registerWithItem("cake_stand", () -> new CakeStandBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> TRAY = registerWithItem("tray", () -> new TrayBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistrySupplier<Block> COOKING_POT = registerWithItem("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
+    public static final RegistrySupplier<Block> COOKING_POT = registerWithItem("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()){});
     public static final RegistrySupplier<Block> COOKING_PAN = registerWithItem("cooking_pan", () -> new CookingPanBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
     public static final RegistrySupplier<Block> TABLE_SET = registerWithItem("table_set", () -> new TableSetBlock(BlockBehaviour.Properties.copy(COOKING_POT.get())));
     public static final RegistrySupplier<Item> GLASS = registerItem("glass", () -> new TableSetItem(getSettings()));

@@ -25,6 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.vinery.util.GeneralUtil;
@@ -45,12 +46,12 @@ public class JewelryBoxBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (world.isClientSide) return InteractionResult.SUCCESS;
         final ItemStack stack = player.getItemInHand(hand);
         if (player.isShiftKeyDown()) {
             world.setBlock(pos, state.setValue(OPEN, !state.getValue(OPEN)), Block.UPDATE_ALL);
-        } else if (stack.getItem() == ObjectRegistry.GOLD_RING && !state.getValue(RING) && state.getValue(OPEN)) {
+        } else if (stack.getItem().equals(ObjectRegistry.GOLD_RING.get()) && !state.getValue(RING) && state.getValue(OPEN)) {
             world.setBlock(pos, state.setValue(RING, true), Block.UPDATE_ALL);
             if (!player.isCreative()) stack.shrink(1);
             return InteractionResult.SUCCESS;

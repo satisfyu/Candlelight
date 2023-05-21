@@ -76,7 +76,7 @@ public class TableSetBlock extends StorageBlock {
         PlateType type = state.getValue(PLATE_TYPE);
         if(stack.isEmpty() && player.isShiftKeyDown()) world.destroyBlock(pos, true, player);
         else if(type.equals(PlateType.ALL)) return super.use(state, world, pos, player, hand, hit);
-        else if(type != PlateType.GLASS && item.equals(ObjectRegistry.GLASS)){
+        else if(type != PlateType.GLASS && item.equals(ObjectRegistry.GLASS.get())){
             if(!world.isClientSide()){
                 if(type.equals(PlateType.PLATE)) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.GLASS));
                 else world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.ALL));
@@ -84,7 +84,7 @@ public class TableSetBlock extends StorageBlock {
             }
             return InteractionResult.sidedSuccess(world.isClientSide());
         }
-        else if(type != PlateType.NAPKIN && item.equals(ObjectRegistry.NAPKIN)){
+        else if(type != PlateType.NAPKIN && item.equals(ObjectRegistry.NAPKIN.get())){
             if(!world.isClientSide()){
                 if(type.equals(PlateType.PLATE)) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.NAPKIN));
                 else world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.ALL));
