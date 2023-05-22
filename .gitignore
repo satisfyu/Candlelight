@@ -15,5 +15,6 @@ libs/
 classes/
 .metadata
 .vscode
+.ds_store
 .settings
 *.launch

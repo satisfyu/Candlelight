@@ -81,6 +81,7 @@ public class EffectFoodBlockItem extends BlockItem {
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
         List<Pair<MobEffectInstance, Float>> effects = getEffects(stack);
         if (effects.isEmpty()) {
+            tooltip.add(Component.translatable("block.vinery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
             tooltip.add(Component.translatable("effect.none").withStyle(ChatFormatting.GRAY));
         } else {
             for (Pair<MobEffectInstance, Float> statusEffectInstance : effects) {

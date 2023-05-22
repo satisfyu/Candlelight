@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.CookingPotBlock;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
+import satisfyu.candlelight.util.CandlelightTags;
 import satisfyu.vinery.client.gui.handler.CookingPotGuiHandler;
 import satisfyu.vinery.item.food.EffectFood;
 import satisfyu.vinery.item.food.EffectFoodHelper;
@@ -92,7 +93,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		if (getLevel() == null)
 			throw new NullPointerException("Null world invoked");
 		final BlockState belowState = this.getLevel().getBlockState(getBlockPos().below());
-		final var optionalList = Registry.BLOCK.getTag(VineryTags.ALLOWS_COOKING_ON_POT);
+		final var optionalList = Registry.BLOCK.getTag(CandlelightTags.ALLOWS_COOKING_ON_PAN);
 		final var entryList = optionalList.orElse(null);
 		if (entryList == null) {
 			return false;

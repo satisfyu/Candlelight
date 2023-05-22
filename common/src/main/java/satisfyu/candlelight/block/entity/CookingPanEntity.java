@@ -30,6 +30,7 @@ import satisfyu.candlelight.registry.RecipeTypes;
 import satisfyu.candlelight.util.CandlelightTags;
 import satisfyu.vinery.item.food.EffectFood;
 import satisfyu.vinery.item.food.EffectFoodHelper;
+import satisfyu.vinery.util.VineryTags;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 

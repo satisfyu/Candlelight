@@ -7,7 +7,7 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:glass_pane"
+            "tag": "c:glass_panes"
         },
         "B": {
             "item": "minecraft:brick"

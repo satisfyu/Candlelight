@@ -236,5 +236,7 @@
   "item.candlelight.white_wine": "Weißwein",
   "item.vinery.juice.tooltip.block.candlelight.strawberry_jam": "Kombiniere es mit Brot, um Brotscheiben zu erhalten",
   "itemGroup.vinery.vinery_tab.tab": "Candlelight Dinner",
-  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner"
+  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner",
+  "item.vinery.grapeseed.tooltip.item.candlelight.tomato_seeds": "Kann auf Ackerland oder an einem Stamm angebaut werden"
+
 }

@@ -8,7 +8,7 @@
       "item": "minecraft:sugar"
     },
     {
-      "item": "vinery:dough"
+      "tag": "c/dough"
     }
   ],
   "item": "candlelight:bundt_cake",

@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "candlelight:cobblestone_stove",
+    "candlelight:end_stove",
+    "candlelight:granite_stove",
+    "candlelight:stone_bricks_stove",
+    "candlelight:mud_stove",
+    "candlelight:deepslate_stove",
+    "candlelight:sandstone_stove",
+    "candlelight:red_nether_bricks_stove",
+    "candlelight:quartz_stove"
+  ]
+}

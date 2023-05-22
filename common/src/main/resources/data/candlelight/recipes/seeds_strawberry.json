@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "candlelight:strawberry"
+    }
+  ],
+  "result": {
+    "item": "candlelight:strawberry_seeds",
+        "count": 3
+  }
+}

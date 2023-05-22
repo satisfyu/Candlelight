@@ -6,14 +6,14 @@
     ],
     "key": {
         "#": {
-   	     "item": "candlelight:strawberry_icecream"
+   	     "item": "candlelight:chocolate_icecream"
         },
         "I": {
-             "item": "minecraft:milk_bucket"
+            "tag": "c:milk"
         }
     },
     "result": {
-        "item": "candlelight:strawberry_milkshake",
+        "item": "candlelight:chocolate_milkshake",
         "count": 1
     }
 }

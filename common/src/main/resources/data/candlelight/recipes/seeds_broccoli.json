@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "c:milk"
+      "item": "candlelight:broccoli"
     }
   ],
   "result": {
-    "item": "candlelight:butter",
-        "count": 10
+    "item": "candlelight:broccoli_seeds",
+        "count": 3
   }
 }
