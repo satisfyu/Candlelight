@@ -25,20 +25,19 @@ public class CandlelightClient {
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.CAKE_STAND.get(), ObjectRegistry.CHAIR.get(),
                 ObjectRegistry.TABLE.get(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(), ObjectRegistry.STRAWBERRY_WILD_JUNGLE.get(),
-                ObjectRegistry.STRAWBERRY_WILD_TAIGA.get(), ObjectRegistry.TOMATOES_WILD.get(), ObjectRegistry.APPLE_TREE_SAPLING.get(),
+                ObjectRegistry.STRAWBERRY_WILD_TAIGA.get(), ObjectRegistry.TOMATOES_WILD.get(),
                 ObjectRegistry.OAK_CHAIR.get(), ObjectRegistry.DARK_OAK_CHAIR.get(), ObjectRegistry.SPRUCE_CHAIR.get(), ObjectRegistry.WARPED_CHAIR.get(),
                 ObjectRegistry.BIRCH_CHAIR.get(), ObjectRegistry.MANGROVE_CHAIR.get(), ObjectRegistry.ACACIA_CHAIR.get(), ObjectRegistry.CRIMSON_CHAIR.get(),
                 ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),
                 ObjectRegistry.BIRCH_TABLE.get(), ObjectRegistry.SPRUCE_TABLE.get(), ObjectRegistry.JUNGLE_TABLE.get(), ObjectRegistry.MANGROVE_TABLE.get(),
                 ObjectRegistry.WARPED_TABLE.get(), ObjectRegistry.CRIMSON_TABLE.get(), ObjectRegistry.BROCCOLI_CROP.get(), ObjectRegistry.STRAWBERRY_CROP.get(),
-                ObjectRegistry.WILD_BROCCOLI.get(), ObjectRegistry.APPLE_LEAVES.get(), ObjectRegistry.STRAWBERRY_JAM.get(), ObjectRegistry.TOMATO_CROP.get(),
+                ObjectRegistry.WILD_BROCCOLI.get(), ObjectRegistry.STRAWBERRY_JAM.get(), ObjectRegistry.TOMATO_CROP.get(),
                 ObjectRegistry.RED_WINE.get(), ObjectRegistry.PRAETORIAN_WINE.get()
         );
 
         StorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get());
 
-        ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> BiomeColors.getAverageFoliageColor(world, pos), ObjectRegistry.APPLE_LEAVES);
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
             if (world == null || pos == null) {
                 return -1;

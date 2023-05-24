@@ -6,9 +6,7 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,26 +15,23 @@ import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.Material;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.Candlelight;
-import satisfyu.candlelight.block.CakeBlock;
 import satisfyu.candlelight.block.CookingPotBlock;
-import satisfyu.candlelight.block.LanternBlock;
-import satisfyu.candlelight.block.*;
 import satisfyu.candlelight.block.WineBottleBlock;
 import satisfyu.candlelight.block.WoodFiredOvenBlock;
+import satisfyu.candlelight.block.*;
 import satisfyu.candlelight.block.crops.*;
 import satisfyu.candlelight.food.CandlelightFoods;
 import satisfyu.candlelight.food.EffectFoodBlockItem;
 import satisfyu.candlelight.item.*;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-import satisfyu.candlelight.world.feature.CandlelightConfiguredFeatures;
 import satisfyu.vinery.block.*;
 import satisfyu.vinery.block.storage.FourBottleStorageBlock;
 import satisfyu.vinery.block.storage.NineBottleStorageBlock;
@@ -47,7 +42,6 @@ import satisfyu.vinery.item.food.EffectFoodItem;
 import satisfyu.vinery.registry.VineryEffects;
 import satisfyu.vinery.util.GrapevineType;
 import satisfyu.vinery.util.VineryFoodComponent;
-import satisfyu.vinery.util.generators.ConfiguredFeatureSaplingGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,14 +96,15 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> MUSHROOM_SOUP = registerItem("mushroom_soup", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.MUSHROOM_SOUP), 1));
     public static final RegistrySupplier<Item> BEETROOT_SALAD = registerItem("beetroot_salad", () -> new EffectFoodItem(getSettings().food(Foods.BEETROOT_SOUP), 1));
     public static final RegistrySupplier<Item> PASTA = registerItem("pasta", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.PASTA), 2));
-    public static final RegistrySupplier<Item> BOLOGNESE = registerItem("bolognese", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.COOKED_BEEF), 1));
+    public static final RegistrySupplier<Item> BOLOGNESE = registerItem("bolognese", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.BOLOGNESE), 1));
+    public static final RegistrySupplier<Item> BROCCOLI_SALAD = registerItem("broccoli_salad", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.BROCCOLI_SALAD), 1));
     public static final RegistrySupplier<Item> BEEF_TARTARE = registerItem("beef_tartare", () -> new Item(getSettings().food(Foods.COOKED_BEEF)));
     public static final RegistrySupplier<Item> COOKED_BEEF = registerItem("cooked_beef", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.COOKED_BEEF), 2));
     public static final RegistrySupplier<Item> BROCCOLI_BEEF = registerItem("broccoli_beef", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.BROCCOLI_BEEF), 2));
     public static final RegistrySupplier<Block> BROCCOLI_TOMATO_BLOCK = registerWithoutItem("broccoli_tomato_block", () -> new EffectFoodTrayBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.BROCCOLI_TOMATO));
     public static final RegistrySupplier<Item> BROCCOLI_TOMATO = registerItem("broccoli_tomato", () -> new EffectFoodBlockItem(BROCCOLI_TOMATO_BLOCK.get(), getSettings().food(CandlelightFoods.BROCCOLI_TOMATO), 2));
     public static final RegistrySupplier<Item> SALMON_WINE = registerItem("salmon_wine", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.SALMON_ON_WHITE_WINE), 2));
-    public static final RegistrySupplier<Item> VEGGIE_PLATE = registerItem("veggie_plate", () -> new EffectFoodItem(getSettings().food(Foods.COOKED_BEEF), 2));
+    public static final RegistrySupplier<Item> VEGGIE_PLATE = registerItem("veggie_plate", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.VEGGIE_PLATE), 2));
     public static final RegistrySupplier<Block> PORK_RIBS_BLOCK = registerWithoutItem("pork_ribs_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.PORK_RIBS));
     public static final RegistrySupplier<Item> PORK_RIBS = registerItem("pork_ribs", () -> new EffectFoodBlockItem(PORK_RIBS_BLOCK.get(), getSettings().food(CandlelightFoods.PORK_RIBS), 2));
     public static final RegistrySupplier<Item> MASHED_POTATOES = registerItem("mashed_potatoes", () -> new EffectFoodItem(getSettings().food(Foods.GOLDEN_CARROT), 2));
@@ -152,15 +147,6 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> PAINTING = registerWithItem("painting", () -> new SmallPaintingBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission()));
     public static final RegistrySupplier<Block> HEARTH = registerWithItem("hearth", () -> new DecorationBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission()));
     public static final RegistrySupplier<Block> ROSE = registerWithItem("rose", () -> new RoseBushBlock(MobEffect.byId(6), 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
-    public static final RegistrySupplier<Block> APPLE_TREE_SAPLING = registerWithItem("apple_tree_sapling", () -> new SaplingBlock(new ConfiguredFeatureSaplingGenerator() {
-
-        @Override
-        protected @NotNull ResourceKey<ConfiguredFeature<?, ?>> getTreeConfiguredFeature(RandomSource random, boolean bees) {
-            if (random.nextBoolean()) return CandlelightConfiguredFeatures.APPLE_KEY;
-            return CandlelightConfiguredFeatures.APPLE_VARIANT_KEY;
-        }
-    }, BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-    public static final RegistrySupplier<Block> APPLE_LEAVES = registerWithoutItem("apple_leaves", () -> new AppleLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistrySupplier<Block> JEWELRY_BOX = registerWithItem("jewelry_box", () -> new JewelryBoxBlock(BlockBehaviour.Properties.of(Material.DECORATION)));
     public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new ChocolateBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     public static final RegistrySupplier<Item> GOLD_RING = registerItem("gold_ring", () -> new RingItem(CandlelightMaterials.RING_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.EPIC)));
