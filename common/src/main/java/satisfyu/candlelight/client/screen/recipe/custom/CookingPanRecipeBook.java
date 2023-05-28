@@ -35,7 +35,7 @@ public class CookingPanRecipeBook extends PrivateRecipeBookWidget {
         for (Ingredient ingredient : recipe.getIngredients()) {
             ItemStack[] inputStacks = ingredient.getItems();
             if(inputStacks.length == 0) continue;
-            ItemStack inputStack = inputStacks[RandomSource.create().nextIntBetweenInclusive(0, inputStacks.length - 1)];
+            ItemStack inputStack = inputStacks[RandomSource.create().nextInt(0, inputStacks.length)];
             this.ghostSlots.addSlot(inputStack, slots.get(j).x, slots.get(j++).y);
         }
     }

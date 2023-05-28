@@ -113,10 +113,10 @@ public class CookingPanBlock extends BaseEntityBlock {
 
     @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
-        if (state.getValue(COOKING)) {
+        if (state.getValue(COOKING) || state.getValue(LIT) ) {
             double d = (double)pos.getX() + 0.5;
             double e = pos.getY() + 0.3;
-            double f = (double)pos.getZ() + 1.0;
+            double f = (double)pos.getZ();
             if (random.nextDouble() < 0.3) {
                 world.playLocalSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_PAN_FRYING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
@@ -128,18 +128,7 @@ public class CookingPanBlock extends BaseEntityBlock {
             double k = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : h;
             world.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         }
-        if (state.getValue(LIT)) {
-            double d = (double)pos.getX() + 0.5;
-            double e = pos.getY() + 0.3;
-            double f = (double)pos.getZ() + 1.0;
-            Direction direction = state.getValue(FACING);
-            Direction.Axis axis = direction.getAxis();
-            double h = random.nextDouble() * 0.6 - 0.3;
-            double i = axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52 : h;
-            double j = random.nextDouble() * 9.0 / 16.0;
-            double k = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.7 : h;
-            world.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
-        }
+
     }
     
     @Override
