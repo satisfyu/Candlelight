@@ -247,6 +247,16 @@
   "item.candlelight.vinegar": "Vinegar",
   "item.candlelight.waffle": "Waffle",
   "item.candlelight.white_wine": "White Wine",
-  "item.vinery.juice.tooltip.block.candlelight.strawberry_jam": "Combine it with Bread to get Bread Slices",
-  "itemGroup.candlelight.candlelight_tab": "Candlelight Dinner"
+  "item.candlelight.juice.tooltip.block.candlelight.strawberry_jam": "Combine it with Bread to get Bread Slices",
+  "itemGroup.candlelight.candlelight_tab": "Candlelight Dinner",
+  "block.candlelight.cherry_jam": "Cherry Jam",
+  "item.candlelight.juice.tooltip.block.candlelight.cherry_jam":"Combine it with Bread to get Bread Slices",
+  "block.candlelight.cherry_jar": "Cherry Jar",
+  "item.candlelight.juice.tooltip.block.candlelight.cherry_jar":"Container for all sort of Jars",
+  "block.candlelight.apple_jam": "Apple Jam",
+  "item.candlelight.juice.tooltip.block.candlelight.apple_jam":"Combine it with Bread to get Bread Slices",
+  "block.candlelight.sweetberry_jam": "Sweetberry Jam",
+  "item.candlelight.juice.tooltip.block.candlelight.sweetberry_jam":"Combine it with Bread to get Bread Slices",
+  "block.candlelight.grape_jam": "Grape Jam",
+  "item.candlelight.juice.tooltip.block.candlelight.grape_jam":"Combine it with Bread to get Bread Slices"
 }

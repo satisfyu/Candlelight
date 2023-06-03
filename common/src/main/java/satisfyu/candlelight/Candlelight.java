@@ -8,8 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfyu.candlelight.networking.CandlelightMessages;
 import satisfyu.candlelight.registry.*;
-import satisfyu.candlelight.villager.memory.ModMemoryModuleType;
-import satisfyu.candlelight.villager.poi.ModPointOfInterestTypes;
 
 public class Candlelight {
     public static final String MOD_ID = "candlelight";
@@ -22,8 +20,6 @@ public class Candlelight {
         ObjectRegistry.init();
         ScreenHandlerTypes.init();
         BlockEntityRegistry.init();
-        ModMemoryModuleType.init();
-        ModPointOfInterestTypes.initU();
         CandlelightMessages.registerC2SPackets();
     }
 

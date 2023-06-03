@@ -28,9 +28,6 @@ public class CandlelightBiomeModification {
         world.add(ModificationPhase.ADDITIONS, strawberrytaigaBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.STRAWBERRY_TAIGA_PATCH_CHANCE_KEY));
         world.add(ModificationPhase.ADDITIONS, broccoliBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.BROCCOLI_PATCH_CHANCE_KEY));
 
-
-
-        world.add(ModificationPhase.ADDITIONS, treeBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.APPLE_TREE_PLACED_KEY));
     }
 
     private static Predicate<BiomeSelectionContext> getVinerySelector(String path) {

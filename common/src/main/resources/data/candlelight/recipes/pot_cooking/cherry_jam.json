@@ -1,0 +1,17 @@
+{
+  "type": "candlelight:pot_cooking",
+  "ingredients": [
+    {
+      "item": "vinery:cherry"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "container": {
+    "item": "candlelight:cherry_jar"
+  },
+  "result": {
+    "item": "candlelight:cherry_jam"
+  }
+}

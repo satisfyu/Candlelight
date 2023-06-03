@@ -235,9 +235,18 @@
   "item.candlelight.vinegar": "Essig",
   "item.candlelight.waffle": "Waffel",
   "item.candlelight.white_wine": "Weißwein",
-  "item.vinery.juice.tooltip.block.candlelight.strawberry_jam": "Kombiniere es mit Brot, um Brotscheiben zu erhalten",
-  "itemGroup.vinery.vinery_tab.tab": "Candlelight Dinner",
-  "itemGroup.vinery.vinery_tab.tab.candlelight": "Candlelight Dinner",
-  "item.vinery.grapeseed.tooltip.item.candlelight.tomato_seeds": "Kann auf Ackerland oder an einem Stamm angebaut werden"
-
+  "item.candlelight.juice.tooltip.block.candlelight.strawberry_jam": "Kombiniere es mit Brot, um Brotscheiben zu erhalten",
+  "itemGroup.candlelight.candlelight_tab.tab": "Candlelight Dinner",
+  "itemGroup.candlelight.candlelight_tab.tab.candlelight": "Candlelight Dinner",
+  "item.candlelight.grapeseed.tooltip.item.candlelight.tomato_seeds": "Kann auf Ackerland oder an einem Stamm angebaut werden",
+  "block.candlelight.cherry_jar": "Leeres Marmeladenglas",
+  "block.candlelight.cherry_jam": "Marmeladenglas voller Kirschmarmelade",
+  "block.candlelight.apple_jam": "Marmeladenglas voller Apfelmarmelade",
+  "block.candlelight.grape_jam": "Marmeladenglas voller Traubenmarmelade",
+  "block.candlelight.sweetberry_jam": "Marmeladenglas voller Süssbeerenmarmelade",
+  "item.candlelight.juice.tooltip.block.candlelight.cherry_jar": "Behälter für Marmelade",
+  "item.candlelight.juice.tooltip.block.candlelight.cherry_jam": "Mit Brot kombinieren um Brotscheiben mit Marmelade zu erhalten",
+  "item.candlelight.juice.tooltip.block.candlelight.apple_jam": "Mit Brot kombinieren um Brotscheiben mit Marmelade zu erhalten",
+  "item.candlelight.juice.tooltip.block.candlelight.sweetberry_jam": "Mit Brot kombinieren um Brotscheiben mit Marmelade zu erhalten",
+  "item.candlelight.juice.tooltip.block.candlelight.grape_jam": "Mit Brot kombinieren um Brotscheiben mit Marmelade zu erhalten"
 }

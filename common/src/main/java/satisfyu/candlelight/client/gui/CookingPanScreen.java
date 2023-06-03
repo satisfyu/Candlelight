@@ -14,9 +14,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import satisfyu.candlelight.client.gui.handler.CookingPanScreenHandler;
+import satisfyu.candlelight.client.recipebook.PrivateRecipeBookWidget;
 import satisfyu.candlelight.client.screen.recipe.custom.CookingPanRecipeBook;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-import satisfyu.vinery.client.recipebook.PrivateRecipeBookWidget;
+
 @Environment(EnvType.CLIENT)
 public class CookingPanScreen extends AbstractContainerScreen<CookingPanScreenHandler> {
     private static final ResourceLocation RECIPE_BUTTON_TEXTURE;
