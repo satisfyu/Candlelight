@@ -3,16 +3,13 @@ package satisfyu.candlelight.registry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
-import satisfyu.candlelight.util.CandlelightIdentifier;
+import satisfyu.candlelight.recipe.WoodFiredOvenRecipe;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Supplier;
 
 public class RecipeTypes {
@@ -23,7 +20,8 @@ public class RecipeTypes {
     public static final RegistrySupplier<RecipeType<CookingPanRecipe>> COOKING_PAN_RECIPE_TYPE = create("pan_cooking");
     public static final RegistrySupplier<RecipeSerializer<CookingPanRecipe>> COOKING_PAN_RECIPE_SERIALIZER = create("pan_cooking", CookingPanRecipe.Serializer::new);
 
-
+    public static final RegistrySupplier<RecipeType<WoodFiredOvenRecipe>> WOOD_FIRED_OVEN_RECIPE_TYPE = create("wood_fired_oven_cooking");
+    public static final RegistrySupplier<RecipeSerializer<WoodFiredOvenRecipe>> WOOD_FIRED_OVEN_RECIPE_SERIALIZER = create("wood_fired_oven_cooking", WoodFiredOvenRecipe.Serializer::new);
 
     private static <T extends Recipe<?>> RegistrySupplier<RecipeSerializer<T>> create(String name, Supplier<RecipeSerializer<T>> serializer) {
         return RECIPE_SERIALIZERS.register(name, serializer);

@@ -6,8 +6,8 @@ import net.fabricmc.api.Environment;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
+import satisfyu.candlelight.client.recipebook.IRecipeBookGroup;
 import satisfyu.candlelight.registry.ObjectRegistry;
-import satisfyu.vinery.client.recipebook.IRecipeBookGroup;
 
 import java.util.List;
 

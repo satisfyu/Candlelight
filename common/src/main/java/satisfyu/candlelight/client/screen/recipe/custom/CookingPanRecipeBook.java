@@ -13,9 +13,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.client.recipebook.PrivateRecipeBookWidget;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
 import satisfyu.candlelight.registry.RecipeTypes;
-import satisfyu.vinery.client.recipebook.PrivateRecipeBookWidget;
 
 import java.util.List;
 @Environment(EnvType.CLIENT)
