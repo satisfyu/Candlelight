@@ -1,5 +1,5 @@
-package satisfyu.candlelight.block;
-
+package satisfyu.candlelight.block.bakingmod;
+/*
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -8,11 +8,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.vinery.block.PieBlock;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class CakeBlock extends PieBlock {
     }
 
 
-    public CakeBlock(Properties settings, RegistrySupplier<Item> slice) {
+    public CakeBlock(BlockBehaviour.Properties settings, RegistrySupplier<Item> slice) {
         super(settings, slice);
     }
 
@@ -42,3 +42,5 @@ public class CakeBlock extends PieBlock {
         tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }
+
+ */

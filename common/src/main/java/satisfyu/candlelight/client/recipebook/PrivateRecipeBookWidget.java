@@ -325,21 +325,21 @@ public abstract class  PrivateRecipeBookWidget extends GuiComponent implements P
 
                 Iterator<PrivateRecipeGroupButtonWidget> var6 = this.tabButtons.iterator();
 
-                PrivateRecipeGroupButtonWidget vineryRecipeGroupButtonWidget;
+                PrivateRecipeGroupButtonWidget recipeGroupButtonWidget;
                 do {
                     if (!var6.hasNext()) {
                         return false;
                     }
 
-                    vineryRecipeGroupButtonWidget = var6.next();
-                } while (!vineryRecipeGroupButtonWidget.mouseClicked(mouseX, mouseY, button));
+                    recipeGroupButtonWidget = var6.next();
+                } while (!recipeGroupButtonWidget.mouseClicked(mouseX, mouseY, button));
 
-                if (this.currentTab != vineryRecipeGroupButtonWidget) {
+                if (this.currentTab != recipeGroupButtonWidget) {
                     if (this.currentTab != null) {
                         this.currentTab.setStateTriggered(false);
                     }
 
-                    this.currentTab = vineryRecipeGroupButtonWidget;
+                    this.currentTab = recipeGroupButtonWidget;
                     this.currentTab.setStateTriggered(true);
                     this.refreshResults(true);
                 }

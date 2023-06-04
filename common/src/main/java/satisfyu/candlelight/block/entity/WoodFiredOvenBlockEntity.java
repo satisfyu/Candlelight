@@ -26,12 +26,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.WoodFiredOvenBlock;
+import satisfyu.candlelight.item.food.EffectFood;
+import satisfyu.candlelight.item.food.EffectFoodHelper;
+import satisfyu.candlelight.recipe.WoodFiredOvenRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
-import satisfyu.vinery.client.gui.handler.StoveGuiHandler;
-import satisfyu.vinery.item.food.EffectFood;
-import satisfyu.vinery.item.food.EffectFoodHelper;
-import satisfyu.vinery.recipe.WoodFiredOvenRecipe;
-import satisfyu.vinery.registry.VineryRecipeTypes;
+import satisfyu.candlelight.registry.RecipeTypes;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
@@ -46,9 +45,9 @@ public class WoodFiredOvenBlockEntity extends BlockEntity implements BlockEntity
 
     protected float experience;
 
-    protected static final int FUEL_SLOT = StoveGuiHandler.FUEL_SLOT;
+    protected static final int FUEL_SLOT = 3;
     protected static final int[] INGREDIENT_SLOTS = {0, 1, 2};
-    protected static final int OUTPUT_SLOT = StoveGuiHandler.OUTPUT_SLOT;
+    protected static final int OUTPUT_SLOT = 4;
 
     public static final int TOTAL_COOKING_TIME = 240;
 
@@ -125,7 +124,7 @@ public class WoodFiredOvenBlockEntity extends BlockEntity implements BlockEntity
             --this.burnTime;
         }
 
-        final WoodFiredOvenRecipe recipe = world.getRecipeManager().getRecipeFor(VineryRecipeTypes.WOOD_FIRED_OVEN_RECIPE_TYPE.get(), this, world).orElse(null);
+        final WoodFiredOvenRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypes.WOOD_FIRED_OVEN_RECIPE_TYPE.get(), this, world).orElse(null);
         if (!initialBurningState && canCraft(recipe)) {
             this.burnTime = this.burnTimeTotal = this.getTotalBurnTime(this.getItem(FUEL_SLOT));
             if (burnTime > 0) {
@@ -339,6 +338,8 @@ public class WoodFiredOvenBlockEntity extends BlockEntity implements BlockEntity
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
-        return new StoveGuiHandler(syncId, inv, this, this.propertyDelegate);
+        //TODO
+        //return new StoveGuiHandler(syncId, inv, this, this.propertyDelegate);
+        return null;
     }
 }

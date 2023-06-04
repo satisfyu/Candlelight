@@ -1,4 +1,4 @@
-package satisfyu.candlelight.block;
+package satisfyu.candlelight.block.bakingmod;
 
 
 import de.cristelknight.doapi.block.StorageBlock;

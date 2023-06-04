@@ -6,15 +6,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import satisfyu.candlelight.client.CandlelightClient;
 import satisfyu.candlelight.registry.ObjectRegistry;
-import satisfyu.vinery.client.VineryClient;
 
 import java.util.List;
 
 public interface CookArmorItem {
 
 	default void tooltip(List<Component> tooltip){
-		Player player = VineryClient.getClientPlayer();
+		Player player = CandlelightClient.getClientPlayer();
 		if (player == null) return;
 		ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
 		ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);

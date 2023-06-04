@@ -10,7 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import satisfyu.candlelight.client.model.CookingHatModel;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-import satisfyu.vinery.VineryIdentifier;
 
 import java.util.Map;
 import java.util.Set;
@@ -29,6 +28,8 @@ public class DoAPIImpl implements DoApiAPI {
         blocks.add(ObjectRegistry.CAKE_STAND.get());
         blocks.add(ObjectRegistry.TABLE_SET.get());
         blocks.add(ObjectRegistry.TRAY.get());
+        //TODO
+/*
         blocks.add(ObjectRegistry.ACACIA_WINE_RACK_BIG.get());
         blocks.add(ObjectRegistry.ACACIA_WINE_RACK_SMALL.get());
         blocks.add(ObjectRegistry.OAK_WINE_RACK_BIG.get());
@@ -47,6 +48,8 @@ public class DoAPIImpl implements DoApiAPI {
         blocks.add(ObjectRegistry.WARPED_WINE_RACK_SMALL.get());
         blocks.add(ObjectRegistry.CRIMSON_WINE_RACK_BIG.get());
         blocks.add(ObjectRegistry.CRIMSON_WINE_RACK_SMALL.get());
+
+ */
     }
 
     @Override

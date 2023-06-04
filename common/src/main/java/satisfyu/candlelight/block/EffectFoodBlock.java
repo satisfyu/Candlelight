@@ -31,13 +31,12 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.entity.EffectFoodBlockEntity;
-import satisfyu.vinery.util.GeneralUtil;
+import satisfyu.candlelight.item.food.EffectFoodHelper;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
-
-import static satisfyu.vinery.item.food.EffectFoodHelper.getEffects;
 
 
 public class EffectFoodBlock extends BaseEntityBlock {
@@ -63,7 +62,7 @@ public class EffectFoodBlock extends BaseEntityBlock {
     public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof EffectFoodBlockEntity effectFoodBlockEntity) {
-            effectFoodBlockEntity.addEffects(getEffects(itemStack));
+            effectFoodBlockEntity.addEffects(EffectFoodHelper.getEffects(itemStack));
         }
     }
 
@@ -147,7 +146,7 @@ public class EffectFoodBlock extends BaseEntityBlock {
 
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
 

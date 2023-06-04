@@ -3,24 +3,29 @@ package satisfyu.candlelight.recipe;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import satisfyu.candlelight.registry.RecipeTypes;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
-public class CookingPanRecipe implements Recipe<Container> {
+public class CookingPotRecipe implements Recipe<Container> {
 
     final ResourceLocation id;
     private final NonNullList<Ingredient> inputs;
     private final ItemStack container;
     private final ItemStack output;
 
-    public CookingPanRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack container, ItemStack output) {
+    public CookingPotRecipe(ResourceLocation id, NonNullList<Ingredient> inputs, ItemStack container, ItemStack output) {
         this.id = id;
         this.inputs = inputs;
         this.container = container;
@@ -37,6 +42,7 @@ public class CookingPanRecipe implements Recipe<Container> {
         return ItemStack.EMPTY;
     }
 
+
     @Override
     public boolean canCraftInDimensions(int width, int height) {
         return true;
@@ -47,23 +53,20 @@ public class CookingPanRecipe implements Recipe<Container> {
         return this.output.copy();
     }
 
+
     @Override
     public ResourceLocation getId() {
         return id;
     }
 
-    public ItemStack getContainer() {
-        return container;
-    }
-
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeTypes.COOKING_PAN_RECIPE_SERIALIZER.get();
+        return RecipeTypes.COOKING_POT_RECIPE_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return RecipeTypes.COOKING_PAN_RECIPE_TYPE.get();
+        return RecipeTypes.COOKING_POT_RECIPE_TYPE.get();
     }
 
     @Override
@@ -71,51 +74,43 @@ public class CookingPanRecipe implements Recipe<Container> {
         return this.inputs;
     }
 
+    public ItemStack getContainer() {
+        return container;
+    }
+
     @Override
     public boolean isSpecial() {
         return true;
     }
 
-    /*
-    public static void registerDefaults() {
-        DefaultedList<Ingredient> dL = DefaultedList.of();
-        dL.add(Ingredient.ofStacks(Items.DIAMOND.getDefaultStack()));
-        registerCookingPanRecipe(new VineryIdentifier("test"), dL, Items.EMERALD.getDefaultStack(), Items.REDSTONE.getDefaultStack());
-    }
-
-    public static void registerCookingPanRecipe(Identifier id, DefaultedList<Ingredient> inputs, ItemStack container, ItemStack output) {
-        new CookingPanRecipe(id, inputs, container, output);
-    }
-*/
-
-    public static class Serializer implements RecipeSerializer<CookingPanRecipe> {
+    public static class Serializer implements RecipeSerializer<CookingPotRecipe> {
 
         @Override
-        public CookingPanRecipe fromJson(ResourceLocation id, JsonObject json) {
+        public CookingPotRecipe fromJson(ResourceLocation id, JsonObject json) {
             final var ingredients = CandlelightGeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
-                throw new JsonParseException("No ingredients for CookingPan Recipe");
+                throw new JsonParseException("No ingredients for CookingPot Recipe");
             } else if (ingredients.size() > 6) {
-                throw new JsonParseException("Too many ingredients for CookingPan Recipe");
+                throw new JsonParseException("Too many ingredients for CookingPot Recipe");
             } else {
-                return new CookingPanRecipe(id, ingredients,  ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "container")), ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));
+                return new CookingPotRecipe(id, ingredients,  ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "container")), ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result")));
             }
         }
 
         @Override
-        public CookingPanRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public CookingPotRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             final var ingredients  = NonNullList.withSize(buf.readVarInt(), Ingredient.EMPTY);
             ingredients.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-            return new CookingPanRecipe(id, ingredients, buf.readItem(), buf.readItem());
+            return new CookingPotRecipe(id, ingredients, buf.readItem(), buf.readItem());
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf buf, CookingPanRecipe recipe) {
+        public void toNetwork(FriendlyByteBuf buf, CookingPotRecipe recipe) {
             buf.writeVarInt(recipe.inputs.size());
             recipe.inputs.forEach(entry -> entry.toNetwork(buf));
             buf.writeItem(recipe.getContainer());
-            buf.writeItem(recipe.getResultItem());
+            buf.writeItem(recipe.output);
         }
     }
-    
+
 }

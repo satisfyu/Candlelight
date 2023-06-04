@@ -8,6 +8,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
+import satisfyu.candlelight.recipe.CookingPotRecipe;
 import satisfyu.candlelight.recipe.WoodFiredOvenRecipe;
 
 import java.util.function.Supplier;
@@ -22,6 +23,8 @@ public class RecipeTypes {
 
     public static final RegistrySupplier<RecipeType<WoodFiredOvenRecipe>> WOOD_FIRED_OVEN_RECIPE_TYPE = create("wood_fired_oven_cooking");
     public static final RegistrySupplier<RecipeSerializer<WoodFiredOvenRecipe>> WOOD_FIRED_OVEN_RECIPE_SERIALIZER = create("wood_fired_oven_cooking", WoodFiredOvenRecipe.Serializer::new);
+    public static final RegistrySupplier<RecipeType<CookingPotRecipe>> COOKING_POT_RECIPE_TYPE = create("pot_cooking");
+    public static final RegistrySupplier<RecipeSerializer<CookingPotRecipe>> COOKING_POT_RECIPE_SERIALIZER = create("pot_cooking", CookingPotRecipe.Serializer::new);
 
     private static <T extends Recipe<?>> RegistrySupplier<RecipeSerializer<T>> create(String name, Supplier<RecipeSerializer<T>> serializer) {
         return RECIPE_SERIALIZERS.register(name, serializer);

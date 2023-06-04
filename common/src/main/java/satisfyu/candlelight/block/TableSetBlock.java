@@ -34,7 +34,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.DoAPIImpl;
-import satisfyu.vinery.util.GeneralUtil;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +52,7 @@ public class TableSetBlock extends StorageBlock {
 
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
 

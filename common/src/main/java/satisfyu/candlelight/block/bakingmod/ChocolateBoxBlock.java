@@ -1,4 +1,4 @@
-package satisfyu.candlelight.block;
+package satisfyu.candlelight.block.bakingmod;
 
 import de.cristelknight.doapi.block.FacingBlock;
 import net.minecraft.ChatFormatting;
@@ -28,7 +28,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.vinery.util.VineryUtils;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -108,7 +108,7 @@ public class ChocolateBoxBlock extends FacingBlock {
 
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, VineryUtils.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
 

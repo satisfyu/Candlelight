@@ -28,13 +28,6 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.candlelight]]
-modId = "vinery"
-mandatory = true
-versionRange = "[1.2.7,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.candlelight]]
 modId = "architectury"
 mandatory = true
 versionRange = "[6.5.77,)"

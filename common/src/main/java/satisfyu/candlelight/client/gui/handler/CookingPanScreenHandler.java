@@ -14,13 +14,13 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import satisfyu.candlelight.block.entity.CookingPanEntity;
+import satisfyu.candlelight.client.gui.handler.slot.ExtendedSlot;
 import satisfyu.candlelight.client.recipebook.AbstractPrivateRecipeScreenHandler;
 import satisfyu.candlelight.client.recipebook.IRecipeBookGroup;
 import satisfyu.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
+import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypes;
-import satisfyu.vinery.client.gui.handler.slot.ExtendedSlot;
-import satisfyu.vinery.registry.ObjectRegistry;
 
 import java.util.List;
 

@@ -9,7 +9,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-import satisfyu.vinery.item.CustomModelArmorItem;
 
 import java.util.List;
 

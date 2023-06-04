@@ -38,8 +38,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.entity.CookingPotEntity;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
-import satisfyu.vinery.registry.VinerySoundEvents;
-import satisfyu.vinery.util.VineryUtils;
+import satisfyu.candlelight.registry.CandlelightSounds;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 
 import java.util.HashMap;
@@ -72,7 +72,7 @@ public class CookingPotBlock extends BaseEntityBlock {
 
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, VineryUtils.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
 
@@ -129,7 +129,7 @@ public class CookingPotBlock extends BaseEntityBlock {
             double e = pos.getY() + 0.3;
             double f = (double)pos.getZ() + 0.5; // Änderung: Verwende 0.5 für die Z-Koordinate
             if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                world.playLocalSound(d, e, f, CandlelightSounds.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();
@@ -147,7 +147,7 @@ public class CookingPotBlock extends BaseEntityBlock {
             double e = pos.getY() + 0.3;
             double f = (double)pos.getZ() + 0.5;
             if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                world.playLocalSound(d, e, f, CandlelightSounds.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();
@@ -189,6 +189,6 @@ public class CookingPotBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.vinery.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

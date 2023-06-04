@@ -24,13 +24,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.CookingPanBlock;
 import satisfyu.candlelight.client.gui.handler.CookingPanScreenHandler;
+import satisfyu.candlelight.item.food.EffectFood;
+import satisfyu.candlelight.item.food.EffectFoodHelper;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.RecipeTypes;
 import satisfyu.candlelight.util.CandlelightTags;
-import satisfyu.vinery.item.food.EffectFood;
-import satisfyu.vinery.item.food.EffectFoodHelper;
-import satisfyu.vinery.util.VineryTags;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 

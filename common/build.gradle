@@ -19,7 +19,7 @@ dependencies {
     modCompileOnly ("me.shedaniel:RoughlyEnoughItems-default-plugin:$rei_version")
             { exclude group: 'net.fabricmc', module: 'fabric-loader' }
     modApi "de:doapi:${project.doapi_version}"
-    modImplementation "satisfyu:vinery:${project.vinery_version}"
+    //modImplementation "satisfyu:vinery:${project.vinery_version}"
 }
 
 publishing {

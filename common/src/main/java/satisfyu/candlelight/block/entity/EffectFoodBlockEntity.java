@@ -9,17 +9,14 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.apache.commons.compress.utils.Lists;
+import satisfyu.candlelight.item.food.EffectFoodHelper;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
-import satisfyu.vinery.item.food.EffectFoodHelper;
 
 import java.util.List;
-
-import static satisfyu.vinery.item.food.EffectFoodHelper.fromNbt;
 
 public class EffectFoodBlockEntity extends BlockEntity  {
 	public static final String STORED_EFFECTS_KEY = "StoredEffects";
 	private List<Pair<MobEffectInstance, Float>> effects;
-
 
 	public EffectFoodBlockEntity(BlockPos blockPos, BlockState blockState) {
 		super(BlockEntityRegistry.EFFECT_FOOD_BLOCK_ENTITY.get(), blockPos, blockState);
@@ -37,7 +34,7 @@ public class EffectFoodBlockEntity extends BlockEntity  {
 	@Override
 	public void load(CompoundTag nbt) {
 		super.load(nbt);
-		this.effects = fromNbt(nbt != null ? nbt.getList(STORED_EFFECTS_KEY, 10) : new ListTag());
+		this.effects = EffectFoodHelper.fromNbt(nbt != null ? nbt.getList(STORED_EFFECTS_KEY, 10) : new ListTag());
 	}
 
 	@Override

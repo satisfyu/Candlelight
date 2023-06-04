@@ -22,15 +22,13 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.CookingPotBlock;
+import satisfyu.candlelight.item.food.EffectFood;
+import satisfyu.candlelight.item.food.EffectFoodHelper;
+import satisfyu.candlelight.recipe.CookingPotRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
+import satisfyu.candlelight.registry.RecipeTypes;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 import satisfyu.candlelight.util.CandlelightTags;
-import satisfyu.vinery.client.gui.handler.CookingPotGuiHandler;
-import satisfyu.vinery.item.food.EffectFood;
-import satisfyu.vinery.item.food.EffectFoodHelper;
-import satisfyu.vinery.recipe.CookingPotRecipe;
-import satisfyu.vinery.registry.VineryRecipeTypes;
-import satisfyu.vinery.util.VineryTags;
-import satisfyu.vinery.util.VineryUtils;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
@@ -132,9 +130,9 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 			}
 		}
 		else {
-			if(VineryUtils.isFDLoaded()){
+			//if (CandlelightGeneralUtil.isFDLoaded()){
 				//return FarmersCookingPot.canCraft(recipe, this);
-			}
+			//}
 		}
 		return false;
 	}
@@ -207,10 +205,10 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 			}
 			return;
 		}
-		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(VineryRecipeTypes.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
-		if(recipe == null && VineryUtils.isFDLoaded()){
+		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypes.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
+		//if(recipe == null && VineryUtils.isFDLoaded()){
 			//recipe = FarmersCookingPot.getRecipe(world, this);
-		}
+		//}
 
 		boolean canCraft = canCraft(recipe);
 		if (canCraft) {
@@ -291,7 +289,9 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 	@Nullable
 	@Override
 	public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
-		return new CookingPotGuiHandler(syncId, inv, this, this.delegate);
+		//TODO
+		//return new CookingPotGuiHandler(syncId, inv, this, this.delegate);
+		return null;
 	}
 }
 

@@ -17,8 +17,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.vinery.block.entity.chair.ChairUtil;
-import satisfyu.vinery.util.GeneralUtil;
+import satisfyu.candlelight.block.entity.chair.ChairUtil;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -112,22 +112,22 @@ public class SofaBlock extends LineConnectingBlock {
     static {
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, noneShapeSupplier.get()));
+                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, noneShapeSupplier.get()));
             }
         });
         MIDDLE_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, middleShapeSupplier.get()));
+                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, middleShapeSupplier.get()));
             }
         });
         LEFT_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, leftShapeSupplier.get()));
+                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, leftShapeSupplier.get()));
             }
         });
         RIGHT_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, rightShapeSupplier.get()));
+                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, rightShapeSupplier.get()));
             }
         });
     }

@@ -26,7 +26,7 @@ public class SmallPaintingBlock extends DecorationBlock {
             tooltip.add(Component.translatable("item.candlelight.cristelknight.press_shift").withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable("item.candlelight.satisfyu.press_shift").withStyle(ChatFormatting.GOLD));
         } else {
-            tooltip.add(Component.translatable("item.vinery.faucet.tooltip").withStyle(ChatFormatting.WHITE));
+            tooltip.add(Component.translatable("item.candlelight.faucet.tooltip").withStyle(ChatFormatting.WHITE));
         }
     }
 }

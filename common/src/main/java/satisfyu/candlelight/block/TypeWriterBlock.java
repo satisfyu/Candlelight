@@ -33,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.entity.TypeWriterEntity;
 import satisfyu.candlelight.client.ClientUtil;
 import satisfyu.candlelight.registry.ObjectRegistry;
-import satisfyu.vinery.util.VineryUtils;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -145,7 +145,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
         FACING = HorizontalDirectionalBlock.FACING;
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, VineryUtils.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
             }
         });
     }

@@ -10,11 +10,12 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.Entity;
-import satisfyu.vinery.VineryIdentifier;
+import satisfyu.candlelight.util.CandlelightIdentifier;
+
 @Environment(EnvType.CLIENT)
 public class CookingHatModel<T extends Entity> extends EntityModel<T> {
 
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new VineryIdentifier("cooking_hat"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new CandlelightIdentifier("cooking_hat"), "main");
 	private final ModelPart cookhat;
 	public CookingHatModel(ModelPart root) {
 		this.cookhat = root.getChild("cookhat");

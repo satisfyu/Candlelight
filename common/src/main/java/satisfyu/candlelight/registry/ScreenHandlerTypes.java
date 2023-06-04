@@ -17,6 +17,7 @@ public class ScreenHandlerTypes {
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(Candlelight.MOD_ID, Registry.MENU_REGISTRY);
 
     public static final RegistrySupplier<MenuType<CookingPanScreenHandler>> COOKING_PAN_SCREEN_HANDLER = create("cooking_pan_gui_handler", () -> new MenuType<>(CookingPanScreenHandler::new)) ;
+    //public static final RegistrySupplier<MenuType<CookingPotGuiHandler>> COOKING_POT_SCREEN_HANDLER = create("cooking_pot_gui_handler", () -> new MenuType<>(CookingPotGuiHandler::new)) ;
     public static final RegistrySupplier<MenuType<LetterGuiHandler>> LETTER_SCREEN_HANDLER = create("letter_screen", () -> new MenuType<>(LetterGuiHandler::new));
     public static final RegistrySupplier<MenuType<WineStationGuiHandler>> WINE_STATION_SCREEN_HANDLER = create("wine_station_gui_handler", () -> new MenuType<>(WineStationGuiHandler::new));
 

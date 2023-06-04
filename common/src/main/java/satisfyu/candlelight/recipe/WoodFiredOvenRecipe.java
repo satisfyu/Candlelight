@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import satisfyu.candlelight.registry.RecipeTypes;
-import satisfyu.vinery.util.VineryUtils;
+import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 public class WoodFiredOvenRecipe implements Recipe<Container> {
 
@@ -29,7 +29,7 @@ public class WoodFiredOvenRecipe implements Recipe<Container> {
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return VineryUtils.matchesRecipe(inventory, inputs, 0, 2);
+        return CandlelightGeneralUtil.matchesRecipe(inventory, inputs, 0, 2);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class WoodFiredOvenRecipe implements Recipe<Container> {
 
         @Override
         public WoodFiredOvenRecipe fromJson(ResourceLocation id, JsonObject json) {
-            final var ingredients = VineryUtils.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
+            final var ingredients = CandlelightGeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
                 throw new JsonParseException("No ingredients for StoveCooking Recipe");
             } else if (ingredients.size() > 3) {
