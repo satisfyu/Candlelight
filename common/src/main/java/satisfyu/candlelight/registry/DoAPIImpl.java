@@ -17,39 +17,18 @@ import java.util.Set;
 @DoApiPlugin
 public class DoAPIImpl implements DoApiAPI {
 
-    public static final ResourceLocation CAKE_STAND = new CandlelightIdentifier("cake_stand");
+    //public static final ResourceLocation CAKE_STAND = new CandlelightIdentifier("cake_stand");
 
     public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
 
-    public static final ResourceLocation TRAY = new CandlelightIdentifier("tray");
+    //public static final ResourceLocation TRAY = new CandlelightIdentifier("tray");
 
     @Override
     public void registerBlocks(Set<Block> blocks) {
-        blocks.add(ObjectRegistry.CAKE_STAND.get());
+        //blocks.add(ObjectRegistry.CAKE_STAND.get());
         blocks.add(ObjectRegistry.TABLE_SET.get());
-        blocks.add(ObjectRegistry.TRAY.get());
-        //TODO
-/*
-        blocks.add(ObjectRegistry.ACACIA_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.ACACIA_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.OAK_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.OAK_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.DARK_OAK_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.DARK_OAK_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.SPRUCE_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.SPRUCE_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.BIRCH_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.BIRCH_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.MANGROVE_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.MANGROVE_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.JUNGLE_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.JUNGLE_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.WARPED_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.WARPED_WINE_RACK_SMALL.get());
-        blocks.add(ObjectRegistry.CRIMSON_WINE_RACK_BIG.get());
-        blocks.add(ObjectRegistry.CRIMSON_WINE_RACK_SMALL.get());
+        //blocks.add(ObjectRegistry.TRAY.get());
 
- */
     }
 
     @Override

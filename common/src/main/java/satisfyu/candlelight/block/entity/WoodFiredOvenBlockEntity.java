@@ -25,15 +25,14 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.candlelight.block.WoodFiredOvenBlock;
 import satisfyu.candlelight.item.food.EffectFood;
 import satisfyu.candlelight.item.food.EffectFoodHelper;
 import satisfyu.candlelight.recipe.WoodFiredOvenRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
-import satisfyu.candlelight.registry.RecipeTypes;
+import satisfyu.candlelight.registry.RecipeTypeRegistry;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
-
+/*
 public class WoodFiredOvenBlockEntity extends BlockEntity implements BlockEntityTicker<WoodFiredOvenBlockEntity>, Container, MenuProvider {
 
     private NonNullList<ItemStack> inventory;
@@ -124,7 +123,7 @@ public class WoodFiredOvenBlockEntity extends BlockEntity implements BlockEntity
             --this.burnTime;
         }
 
-        final WoodFiredOvenRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypes.WOOD_FIRED_OVEN_RECIPE_TYPE.get(), this, world).orElse(null);
+        final WoodFiredOvenRecipe recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.WOOD_FIRED_OVEN_RECIPE_TYPE.get(), this, world).orElse(null);
         if (!initialBurningState && canCraft(recipe)) {
             this.burnTime = this.burnTimeTotal = this.getTotalBurnTime(this.getItem(FUEL_SLOT));
             if (burnTime > 0) {
@@ -343,3 +342,4 @@ public class WoodFiredOvenBlockEntity extends BlockEntity implements BlockEntity
         return null;
     }
 }
+*/

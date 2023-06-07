@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=east": [
+      { "model": "candlelight:block/stone_bricks_counter",  "y": 90}
+    ],
+    "facing=north": [
+      { "model": "candlelight:block/stone_bricks_counter", "weight":1 }
+    ],
+    "facing=south": [
+      { "model": "candlelight:block/stone_bricks_counter",  "y": 180}
+    ],
+    "facing=west": [
+      { "model": "candlelight:block/stone_bricks_counter",  "y": 270}
+    ]
+  }
+}

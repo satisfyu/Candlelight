@@ -16,11 +16,11 @@ public class Candlelight {
             new ItemStack(ObjectRegistry.HEARTH.get()));
     
     public static void init() {
-        RecipeTypes.init();
+        RecipeTypeRegistry.init();
         ObjectRegistry.init();
-        ScreenHandlerTypes.init();
+        ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
-        CandlelightSounds.init();
+        SoundEventsRegistry.init();
         CandlelightMessages.registerC2SPackets();
     }
 

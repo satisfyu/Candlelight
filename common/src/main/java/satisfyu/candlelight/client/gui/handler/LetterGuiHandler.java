@@ -13,7 +13,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import satisfyu.candlelight.registry.ObjectRegistry;
-import satisfyu.candlelight.registry.ScreenHandlerTypes;
+import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -34,7 +34,7 @@ public class LetterGuiHandler extends AbstractContainerMenu {
     //This constructor gets called from the BlockEntity on the server without calling the other constructor first, the server knows the inventory of the container
     //and can therefore directly provide it as an argument. This inventory will then be synced to the client.
     public LetterGuiHandler(int syncId, Inventory playerInventory, Container inventory) {
-        super(ScreenHandlerTypes.LETTER_SCREEN_HANDLER.get(), syncId);
+        super(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), syncId);
         checkContainerSize(inventory, 3);
         this.inventory = inventory;
         //some inventories do custom logic when a player opens it.

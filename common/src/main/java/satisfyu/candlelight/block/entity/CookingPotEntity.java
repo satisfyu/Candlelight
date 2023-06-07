@@ -26,9 +26,8 @@ import satisfyu.candlelight.item.food.EffectFood;
 import satisfyu.candlelight.item.food.EffectFoodHelper;
 import satisfyu.candlelight.recipe.CookingPotRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
-import satisfyu.candlelight.registry.RecipeTypes;
-import satisfyu.candlelight.util.CandlelightGeneralUtil;
-import satisfyu.candlelight.util.CandlelightTags;
+import satisfyu.candlelight.registry.RecipeTypeRegistry;
+import satisfyu.candlelight.registry.TagsRegistry;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
@@ -91,7 +90,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		if (getLevel() == null)
 			throw new NullPointerException("Null world invoked");
 		final BlockState belowState = this.getLevel().getBlockState(getBlockPos().below());
-		final var optionalList = Registry.BLOCK.getTag(CandlelightTags.ALLOWS_COOKING_ON_PAN);
+		final var optionalList = Registry.BLOCK.getTag(TagsRegistry.ALLOWS_COOKING_ON_PAN);
 		final var entryList = optionalList.orElse(null);
 		if (entryList == null) {
 			return false;
@@ -205,7 +204,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 			}
 			return;
 		}
-		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypes.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
+		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
 		//if(recipe == null && VineryUtils.isFDLoaded()){
 			//recipe = FarmersCookingPot.getRecipe(world, this);
 		//}

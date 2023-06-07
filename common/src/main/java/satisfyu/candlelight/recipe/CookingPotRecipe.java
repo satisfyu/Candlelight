@@ -3,7 +3,6 @@ package satisfyu.candlelight.recipe;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -15,7 +14,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
-import satisfyu.candlelight.registry.RecipeTypes;
+import satisfyu.candlelight.registry.RecipeTypeRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 public class CookingPotRecipe implements Recipe<Container> {
@@ -61,12 +60,12 @@ public class CookingPotRecipe implements Recipe<Container> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeTypes.COOKING_POT_RECIPE_SERIALIZER.get();
+        return RecipeTypeRegistry.COOKING_POT_RECIPE_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return RecipeTypes.COOKING_POT_RECIPE_TYPE.get();
+        return RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get();
     }
 
     @Override

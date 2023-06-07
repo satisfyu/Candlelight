@@ -20,7 +20,7 @@ import satisfyu.candlelight.client.recipebook.IRecipeBookGroup;
 import satisfyu.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
 import satisfyu.candlelight.registry.ObjectRegistry;
-import satisfyu.candlelight.registry.ScreenHandlerTypes;
+import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler 
     }
 
     public CookingPanScreenHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
-        super(ScreenHandlerTypes.COOKING_PAN_SCREEN_HANDLER.get(), syncId);
+        super(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), syncId);
         checkContainerSize(inventory, 8);
         this.inventory = inventory;
         this.propertyDelegate = propertyDelegate;
@@ -49,7 +49,7 @@ public class CookingPanScreenHandler extends AbstractPrivateRecipeScreenHandler 
     }
 
     private void buildBlockEntityContainer(Container inventory) {
-        this.addSlot(new ExtendedSlot(inventory, 6,95, 55, stack -> stack.is(ObjectRegistry.CHERRY_JAR.get().asItem()) || stack.is(Items.BOWL)|| stack.is(satisfyu.candlelight.registry.ObjectRegistry.TRAY.get().asItem())));
+        this.addSlot(new ExtendedSlot(inventory, 6,95, 55, stack -> stack.is(Items.BOWL)));
 
         for (int row = 0; row < 2; row++) {
             for (int slot = 0; slot < 3; slot++) {

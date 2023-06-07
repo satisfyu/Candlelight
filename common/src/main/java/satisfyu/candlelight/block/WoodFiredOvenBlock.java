@@ -32,8 +32,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.candlelight.block.entity.WoodFiredOvenBlockEntity;
-
+/*
 public class WoodFiredOvenBlock extends Block implements EntityBlock {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -132,3 +131,4 @@ public class WoodFiredOvenBlock extends Block implements EntityBlock {
         super.stepOn(world, pos, state, entity);
     }
 }
+*/

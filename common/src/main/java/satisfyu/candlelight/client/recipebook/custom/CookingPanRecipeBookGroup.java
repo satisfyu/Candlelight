@@ -17,7 +17,7 @@ public enum CookingPanRecipeBookGroup implements IRecipeBookGroup {
     SEARCH(new ItemStack(Items.COMPASS)),
     //TODO not wine and other icon
     WINE(new ItemStack(Blocks.BARRIER.asItem())),
-    MISC(new ItemStack(ObjectRegistry.TRAY.get()), new ItemStack(Items.SUGAR));
+    MISC(new ItemStack(Items.BOWL), new ItemStack(Items.SUGAR));
 
     public static final List<IRecipeBookGroup> PAN_GROUPS = ImmutableList.of(SEARCH, WINE, MISC);
 

@@ -25,7 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfyu.candlelight.registry.ObjectRegistry;
-
+/*
 public class WildBushJungle extends BushBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE;
@@ -121,6 +121,8 @@ public class WildBushJungle extends BushBlock implements BonemealableBlock {
         AGE = BlockStateProperties.AGE_3;
         SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 16.0, 16.0);
     }
-
-
 }
+
+
+
+*/

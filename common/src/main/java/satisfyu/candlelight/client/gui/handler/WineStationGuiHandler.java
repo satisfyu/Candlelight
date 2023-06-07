@@ -12,8 +12,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import satisfyu.candlelight.client.gui.handler.slot.ExtendedSlot;
-import satisfyu.candlelight.registry.ScreenHandlerTypes;
-import satisfyu.candlelight.util.CandlelightTags;
+import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
+import satisfyu.candlelight.registry.TagsRegistry;
 
 public class WineStationGuiHandler extends AbstractContainerMenu {
 
@@ -28,7 +28,7 @@ public class WineStationGuiHandler extends AbstractContainerMenu {
 
 
     public WineStationGuiHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
-        super(ScreenHandlerTypes.WINE_STATION_SCREEN_HANDLER.get(), syncId);
+        super(ScreenHandlerTypeRegistry.WINE_STATION_SCREEN_HANDLER.get(), syncId);
         this.world = playerInventory.player.level;
         this.inventory = inventory;
         this.inputSlots = 3;
@@ -39,9 +39,9 @@ public class WineStationGuiHandler extends AbstractContainerMenu {
     }
 
     private void buildBlockEntityContainer(Container inventory) {
-        this.addSlot(new ExtendedSlot(inventory, 0,44, 20, (itemStack -> itemStack.is(CandlelightTags.WINE))));
-        this.addSlot(new ExtendedSlot(inventory, 1,35, 39, (itemStack -> itemStack.is(CandlelightTags.WINE))));
-        this.addSlot(new ExtendedSlot(inventory, 2,54, 39, (itemStack -> itemStack.is(CandlelightTags.WINE))));
+        this.addSlot(new ExtendedSlot(inventory, 0,44, 20, (itemStack -> itemStack.is(TagsRegistry.WINE))));
+        this.addSlot(new ExtendedSlot(inventory, 1,35, 39, (itemStack -> itemStack.is(TagsRegistry.WINE))));
+        this.addSlot(new ExtendedSlot(inventory, 2,54, 39, (itemStack -> itemStack.is(TagsRegistry.WINE))));
 
         this.addSlot(new Slot(inventory, 3, 106, 18) {
             @Override

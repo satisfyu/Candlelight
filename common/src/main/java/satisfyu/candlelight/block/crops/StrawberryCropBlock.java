@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import satisfyu.candlelight.registry.ObjectRegistry;
-
+/*
 public class StrawberryCropBlock extends CropBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 4);
 
@@ -62,3 +62,6 @@ public class StrawberryCropBlock extends CropBlock {
         }
     }
 }
+
+
+ */

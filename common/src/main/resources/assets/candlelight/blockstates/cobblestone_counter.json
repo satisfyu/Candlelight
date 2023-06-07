@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=east": [
+      { "model": "candlelight:block/cobblestone_counter",  "y": 90}
+    ],
+    "facing=north": [
+      { "model": "candlelight:block/cobblestone_counter", "weight":1 }
+    ],
+    "facing=south": [
+      { "model": "candlelight:block/cobblestone_counter",  "y": 180}
+    ],
+    "facing=west": [
+      { "model": "candlelight:block/cobblestone_counter",  "y": 270}
+    ]
+  }
+}

@@ -15,7 +15,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.client.recipebook.PrivateRecipeBookWidget;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
-import satisfyu.candlelight.registry.RecipeTypes;
+import satisfyu.candlelight.registry.RecipeTypeRegistry;
 
 import java.util.List;
 @Environment(EnvType.CLIENT)
@@ -86,7 +86,7 @@ public class CookingPanRecipeBook extends PrivateRecipeBookWidget {
 
     @Override
     protected RecipeType<? extends Recipe<Container>> getRecipeType() {
-        return RecipeTypes.COOKING_PAN_RECIPE_TYPE.get();
+        return RecipeTypeRegistry.COOKING_PAN_RECIPE_TYPE.get();
     }
 
     @Override
