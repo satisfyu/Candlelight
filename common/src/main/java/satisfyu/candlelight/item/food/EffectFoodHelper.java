@@ -8,6 +8,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PotionItem;
+import net.minecraft.world.item.alchemy.PotionUtils;
 
 import java.util.List;
 
@@ -54,9 +56,17 @@ public class EffectFoodHelper {
         if (stack.getItem() instanceof EffectFood) {
             return fromNbt(getEffectNbt(stack));
         }
+        if (stack.getItem() instanceof PotionItem) {
+            List<MobEffectInstance> effects = PotionUtils.getMobEffects(stack);
+            List<Pair<MobEffectInstance, Float>> returnEffects = Lists.newArrayList();
+            for (MobEffectInstance effect : effects) {
+                returnEffects.add(new Pair<>(effect, 1.0f));
+            }
+            return returnEffects;
+        }
         FoodProperties foodComponent = stack.getItem().getFoodProperties();
         if(foodComponent != null) return foodComponent.getEffects();
-        return List.of();
+        return Lists.newArrayList();
     }
 
     public static List<Pair<MobEffectInstance, Float>> fromNbt(ListTag list) {

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "B##",
-    "XL "
+    "L  "
   ],
   "key": {
     "#": {
@@ -13,9 +13,6 @@
     },
     "B": {
       "tag": "c:bowls"
-    },
-    "X": {
-      "item": "candlelight:vinegar"
     }
   },
   "result": {

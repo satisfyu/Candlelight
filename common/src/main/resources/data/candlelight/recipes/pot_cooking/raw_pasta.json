@@ -6,10 +6,10 @@
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
   "result": {
-    "item": "candlelight:raw_pasta",
+    "item": "candlelight:pasta_raw",
     "count": 4
   }
 }

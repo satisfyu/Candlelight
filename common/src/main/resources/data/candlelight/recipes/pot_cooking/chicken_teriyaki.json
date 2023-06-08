@@ -12,9 +12,11 @@
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
-  "item": "candlelight:chicken_teriyaki",
-  "count": 4,
-  "experience": 0.4
+  "result": {
+    "item": "candlelight:chicken_teriyaki",
+    "count": 4,
+    "experience": 0.4
+  }
 }

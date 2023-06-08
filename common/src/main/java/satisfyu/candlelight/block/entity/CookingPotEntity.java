@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.CookingPotBlock;
 import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
@@ -41,11 +42,11 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 	public static final int BOTTLE_INPUT_SLOT = 6;
 	public static final int OUTPUT_SLOT = 7;
 	private static final int INGREDIENTS_AREA = 2 * 3;
-	
+
 	private boolean isBeingBurned;
 
 	private final ContainerData delegate;
-	
+
 	public CookingPotEntity(BlockPos pos, BlockState state) {
 		super(BlockEntityRegistry.COOKING_POT_BLOCK_ENTITY.get(), pos, state);
 		this.delegate = new ContainerData() {
@@ -91,13 +92,14 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		if (getLevel() == null)
 			throw new NullPointerException("Null world invoked");
 		final BlockState belowState = this.getLevel().getBlockState(getBlockPos().below());
-		final var optionalList = Registry.BLOCK.getTag(TagsRegistry.ALLOWS_COOKING);
-		final var entryList = optionalList.orElse(null);
-		if (entryList == null) {
-			return false;
-		} else {
-			return entryList.contains(belowState.getBlock().builtInRegistryHolder());
+		if (belowState.is(TagsRegistry.ALLOWS_COOKING)) {
+			try {
+				return belowState.getValue(BlockStateProperties.LIT);
+			} catch (IllegalArgumentException e) {
+				return true;
+			}
 		}
+		return false;
 	}
 
 	
@@ -128,8 +130,6 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 					return outputSlotCount < recipeOutput.getMaxStackSize();
 				}
 			}
-		}
-		else {
 		}
 		return false;
 	}
@@ -191,8 +191,8 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		if (world.isClientSide()) {
 			return;
 		}
-		this.isBeingBurned = isBeingBurned();
-		if (!this.isBeingBurned){
+		boolean isBeingBurned = isBeingBurned();
+		if (!isBeingBurned){
 			if(state.getValue(CookingPotBlock.LIT)) {
 				world.setBlock(pos, state.setValue(CookingPotBlock.LIT, false), Block.UPDATE_ALL);
 			}

@@ -11,7 +11,12 @@
       "tag": "c:cheese"
     }
   ],
-  "item": "candlelight:pizza",
-  "count": 1,
-  "experience": 0.75
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "candlelight:pizza",
+    "count": 1,
+    "experience": 0.75
+  }
 }

@@ -13,9 +13,9 @@
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
   "result": {
-    "item": "candlelight:pasta_bolognese"
+    "item": "candlelight:pasta_broccoli"
   }
 }

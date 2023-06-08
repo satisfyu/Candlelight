@@ -101,9 +101,9 @@ public class CookingPanBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CookingPanEntity pot) {
+            if (blockEntity instanceof CookingPanEntity pan) {
                 if (world instanceof ServerLevel) {
-                    Containers.dropContents(world, pos, pot);
+                    Containers.dropContents(world, pos, pan);
                 }
                 world.updateNeighbourForOutputSignal(pos, this);
             }

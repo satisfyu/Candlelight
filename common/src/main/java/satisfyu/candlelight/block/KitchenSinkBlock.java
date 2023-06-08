@@ -53,7 +53,7 @@ public class KitchenSinkBlock extends Block {
 		if (world.isClientSide) return InteractionResult.SUCCESS;
 		ItemStack itemStack = player.getItemInHand(hand);
 		Item item = itemStack.getItem();
-		if (item == ObjectRegistry.FAUCET.get() && !state.getValue(HAS_FAUCET)) { //TODO Tagkey
+		if (itemStack.is(TagsRegistry.FAUCET) && !state.getValue(HAS_FAUCET)) {
 			world.setBlock(pos, state.setValue(HAS_FAUCET, true), Block.UPDATE_ALL);
 			if (!player.isCreative())
 				itemStack.shrink(1);

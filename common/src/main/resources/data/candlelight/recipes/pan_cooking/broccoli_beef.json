@@ -8,14 +8,14 @@
       "item": "minecraft:beef"
     },
     {
-      "tag": "vinery:red_wine"
+      "tag": "candlelight:red_effect"
     },
     {
       "item": "candlelight:butter"
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:broccoli_beef",

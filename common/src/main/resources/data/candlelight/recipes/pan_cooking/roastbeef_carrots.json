@@ -8,11 +8,11 @@
       "item": "minecraft:carrot"
     },
     {
-      "tag": "vinery:red_wine"
+      "tag": "candlelight:red_effect"
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:roastbeef_carrots",

@@ -8,11 +8,11 @@
       "item": "minecraft:sugar"
     },
     {
-      "tag": "vinery:wine"
+      "tag": "candlelight:all_effects"
     }
   ],
   "container": {
-    "item": "candlelight:tray"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:tomato_soup",
