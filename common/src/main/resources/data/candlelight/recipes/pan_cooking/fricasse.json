@@ -12,7 +12,7 @@
     }
   ],
   "container": {
-    "item": "candlelight:tray"
+    "tag": "c:bowls"
   },
   "result": {
     "item": "candlelight:fricasse",

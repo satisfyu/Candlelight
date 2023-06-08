@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:smoker",
+    "minecraft:magma_block",
+    "#candlelight:stoves"
+  ]
+}

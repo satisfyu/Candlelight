@@ -1,0 +1,20 @@
+{
+  "type": "candlelight:pot_cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "tag": "vinery:red_wine"
+    }
+  ],
+  "container": {
+    "tag": "c:bowls"
+  },
+  "item": "candlelight:pork_ribs",
+  "count": 4,
+  "experience": 0.75
+}

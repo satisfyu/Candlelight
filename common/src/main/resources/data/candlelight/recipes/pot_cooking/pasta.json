@@ -1,8 +1,8 @@
 {
-  "type": "vinery:pot_cooking",
+  "type": "candlelight:pot_cooking",
   "ingredients": [
     {
-      "tag": "c:dough"
+      "tag": "c:pasta"
     },
     {
       "item": "candlelight:tomato_soup"

@@ -1,0 +1,20 @@
+{
+  "type": "candlelight:pot_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:veggie_plate"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "tag": "vinery:white_wine"
+    }
+  ],
+  "container": {
+    "tag": "c:bowls"
+  },
+  "item": "candlelight:chicken",
+  "count": 1,
+  "experience": 0.4
+}

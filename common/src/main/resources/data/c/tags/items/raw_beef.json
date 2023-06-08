@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "candlelight:beef_tartare"
+    "candlelight:beef_tartare",
+    "minecraft:raw_beef"
   ]
 }

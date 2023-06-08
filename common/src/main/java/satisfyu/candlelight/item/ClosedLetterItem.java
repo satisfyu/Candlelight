@@ -30,21 +30,12 @@ public class ClosedLetterItem extends Item {
                 tooltip.add(Component.literal(string).withStyle(ChatFormatting.GRAY));
             }
 
-            // tooltip.add(Text.translatable("book.generation." + nbtCompound.getInt("generation")).formatted(Formatting.GRAY));
         }
 
     }
 
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
-//        if(world.isClient())
-//        {
-//            MinecraftClient.getInstance().setScreen(new BookScreen(new BookScreen.WrittenBookContents(itemStack)));
-//        }
-//        else
-//        {
-//            user.currentScreenHandler.sendContentUpdates();
-//        }
         ItemStack output = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
         if(itemStack.hasTag())
         {

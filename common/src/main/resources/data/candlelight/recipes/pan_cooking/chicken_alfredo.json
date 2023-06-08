@@ -1,0 +1,18 @@
+{
+  "type": "candlelight:pan_cooking",
+
+  "ingredients": [
+    {
+      "tag": "c:pasta"
+    },
+    {
+      "item": "minecraft:chicken"
+    }
+  ],
+  "container": {
+    "tag": "c:bowls"
+  },
+  "result": {
+    "item": "candlelight:chicken_alfredo"
+  }
+}

@@ -58,7 +58,7 @@ public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
 
     public void renderForeground(PoseStack matrices, int mouseX, int mouseY, float delta) {
         this.nameField.render(matrices, mouseX, mouseY, delta);
-        this.font.draw(matrices, Component.translatable("block.candlelight.typewriter.translatable.text"), this.width/1.95F, (int)(this.height/4.65F), 0x5A5A5A);
+        this.font.draw(matrices, Component.translatable("block.candlelight.letter.translatable.text"), this.width / 1.95F - 1, (int)(this.height / 4.65F) + 8, 0x5A5A5A);
     }
 
     @Override
@@ -81,20 +81,12 @@ public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
     protected void init() {
         super.init();
         setup();
-        // Center the title
         titleLabelX = (imageWidth - font.width(title)) / 2;
     }
 
     private void onRenamed(String name) {
-        // if (!name.isEmpty()) {
         String string = name;
         Slot slot = ((LetterGuiHandler)this.menu).getSlot(0);
-//            if (slot != null && slot.hasStack() && !slot.getStack().hasCustomName() && name.equals(slot.getStack().getName().getString())) {
-//                string = "";
-//            }
-        //System.out.println(name + " screne");
         LetterGuiHandler.name = name;
-        //this.client.player.networkHandler.sendPacket(new RenameItemC2SPacket(string));
-        //  }
     }
 }

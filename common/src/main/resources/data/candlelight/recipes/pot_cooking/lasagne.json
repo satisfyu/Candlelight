@@ -1,0 +1,17 @@
+{
+  "type": "candlelight:pot_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:bolognese"
+    },
+    {
+      "tag": "c:pasta"
+    },
+    {
+      "tag": "c:cheese"
+    }
+  ],
+  "item": "candlelight:lasagne",
+  "count": 6,
+  "experience": 0.15
+}

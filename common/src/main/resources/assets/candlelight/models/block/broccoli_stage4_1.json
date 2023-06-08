@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "candlelight:block/broccoli_stage4_1"
-  }
-}

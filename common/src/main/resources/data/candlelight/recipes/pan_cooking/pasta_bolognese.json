@@ -1,0 +1,21 @@
+{
+  "type": "candlelight:pan_cooking",
+
+  "ingredients": [
+    {
+      "item": "candlelight:bolognese"
+    },
+    {
+      "tag": "c:pasta"
+    },
+    {
+      "tag": "c:cheese"
+    }
+  ],
+  "container": {
+    "tag": "c:bowls"
+  },
+  "result": {
+    "item": "candlelight:pasta_bolognese"
+  }
+}

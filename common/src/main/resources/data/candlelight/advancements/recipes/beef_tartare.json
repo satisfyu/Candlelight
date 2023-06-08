@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "candlelight:beef_tartare"
+      "minecraft:beef"
     ]
   },
   "criteria": {
@@ -12,7 +12,7 @@
         "items": [
           {
             "items": [
-              "candlelight:tray"
+              "minecraft:beef"
             ]
           }
         ]
@@ -27,7 +27,7 @@
   },
   "requirements": [
     [
-      "has_tray",
+      "has_beef",
       "has_the_recipe"
     ]
   ]

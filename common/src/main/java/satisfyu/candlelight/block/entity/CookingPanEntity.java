@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.CookingPanBlock;
-import satisfyu.candlelight.client.gui.handler.CookingPanScreenHandler;
+import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
 import satisfyu.candlelight.item.food.EffectFood;
 import satisfyu.candlelight.item.food.EffectFoodHelper;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
@@ -92,7 +92,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		if (level == null)
 			throw new NullPointerException("Null world invoked");
 		final BlockState belowState = level.getBlockState(getBlockPos().below());
-		final var optionalList = Registry.BLOCK.getTag(TagsRegistry.ALLOWS_COOKING_ON_PAN);
+		final var optionalList = Registry.BLOCK.getTag(TagsRegistry.ALLOWS_COOKING);
 		final var entryList = optionalList.orElse(null);
 		if (entryList == null) {
 			return false;
@@ -280,7 +280,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	@Nullable
 	@Override
 	public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
-		return new CookingPanScreenHandler(syncId, inv, this, this.delegate);
+		return new CookingPotGuiHandler(syncId, inv, this, this.delegate);
 	}
 }
 

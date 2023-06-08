@@ -8,13 +8,13 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:crimson_planks"
     },
     "B": {
       "item": "minecraft:barrel"
     }
   },
   "result": {
-    "item": "candlelight:oak_drawer"
+    "item": "candlelight:crimson_drawer"
   }
 }

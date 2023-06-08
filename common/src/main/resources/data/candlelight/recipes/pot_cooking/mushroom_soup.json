@@ -1,5 +1,5 @@
 {
-  "type": "vinery:pot_cooking",
+  "type": "candlelight:pot_cooking",
   "ingredients": [
     {
       "tag": "c:mushrooms"

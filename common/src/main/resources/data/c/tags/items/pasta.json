@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "candlelight:pasta"
+    "candlelight:pasta",
+    "candlelight:raw_pasta"
   ]
 }

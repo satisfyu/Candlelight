@@ -8,11 +8,11 @@
       "item": "candlelight:butter"
     },
     {
-      "item": "candlelight:strawberry"
+      "item": "minecraft:sugar"
     }
   ],
   "container": {
-    "item": "candlelight:tray"
+    "tag": "c:bowls"
   },
   "result": {
     "item": "candlelight:pancake",

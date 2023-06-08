@@ -1,0 +1,20 @@
+{
+  "type": "candlelight:pot_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:veggie_plate"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "tag": "c:crops/cabbage"
+    }
+  ],
+  "container": {
+    "tag": "c:bowls"
+  },
+  "item": "candlelight:chicken_teriyaki",
+  "count": 4,
+  "experience": 0.4
+}

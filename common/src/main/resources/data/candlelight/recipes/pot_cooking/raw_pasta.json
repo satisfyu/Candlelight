@@ -1,0 +1,15 @@
+{
+  "type": "candlelight:pot_cooking",
+  "ingredients": [
+    {
+      "tag": "c:dough"
+    }
+  ],
+  "container": {
+    "tag": "c:bowls"
+  },
+  "result": {
+    "item": "candlelight:raw_pasta",
+    "count": 4
+  }
+}

@@ -10,9 +10,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.player.Player;
-import satisfyu.candlelight.client.gui.CookingPanScreen;
+import satisfyu.candlelight.client.gui.CookingPanGui;
 import satisfyu.candlelight.client.gui.LetterGui;
-import satisfyu.candlelight.client.gui.WineStationGui;
 import satisfyu.candlelight.client.model.CookingHatModel;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
@@ -51,9 +50,8 @@ public class CandlelightClient {
 
 
 
-        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), CookingPanScreen::new);
+        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), CookingPanGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
-        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.WINE_STATION_SCREEN_HANDLER.get(), WineStationGui::new);
     }
 
 

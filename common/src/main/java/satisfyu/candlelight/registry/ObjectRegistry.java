@@ -22,7 +22,7 @@ import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.block.*;
-import satisfyu.candlelight.block.bakingmod.ChocolateBoxBlock;
+import satisfyu.candlelight.bakingmod.ChocolateBoxBlock;
 import satisfyu.candlelight.block.crops.*;
 import satisfyu.candlelight.food.CandlelightFoods;
 import satisfyu.candlelight.food.EffectFoodBlockItem;
@@ -159,8 +159,8 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> ROASTBEEF_CARROTS = registerItem("roastbeef_carrots", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.ROASTBEEF_CARROTS), 2));
     public static final RegistrySupplier<Block> BEEF_WELLINGTON_BLOCK = registerWithoutItem("beef_wellington_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.BEEF_WELLINGTON));
     public static final RegistrySupplier<Item> BEEF_WELLINGTON = registerItem("beef_wellington", () -> new EffectFoodBlockItem(BEEF_WELLINGTON_BLOCK.get(), getSettings().food(CandlelightFoods.BEEF_WELLINGTON), 2));
-    public static final RegistrySupplier<Block> PIZZA = registerWithItem("pizza", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Item> PIZZA_SLICE = registerItem("pizza_slice", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.FRICASSE), 1));
+    public static final RegistrySupplier<Block> PIZZA = registerWithItem("pizza", () -> new PizzaBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), PIZZA_SLICE));
     public static final RegistrySupplier<Item> CHOCOLATE = registerItem("chocolate", () -> new IngredientItem(getSettings().food(Foods.APPLE)));
     public static final RegistrySupplier<Block> TABLE_SIGN = registerWithItem("table_sign", () -> new BoardBlock(BlockBehaviour.Properties.of(Material.DECORATION), false));
     public static final RegistrySupplier<Block> PAINTING = registerWithItem("painting", () -> new SmallPaintingBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission()));

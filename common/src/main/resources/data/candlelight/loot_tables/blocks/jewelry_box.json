@@ -3,15 +3,34 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "candlelight:jewelry_box"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "minecraft:survives_explosion"
+          "condition": "minecraft:alternative",
+          "terms": [
+            {
+              "block": "candlelight:jewelry_box",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "ring": true
+              }
+            }
+          ]
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "candlelight:jewelry_box"
+          "name": "candlelight:gold_ring"
         }
       ],
       "rolls": 1.0

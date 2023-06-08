@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "big_table",
+  "pattern": [
+    "iii",
+    "SSS"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:jungle_planks"
+    }
+  },
+  "result": {
+    "item": "candlelight:jungle_big_table"
+  }
+}

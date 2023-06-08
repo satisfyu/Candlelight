@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#candlelight:spawns_strawberry_jungle",
-  "features": "candlelight:strawberry_jungle_patch_chance",
-  "step": "vegetal_decoration"
-}

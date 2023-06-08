@@ -1,0 +1,17 @@
+{
+  "type": "candlelight:pan_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:tomato_soup"
+    },
+    {
+      "tag": "c:dough"
+    },
+    {
+      "tag": "c:cheese"
+    }
+  ],
+  "item": "candlelight:pizza",
+  "count": 1,
+  "experience": 0.75
+}

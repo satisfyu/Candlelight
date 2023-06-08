@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.CookingPotBlock;
+import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
 import satisfyu.candlelight.item.food.EffectFood;
 import satisfyu.candlelight.item.food.EffectFoodHelper;
 import satisfyu.candlelight.recipe.CookingPotRecipe;
@@ -90,7 +91,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		if (getLevel() == null)
 			throw new NullPointerException("Null world invoked");
 		final BlockState belowState = this.getLevel().getBlockState(getBlockPos().below());
-		final var optionalList = Registry.BLOCK.getTag(TagsRegistry.ALLOWS_COOKING_ON_PAN);
+		final var optionalList = Registry.BLOCK.getTag(TagsRegistry.ALLOWS_COOKING);
 		final var entryList = optionalList.orElse(null);
 		if (entryList == null) {
 			return false;
@@ -129,9 +130,6 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 			}
 		}
 		else {
-			//if (CandlelightGeneralUtil.isFDLoaded()){
-				//return FarmersCookingPot.canCraft(recipe, this);
-			//}
 		}
 		return false;
 	}
@@ -148,18 +146,14 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 			outputSlotStack.grow(recipeOutput.getCount());
 		}
 		final NonNullList<Ingredient> ingredients = recipe.getIngredients();
-		// each slot can only be used once because in canMake we only checked if decrement by 1 still retains the recipe
-		// otherwise recipes can break when an ingredient is used multiple times
 		boolean[] slotUsed = new boolean[INGREDIENTS_AREA];
 		for (int i = 0; i < recipe.getIngredients().size(); i++) {
 			Ingredient ingredient = ingredients.get(i);
-			// Looks for the best slot to take it from
 			final ItemStack bestSlot = this.getItem(i);
 			if (ingredient.test(bestSlot) && !slotUsed[i]) {
 				slotUsed[i] = true;
 				bestSlot.shrink(1);
 			} else {
-				// check all slots in search of the ingredient
 				for (int j = 0; j < INGREDIENTS_AREA; j++) {
 					ItemStack stack = this.getItem(j);
 					if (ingredient.test(stack) && !slotUsed[j]) {
@@ -205,9 +199,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 			return;
 		}
 		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
-		//if(recipe == null && VineryUtils.isFDLoaded()){
-			//recipe = FarmersCookingPot.getRecipe(world, this);
-		//}
+
 
 		boolean canCraft = canCraft(recipe);
 		if (canCraft) {
@@ -279,18 +271,16 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 	public void clearContent() {
 		inventory.clear();
 	}
-	
+
 	@Override
 	public Component getDisplayName() {
 		return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
 	}
-	
+
 	@Nullable
 	@Override
 	public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
-		//TODO
-		//return new CookingPotGuiHandler(syncId, inv, this, this.delegate);
-		return null;
+		return new CookingPotGuiHandler(syncId, inv, this, this.delegate);
 	}
 }
 
