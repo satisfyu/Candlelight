@@ -10,7 +10,7 @@
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:chicken_alfredo"

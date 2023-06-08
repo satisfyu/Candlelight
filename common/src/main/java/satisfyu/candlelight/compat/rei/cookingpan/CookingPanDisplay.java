@@ -21,7 +21,6 @@ public class CookingPanDisplay extends BasicDisplay {
 
     public static final CategoryIdentifier<CookingPanDisplay> COOKING_PAN_DISPLAY = CategoryIdentifier.of(Candlelight.MOD_ID, "cooking_pan_display");
 
-
     public CookingPanDisplay(Recipe<Container> recipe) {
         this(EntryIngredients.ofIngredients(CandlelightReiClientPlugin.ingredients(recipe, getContainer(recipe))), Collections.singletonList(EntryIngredients.of(recipe.getResultItem())), Optional.ofNullable(recipe.getId()));
     }

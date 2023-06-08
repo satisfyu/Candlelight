@@ -13,20 +13,20 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
-import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
+import satisfyu.candlelight.client.gui.handler.CookingPanGuiHandler;
 import satisfyu.candlelight.client.recipebook.PrivateRecipeBookWidget;
 import satisfyu.candlelight.client.screen.recipe.custom.CookingPanRecipeBook;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
 @Environment(EnvType.CLIENT)
-public class CookingPanGui extends AbstractContainerScreen<CookingPotGuiHandler> {
+public class CookingPanGui extends AbstractContainerScreen<CookingPanGuiHandler> {
     private static final ResourceLocation RECIPE_BUTTON_TEXTURE;
     public final PrivateRecipeBookWidget recipeBook;
     private boolean narrow;
     private static final ResourceLocation BACKGROUND;
 
 
-    public CookingPanGui(CookingPotGuiHandler handler, Inventory playerInventory, Component title) {
+    public CookingPanGui(CookingPanGuiHandler handler, Inventory playerInventory, Component title) {
         super(handler, playerInventory, title);
         this.recipeBook = new CookingPanRecipeBook();
     }

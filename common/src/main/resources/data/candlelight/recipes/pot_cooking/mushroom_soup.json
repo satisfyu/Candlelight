@@ -5,7 +5,7 @@
       "tag": "c:mushrooms"
     },
     {
-      "tag": "vinery:red_wine"
+      "tag": "candlelight:red_effect"
     },
     {
       "item": "candlelight:butter"
@@ -15,7 +15,7 @@
     }
   ],
   "container": {
-    "item": "candlelight:tray"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:mushroom_soup",

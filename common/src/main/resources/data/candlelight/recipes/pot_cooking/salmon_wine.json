@@ -5,16 +5,18 @@
       "item": "minecraft:salmon"
     },
     {
-      "tag": "vinery:white_wine"
+      "tag": "candlelight:white_effect"
     },
     {
       "item": "candlelight:butter"
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
-  "item": "candlelight:salmon_wine",
-  "count": 2,
-  "experience": 0.25
+  "result": {
+    "item": "candlelight:salmon_wine",
+    "count": 2,
+    "experience": 0.25
+  }
 }

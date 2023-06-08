@@ -11,7 +11,12 @@
       "tag": "c:cheese"
     }
   ],
-  "item": "candlelight:lasagne",
-  "count": 6,
-  "experience": 0.15
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "candlelight:lasagne",
+    "count": 6,
+    "experience": 0.15
+  }
 }

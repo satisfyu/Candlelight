@@ -1,6 +1,7 @@
 package satisfyu.candlelight.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
@@ -13,23 +14,27 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.CookingPanBlock;
-import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
+import satisfyu.candlelight.client.gui.handler.CookingPanGuiHandler;
 import satisfyu.candlelight.item.food.EffectFood;
 import satisfyu.candlelight.item.food.EffectFoodHelper;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.RecipeTypeRegistry;
 import satisfyu.candlelight.registry.TagsRegistry;
+
+import java.util.Optional;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
@@ -92,14 +97,14 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		if (level == null)
 			throw new NullPointerException("Null world invoked");
 		final BlockState belowState = level.getBlockState(getBlockPos().below());
-		final var optionalList = Registry.BLOCK.getTag(TagsRegistry.ALLOWS_COOKING);
-		final var entryList = optionalList.orElse(null);
-		if (entryList == null) {
-			return false;
-		} else if (!entryList.contains(belowState.getBlock().builtInRegistryHolder())) {
-			return false;
-		} else
-			return belowState.getValue(BlockStateProperties.LIT);
+		if (belowState.is(TagsRegistry.ALLOWS_COOKING)) {
+			try {
+				return belowState.getValue(BlockStateProperties.LIT);
+			} catch (IllegalArgumentException e) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private boolean canCraft(Recipe<?> recipe) {
@@ -172,16 +177,13 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	private ItemStack generateOutputItem(Recipe<?> recipe) {
 		ItemStack outputStack = recipe.getResultItem();
 
-		if (!(outputStack.getItem() instanceof EffectFood)) {
-			return outputStack;
-		}
-
-		for (Ingredient ingredient : recipe.getIngredients()) {
-			for (int j = 0; j < 6; j++) {
-				ItemStack stack = this.getItem(j);
-				if (ingredient.test(stack)) {
-					EffectFoodHelper.getEffects(stack).forEach(effect -> EffectFoodHelper.addEffect(outputStack, effect));
-					break;
+		if ((outputStack.getItem() instanceof EffectFood)) {
+			for (Ingredient ingredient : recipe.getIngredients()) {
+				for (int slot = 0; slot < 6; slot++) {
+					ItemStack stack = this.getItem(slot);
+					if (ingredient.test(stack)) {
+						EffectFoodHelper.getEffects(stack).forEach(effect -> EffectFoodHelper.addEffect(outputStack, effect));
+					}
 				}
 			}
 		}
@@ -280,7 +282,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	@Nullable
 	@Override
 	public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
-		return new CookingPotGuiHandler(syncId, inv, this, this.delegate);
+		return new CookingPanGuiHandler(syncId, inv, this, this.delegate);
 	}
 }
 

@@ -8,11 +8,11 @@
       "item": "candlelight:butter"
     },
     {
-      "tag": "vinery:wine"
+      "tag": "candlelight:all_effects"
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:cooked_beef",

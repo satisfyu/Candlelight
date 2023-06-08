@@ -24,7 +24,7 @@ public class CookingPotCategory implements DisplayCategory<CookingPotDisplay> {
 
     @Override
     public Component getTitle() {
-        return Component.translatable("rei.vinery.cooking_pot_category");
+        return Component.translatable("rei.candlelight.cooking_pot_category");
     }
 
     @Override

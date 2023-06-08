@@ -1,6 +1,5 @@
 {
   "type": "candlelight:pan_cooking",
-
   "ingredients": [
     {
       "item": "candlelight:tomato_soup"
@@ -9,11 +8,11 @@
       "tag": "c:cooked_beef"
     },
     {
-      "tag": "vinery:red_wine"
+      "tag": "candlelight:red_effect"
     }
   ],
   "container": {
-    "tag": "c:bowls"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:bolognese"

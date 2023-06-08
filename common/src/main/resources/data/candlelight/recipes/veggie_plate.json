@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "#P ",
-        "CSB"
+        "TTB"
     ],
     "key": {
         "#": {
@@ -11,10 +11,7 @@
         "P": {
             "item": "minecraft:potato"
         },
-        "C": {
-      "tag": "c:crops/tomato"
-        },
-        "S": {
+        "T": {
       "tag": "c:crops/tomato"
         },
         "B": {

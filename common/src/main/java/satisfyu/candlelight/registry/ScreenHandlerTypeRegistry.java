@@ -5,6 +5,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.world.inventory.MenuType;
 import satisfyu.candlelight.Candlelight;
+import satisfyu.candlelight.client.gui.handler.CookingPanGuiHandler;
 import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
 import satisfyu.candlelight.client.gui.handler.LetterGuiHandler;
 
@@ -15,7 +16,7 @@ public class ScreenHandlerTypeRegistry {
 
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(Candlelight.MOD_ID, Registry.MENU_REGISTRY);
 
-    public static final RegistrySupplier<MenuType<CookingPotGuiHandler>> COOKING_PAN_SCREEN_HANDLER = create("cooking_pan_gui_handler", () -> new MenuType<>(CookingPotGuiHandler::new)) ;
+    public static final RegistrySupplier<MenuType<CookingPanGuiHandler>> COOKING_PAN_SCREEN_HANDLER = create("cooking_pan_gui_handler", () -> new MenuType<>(CookingPanGuiHandler::new)) ;
     public static final RegistrySupplier<MenuType<CookingPotGuiHandler>> COOKING_POT_SCREEN_HANDLER = create("cooking_pot_gui_handler", () -> new MenuType<>(CookingPotGuiHandler::new)) ;
     public static final RegistrySupplier<MenuType<LetterGuiHandler>> LETTER_SCREEN_HANDLER = create("letter_screen", () -> new MenuType<>(LetterGuiHandler::new));
 
