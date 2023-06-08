@@ -1,4 +1,4 @@
-package satisfyu.candlelight.client.screen;
+package satisfyu.candlelight.client;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.systems.RenderSystem;

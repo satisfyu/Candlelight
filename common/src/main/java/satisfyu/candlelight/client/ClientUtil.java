@@ -19,8 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import satisfyu.candlelight.block.entity.TypeWriterEntity;
 import satisfyu.candlelight.client.screen.NoteEditScreen;
 import satisfyu.candlelight.client.screen.NotePaperScreen;
-import satisfyu.candlelight.client.screen.SignedPaperScreen;
-import satisfyu.candlelight.client.screen.TypeWriterScreen;
 
 public class ClientUtil {
 

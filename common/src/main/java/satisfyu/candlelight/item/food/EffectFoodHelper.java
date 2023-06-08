@@ -2,13 +2,14 @@ package satisfyu.candlelight.item.food;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 public class EffectFoodHelper {
     public static final String STORED_EFFECTS_KEY = "StoredEffects";

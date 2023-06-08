@@ -33,7 +33,6 @@ import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.SoundEventsRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
-import satisfyu.candlelight.registry.TagsRegistry;
 
 import java.util.HashMap;
 import java.util.Map;

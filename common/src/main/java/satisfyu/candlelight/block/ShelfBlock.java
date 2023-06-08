@@ -13,11 +13,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.candlelight.block.entity.StorageBlockEntity;
 import satisfyu.candlelight.registry.StorageTypesRegistry;
 import satisfyu.candlelight.registry.TagsRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
-
 
 import java.util.HashMap;
 import java.util.Map;

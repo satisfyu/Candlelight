@@ -21,7 +21,6 @@ import satisfyu.candlelight.client.recipebook.custom.CookingPotRecipeBookGroup;
 import satisfyu.candlelight.recipe.CookingPotRecipe;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
-
 import java.util.List;
 
 public class CookingPotGuiHandler extends AbstractPrivateRecipeScreenHandler {

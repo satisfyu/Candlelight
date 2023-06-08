@@ -5,7 +5,6 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfyu.candlelight.Candlelight;
-import satisfyu.candlelight.block.StorageBlock;
 import satisfyu.candlelight.block.entity.*;
 
 import java.util.function.Supplier;
@@ -16,7 +15,6 @@ public class BlockEntityRegistry {
 
     public static final RegistrySupplier<BlockEntityType<StorageBlockEntity>> STORAGE_BLOCK_ENTITY = create("storage_block", () -> BlockEntityType.Builder.of(StorageBlockEntity::new, ObjectRegistry.OAK_CABINET.get(), ObjectRegistry.OAK_DRAWER.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<CookingPotEntity>> COOKING_POT_BLOCK_ENTITY = create("cooking_pot", () -> BlockEntityType.Builder.of(CookingPotEntity::new, ObjectRegistry.COOKING_POT.get()).build(null));
-    //public static final RegistrySupplier<BlockEntityType<WoodFiredOvenBlockEntity>> WOOD_FIRED_OVEN_BLOCK_ENTITY = create("wood_fired_oven",() -> BlockEntityType.Builder.of(WoodFiredOvenBlockEntity::new, ObjectRegistry.SANDSTONE_WOOD_FIRED_OVEN.get(), ObjectRegistry.RED_NETHER_BRICKS_WOOD_FIRED_OVEN.get(), ObjectRegistry.MUD_WOOD_FIRED_OVEN.get(), ObjectRegistry.GRANITE_WOOD_FIRED_OVEN.get(), ObjectRegistry.STONE_BRICKS_WOOD_FIRED_OVEN.get(), ObjectRegistry.COBBLESTONE_WOOD_FIRED_OVEN.get(), ObjectRegistry.QUARTZ_WOOD_FIRED_OVEN.get(), ObjectRegistry.END_WOOD_FIRED_OVEN.get(), ObjectRegistry.DEEPSLATE_WOOD_FIRED_OVEN.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<SideBoardBlockEntity>> SIDEBOARD = create("sideboard", () -> BlockEntityType.Builder.of(SideBoardBlockEntity::new, ObjectRegistry.SIDEBOARD.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<TypeWriterEntity>> TYPE_WRITER_BLOCK_ENTITY = create("type_writer", () -> BlockEntityType.Builder.of(TypeWriterEntity::new, ObjectRegistry.TYPEWRITER_IRON.get(), ObjectRegistry.TYPEWRITER_COPPER.get()).build(null));
     public static final RegistrySupplier<BlockEntityType<CookingPanEntity>> COOKING_PAN_BLOCK_ENTITY = create("cooking_pan", () -> BlockEntityType.Builder.of(CookingPanEntity::new, ObjectRegistry.COOKING_PAN.get()).build(null));

@@ -48,12 +48,12 @@ public class TomatoCropBlock extends CropBlock {
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int i = state.getValue(AGE);
-        boolean bl = i == 5;
+        boolean bl = i == 4;
         if (!bl && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (i > 1) {
-            int x = world.random.nextInt(2);
-            popResource(world, pos, new ItemStack(ObjectRegistry.TOMATO.get(), x + (bl ? 1 : 0)));
+            int tomatoCount = world.random.nextInt(2) + (bl ? 1 : 0);
+            popResource(world, pos, new ItemStack(ObjectRegistry.TOMATO.get(), tomatoCount));
             world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             world.setBlock(pos, state.setValue(AGE, 1), 2);
             return InteractionResult.sidedSuccess(world.isClientSide);

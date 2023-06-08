@@ -1,4 +1,4 @@
-package satisfyu.candlelight.client.screen;
+package satisfyu.candlelight.client;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -40,6 +40,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.client.screen.NotePaperScreen;
 import satisfyu.candlelight.networking.CandlelightMessages;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 

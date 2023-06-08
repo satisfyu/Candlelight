@@ -5,7 +5,6 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.Foods;
@@ -22,8 +21,10 @@ import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.block.*;
-import satisfyu.candlelight.bakingmod.ChocolateBoxBlock;
-import satisfyu.candlelight.block.crops.*;
+import satisfyu.candlelight.block.crops.BroccoliCropBlock;
+import satisfyu.candlelight.block.crops.TomatoCropBlock;
+import satisfyu.candlelight.block.crops.WildBroccoli;
+import satisfyu.candlelight.block.crops.WildBushTomato;
 import satisfyu.candlelight.food.CandlelightFoods;
 import satisfyu.candlelight.food.EffectFoodBlockItem;
 import satisfyu.candlelight.item.*;
@@ -33,71 +34,11 @@ import satisfyu.candlelight.util.CandlelightIdentifier;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-@SuppressWarnings("unused")
 public class ObjectRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Candlelight.MOD_ID, Registry.ITEM_REGISTRY);
     public static final Registrar<Item> ITEM_REGISTRAR = ITEMS.getRegistrar();
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Candlelight.MOD_ID, Registry.BLOCK_REGISTRY);
     public static final Registrar<Block> BLOCK_REGISTRAR = BLOCKS.getRegistrar();
-    //TODO BAKING
-    //public static final RegistrySupplier<Block> CRUSTY_BREAD = registerWithItem("crusty_bread", () -> new BreadBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).noOcclusion()));
-    //public static final RegistrySupplier<Block> APPLE_PIE = registerWithItem("apple_pie", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), APPLE_PIE_SLICE));
-    //public static final RegistrySupplier<Block> CHERRY_JAR = registerWithItem("cherry_jar", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion()));
-    //public static final RegistrySupplier<Block> STRAWBERRY_JAM = registerWithItem("strawberry_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion().sound(SoundType.GLASS)));
-    //public static final RegistrySupplier<Block> CHERRY_JAM = registerWithItem("cherry_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion()));
-    //public static final RegistrySupplier<Block> SWEETBERRY_JAM = registerWithItem("sweetberry_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion().sound(SoundType.GLASS)));
-    //public static final RegistrySupplier<Block> GRAPE_JAM = registerWithItem("grape_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion().sound(SoundType.GLASS)));
-    //public static final RegistrySupplier<Block> APPLE_JAM = registerWithItem("apple_jam", () -> new StackableBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion()));
-    //public static final RegistrySupplier<Block> COBBLESTONE_WOOD_FIRED_OVEN = registerWithItem("cobblestone_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> SANDSTONE_WOOD_FIRED_OVEN = registerWithItem("sandstone_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> STONE_BRICKS_WOOD_FIRED_OVEN = registerWithItem("stone_bricks_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> DEEPSLATE_WOOD_FIRED_OVEN = registerWithItem("deepslate_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> GRANITE_WOOD_FIRED_OVEN = registerWithItem("granite_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> END_WOOD_FIRED_OVEN = registerWithItem("end_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> MUD_WOOD_FIRED_OVEN = registerWithItem("mud_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> QUARTZ_WOOD_FIRED_OVEN = registerWithItem("quartz_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Block> RED_NETHER_BRICKS_WOOD_FIRED_OVEN = registerWithItem("red_nether_bricks_wood_fired_oven", () -> new WoodFiredOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(state -> state.getValue(WoodFiredOvenBlock.LIT) ? 13 : 0)));
-    //public static final RegistrySupplier<Item> APPLE_PIE_SLICE = registerItem("apple_pie_slice", () -> new Item(getSettings().food(Foods.COOKED_BEEF)));
-    //public static final RegistrySupplier<Item> APPLE_CUPCAKE = registerItem("apple_cupcake", () -> new Item(getSettings().food(Foods.GOLDEN_CARROT)));
-    //public static final RegistrySupplier<Item> CHOCOLATE_BREAD = registerItem("chocolate_bread", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Item> TOAST = registerItem("toast", () -> new Item(getSettings().food(Foods.BEETROOT_SOUP)));
-    //public static final RegistrySupplier<Item> DONUT = registerItem("donut", () -> new Item(getSettings().food(Foods.CARROT)));
-    //public static final RegistrySupplier<Item> MILK_BREAD = registerItem("milk_bread", () -> new Item(getSettings().food(Foods.COOKIE)));
-    //public static final RegistrySupplier<Item> BREAD_SLICE = registerItem("bread_slice", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
-    //public static final RegistrySupplier<Item> DOUGH = registerItem("dough", () -> new Item(getSettings()));
-    //public static final RegistrySupplier<Item> WAFFLE = registerItem("waffle", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
-    //public static final RegistrySupplier<Item> STRAWBERRY_GLAZED_COOKIE = registerItem("strawberry_glazed_cookie", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Item> SWEETBERRY_GLAZED_COOKIE = registerItem("sweetberry_glazed_cookie", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Item> CHOCOLATE_GLAZED_COOKIE = registerItem("chocolate_glazed_cookie", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Item> CROISSANT = registerItem("croissant", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Item> BUNDT_CAKE = registerItem("bundt_cake", () -> new Item(getSettings().food(Foods.COOKED_BEEF)));
-    //public static final RegistrySupplier<Item> STRAWBERRY_CHOCOLATE = registerItem("strawberry_chocolate", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Item> CHOCOLATE = registerItem("chocolate", () -> new IngredientItem(getSettings().food(Foods.APPLE)));
-    //public static final RegistrySupplier<Item> STRAWBERRY_CAKE_SLICE = registerItem("strawberry_cake_slice", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Block> STRAWBERRY_CAKE = registerWithItem("strawberry_cake", () -> new CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ObjectRegistry.STRAWBERRY_CAKE_SLICE));
-    //public static final RegistrySupplier<Item> SWEETBERRY_CAKE_SLICE = registerItem("sweetberry_cake_slice", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Block> SWEETBERRY_CAKE = registerWithItem("sweetberry_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.SWEETBERRY_CAKE_SLICE));
-    //public static final RegistrySupplier<Item> CHOCOLATE_CAKE_SLICE = registerItem("chocolate_cake_slice", () -> new Item(getSettings().food(Foods.BREAD)));
-    //public static final RegistrySupplier<Block> CHOCOLATE_CAKE = registerWithItem("chocolate_cake", () -> new CakeBlock((BlockBehaviour.Properties.copy(Blocks.CAKE)), ObjectRegistry.CHOCOLATE_CAKE_SLICE));
-    //public static final RegistrySupplier<Block> STRAWBERRY_CROP = registerWithoutItem("strawberry_crop", () -> new StrawberryCropBlock(getBushSettings()));
-    //public static final RegistrySupplier<Item> STRAWBERRY_SEEDS = registerItem("strawberry_seeds", () -> new SeedItemBlock(STRAWBERRY_CROP.get(), getSettings()));
-    //public static final RegistrySupplier<Item> STRAWBERRY = registerItem("strawberry", () -> new IngredientItem(getSettings().food(Foods.BEETROOT)));
-    //public static final RegistrySupplier<Block> STRAWBERRY_CRATE = registerWithItem("strawberry_crate", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    //public static final RegistrySupplier<Block> STRAWBERRY_WILD_TAIGA = registerWithoutItem("strawberry_wild_taiga", () -> new WildBush(getBushSettings()));
-    //public static final RegistrySupplier<Block> STRAWBERRY_WILD_JUNGLE = registerWithoutItem("strawberry_wild_jungle", () -> new WildBushJungle(getBushSettings()));
-    //public static final RegistrySupplier<Block> CAKE_STAND = registerWithItem("cake_stand", () -> new CakeStandBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    //public static final RegistrySupplier<Block> TRAY = registerWithItem("tray", () -> new TrayBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    //public static final RegistrySupplier<Block> STREET_SIGN = registerWithItem("street_sign", () -> new BoardBlock(BlockBehaviour.Properties.of(Material.DECORATION), true));
-    //public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new ChocolateBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
-
-
-
-
-
-    //CANDLELIGHT
-
-    
-    public static final ResourceLocation NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
 
     public static final RegistrySupplier<Block> BROCCOLI_CROP = registerWithoutItem("broccoli_crop", () -> new BroccoliCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
     public static final RegistrySupplier<Item> BROCCOLI_SEEDS = registerItem("broccoli_seeds", () -> new SeedItemBlock(BROCCOLI_CROP.get(), getSettings()));
@@ -265,8 +206,6 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> CRIMSON_SHELF = registerWithItem("crimson_shelf", () -> new ShelfBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final RegistrySupplier<Block> CRIMSON_BIG_TABLE = registerWithItem("crimson_big_table", () -> new BigTableBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F, 2.0F)));
     public static final RegistrySupplier<Block> POTTED_ROSE = registerWithoutItem("potted_rose", () -> new FlowerPotBlock(ObjectRegistry.ROSE.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
-
-
 
     public static void init() {
         ITEMS.register();

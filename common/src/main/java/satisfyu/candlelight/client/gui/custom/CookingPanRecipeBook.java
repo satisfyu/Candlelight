@@ -1,4 +1,4 @@
-package satisfyu.candlelight.client.screen.recipe.custom;
+package satisfyu.candlelight.client.gui.custom;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -18,12 +18,11 @@ import satisfyu.candlelight.recipe.CookingPanRecipe;
 import satisfyu.candlelight.registry.RecipeTypeRegistry;
 
 import java.util.List;
-
 @Environment(EnvType.CLIENT)
-public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
+public class CookingPanRecipeBook extends PrivateRecipeBookWidget {
     private static final Component TOGGLE_COOKABLE_TEXT;
 
-    public CookingPotRecipeBook() {
+    public CookingPanRecipeBook() {
     }
 
     @Override

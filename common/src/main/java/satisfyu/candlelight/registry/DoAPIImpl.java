@@ -17,17 +17,14 @@ import java.util.Set;
 @DoApiPlugin
 public class DoAPIImpl implements DoApiAPI {
 
-    //public static final ResourceLocation CAKE_STAND = new CandlelightIdentifier("cake_stand");
 
     public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
+    public static final ResourceLocation NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
 
-    //public static final ResourceLocation TRAY = new CandlelightIdentifier("tray");
 
     @Override
     public void registerBlocks(Set<Block> blocks) {
-        //blocks.add(ObjectRegistry.CAKE_STAND.get());
         blocks.add(ObjectRegistry.TABLE_SET.get());
-        //blocks.add(ObjectRegistry.TRAY.get());
 
     }
 

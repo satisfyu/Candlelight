@@ -32,8 +32,8 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.DoAPIImpl;
+import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;

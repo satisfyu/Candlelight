@@ -2,7 +2,6 @@ package satisfyu.candlelight.block;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.StringTag;

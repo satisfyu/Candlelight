@@ -15,7 +15,7 @@ import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
 import satisfyu.candlelight.client.recipebook.PrivateRecipeBookWidget;
-import satisfyu.candlelight.client.screen.recipe.custom.CookingPanRecipeBook;
+import satisfyu.candlelight.client.gui.custom.CookingPanRecipeBook;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
 @Environment(EnvType.CLIENT)

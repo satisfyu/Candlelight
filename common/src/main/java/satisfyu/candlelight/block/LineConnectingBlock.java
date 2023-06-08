@@ -104,5 +104,4 @@ public class LineConnectingBlock extends Block {
         FACING = BlockStateProperties.HORIZONTAL_FACING;
         TYPE = CandlelightProperties.LINE_CONNECTING_TYPE;
     }
-
 }

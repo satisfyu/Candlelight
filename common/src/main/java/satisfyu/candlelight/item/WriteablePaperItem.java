@@ -16,7 +16,6 @@ public class WriteablePaperItem extends Item {
 
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
-        //user.useBook(itemStack, hand);
         if(world.isClientSide())
         {
             ClientUtil.setNotePaperScreen(user, itemStack, hand);

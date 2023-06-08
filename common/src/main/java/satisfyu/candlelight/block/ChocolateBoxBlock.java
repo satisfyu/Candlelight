@@ -1,4 +1,4 @@
-package satisfyu.candlelight.bakingmod;
+package satisfyu.candlelight.block;
 
 import de.cristelknight.doapi.block.FacingBlock;
 import net.minecraft.ChatFormatting;

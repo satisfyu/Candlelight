@@ -6,26 +6,20 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 public class CandlelightGeneralUtil {
 	public static Collection<ServerPlayer> tracking(ServerLevel world, BlockPos pos) {
@@ -53,19 +47,6 @@ public class CandlelightGeneralUtil {
 		Objects.requireNonNull(pos, "The chunk pos cannot be null");
 
 		return world.getChunkSource().chunkMap.getPlayers(pos, false);
-	}
-
-	public static RotatedPillarBlock logBlock(MaterialColor wood, MaterialColor bark) {
-		return new RotatedPillarBlock(
-				BlockBehaviour.Properties.of(
-						Material.WOOD,
-						(state) -> Direction.Axis.Y.equals(state.getValue(RotatedPillarBlock.AXIS)) ? wood : bark
-				).strength(2.0F).sound(SoundType.WOOD)
-		);
-	}
-
-	public static RotatedPillarBlock logBlock() {
-		return new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG));
 	}
 
 	public static boolean matchesRecipe(Container inventory, NonNullList<Ingredient> recipe, int startIndex, int endIndex) {
@@ -102,10 +83,6 @@ public class CandlelightGeneralUtil {
 		return ingredients;
 	}
 	
-	public static boolean isIndexInRange(int index, int startInclusive, int endInclusive) {
-		return index >= startInclusive && index <= endInclusive;
-	}
-	
 	public static VoxelShape rotateShape(Direction from, Direction to, VoxelShape shape) {
 		VoxelShape[] buffer = new VoxelShape[] { shape, Shapes.empty() };
 		
@@ -120,35 +97,4 @@ public class CandlelightGeneralUtil {
 		}
 		return buffer[0];
 	}
-	
-	public static Optional<Tuple<Float, Float>> getRelativeHitCoordinatesForBlockFace(BlockHitResult blockHitResult, Direction direction, Direction[] unAllowedDirections) {
-		Direction direction2 = blockHitResult.getDirection();
-		if (unAllowedDirections == null)
-			unAllowedDirections = new Direction[] { Direction.DOWN, Direction.UP };
-		if (Arrays.stream(unAllowedDirections).toList().contains(direction2))
-			return Optional.empty();
-		if (direction != direction2 && direction2 != Direction.UP && direction2 != Direction.DOWN) {
-			return Optional.empty();
-		} else {
-			BlockPos blockPos = blockHitResult.getBlockPos().relative(direction2);
-			Vec3 vec3 = blockHitResult.getLocation().subtract(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-			float d = (float) vec3.x();
-			float f = (float) vec3.z();
-			
-			float y = (float) vec3.y();
-			
-			if (direction2 == Direction.UP || direction2 == Direction.DOWN)
-				direction2 = direction;
-			return switch (direction2) {
-				case NORTH -> Optional.of(new Tuple<>((float) (1.0 - d), y));
-				case SOUTH -> Optional.of(new Tuple<>(d, y));
-				case WEST -> Optional.of(new Tuple<>(f, y));
-				case EAST -> Optional.of(new Tuple<>((float) (1.0 - f), y));
-				case DOWN, UP -> Optional.empty();
-			};
-		}
-	}
-
-
-	
 }

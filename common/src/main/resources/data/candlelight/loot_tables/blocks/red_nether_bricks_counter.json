@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "candlelight:red_stone_bricks_counter"
+          "name": "candlelight:red_nether_bricks_counter"
         }
       ],
       "rolls": 1.0

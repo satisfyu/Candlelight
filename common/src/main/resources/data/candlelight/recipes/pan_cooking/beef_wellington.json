@@ -11,6 +11,9 @@
       "item": "candlelight:mushroom_soup"
     }
   ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
   "item": "candlelight:beef_wellington",
   "count": 1,
   "experience": 0.75

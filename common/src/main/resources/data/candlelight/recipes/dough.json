@@ -6,7 +6,7 @@
   ],
   "key": {
     "B": { "item": "minecraft:water_bucket" },
-    "#": { "item": "c:wheat" }
+    "#": { "tag": "c:wheat" }
   },
   "result": {
     "item": "candlelight:dough",

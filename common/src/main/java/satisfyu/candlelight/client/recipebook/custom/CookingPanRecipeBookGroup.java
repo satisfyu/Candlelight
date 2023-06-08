@@ -8,7 +8,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Blocks;
 import satisfyu.candlelight.client.recipebook.IRecipeBookGroup;
-import satisfyu.candlelight.registry.ObjectRegistry;
 
 import java.util.List;
 
