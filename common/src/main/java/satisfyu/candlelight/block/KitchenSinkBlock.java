@@ -32,6 +32,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.SoundEventsRegistry;
+import satisfyu.candlelight.registry.TagsRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;

@@ -29,7 +29,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.client.CandlelightClient;
-import satisfyu.candlelight.client.screen.PrivateRecipeBookRecipeArea;
+import satisfyu.candlelight.client.gui.custom.PrivateRecipeBookRecipeArea;
 
 import java.util.Iterator;
 import java.util.List;

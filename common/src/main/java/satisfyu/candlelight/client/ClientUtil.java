@@ -17,27 +17,29 @@ import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import satisfyu.candlelight.block.entity.TypeWriterEntity;
-import satisfyu.candlelight.client.screen.NoteEditScreen;
-import satisfyu.candlelight.client.screen.NotePaperScreen;
+import satisfyu.candlelight.client.gui.SignedPaperGui;
+import satisfyu.candlelight.client.gui.TypeWriterGui;
+import satisfyu.candlelight.client.gui.NoteEditGui;
+import satisfyu.candlelight.client.gui.NotePaperGui;
 
 public class ClientUtil {
 
     public static void setNoteEditScreen(Player user, ItemStack stack, InteractionHand hand){
-        Minecraft.getInstance().setScreen(new NoteEditScreen(user, stack, hand));
+        Minecraft.getInstance().setScreen(new NoteEditGui(user, stack, hand));
     }
 
     public static void setNotePaperScreen(Player user, ItemStack stack, InteractionHand hand){
-        Minecraft.getInstance().setScreen(new NotePaperScreen(user, stack, hand));
+        Minecraft.getInstance().setScreen(new NotePaperGui(user, stack, hand));
     }
 
 
     public static void setTypeWriterScreen(Player user, TypeWriterEntity typeWriterEntity, InteractionHand hand, BlockPos pos){
         if(user instanceof LocalPlayer)
-            Minecraft.getInstance().setScreen(new TypeWriterScreen(user, typeWriterEntity.getPaper(), hand, pos));
+            Minecraft.getInstance().setScreen(new TypeWriterGui(user, typeWriterEntity.getPaper(), hand, pos));
     }
 
     public static void setSignedPaperScreen(ItemStack stack){
-        Minecraft.getInstance().setScreen(new SignedPaperScreen(new SignedPaperScreen.WrittenBookContents(stack)));
+        Minecraft.getInstance().setScreen(new SignedPaperGui(new SignedPaperGui.WrittenBookContents(stack)));
     }
 
     public static <T extends BlockEntity> void renderBlock(BlockState state, PoseStack matrices, MultiBufferSource vertexConsumers, T entity){

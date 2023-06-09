@@ -1,34 +1,34 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_beef": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "candlelight:mozzarella"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_water_bucket": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:beef"
+              "minecraft:water_bucket"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "candlelight:beef_tartare"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_beef",
+      "has_water_bucket",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "candlelight:beef_tartare"
+      "candlelight:mozzarella"
     ]
   }
 }

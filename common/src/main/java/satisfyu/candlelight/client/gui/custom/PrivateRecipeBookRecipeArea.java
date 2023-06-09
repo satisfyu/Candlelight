@@ -1,4 +1,4 @@
-package satisfyu.candlelight.client.screen;
+package satisfyu.candlelight.client.gui.custom;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;

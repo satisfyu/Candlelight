@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:glass_panes"
+    "#candlelight:glass_panes"
   ]
 }

@@ -1,4 +1,4 @@
-package satisfyu.candlelight.client.screen;
+package satisfyu.candlelight.client.gui.custom;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;

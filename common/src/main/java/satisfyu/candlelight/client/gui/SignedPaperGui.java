@@ -1,4 +1,4 @@
-package satisfyu.candlelight.client;
+package satisfyu.candlelight.client.gui;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -30,7 +30,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 @Environment(EnvType.CLIENT)
-public class SignedPaperScreen extends Screen{
+public class SignedPaperGui extends Screen{
     public static final Contents EMPTY_PROVIDER = new Contents() {
         public int getPageCount() {
             return 0;
@@ -46,7 +46,7 @@ public class SignedPaperScreen extends Screen{
     private List<FormattedCharSequence> cachedPage;
     private int cachedPageIndex;
 
-    public SignedPaperScreen(Contents contents) {
+    public SignedPaperGui(Contents contents) {
         super(GameNarrator.NO_TITLE);
         this.cachedPage = Collections.emptyList();
         this.cachedPageIndex = -1;

@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package satisfyu.candlelight.client.screen;
+package satisfyu.candlelight.client.gui;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.GlStateManager.LogicOp;
@@ -54,7 +54,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 @Environment(EnvType.CLIENT)
-public class NoteEditScreen extends Screen {
+public class NoteEditGui extends Screen {
     public static final ResourceLocation BOOK_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private static final Component EDIT_TITLE_TEXT = Component.literal("Enter Note Title");
     private static final Component FINALIZE_WARNING_TEXT = Component.translatable("book.finalizeWarning");
@@ -86,7 +86,7 @@ public class NoteEditScreen extends Screen {
     private Component pageIndicatorText;
     private final Component signedByText;
 
-    public NoteEditScreen(Player player, ItemStack itemStack, InteractionHand hand) {
+    public NoteEditGui(Player player, ItemStack itemStack, InteractionHand hand) {
         super(GameNarrator.NO_TITLE);
         this.pageContent = PageContent.EMPTY;
         this.pageIndicatorText = CommonComponents.EMPTY;
@@ -720,7 +720,7 @@ public class NoteEditScreen extends Screen {
         }
 
         public int getVerticalOffset(int position, int lines) {
-            int i = NoteEditScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NoteEditGui.getLineFromOffset(this.lineStarts, position);
             int j = i + lines;
             int m;
             if (0 <= j && j < this.lineStarts.length) {
@@ -735,12 +735,12 @@ public class NoteEditScreen extends Screen {
         }
 
         public int getLineStart(int position) {
-            int i = NoteEditScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NoteEditGui.getLineFromOffset(this.lineStarts, position);
             return this.lineStarts[i];
         }
 
         public int getLineEnd(int position) {
-            int i = NoteEditScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NoteEditGui.getLineFromOffset(this.lineStarts, position);
             return this.lineStarts[i] + this.lines[i].content.length();
         }
 

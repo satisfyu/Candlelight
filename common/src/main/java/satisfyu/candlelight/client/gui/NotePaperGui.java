@@ -1,11 +1,18 @@
-package satisfyu.candlelight.client;
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package satisfyu.candlelight.client.gui;
 
 import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.GlStateManager.LogicOp;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.*;
-import dev.architectury.networking.NetworkManager;
-import io.netty.buffer.Unpooled;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexFormat.Mode;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.fabricmc.api.EnvType;
@@ -19,18 +26,18 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.font.TextFieldHelper;
+import net.minecraft.client.gui.font.TextFieldHelper.CursorStep;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.Rect2i;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.protocol.game.ServerboundEditBookPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.InteractionHand;
@@ -40,17 +47,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.candlelight.client.screen.NotePaperScreen;
-import satisfyu.candlelight.networking.CandlelightMessages;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Stream;
+
 @Environment(EnvType.CLIENT)
-public class TypeWriterScreen extends Screen {
+public class NotePaperGui extends Screen {
     public static final ResourceLocation BOOK_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private static final Component EDIT_TITLE_TEXT = Component.literal("Enter Note Title");
     private static final Component FINALIZE_WARNING_TEXT = Component.translatable("book.finalizeWarning");
@@ -78,9 +81,7 @@ public class TypeWriterScreen extends Screen {
     private PageContent pageContent;
     private final Component signedByText;
 
-    private BlockPos pos;
-
-    public TypeWriterScreen(Player player, ItemStack itemStack, InteractionHand hand) {
+    public NotePaperGui(Player player, ItemStack itemStack, InteractionHand hand) {
         super(GameNarrator.NO_TITLE);
         this.pageContent = PageContent.EMPTY;
         this.player = player;
@@ -98,13 +99,6 @@ public class TypeWriterScreen extends Screen {
         }
 
         this.signedByText = Component.translatable("book.byAuthor", player.getName()).withStyle(ChatFormatting.DARK_GRAY);
-        this.pos = BlockPos.ZERO;
-    }
-
-    public TypeWriterScreen(Player player, ItemStack itemStack, InteractionHand hand, BlockPos pos)
-    {
-        this(player, itemStack, hand);
-        this.pos = pos;
     }
 
     private void setClipboard(String clipboard) {
@@ -181,18 +175,7 @@ public class TypeWriterScreen extends Screen {
             this.removeEmptyPages();
             this.writeNbtData(signBook);
             int i = this.hand == InteractionHand.MAIN_HAND ? this.player.getInventory().selected : 40;
-            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
-            buf.writeNbt(itemStack.getTag());
-            buf.writeBlockPos(pos);
-            buf.writeBoolean(signBook);
-            /*buf.writeCollection(this.pages, (buf2, page) -> {
-                buf2.writeString(page, 8192);
-            });
-            buf.writeOptional(signBook ? Optional.of(this.title.trim()) : Optional.empty(), (buf2, title) -> {
-                buf2.writeString(title, 128);
-            });*/
-            NetworkManager.sendToServer(CandlelightMessages.TYPEWRITER_SYNC, buf);
-            //this.client.getNetworkHandler().sendPacket(new BookUpdateC2SPacket(i, this.pages, signBook ? Optional.of(this.title.trim()) : Optional.empty()));
+            this.minecraft.getConnection().send(new ServerboundEditBookPacket(i, this.pages, signBook ? Optional.of(this.title.trim()) : Optional.empty()));
         }
     }
 
@@ -263,7 +246,7 @@ public class TypeWriterScreen extends Screen {
             this.currentPageSelectionManager.cut();
             return true;
         } else {
-            TextFieldHelper.CursorStep selectionType = Screen.hasControlDown() ? TextFieldHelper.CursorStep.WORD : TextFieldHelper.CursorStep.CHARACTER;
+            CursorStep selectionType = Screen.hasControlDown() ? CursorStep.WORD : CursorStep.CHARACTER;
             switch (keyCode) {
                 case 257, 335 -> {
                     this.currentPageSelectionManager.insertText("\n");
@@ -441,8 +424,8 @@ public class TypeWriterScreen extends Screen {
         RenderSystem.setShaderColor(0.0F, 0.0F, 255.0F, 255.0F);
         RenderSystem.disableTexture();
         RenderSystem.enableColorLogicOp();
-        RenderSystem.logicOp(GlStateManager.LogicOp.OR_REVERSE);
-        bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION);
+        RenderSystem.logicOp(LogicOp.OR_REVERSE);
+        bufferBuilder.begin(Mode.QUADS, DefaultVertexFormat.POSITION);
         int var5 = selectionRectangles.length;
 
         for(int var6 = 0; var6 < var5; ++var6) {
@@ -679,7 +662,7 @@ public class TypeWriterScreen extends Screen {
         }
 
         public int getVerticalOffset(int position, int lines) {
-            int i = NotePaperScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NotePaperGui.getLineFromOffset(this.lineStarts, position);
             int j = i + lines;
             int m;
             if (0 <= j && j < this.lineStarts.length) {
@@ -694,12 +677,12 @@ public class TypeWriterScreen extends Screen {
         }
 
         public int getLineStart(int position) {
-            int i = NotePaperScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NotePaperGui.getLineFromOffset(this.lineStarts, position);
             return this.lineStarts[i];
         }
 
         public int getLineEnd(int position) {
-            int i = NotePaperScreen.getLineFromOffset(this.lineStarts, position);
+            int i = NotePaperGui.getLineFromOffset(this.lineStarts, position);
             return this.lineStarts[i] + this.lines[i].content.length();
         }
 

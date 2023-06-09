@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_beef": {
+    "has_potato": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:beef"
+              "minecraft:potato"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "candlelight:beef_tartare"
+        "recipe": "candlelight:potato_crate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_beef",
+      "has_potato",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "candlelight:beef_tartare"
+      "candlelight:potato_crate"
     ]
   }
 }
