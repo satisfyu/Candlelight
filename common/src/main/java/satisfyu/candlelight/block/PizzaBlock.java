@@ -2,6 +2,7 @@ package satisfyu.candlelight.block;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -25,17 +26,40 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class PizzaBlock extends FacingBlock {
 
-    private static final VoxelShape SHAPE = Block.box(6, 0, 6, 12, 4, 12);
-    public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 3);
+    public static final IntegerProperty CUTS = IntegerProperty.create("cuts", 0, 4);
     private final RegistrySupplier<Item> slice;
+
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.125, 0, 0.125, 0.875, 0.0625, 0.875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.0625, 0.1875, 0.8125, 0.125, 0.8125), BooleanOp.OR);
+        return shape;
+    };
+
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.get(state.getValue(FACING));
+    }
 
     public PizzaBlock(Properties settings, RegistrySupplier<Item> slice) {
         super(settings);
@@ -47,19 +71,16 @@ public class PizzaBlock extends FacingBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(CUTS);
-
     }
 
-
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+    public IntegerProperty getCutsProperty() {
+        return CUTS;
     }
 
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
-        if (world.isClientSide) {
+        if (world.isClientSide()) {
             if (tryEat(world, pos, state, player).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
@@ -79,8 +100,8 @@ public class PizzaBlock extends FacingBlock {
         if (i < 3) {
             world.setBlock(pos, state.setValue(CUTS, i + 1), Block.UPDATE_ALL);
         } else {
-            world.removeBlock(pos, false);
-            world.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+            world.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 0.8f, 0.8f);
+            world.destroyBlock(pos, true);
         }
         return InteractionResult.SUCCESS;
     }
@@ -97,6 +118,7 @@ public class PizzaBlock extends FacingBlock {
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
         return CandlelightGeneralUtil.isFullAndSolid(levelReader, blockPos);
     }
+
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
         tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));

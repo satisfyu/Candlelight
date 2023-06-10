@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "candlelight:faucet"
+    "candlelight:faucet",
+    "vinery:faucet"
   ]
 }
