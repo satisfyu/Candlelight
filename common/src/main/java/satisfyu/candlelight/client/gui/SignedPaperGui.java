@@ -19,9 +19,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.WrittenBookItem;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
 import java.util.Collections;
@@ -190,7 +190,7 @@ public class SignedPaperGui extends Screen{
     }
 
     public static void filterPages(CompoundTag nbt, Consumer<String> pageConsumer) {
-        ListTag nbtList = nbt.getList("pages", 8).copy();
+        ListTag nbtList = nbt.getList("text", 8).copy();
         IntFunction intFunction;
         if (Minecraft.getInstance().isTextFilteringEnabled() && nbt.contains("filtered_pages", 10)) {
             CompoundTag nbtCompound = nbt.getCompound("filtered_pages");
@@ -220,19 +220,19 @@ public class SignedPaperGui extends Screen{
         }
 
         static Contents create(ItemStack stack) {
-            if (stack.is(Items.WRITTEN_BOOK)) {
-                return new WrittenBookContents(stack);
+            if (stack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get())) {
+                return new WrittenPaperContents(stack);
             } else {
-                return stack.is(Items.WRITABLE_BOOK) ? new WritableBookContents(stack) : EMPTY_PROVIDER;
+                return stack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get()) ? new WritablePaperContents(stack) : EMPTY_PROVIDER;
             }
         }
     }
 
     @Environment(EnvType.CLIENT)
-    public static class WritableBookContents implements Contents {
+    public static class WritablePaperContents implements Contents {
         private final List<String> pages;
 
-        public WritableBookContents(ItemStack stack) {
+        public WritablePaperContents(ItemStack stack) {
             this.pages = getPages(stack);
         }
 
@@ -246,21 +246,41 @@ public class SignedPaperGui extends Screen{
         }
 
         public FormattedText getPageUnchecked(int index) {
-            return FormattedText.of((String)this.pages.get(index));
+            return FormattedText.of(this.pages.get(index));
         }
     }
 
     @Environment(EnvType.CLIENT)
-    public static class WrittenBookContents implements Contents {
+    public static class WrittenPaperContents implements Contents {
         private final List<String> pages;
 
-        public WrittenBookContents(ItemStack stack) {
+        public WrittenPaperContents(ItemStack stack) {
             this.pages = getPages(stack);
         }
 
         private static List<String> getPages(ItemStack stack) {
             CompoundTag nbtCompound = stack.getTag();
-            return WrittenBookItem.makeSureTagIsValid(nbtCompound) ? readPages(nbtCompound) : ImmutableList.of(Component.Serializer.toJson(Component.translatable("book.invalid.tag").withStyle(ChatFormatting.DARK_RED)));
+            return makeSureTagIsValid(nbtCompound) ? readPages(nbtCompound) : ImmutableList.of(Component.Serializer.toJson(Component.translatable("book.invalid.tag").withStyle(ChatFormatting.DARK_RED)));
+        }
+
+        private static boolean makeSureTagIsValid(CompoundTag nbtCompound) {
+            System.out.println("HEY");
+            if (nbtCompound == null) {
+                return false;
+            }
+            if (!nbtCompound.contains("text", 9)) {
+                System.out.println("text");
+                return false;
+            }
+            ListTag listTag = nbtCompound.getList("text", 8);
+            for (int i = 0; i < listTag.size(); ++i) {
+                String string = listTag.getString(i);
+                if (string.length() <= Short.MAX_VALUE) continue;
+                System.out.println("long");
+                return false;
+            }
+            System.out.println("true");
+            return true;
         }
 
         public int getPageCount() {

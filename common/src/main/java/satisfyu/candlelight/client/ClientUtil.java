@@ -33,13 +33,13 @@ public class ClientUtil {
     }
 
 
-    public static void setTypeWriterScreen(Player user, TypeWriterEntity typeWriterEntity, InteractionHand hand, BlockPos pos){
+    public static void setTypeWriterScreen(Player user, TypeWriterEntity typeWriterEntity){
         if(user instanceof LocalPlayer)
-            Minecraft.getInstance().setScreen(new TypeWriterGui(user, typeWriterEntity.getPaper(), hand, pos));
+            Minecraft.getInstance().setScreen(new TypeWriterGui(user, typeWriterEntity));
     }
 
     public static void setSignedPaperScreen(ItemStack stack){
-        Minecraft.getInstance().setScreen(new SignedPaperGui(new SignedPaperGui.WrittenBookContents(stack)));
+        Minecraft.getInstance().setScreen(new SignedPaperGui(new SignedPaperGui.WrittenPaperContents(stack)));
     }
 
     public static <T extends BlockEntity> void renderBlock(BlockState state, PoseStack matrices, MultiBufferSource vertexConsumers, T entity){

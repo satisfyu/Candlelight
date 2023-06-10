@@ -14,6 +14,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
 import net.minecraft.client.GameNarrator;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.StringSplitter;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
@@ -40,13 +41,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.block.entity.TypeWriterEntity;
 import satisfyu.candlelight.networking.CandlelightMessages;
+import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import java.util.stream.Stream;
 @Environment(EnvType.CLIENT)
 public class TypeWriterGui extends Screen {
@@ -72,24 +77,22 @@ public class TypeWriterGui extends Screen {
     private Button signButton;
     private Button finalizeButton;
     private Button cancelButton;
-    private final InteractionHand hand;
     @Nullable
     private PageContent pageContent;
     private final Component signedByText;
+    private final TypeWriterEntity typeWriterEntity;
 
-    private BlockPos pos;
-
-    public TypeWriterGui(Player player, ItemStack itemStack, InteractionHand hand) {
+    public TypeWriterGui(Player player, TypeWriterEntity typeWriterEntity) {
         super(GameNarrator.NO_TITLE);
         this.pageContent = PageContent.EMPTY;
         this.player = player;
-        this.itemStack = itemStack;
-        this.hand = hand;
+        this.typeWriterEntity = typeWriterEntity;
+        this.itemStack = typeWriterEntity.getPaper();
         CompoundTag nbtCompound = itemStack.getTag();
         if (nbtCompound != null) {
             List<String> string = this.pages;
             Objects.requireNonNull(string);
-            BookViewScreen.loadPages(nbtCompound, string::add);
+            loadPages(nbtCompound, string::add);
         }
 
         if (this.pages.isEmpty()) {
@@ -97,13 +100,25 @@ public class TypeWriterGui extends Screen {
         }
 
         this.signedByText = Component.translatable("book.byAuthor", player.getName()).withStyle(ChatFormatting.DARK_GRAY);
-        this.pos = BlockPos.ZERO;
+
     }
 
-    public TypeWriterGui(Player player, ItemStack itemStack, InteractionHand hand, BlockPos pos)
-    {
-        this(player, itemStack, hand);
-        this.pos = pos;
+    private void loadPages(CompoundTag compoundTag, Consumer<String> consumer) {//TODO maybe auslagern
+        IntFunction<String> intFunction;
+        ListTag listTag = compoundTag.getList("text", 8).copy();
+        if (Minecraft.getInstance().isTextFilteringEnabled() && compoundTag.contains("filtered_pages", 10)) {
+            CompoundTag compoundTag2 = compoundTag.getCompound("filtered_pages");
+            intFunction = i -> {
+                String string = String.valueOf(i);
+                return compoundTag2.contains(string) ? compoundTag2.getString(string) : listTag.getString(i);
+            };
+        } else {
+            intFunction = listTag::getString;
+        }
+        for (int i2 = 0; i2 < listTag.size(); ++i2) {
+            consumer.accept(intFunction.apply(i2));
+        }
+        this.currentPageSelectionManager.setCursorPos(listTag.size(), false);
     }
 
     private void setClipboard(String clipboard) {
@@ -115,10 +130,6 @@ public class TypeWriterGui extends Screen {
 
     private String getClipboard() {
         return this.minecraft != null ? TextFieldHelper.getClipboardContents(this.minecraft) : "";
-    }
-
-    private int countPages() {
-        return this.pages.size();
     }
 
     public void tick() {
@@ -179,19 +190,13 @@ public class TypeWriterGui extends Screen {
         if (this.dirty) {
             this.removeEmptyPages();
             this.writeNbtData(signBook);
-            int i = this.hand == InteractionHand.MAIN_HAND ? this.player.getInventory().selected : 40;
+
             FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
             buf.writeNbt(itemStack.getTag());
-            buf.writeBlockPos(pos);
+            buf.writeBlockPos(typeWriterEntity.getBlockPos());
             buf.writeBoolean(signBook);
-            /*buf.writeCollection(this.pages, (buf2, page) -> {
-                buf2.writeString(page, 8192);
-            });
-            buf.writeOptional(signBook ? Optional.of(this.title.trim()) : Optional.empty(), (buf2, title) -> {
-                buf2.writeString(title, 128);
-            });*/
+
             NetworkManager.sendToServer(CandlelightMessages.TYPEWRITER_SYNC, buf);
-            //this.client.getNetworkHandler().sendPacket(new BookUpdateC2SPacket(i, this.pages, signBook ? Optional.of(this.title.trim()) : Optional.empty()));
         }
     }
 
@@ -201,7 +206,7 @@ public class TypeWriterGui extends Screen {
         Objects.requireNonNull(nbtList);
         nbts.forEach((nbt) -> nbtList.add(nbt));
         if (!this.pages.isEmpty()) {
-            this.itemStack.addTagElement("pages", nbtList);
+            this.itemStack.addTagElement("text", nbtList);
         }
 
         if (signBook) {

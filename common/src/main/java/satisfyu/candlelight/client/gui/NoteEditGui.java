@@ -13,6 +13,8 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat.Mode;
+import dev.architectury.networking.NetworkManager;
+import io.netty.buffer.Unpooled;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.fabricmc.api.EnvType;
@@ -21,6 +23,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
 import net.minecraft.client.GameNarrator;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.StringSplitter;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
@@ -28,13 +31,13 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.font.TextFieldHelper;
 import net.minecraft.client.gui.font.TextFieldHelper.CursorStep;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.BookViewScreen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -48,13 +51,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.networking.CandlelightMessages;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import java.util.stream.Stream;
 
 @Environment(EnvType.CLIENT)
-public class NoteEditGui extends Screen {
+public class NoteEditGui extends Screen { //TODO BOOK -> NOTE // NoteEditGui isnt in use wtf
     public static final ResourceLocation BOOK_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private static final Component EDIT_TITLE_TEXT = Component.literal("Enter Note Title");
     private static final Component FINALIZE_WARNING_TEXT = Component.translatable("book.finalizeWarning");
@@ -97,7 +103,7 @@ public class NoteEditGui extends Screen {
         if (nbtCompound != null) {
             List<String> string = this.pages;
             Objects.requireNonNull(string);
-            BookViewScreen.loadPages(nbtCompound, string::add);
+            loadPages(nbtCompound, string::add);
         }
 
         if (this.pages.isEmpty()) {
@@ -105,6 +111,24 @@ public class NoteEditGui extends Screen {
         }
 
         this.signedByText = Component.translatable("book.byAuthor", player.getName()).withStyle(ChatFormatting.DARK_GRAY);
+    }
+
+    public void loadPages(CompoundTag compoundTag, Consumer<String> consumer) {//TODO maybe auslagern
+        IntFunction<String> intFunction;
+        ListTag listTag = compoundTag.getList("text", 8).copy();
+        if (Minecraft.getInstance().isTextFilteringEnabled() && compoundTag.contains("filtered_pages", 10)) {
+            CompoundTag compoundTag2 = compoundTag.getCompound("filtered_pages");
+            intFunction = i -> {
+                String string = String.valueOf(i);
+                return compoundTag2.contains(string) ? compoundTag2.getString(string) : listTag.getString(i);
+            };
+        } else {
+            intFunction = listTag::getString;
+        }
+        for (int i2 = 0; i2 < listTag.size(); ++i2) {
+            consumer.accept(intFunction.apply(i2));
+        }
+        this.currentPageSelectionManager.setCursorPos(listTag.getList(0).size(), false);
     }
 
     private void setClipboard(String clipboard) {
@@ -153,7 +177,6 @@ public class NoteEditGui extends Screen {
             this.updateButtons();
         }));
         int i = (this.width - 192) / 2;
-        boolean j = true;
         this.nextPageButton = this.addRenderableWidget(new PageButton(i + 116, 159, true, (button) -> {
             this.openNextPage();
         }, true));
@@ -213,8 +236,12 @@ public class NoteEditGui extends Screen {
         if (this.dirty) {
             this.removeEmptyPages();
             this.writeNbtData(signBook);
-            int i = this.hand == InteractionHand.MAIN_HAND ? this.player.getInventory().selected : 40;
-            this.minecraft.getConnection().send(new ServerboundEditBookPacket(i, this.pages, signBook ? Optional.of(this.title.trim()) : Optional.empty()));
+            int slot = this.hand == InteractionHand.MAIN_HAND ? this.player.getInventory().selected : 40;
+            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+            buf.writeNbt(itemStack.getTag());
+            buf.writeInt(slot);
+            buf.writeBoolean(signBook);
+            NetworkManager.sendToServer(CandlelightMessages.SIGN_NOTE, buf);
         }
     }
 
@@ -224,7 +251,7 @@ public class NoteEditGui extends Screen {
         Objects.requireNonNull(nbtList);
         nbts.forEach(nbtList::add);
         if (!this.pages.isEmpty()) {
-            this.itemStack.addTagElement("pages", nbtList);
+            this.itemStack.addTagElement("text", nbtList);
         }
 
         if (signBook) {
@@ -247,7 +274,7 @@ public class NoteEditGui extends Screen {
         } else if (this.signing) {
             return this.keyPressedSignMode(keyCode, scanCode, modifiers);
         } else {
-            boolean bl = this.keyPressedEditMode(keyCode, scanCode, modifiers);
+            boolean bl = this.keyPressedEditMode(keyCode);
             if (bl) {
                 this.invalidatePageContent();
                 return true;
@@ -278,7 +305,7 @@ public class NoteEditGui extends Screen {
         }
     }
 
-    private boolean keyPressedEditMode(int keyCode, int scanCode, int modifiers) {
+    private boolean keyPressedEditMode(int keyCode) {
         if (Screen.isSelectAll(keyCode)) {
             this.currentPageSelectionManager.selectAll();
             return true;
