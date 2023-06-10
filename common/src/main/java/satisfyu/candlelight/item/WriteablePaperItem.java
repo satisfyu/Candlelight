@@ -14,6 +14,7 @@ public class WriteablePaperItem extends Item {
         super(settings);
     }
 
+    @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         if(world.isClientSide())

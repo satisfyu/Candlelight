@@ -23,7 +23,7 @@ public class TypeWriterEntity extends BlockEntity {
     }
 
     public ItemStack getPaper() {
-        return paper;
+        return paper != null ? paper : ItemStack.EMPTY;
     }
 
     public void addPaper(ItemStack itemStack) {

@@ -75,22 +75,16 @@ public class TypeWriterBlock extends BaseEntityBlock {
                 typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE.get()));
                 stack.setCount(stack.getCount() - 1);
             }
-            //stack.decrement(1);
-            //player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
             return InteractionResult.SUCCESS;
         }
         else if (state.getValue(FULL) == 1) {
-            //world.setBlockState(pos, state.with(FULL, 1), 2);
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
             {
+                System.out.println(typeWriterEntity);
                 if(world.isClientSide)
-                    ClientUtil.setTypeWriterScreen(player, typeWriterEntity, hand, pos);
-                //typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
+                    ClientUtil.setTypeWriterScreen(player, typeWriterEntity);
             }
-
-            //stack.decrement(1);
-            //player.giveItemStack(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE));
             return InteractionResult.SUCCESS;
         }
         else if (state.getValue(FULL) == 2) {

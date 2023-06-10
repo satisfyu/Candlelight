@@ -22,6 +22,7 @@ public class WrittenPaperItem extends Item {
         super(settings);
     }
 
+    @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         if(world.isClientSide())
@@ -36,6 +37,7 @@ public class WrittenPaperItem extends Item {
         return InteractionResultHolder.sidedSuccess(itemStack, world.isClientSide());
     }
 
+    @Override
     public Component getName(ItemStack stack) {
         CompoundTag nbtCompound = stack.getTag();
         if (nbtCompound != null) {
@@ -48,6 +50,7 @@ public class WrittenPaperItem extends Item {
         return super.getName(stack);
     }
 
+    @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
         if (stack.hasTag()) {
             CompoundTag nbtCompound = stack.getTag();
