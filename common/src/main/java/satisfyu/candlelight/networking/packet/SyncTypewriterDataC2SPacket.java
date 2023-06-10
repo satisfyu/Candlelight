@@ -7,7 +7,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import satisfyu.candlelight.block.TypeWriterBlock;
@@ -22,12 +21,12 @@ public class SyncTypewriterDataC2SPacket implements NetworkManager.NetworkReceiv
         CompoundTag nbt = buf.readNbt();
         BlockPos pos = buf.readBlockPos();
         boolean sign = buf.readBoolean();
+        ItemStack note = sign ? ObjectRegistry.NOTE_PAPER_WRITTEN.get().getDefaultInstance() : ObjectRegistry.NOTE_PAPER_WRITEABLE.get().getDefaultInstance();
         context.queue(() -> {
             BlockEntity blockEntity = player.level.getBlockEntity(pos);
             if (blockEntity instanceof TypeWriterEntity typeWriterEntity) {
-                ItemStack itemStack = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE.get());
-                itemStack.setTag(nbt);
-                typeWriterEntity.addPaper(itemStack);
+                note.setTag(nbt);
+                typeWriterEntity.addPaper(note);
             }
             BlockState blockState = player.level.getBlockState(pos);
             if (sign) {
