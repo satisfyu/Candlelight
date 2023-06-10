@@ -19,14 +19,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import satisfyu.candlelight.block.entity.TypeWriterEntity;
 import satisfyu.candlelight.client.gui.SignedPaperGui;
 import satisfyu.candlelight.client.gui.TypeWriterGui;
-import satisfyu.candlelight.client.gui.NoteEditGui;
 import satisfyu.candlelight.client.gui.NotePaperGui;
 
 public class ClientUtil {
-
-    public static void setNoteEditScreen(Player user, ItemStack stack, InteractionHand hand){
-        Minecraft.getInstance().setScreen(new NoteEditGui(user, stack, hand));
-    }
 
     public static void setNotePaperScreen(Player user, ItemStack stack, InteractionHand hand){
         Minecraft.getInstance().setScreen(new NotePaperGui(user, stack, hand));

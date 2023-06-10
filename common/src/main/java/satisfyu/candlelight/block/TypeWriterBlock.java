@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -116,6 +117,18 @@ public class TypeWriterBlock extends BaseEntityBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite()).setValue(FULL, 0);
+    }
+
+    @Override
+    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        if (!blockState.is(blockState2.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof TypeWriterEntity typeWriterEntity) {
+                ItemStack  dropStack = typeWriterEntity.getPaper();
+                Containers.dropItemStack(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), dropStack);
+            }
+        }
+        super.onRemove(blockState, level, blockPos, blockState2, bl);
     }
 
     @Override
