@@ -49,17 +49,23 @@ public class JewelryBoxBlock extends Block {
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (world.isClientSide) return InteractionResult.SUCCESS;
         final ItemStack stack = player.getItemInHand(hand);
-        if (player.isShiftKeyDown()) {
-            world.setBlock(pos, state.setValue(OPEN, !state.getValue(OPEN)), Block.UPDATE_ALL);
-        } else if (stack.getItem().equals(ObjectRegistry.GOLD_RING.get()) && !state.getValue(RING) && state.getValue(OPEN)) {
-            world.setBlock(pos, state.setValue(RING, true), Block.UPDATE_ALL);
-            if (!player.isCreative()) stack.shrink(1);
-            return InteractionResult.SUCCESS;
-        } else if (state.getValue(RING) && state.getValue(OPEN)) {
+        if (player.isShiftKeyDown()) return InteractionResult.PASS;
+
+        if (state.getValue(RING) && state.getValue(OPEN)) {
             world.setBlock(pos, state.setValue(RING, false), Block.UPDATE_ALL);
             player.addItem(new ItemStack(ObjectRegistry.GOLD_RING.get()));
             return InteractionResult.SUCCESS;
         }
+        if (stack.isEmpty()) {
+            world.setBlock(pos, state.setValue(OPEN, !state.getValue(OPEN)), Block.UPDATE_ALL);
+            return InteractionResult.SUCCESS;
+        }
+        if (stack.getItem().equals(ObjectRegistry.GOLD_RING.get()) && !state.getValue(RING) && state.getValue(OPEN)) {
+            world.setBlock(pos, state.setValue(RING, true), Block.UPDATE_ALL);
+            if (!player.isCreative()) stack.shrink(1);
+            return InteractionResult.SUCCESS;
+        }
+
         return super.use(state, world, pos, player, hand, hit);
     }
 

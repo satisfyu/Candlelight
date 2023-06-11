@@ -20,34 +20,32 @@ import satisfyu.candlelight.registry.EntitiesRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
-import static satisfyu.candlelight.registry.ObjectRegistry.*;
-
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
 
-    public static boolean rememberedRecipeBookOpen = false;
+    public static boolean rememberedRecipeBookOpen;
     public static boolean rememberedCraftableToggle = true;
 
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(),
                 ObjectRegistry.TOMATOES_WILD.get(), ObjectRegistry.BROCCOLI_CROP.get(), ObjectRegistry.WILD_BROCCOLI.get(),
-                ObjectRegistry.TOMATO_CROP.get(), OAK_CHAIR.get(), DARK_OAK_CHAIR.get(), SPRUCE_CHAIR.get(), WARPED_CHAIR.get(),
-                BIRCH_CHAIR.get(), MANGROVE_CHAIR.get(), ACACIA_CHAIR.get(), CRIMSON_CHAIR.get(),
-                JUNGLE_CHAIR.get(), OAK_TABLE.get(), ACACIA_TABLE.get(), DARK_OAK_TABLE.get(),
-                BIRCH_TABLE.get(), SPRUCE_TABLE.get(), JUNGLE_TABLE.get(), MANGROVE_TABLE.get(),
-                WARPED_TABLE.get(), CRIMSON_TABLE.get()
+                ObjectRegistry.TOMATO_CROP.get(), ObjectRegistry.OAK_CHAIR.get(), ObjectRegistry.DARK_OAK_CHAIR.get(), ObjectRegistry.SPRUCE_CHAIR.get(), ObjectRegistry.WARPED_CHAIR.get(),
+                ObjectRegistry.BIRCH_CHAIR.get(), ObjectRegistry.MANGROVE_CHAIR.get(), ObjectRegistry.ACACIA_CHAIR.get(), ObjectRegistry.CRIMSON_CHAIR.get(),
+                ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),
+                ObjectRegistry.BIRCH_TABLE.get(), ObjectRegistry.SPRUCE_TABLE.get(), ObjectRegistry.JUNGLE_TABLE.get(), ObjectRegistry.MANGROVE_TABLE.get(),
+                ObjectRegistry.WARPED_TABLE.get(), ObjectRegistry.CRIMSON_TABLE.get()
 
 
-                );
+        );
 
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
                     if (world == null || pos == null) {
                         return -1;
                     }
                     return BiomeColors.getAverageWaterColor(world, pos);
-                }, MUD_KITCHEN_SINK, SANDSTONE_KITCHEN_SINK, DEEPSLATE_KITCHEN_SINK, END_KITCHEN_SINK,
-                STONE_BRICKS_KITCHEN_SINK, COBBLESTONE_KITCHEN_SINK, GRANITE_KITCHEN_SINK,
-                QUARTZ_KITCHEN_SINK, RED_NETHER_BRICKS_KITCHEN_SINK);
+                }, ObjectRegistry.MUD_KITCHEN_SINK, ObjectRegistry.SANDSTONE_KITCHEN_SINK, ObjectRegistry.DEEPSLATE_KITCHEN_SINK, ObjectRegistry.END_KITCHEN_SINK,
+                ObjectRegistry.STONE_BRICKS_KITCHEN_SINK, ObjectRegistry.COBBLESTONE_KITCHEN_SINK, ObjectRegistry.GRANITE_KITCHEN_SINK,
+                ObjectRegistry.QUARTZ_KITCHEN_SINK, ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK);
 
         ClientStorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get());

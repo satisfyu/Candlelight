@@ -29,7 +29,7 @@ public class CookingPanRecipe implements Recipe<Container> {
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return CandlelightGeneralUtil.matchesRecipe(inventory, inputs, 0, 6);
+        return CandlelightGeneralUtil.matchesRecipe(inventory, this.inputs, 0, 6);
     }
 
     @Override
@@ -49,11 +49,11 @@ public class CookingPanRecipe implements Recipe<Container> {
 
     @Override
     public ResourceLocation getId() {
-        return id;
+        return this.id;
     }
 
     public ItemStack getContainer() {
-        return container;
+        return this.container;
     }
 
     @Override
@@ -75,18 +75,6 @@ public class CookingPanRecipe implements Recipe<Container> {
     public boolean isSpecial() {
         return true;
     }
-
-    /*
-    public static void registerDefaults() {
-        DefaultedList<Ingredient> dL = DefaultedList.of();
-        dL.add(Ingredient.ofStacks(Items.DIAMOND.getDefaultStack()));
-        registerCookingPanRecipe(new VineryIdentifier("test"), dL, Items.EMERALD.getDefaultStack(), Items.REDSTONE.getDefaultStack());
-    }
-
-    public static void registerCookingPanRecipe(Identifier id, DefaultedList<Ingredient> inputs, ItemStack container, ItemStack output) {
-        new CookingPanRecipe(id, inputs, container, output);
-    }
-*/
 
     public static class Serializer implements RecipeSerializer<CookingPanRecipe> {
 

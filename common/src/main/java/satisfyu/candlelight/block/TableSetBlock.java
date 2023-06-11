@@ -67,10 +67,10 @@ public class TableSetBlock extends StorageBlock {
         Item item = stack.getItem();
         PlateType type = state.getValue(PLATE_TYPE);
         if(stack.isEmpty() && player.isShiftKeyDown()) world.destroyBlock(pos, true, player);
-        else if(type.equals(PlateType.ALL)) return super.use(state, world, pos, player, hand, hit);
+        else if(type == PlateType.ALL) return super.use(state, world, pos, player, hand, hit);
         else if(type != PlateType.GLASS && item.equals(ObjectRegistry.GLASS.get())){
             if(!world.isClientSide()){
-                if(type.equals(PlateType.PLATE)) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.GLASS));
+                if(type == PlateType.PLATE) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.GLASS));
                 else world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.ALL));
                 if (!player.isCreative()) stack.shrink(1);
             }
@@ -78,7 +78,7 @@ public class TableSetBlock extends StorageBlock {
         }
         else if(type != PlateType.NAPKIN && item.equals(ObjectRegistry.NAPKIN.get())){
             if(!world.isClientSide()){
-                if(type.equals(PlateType.PLATE)) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.NAPKIN));
+                if(type == PlateType.PLATE) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.NAPKIN));
                 else world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.ALL));
                 if (!player.isCreative()) stack.shrink(1);
             }
@@ -147,7 +147,7 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        VoxelShape shape = world.getBlockState(pos.above()).getShape(world, pos.above());
+        VoxelShape shape = world.getBlockState(pos.below()).getShape(world, pos.below());
         Direction direction = Direction.UP;
         return Block.isFaceFull(shape, direction);
     }
