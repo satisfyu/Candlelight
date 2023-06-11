@@ -34,6 +34,7 @@ import satisfyu.candlelight.util.CandlelightIdentifier;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class ObjectRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Candlelight.MOD_ID, Registry.ITEM_REGISTRY);
     public static final Registrar<Item> ITEM_REGISTRAR = ITEMS.getRegistrar();
@@ -62,7 +63,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> TABLE = registerWithItem("table", () -> new TableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> LAMP = registerWithItem("lamp", () -> new LanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).lightLevel(s -> s.getValue(LanternBlock.LUMINANCE) ? 15 : 0).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> SIDE_TABLE = registerWithItem("side_table", () -> new SideTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistrySupplier<Block> COOKING_POT = registerWithItem("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()){});
+    public static final RegistrySupplier<Block> COOKING_POT = registerWithItem("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
     public static final RegistrySupplier<Block> COOKING_PAN = registerWithItem("cooking_pan", () -> new CookingPanBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion()));
     public static final RegistrySupplier<Block> TABLE_SET = registerWithItem("table_set", () -> new TableSetBlock(BlockBehaviour.Properties.copy(COOKING_POT.get())));
     public static final RegistrySupplier<Item> GLASS = registerItem("glass", () -> new TableSetItem(getSettings()));
@@ -236,11 +237,9 @@ public class ObjectRegistry {
     }
 
 
-
     private static BlockBehaviour.Properties getBushSettings() {
         return BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH);
     }
-
 
 
     private static BlockBehaviour.Properties getLogBlockSettings() {
