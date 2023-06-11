@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class ArmorRegistry {
 
-    public static void registerArmorModelLayers(){
+    public static void registerArmorModelLayers() {
         EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::getTexturedModelData);
     }
 

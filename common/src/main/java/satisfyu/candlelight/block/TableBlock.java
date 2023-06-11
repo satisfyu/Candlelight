@@ -54,7 +54,7 @@ public class TableBlock extends LineConnectingBlock implements SimpleWaterlogged
         else if((direction == Direction.EAST && type == LineConnectingType.LEFT) || (direction == Direction.WEST && type == LineConnectingType.RIGHT)){
             return Shapes.or(TOP_SHAPE, LEG_SHAPES[0], LEG_SHAPES[1]);
         }
-        else if((direction == Direction.EAST && type == LineConnectingType.LEFT.RIGHT) || (direction == Direction.WEST && type == LineConnectingType.LEFT)){
+        else if((direction == Direction.EAST && type == LineConnectingType.RIGHT) || (direction == Direction.WEST && type == LineConnectingType.LEFT)){
             return Shapes.or(TOP_SHAPE, LEG_SHAPES[2], LEG_SHAPES[3]);
         }
         return Shapes.or(TOP_SHAPE, LEG_SHAPES);
@@ -92,7 +92,7 @@ public class TableBlock extends LineConnectingBlock implements SimpleWaterlogged
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.vinery.expandable.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("block.candlelight.expandable.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 
 }

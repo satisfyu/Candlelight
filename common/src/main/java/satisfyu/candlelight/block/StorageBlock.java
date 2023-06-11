@@ -68,7 +68,7 @@ public class StorageBlock extends BaseEntityBlock {
 	@Nullable
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new StorageBlockEntity(pos, state);
+		return new StorageBlockEntity(pos, state, this.openSound, this.closeSound);
 	}
 
 	@Override
@@ -117,6 +117,6 @@ public class StorageBlock extends BaseEntityBlock {
 	}
 
 	public void playSound(Level world, BlockPos pos, boolean open) {
-		world.playSound(null, pos, open ? openSound : closeSound, SoundSource.BLOCKS, 1.0f, 1.0f);
+		world.playSound(null, pos, open ? this.openSound : this.closeSound, SoundSource.BLOCKS, 1.0f, 1.0f);
 	}
 }

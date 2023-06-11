@@ -3,7 +3,6 @@ package satisfyu.candlelight.item;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -30,6 +29,6 @@ public class CookingHatItem extends CustomModelArmorItem implements CookArmorIte
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
-        tooltip(tooltip);
+        this.tooltip(tooltip);
     }
 }

@@ -19,7 +19,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.WrittenBookItem;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightIdentifier;
@@ -264,22 +263,18 @@ public class SignedPaperGui extends Screen{
         }
 
         private static boolean makeSureTagIsValid(CompoundTag nbtCompound) {
-            System.out.println("HEY");
             if (nbtCompound == null) {
                 return false;
             }
             if (!nbtCompound.contains("text", 9)) {
-                System.out.println("text");
                 return false;
             }
             ListTag listTag = nbtCompound.getList("text", 8);
             for (int i = 0; i < listTag.size(); ++i) {
                 String string = listTag.getString(i);
                 if (string.length() <= Short.MAX_VALUE) continue;
-                System.out.println("long");
                 return false;
             }
-            System.out.println("true");
             return true;
         }
 

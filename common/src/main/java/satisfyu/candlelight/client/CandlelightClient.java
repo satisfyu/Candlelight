@@ -1,6 +1,5 @@
 package satisfyu.candlelight.client;
 
-import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
@@ -14,13 +13,11 @@ import net.minecraft.world.entity.player.Player;
 import satisfyu.candlelight.client.gui.CookingPanGui;
 import satisfyu.candlelight.client.gui.CookingPotGui;
 import satisfyu.candlelight.client.gui.LetterGui;
-import satisfyu.candlelight.client.model.feature.CookingHatModel;
 import satisfyu.candlelight.entity.chair.ChairRenderer;
+import satisfyu.candlelight.registry.ArmorRegistry;
 import satisfyu.candlelight.registry.EntitiesRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
-
-import static satisfyu.candlelight.registry.ObjectRegistry.*;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
@@ -31,14 +28,11 @@ public class CandlelightClient {
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(),
                 ObjectRegistry.TOMATOES_WILD.get(), ObjectRegistry.BROCCOLI_CROP.get(), ObjectRegistry.WILD_BROCCOLI.get(),
-                ObjectRegistry.TOMATO_CROP.get(), OAK_CHAIR.get(), DARK_OAK_CHAIR.get(), SPRUCE_CHAIR.get(), WARPED_CHAIR.get(),
-                BIRCH_CHAIR.get(), MANGROVE_CHAIR.get(), ACACIA_CHAIR.get(), CRIMSON_CHAIR.get(),
-                JUNGLE_CHAIR.get(), OAK_TABLE.get(), ACACIA_TABLE.get(), DARK_OAK_TABLE.get(),
-                BIRCH_TABLE.get(), SPRUCE_TABLE.get(), JUNGLE_TABLE.get(), MANGROVE_TABLE.get(),
-                WARPED_TABLE.get(), CRIMSON_TABLE.get(), CHAIR.get()
-
-
-
+                ObjectRegistry.TOMATO_CROP.get(), ObjectRegistry.OAK_CHAIR.get(), ObjectRegistry.DARK_OAK_CHAIR.get(), ObjectRegistry.SPRUCE_CHAIR.get(), ObjectRegistry.WARPED_CHAIR.get(),
+                ObjectRegistry.BIRCH_CHAIR.get(), ObjectRegistry.MANGROVE_CHAIR.get(), ObjectRegistry.ACACIA_CHAIR.get(), ObjectRegistry.CRIMSON_CHAIR.get(),
+                ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),
+                ObjectRegistry.BIRCH_TABLE.get(), ObjectRegistry.SPRUCE_TABLE.get(), ObjectRegistry.JUNGLE_TABLE.get(), ObjectRegistry.MANGROVE_TABLE.get(),
+                ObjectRegistry.WARPED_TABLE.get(), ObjectRegistry.CRIMSON_TABLE.get(), ObjectRegistry.CHAIR.get(), ObjectRegistry.TABLE.get()
         );
 
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
@@ -60,13 +54,17 @@ public class CandlelightClient {
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
     }
 
-    public static void preInitClient(){
+    public static void preInitClient() {
         registerEntityRenderers();
-        EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::getTexturedModelData);
+        registerEntityModelLayer();
     }
 
-    public static void registerEntityRenderers(){
+    public static void registerEntityRenderers() {
         EntityRendererRegistry.register(EntitiesRegistry.CHAIR, ChairRenderer::new);
+    }
+
+    public static void registerEntityModelLayer() {
+        ArmorRegistry.registerArmorModelLayers();
     }
 
     public static Player getClientPlayer() {

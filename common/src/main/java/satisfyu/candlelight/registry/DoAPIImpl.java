@@ -15,10 +15,7 @@ import java.util.Set;
 
 @DoApiPlugin
 public class DoAPIImpl implements DoApiAPI {
-
-
     public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
-
 
     @Override
     public void registerBlocks(Set<Block> blocks) {

@@ -82,7 +82,6 @@ public class TypeWriterBlock extends BaseEntityBlock {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
             {
-                System.out.println(typeWriterEntity);
                 if(world.isClientSide)
                     ClientUtil.setTypeWriterScreen(player, typeWriterEntity);
             }

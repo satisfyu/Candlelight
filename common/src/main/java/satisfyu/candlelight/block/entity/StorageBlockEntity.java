@@ -4,6 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,7 +20,6 @@ import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import satisfyu.candlelight.block.StorageBlock;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 
 public class StorageBlockEntity extends RandomizableContainerBlockEntity {
@@ -25,18 +27,30 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     private ContainerOpenersCounter stateManager;
 
     public StorageBlockEntity(BlockPos pos, BlockState state) {
+        this(pos, state, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE);
+    }
+
+    public StorageBlockEntity(BlockPos pos, BlockState state, SoundEvent openSound, SoundEvent closeSound) {
         super(BlockEntityRegistry.STORAGE_BLOCK_ENTITY.get(), pos, state);
         this.inventory = NonNullList.withSize(18, ItemStack.EMPTY);
         this.stateManager = new ContainerOpenersCounter() {
-
             @Override
             protected void onOpen(Level world, BlockPos pos, BlockState state) {
-                StorageBlockEntity.this.setOpen(state, true);
+                world.setBlock(pos, state.setValue(BlockStateProperties.OPEN, true), 3);
+                playSound(StorageBlockEntity.this.level, pos, openSound);
             }
 
             @Override
             protected void onClose(Level world, BlockPos pos, BlockState state) {
-                StorageBlockEntity.this.setOpen(state, false);
+                world.setBlock(pos, state.setValue(BlockStateProperties.OPEN, false), 3);
+                playSound(StorageBlockEntity.this.level, pos, closeSound);
+            }
+
+            static void playSound(Level level, BlockPos blockPos, SoundEvent soundEvent) {
+                double d = (double) blockPos.getX() + 0.5;
+                double e = (double) blockPos.getY() + 0.5;
+                double f = (double) blockPos.getZ() + 0.5;
+                level.playSound(null, d, e, f, soundEvent, SoundSource.BLOCKS, 0.7f, level.random.nextFloat() * 0.1f + 0.9f);
             }
 
             @Override
@@ -46,7 +60,7 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
             @Override
             protected boolean isOwnContainer(Player player) {
                 if (player.containerMenu instanceof ChestMenu) {
-                    Container inventory = ((ChestMenu)player.containerMenu).getContainer();
+                    Container inventory = ((ChestMenu) player.containerMenu).getContainer();
                     return inventory == StorageBlockEntity.this;
                 } else {
                     return false;
@@ -91,7 +105,7 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.wine_rack");
+        return Component.empty();
     }
 
     @Override
@@ -120,7 +134,6 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     public void setOpen(BlockState state, boolean open) {
-        if(state.getBlock() instanceof StorageBlock rack) rack.playSound(level, this.getBlockPos(), open);
         this.level.setBlock(this.getBlockPos(), state.setValue(BlockStateProperties.OPEN, open), 3);
     }
 
