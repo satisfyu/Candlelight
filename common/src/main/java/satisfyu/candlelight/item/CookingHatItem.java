@@ -8,13 +8,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.registry.ArmorMaterialRegistry;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
 import java.util.List;
 
 public class CookingHatItem extends CustomModelArmorItem implements CookArmorItem {
     public CookingHatItem(Properties settings) {
-        super(ArmorMaterials.LEATHER, EquipmentSlot.HEAD, settings);
+        super(ArmorMaterialRegistry.COOK_ARMOR, EquipmentSlot.HEAD, settings);
     }
 
     @Override

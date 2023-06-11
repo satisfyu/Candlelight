@@ -14,11 +14,13 @@ import net.minecraft.world.entity.player.Player;
 import satisfyu.candlelight.client.gui.CookingPanGui;
 import satisfyu.candlelight.client.gui.CookingPotGui;
 import satisfyu.candlelight.client.gui.LetterGui;
-import satisfyu.candlelight.client.model.CookingHatModel;
+import satisfyu.candlelight.client.model.feature.CookingHatModel;
 import satisfyu.candlelight.entity.chair.ChairRenderer;
 import satisfyu.candlelight.registry.EntitiesRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
+
+import static satisfyu.candlelight.registry.ObjectRegistry.*;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {

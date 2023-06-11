@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import satisfyu.candlelight.client.model.CookingHatModel;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
 import java.util.Map;
@@ -30,6 +29,6 @@ public class DoAPIImpl implements DoApiAPI {
 
     @Override
     public <T extends LivingEntity> void registerArmor(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
-        models.put(ObjectRegistry.COOKING_HAT.get(), new CookingHatModel<>(modelLoader.bakeLayer(CookingHatModel.LAYER_LOCATION)));
+        ArmorRegistry.registerArmorModels(models, modelLoader);
     }
 }
