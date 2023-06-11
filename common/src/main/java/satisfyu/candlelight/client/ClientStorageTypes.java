@@ -10,8 +10,8 @@ import satisfyu.candlelight.registry.DoAPIImpl;
 import satisfyu.candlelight.registry.StorageTypesRegistry;
 
 public class ClientStorageTypes {
-    public static ResourceLocation registerStorageType(ResourceLocation location, StorageTypeRenderer renderer){
-        return StorageBlockEntityRenderer.registerStorageType(location, renderer);
+    public static void registerStorageType(ResourceLocation location, StorageTypeRenderer renderer){
+        StorageBlockEntityRenderer.registerStorageType(location, renderer);
     }
 
     public static void init(){
