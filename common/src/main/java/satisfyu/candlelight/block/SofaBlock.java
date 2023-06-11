@@ -17,7 +17,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.candlelight.block.entity.chair.ChairUtil;
+import satisfyu.candlelight.entity.chair.ChairUtil;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;

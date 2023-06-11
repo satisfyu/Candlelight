@@ -7,7 +7,6 @@ import satisfyu.candlelight.util.CandlelightIdentifier;
 import java.util.Set;
 
 public class StorageTypesRegistry {
-
     public static final ResourceLocation SHELF = new CandlelightIdentifier("shelf");
 
     public static void registerBlocks(Set<Block> blocks) {

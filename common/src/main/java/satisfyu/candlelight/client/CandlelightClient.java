@@ -1,6 +1,7 @@
 package satisfyu.candlelight.client;
 
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
+import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
@@ -14,6 +15,8 @@ import satisfyu.candlelight.client.gui.CookingPanGui;
 import satisfyu.candlelight.client.gui.CookingPotGui;
 import satisfyu.candlelight.client.gui.LetterGui;
 import satisfyu.candlelight.client.model.CookingHatModel;
+import satisfyu.candlelight.entity.chair.ChairRenderer;
+import satisfyu.candlelight.registry.EntitiesRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
@@ -46,7 +49,7 @@ public class CandlelightClient {
                 STONE_BRICKS_KITCHEN_SINK, COBBLESTONE_KITCHEN_SINK, GRANITE_KITCHEN_SINK,
                 QUARTZ_KITCHEN_SINK, RED_NETHER_BRICKS_KITCHEN_SINK);
 
-        StorageTypes.init();
+        ClientStorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get());
 
 
@@ -56,10 +59,13 @@ public class CandlelightClient {
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
     }
 
-
-
     public static void preInitClient(){
+        registerEntityRenderers();
         EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::getTexturedModelData);
+    }
+
+    public static void registerEntityRenderers(){
+        EntityRendererRegistry.register(EntitiesRegistry.CHAIR, ChairRenderer::new);
     }
 
     public static Player getClientPlayer() {

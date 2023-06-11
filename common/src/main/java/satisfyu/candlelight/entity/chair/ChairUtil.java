@@ -1,4 +1,4 @@
-package satisfyu.candlelight.block.entity.chair;
+package satisfyu.candlelight.entity.chair;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;

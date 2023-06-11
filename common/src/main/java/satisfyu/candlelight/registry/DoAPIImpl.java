@@ -19,13 +19,13 @@ public class DoAPIImpl implements DoApiAPI {
 
 
     public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
-    public static final ResourceLocation NOTE_PAPER_WRITTEN_PACKET_IDENTIFIER = new CandlelightIdentifier("note_paper_written");
 
 
     @Override
     public void registerBlocks(Set<Block> blocks) {
         blocks.add(ObjectRegistry.TABLE_SET.get());
 
+        StorageTypesRegistry.registerBlocks(blocks);
     }
 
     @Override

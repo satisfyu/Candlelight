@@ -9,9 +9,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,6 +25,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -42,32 +46,20 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class TableSetBlock extends StorageBlock {
-
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.0625, 0.9375, 0.0625, 0.75), BooleanOp.OR);
-
-        return shape;
-    };
-
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
-
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE.get(state.getValue(FACING));
-    }
-
     public static final EnumProperty<PlateType> PLATE_TYPE = EnumProperty.create("plate", PlateType.class);
+    private static final Supplier<VoxelShape> voxelShapeSupplier;
+
+    public static final Map<Direction, VoxelShape> SHAPE;
 
     public TableSetBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(super.defaultBlockState().setValue(PLATE_TYPE, PlateType.PLATE));
     }
 
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.get(state.getValue(FACING));
+    }
 
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
@@ -146,7 +138,29 @@ public class TableSetBlock extends StorageBlock {
         builder.add(PLATE_TYPE);
     }
 
-    public enum PlateType implements StringRepresentable {
+    @Override
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        if (!state.canSurvive(world, pos)) {
+            world.destroyBlock(pos, true);
+        }
+    }
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+        VoxelShape shape = world.getBlockState(pos.above()).getShape(world, pos.above());
+        Direction direction = Direction.UP;
+        return Block.isFaceFull(shape, direction);
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+        if (!state.canSurvive(world, pos)) {
+            world.scheduleTick(pos, this, 1);
+        }
+        return super.updateShape(state, direction, neighborState, world, pos, neighborPos);
+    }
+
+    private enum PlateType implements StringRepresentable {
         PLATE("plate"),
         GLASS("glass"),
         NAPKIN("napkin"),
@@ -166,5 +180,19 @@ public class TableSetBlock extends StorageBlock {
         tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
         tooltip.add(Component.translatable("block.candlelight.table_set.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GOLD));
         tooltip.add(Component.translatable("block.candlelight.table_set2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GOLD));
+    }
+
+    static {
+        voxelShapeSupplier = () -> {
+            VoxelShape shape = Shapes.empty();
+            shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.0625, 0.9375, 0.0625, 0.75), BooleanOp.OR);
+
+            return shape;
+        };
+        SHAPE = Util.make(new HashMap<>(), map -> {
+            for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            }
+        });
     }
 }
