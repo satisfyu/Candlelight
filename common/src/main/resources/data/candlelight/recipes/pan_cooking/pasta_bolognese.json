@@ -6,10 +6,10 @@
       "item": "candlelight:bolognese"
     },
     {
-      "tag": "c:pasta"
+      "tag": "candlelight:pasta"
     },
     {
-      "tag": "c:cheese"
+      "tag": "candlelight:cheese"
     }
   ],
   "container": {

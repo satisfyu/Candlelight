@@ -2,7 +2,7 @@
   "type": "candlelight:pot_cooking",
   "ingredients": [
     {
-      "tag": "c:pasta"
+      "tag": "candlelight:pasta"
     },
     {
       "item": "candlelight:tomato_soup"

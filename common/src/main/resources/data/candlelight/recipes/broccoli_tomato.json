@@ -6,13 +6,13 @@
     ],
     "key": {
         "#": {
-            "tag": "c:crops/cabbage"
+            "tag": "candlelight:crops/cabbage"
         },
         "V": {
-            "tag": "c:crops/tomato"
+            "tag": "candlelight:crops/tomato"
         },
         "B": {
-            "tag": "c:bowls"
+            "tag": "candlelight:bowls"
         },
         "C": {
             "item": "minecraft:potato"

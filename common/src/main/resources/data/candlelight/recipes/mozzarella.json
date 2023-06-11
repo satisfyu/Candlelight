@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "c:milk"
+      "tag": "candlelight:milk"
     },
     {
       "item": "minecraft:water_bucket"

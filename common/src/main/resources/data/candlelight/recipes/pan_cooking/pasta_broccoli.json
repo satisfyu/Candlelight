@@ -3,13 +3,13 @@
 
   "ingredients": [
     {
-      "tag": "c:crops/cabbage"
+      "tag": "candlelight:crops/cabbage"
     },
     {
-      "tag": "c:pasta"
+      "tag": "candlelight:pasta"
     },
     {
-      "tag": "c:cheese"
+      "tag": "candlelight:cheese"
     }
   ],
   "container": {

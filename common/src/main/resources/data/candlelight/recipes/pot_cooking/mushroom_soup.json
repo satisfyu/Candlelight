@@ -2,7 +2,7 @@
   "type": "candlelight:pot_cooking",
   "ingredients": [
     {
-      "tag": "c:mushrooms"
+      "tag": "candlelight:mushrooms"
     },
     {
       "tag": "candlelight:red_effect"

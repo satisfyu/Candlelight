@@ -2,7 +2,7 @@
   "type": "candlelight:pan_cooking",
   "ingredients": [
     {
-      "tag": "c:crops/cabbage"
+      "tag": "candlelight:crops/cabbage"
     },
     {
       "item": "minecraft:beef"

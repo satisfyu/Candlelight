@@ -2,7 +2,7 @@
   "type": "candlelight:pot_cooking",
   "ingredients": [
     {
-      "tag": "c:crops/tomato"
+      "tag": "candlelight:crops/tomato"
     },
     {
       "item": "minecraft:sugar"

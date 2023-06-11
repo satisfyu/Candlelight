@@ -5,10 +5,10 @@
       "item": "candlelight:tomato_soup"
     },
     {
-      "tag": "c:dough"
+      "tag": "candlelight:dough"
     },
     {
-      "tag": "c:cheese"
+      "tag": "candlelight:cheese"
     }
   ],
   "container": {

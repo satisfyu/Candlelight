@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "candlelight:milk"
+      "item": "candlelight:pizza"
     }
   ],
   "result": {
-    "item": "candlelight:butter",
-        "count": 10
+    "item": "candlelight:pizza_slice",
+    "count": 4
   }
 }

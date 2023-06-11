@@ -6,19 +6,19 @@
     ],
     "key": {
         "#": {
-            "tag": "c:crops/cabbage"
+            "tag": "candlelight:crops/cabbage"
         },
         "V": {
-            "tag": "c:crops/tomato"
+            "tag": "candlelight:crops/tomato"
         },
         "B": {
-            "tag": "c:bowls"
+            "tag": "candlelight:bowls"
         },
         "C": {
-            "tag": "c:cheese"
+            "tag": "candlelight:cheese"
         },
         "W": {
-            "tag": "c:cooked_chicken"
+            "tag": "candlelight:cooked_chicken"
         }
     },
     "result": {

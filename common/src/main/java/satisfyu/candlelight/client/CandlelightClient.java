@@ -35,7 +35,7 @@ public class CandlelightClient {
                 BIRCH_CHAIR.get(), MANGROVE_CHAIR.get(), ACACIA_CHAIR.get(), CRIMSON_CHAIR.get(),
                 JUNGLE_CHAIR.get(), OAK_TABLE.get(), ACACIA_TABLE.get(), DARK_OAK_TABLE.get(),
                 BIRCH_TABLE.get(), SPRUCE_TABLE.get(), JUNGLE_TABLE.get(), MANGROVE_TABLE.get(),
-                WARPED_TABLE.get(), CRIMSON_TABLE.get()
+                WARPED_TABLE.get(), CRIMSON_TABLE.get(), CHAIR.get()
 
 
                 );

@@ -2,7 +2,7 @@
   "type": "candlelight:pan_cooking",
   "ingredients": [
     {
-      "tag": "c:dough"
+      "tag": "candlelight:dough"
     },
     {
       "item": "candlelight:butter"
