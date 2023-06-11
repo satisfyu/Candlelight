@@ -6,7 +6,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.block.Blocks;
 import satisfyu.candlelight.client.recipebook.IRecipeBookGroup;
 import satisfyu.candlelight.item.food.EffectFoodItem;
 import satisfyu.candlelight.registry.ObjectRegistry;
@@ -30,30 +29,15 @@ public enum CookingPotRecipeBookGroup implements IRecipeBookGroup {
     }
 
     public boolean fitRecipe(Recipe<?> recipe) {
-        switch (this) {
-            case SEARCH -> {
-                return true;
-            }
-            case MISC -> {
-                if (recipe.getIngredients().stream().noneMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance()))  && recipe.getIngredients().stream().noneMatch((ingredient) -> Arrays.stream(ingredient.getItems()).anyMatch(itemStack -> itemStack.getItem() instanceof EffectFoodItem))) {
-                    return true;
-                }
-            }
-            case EFFECT -> {
-                if (recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance()))) {
-                    return true;
-                }
-            }
-            case BIG -> {
-                if (recipe.getIngredients().stream().anyMatch((ingredient) -> Arrays.stream(ingredient.getItems()).anyMatch(itemStack -> itemStack.getItem() instanceof EffectFoodItem))) {
-                    return true;
-                }
-            }
-            default -> {
-                return false;
-            }
-        }
-        return false;
+        return switch (this) {
+            case SEARCH -> true;
+            case MISC ->
+                    recipe.getIngredients().stream().noneMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance())) && recipe.getIngredients().stream().noneMatch((ingredient) -> Arrays.stream(ingredient.getItems()).anyMatch(itemStack -> itemStack.getItem() instanceof EffectFoodItem));
+            case EFFECT ->
+                    recipe.getIngredients().stream().anyMatch((ingredient) -> ingredient.test(Items.POTION.getDefaultInstance()));
+            case BIG ->
+                    recipe.getIngredients().stream().anyMatch((ingredient) -> Arrays.stream(ingredient.getItems()).anyMatch(itemStack -> itemStack.getItem() instanceof EffectFoodItem));
+        };
     }
 
     @Override

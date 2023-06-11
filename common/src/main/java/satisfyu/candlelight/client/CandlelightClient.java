@@ -20,12 +20,10 @@ import satisfyu.candlelight.registry.EntitiesRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
-import static satisfyu.candlelight.registry.ObjectRegistry.*;
-
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
 
-    public static boolean rememberedRecipeBookOpen = false;
+    public static boolean rememberedRecipeBookOpen;
     public static boolean rememberedCraftableToggle = true;
 
     public static void initClient() {
@@ -38,16 +36,17 @@ public class CandlelightClient {
                 WARPED_TABLE.get(), CRIMSON_TABLE.get(), CHAIR.get()
 
 
-                );
+
+        );
 
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
                     if (world == null || pos == null) {
                         return -1;
                     }
                     return BiomeColors.getAverageWaterColor(world, pos);
-                }, MUD_KITCHEN_SINK, SANDSTONE_KITCHEN_SINK, DEEPSLATE_KITCHEN_SINK, END_KITCHEN_SINK,
-                STONE_BRICKS_KITCHEN_SINK, COBBLESTONE_KITCHEN_SINK, GRANITE_KITCHEN_SINK,
-                QUARTZ_KITCHEN_SINK, RED_NETHER_BRICKS_KITCHEN_SINK);
+                }, ObjectRegistry.MUD_KITCHEN_SINK, ObjectRegistry.SANDSTONE_KITCHEN_SINK, ObjectRegistry.DEEPSLATE_KITCHEN_SINK, ObjectRegistry.END_KITCHEN_SINK,
+                ObjectRegistry.STONE_BRICKS_KITCHEN_SINK, ObjectRegistry.COBBLESTONE_KITCHEN_SINK, ObjectRegistry.GRANITE_KITCHEN_SINK,
+                ObjectRegistry.QUARTZ_KITCHEN_SINK, ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK);
 
         ClientStorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get());
