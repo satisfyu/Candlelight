@@ -1,4 +1,4 @@
-package satisfyu.candlelight.block.entity.chair;
+package satisfyu.candlelight.entity.chair;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

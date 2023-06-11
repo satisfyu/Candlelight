@@ -361,20 +361,20 @@ public abstract class NoteGui extends Screen {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, NOTE_TEXTURE);
-        int i = (this.width - 192) / 2;
-        this.blit(matrices, i, 2, 0, 0, 192, 192);
+        int x = (this.width - 192) / 2;
+        this.blit(matrices, x, 2, 0, 0, 192, 192);
         int l;
         int m;
         if (this.signing) {
             boolean bl = this.tickCounter / 6 % 2 == 0;
             FormattedCharSequence orderedText = FormattedCharSequence.composite(FormattedCharSequence.forward(this.title, Style.EMPTY), bl ? BLACK_CURSOR_TEXT : GRAY_CURSOR_TEXT);
             int k = this.font.width(EDIT_TITLE_TEXT);
-            this.font.draw(matrices, EDIT_TITLE_TEXT, (float)(i + 36 + (114 - k) / 2), 34.0F, 0);
+            this.font.draw(matrices, EDIT_TITLE_TEXT, (float)(x + 36 + (114 - k) / 2), 34.0F, 0);
             l = this.font.width(orderedText);
-            this.font.draw(matrices, orderedText, (float)(i + 36 + (114 - l) / 2), 50.0F, 0);
+            this.font.draw(matrices, orderedText, (float)(x + 36 + (114 - l) / 2), 50.0F, 0);
             m = this.font.width(this.signedByText);
-            this.font.draw(matrices, this.signedByText, (float)(i + 36 + (114 - m) / 2), 60.0F, 0);
-            this.font.drawWordWrap(FINALIZE_WARNING_TEXT, i + 36, 82, 114, 0);
+            this.font.draw(matrices, this.signedByText, (float)(x + 36 + (114 - m) / 2), 60.0F, 0);
+            this.font.drawWordWrap(FINALIZE_WARNING_TEXT, x + 36, 82, 114, 0);
         } else {
             NoteGui.PageContent pageContent = this.getPageContent();
             NoteGui.Line[] var15 = pageContent.lines;
