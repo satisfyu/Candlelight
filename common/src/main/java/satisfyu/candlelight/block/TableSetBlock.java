@@ -92,7 +92,7 @@ public class TableSetBlock extends StorageBlock {
     public void remove(Level world, BlockPos blockPos, Player player, StorageBlockEntity shelfBlockEntity, int i) {
         if (!world.isClientSide()) {
             ItemStack itemStack = shelfBlockEntity.removeStack(i);
-            SoundEvent soundEvent = SoundEvents.PLAYER_BURP;
+            SoundEvent soundEvent = SoundEvents.GENERIC_EAT;
             world.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (itemStack.isEdible()) {
                 FoodProperties foodComponent = itemStack.getItem().getFoodProperties();

@@ -44,7 +44,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> BROCCOLI_SEEDS = registerItem("broccoli_seeds", () -> new SeedItemBlock(BROCCOLI_CROP.get(), getSettings()));
     public static final RegistrySupplier<Block> TOMATO_CROP = registerWithoutItem("tomato_crop", () -> new TomatoCropBlock( getBushSettings()));
     public static final RegistrySupplier<Item> TOMATO_SEEDS = registerItem("tomato_seeds", () -> new BlockItem(TOMATO_CROP.get(), getSettings()));
-    public static final RegistrySupplier<Item> TOMATO = registerItem("tomato", () -> new Item(getSettings().food(Foods.APPLE)));
+    public static final RegistrySupplier<Item> TOMATO = registerItem("tomato", () -> new IngredientItem(getSettings().food(Foods.APPLE)));
     public static final RegistrySupplier<Item> BROCCOLI = registerItem("broccoli", () -> new IngredientItem(getSettings().food(Foods.POTATO)));
     public static final RegistrySupplier<Block> TOMATO_CRATE = registerWithItem("tomato_crate", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> BROCCOLI_CRATE = registerWithItem("broccoli_crate", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));

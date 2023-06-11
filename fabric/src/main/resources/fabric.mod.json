@@ -2,11 +2,10 @@
   "schemaVersion": 1,
   "id": "candlelight",
   "version": "${version}",
-  "name": "Candlelight Dinner",
-  "description": "A Food Themed Expansion for the 'Let's Do Wine' Mod focusing on cooking with Wine",
+  "name": "Candlelight",
+  "description": "A Food Themed Mod focusing on cooking with Wine and Potions",
   "authors": [
     "satisfy_u",
-    "Cristelknight",
     "BaumeisterJo"
   ],
   "contact": {
