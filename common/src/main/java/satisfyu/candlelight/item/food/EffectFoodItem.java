@@ -1,12 +1,8 @@
 package satisfyu.candlelight.item.food;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -46,7 +42,7 @@ public class EffectFoodItem extends Item implements EffectFood {
         }
         ItemStack returnStack =  super.finishUsingItem(stack, world, user);
         int stage = EffectFoodHelper.getStage(stack);
-        if (playerInventory != null && stage < foodStages) {
+        if (playerInventory != null && stage < this.foodStages) {
             ItemStack itemStack = EffectFoodHelper.setStage(new ItemStack(this), stage + 1);
             if (playerInventory.getItem(slot).isEmpty()) {
                 playerInventory.add(slot, itemStack);
@@ -61,22 +57,6 @@ public class EffectFoodItem extends Item implements EffectFood {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
-        List<Pair<MobEffectInstance, Float>> effects = EffectFoodHelper.getEffects(stack);
-        if (effects.isEmpty()) {
-            tooltip.add(Component.translatable("effect.none").withStyle(ChatFormatting.GRAY));
-        } else {
-            for (Pair<MobEffectInstance, Float> statusEffectInstance : effects) {
-                MutableComponent mutableText = Component.translatable(statusEffectInstance.getFirst().getDescriptionId());
-                MobEffect statusEffect = statusEffectInstance.getFirst().getEffect();
-
-                if (statusEffectInstance.getFirst().getDuration() > 20) {
-                    mutableText = Component.translatable(
-                            "potion.withDuration",
-                            mutableText, MobEffectUtil.formatDuration(statusEffectInstance.getFirst(), statusEffectInstance.getSecond()));
-                }
-
-                tooltip.add(mutableText.withStyle(statusEffect.getCategory().getTooltipFormatting()));
-            }
-        }
+        EffectFoodHelper.getTooltip(stack, tooltip);
     }
 }

@@ -3,10 +3,7 @@ package satisfyu.candlelight.food;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -19,19 +16,16 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.block.EffectFoodBlock;
+import satisfyu.candlelight.item.food.EffectFood;
 import satisfyu.candlelight.item.food.EffectFoodHelper;
 
 import java.util.List;
 
 import static satisfyu.candlelight.block.EffectFoodBlock.BITES;
 
-public class EffectFoodBlockItem extends BlockItem {
+public class EffectFoodBlockItem extends BlockItem implements EffectFood {
 
     private final int foodStages;
-
-    public EffectFoodBlockItem(Block block, Properties settings) {
-        this(block, settings, 0);
-    }
 
     public EffectFoodBlockItem(Block block, Properties settings, int foodStages) {
         super(block, settings);
@@ -64,7 +58,7 @@ public class EffectFoodBlockItem extends BlockItem {
         }
         ItemStack returnStack =  super.finishUsingItem(stack, world, user);
         int stage = EffectFoodHelper.getStage(stack);
-        if (playerInventory != null && stage < foodStages) {
+        if (playerInventory != null && stage < this.foodStages) {
             ItemStack itemStack = EffectFoodHelper.setStage(new ItemStack(this), stage + 1);
             if (playerInventory.getItem(slot).isEmpty()) {
                 playerInventory.add(slot, itemStack);
@@ -79,23 +73,7 @@ public class EffectFoodBlockItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
-        List<Pair<MobEffectInstance, Float>> effects = EffectFoodHelper.getEffects(stack);
-        if (effects.isEmpty()) {
-            tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("effect.none").withStyle(ChatFormatting.GRAY));
-        } else {
-            for (Pair<MobEffectInstance, Float> statusEffectInstance : effects) {
-                MutableComponent mutableText = Component.translatable(statusEffectInstance.getFirst().getDescriptionId());
-                MobEffect statusEffect = statusEffectInstance.getFirst().getEffect();
-
-                if (statusEffectInstance.getFirst().getDuration() > 20) {
-                    mutableText = Component.translatable(
-                            "potion.withDuration",
-                            mutableText, MobEffectUtil.formatDuration(statusEffectInstance.getFirst(), statusEffectInstance.getSecond()));
-                }
-
-                tooltip.add(mutableText.withStyle(statusEffect.getCategory().getTooltipFormatting()));
-            }
-        }
+        tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        EffectFoodHelper.getTooltip(stack, tooltip);
     }
 }

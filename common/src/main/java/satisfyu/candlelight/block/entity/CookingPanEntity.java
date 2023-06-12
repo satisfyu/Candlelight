@@ -1,9 +1,7 @@
 package satisfyu.candlelight.block.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
@@ -14,12 +12,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,8 +29,6 @@ import satisfyu.candlelight.recipe.CookingPanRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.RecipeTypeRegistry;
 import satisfyu.candlelight.registry.TagsRegistry;
-
-import java.util.Optional;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
@@ -94,9 +88,9 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	}
 	
 	public boolean isBeingBurned() {
-		if (level == null)
+		if (this.level == null)
 			throw new NullPointerException("Null world invoked");
-		final BlockState belowState = level.getBlockState(getBlockPos().below());
+		final BlockState belowState = this.level.getBlockState(this.getBlockPos().below());
 		if (belowState.is(TagsRegistry.ALLOWS_COOKING)) {
 			try {
 				return belowState.getValue(BlockStateProperties.LIT);
@@ -139,13 +133,13 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	}
 	
 	private void craft(Recipe<?> recipe) {
-		if (!canCraft(recipe)) {
+		if (!this.canCraft(recipe)) {
 			return;
 		}
-		final ItemStack recipeOutput = generateOutputItem(recipe);
+		final ItemStack recipeOutput = this.generateOutputItem(recipe);
 		final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
 		if (outputSlotStack.isEmpty()) {
-			setItem(OUTPUT_SLOT, recipeOutput);
+			this.setItem(OUTPUT_SLOT, recipeOutput);
 		} else if (outputSlotStack.is(recipeOutput.getItem())) {
 			outputSlotStack.grow(recipeOutput.getCount());
 		}
@@ -177,7 +171,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 	private ItemStack generateOutputItem(Recipe<?> recipe) {
 		ItemStack outputStack = recipe.getResultItem();
 
-		if ((outputStack.getItem() instanceof EffectFood)) {
+		if (outputStack.getItem() instanceof EffectFood) {
 			for (Ingredient ingredient : recipe.getIngredients()) {
 				for (int slot = 0; slot < 6; slot++) {
 					ItemStack stack = this.getItem(slot);
@@ -196,7 +190,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		if (world.isClientSide()) {
 			return;
 		}
-		this.isBeingBurned = isBeingBurned();
+		this.isBeingBurned = this.isBeingBurned();
 		if (!this.isBeingBurned){
 			if(state.getValue(CookingPanBlock.LIT)) {
 				world.setBlock(pos, state.setValue(CookingPanBlock.LIT, false), Block.UPDATE_ALL);
@@ -205,14 +199,14 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		}
 		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_PAN_RECIPE_TYPE.get(), this, world).orElse(null);
 
-		boolean canCraft = canCraft(recipe);
+		boolean canCraft = this.canCraft(recipe);
 		if (canCraft) {
 			this.cookingTime++;
 			if (this.cookingTime >= MAX_COOKING_TIME) {
 				this.cookingTime = 0;
-				craft(recipe);
+				this.craft(recipe);
 			}
-		} else if (!canCraft(recipe)) {
+		} else if (!this.canCraft(recipe)) {
 			this.cookingTime = 0;
 		}
 		if (canCraft) {
@@ -220,19 +214,19 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		} else if (state.getValue(CookingPanBlock.COOKING)) {
 			world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPanBlock.COOKING, false).setValue(CookingPanBlock.LIT, true), Block.UPDATE_ALL);
 		}
-		else if(state.getValue(CookingPanBlock.LIT) != isBeingBurned){
-			world.setBlock(pos, state.setValue(CookingPanBlock.LIT, isBeingBurned), Block.UPDATE_ALL);
+		else if(state.getValue(CookingPanBlock.LIT) != this.isBeingBurned){
+			world.setBlock(pos, state.setValue(CookingPanBlock.LIT, this.isBeingBurned), Block.UPDATE_ALL);
 		}
 	}
 	
 	@Override
 	public int getContainerSize() {
-		return inventory.size();
+		return this.inventory.size();
 	}
 	
 	@Override
 	public boolean isEmpty() {
-		return inventory.stream().allMatch(ItemStack::isEmpty);
+		return this.inventory.stream().allMatch(ItemStack::isEmpty);
 	}
 	
 	@Override
@@ -271,7 +265,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 
 	@Override
 	public void clearContent() {
-		inventory.clear();
+		this.inventory.clear();
 	}
 	
 	@Override

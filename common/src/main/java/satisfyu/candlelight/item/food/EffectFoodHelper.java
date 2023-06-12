@@ -2,10 +2,14 @@ package satisfyu.candlelight.item.food;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
@@ -91,5 +95,26 @@ public class EffectFoodHelper {
     public static int getStage(ItemStack stack) {
         CompoundTag nbtCompound = stack.getTag();
         return nbtCompound != null ? nbtCompound.getInt(FOOD_STAGE) : 0;
+    }
+
+    public static void getTooltip(ItemStack stack, List<Component> tooltip) {
+        List<Pair<MobEffectInstance, Float>> effects = getEffects(stack);
+        if (effects.isEmpty()) {
+            tooltip.add(Component.translatable("effect.none").withStyle(ChatFormatting.GRAY));
+        } else {
+            for (Pair<MobEffectInstance, Float> effectPair : effects) {
+                MobEffectInstance statusEffect = effectPair.getFirst();
+                MutableComponent mutableText = Component.translatable(statusEffect.getDescriptionId());
+
+                if (statusEffect.getAmplifier() > 0) {
+                    mutableText = Component.translatable("potion.withAmplifier", mutableText, Component.translatable("potion.potency." + statusEffect.getAmplifier()));
+                }
+                if (effectPair.getFirst().getDuration() > 20) {
+                    mutableText = Component.translatable("potion.withDuration", mutableText, MobEffectUtil.formatDuration(statusEffect, 1.0f));
+                }
+
+                tooltip.add(mutableText.withStyle(statusEffect.getEffect().getCategory().getTooltipFormatting()));
+            }
+        }
     }
 }
