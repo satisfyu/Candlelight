@@ -3,19 +3,15 @@ package satisfyu.candlelight.client.gui.handler;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.Level;
 import satisfyu.candlelight.block.entity.CookingPanEntity;
 import satisfyu.candlelight.client.gui.handler.slot.ExtendedSlot;
-import satisfyu.candlelight.client.recipebook.AbstractPrivateRecipeScreenHandler;
 import satisfyu.candlelight.client.recipebook.IRecipeBookGroup;
 import satisfyu.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
@@ -23,27 +19,20 @@ import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
 import java.util.List;
 
-public class CookingPanGuiHandler extends AbstractPrivateRecipeScreenHandler {
-    private final Container inventory;
+public class CookingPanGuiHandler extends AbstractRecipeBookGUIScreenHandler {
     private final ContainerData propertyDelegate;
-    protected final Level world;
-    private final int inputSlots;
 
     public CookingPanGuiHandler(int syncId, Inventory playerInventory) {
         this(syncId, playerInventory, new SimpleContainer(8), new SimpleContainerData(2));
     }
 
     public CookingPanGuiHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
-        super(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), syncId);
-        checkContainerSize(inventory, 8);
-        this.inventory = inventory;
+        super(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), syncId, 7, playerInventory, inventory, propertyDelegate);
+
+        this.buildBlockEntityContainer(inventory);
+        this.buildPlayerContainer(playerInventory);
+
         this.propertyDelegate = propertyDelegate;
-        this.world = playerInventory.player.level;
-        this.inputSlots = 7;
-
-        buildBlockEntityContainer(inventory);
-        buildPlayerContainer(playerInventory);
-
         this.addDataSlots(propertyDelegate);
     }
 
@@ -77,7 +66,7 @@ public class CookingPanGuiHandler extends AbstractPrivateRecipeScreenHandler {
     }
 
     public boolean isBeingBurned() {
-        return propertyDelegate.get(1) != 0;
+        return this.propertyDelegate.get(1) != 0;
     }
 
     public int getScaledProgress(int arrowWidth) {
@@ -116,49 +105,6 @@ public class CookingPanGuiHandler extends AbstractPrivateRecipeScreenHandler {
             }
         }
         return false;
-    }
-
-    @Override
-    public ItemStack quickMoveStack(Player player, int invSlot) {
-        final int entityInputStart = 0;
-        int entityOutputSlot = this.inputSlots;
-        final int inventoryStart = entityOutputSlot + 1;
-        final int hotbarStart = inventoryStart + 9 * 3;
-        final int hotbarEnd = hotbarStart + 9;
-
-        ItemStack itemStack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(invSlot);
-        if (slot.hasItem()) {
-            ItemStack itemStack2 = slot.getItem();
-            Item item = itemStack2.getItem();
-            itemStack = itemStack2.copy();
-            if (invSlot == entityOutputSlot) {
-                item.onCraftedBy(itemStack2, player.level, player);
-                if (!this.moveItemStackTo(itemStack2, inventoryStart, hotbarEnd, true)) {
-                    return ItemStack.EMPTY;
-                }
-                slot.onQuickCraft(itemStack2, itemStack);
-            } else if (invSlot >= entityInputStart && invSlot < entityOutputSlot ? !this.moveItemStackTo(itemStack2, inventoryStart, hotbarEnd, false) :
-                    !this.moveItemStackTo(itemStack2, entityInputStart, entityOutputSlot, false) && (invSlot >= inventoryStart && invSlot < hotbarStart ? !this.moveItemStackTo(itemStack2, hotbarStart, hotbarEnd, false) :
-                            invSlot >= hotbarStart && invSlot < hotbarEnd && !this.moveItemStackTo(itemStack2, inventoryStart, hotbarStart, false))) {
-                return ItemStack.EMPTY;
-            }
-            if (itemStack2.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
-            }
-            slot.setChanged();
-            if (itemStack2.getCount() == itemStack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-            slot.onTake(player, itemStack2);
-            this.broadcastChanges();
-        }
-        return itemStack;
-    }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return this.inventory.stillValid(player);
     }
 
     @Override
