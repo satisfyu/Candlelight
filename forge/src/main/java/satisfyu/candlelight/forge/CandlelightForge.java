@@ -10,7 +10,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(Candlelight.MOD_ID)
 public class CandlelightForge {
     public CandlelightForge() {
-        // Submit our event bus to let architectury register our content on the right time
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(Candlelight.MOD_ID, modEventBus);
         Candlelight.init();

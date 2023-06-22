@@ -84,7 +84,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> CHICKEN_ALFREDO = registerItem("chicken_alfredo", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.VEGGIE_PLATE), 1));
     public static final RegistrySupplier<Item> BROCCOLI_BEEF = registerItem("broccoli_beef", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.BROCCOLI_BEEF), 2));
     public static final RegistrySupplier<Block> BROCCOLI_TOMATO_BLOCK = registerWithoutItem("broccoli_tomato_block", () -> new EffectFoodTrayBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.BROCCOLI_TOMATO));
-    public static final RegistrySupplier<Item> BROCCOLI_TOMATO = registerItem("broccoli_tomato", () -> new Item(getSettings().food(CandlelightFoods.BROCCOLI_TOMATO)));
+    public static final RegistrySupplier<Item> BROCCOLI_TOMATO = registerItem("broccoli_tomato", () -> new EffectFoodBlockItem(BROCCOLI_TOMATO_BLOCK.get(), getSettings().food(CandlelightFoods.BROCCOLI_TOMATO), 3));
     public static final RegistrySupplier<Item> SALMON_WINE = registerItem("salmon_wine", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.SALMON_ON_WHITE_WINE), 2));
     public static final RegistrySupplier<Item> VEGGIE_PLATE = registerItem("veggie_plate", () -> new Item(getSettings().food(CandlelightFoods.VEGGIE_PLATE)));
     public static final RegistrySupplier<Block> PORK_RIBS_BLOCK = registerWithoutItem("pork_ribs_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.PORK_RIBS));
@@ -95,7 +95,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> FRICASSE = registerItem("fricasse", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.FRICASSE), 2));
     public static final RegistrySupplier<Item> CHICKEN = registerItem("chicken", () -> new EffectFoodItem(getSettings().food(Foods.GOLDEN_CARROT), 2));
     public static final RegistrySupplier<Block> TOMATO_MOZZARELLA_BLOCK = registerWithoutItem("tomato_mozzarella_block", () -> new EffectFoodTrayBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.TOMATO_MOZZARELLA_SALAD));
-    public static final RegistrySupplier<Item> TOMATO_MOZZARELLA_SALAD = registerItem("tomato_mozzarella_salad", () -> new Item(getSettings().food(CandlelightFoods.TOMATO_MOZZARELLA_SALAD)));
+    public static final RegistrySupplier<Item> TOMATO_MOZZARELLA_SALAD = registerItem("tomato_mozzarella_salad", () -> new EffectFoodBlockItem(TOMATO_MOZZARELLA_BLOCK.get(), getSettings().food(CandlelightFoods.TOMATO_MOZZARELLA_SALAD), 3));
     public static final RegistrySupplier<Block> LASAGNA_BLOCK = registerWithoutItem("lasagne_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 3, CandlelightFoods.LASAGNE));
     public static final RegistrySupplier<Item> LASAGNA = registerItem("lasagne", () -> new EffectFoodBlockItem(LASAGNA_BLOCK.get(), getSettings().food(CandlelightFoods.LASAGNE), 3));
     public static final RegistrySupplier<Item> ROASTBEEF_CARROTS = registerItem("roastbeef_carrots", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.ROASTBEEF_CARROTS), 2));
@@ -112,7 +112,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new ChocolateBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     public static final RegistrySupplier<Item> FAUCET = registerItem("faucet", () -> new FaucetItem(getSettings()));
     public static final RegistrySupplier<Item> GOLD_RING = registerItem("gold_ring", () -> new RingItem(ArmorMaterialRegistry.RING_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.EPIC)));
-    public static final RegistrySupplier<Item> COOKING_HAT = registerItem("cooking_hat", () -> new CookingHatItem(getSettings().rarity(Rarity.COMMON)));
+    public static final RegistrySupplier<Item> COOKING_HAT = registerItem("cooking_hat", () -> new CookingHatItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> CHEFS_JACKET = registerItem("chefs_jacket", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, EquipmentSlot.CHEST, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> CHEFS_PANTS = registerItem("chefs_pants", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, EquipmentSlot.LEGS, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> CHEFS_BOOTS = registerItem("chefs_boots", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.COMMON)));
@@ -211,6 +211,10 @@ public class ObjectRegistry {
     public static void init() {
         ITEMS.register();
         BLOCKS.register();
+    }
+
+    public static void registerArmor() {
+        Registry.register(Registry.ITEM, new CandlelightIdentifier("cooking_hat"), COOKING_HAT.get());
     }
 
 
