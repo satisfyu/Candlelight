@@ -8,8 +8,10 @@ import java.util.Set;
 
 public class StorageTypesRegistry {
     public static final ResourceLocation SHELF = new CandlelightIdentifier("shelf");
+    public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
 
     public static void registerBlocks(Set<Block> blocks) {
+        blocks.add(ObjectRegistry.TABLE_SET.get());
         blocks.add(ObjectRegistry.OAK_SHELF.get());
         blocks.add(ObjectRegistry.SPRUCE_SHELF.get());
         blocks.add(ObjectRegistry.BIRCH_SHELF.get());

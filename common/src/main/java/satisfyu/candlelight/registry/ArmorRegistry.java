@@ -5,7 +5,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
-import satisfyu.candlelight.client.model.feature.CookingHatModel;
+import satisfyu.candlelight.client.model.CookingHatModel;
 
 import java.util.Map;
 
@@ -15,7 +15,7 @@ public class ArmorRegistry {
         EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::getTexturedModelData);
     }
 
-    public static  <T extends LivingEntity> void registerArmorModels(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
+    public static  <T extends LivingEntity> void registerHatModels(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
         models.put(ObjectRegistry.COOKING_HAT.get(), new CookingHatModel<>(modelLoader.bakeLayer(CookingHatModel.LAYER_LOCATION)));
     }
 }

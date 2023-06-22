@@ -2,12 +2,13 @@ package satisfyu.candlelight.client.gui;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import de.cristelknight.doapi.client.recipebook.screen.AbstractRecipeBookGUIScreen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import satisfyu.candlelight.client.gui.custom.CookingPotRecipeBook;
+import satisfyu.candlelight.client.recipebook.CookingPotRecipeBook;
 import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 

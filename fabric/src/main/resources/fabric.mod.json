@@ -13,7 +13,7 @@
     "sources": "https://github.com/satisfyu/Candlelight-Dinner"
   },
   "license": "All Rights Reserved",
-  "icon": "assets/candlelight/icon.png",
+  "icon": "pack.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -35,6 +35,7 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.19.2",
-    "architectury": ">=6.5.77"
+    "architectury": ">=6.5.77",
+    "doapi": ">=1.0.6"
   }
 }
