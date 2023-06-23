@@ -22,6 +22,9 @@ import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
 
+    public static boolean rememberedRecipeBookOpen;
+    public static boolean rememberedCraftableToggle = true;
+
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(),
                 ObjectRegistry.TOMATOES_WILD.get(), ObjectRegistry.BROCCOLI_CROP.get(), ObjectRegistry.WILD_BROCCOLI.get(),

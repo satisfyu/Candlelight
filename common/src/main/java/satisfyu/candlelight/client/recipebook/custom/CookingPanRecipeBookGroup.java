@@ -1,12 +1,12 @@
-package satisfyu.candlelight.client.recipebook.group;
+package satisfyu.candlelight.client.recipebook.custom;
 
 import com.google.common.collect.ImmutableList;
-import de.cristelknight.doapi.client.recipebook.IRecipeBookGroup;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
+import satisfyu.candlelight.client.recipebook.IRecipeBookGroup;
 import satisfyu.candlelight.item.food.EffectFoodItem;
 import satisfyu.candlelight.registry.ObjectRegistry;
 

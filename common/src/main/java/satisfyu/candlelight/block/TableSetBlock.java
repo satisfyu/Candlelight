@@ -38,7 +38,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfyu.candlelight.registry.DoAPIImpl;
 import satisfyu.candlelight.registry.ObjectRegistry;
-import satisfyu.candlelight.registry.StorageTypesRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
 import java.util.HashMap;
@@ -115,7 +114,7 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return StorageTypesRegistry.TABLE_SET;
+        return DoAPIImpl.TABLE_SET;
     }
 
     @Override
@@ -160,7 +159,6 @@ public class TableSetBlock extends StorageBlock {
         }
         return super.updateShape(state, direction, neighborState, world, pos, neighborPos);
     }
-
 
     private enum PlateType implements StringRepresentable {
         PLATE("plate"),
