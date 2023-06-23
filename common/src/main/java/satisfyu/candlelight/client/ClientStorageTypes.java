@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.client.render.block.ShelfRenderer;
 import satisfyu.candlelight.client.render.block.TableSetRenderer;
-import satisfyu.candlelight.registry.DoAPIImpl;
+import satisfyu.candlelight.util.DoAPIImpl;
 import satisfyu.candlelight.registry.StorageTypesRegistry;
 
 public class ClientStorageTypes {
@@ -16,7 +16,7 @@ public class ClientStorageTypes {
 
     public static void init(){
         Candlelight.LOGGER.debug("Registering Storage Block Renderers!");
-        registerStorageType(DoAPIImpl.TABLE_SET, new TableSetRenderer());
+        registerStorageType(StorageTypesRegistry.TABLE_SET, new TableSetRenderer());
         registerStorageType(StorageTypesRegistry.SHELF, new ShelfRenderer());
     }
 }

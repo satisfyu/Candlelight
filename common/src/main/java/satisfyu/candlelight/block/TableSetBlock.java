@@ -36,7 +36,8 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfyu.candlelight.registry.DoAPIImpl;
+import satisfyu.candlelight.registry.StorageTypesRegistry;
+import satisfyu.candlelight.util.DoAPIImpl;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 
@@ -114,7 +115,7 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return DoAPIImpl.TABLE_SET;
+        return StorageTypesRegistry.TABLE_SET;
     }
 
     @Override

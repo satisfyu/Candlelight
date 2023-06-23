@@ -1,4 +1,4 @@
-package satisfyu.candlelight.client.model.feature;
+package satisfyu.candlelight.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
