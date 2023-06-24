@@ -1,6 +1,6 @@
 package satisfyu.candlelight.block;
 
-import de.cristelknight.doapi.block.StorageBlock;
+import de.cristelknight.doapi.common.block.StorageBlock;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,6 +1,6 @@
 package satisfyu.candlelight.block;
 
-import de.cristelknight.doapi.block.FacingBlock;
+import de.cristelknight.doapi.common.block.FacingBlock;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;

@@ -1,8 +1,8 @@
 package satisfyu.candlelight.block;
 
 import com.mojang.datafixers.util.Pair;
-import de.cristelknight.doapi.block.StorageBlock;
-import de.cristelknight.doapi.block.entity.StorageBlockEntity;
+import de.cristelknight.doapi.common.block.StorageBlock;
+import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -37,7 +37,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import satisfyu.candlelight.registry.StorageTypesRegistry;
-import satisfyu.candlelight.util.DoAPIImpl;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
 

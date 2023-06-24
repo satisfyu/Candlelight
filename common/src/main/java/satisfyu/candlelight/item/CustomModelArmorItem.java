@@ -1,6 +1,6 @@
 package satisfyu.candlelight.item;
 
-import de.cristelknight.doapi.item.CustomArmorItem;
+import de.cristelknight.doapi.common.item.CustomArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
