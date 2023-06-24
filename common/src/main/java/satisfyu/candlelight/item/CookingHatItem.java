@@ -8,6 +8,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.registry.ArmorMaterialRegistry;
 import satisfyu.candlelight.util.CandlelightIdentifier;
@@ -26,6 +27,11 @@ public class CookingHatItem extends CustomHatItem implements CookArmorItem {
 
     @Override
     public Float getOffset() {
-        return -1.85f;
+        return -1.9f;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
+        tooltip(tooltip);
     }
 }
