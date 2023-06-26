@@ -30,9 +30,10 @@ configurations {
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
-    modImplementation "de:doapi:${rootProject.doapi_version}"
 
-    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-forge:$rei_version"
+    localRuntime("blue.endless:jankson:${jankson_version}")
+    modImplementation "maven.modrinth:do-api:${project.doapi_version}-forge"
+
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }

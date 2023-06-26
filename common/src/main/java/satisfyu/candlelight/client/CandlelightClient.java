@@ -1,6 +1,5 @@
 package satisfyu.candlelight.client;
 
-import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
@@ -13,17 +12,12 @@ import net.minecraft.world.entity.player.Player;
 import satisfyu.candlelight.client.gui.CookingPanGui;
 import satisfyu.candlelight.client.gui.CookingPotGui;
 import satisfyu.candlelight.client.gui.LetterGui;
-import satisfyu.candlelight.entity.chair.ChairRenderer;
 import satisfyu.candlelight.registry.ArmorRegistry;
-import satisfyu.candlelight.registry.EntitiesRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
-
-    public static boolean rememberedRecipeBookOpen;
-    public static boolean rememberedCraftableToggle = true;
 
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(),
@@ -60,7 +54,6 @@ public class CandlelightClient {
     }
 
     public static void registerEntityRenderers() {
-        EntityRendererRegistry.register(EntitiesRegistry.CHAIR, ChairRenderer::new);
     }
 
     public static void registerEntityModelLayer() {

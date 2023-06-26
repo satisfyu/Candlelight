@@ -20,7 +20,6 @@ public class Candlelight {
         ObjectRegistry.init();
         ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
-        EntitiesRegistry.init();
         SoundEventsRegistry.init();
         CandlelightMessages.registerC2SPackets();
     }
