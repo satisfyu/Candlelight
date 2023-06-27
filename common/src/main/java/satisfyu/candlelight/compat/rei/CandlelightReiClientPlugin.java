@@ -1,9 +1,7 @@
 package satisfyu.candlelight.compat.rei;
 
-import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
-import me.shedaniel.rei.api.common.display.DisplaySerializerRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -21,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CandlelightReiClientPlugin implements REIClientPlugin {
+public class CandlelightReiClientPlugin {
 
-    @Override
-    public void registerCategories(CategoryRegistry registry) {
+
+    public static void registerCategories(CategoryRegistry registry) {
         registry.add(new CookingPanCategory());
         registry.add(new CookingPotCategory());
 
@@ -33,15 +31,12 @@ public class CandlelightReiClientPlugin implements REIClientPlugin {
 
     }
 
-    @Override
-    public void registerDisplays(DisplayRegistry registry) {
+
+    public static void registerDisplays(DisplayRegistry registry) {
         registry.registerFiller(CookingPanRecipe.class, CookingPanDisplay::new);
         registry.registerFiller(CookingPotRecipe.class, CookingPotDisplay::new);
     }
 
-    @Override
-    public void registerDisplaySerializer(DisplaySerializerRegistry registry) {
-    }
 
     public static List<Ingredient> ingredients(Recipe<Container> recipe, ItemStack stack) {
         List<Ingredient> l = new ArrayList<>(recipe.getIngredients());

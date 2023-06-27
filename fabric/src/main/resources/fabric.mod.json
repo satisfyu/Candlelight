@@ -6,7 +6,8 @@
   "description": "A Food Themed Mod focusing on cooking with Wine and Potions",
   "authors": [
     "satisfy_u",
-    "BaumeisterJo"
+    "BaumeisterJo",
+    "Cristelknight"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/candlelight-lets-do-a-candlelight-dinner",
@@ -20,7 +21,7 @@
       "satisfyu.candlelight.fabric.CandlelightFabric"
     ],
     "rei_client": [
-      "satisfyu.candlelight.compat.rei.CandlelightReiClientPlugin"
+      "satisfyu.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
     ],
     "client": [
       "satisfyu.candlelight.fabric.client.CandlelightClientFabric"
