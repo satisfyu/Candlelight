@@ -3,6 +3,9 @@
   "values": [
     "minecraft:smoker",
     "minecraft:magma_block",
-    "#candlelight:stoves"
+    "#candlelight:stoves",
+    "#farmersdelight:heat_sources",
+    "#meadow:allows_cooking",
+    "#bakery:allows_cooking"
   ]
 }
