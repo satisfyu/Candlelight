@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
+/*
 @Environment(EnvType.CLIENT)
 public class SignedPaperGui extends Screen{
     public static final Contents EMPTY_PROVIDER = new Contents() {
@@ -297,3 +298,4 @@ public class SignedPaperGui extends Screen{
         }
     }
 }
+*/

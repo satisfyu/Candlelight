@@ -25,7 +25,7 @@ public class RoseBushBlock extends FlowerBlock {
     @Override
     public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity) {
-            entity.hurt(DamageSource.CACTUS, 1.0f);
+            entity.hurt(world.damageSources().cactus(), 1.f);
             entity.makeStuckInBlock(state, new Vec3(0.800000011920929, 0.75, 0.800000011920929));
         }
     }

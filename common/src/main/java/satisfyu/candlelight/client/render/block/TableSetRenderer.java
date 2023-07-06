@@ -1,7 +1,7 @@
 package satisfyu.candlelight.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -20,7 +20,7 @@ public class TableSetRenderer implements StorageTypeRenderer {
         float oP = (float) 1 / 16;
         matrices.translate(oP, oP, -oP);
         matrices.scale(0.5f, 0.5f, 0.5f);
-        matrices.mulPose(Vector3f.XP.rotationDegrees(90f));
+        matrices.mulPose(Axis.XP.rotationDegrees(90f));
         ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
     }
 }

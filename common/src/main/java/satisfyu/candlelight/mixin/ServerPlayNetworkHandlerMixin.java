@@ -27,7 +27,7 @@ public class ServerPlayNetworkHandlerMixin {
     private void updateBookPages(List<FilteredText> messages, UnaryOperator<String> postProcessor, ItemStack book) {
 
     }
-
+/*
     @Inject(method = "updateBookContents", at = @At("HEAD"))
     private void updateBookContent(List<FilteredText> pages, int slotId, CallbackInfo ci) {
         ItemStack itemStack = this.player.getInventory().getItem(slotId);
@@ -62,4 +62,6 @@ public class ServerPlayNetworkHandlerMixin {
             ci.cancel();
         }
     }
+
+ */
 }

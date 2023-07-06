@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.client.ClientUtil;
 
 import java.util.List;
-
+/*
 public class WrittenPaperItem extends Item {
     public WrittenPaperItem(Properties settings) {
         super(settings);
@@ -64,3 +64,4 @@ public class WrittenPaperItem extends Item {
 
     }
 }
+ */

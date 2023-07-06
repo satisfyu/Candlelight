@@ -16,8 +16,8 @@ import satisfyu.candlelight.registry.ArmorMaterialRegistry;
 import java.util.List;
 
 public class RingItem extends ArmorItem {
-    public RingItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
-        super(material, slot, settings);
+    public RingItem(ArmorMaterial material, Type type, Properties settings) {
+        super(material, type, settings);
     }
 
     @Override

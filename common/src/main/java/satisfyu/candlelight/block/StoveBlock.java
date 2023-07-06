@@ -43,11 +43,12 @@ public class StoveBlock extends DirectionalBlock {
 
     @Override
     public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
-        boolean isLit = state.getValue(LIT);
+        boolean isLit = world.getBlockState(pos).getValue(LIT);
         if (isLit && !entity.fireImmune() && entity instanceof LivingEntity livingEntity &&
                 !EnchantmentHelper.hasFrostWalker(livingEntity)) {
-            entity.hurt(DamageSource.IN_FIRE, 1.f);
+            entity.hurt(world.damageSources().inFire(), 1.f);
         }
+
         super.stepOn(world, pos, state, entity);
     }
 

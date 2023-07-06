@@ -9,10 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import satisfyu.candlelight.block.TypeWriterBlock;
-import satisfyu.candlelight.block.entity.TypeWriterEntity;
 import satisfyu.candlelight.registry.ObjectRegistry;
-
+/*
 public class SyncTypewriterDataC2SPacket implements NetworkManager.NetworkReceiver {
 
     @Override
@@ -35,4 +33,4 @@ public class SyncTypewriterDataC2SPacket implements NetworkManager.NetworkReceiv
             }
         });
     }
-}
+}*/

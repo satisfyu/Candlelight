@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CookingHatItem extends CustomHatItem implements CookArmorItem {
     public CookingHatItem(ArmorMaterial material, Properties settings) {
-        super(material, EquipmentSlot.HEAD, settings);
+        super(material, Type.HELMET, settings);
     }
 
     @Override

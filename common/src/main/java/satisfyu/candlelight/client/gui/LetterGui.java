@@ -10,8 +10,9 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import satisfyu.candlelight.client.gui.handler.LetterGuiHandler;
 import satisfyu.candlelight.util.CandlelightIdentifier;
+
+/*
 @Environment(EnvType.CLIENT)
 public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
 
@@ -82,4 +83,4 @@ public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
     private void onRenamed(String name) {
         LetterGuiHandler.name = name;
     }
-}
+}*/

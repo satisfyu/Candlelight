@@ -3,10 +3,9 @@ package satisfyu.candlelight.networking;
 
 import dev.architectury.networking.NetworkManager;
 import net.minecraft.resources.ResourceLocation;
-import satisfyu.candlelight.networking.packet.SignNoteC2SPacket;
-import satisfyu.candlelight.networking.packet.SyncTypewriterDataC2SPacket;
+//import satisfyu.candlelight.networking.packet.SyncTypewriterDataC2SPacket;
 import satisfyu.candlelight.util.CandlelightIdentifier;
-
+/*
 public class CandlelightMessages {
     public static final ResourceLocation TYPEWRITER_SYNC = new CandlelightIdentifier("typewriter_sync");
     public static final ResourceLocation SIGN_NOTE = new CandlelightIdentifier("sign_note");
@@ -16,3 +15,4 @@ public class CandlelightMessages {
         NetworkManager.registerReceiver(NetworkManager.Side.C2S, SIGN_NOTE, new SignNoteC2SPacket());
     }
 }
+*/

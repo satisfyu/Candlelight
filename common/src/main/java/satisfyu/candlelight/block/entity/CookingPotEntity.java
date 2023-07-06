@@ -3,6 +3,7 @@ package satisfyu.candlelight.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
@@ -102,9 +103,9 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		return false;
 	}
 
-	
-	private boolean canCraft(Recipe<?> recipe) {
-		if (recipe == null || recipe.getResultItem().isEmpty()) {
+
+	private boolean canCraft(Recipe<?> recipe, RegistryAccess access) {
+		if (recipe == null || recipe.getResultItem(access).isEmpty()) {
 			return false;
 		}
 		if(recipe instanceof CookingPotRecipe cookingRecipe){
@@ -116,7 +117,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 				if (this.getItem(OUTPUT_SLOT).isEmpty()) {
 					return true;
 				}
-				final ItemStack recipeOutput = this.generateOutputItem(recipe);
+				final ItemStack recipeOutput = this.generateOutputItem(recipe, access);
 				final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
 				final int outputSlotCount = outputSlotStack.getCount();
 				if (this.getItem(OUTPUT_SLOT).isEmpty()) {
@@ -133,19 +134,20 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		}
 		return false;
 	}
-	
-	private void craft(Recipe<?> recipe) {
-		if (!canCraft(recipe)) {
+
+	private void craft(Recipe<?> recipe, RegistryAccess access) {
+		if (!canCraft(recipe, access)) {
 			return;
 		}
-		final ItemStack recipeOutput = generateOutputItem(recipe);
+		final ItemStack recipeOutput = this.generateOutputItem(recipe, access);
 		final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
 		if (outputSlotStack.isEmpty()) {
-			setItem(OUTPUT_SLOT, recipeOutput.copy());
+			this.setItem(OUTPUT_SLOT, recipeOutput);
 		} else if (outputSlotStack.is(recipeOutput.getItem())) {
 			outputSlotStack.grow(recipeOutput.getCount());
 		}
 		final NonNullList<Ingredient> ingredients = recipe.getIngredients();
+
 		boolean[] slotUsed = new boolean[INGREDIENTS_AREA];
 		for (int i = 0; i < recipe.getIngredients().size(); i++) {
 			Ingredient ingredient = ingredients.get(i);
@@ -166,8 +168,8 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		this.getItem(BOTTLE_INPUT_SLOT).shrink(1);
 	}
 
-	private ItemStack generateOutputItem(Recipe<?> recipe) {
-		ItemStack outputStack = recipe.getResultItem();
+	private ItemStack generateOutputItem(Recipe<?> recipe, RegistryAccess access) {
+		ItemStack outputStack = recipe.getResultItem(access);
 
 		if (!(outputStack.getItem() instanceof EffectFood)) {
 			return outputStack;
@@ -199,16 +201,15 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 			return;
 		}
 		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
-
-
-		boolean canCraft = canCraft(recipe);
+		RegistryAccess access = level.registryAccess();
+		boolean canCraft = canCraft(recipe, access);
 		if (canCraft) {
 			this.cookingTime++;
 			if (this.cookingTime >= MAX_COOKING_TIME) {
 				this.cookingTime = 0;
-				craft(recipe);
+				craft(recipe, access);
 			}
-		} else if (!canCraft(recipe)) {
+		} else if (!canCraft(recipe, access)) {
 			this.cookingTime = 0;
 		}
 		if (canCraft) {

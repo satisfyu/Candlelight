@@ -75,7 +75,7 @@ public class MealBlock extends Block {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        return world.getBlockState(pos.below()).getMaterial().isSolid();
+        return world.getBlockState(pos.below()).isSolid();
     }
 
     @Override

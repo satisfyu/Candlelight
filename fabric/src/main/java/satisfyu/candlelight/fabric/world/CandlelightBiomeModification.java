@@ -2,6 +2,7 @@ package satisfyu.candlelight.fabric.world;
 
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import satisfyu.candlelight.util.CandlelightIdentifier;
@@ -24,7 +25,7 @@ public class CandlelightBiomeModification {
     }
 
     private static Predicate<BiomeSelectionContext> getCandlelightSelector(String path) {
-        return BiomeSelectors.tag(TagKey.create(Registry.BIOME_REGISTRY, new CandlelightIdentifier(path)));
+        return BiomeSelectors.tag(TagKey.create(Registries.BIOME, new CandlelightIdentifier(path)));
     }
 
 

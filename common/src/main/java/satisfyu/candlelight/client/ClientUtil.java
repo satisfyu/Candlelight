@@ -2,27 +2,20 @@ package satisfyu.candlelight.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import satisfyu.candlelight.block.entity.TypeWriterEntity;
-import satisfyu.candlelight.client.gui.SignedPaperGui;
-import satisfyu.candlelight.client.gui.TypeWriterGui;
-import satisfyu.candlelight.client.gui.NotePaperGui;
 
 public class ClientUtil {
-
+/*
     public static void setNotePaperScreen(Player user, ItemStack stack, InteractionHand hand){
         Minecraft.getInstance().setScreen(new NotePaperGui(user, stack, hand));
     }
@@ -35,7 +28,7 @@ public class ClientUtil {
 
     public static void setSignedPaperScreen(ItemStack stack){
         Minecraft.getInstance().setScreen(new SignedPaperGui(new SignedPaperGui.WrittenPaperContents(stack)));
-    }
+    }*/
 
     public static <T extends BlockEntity> void renderBlock(BlockState state, PoseStack matrices, MultiBufferSource vertexConsumers, T entity){
         Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, matrices, vertexConsumers, ClientUtil.getLightLevel(entity.getLevel(), entity.getBlockPos()), OverlayTexture.NO_OVERLAY);
@@ -46,8 +39,10 @@ public class ClientUtil {
     }
 
     public static <T extends BlockEntity> void renderItem(ItemStack stack, PoseStack matrices, MultiBufferSource vertexConsumers, T entity){
-        Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.GUI, ClientUtil.getLightLevel(entity.getLevel(), entity.getBlockPos()),
-                OverlayTexture.NO_OVERLAY, matrices, vertexConsumers, 1);
+        Level level = entity.getLevel();
+        if(level == null) return;
+        Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.GUI, ClientUtil.getLightLevel(level, entity.getBlockPos()),
+                OverlayTexture.NO_OVERLAY, matrices, vertexConsumers, level, 1);
     }
 
     public static int getLightLevel(Level world, BlockPos pos) {

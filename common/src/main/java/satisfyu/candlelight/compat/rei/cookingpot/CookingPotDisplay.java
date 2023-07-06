@@ -22,7 +22,7 @@ public class CookingPotDisplay extends BasicDisplay {
 
 
     public CookingPotDisplay(Recipe<Container> recipe) {
-        this(EntryIngredients.ofIngredients(CandlelightReiClientPlugin.ingredients(recipe, getContainer(recipe))), Collections.singletonList(EntryIngredients.of(recipe.getResultItem())), Optional.ofNullable(recipe.getId()));
+        this(EntryIngredients.ofIngredients(CandlelightReiClientPlugin.ingredients(recipe, getContainer(recipe))), Collections.singletonList(EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess()))), Optional.ofNullable(recipe.getId()));
     }
 
     public CookingPotDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs, Optional<ResourceLocation> location) {
