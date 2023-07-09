@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[47,)"
 #issueTrackerURL = ""
 license = "All Rights Reserved"
 
@@ -16,27 +16,27 @@ logoFile = "pack.png"
 [[dependencies.candlelight]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.candlelight]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,)"
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.candlelight]]
 modId = "architectury"
 mandatory = true
-versionRange = "[6.5.77,)"
+versionRange = "[9.0.8,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.candlelight]]
 modId = "doapi"
 mandatory = true
-versionRange = "[1.1.0,)"
+versionRange = "[1.2.3,)"
 ordering = "AFTER"
 side = "BOTH"
