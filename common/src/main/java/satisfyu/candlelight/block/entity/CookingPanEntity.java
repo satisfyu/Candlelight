@@ -144,18 +144,14 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			outputSlotStack.grow(recipeOutput.getCount());
 		}
 		final NonNullList<Ingredient> ingredients = recipe.getIngredients();
-		// each slot can only be used once because in canMake we only checked if decrement by 1 still retains the recipe
-		// otherwise recipes can break when an ingredient is used multiple times
 		boolean[] slotUsed = new boolean[INGREDIENTS_AREA];
 		for (int i = 0; i < recipe.getIngredients().size(); i++) {
 			Ingredient ingredient = ingredients.get(i);
-			// Looks for the best slot to take it from
 			final ItemStack bestSlot = this.getItem(i);
 			if (ingredient.test(bestSlot) && !slotUsed[i]) {
 				slotUsed[i] = true;
 				bestSlot.shrink(1);
 			} else {
-				// check all slots in search of the ingredient
 				for (int j = 0; j < INGREDIENTS_AREA; j++) {
 					ItemStack stack = this.getItem(j);
 					if (ingredient.test(stack) && !slotUsed[j]) {
