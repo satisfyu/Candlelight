@@ -6,7 +6,6 @@ public class CandlelightFoods {
     //TIER 1
     public static final FoodProperties TOMATO_SOUP = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).build();
     public static final FoodProperties COOKED_BEEF = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
-    public static final FoodProperties VINEGAR = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).build();
     public static final FoodProperties BROCCOLI_BEEF = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
     public static final FoodProperties BROCCOLI_TOMATO = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
     public static final FoodProperties BROCCOLI_SALAD = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.7F).build();
