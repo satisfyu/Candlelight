@@ -113,6 +113,14 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> CHEFS_JACKET = registerItem("chefs_jacket", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, ArmorItem.Type.CHESTPLATE, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> CHEFS_PANTS = registerItem("chefs_pants", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, ArmorItem.Type.LEGGINGS, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> CHEFS_BOOTS = registerItem("chefs_boots", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, ArmorItem.Type.BOOTS, getSettings().rarity(Rarity.COMMON)));
+
+    public static final RegistrySupplier<Block> TYPEWRITER_IRON = registerWithItem("typewriter_iron", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
+    public static final RegistrySupplier<Block> TYPEWRITER_COPPER = registerWithItem("typewriter_copper", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
+    public static final RegistrySupplier<Item> NOTE_PAPER = registerItem("note_paper", () -> new Item(getSettings()));
+    public static final RegistrySupplier<Item> NOTE_PAPER_WRITEABLE = registerItem("note_paper_writeable", () -> new Item(getSettings().stacksTo(1)));
+    public static final RegistrySupplier<Item> LETTER_OPEN = registerItem("letter_open", () -> new Item(getSettings()));
+    public static final RegistrySupplier<Item> LOVE_LETTER_OPEN = registerItem("love_letter_open", () -> new Item(getSettings()));
+
     //public static final RegistrySupplier<Block> TYPEWRITER_IRON = registerWithItem("typewriter_iron", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
     //public static final RegistrySupplier<Block> TYPEWRITER_COPPER = registerWithItem("typewriter_copper", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
     //public static final RegistrySupplier<Item> NOTE_PAPER = registerItem("note_paper", () -> new Item(getSettings()));
@@ -122,7 +130,7 @@ public class ObjectRegistry {
     //public static final RegistrySupplier<Item> LETTER_CLOSED = registerItem("letter_closed", () -> new ClosedLetterItem(getSettingsWithoutTab().stacksTo(1)));
     //public static final RegistrySupplier<Item> LOVE_LETTER_OPEN = registerItem("love_letter_open", () -> new LetterItem(getSettings()));
     //public static final RegistrySupplier<Item> LOVE_LETTER_CLOSED = registerItem("love_letter", () -> new ClosedLetterItem(getSettingsWithoutTab()));
-    //public static final RegistrySupplier<Block> COBBLESTONE_STOVE = registerWithItem("cobblestone_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(s -> 12)));
+    public static final RegistrySupplier<Block> COBBLESTONE_STOVE = registerWithItem("cobblestone_stove", () -> new StoveBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).lightLevel(s -> 12)));
     public static final RegistrySupplier<Block> COBBLESTONE_KITCHEN_SINK = registerWithItem("cobblestone_kitchen_sink", () -> new KitchenSinkBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
     public static final RegistrySupplier<Block> COBBLESTONE_COUNTER = registerWithItem("cobblestone_counter", () -> new FacingBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
     public static final RegistrySupplier<Block> OAK_CABINET = registerWithItem( "oak_cabinet", () -> new StorageBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventsRegistry.CABINET_OPEN.get(), SoundEventsRegistry.CABINET_CLOSE.get()));

@@ -2,7 +2,6 @@ package satisfyu.candlelight;
 
 import dev.architectury.registry.CreativeTabRegistry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
@@ -22,6 +21,7 @@ public class Candlelight {
         ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
         SoundEventsRegistry.init();
+        TabRegistry.init();
         //CandlelightMessages.registerC2SPackets();
     }
 
