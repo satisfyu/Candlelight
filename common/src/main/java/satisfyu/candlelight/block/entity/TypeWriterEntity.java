@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
-/*
+
 public class TypeWriterEntity extends BlockEntity {
 
     public static final String PAPER_KEY ="paper";
@@ -77,4 +77,3 @@ public class TypeWriterEntity extends BlockEntity {
     }
 }
 
- */

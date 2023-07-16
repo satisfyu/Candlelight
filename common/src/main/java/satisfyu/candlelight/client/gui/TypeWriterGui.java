@@ -6,7 +6,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
-/*
+import satisfyu.candlelight.block.entity.TypeWriterEntity;
+import satisfyu.candlelight.networking.CandlelightMessages;
+
 @Environment(EnvType.CLIENT)
 public class TypeWriterGui extends NoteGui {
     private final TypeWriterEntity typeWriterEntity;
@@ -30,4 +32,4 @@ public class TypeWriterGui extends NoteGui {
         }
     }
 }
-*/
+

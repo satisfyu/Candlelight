@@ -6,7 +6,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import satisfyu.candlelight.registry.ObjectRegistry;
-/*
+
 public class SignNoteC2SPacket implements NetworkManager.NetworkReceiver {
     @Override
     public void receive(FriendlyByteBuf buf, NetworkManager.PacketContext context) {
@@ -23,4 +23,4 @@ public class SignNoteC2SPacket implements NetworkManager.NetworkReceiver {
         }
     }
 }
- */
+

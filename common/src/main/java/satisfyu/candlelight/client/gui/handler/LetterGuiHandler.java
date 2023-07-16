@@ -13,7 +13,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
-/*
 
 public class LetterGuiHandler extends AbstractContainerMenu {
     private final Container inventory;
@@ -168,4 +167,3 @@ public class LetterGuiHandler extends AbstractContainerMenu {
     }
 }
 
- */

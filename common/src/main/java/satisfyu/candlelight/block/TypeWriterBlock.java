@@ -30,6 +30,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import satisfyu.candlelight.block.entity.TypeWriterEntity;
 import satisfyu.candlelight.client.ClientUtil;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
@@ -38,7 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
-/*
+
 public class TypeWriterBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING;
 
@@ -165,4 +166,3 @@ public class TypeWriterBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 }
-*/
