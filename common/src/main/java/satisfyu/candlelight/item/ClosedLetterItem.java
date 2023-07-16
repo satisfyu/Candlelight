@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.registry.ObjectRegistry;
 
 import java.util.List;
-/*
+
 public class ClosedLetterItem extends Item {
     public ClosedLetterItem(Properties settings) {
         super(settings);
@@ -46,4 +46,3 @@ public class ClosedLetterItem extends Item {
         return InteractionResultHolder.sidedSuccess(itemStack, world.isClientSide());
     }
 }
-*/

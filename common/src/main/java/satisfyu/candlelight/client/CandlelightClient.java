@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.player.Player;
 import satisfyu.candlelight.client.gui.CookingPanGui;
 import satisfyu.candlelight.client.gui.CookingPotGui;
-//import satisfyu.candlelight.client.gui.LetterGui;
+import satisfyu.candlelight.client.gui.LetterGui;
 import satisfyu.candlelight.registry.ArmorRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.registry.ScreenHandlerTypeRegistry;
@@ -45,7 +45,7 @@ public class CandlelightClient {
 
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), CookingPanGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
-        //MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
+        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
     }
 
     public static void preInitClient() {

@@ -14,7 +14,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-/*
+import satisfyu.candlelight.client.gui.handler.LetterGuiHandler;
+
 import java.util.List;
 
 public class LetterItem extends Item {
@@ -51,5 +52,3 @@ public class LetterItem extends Item {
         tooltip.add(Component.translatable(  "item.candlelight.letter.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }
-
- */

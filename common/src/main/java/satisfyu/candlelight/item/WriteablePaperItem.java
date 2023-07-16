@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import satisfyu.candlelight.client.ClientUtil;
-/*
+
 public class WriteablePaperItem extends Item {
     public WriteablePaperItem(Properties settings) {
         super(settings);
@@ -29,5 +29,3 @@ public class WriteablePaperItem extends Item {
         return InteractionResultHolder.sidedSuccess(itemStack, world.isClientSide());
     }
 }
-
- */

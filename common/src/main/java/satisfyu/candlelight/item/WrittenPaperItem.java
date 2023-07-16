@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.client.ClientUtil;
 
 import java.util.List;
-/*
+
 public class WrittenPaperItem extends Item {
     public WrittenPaperItem(Properties settings) {
         super(settings);
@@ -56,7 +56,7 @@ public class WrittenPaperItem extends Item {
             CompoundTag nbtCompound = stack.getTag();
             String string = nbtCompound.getString("author");
             if (!StringUtil.isNullOrEmpty(string)) {
-                tooltip.add(Component.translatable("book.byAuthor", new Object[]{string}).withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("book.byAuthor", string).withStyle(ChatFormatting.GRAY));
             }
 
            // tooltip.add(Text.translatable("book.generation." + nbtCompound.getInt("generation")).formatted(Formatting.GRAY));
@@ -64,4 +64,3 @@ public class WrittenPaperItem extends Item {
 
     }
 }
- */
