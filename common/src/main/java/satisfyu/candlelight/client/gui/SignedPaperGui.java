@@ -96,7 +96,7 @@ public class SignedPaperGui extends Screen{
             FormattedCharSequence orderedText = this.cachedPage.get(m);
             int var10003 = i + 36;
             Objects.requireNonNull(this.font);
-            guiGraphics.drawString(this.font, orderedText, var10003, 32 + m * 9, 0);
+            guiGraphics.drawString(this.font, orderedText, var10003, 32 + m * 9, 0, false);
         }
 
         Style style = this.getTextStyleAt(mouseX, mouseY);

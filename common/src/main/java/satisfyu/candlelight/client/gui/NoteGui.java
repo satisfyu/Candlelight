@@ -385,7 +385,7 @@ public abstract class NoteGui extends Screen {
 
             for (m = 0; m < l; ++m) {
                 NoteGui.LineInfo line = var15[m];
-                guiGraphics.drawString(this.font, line.asComponent, line.x, line.y, -16777216);
+                guiGraphics.drawString(this.font, line.asComponent, line.x, line.y, -16777216, false);
             }
 
             this.renderHighlight(guiGraphics, displayCache.selection);
