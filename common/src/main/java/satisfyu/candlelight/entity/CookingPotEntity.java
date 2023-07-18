@@ -89,9 +89,9 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 	}
 
 	public boolean isBeingBurned() {
-		if (getLevel() == null)
+		if (this.level == null)
 			throw new NullPointerException("Null world invoked");
-		final BlockState belowState = this.getLevel().getBlockState(getBlockPos().below());
+		final BlockState belowState = this.level.getBlockState(this.getBlockPos().below());
 		if (belowState.is(TagsRegistry.ALLOWS_COOKING)) {
 			try {
 				return belowState.getValue(BlockStateProperties.LIT);
@@ -192,8 +192,8 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		if (world.isClientSide()) {
 			return;
 		}
-		boolean isBeingBurned = isBeingBurned();
-		if (!isBeingBurned){
+		this.isBeingBurned = this.isBeingBurned();
+		if (!this.isBeingBurned){
 			if(state.getValue(CookingPotBlock.LIT)) {
 				world.setBlock(pos, state.setValue(CookingPotBlock.LIT, false), Block.UPDATE_ALL);
 			}
@@ -201,7 +201,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		}
 		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
 		RegistryAccess access = level.registryAccess();
-		boolean canCraft = canCraft(recipe, access);
+		boolean canCraft = this.canCraft(recipe, access);
 		if (canCraft) {
 			this.cookingTime++;
 			if (this.cookingTime >= MAX_COOKING_TIME) {
@@ -216,8 +216,8 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		} else if (state.getValue(CookingPotBlock.COOKING)) {
 			world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPotBlock.COOKING, false).setValue(CookingPotBlock.LIT, true), Block.UPDATE_ALL);
 		}
-		else if(state.getValue(CookingPotBlock.LIT) != isBeingBurned){
-			world.setBlock(pos, state.setValue(CookingPotBlock.LIT, isBeingBurned), Block.UPDATE_ALL);
+		else if(state.getValue(CookingPotBlock.LIT) != this.isBeingBurned){
+			world.setBlock(pos, state.setValue(CookingPotBlock.LIT, this.isBeingBurned), Block.UPDATE_ALL);
 		}
 	}
 

@@ -117,7 +117,7 @@ public class CookingPanBlock extends BaseEntityBlock {
             double d = (double) pos.getX() + 0.5;
             double e = pos.getY() + 0.7;
             double f = (double) pos.getZ() + 0.5;
-            if (random.nextDouble() < 0.3) {
+            if (random.nextDouble() < 0.1) {
                 world.playLocalSound(d, e, f, SoundEventsRegistry.BLOCK_COOKING_PAN_FRYING.get(), SoundSource.BLOCKS, 0.05F, 0.05F, false);
             }
             Direction direction = state.getValue(FACING);
