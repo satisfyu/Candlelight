@@ -1,4 +1,4 @@
-package satisfyu.candlelight.block.entity;
+package satisfyu.candlelight.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;

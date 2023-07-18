@@ -30,7 +30,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.candlelight.block.entity.TypeWriterEntity;
+import satisfyu.candlelight.entity.TypeWriterEntity;
 import satisfyu.candlelight.client.ClientUtil;
 import satisfyu.candlelight.registry.ObjectRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;

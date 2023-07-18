@@ -2,11 +2,11 @@ package satisfyu.candlelight.registry;
 
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.block.entity.*;
+import satisfyu.candlelight.entity.*;
 
 import java.util.function.Supplier;
 

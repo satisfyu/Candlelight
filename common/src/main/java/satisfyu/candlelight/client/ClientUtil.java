@@ -16,7 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import satisfyu.candlelight.block.entity.TypeWriterEntity;
+import satisfyu.candlelight.entity.TypeWriterEntity;
 import satisfyu.candlelight.client.gui.NotePaperGui;
 import satisfyu.candlelight.client.gui.SignedPaperGui;
 import satisfyu.candlelight.client.gui.TypeWriterGui;

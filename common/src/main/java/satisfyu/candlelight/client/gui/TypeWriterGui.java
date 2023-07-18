@@ -6,7 +6,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
-import satisfyu.candlelight.block.entity.TypeWriterEntity;
+import satisfyu.candlelight.entity.TypeWriterEntity;
 import satisfyu.candlelight.networking.CandlelightMessages;
 
 @Environment(EnvType.CLIENT)
