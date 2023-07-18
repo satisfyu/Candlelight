@@ -2,43 +2,19 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "rolls": 1.0,
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "candlelight:cobblestone_kitchen_sink"
         }
       ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "minecraft:alternative",
-          "terms": [
-            {
-              "block": "candlelight:cobblestone_kitchen_sink",
-              "condition": "minecraft:block_state_property",
-              "properties": {
-                "has_faucet": true
-              }
-            }
-          ]
+          "condition": "minecraft:survives_explosion"
         }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "candlelight:faucet"
-        }
-      ],
-      "rolls": 1.0
+      ]
     }
   ]
 }
