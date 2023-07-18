@@ -30,13 +30,13 @@ public class CookingPanGui extends AbstractRecipeBookGUIScreen<CookingPanGuiHand
     @Override
     public void renderProgressArrow(GuiGraphics guiGraphics) {
         int progress = this.menu.getScaledProgress(23);
-        guiGraphics.fill(this.leftPos + 95, this.topPos + 14, 178, 15, progress, 30);
+        guiGraphics.blit(BACKGROUND,this.leftPos + 95, this.topPos + 14, 178, 15, progress, 30);
     }
 
     @Override
     public void renderBurnIcon(GuiGraphics guiGraphics, int posX, int posY) {
         if (this.menu.isBeingBurned()) {
-           guiGraphics.fill(posX + 124, posY + 56, 176, 0, 17, 15);
+           guiGraphics.blit(BACKGROUND,posX + 124, posY + 56, 176, 0, 17, 15);
         }
     }
 
