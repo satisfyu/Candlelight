@@ -5,7 +5,7 @@
       "item": "minecraft:beef"
     },
     {
-      "item": "candlelight:butter"
+      "tag": "candlelight:butter"
     },
     {
       "tag": "candlelight:all_effects"
