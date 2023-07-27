@@ -36,7 +36,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.candlelight.entity.CookingPanEntity;
+import satisfyu.candlelight.entity.CookingPanBlockEntity;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.SoundEventsRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
@@ -101,7 +101,7 @@ public class CookingPanBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CookingPanEntity pan) {
+            if (blockEntity instanceof CookingPanBlockEntity pan) {
                 if (world instanceof ServerLevel) {
                     Containers.dropContents(world, pos, pan);
                 }
@@ -149,7 +149,7 @@ public class CookingPanBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new CookingPanEntity(pos, state);
+        return new CookingPanBlockEntity(pos, state);
     }
 
     @Override

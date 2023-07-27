@@ -36,7 +36,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import satisfyu.candlelight.entity.CookingPotEntity;
+import satisfyu.candlelight.entity.CookingPotBlockEntity;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.SoundEventsRegistry;
 import satisfyu.candlelight.util.CandlelightGeneralUtil;
@@ -112,7 +112,7 @@ public class CookingPotBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CookingPotEntity pot) {
+            if (blockEntity instanceof CookingPotBlockEntity pot) {
                 if (world instanceof ServerLevel) {
                     Containers.dropContents(world, pos, pot);
                 }
@@ -164,7 +164,7 @@ public class CookingPotBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new CookingPotEntity(pos, state);
+        return new CookingPotBlockEntity(pos, state);
     }
 
     @Override

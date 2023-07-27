@@ -33,7 +33,7 @@ import satisfyu.candlelight.registry.TagsRegistry;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
-public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<CookingPanEntity>, Container, MenuProvider {
+public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTicker<CookingPanBlockEntity>, Container, MenuProvider {
 
 	private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
 	private static final int MAX_CAPACITY = 8;
@@ -47,14 +47,14 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 
 	private final ContainerData delegate;
 
-	public CookingPanEntity(BlockPos pos, BlockState state) {
+	public CookingPanBlockEntity(BlockPos pos, BlockState state) {
 		super(BlockEntityRegistry.COOKING_PAN_BLOCK_ENTITY.get(), pos, state);
 		this.delegate = new ContainerData() {
 			@Override
 			public int get(int index) {
 				return switch (index) {
-					case 0 -> CookingPanEntity.this.cookingTime;
-					case 1 -> CookingPanEntity.this.isBeingBurned ? 1 : 0;
+					case 0 -> CookingPanBlockEntity.this.cookingTime;
+					case 1 -> CookingPanBlockEntity.this.isBeingBurned ? 1 : 0;
 					default -> 0;
 				};
 			}
@@ -62,8 +62,8 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			@Override
 			public void set(int index, int value) {
 				switch (index) {
-					case 0 -> CookingPanEntity.this.cookingTime = value;
-					case 1 -> CookingPanEntity.this.isBeingBurned = value != 0;
+					case 0 -> CookingPanBlockEntity.this.cookingTime = value;
+					case 1 -> CookingPanBlockEntity.this.isBeingBurned = value != 0;
 				}
 			}
 
@@ -187,7 +187,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 
 
 	@Override
-	public void tick(Level world, BlockPos pos, BlockState state, CookingPanEntity blockEntity) {
+	public void tick(Level world, BlockPos pos, BlockState state, CookingPanBlockEntity blockEntity) {
 		if (world.isClientSide()) {
 			return;
 		}

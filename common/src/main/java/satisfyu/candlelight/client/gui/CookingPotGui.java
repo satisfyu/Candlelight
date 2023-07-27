@@ -8,7 +8,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import satisfyu.candlelight.Candlelight;
 import satisfyu.candlelight.client.gui.handler.CookingPotGuiHandler;
 import satisfyu.candlelight.client.recipebook.CookingPotRecipeBook;
 import satisfyu.candlelight.util.CandlelightIdentifier;
@@ -16,8 +15,10 @@ import satisfyu.candlelight.util.CandlelightIdentifier;
 
 @Environment(EnvType.CLIENT)
 public class CookingPotGui extends AbstractRecipeBookGUIScreen<CookingPotGuiHandler> {
-    private static final ResourceLocation BACKGROUND;
+    public static final ResourceLocation BACKGROUND;
 
+    public static final int ARROW_X = 95;
+    public static final int ARROW_Y = 14;
 
     public CookingPotGui(CookingPotGuiHandler handler, Inventory playerInventory, Component title) {
         super(handler, playerInventory, title, new CookingPotRecipeBook(), BACKGROUND);
@@ -32,7 +33,6 @@ public class CookingPotGui extends AbstractRecipeBookGUIScreen<CookingPotGuiHand
     @Override
     public void renderProgressArrow(GuiGraphics guiGraphics) {
         int progress = this.menu.getScaledProgress(23);
-        Candlelight.LOGGER.error(progress);
         guiGraphics.blit(BACKGROUND, this.leftPos + 95, this.topPos + 14, 178, 15, progress, 30);
     }
 

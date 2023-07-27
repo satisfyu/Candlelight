@@ -20,14 +20,17 @@
     "main": [
       "satisfyu.candlelight.fabric.CandlelightFabric"
     ],
-    "rei_client": [
-      "satisfyu.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
-    ],
     "client": [
       "satisfyu.candlelight.fabric.client.CandlelightClientFabric"
     ],
     "doapi": [
       "satisfyu.candlelight.util.DoAPIImpl"
+    ],
+    "rei_client": [
+      "satisfyu.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
+    ],
+    "jei_mod_plugin": [
+      "satisfyu.candlelight.compat.jei.CandlelightJEIPlugin"
     ]
   },
   "mixins": [

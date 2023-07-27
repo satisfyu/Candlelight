@@ -10,7 +10,7 @@ import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
-import satisfyu.candlelight.entity.CookingPanEntity;
+import satisfyu.candlelight.entity.CookingPanBlockEntity;
 import satisfyu.candlelight.registry.ObjectRegistry;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class CookingPanCategory implements DisplayCategory<CookingPanDisplay> {
         Point startPoint = new Point(bounds.getCenterX() - 55, bounds.getCenterY() - 13);
         List<Widget> widgets = Lists.newArrayList();
         widgets.add(Widgets.createRecipeBase(bounds));
-        widgets.add(Widgets.createArrow(new Point(startPoint.x + 54, startPoint.y - 1)).animationDurationTicks(CookingPanEntity.MAX_COOKING_TIME));
+        widgets.add(Widgets.createArrow(new Point(startPoint.x + 54, startPoint.y - 1)).animationDurationTicks(CookingPanBlockEntity.MAX_COOKING_TIME));
         widgets.add(Widgets.createResultSlotBackground(new Point(startPoint.x + 90, startPoint.y)));
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 90, startPoint.y)).entries(display.getOutputEntries().get(0)).disableBackground().markOutput());
         for(int i = 0; i < 6; i++){

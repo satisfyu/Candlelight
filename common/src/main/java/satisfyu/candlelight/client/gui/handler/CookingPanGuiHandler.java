@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import satisfyu.candlelight.entity.CookingPanEntity;
+import satisfyu.candlelight.entity.CookingPanBlockEntity;
 import satisfyu.candlelight.client.gui.handler.slot.ExtendedSlot;
 import satisfyu.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
 import satisfyu.candlelight.recipe.CookingPanRecipe;
@@ -72,7 +72,7 @@ public class CookingPanGuiHandler extends AbstractRecipeBookGUIScreenHandler {
 
     public int getScaledProgress(int arrowWidth) {
         final int progress = this.propertyDelegate.get(0);
-        final int totalProgress = CookingPanEntity.MAX_COOKING_TIME;
+        final int totalProgress = CookingPanBlockEntity.MAX_COOKING_TIME;
         if (progress == 0) {
             return 0;
         }
