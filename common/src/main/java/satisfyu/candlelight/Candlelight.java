@@ -26,5 +26,6 @@ public class Candlelight {
 
     public static void commonInit(){
         FlammableBlockRegistry.init();
+        CompostableRegistry.init();
     }
 }
