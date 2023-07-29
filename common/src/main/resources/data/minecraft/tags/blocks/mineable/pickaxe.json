@@ -43,6 +43,9 @@
     "candlelight:red_nether_bricks_kitchen_sink",
     "candlelight:quartz_counter",
     "candlelight:quartz_stove",
-    "candlelight:quartz_kitchen_sink"
+    "candlelight:quartz_kitchen_sink",
+    "candlelight:basalt_counter",
+    "candlelight:basalt_stove",
+    "candlelight:basalt_kitchen_sink"
   ]
 }

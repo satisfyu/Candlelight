@@ -9,6 +9,8 @@
     "candlelight:deepslate_stove",
     "candlelight:sandstone_stove",
     "candlelight:red_nether_bricks_stove",
-    "candlelight:quartz_stove"
+    "candlelight:quartz_stove",
+    "candlelight:basalt_stove",
+    "candlelight:bamboo_stove"
   ]
 }

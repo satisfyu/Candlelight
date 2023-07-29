@@ -76,6 +76,21 @@
     "candlelight:warped_drawer",
     "candlelight:warped_cabinet",
     "candlelight:warped_chair",
-    "candlelight:warped_table"
+    "candlelight:warped_table",
+    "candlelight:bamboo_shelf",
+    "candlelight:bamboo_big_table",
+    "candlelight:bamboo_drawer",
+    "candlelight:bamboo_cabinet",
+    "candlelight:bamboo_table",
+    "candlelight:bamboo_chair",
+    "candlelight:cherry_shelf",
+    "candlelight:cherry_big_table",
+    "candlelight:cherry_drawer",
+    "candlelight:cherry_cabinet",
+    "candlelight:cherry_chair",
+    "candlelight:cherry_table",
+    "candlelight:bamboo_counter",
+    "candlelight:bamboo_stove",
+    "candlelight:bamboo_kitchen_sink"
   ]
 }

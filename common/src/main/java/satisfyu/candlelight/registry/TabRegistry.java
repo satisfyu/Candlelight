@@ -168,6 +168,24 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.CRIMSON_CHAIR.get());
                 output.accept(ObjectRegistry.CRIMSON_SHELF.get());
                 output.accept(ObjectRegistry.CRIMSON_BIG_TABLE.get());
+                output.accept(ObjectRegistry.BASALT_STOVE.get());
+                output.accept(ObjectRegistry.BASALT_KITCHEN_SINK.get());
+                output.accept(ObjectRegistry.BASALT_COUNTER.get());
+                output.accept(ObjectRegistry.CHERRY_CABINET.get());
+                output.accept(ObjectRegistry.CHERRY_DRAWER.get());
+                output.accept(ObjectRegistry.CHERRY_TABLE.get());
+                output.accept(ObjectRegistry.CHERRY_CHAIR.get());
+                output.accept(ObjectRegistry.CHERRY_SHELF.get());
+                output.accept(ObjectRegistry.CHERRY_BIG_TABLE.get());
+                output.accept(ObjectRegistry.BAMBOO_STOVE.get());
+                output.accept(ObjectRegistry.BAMBOO_KITCHEN_SINK.get());
+                output.accept(ObjectRegistry.BAMBOO_COUNTER.get());
+                output.accept(ObjectRegistry.BAMBOO_CABINET.get());
+                output.accept(ObjectRegistry.BAMBOO_DRAWER.get());
+                output.accept(ObjectRegistry.BAMBOO_TABLE.get());
+                output.accept(ObjectRegistry.BAMBOO_CHAIR.get());
+                output.accept(ObjectRegistry.BAMBOO_SHELF.get());
+                output.accept(ObjectRegistry.BAMBOO_BIG_TABLE.get());
             })
             .build());
 
