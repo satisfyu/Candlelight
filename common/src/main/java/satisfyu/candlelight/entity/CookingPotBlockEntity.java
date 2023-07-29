@@ -1,6 +1,7 @@
 package satisfyu.candlelight.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
@@ -30,15 +31,17 @@ import satisfyu.candlelight.recipe.CookingPotRecipe;
 import satisfyu.candlelight.registry.BlockEntityRegistry;
 import satisfyu.candlelight.registry.RecipeTypeRegistry;
 import satisfyu.candlelight.registry.TagsRegistry;
+import satisfyu.candlelight.util.ImplementedInventory;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
-public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTicker<CookingPotBlockEntity>, Container, MenuProvider {
+public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTicker<CookingPotBlockEntity>, ImplementedInventory, MenuProvider {
 	
 	private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
 	private static final int MAX_CAPACITY = 8;
 	public static final int MAX_COOKING_TIME = 600; // Time in ticks (30s)
 	private int cookingTime;
+	private static final int[] SLOTS_FOR_UP = new int[]{0, 1, 2, 3, 4, 5, 6};
 	public static final int BOTTLE_INPUT_SLOT = 6;
 	public static final int OUTPUT_SLOT = 7;
 	private static final int INGREDIENTS_AREA = 2 * 3;
@@ -72,6 +75,15 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
 				return 2;
 			}
 		};
+	}
+
+	@Override
+	public int[] getSlotsForFace(Direction side) {
+		if(side.equals(Direction.UP)){
+			return SLOTS_FOR_UP;
+		} else if (side.equals(Direction.DOWN)){
+			return new int[]{OUTPUT_SLOT};
+		} else return new int[]{BOTTLE_INPUT_SLOT};
 	}
 	
 	@Override
@@ -222,39 +234,9 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
 	}
 
 
-	
 	@Override
-	public int getContainerSize() {
-		return inventory.size();
-	}
-	
-	@Override
-	public boolean isEmpty() {
-		return inventory.stream().allMatch(ItemStack::isEmpty);
-	}
-	
-	@Override
-	public ItemStack getItem(int slot) {
-		return this.inventory.get(slot);
-	}
-	
-	@Override
-	public ItemStack removeItem(int slot, int amount) {
-		return ContainerHelper.removeItem(this.inventory, slot, amount);
-	}
-	
-	@Override
-	public ItemStack removeItemNoUpdate(int slot) {
-		return ContainerHelper.takeItem(this.inventory, slot);
-	}
-	
-	@Override
-	public void setItem(int slot, ItemStack stack) {
-		this.inventory.set(slot, stack);
-		if (stack.getCount() > this.getMaxStackSize()) {
-			stack.setCount(this.getMaxStackSize());
-		}
-		this.setChanged();
+	public NonNullList<ItemStack> getItems() {
+		return inventory;
 	}
 
 
@@ -265,11 +247,6 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
 		} else {
 			return player.distanceToSqr((double) this.worldPosition.getX() + 0.5, (double) this.worldPosition.getY() + 0.5, (double) this.worldPosition.getZ() + 0.5) <= 64.0;
 		}
-	}
-
-	@Override
-	public void clearContent() {
-		inventory.clear();
 	}
 
 	@Override
