@@ -11,7 +11,7 @@
       "item": "minecraft:iron_ingot"
     },
     "W": {
-      "item": "minecraft:water_bucket"
+      "tag": "candlelight:water_bottles"
     },
     "B": {
       "tag": "minecraft:wooden_slabs"
