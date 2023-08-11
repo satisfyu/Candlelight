@@ -4,7 +4,7 @@
 		"1": "candlelight:block/kitchen_hardware/bricks_stove_side",
 		"4": "candlelight:block/kitchen_hardware/bricks_stove_bottom",
 		"5": "candlelight:block/kitchen_hardware/bricks_stove_front",
-		"6": "candlelight:block/kitchen_hardware/stove_top",
+		"6": "candlelight:block/kitchen_hardware/brick_stove_top",
 		"particle": "candlelight:block/kitchen_hardware/bricks_stove_side"
 	},
 	"elements": [

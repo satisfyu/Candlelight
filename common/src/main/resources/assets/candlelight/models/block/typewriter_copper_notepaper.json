@@ -4,7 +4,7 @@
 		"1": "candlelight:block/bag_side",
 		"3": "candlelight:block/typewriter_copper",
 		"4": "candlelight:block/typewriter_keys",
-		"5": "candlelight:block/kitchen_hardware/stove_top",
+		"5": "candlelight:block/kitchen_hardware/brick_stove_top",
 		"6": "candlelight:block/typewriter_paper",
 		"particle": "candlelight:block/typewriter_copper"
 	},

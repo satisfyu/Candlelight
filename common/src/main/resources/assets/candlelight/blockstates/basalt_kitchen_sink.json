@@ -1,0 +1,35 @@
+{
+  "variants": {
+    "facing=east,filled=false": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet",
+      "y": 90
+    },
+    "facing=north,filled=false": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet"
+    },
+    "facing=south,filled=false": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet",
+      "y": 180
+    },
+    "facing=west,filled=false": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet",
+      "y": 270
+    },
+
+    "facing=east,filled=true": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet_water",
+      "y": 90
+    },
+    "facing=north,filled=true": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet_water"
+    },
+    "facing=south,filled=true": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet_water",
+      "y": 180
+    },
+    "facing=west,filled=true": {
+      "model": "candlelight:block/basalt_kitchen_sink_faucet_water",
+      "y": 270
+    }
+  }
+}

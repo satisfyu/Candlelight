@@ -5,8 +5,7 @@
 		"3": "candlelight:block/faucet",
 		"4": "block/water_still",
 		"5": "candlelight:block/kitchen_hardware/sink_top",
-		"6": "candlelight:block/kitchen_hardware/bricks_stove_bottom",
-		"7": "candlelight:block/kitchen_hardware/cobblestone_sink_bottom",
+		"7": "candlelight:block/kitchen_hardware/bricks_sink_bottom",
 		"particle": "candlelight:block/kitchen_hardware/bricks_sink_side"
 	},
 	"elements": [
@@ -19,7 +18,7 @@
 				"south": {"uv": [0, 4, 16, 16], "texture": "#1", "cullface": "south"},
 				"west": {"uv": [2, 4, 16, 16], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [0, 1, 16, 15], "texture": "#7"},
-				"down": {"uv": [0, 0, 16, 14], "texture": "#6", "cullface": "down"}
+				"down": {"uv": [0, 1, 16, 15], "texture": "#7", "cullface": "down"}
 			}
 		},
 		{

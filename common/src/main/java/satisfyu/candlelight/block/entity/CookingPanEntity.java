@@ -131,7 +131,7 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 		}
 		return false;
 	}
-	
+
 	private void craft(Recipe<?> recipe) {
 		if (!this.canCraft(recipe)) {
 			return;
@@ -150,19 +150,35 @@ public class CookingPanEntity extends BlockEntity implements BlockEntityTicker<C
 			final ItemStack bestSlot = this.getItem(i);
 			if (ingredient.test(bestSlot) && !slotUsed[i]) {
 				slotUsed[i] = true;
+				ItemStack remainderStack = getRemainderItem(bestSlot);
 				bestSlot.shrink(1);
+				if (!remainderStack.isEmpty()) {
+					this.setItem(i, remainderStack);
+				}
 			} else {
 				for (int j = 0; j < INGREDIENTS_AREA; j++) {
 					ItemStack stack = this.getItem(j);
 					if (ingredient.test(stack) && !slotUsed[j]) {
 						slotUsed[j] = true;
+						ItemStack remainderStack = getRemainderItem(stack);
 						stack.shrink(1);
+						if (!remainderStack.isEmpty()) {
+							this.setItem(j, remainderStack);
+						}
 					}
 				}
 			}
 		}
 		this.getItem(BOTTLE_INPUT_SLOT).shrink(1);
 	}
+
+	private ItemStack getRemainderItem(ItemStack stack) {
+		if (stack.getItem().hasCraftingRemainingItem()) {
+			return new ItemStack(stack.getItem().getCraftingRemainingItem());
+		}
+		return ItemStack.EMPTY;
+	}
+
 
 	private ItemStack generateOutputItem(Recipe<?> recipe) {
 		ItemStack outputStack = recipe.getResultItem();
