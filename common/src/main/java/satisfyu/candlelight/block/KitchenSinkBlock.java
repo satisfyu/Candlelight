@@ -135,10 +135,4 @@ public class KitchenSinkBlock extends Block {
 	public BlockState mirror(BlockState state, Mirror mirror) {
 		return state.rotate(mirror.getRotation(state.getValue(FACING)));
 	}
-
-	@Override
-	public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-		tooltip.add(Component.translatable("block.vinery.deprecated.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-
-	}
 }

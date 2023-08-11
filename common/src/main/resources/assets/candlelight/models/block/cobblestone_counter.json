@@ -2,8 +2,8 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"0": "candlelight:block/kitchen_hardware/cobblestone_sink_side",
-		"1": "candlelight:block/kitchen_hardware/stove_top",
-		"2": "candlelight:block/kitchen_hardware/cobblestone_sink_bottom",
+		"1": "candlelight:block/kitchen_hardware/brick_stove_top",
+		"2": "candlelight:block/kitchen_hardware/cobblestone_stove_bottom",
 		"particle": "candlelight:block/kitchen_hardware/cobblestone_sink_side"
 	},
 	"elements": [

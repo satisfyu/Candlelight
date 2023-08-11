@@ -1,16 +1,68 @@
 {
   "variants": {
-    "facing=east": [
-      { "model": "candlelight:block/stone_bricks_counter",  "y": 90}
-    ],
-    "facing=north": [
-      { "model": "candlelight:block/stone_bricks_counter", "weight":1 }
-    ],
-    "facing=south": [
-      { "model": "candlelight:block/stone_bricks_counter",  "y": 180}
-    ],
-    "facing=west": [
-      { "model": "candlelight:block/stone_bricks_counter",  "y": 270}
-    ]
+
+    "facing=north,type=none": {
+      "model": "candlelight:block/stone_bricks_counter"
+    },
+    "facing=east,type=none": {
+      "model": "candlelight:block/stone_bricks_counter",
+      "y": 90
+    },
+    "facing=south,type=none": {
+      "model": "candlelight:block/stone_bricks_counter",
+      "y": 180
+    },
+    "facing=west,type=none": {
+      "model": "candlelight:block/stone_bricks_counter",
+      "y": 270
+    },
+
+    "facing=north,type=middle": {
+      "model": "candlelight:block/stone_bricks_counter_middle"
+    },
+    "facing=east,type=middle": {
+      "model": "candlelight:block/stone_bricks_counter_middle",
+      "y": 90
+    },
+    "facing=south,type=middle": {
+      "model": "candlelight:block/stone_bricks_counter_middle",
+      "y": 180
+    },
+    "facing=west,type=middle": {
+      "model": "candlelight:block/stone_bricks_counter_middle",
+      "y": 270
+    },
+
+    "facing=north,type=left": {
+      "model": "candlelight:block/stone_bricks_counter_connected"
+    },
+    "facing=east,type=left": {
+      "model": "candlelight:block/stone_bricks_counter_connected",
+      "y": 90
+    },
+    "facing=south,type=left": {
+      "model": "candlelight:block/stone_bricks_counter_connected",
+      "y": 180
+    },
+    "facing=west,type=left": {
+      "model": "candlelight:block/stone_bricks_counter_connected",
+      "y": 270
+    },
+
+    "facing=north,type=right": {
+      "model": "candlelight:block/stone_bricks_counter_connected",
+      "y": 180
+    },
+    "facing=east,type=right": {
+      "model": "candlelight:block/stone_bricks_counter_connected",
+      "y": 270
+    },
+    "facing=south,type=right": {
+      "model": "candlelight:block/stone_bricks_counter_connected"
+    },
+    "facing=west,type=right": {
+      "model": "candlelight:block/stone_bricks_counter_connected",
+      "y": 90
+    }
   }
 }

@@ -150,34 +150,48 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityTic
 		if (!canCraft(recipe, access)) {
 			return;
 		}
-		final ItemStack recipeOutput = this.generateOutputItem(recipe, access);
-		final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
+		final ItemStack recipeOutput = generateOutputItem(recipe, access);
+		final ItemStack outputSlotStack = getItem(OUTPUT_SLOT);
 		if (outputSlotStack.isEmpty()) {
-			this.setItem(OUTPUT_SLOT, recipeOutput);
-		} else if (outputSlotStack.is(recipeOutput.getItem())) {
+			setItem(OUTPUT_SLOT, recipeOutput);
+		} else if (isSameItemSameTags(outputSlotStack, recipeOutput)) {
 			outputSlotStack.grow(recipeOutput.getCount());
 		}
 		final NonNullList<Ingredient> ingredients = recipe.getIngredients();
-
 		boolean[] slotUsed = new boolean[INGREDIENTS_AREA];
 		for (int i = 0; i < recipe.getIngredients().size(); i++) {
 			Ingredient ingredient = ingredients.get(i);
-			final ItemStack bestSlot = this.getItem(i);
+			ItemStack bestSlot = getItem(i);
 			if (ingredient.test(bestSlot) && !slotUsed[i]) {
 				slotUsed[i] = true;
+				ItemStack remainderStack = getRemainderItem(bestSlot);
 				bestSlot.shrink(1);
+				if (!remainderStack.isEmpty()) {
+					setItem(i, remainderStack);
+				}
 			} else {
 				for (int j = 0; j < INGREDIENTS_AREA; j++) {
-					ItemStack stack = this.getItem(j);
+					ItemStack stack = getItem(j);
 					if (ingredient.test(stack) && !slotUsed[j]) {
 						slotUsed[j] = true;
+						ItemStack remainderStack = getRemainderItem(stack);
 						stack.shrink(1);
+						if (!remainderStack.isEmpty()) {
+							setItem(j, remainderStack);
+						}
 					}
 				}
 			}
 		}
-		this.getItem(BOTTLE_INPUT_SLOT).shrink(1);
 	}
+
+	private ItemStack getRemainderItem(ItemStack stack) {
+		if (stack.getItem().hasCraftingRemainingItem()) {
+			return new ItemStack(stack.getItem().getCraftingRemainingItem());
+		}
+		return ItemStack.EMPTY;
+	}
+
 
 	private ItemStack generateOutputItem(Recipe<?> recipe, RegistryAccess access) {
 		ItemStack outputStack = recipe.getResultItem(access);
