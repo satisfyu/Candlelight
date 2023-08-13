@@ -1,8 +1,6 @@
 package satisfyu.candlelight.client.gui;
 
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -34,10 +32,7 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
@@ -503,8 +498,8 @@ public abstract class NoteGui extends Screen {
         } else {
             int i = this.currentPageSelectionManager.getCursorPos();
             int j = this.currentPageSelectionManager.getSelectionPos();
-            IntList intList = new IntArrayList();
-            List<LineInfo> list = Lists.newArrayList();
+            List<Integer> intList = new ArrayList<>();
+            List<LineInfo> list = new ArrayList<>();
             MutableInt mutableInt = new MutableInt();
             MutableBoolean mutableBoolean = new MutableBoolean();
             StringSplitter textHandler = this.font.getSplitter();
@@ -519,7 +514,7 @@ public abstract class NoteGui extends Screen {
                 intList.add(start);
                 list.add(new NoteGui.LineInfo(style, string2, position.x, position.y));
             });
-            int[] is = intList.toIntArray();
+            int[] is = intList.stream().mapToInt(Integer::intValue).toArray();
             boolean bl = i == string.length();
             Pos2i position;
             int l;
@@ -534,7 +529,7 @@ public abstract class NoteGui extends Screen {
                 position = new Pos2i(l, k * 9);
             }
 
-            List<Rect2i> list2 = Lists.newArrayList();
+            List<Rect2i> list2 = new ArrayList<>();
             if (i != j) {
                 l = Math.min(i, j);
                 int m = Math.max(i, j);
