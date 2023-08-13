@@ -4,8 +4,6 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -37,10 +35,7 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.util.CandlelightIdentifier;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
@@ -508,8 +503,8 @@ public abstract class NoteGui extends Screen {
         } else {
             int i = this.currentPageSelectionManager.getCursorPos();
             int j = this.currentPageSelectionManager.getSelectionPos();
-            IntList intList = new IntArrayList();
-            List<NoteGui.Line> list = Lists.newArrayList();
+            List<Integer> intList = new ArrayList<>();
+            List<NoteGui.Line> list = new ArrayList<>();
             MutableInt mutableInt = new MutableInt();
             MutableBoolean mutableBoolean = new MutableBoolean();
             StringSplitter textHandler = this.font.getSplitter();
@@ -524,7 +519,7 @@ public abstract class NoteGui extends Screen {
                 intList.add(start);
                 list.add(new NoteGui.Line(style, string2, position.x, position.y));
             });
-            int[] is = intList.toIntArray();
+            int[] is = intList.stream().mapToInt(Integer::intValue).toArray();
             boolean bl = i == string.length();
             NoteGui.Position position;
             int l;
@@ -539,7 +534,7 @@ public abstract class NoteGui extends Screen {
                 position = new NoteGui.Position(l, k * 9);
             }
 
-            List<Rect2i> list2 = Lists.newArrayList();
+            List<Rect2i> list2 = new ArrayList<>();
             if (i != j) {
                 l = Math.min(i, j);
                 int m = Math.max(i, j);
