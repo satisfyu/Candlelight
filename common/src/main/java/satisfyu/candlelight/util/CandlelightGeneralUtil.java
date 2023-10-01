@@ -6,12 +6,23 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.Container;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -40,6 +51,32 @@ public class CandlelightGeneralUtil {
 	public static boolean isSolid(LevelReader levelReader, BlockPos blockPos){
 		return levelReader.getBlockState(blockPos.below()).getMaterial().isSolid();
 	}
+
+	public static InteractionResult fillBucket(Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack itemStack, ItemStack returnItem, BlockState blockState, SoundEvent soundEvent) {
+		if (!level.isClientSide) {
+			Item item = itemStack.getItem();
+			player.setItemInHand(interactionHand, ItemUtils.createFilledResult(itemStack, player, returnItem));
+			player.awardStat(Stats.ITEM_USED.get(item));
+			level.setBlockAndUpdate(blockPos, blockState);
+			level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+			level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
+		}
+		return InteractionResult.sidedSuccess(level.isClientSide);
+	}
+
+	public static InteractionResult emptyBucket(Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack itemStack, ItemStack returnItem, BlockState blockState, SoundEvent soundEvent) {
+		if (!level.isClientSide) {
+			Item item = itemStack.getItem();
+			player.setItemInHand(interactionHand, ItemUtils.createFilledResult(itemStack, player, returnItem));
+			player.awardStat(Stats.ITEM_USED.get(item));
+			level.setBlockAndUpdate(blockPos, blockState);
+			level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+			level.gameEvent(null, GameEvent.FLUID_PLACE, blockPos);
+		}
+
+		return InteractionResult.sidedSuccess(level.isClientSide);
+	}
+
 
 
 	public static Collection<ServerPlayer> tracking(ServerLevel world, ChunkPos pos) {

@@ -15,7 +15,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -27,16 +26,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class ShelfBlock extends StorageBlock {
+public class ToolRackBlock extends StorageBlock {
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0, 0.25, 0.5, 1, 0.3125, 1), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.125, 0.1875, 0.625, 0.1875, 0.25, 0.9375), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.8125, 0.1875, 0.625, 0.875, 0.25, 0.9375), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.125, 0.0625, 0.9375, 0.1875, 0.25, 1), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.8125, 0.0625, 0.9375, 0.875, 0.25, 1), BooleanOp.OR);
-
+//TODO
         return shape;
     };
 
@@ -46,7 +40,7 @@ public class ShelfBlock extends StorageBlock {
         }
     });
 
-    public ShelfBlock(Properties settings) {
+    public ToolRackBlock(Properties settings) {
         super(settings);
     }
 
@@ -77,30 +71,33 @@ public class ShelfBlock extends StorageBlock {
         return stack.isEdible() || stack.getItem() instanceof BlockItem;
     }
 
+
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
-    @Override
-    public int size(){
-        return 9;
-    }
 
     @Override
     public ResourceLocation type() {
-        return StorageTypesRegistry.SHELF;
+        return StorageTypesRegistry.TOOL_RACK;
     }
 
     @Override
     public int getSection(Float f, Float y) {
         int nSection;
-        float oneS = 1.0f / 9;
+        float oneS = 1.2f / 4;
 
         nSection = (int) (f / oneS);
 
-        return 8 - nSection;
+        return 3 - nSection;
     }
+
+    @Override
+    public int size() {
+        return 4;
+    }
+
 
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
