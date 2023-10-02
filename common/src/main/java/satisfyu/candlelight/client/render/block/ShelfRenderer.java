@@ -15,7 +15,6 @@ import satisfyu.candlelight.client.ClientUtil;
 public class ShelfRenderer implements StorageTypeRenderer {
     @Override
     public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {
-
         matrices.translate(-0.4, 0.5, 0.25);
         matrices.mulPose(Vector3f.YP.rotationDegrees(90));
         matrices.scale(0.5f, 0.5f, 0.5f);

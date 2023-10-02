@@ -94,11 +94,8 @@ public class ShelfBlock extends StorageBlock {
 
     @Override
     public int getSection(Float f, Float y) {
-        int nSection;
         float oneS = 1.0f / 9;
-
-        nSection = (int) (f / oneS);
-
+        int nSection = (int) (f / oneS);
         return 8 - nSection;
     }
 

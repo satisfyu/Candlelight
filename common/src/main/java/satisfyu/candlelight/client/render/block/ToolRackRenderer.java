@@ -9,6 +9,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import satisfyu.candlelight.client.ClientUtil;
 import satisfyu.candlelight.registry.ObjectRegistry;
@@ -19,23 +20,22 @@ public class ToolRackRenderer implements StorageTypeRenderer {
     public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {
         for (int i = 0; i < Math.min(itemStacks.size(), 4); i++) {
             ItemStack stack = itemStacks.get(i);
+
             if (!stack.isEmpty()) {
+                Item item = stack.getItem();
+
                 matrices.pushPose();
-
-                if (stack.getItem() instanceof BlockItem blockItem) {
-                    if (blockItem.getBlock() == ObjectRegistry.COOKING_PAN.get()) {
-                        matrices.translate(-0.5f, -0.5f, -0.9f);
-                        matrices.scale(2f, 2f, 2f);
-                        ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
-                    } else {
-                        matrices.translate(0.3f * i, 0, 0);
-                        matrices.mulPose(Vector3f.YN.rotationDegrees(45.0f));
-                        matrices.mulPose(Vector3f.YN.rotationDegrees(22.5f));
-                        ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
-                    }
-
-                    matrices.popPose();
+                if (item instanceof BlockItem blockItem && blockItem.getBlock() == ObjectRegistry.COOKING_PAN.get()) {
+                    matrices.translate(-0.5f, -0.5f, -0.9f);
+                    matrices.scale(2f, 2f, 2f);
+                    ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
+                } else {
+                    matrices.translate(0.3f * i, 0, 0);
+                    matrices.mulPose(Vector3f.YN.rotationDegrees(45.0f));
+                    matrices.mulPose(Vector3f.YN.rotationDegrees(22.5f));
+                    ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 }
+                matrices.popPose();
             }
         }
     }
