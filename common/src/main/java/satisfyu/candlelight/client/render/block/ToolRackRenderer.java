@@ -26,13 +26,17 @@ public class ToolRackRenderer implements StorageTypeRenderer {
 
                 matrices.pushPose();
                 if (item instanceof BlockItem blockItem && blockItem.getBlock() == ObjectRegistry.COOKING_PAN.get()) {
-                    matrices.translate(-0.5f, -0.5f, -0.9f);
-                    matrices.scale(2f, 2f, 2f);
+                    matrices.translate(0f, 0.8f, 0.45f);
+                    matrices.scale(0.6f, 0.6f, 0.6f);
+                    matrices.mulPose(Vector3f.ZN.rotationDegrees(-85f));
+                    matrices.mulPose(Vector3f.XN.rotationDegrees(90f));
+                    matrices.mulPose(Vector3f.YN.rotationDegrees(180f));
                     ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
                 } else {
-                    matrices.translate(0.3f * i, 0, 0);
-                    matrices.mulPose(Vector3f.YN.rotationDegrees(45.0f));
-                    matrices.mulPose(Vector3f.YN.rotationDegrees(22.5f));
+                    matrices.translate(0f, 0.6f, 0.38f);
+                    matrices.scale(0.6f, 0.6f, 0.6f);
+                    matrices.mulPose(Vector3f.ZN.rotationDegrees(135f));
+                    matrices.mulPose(Vector3f.YN.rotationDegrees(0f));
                     ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 }
                 matrices.popPose();
