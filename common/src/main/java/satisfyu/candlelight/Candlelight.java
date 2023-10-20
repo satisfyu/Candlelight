@@ -12,7 +12,7 @@ import satisfyu.candlelight.registry.*;
 public class Candlelight {
     public static final String MOD_ID = "candlelight";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-    public static final CreativeModeTab CANDLELIGHT_TAB = CreativeTabRegistry.create(Component.translatable("candlelight_tab"), () ->
+    public static final CreativeModeTab CANDLELIGHT_TAB = CreativeTabRegistry.create(Component.translatable("creativetab.candlelight.tab"), () ->
             new ItemStack(ObjectRegistry.HEARTH.get()));
     
     public static void init() {

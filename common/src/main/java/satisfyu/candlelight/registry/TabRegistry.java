@@ -70,12 +70,12 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.PIZZA_SLICE.get());
                 output.accept(ObjectRegistry.CHOCOLATE.get());
                 output.accept(ObjectRegistry.TABLE_SIGN.get());
+                output.accept(ObjectRegistry.TOOL_RACK.get());
                 output.accept(ObjectRegistry.PAINTING.get());
                 output.accept(ObjectRegistry.HEARTH.get());
                 output.accept(ObjectRegistry.ROSE.get());
                 output.accept(ObjectRegistry.JEWELRY_BOX.get());
                 output.accept(ObjectRegistry.CHOCOLATE_BOX.get());
-                output.accept(ObjectRegistry.FAUCET.get());
                 output.accept(ObjectRegistry.GOLD_RING.get());
                 output.accept(ObjectRegistry.COOKING_HAT.get());
                 output.accept(ObjectRegistry.CHEFS_JACKET.get());
