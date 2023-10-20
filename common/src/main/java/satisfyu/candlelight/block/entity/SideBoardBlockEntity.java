@@ -15,4 +15,6 @@ public class SideBoardBlockEntity extends ChestBlockEntity {
     protected Component getDefaultName() {
         return Component.translatable("container.sideboard");
     }
+
+
 }

@@ -39,7 +39,7 @@ public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
 
     public void renderForeground(PoseStack matrices, int mouseX, int mouseY, float delta) {
         this.nameField.render(matrices, mouseX, mouseY, delta);
-        this.font.draw(matrices, Component.translatable("block.candlelight.letter.translatable.text"), this.width / 1.95F - 1, (int) (this.height / 4.65F), 0x5A5A5A);
+        this.font.draw(matrices, Component.translatable("block.candlelight.letter.translatable.text"), this.width / 1.95F - 1, (int) (this.height / 4.1F), 0x5A5A5A);
     }
 
     @Override

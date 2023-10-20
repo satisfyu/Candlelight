@@ -29,7 +29,7 @@ public class ToolRackRenderer implements StorageTypeRenderer {
                 if (item instanceof BlockItem blockItem && blockItem.getBlock() == ObjectRegistry.COOKING_PAN.get()) {
                     matrices.translate(translate - 1, 0.8f, 0.45f);
                     matrices.scale(0.5f, 0.5f, 0.5f);
-                    matrices.mulPose(Vector3f.ZN.rotationDegrees(-85f));
+                    matrices.mulPose(Vector3f.ZN.rotationDegrees(-90f));
                     matrices.mulPose(Vector3f.XN.rotationDegrees(90f));
                     matrices.mulPose(Vector3f.YN.rotationDegrees(180f));
                     ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);

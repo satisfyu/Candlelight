@@ -105,7 +105,7 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.empty();
+        return Component.translatable("container.cabinet");
     }
 
     @Override
@@ -126,6 +126,7 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
             this.stateManager.decrementOpeners(player, this.getLevel(), this.getBlockPos(), this.getBlockState());
         }
     }
+
 
     public void tick() {
         if (!this.remove) {
