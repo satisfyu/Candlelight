@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/food/broccoli_salad"
+    "layer0": "candlelight:item/lettuce_seeds"
   }
 }

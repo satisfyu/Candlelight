@@ -4,8 +4,8 @@
 		"3": "candlelight:block/bag_side_handle",
 		"4": "candlelight:block/bag_bottom",
 		"7": "candlelight:block/bag_side",
-		"8": "candlelight:block/bag_top_broccoli",
-		"particle": "candlelight:block/bag_top_broccoli"
+		"8": "candlelight:block/bag_top_lettuce",
+		"particle": "candlelight:block/bag_top_lettuce"
 	},
 	"elements": [
 		{

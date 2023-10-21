@@ -17,11 +17,11 @@ public class CandlelightBiomeModification {
         BiomeModification world = BiomeModifications.create(new CandlelightIdentifier("world_features"));
         Predicate<BiomeSelectionContext> roseBiomes = getCandlelightSelector("spawns_rose");
         Predicate<BiomeSelectionContext> tomatoesBiomes = getCandlelightSelector("spawns_tomatoes");
-        Predicate<BiomeSelectionContext> broccoliBiomes = getCandlelightSelector("spawns_broccoli");
+        Predicate<BiomeSelectionContext> lettuceBiomes = getCandlelightSelector("spawns_lettuce");
 
         world.add(ModificationPhase.ADDITIONS, tomatoesBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.TOMATOES_PATCH_CHANCE_KEY));
         world.add(ModificationPhase.ADDITIONS, roseBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.ROSE_PATCH_CHANCE_KEY));
-        world.add(ModificationPhase.ADDITIONS, broccoliBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.BROCCOLI_PATCH_CHANCE_KEY));
+        world.add(ModificationPhase.ADDITIONS, lettuceBiomes, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.LETTUCE_PATCH_CHANCE_KEY));
     }
 
     private static Predicate<BiomeSelectionContext> getCandlelightSelector(String path) {

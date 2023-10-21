@@ -7,7 +7,7 @@ public class FlammableBlockRegistry {
 
     public static void init(){
         add(5, 20, ObjectRegistry.BEETROOT_CRATE.get());
-        add(5, 20, ObjectRegistry.BROCCOLI_CRATE.get());
+        add(5, 20, ObjectRegistry.LETTUCE_CRATE.get());
         add(5, 20, ObjectRegistry.CARROT_CRATE.get());
         add(5, 20, ObjectRegistry.POTATO_CRATE.get());
         add(5, 20, ObjectRegistry.TOMATO_CRATE.get());

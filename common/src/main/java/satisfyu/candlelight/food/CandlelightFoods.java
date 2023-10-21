@@ -5,8 +5,8 @@ import net.minecraft.world.food.FoodProperties;
 public class CandlelightFoods {
     public static final FoodProperties TOMATO_SOUP = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).build();
     public static final FoodProperties COOKED_BEEF = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
-    public static final FoodProperties BROCCOLI_BEEF = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
-    public static final FoodProperties BROCCOLI_TOMATO = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
+    public static final FoodProperties LETTUCE_BEEF = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
+    public static final FoodProperties LETTUCE_TOMATO = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
     public static final FoodProperties PORK_RIBS = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).build();
     public static final FoodProperties MUSHROOM_SOUP = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.5F).build();
     public static final FoodProperties ROASTBEEF_CARROTS = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();

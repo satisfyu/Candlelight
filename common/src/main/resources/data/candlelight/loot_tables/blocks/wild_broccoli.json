@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "candlelight:broccoli"
+          "name": "candlelight:lettuce"
         }
       ],
       "rolls": 1
@@ -27,7 +27,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "candlelight:broccoli_seeds"
+          "name": "candlelight:lettuce_seeds"
         }
       ],
       "rolls": 1

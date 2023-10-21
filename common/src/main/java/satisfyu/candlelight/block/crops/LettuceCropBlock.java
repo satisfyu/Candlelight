@@ -8,16 +8,16 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import satisfyu.candlelight.registry.ObjectRegistry;
 
-public class BroccoliCropBlock extends CropBlock {
+public class LettuceCropBlock extends CropBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
 
-    public BroccoliCropBlock(Properties settings) {
+    public LettuceCropBlock(Properties settings) {
         super(settings);
     }
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ObjectRegistry.BROCCOLI_SEEDS.get();
+        return ObjectRegistry.LETTUCE_SEEDS.get();
     }
 
     @Override

@@ -8,10 +8,10 @@
   ],
   "key": {
     "#": {
-      "item": "candlelight:broccoli"
+      "item": "candlelight:lettuce"
     }
   },
   "result": {
-    "item": "candlelight:broccoli_crate"
+    "item": "candlelight:lettuce_crate"
   }
 }

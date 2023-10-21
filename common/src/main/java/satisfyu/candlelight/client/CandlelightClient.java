@@ -21,7 +21,7 @@ public class CandlelightClient {
 
     public static void initClient() {
         RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(),
-                ObjectRegistry.TOMATOES_WILD.get(), ObjectRegistry.BROCCOLI_CROP.get(), ObjectRegistry.WILD_BROCCOLI.get(),
+                ObjectRegistry.TOMATOES_WILD.get(), ObjectRegistry.LETTUCE_CROP.get(), ObjectRegistry.WILD_LETTUCE.get(),
                 ObjectRegistry.TOMATO_CROP.get(), ObjectRegistry.OAK_CHAIR.get(), ObjectRegistry.DARK_OAK_CHAIR.get(), ObjectRegistry.SPRUCE_CHAIR.get(), ObjectRegistry.WARPED_CHAIR.get(),
                 ObjectRegistry.BIRCH_CHAIR.get(), ObjectRegistry.MANGROVE_CHAIR.get(), ObjectRegistry.ACACIA_CHAIR.get(), ObjectRegistry.CRIMSON_CHAIR.get(),
                 ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),

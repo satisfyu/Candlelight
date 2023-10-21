@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "candlelight:broccoli"
+      "item": "candlelight:lettuce"
     }
   ],
   "result": {
-    "item": "candlelight:broccoli_seeds",
+    "item": "candlelight:lettuce_seeds",
         "count": 3
   }
 }

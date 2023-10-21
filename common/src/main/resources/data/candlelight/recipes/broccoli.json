@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "candlelight:broccoli_crate"
+            "item": "candlelight:lettuce_crate"
         }
     },
     "result": {
-        "item": "candlelight:broccoli",
+        "item": "candlelight:lettuce",
         "count": 9
     }
 }

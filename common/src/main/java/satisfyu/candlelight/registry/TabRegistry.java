@@ -17,9 +17,9 @@ public class TabRegistry {
             .displayItems((parameters, output) -> {
                 output.accept(ObjectRegistry.TOMATO_CROP.get());
                 output.accept(ObjectRegistry.TOMATO.get());
-                output.accept(ObjectRegistry.BROCCOLI_CROP.get());
-                output.accept(ObjectRegistry.BROCCOLI.get());
-                output.accept(ObjectRegistry.BROCCOLI_CRATE.get());
+                output.accept(ObjectRegistry.LETTUCE_CROP.get());
+                output.accept(ObjectRegistry.LETTUCE.get());
+                output.accept(ObjectRegistry.LETTUCE_CRATE.get());
                 output.accept(ObjectRegistry.TOMATO_CRATE.get());
                 output.accept(ObjectRegistry.CARROT_CRATE.get());
                 output.accept(ObjectRegistry.POTATO_CRATE.get());
@@ -48,17 +48,17 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.PASTA.get());
                 output.accept(ObjectRegistry.BOLOGNESE.get());
                 output.accept(ObjectRegistry.CHICKEN_TERIYAKI.get());
-                output.accept(ObjectRegistry.BROCCOLI_SALAD.get());
+                output.accept(ObjectRegistry.LETTUCE_SALAD.get());
                 output.accept(ObjectRegistry.BEEF_TARTARE.get());
                 output.accept(ObjectRegistry.COOKED_BEEF.get());
                 output.accept(ObjectRegistry.CHICKEN_ALFREDO.get());
-                output.accept(ObjectRegistry.BROCCOLI_BEEF.get());
-                output.accept(ObjectRegistry.BROCCOLI_TOMATO.get());
+                output.accept(ObjectRegistry.LETTUCE_BEEF.get());
+                output.accept(ObjectRegistry.LETTUCE_TOMATO.get());
                 output.accept(ObjectRegistry.SALMON_WINE.get());
                 output.accept(ObjectRegistry.VEGGIE_PLATE.get());
                 output.accept(ObjectRegistry.PORK_RIBS.get());
                 output.accept(ObjectRegistry.PASTA_BOLOGNESE.get());
-                output.accept(ObjectRegistry.PASTA_BROCCOLI.get());
+                output.accept(ObjectRegistry.PASTA_LETTUCE.get());
                 output.accept(ObjectRegistry.PANCAKE.get());
                 output.accept(ObjectRegistry.FRICASSE.get());
                 output.accept(ObjectRegistry.CHICKEN.get());

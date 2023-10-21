@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#candlelight:spawns_lettuce",
+  "features": "candlelight:lettuce_patch_chance",
+  "step": "vegetal_decoration"
+}

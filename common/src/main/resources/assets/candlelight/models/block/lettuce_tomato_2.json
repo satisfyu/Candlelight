@@ -2,7 +2,7 @@
 	"credit": "Made by Satisfy",
 	"parent": "block/block",
 	"textures": {
-		"1": "candlelight:block/broccoli_tomato",
+		"1": "candlelight:block/lettuce_tomato",
 		"particle": "candlelight:block/bag_side",
 		"texture": "candlelight:block/bag_side"
 	},
@@ -23,7 +23,7 @@
 		{
 			"name": "bottom",
 			"from": [4.49, 1.01, 1.99],
-			"to": [12.49, 2.51, 12.99],
+			"to": [12.49, 2.01, 12.99],
 			"faces": {
 				"north": {"uv": [2, 15, 10, 16], "texture": "#texture"},
 				"east": {"uv": [5, 15, 16, 16], "texture": "#texture"},

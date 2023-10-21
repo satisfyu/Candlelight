@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/cross",
 	"textures": {
-		"cross": "candlelight:block/wild_broccoli"
+		"cross": "candlelight:block/wild_lettuce"
 	}
 }

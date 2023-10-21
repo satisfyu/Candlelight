@@ -8,8 +8,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WildBroccoli extends Block {
-    public WildBroccoli(Properties settings) {
+public class WildLettuce extends Block {
+    public WildLettuce(Properties settings) {
         super(settings);
     }
 

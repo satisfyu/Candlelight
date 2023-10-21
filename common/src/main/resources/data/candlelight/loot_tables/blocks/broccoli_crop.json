@@ -16,18 +16,18 @@
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "block": "candlelight:broccoli_crop",
+                  "block": "candlelight:lettuce_crop",
                   "condition": "minecraft:block_state_property",
                   "properties": {
                     "age": "3"
                   }
                 }
               ],
-              "name": "candlelight:broccoli"
+              "name": "candlelight:lettuce"
             },
             {
               "type": "minecraft:item",
-              "name": "candlelight:broccoli_seeds"
+              "name": "candlelight:lettuce_seeds"
             }
           ]
         }
@@ -39,7 +39,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "candlelight:broccoli_crop",
+          "block": "candlelight:lettuce_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "3"
@@ -60,7 +60,7 @@
               }
             }
           ],
-          "name": "candlelight:broccoli_seeds"
+          "name": "candlelight:lettuce_seeds"
         }
       ],
       "rolls": 1
