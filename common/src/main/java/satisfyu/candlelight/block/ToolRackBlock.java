@@ -55,46 +55,11 @@ public class ToolRackBlock extends ShelfBlock {
         return SHAPE.get(state.getValue(FACING));
     }
 
-    private ItemStack[] slots = new ItemStack[3];
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        // Check if the item being placed is a cooking pan
-        if (stack.getItem() == ObjectRegistry.COOKING_PAN.get().asItem()) {
-            // Check if any of the slots already have a cooking pan
-            for (ItemStack slotStack : slots) {
-                if (slotStack != null && slotStack.getItem() == ObjectRegistry.COOKING_PAN.get().asItem()) {
-                    return false; // Prevent placing another cooking pan
-                }
-            }
-        } else {
-            // Check if any of the slots already have a cooking pan
-            for (ItemStack slotStack : slots) {
-                if (slotStack != null && slotStack.getItem() == ObjectRegistry.COOKING_PAN.get().asItem()) {
-                    return false; // Prevent placing other items if a cooking pan is present
-                }
-            }
-        }
-
-        // Update the slot information
-        int slot = getEmptySlot();
-        if (slot >= 0 && slot < 3) {
-            slots[slot] = stack;
-        }
-
-        return true;
+        return stack.getItem() instanceof TieredItem || stack.getItem() == ObjectRegistry.COOKING_PAN.get().asItem();
     }
-
-    // Helper method to find an empty slot
-    private int getEmptySlot() {
-        for (int i = 0; i < 3; i++) {
-            if (slots[i] == null) {
-                return i;
-            }
-        }
-        return -1; // No empty slots
-    }
-
 
 
     @Override

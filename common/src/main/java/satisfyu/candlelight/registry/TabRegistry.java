@@ -15,10 +15,10 @@ public class TabRegistry {
             .icon(() -> new ItemStack(ObjectRegistry.HEARTH.get()))
             .title(Component.translatable("creativetab.candlelight.tab"))
             .displayItems((parameters, output) -> {
-                output.accept(ObjectRegistry.BROCCOLI_CROP.get());
                 output.accept(ObjectRegistry.TOMATO_CROP.get());
-                output.accept(ObjectRegistry.BROCCOLI.get());
                 output.accept(ObjectRegistry.TOMATO.get());
+                output.accept(ObjectRegistry.BROCCOLI_CROP.get());
+                output.accept(ObjectRegistry.BROCCOLI.get());
                 output.accept(ObjectRegistry.BROCCOLI_CRATE.get());
                 output.accept(ObjectRegistry.TOMATO_CRATE.get());
                 output.accept(ObjectRegistry.CARROT_CRATE.get());

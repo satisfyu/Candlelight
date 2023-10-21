@@ -8,7 +8,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import satisfyu.candlelight.client.ClientUtil;
@@ -26,13 +25,12 @@ public class ToolRackRenderer implements StorageTypeRenderer {
                 Item item = stack.getItem();
                 double translate = (i + 1) * (1D / 3);
 
-                if (item instanceof BlockItem blockItem && blockItem.getBlock() == ObjectRegistry.COOKING_PAN.get()) {
-                    matrices.translate(translate - 1, 0.8f, 0.45f);
+                if (item instanceof Item && item.equals(ObjectRegistry.COOKING_PAN_ITEM.get())) {
+                    matrices.translate(translate - (2D / 3), 0.6f, 0.38f);
                     matrices.scale(0.5f, 0.5f, 0.5f);
-                    matrices.mulPose(Axis.ZN.rotationDegrees(-90f));
-                    matrices.mulPose(Axis.XN.rotationDegrees(90f));
-                    matrices.mulPose(Axis.YN.rotationDegrees(180f));
-                    ClientUtil.renderBlockFromItem(blockItem, matrices, vertexConsumers, entity);
+                    matrices.mulPose(Axis.ZN.rotationDegrees(135f));
+                    matrices.mulPose(Axis.YN.rotationDegrees(0f));
+                    ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 } else {
                     matrices.translate(translate - (2D / 3), 0.6f, 0.38f);
                     matrices.scale(0.6f, 0.6f, 0.6f);
