@@ -200,7 +200,6 @@
   "item.candlelight.tomato_seeds": "Tomatensamen",
   "item.candlelight.tomato_soup": "Tomatensosse",
   "item.candlelight.veggie_plate": "Vegetarische Platte",
-  "itemGroup.candlelight.candlelight_tab": "Candlelight Dinner",
   "rei.candlelight.cooking_pan_category": "Pfanne",
   "rei.candlelight.cooking_pot_category": "Topf",
   "candlelight.sound.pan_frying": "Kochgeräusche",
@@ -222,5 +221,9 @@
   "block.candlelight.bamboo_chair": "Bambusstuhl",
   "block.candlelight.bamboo_drawer": "Bambusschublade",
   "block.candlelight.bamboo_shelf": "Bambusregal",
-  "block.candlelight.bamboo_table": "Bambustisch"
+  "block.candlelight.bamboo_table": "Bambustisch",
+  "creativetab.candlelight.tab": "Candlelight",
+  "container.sideboard": "Kommode",
+  "container.cabinet": "Schrank",
+  "candlelight.sound.juice_boiling": "Kochgeräusche"
 }
