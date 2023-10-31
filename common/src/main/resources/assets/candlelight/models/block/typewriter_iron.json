@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "candlelight:block/typewriter_copper",
+		"0": "block/packed_mud",
 		"1": "candlelight:block/bag_side",
-		"3": "candlelight:block/typewriter_iron",
-		"4": "candlelight:block/typewriter_keys",
-		"particle": "candlelight:block/typewriter_iron"
+		"3": "block/anvil",
+		"4": "candlelight:block/typewriter_paper",
+		"particle": "block/anvil"
 	},
 	"elements": [
 		{

@@ -2,8 +2,8 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"1": "candlelight:block/birch_table_connected",
-		"2": "candlelight:block/typewriter_iron",
-		"particle": "candlelight:block/typewriter_iron"
+		"2": "candlelight:block/kitchen_hardware/basalt_counter_top",
+		"particle": "candlelight:block/kitchen_hardware/basalt_counter_top"
 	},
 	"elements": [
 		{
@@ -73,6 +73,7 @@
 			"name": "bone",
 			"origin": [0, 0, 0],
 			"color": 0,
+			"nbt": "{}",
 			"children": [0, 1, 2, 3, 4]
 		}
 	]

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import satisfyu.candlelight.registry.ObjectRegistry;
 
 public class LettuceCropBlock extends CropBlock {
+    public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
 
     public LettuceCropBlock(Properties settings) {
@@ -22,7 +23,7 @@ public class LettuceCropBlock extends CropBlock {
 
     @Override
     public int getMaxAge() {
-        return 3;
+        return MAX_AGE;
     }
 
     @Override
@@ -34,5 +35,4 @@ public class LettuceCropBlock extends CropBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
-
 }

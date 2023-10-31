@@ -2,8 +2,8 @@
 	"credit": "Made by Satisfy",
 	"parent": "minecraft:block/crop",
 	"textures": {
-		"particle": "candlelight:block/tomatoes_stage1_1",
-		"crop": "candlelight:block/tomatoes_stage1_1"
+		"particle": "candlelight:block/tomato_stage1_1",
+		"crop": "candlelight:block/tomato_stage1_1"
 	},
 	"elements": [
 		{

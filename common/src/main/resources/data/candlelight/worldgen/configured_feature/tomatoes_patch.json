@@ -8,7 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "candlelight:tomatoes_wild"
+              "Name": "candlelight:wild_tomatoes"
             }
           }
         }
@@ -25,7 +25,13 @@
               },
               {
                 "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:grass_block",
+                "blocks": [
+                  "minecraft:dirt",
+                  "minecraft:grass_block",
+                  "minecraft:coarse_dirt",
+                  "minecraft:sand",
+                  "minecraft:red_sand"
+                ],
                 "offset": [
                   0,
                   -1,
@@ -37,8 +43,8 @@
         }
       ]
     },
-    "tries": 36,
-    "xz_spread": 7,
+    "tries": 28,
+    "xz_spread": 3,
     "y_spread": 3
   }
 }
