@@ -73,10 +73,6 @@ public class PizzaBlock extends FacingBlock {
         builder.add(CUTS);
     }
 
-    public IntegerProperty getCutsProperty() {
-        return CUTS;
-    }
-
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
