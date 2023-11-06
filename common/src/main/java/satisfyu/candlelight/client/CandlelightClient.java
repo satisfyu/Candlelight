@@ -27,7 +27,7 @@ public class CandlelightClient {
                 ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),
                 ObjectRegistry.BIRCH_TABLE.get(), ObjectRegistry.SPRUCE_TABLE.get(), ObjectRegistry.JUNGLE_TABLE.get(), ObjectRegistry.MANGROVE_TABLE.get(),
                 ObjectRegistry.WARPED_TABLE.get(), ObjectRegistry.CRIMSON_TABLE.get(), ObjectRegistry.CHAIR.get(), ObjectRegistry.TABLE.get(), ObjectRegistry.BAMBOO_CHAIR.get(),
-                ObjectRegistry.BAMBOO_TABLE.get(), ObjectRegistry.BAMBOO_STOVE.get(), ObjectRegistry.CHERRY_TABLE.get(), ObjectRegistry.CHERRY_CHAIR.get()
+                ObjectRegistry.BAMBOO_TABLE.get(), ObjectRegistry.BAMBOO_STOVE.get(), ObjectRegistry.CHERRY_TABLE.get(), ObjectRegistry.CHERRY_CHAIR.get(), ObjectRegistry.GLASS_BLOCK.get()
         );
 
         ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
@@ -41,7 +41,7 @@ public class CandlelightClient {
                 ObjectRegistry.BAMBOO_KITCHEN_SINK);
 
         ClientStorageTypes.init();
-        RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get());
+        RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get(), ObjectRegistry.GLASS_BLOCK.get());
 
 
 

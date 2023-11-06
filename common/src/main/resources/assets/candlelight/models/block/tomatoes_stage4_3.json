@@ -3,7 +3,7 @@
 	"parent": "minecraft:block/crop",
 	"textures": {
 		"particle": "candlelight:block/tomato_stage4_3",
-		"crop": "candlelight:block/tomato_stage_4_1"
+		"crop": "candlelight:block/tomato_stage4_1"
 	},
 	"elements": [
 		{

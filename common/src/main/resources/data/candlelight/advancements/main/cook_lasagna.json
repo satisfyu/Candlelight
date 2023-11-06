@@ -1,0 +1,37 @@
+{
+  "parent": "candlelight:main/place_cooking_pot",
+  "criteria": {
+    "lasagne": {
+      "conditions": {
+        "location": [
+          {
+            "block": "candlelight:lasagne_block",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "candlelight.advancement.lasagne.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "candlelight:lasagne"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "candlelight.advancement.lasagne"
+    }
+  },
+  "requirements": [
+    [
+      "lasagne"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,65 @@
+{
+  "parent": "candlelight:main/place_cooking_pot",
+  "display": {
+    "icon": {
+      "item": "candlelight:chicken"
+    },
+    "title": {
+      "translate": "candlelight.advancement.cook_everything_pot"
+    },
+    "description": {
+      "translate": "candlelight.advancement.cook_everything_pot.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 250
+  },
+  "criteria": {
+    "cook_everything_pot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["candlelight:chicken"]
+          },
+          {
+            "items": ["candlelight:mushroom_soup"]
+          },
+          {
+            "items": ["candlelight:pasta"]
+          },
+          {
+            "items": ["candlelight:chocolate"]
+          },
+          {
+            "items": ["candlelight:pork_ribs"]
+          },
+          {
+            "items": ["candlelight:chicken_teriyaki"]
+          },
+          {
+            "items": ["candlelight:salmon_wine"]
+          },
+          {
+            "items": ["candlelight:lasagne"]
+          },
+          {
+            "items": ["candlelight:pasta_raw"]
+          },
+          {
+            "items": ["candlelight:tomato_soup"]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cook_everything_pot"
+    ]
+  ]
+}

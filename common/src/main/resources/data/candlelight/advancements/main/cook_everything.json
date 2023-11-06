@@ -1,0 +1,128 @@
+{
+  "parent": "candlelight:main/place_chocolate",
+  "display": {
+    "icon": {
+      "item": "candlelight:salmon_wine"
+    },
+    "title": {
+      "translate": "candlelight.advancement.cook_everything"
+    },
+    "description": {
+      "translate": "candlelight.advancement.cook_everything.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 800,
+    "loot": [
+      "candlelight:advancements/completionist"
+    ]
+  },
+  "criteria": {
+    "cook_everything": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["candlelight:chicken"]
+          },
+          {
+            "items": ["candlelight:mushroom_soup"]
+          },
+          {
+            "items": ["candlelight:pasta"]
+          },
+          {
+            "items": ["candlelight:chocolate"]
+          },
+          {
+            "items": ["candlelight:pork_ribs"]
+          },
+          {
+            "items": ["candlelight:chicken_teriyaki"]
+          },
+          {
+            "items": ["candlelight:salmon_wine"]
+          },
+          {
+            "items": ["candlelight:lasagne"]
+          },
+          {
+            "items": ["candlelight:pasta_raw"]
+          },
+          {
+            "items": ["candlelight:tomato_soup"]
+          },
+          {
+            "items": ["candlelight:pancake"]
+          },
+          {
+            "items": ["candlelight:cooked_beef"]
+          },
+          {
+            "items": ["candlelight:beef_wellington"]
+          },
+          {
+            "items": ["candlelight:roastbeef_carrots"]
+          },
+          {
+            "items": ["candlelight:pizza"]
+          },
+          {
+            "items": ["candlelight:chicken_alfredo"]
+          },
+          {
+            "items": ["candlelight:pasta_lettuce"]
+          },
+          {
+            "items": ["candlelight:lettuce_beef"]
+          },
+          {
+            "items": ["candlelight:fricasse"]
+          },
+          {
+            "items": ["candlelight:pasta_bolognese"]
+          },
+          {
+            "items": ["candlelight:bolognese"]
+          },
+          {
+            "items": ["candlelight:tomato_mozzarella_salad"]
+          },
+          {
+            "items": ["candlelight:beetroot_salad"]
+          },
+          {
+            "items": ["candlelight:butter"]
+          },
+          {
+            "items": ["candlelight:lettuce_salad"]
+          },
+          {
+            "items": ["candlelight:mozzarella"]
+          },
+          {
+            "items": ["candlelight:dough"]
+          },
+          {
+            "items": ["candlelight:beef_tartare"]
+          },
+          {
+            "items": ["candlelight:veggie_plate"]
+          },
+          {
+            "items": ["candlelight:lettuce_tomato"]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cook_everything"
+    ]
+  ]
+}

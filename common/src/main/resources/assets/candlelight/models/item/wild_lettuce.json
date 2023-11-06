@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:block/lettuce_stage3_2"
+    "layer0": "candlelight:block/wild_lettuce_1"
   }
 }

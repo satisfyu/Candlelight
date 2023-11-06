@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jetbrains.annotations.Nullable;
 import satisfyu.candlelight.Candlelight;
-import satisfyu.candlelight.block.*;
 import satisfyu.candlelight.block.LanternBlock;
+import satisfyu.candlelight.block.*;
 import satisfyu.candlelight.block.crops.LettuceCropBlock;
 import satisfyu.candlelight.block.crops.TomatoCropBlock;
 import satisfyu.candlelight.food.CandlelightFoods;
@@ -45,8 +45,8 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> CARROT_CRATE = registerWithItem("carrot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> POTATO_CRATE = registerWithItem("potato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> BEETROOT_CRATE = registerWithItem("beetroot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistrySupplier<Block> WILD_TOMATOES = registerWithoutItem("wild_tomatoes", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
-    public static final RegistrySupplier<Block> WILD_LETTUCE = registerWithoutItem("wild_lettuce", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+    public static final RegistrySupplier<Block> WILD_TOMATOES = registerWithItem("wild_tomatoes", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+    public static final RegistrySupplier<Block> WILD_LETTUCE = registerWithItem("wild_lettuce", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistrySupplier<Block> FLOORBOARD = registerWithItem("floorboard", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> DRAWER = registerWithItem("drawer", () -> new StorageBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventsRegistry.DRAWER_OPEN.get(), SoundEventsRegistry.DRAWER_CLOSE.get()));
     public static final RegistrySupplier<Block> CABINET = registerWithItem("cabinet", () -> new StorageBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventsRegistry.CABINET_OPEN.get(), SoundEventsRegistry.CABINET_CLOSE.get()));
@@ -60,7 +60,8 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> COOKING_PAN = registerWithoutItem("cooking_pan", () -> new CookingPanBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistrySupplier<Item> COOKING_PAN_ITEM = registerItem("cooking_pan", () -> new CookingPanItem(COOKING_PAN.get(), getSettings()));
     public static final RegistrySupplier<Block> TABLE_SET = registerWithItem("table_set", () -> new TableSetBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
-    public static final RegistrySupplier<Item> GLASS = registerItem("glass", () -> new TableSetItem(getSettings()));
+    public static final RegistrySupplier<Block> GLASS_BLOCK = registerWithoutItem("glass", () -> new StackableBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)));
+    public static final RegistrySupplier<Item> GLASS = registerItem("glass", () -> new TableSetBlockItem(GLASS_BLOCK.get(), getSettings()));
     public static final RegistrySupplier<Item> NAPKIN = registerItem("napkin", () -> new TableSetItem(getSettings()));
     public static final RegistrySupplier<Item> BUTTER = registerItem("butter", () -> new IngredientItem(getSettings()));
     public static final RegistrySupplier<Item> MOZZARELLA = registerItem("mozzarella", () -> new IngredientItem(getSettings().food(Foods.BREAD)));
@@ -209,9 +210,9 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> CHERRY_CHAIR = registerWithItem("cherry_chair", () -> new ChairBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS).strength(2.0f, 3.0f).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> CHERRY_SHELF = registerWithItem("cherry_shelf", () -> new ShelfBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final RegistrySupplier<Block> CHERRY_BIG_TABLE = registerWithItem("cherry_big_table", () -> new BigTableBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS).strength(2.0F, 2.0F)));
-    public static final RegistrySupplier<Block> BAMBOO_STOVE = registerWithItem("bamboo_stove", () -> new BambooStoveBlock(BlockBehaviour.Properties.copy(Blocks.BASALT).lightLevel(s -> 12)));
-    public static final RegistrySupplier<Block> BAMBOO_KITCHEN_SINK = registerWithItem("bamboo_kitchen_sink", () -> new KitchenSinkBlock(BlockBehaviour.Properties.copy(Blocks.BASALT).noOcclusion()));
-    public static final RegistrySupplier<Block> BAMBOO_COUNTER = registerWithItem("bamboo_counter", () -> new FacingBlock(BlockBehaviour.Properties.copy(Blocks.BASALT).noOcclusion()));
+    public static final RegistrySupplier<Block> BAMBOO_STOVE = registerWithItem("bamboo_stove", () -> new BambooStoveBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).lightLevel(s -> 12)));
+    public static final RegistrySupplier<Block> BAMBOO_KITCHEN_SINK = registerWithItem("bamboo_kitchen_sink", () -> new KitchenSinkBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).noOcclusion()));
+    public static final RegistrySupplier<Block> BAMBOO_COUNTER = registerWithItem("bamboo_counter", () -> new FacingBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).noOcclusion()));
     public static final RegistrySupplier<Block> BAMBOO_CABINET = registerWithItem("bamboo_cabinet", () -> new StorageBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventsRegistry.CABINET_OPEN.get(), SoundEventsRegistry.CABINET_CLOSE.get()));
     public static final RegistrySupplier<Block> BAMBOO_DRAWER = registerWithItem("bamboo_drawer", () -> new StorageBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventsRegistry.DRAWER_OPEN.get(), SoundEventsRegistry.DRAWER_CLOSE.get()));
     public static final RegistrySupplier<Block> BAMBOO_TABLE = registerWithItem("bamboo_table", () -> new TableBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS)));
@@ -219,10 +220,27 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> BAMBOO_SHELF = registerWithItem("bamboo_shelf", () -> new ShelfBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final RegistrySupplier<Block> BAMBOO_BIG_TABLE = registerWithItem("bamboo_big_table", () -> new BigTableBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).strength(2.0F, 2.0F)));
     public static final RegistrySupplier<Block> POTTED_ROSE = registerWithoutItem("potted_rose", () -> new FlowerPotBlock(ROSE.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
+    public static final RegistrySupplier<Item>  CANDLELIGHT_STANDARD = registerItem("candlelight_standard", () -> new CandlelightStandardItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
+
+
 
     public static void init() {
         ITEMS.register();
         BLOCKS.register();
+    }
+
+    public static void registerCompostable() {
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_SEEDS.get(), .2f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_CROP.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO_SEEDS.get(), .2f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO_CROP.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.ROSE.get(), .3f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.DOUGH.get(), .4f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.PASTA_RAW.get(), .4f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_TOMATO.get(), 1f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.VEGGIE_PLATE.get(), 1f);
     }
 
     private static Item.Properties getSettings(Consumer<Item.Properties> consumer) {

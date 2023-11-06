@@ -1,0 +1,37 @@
+{
+  "parent": "candlelight:main/place_tablesign",
+  "display": {
+    "icon": {
+      "item": "candlelight:rose"
+    },
+    "title": {
+      "translate": "candlelight.advancement.find_rose"
+    },
+    "description": {
+      "translate": "candlelight.advancement.find_rose.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "rose": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:rose"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "rose"
+    ]
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "candlelight:main/place_stove",
+  "criteria": {
+    "chocolate_box": {
+      "conditions": {
+        "location": [
+          {
+            "block": "candlelight:chocolate_box",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "candlelight.advancement.chocolate_box.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "candlelight:chocolate_box"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "candlelight.advancement.chocolate_box"
+    }
+  },
+  "requirements": [
+    [
+      "chocolate_box"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
