@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/candlelight_banner"
+    "layer0": "candlelight:item/candlelight_standard"
   }
 }

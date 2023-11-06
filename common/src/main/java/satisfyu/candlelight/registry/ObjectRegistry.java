@@ -113,7 +113,8 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> CHEFS_BOOTS = registerItem("chefs_boots", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, ArmorItem.Type.BOOTS, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Block> TYPEWRITER_IRON = registerWithItem("typewriter_iron", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> TYPEWRITER_COPPER = registerWithItem("typewriter_copper", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
-    public static final RegistrySupplier<Item> NOTE_PAPER = registerItem("note_paper", () -> new Item(getSettings()));
+    public static final RegistrySupplier<Block> NOTE_PAPER_BLOCK = registerWithoutItem("note_paper", () -> new StackableLetterBlock(BlockBehaviour.Properties.copy(Blocks.DRIED_KELP_BLOCK)));
+    public static final RegistrySupplier<Item> NOTE_PAPER = registerItem("note_paper", () -> new NotePaperItem(NOTE_PAPER_BLOCK.get(), getSettings()));
     public static final RegistrySupplier<Item> NOTE_PAPER_WRITEABLE = registerItem("note_paper_writeable", () -> new WriteablePaperItem(getSettings().stacksTo(1)));
     public static final RegistrySupplier<Item> NOTE_PAPER_WRITTEN = registerItem("note_paper_written", () -> new WrittenPaperItem(getSettingsWithoutTab()));
     public static final RegistrySupplier<Item> LETTER_OPEN = registerItem("letter_open", () -> new LetterItem(getSettings()));

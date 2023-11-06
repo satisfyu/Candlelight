@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "stack=1": {
+      "model": "candlelight:block/note_paper_1"
+    },
+    "stack=2": {
+      "model": "candlelight:block/note_paper_2"
+    },
+    "stack=3": {
+      "model": "candlelight:block/note_paper_3"
+    },
+    "stack=4": {
+      "model": "candlelight:block/note_paper_4"
+    },
+    "stack=5": {
+      "model": "candlelight:block/note_paper_5"
+    },
+    "stack=6": {
+      "model": "candlelight:block/note_paper_6"
+    },
+    "stack=7": {
+      "model": "candlelight:block/note_paper_7"
+    },
+    "stack=8": {
+      "model": "candlelight:block/note_paper_8"
+    }
+  }
+}
