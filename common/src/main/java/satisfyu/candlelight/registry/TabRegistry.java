@@ -11,7 +11,7 @@ import satisfyu.candlelight.Candlelight;
 public class TabRegistry {
     public static final DeferredRegister<CreativeModeTab> CANDLELIGHT_TABS = DeferredRegister.create(Candlelight.MOD_ID, Registries.CREATIVE_MODE_TAB);
 
-    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_TAB = CANDLELIGHT_TABS.register("vinery", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_TAB = CANDLELIGHT_TABS.register("candlelight", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
             .icon(() -> new ItemStack(ObjectRegistry.HEARTH.get()))
             .title(Component.translatable("creativetab.candlelight.tab"))
             .displayItems((parameters, output) -> {

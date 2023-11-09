@@ -249,7 +249,7 @@
   "item.candlelight.mozzarella": "Mozzarella",
   "item.candlelight.mushroom_soup": "Pilzsuppe",
   "item.candlelight.napkin": "Serviette",
-  "item.candlelight.note_paper": "Notizpapier",
+  "block.candlelight.note_paper": "Notizpapier",
   "item.candlelight.note_paper_writeable": "Beschreibbares Notizpapier",
   "item.candlelight.note_paper_written": "Beschriebenes Notizpapier",
   "item.candlelight.pancake": "Pfannkuchen",

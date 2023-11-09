@@ -19,6 +19,7 @@ public class TableSetBlockItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
+        tooltip.add(Component.translatable("item.candlelight.table_set.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GOLD));
         tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

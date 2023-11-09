@@ -22,11 +22,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.List;
 
-public class StackableBlock extends Block {
+public class GlassBlock extends Block {
     private final VoxelShape SHAPE = Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.875, 0.8125);
     public static final IntegerProperty STACK = IntegerProperty.create("stack", 1, 4);
 
-    public StackableBlock(Properties settings) {
+    public GlassBlock(Properties settings) {
         super(settings);
         registerDefaultState(this.defaultBlockState().setValue(STACK, 1));
     }
@@ -35,7 +35,7 @@ public class StackableBlock extends Block {
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         final ItemStack stack = player.getItemInHand(hand);
         if (stack.getItem() == this.asItem()) {
-            if (state.getBlock() instanceof StackableBlock && state.getValue(STACK) < 3) {
+            if (state.getBlock() instanceof GlassBlock && state.getValue(STACK) < 3) {
                 world.setBlock(pos, state.setValue(STACK, state.getValue(STACK) + 1), Block.UPDATE_ALL);
                 if (!player.isCreative()) {
                     stack.shrink(1);
@@ -71,6 +71,7 @@ public class StackableBlock extends Block {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
+        tooltip.add(Component.translatable("item.candlelight.table_set.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GOLD));
         tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 

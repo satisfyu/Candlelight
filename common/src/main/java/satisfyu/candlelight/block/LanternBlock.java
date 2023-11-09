@@ -3,6 +3,8 @@ package satisfyu.candlelight.block;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -63,9 +65,11 @@ public class LanternBlock extends net.minecraft.world.level.block.LanternBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if(player.getItemInHand(hand).isEmpty()){
-            if(!world.isClientSide()){
-                world.setBlockAndUpdate(pos, state.setValue(LUMINANCE, !state.getValue(LUMINANCE)));
+        if (player.getItemInHand(hand).isEmpty()) {
+            if (!world.isClientSide()) {
+                BlockState newState = state.setValue(LUMINANCE, !state.getValue(LUMINANCE));
+                world.setBlockAndUpdate(pos, newState);
+                world.playSound(null, pos, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
             return InteractionResult.sidedSuccess(world.isClientSide());
         }
