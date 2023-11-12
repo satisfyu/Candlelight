@@ -6,6 +6,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import satisfyu.candlelight.Candlelight;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import satisfyu.candlelight.registry.CompostableRegistry;
 import satisfyu.candlelight.registry.ObjectRegistry;
 
 @Mod(Candlelight.MOD_ID)
@@ -18,7 +19,7 @@ public class CandlelightForge {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(ObjectRegistry::init);
+        event.enqueueWork(CompostableRegistry::init);
         Candlelight.commonInit();
     }
 }
