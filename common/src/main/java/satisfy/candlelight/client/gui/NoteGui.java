@@ -1,6 +1,9 @@
 package satisfy.candlelight.client.gui;
 
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -10,12 +13,12 @@ import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.StringSplitter;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.font.TextFieldHelper;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.Rect2i;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
@@ -47,10 +50,10 @@ public abstract class NoteGui extends Screen {
     protected final ItemStack itemStack;
     protected boolean dirty;
     private boolean signing;
-    private int frameTick;
+    private int tickCounter;
     private final List<String> text = Lists.newArrayList();
     private String title = "";
-    private final TextFieldHelper currentPageSelectionManager = new TextFieldHelper(this::getCurrentDisplayCache, this::setDisplayCache, this::getClipboard, this::setClipboard, (string) -> string.length() < 1024 && this.font.wordWrapHeight(string, 114) <= 128);
+    private final TextFieldHelper currentPageSelectionManager = new TextFieldHelper(this::getCurrentPageContent, this::setPageContent, this::getClipboard, this::setClipboard, (string) -> string.length() < 1024 && this.font.wordWrapHeight(string, 114) <= 128);
     private final TextFieldHelper noteTitleSelectionManager = new TextFieldHelper(() -> this.title, (title) -> this.title = title, this::getClipboard, this::setClipboard, (string) -> string.length() < 16);
     private long lastClickTime;
     private int lastClickIndex = -1;
@@ -59,19 +62,19 @@ public abstract class NoteGui extends Screen {
     private Button finalizeButton;
     private Button cancelButton;
     @Nullable
-    private NoteGui.DisplayCache pageContent;
+    private NoteGui.PageContent pageContent;
     private final Component signedByText;
 
     public NoteGui(Player player, ItemStack itemStack) {
         super(GameNarrator.NO_TITLE);
-        this.pageContent = NoteGui.DisplayCache.EMPTY;
+        this.pageContent = NoteGui.PageContent.EMPTY;
         this.player = player;
         this.itemStack = itemStack;
         CompoundTag nbtCompound = itemStack.getTag();
         if (nbtCompound != null) {
             List<String> string = this.text;
             Objects.requireNonNull(string);
-            this.loadPages(nbtCompound, string::add);
+            loadPages(nbtCompound, string::add);
         }
 
         if (this.text.isEmpty()) {
@@ -84,29 +87,30 @@ public abstract class NoteGui extends Screen {
 
     @Override
     protected void init() {
-        this.invalidateDisplayCache();
-        this.signButton = this.addRenderableWidget(Button.builder(Component.translatable("book.signButton"), (button) -> {
+        this.invalidatePageContent();
+        if (this.minecraft != null) this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
+        this.signButton = this.addRenderableWidget(new Button(this.width / 2 - 100, 196, 98, 20, Component.translatable("book.signButton"), (button) -> {
             this.signing = true;
             this.updateButtons();
-        }).bounds(this.width / 2 - 100, 196, 98, 20).build());
-        this.doneButton = this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (button) -> {
+        }));
+        this.doneButton = this.addRenderableWidget(new Button(this.width / 2 + 2, 196, 98, 20, CommonComponents.GUI_DONE, (button) -> {
             this.minecraft.setScreen(null);
             this.finalizeNote(false);
-        }).bounds(this.width / 2 + 2, 196, 98, 20).build());
-        this.finalizeButton = this.addRenderableWidget(Button.builder(Component.translatable("book.finalizeButton"), (button) -> {
+        }));
+        this.finalizeButton = this.addRenderableWidget(new Button(this.width / 2 - 100, 196, 98, 20, Component.translatable("book.finalizeButton"), (button) -> {
             if (this.signing) {
                 this.finalizeNote(true);
                 this.minecraft.setScreen(null);
             }
 
-        }).bounds(this.width / 2 - 100, 196, 98, 20).build());
-        this.cancelButton = this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, (button) -> {
+        }));
+        this.cancelButton = this.addRenderableWidget(new Button(this.width / 2 + 2, 196, 98, 20, CommonComponents.GUI_CANCEL, (button) -> {
             if (this.signing) {
                 this.signing = false;
             }
 
             this.updateButtons();
-        }).bounds(this.width / 2 + 2, 196, 98, 20).build());
+        }));
         this.updateButtons();
     }
 
@@ -164,7 +168,11 @@ public abstract class NoteGui extends Screen {
 
     public void tick() {
         super.tick();
-        ++this.frameTick;
+        ++this.tickCounter;
+    }
+
+    public void removed() {
+        if (this.minecraft != null) this.minecraft.keyboardHandler.setSendRepeatsToGui(false);
     }
 
     private void updateButtons() {
@@ -183,7 +191,7 @@ public abstract class NoteGui extends Screen {
         } else {
             boolean bl = this.keyPressedEditMode(keyCode);
             if (bl) {
-                this.invalidateDisplayCache();
+                this.invalidatePageContent();
                 return true;
             } else {
                 return false;
@@ -205,7 +213,7 @@ public abstract class NoteGui extends Screen {
             }
         } else if (SharedConstants.isAllowedChatCharacter(chr)) {
             this.currentPageSelectionManager.insertText(Character.toString(chr));
-            this.invalidateDisplayCache();
+            this.invalidatePageContent();
             return true;
         } else {
             return false;
@@ -249,11 +257,11 @@ public abstract class NoteGui extends Screen {
                     return true;
                 }
                 case 264 -> {
-                    this.keyDown();
+                    this.moveDownLine();
                     return true;
                 }
                 case 265 -> {
-                    this.keyUp();
+                    this.moveUpLine();
                     return true;
                 }
                 case 268 -> {
@@ -281,22 +289,8 @@ public abstract class NoteGui extends Screen {
 
     private void moveVertically(int lines) {
         int i = this.currentPageSelectionManager.getCursorPos();
-        int j = this.getDisplayCache().changeLine(i, lines);
+        int j = this.getPageContent().getVerticalOffset(i, lines);
         this.currentPageSelectionManager.setCursorPos(j, Screen.hasShiftDown());
-    }
-
-    private void keyUp() {
-        this.changeLine(-1);
-    }
-
-    private void keyDown() {
-        this.changeLine(1);
-    }
-
-    private void changeLine(int i) {
-        int j = this.currentPageSelectionManager.getCursorPos();
-        int k = this.getDisplayCache().changeLine(j, i);
-        this.currentPageSelectionManager.setCursorPos(k, Screen.hasShiftDown());
     }
 
     private void moveToLineStart() {
@@ -304,7 +298,7 @@ public abstract class NoteGui extends Screen {
             this.currentPageSelectionManager.setCursorToStart(Screen.hasShiftDown());
         } else {
             int i = this.currentPageSelectionManager.getCursorPos();
-            int j = this.getDisplayCache().findLineStart(i);
+            int j = this.getPageContent().getLineStart(i);
             this.currentPageSelectionManager.setCursorPos(j, Screen.hasShiftDown());
         }
 
@@ -314,9 +308,9 @@ public abstract class NoteGui extends Screen {
         if (Screen.hasControlDown()) {
             this.currentPageSelectionManager.setCursorToEnd(Screen.hasShiftDown());
         } else {
-            NoteGui.DisplayCache pageContent = this.getDisplayCache();
+            NoteGui.PageContent pageContent = this.getPageContent();
             int i = this.currentPageSelectionManager.getCursorPos();
-            int j = pageContent.findLineEnd(i);
+            int j = pageContent.getLineEnd(i);
             this.currentPageSelectionManager.setCursorPos(j, Screen.hasShiftDown());
         }
 
@@ -343,102 +337,113 @@ public abstract class NoteGui extends Screen {
         }
     }
 
-    private String getCurrentDisplayCache() {
-        return this.text.size() > 0 ? this.text.get(0) : "";
+    private String getCurrentPageContent() {
+        return 0 < this.text.size() ? this.text.get(0) : "";
     }
 
-    private void setDisplayCache(String newContent) {
-        if (this.text.size() > 0) {
+    private void setPageContent(String newContent) {
+        if (0 < this.text.size()) {
             this.text.set(0, newContent);
             this.dirty = true;
-            this.invalidateDisplayCache();
+            this.invalidatePageContent();
         }
 
     }
 
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        this.renderBackground(guiGraphics);
+    public void render(PoseStack matrices, int mouseX, int mouseY, float delta) {
+        this.renderBackground(matrices);
         this.setFocused(null);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, NOTE_TEXTURE);
         int x = (this.width - 192) / 2;
-        guiGraphics.blit(NOTE_TEXTURE, x, 2, 0, 0, 192, 192);
+        this.blit(matrices, x, 2, 0, 0, 192, 192);
         int l;
         int m;
         if (this.signing) {
-            boolean bl = this.frameTick / 6 % 2 == 0;
+            boolean bl = this.tickCounter / 6 % 2 == 0;
             FormattedCharSequence orderedText = FormattedCharSequence.composite(FormattedCharSequence.forward(this.title, Style.EMPTY), bl ? BLACK_CURSOR_TEXT : GRAY_CURSOR_TEXT);
             int k = this.font.width(EDIT_TITLE_TEXT);
-            guiGraphics.drawString(this.font, EDIT_TITLE_TEXT, x + 36 + (114 - k) / 2, 34, 0, false);
+            this.font.draw(matrices, EDIT_TITLE_TEXT, (float)(x + 36 + (114 - k) / 2), 34.0F, 0);
             l = this.font.width(orderedText);
-            guiGraphics.drawString(this.font, orderedText, x + 36 + (114 - l) / 2, 50, 0);
+            this.font.draw(matrices, orderedText, (float)(x + 36 + (114 - l) / 2), 50.0F, 0);
             m = this.font.width(this.signedByText);
-            guiGraphics.drawString(this.font, this.signedByText, x + 36 + (114 - m) / 2, 60, 0);
-            guiGraphics.drawWordWrap(this.font, FINALIZE_WARNING_TEXT, x + 36, 82, 114, 0);
+            this.font.draw(matrices, this.signedByText, (float)(x + 36 + (114 - m) / 2), 60.0F, 0);
+            this.font.drawWordWrap(FINALIZE_WARNING_TEXT, x + 36, 82, 114, 0);
         } else {
-            DisplayCache displayCache = this.getDisplayCache();
-            LineInfo[] var15 = displayCache.lines;
+            NoteGui.PageContent pageContent = this.getPageContent();
+            NoteGui.Line[] var15 = pageContent.lines;
             l = var15.length;
 
-            for (m = 0; m < l; ++m) {
-                NoteGui.LineInfo line = var15[m];
-                guiGraphics.drawString(this.font, line.asComponent, line.x, line.y, -16777216, false);
+            for(m = 0; m < l; ++m) {
+                NoteGui.Line line = var15[m];
+                this.font.draw(matrices, line.text, (float)line.x, (float)line.y, -16777216);
             }
 
-            this.renderHighlight(guiGraphics, displayCache.selection);
-            this.renderCursor(guiGraphics, displayCache.cursor, displayCache.cursorAtEnd);
+            this.drawSelection(pageContent.selectionRectangles);
+            this.drawCursor(matrices, pageContent.position, pageContent.atEnd);
         }
 
-        super.render(guiGraphics, mouseX, mouseY, delta);
+        super.render(matrices, mouseX, mouseY, delta);
     }
 
-    private void renderCursor(GuiGraphics guiGraphics, Pos2i pos2i, boolean bl) {
-        if (this.frameTick / 6 % 2 == 0) {
-            pos2i = this.convertLocalToScreen(pos2i);
-            if (!bl) {
-                int var10001 = pos2i.x;
-                int var10002 = pos2i.y - 1;
-                int var10003 = pos2i.x + 1;
-                int var10004 = pos2i.y;
+    private void drawCursor(PoseStack matrices, NoteGui.Position position, boolean atEnd) {
+        if (this.tickCounter / 6 % 2 == 0) {
+            position = this.absolutePositionToScreenPosition(position);
+            if (!atEnd) {
+                int var10001 = position.x;
+                int var10002 = position.y - 1;
+                int var10003 = position.x + 1;
+                int var10004 = position.y;
                 Objects.requireNonNull(this.font);
-                guiGraphics.fill(var10001, var10002, var10003, var10004 + 9, -16777216);
+                GuiComponent.fill(matrices, var10001, var10002, var10003, var10004 + 9, -16777216);
             } else {
-                guiGraphics.drawString(this.font, "_", pos2i.x, pos2i.y, 0, false);
+                this.font.draw(matrices, "_", (float)position.x, (float)position.y, 0);
             }
         }
+
     }
 
-    private void renderHighlight(GuiGraphics guiGraphics, Rect2i[] rect2is) {
-        Rect2i[] var3 = rect2is;
-        int var4 = rect2is.length;
+    private void drawSelection(Rect2i[] selectionRectangles) {
+        Tesselator tessellator = Tesselator.getInstance();
+        BufferBuilder bufferBuilder = tessellator.getBuilder();
+        RenderSystem.setShader(GameRenderer::getPositionShader);
+        RenderSystem.setShaderColor(0.0F, 0.0F, 255.0F, 255.0F);
+        RenderSystem.disableTexture();
+        RenderSystem.enableColorLogicOp();
+        RenderSystem.logicOp(GlStateManager.LogicOp.OR_REVERSE);
+        bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION);
 
-        for (int var5 = 0; var5 < var4; ++var5) {
-            Rect2i rect2i = var3[var5];
+        for (Rect2i rect2i : selectionRectangles) {
             int i = rect2i.getX();
             int j = rect2i.getY();
             int k = i + rect2i.getWidth();
             int l = j + rect2i.getHeight();
-            guiGraphics.fill(RenderType.guiTextHighlight(), i, j, k, l, -16776961);
+            bufferBuilder.vertex(i, l, 0.0).endVertex();
+            bufferBuilder.vertex(k, l, 0.0).endVertex();
+            bufferBuilder.vertex(k, j, 0.0).endVertex();
+            bufferBuilder.vertex(i, j, 0.0).endVertex();
         }
 
+        tessellator.end();
+        RenderSystem.disableColorLogicOp();
+        RenderSystem.enableTexture();
     }
 
-    private Pos2i convertScreenToLocal(Pos2i pos2i) {
-        return new Pos2i(pos2i.x - (this.width - 192) / 2 - 36, pos2i.y - 32);
+    private NoteGui.Position screenPositionToAbsolutePosition(NoteGui.Position position) {
+        return new NoteGui.Position(position.x - (this.width - 192) / 2 - 36, position.y - 32);
     }
 
     private NoteGui.Position absolutePositionToScreenPosition(NoteGui.Position position) {
         return new NoteGui.Position(position.x + (this.width - 192) / 2 + 36, position.y + 32);
     }
 
-    private Pos2i convertLocalToScreen(Pos2i pos2i) {
-        return new Pos2i(pos2i.x + (this.width - 192) / 2 + 36, pos2i.y + 32);
-    }
-
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (!super.mouseClicked(mouseX, mouseY, button)) {
             if (button == 0) {
                 long l = Util.getMillis();
-                DisplayCache pageContent = this.getDisplayCache();
-                int i = pageContent.getIndexAtPosition(this.font, this.convertScreenToLocal(new Pos2i((int) mouseX, (int) mouseY)));
+                PageContent pageContent = this.getPageContent();
+                int i = pageContent.getCursorPosition(this.font, this.screenPositionToAbsolutePosition(new Position((int) mouseX, (int) mouseY)));
                 if (i >= 0) {
                     if (i == this.lastClickIndex && l - this.lastClickTime < 250L) {
                         if (!this.currentPageSelectionManager.isSelecting()) {
@@ -450,7 +455,7 @@ public abstract class NoteGui extends Screen {
                         this.currentPageSelectionManager.setCursorPos(i, Screen.hasShiftDown());
                     }
 
-                    this.invalidateDisplayCache();
+                    this.invalidatePageContent();
                 }
 
                 this.lastClickIndex = i;
@@ -462,44 +467,44 @@ public abstract class NoteGui extends Screen {
     }
 
     private void selectCurrentWord(int cursor) {
-        String string = this.getCurrentDisplayCache();
+        String string = this.getCurrentPageContent();
         this.currentPageSelectionManager.setSelectionRange(StringSplitter.getWordPosition(string, -1, cursor, false), StringSplitter.getWordPosition(string, 1, cursor, false));
     }
 
     public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
         if (!super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY)) {
             if (button == 0) {
-                DisplayCache pageContent = this.getDisplayCache();
-                int i = pageContent.getIndexAtPosition(this.font, this.convertScreenToLocal(new Pos2i((int) mouseX, (int) mouseY)));
+                PageContent pageContent = this.getPageContent();
+                int i = pageContent.getCursorPosition(this.font, this.screenPositionToAbsolutePosition(new Position((int) mouseX, (int) mouseY)));
                 this.currentPageSelectionManager.setCursorPos(i, true);
-                this.invalidateDisplayCache();
+                this.invalidatePageContent();
             }
 
         }
         return true;
     }
 
-    private NoteGui.DisplayCache getDisplayCache() {
+    private NoteGui.PageContent getPageContent() {
         if (this.pageContent == null) {
-            this.pageContent = this.createDisplayCache();
+            this.pageContent = this.createPageContent();
         }
 
         return this.pageContent;
     }
 
-    private void invalidateDisplayCache() {
+    private void invalidatePageContent() {
         this.pageContent = null;
     }
 
-    private NoteGui.DisplayCache createDisplayCache() {
-        String string = this.getCurrentDisplayCache();
+    private NoteGui.PageContent createPageContent() {
+        String string = this.getCurrentPageContent();
         if (string.isEmpty()) {
-            return NoteGui.DisplayCache.EMPTY;
+            return NoteGui.PageContent.EMPTY;
         } else {
             int i = this.currentPageSelectionManager.getCursorPos();
             int j = this.currentPageSelectionManager.getSelectionPos();
             List<Integer> intList = new ArrayList<>();
-            List<LineInfo> list = new ArrayList<>();
+            List<NoteGui.Line> list = new ArrayList<>();
             MutableInt mutableInt = new MutableInt();
             MutableBoolean mutableBoolean = new MutableBoolean();
             StringSplitter textHandler = this.font.getSplitter();
@@ -512,21 +517,21 @@ public abstract class NoteGui extends Screen {
                 int b = h * 9;
                 NoteGui.Position position = this.absolutePositionToScreenPosition(new NoteGui.Position(0, b));
                 intList.add(start);
-                list.add(new NoteGui.LineInfo(style, string2, position.x, position.y));
+                list.add(new NoteGui.Line(style, string2, position.x, position.y));
             });
             int[] is = intList.stream().mapToInt(Integer::intValue).toArray();
             boolean bl = i == string.length();
-            Pos2i position;
+            NoteGui.Position position;
             int l;
             if (bl && mutableBoolean.isTrue()) {
                 int var10003 = list.size();
                 Objects.requireNonNull(this.font);
-                position = new Pos2i(0, var10003 * 9);
+                position = new NoteGui.Position(0, var10003 * 9);
             } else {
                 int k = getLineFromOffset(is, i);
                 l = this.font.width(string.substring(is[k], i));
                 Objects.requireNonNull(this.font);
-                position = new Pos2i(l, k * 9);
+                position = new NoteGui.Position(l, k * 9);
             }
 
             List<Rect2i> list2 = new ArrayList<>();
@@ -563,7 +568,7 @@ public abstract class NoteGui extends Screen {
                 }
             }
 
-            return new NoteGui.DisplayCache(string, position, bl, is, list.toArray(new NoteGui.LineInfo[0]), list2.toArray(new Rect2i[0]));
+            return new NoteGui.PageContent(string, position, bl, is, list.toArray(new NoteGui.Line[0]), list2.toArray(new Rect2i[0]));
         }
     }
 
@@ -571,6 +576,8 @@ public abstract class NoteGui extends Screen {
         int i = Arrays.binarySearch(lineStarts, position);
         return i < 0 ? -(i + 2) : i;
     }
+
+
 
     private Rect2i getLineSelectionRectangle(String string, StringSplitter handler, int selectionStart, int selectionEnd, int lineY, int lineStart) {
         String string2 = string.substring(lineStart, selectionStart);
@@ -592,108 +599,92 @@ public abstract class NoteGui extends Screen {
         return new Rect2i(i, k, j - i, l - k);
     }
 
-    static int findLineFromPos(int[] is, int i) {
-        int j = Arrays.binarySearch(is, i);
-        return j < 0 ? -(j + 2) : j;
-    }
-
     static {
         BLACK_CURSOR_TEXT = FormattedCharSequence.forward("_", Style.EMPTY.withColor(ChatFormatting.BLACK));
         GRAY_CURSOR_TEXT = FormattedCharSequence.forward("_", Style.EMPTY.withColor(ChatFormatting.GRAY));
     }
 
     @Environment(EnvType.CLIENT)
-    static class DisplayCache {
-        static final DisplayCache EMPTY;
-        private final String fullText;
-        final Pos2i cursor;
-        final boolean cursorAtEnd;
+    static class PageContent {
+        static final NoteGui.PageContent EMPTY;
+        private final String pageContent;
+        final NoteGui.Position position;
+        final boolean atEnd;
         private final int[] lineStarts;
-        final LineInfo[] lines;
-        final Rect2i[] selection;
+        final NoteGui.Line[] lines;
+        final Rect2i[] selectionRectangles;
 
-        public DisplayCache(String string, Pos2i pos2i, boolean bl, int[] is, LineInfo[] lineInfos, Rect2i[] rect2is) {
-            this.fullText = string;
-            this.cursor = pos2i;
-            this.cursorAtEnd = bl;
-            this.lineStarts = is;
-            this.lines = lineInfos;
-            this.selection = rect2is;
+        public PageContent(String pageContent, NoteGui.Position position, boolean atEnd, int[] lineStarts, NoteGui.Line[] lines, Rect2i[] selectionRectangles) {
+            this.pageContent = pageContent;
+            this.position = position;
+            this.atEnd = atEnd;
+            this.lineStarts = lineStarts;
+            this.lines = lines;
+            this.selectionRectangles = selectionRectangles;
         }
 
-        public int getIndexAtPosition(Font font, Pos2i pos2i) {
-            int var10000 = pos2i.y;
-            Objects.requireNonNull(font);
+        public int getCursorPosition(Font renderer, NoteGui.Position position) {
+            int var10000 = position.y;
+            Objects.requireNonNull(renderer);
             int i = var10000 / 9;
             if (i < 0) {
                 return 0;
             } else if (i >= this.lines.length) {
-                return this.fullText.length();
+                return this.pageContent.length();
             } else {
-                LineInfo lineInfo = this.lines[i];
-                return this.lineStarts[i] + font.getSplitter().plainIndexAtWidth(lineInfo.contents, pos2i.x, lineInfo.style);
+                NoteGui.Line line = this.lines[i];
+                return this.lineStarts[i] + renderer.getSplitter().plainIndexAtWidth(line.content, position.x, line.style);
             }
         }
 
-        public int changeLine(int i, int j) {
-            int k = findLineFromPos(this.lineStarts, i);
-            int l = k + j;
-            int o;
-            if (l >= 0 && l < this.lineStarts.length) {
-                int m = i - this.lineStarts[k];
-                int n = this.lines[l].contents.length();
-                o = this.lineStarts[l] + Math.min(m, n);
+        public int getVerticalOffset(int position, int lines) {
+            int i = NotePaperGui.getLineFromOffset(this.lineStarts, position);
+            int j = i + lines;
+            int m;
+            if (0 <= j && j < this.lineStarts.length) {
+                int k = position - this.lineStarts[i];
+                int l = this.lines[j].content.length();
+                m = this.lineStarts[j] + Math.min(k, l);
             } else {
-                o = i;
+                m = position;
             }
 
-            return o;
+            return m;
         }
 
-        public int findLineStart(int i) {
-            int j = findLineFromPos(this.lineStarts, i);
-            return this.lineStarts[j];
+        public int getLineStart(int position) {
+            int i = NotePaperGui.getLineFromOffset(this.lineStarts, position);
+            return this.lineStarts[i];
         }
 
-        public int findLineEnd(int i) {
-            int j = findLineFromPos(this.lineStarts, i);
-            return this.lineStarts[j] + this.lines[j].contents.length();
+        public int getLineEnd(int position) {
+            int i = NotePaperGui.getLineFromOffset(this.lineStarts, position);
+            return this.lineStarts[i] + this.lines[i].content.length();
         }
 
         static {
-            EMPTY = new DisplayCache("", new Pos2i(0, 0), true, new int[]{0}, new LineInfo[]{new LineInfo(Style.EMPTY, "", 0, 0)}, new Rect2i[0]);
+            EMPTY = new NoteGui.PageContent("", new NoteGui.Position(0, 0), true, new int[]{0}, new NoteGui.Line[]{new NoteGui.Line(Style.EMPTY, "", 0, 0)}, new Rect2i[0]);
         }
     }
 
     @Environment(EnvType.CLIENT)
-    private static class LineInfo {
+    static class Line {
         final Style style;
-        final String contents;
-        final Component asComponent;
+        final String content;
+        final Component text;
         final int x;
         final int y;
 
-        public LineInfo(Style style, String string, int i, int j) {
+        public Line(Style style, String content, int x, int y) {
             this.style = style;
-            this.contents = string;
-            this.x = i;
-            this.y = j;
-            this.asComponent = Component.literal(string).setStyle(style);
+            this.content = content;
+            this.x = x;
+            this.y = y;
+            this.text = Component.literal(content).setStyle(style);
         }
     }
 
     @Environment(EnvType.CLIENT)
     private record Position(int x, int y) {
-    }
-
-    @Environment(EnvType.CLIENT)
-    static class Pos2i {
-        public final int x;
-        public final int y;
-
-        Pos2i(int i, int j) {
-            this.x = i;
-            this.y = j;
-        }
     }
 }

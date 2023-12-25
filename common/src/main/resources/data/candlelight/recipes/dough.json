@@ -5,12 +5,8 @@
     "###"
   ],
   "key": {
-    "B": {
-      "tag": "candlelight:water_bottles"
-    },
-    "#": {
-      "tag": "candlelight:wheat"
-    }
+    "B": { "item": "minecraft:water_bucket" },
+    "#": { "tag": "candlelight:wheat" }
   },
   "result": {
     "item": "candlelight:dough",

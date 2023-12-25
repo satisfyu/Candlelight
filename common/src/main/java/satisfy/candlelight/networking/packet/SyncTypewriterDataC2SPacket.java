@@ -23,15 +23,15 @@ public class SyncTypewriterDataC2SPacket implements NetworkManager.NetworkReceiv
         boolean sign = buf.readBoolean();
         ItemStack note = sign ? ObjectRegistry.NOTE_PAPER_WRITTEN.get().getDefaultInstance() : ObjectRegistry.NOTE_PAPER_WRITEABLE.get().getDefaultInstance();
         context.queue(() -> {
-            BlockEntity blockEntity = player.level().getBlockEntity(pos);
+            BlockEntity blockEntity = player.level.getBlockEntity(pos);
             if (blockEntity instanceof TypeWriterEntity typeWriterEntity) {
                 note.setTag(nbt);
                 typeWriterEntity.addPaper(note);
             }
-            BlockState blockState = player.level().getBlockState(pos);
+            BlockState blockState = player.level.getBlockState(pos);
             if (sign) {
-                player.level().setBlock(pos, blockState.setValue(TypeWriterBlock.FULL, 2), 2);
-                player.level().sendBlockUpdated(pos, blockState, blockState.setValue(TypeWriterBlock.FULL, 2), Block.UPDATE_CLIENTS);
+                player.level.setBlock(pos, blockState.setValue(TypeWriterBlock.FULL, 2), 2);
+                player.level.sendBlockUpdated(pos, blockState, blockState.setValue(TypeWriterBlock.FULL, 2), Block.UPDATE_CLIENTS);
             }
         });
     }

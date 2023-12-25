@@ -14,8 +14,7 @@
           "name": "minecraft:flower_pot"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     },
     {
       "bonus_rolls": 0.0,
@@ -30,8 +29,7 @@
           "name": "candlelight:rose"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     }
   ]
 }

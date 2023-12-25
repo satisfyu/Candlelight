@@ -9,14 +9,13 @@
           "name": "candlelight:table_set"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     },
     {
       "bonus_rolls": 0.0,
       "conditions": [
         {
-         "condition": "minecraft:any_of",
+          "condition": "minecraft:alternative",
           "terms": [
             {
               "block": "candlelight:table_set",
@@ -41,14 +40,13 @@
           "name": "candlelight:glass"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     },
     {
       "bonus_rolls": 0.0,
       "conditions": [
         {
-         "condition": "minecraft:any_of",
+          "condition": "minecraft:alternative",
           "terms": [
             {
               "block": "candlelight:table_set",
@@ -73,8 +71,7 @@
           "name": "candlelight:napkin"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     }
   ]
 }

@@ -5,7 +5,7 @@
       "tag": "candlelight:milk"
     },
     {
-      "tag": "candlelight:water_bottles"
+      "item": "minecraft:water_bucket"
     }
   ],
   "result": {

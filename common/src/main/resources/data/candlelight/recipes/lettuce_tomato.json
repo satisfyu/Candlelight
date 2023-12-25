@@ -1,6 +1,7 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
+        " U ",
         "#CV",
         " B "
     ],
@@ -16,6 +17,9 @@
         },
         "C": {
             "item": "minecraft:potato"
+        },
+        "U": {
+            "item": "minecraft:carrot"
         }
     },
     "result": {

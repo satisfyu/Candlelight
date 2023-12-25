@@ -4,7 +4,6 @@ import de.cristelknight.doapi.client.recipebook.screen.widgets.PrivateRecipeBook
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
@@ -28,8 +27,8 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
     }
 
     @Override
-    public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots, RegistryAccess registryAccess) {
-        this.ghostSlots.addSlot(recipe.getResultItem(registryAccess), slots.get(7).x, slots.get(7).y);
+    public void showGhostRecipe(Recipe<?> recipe, List<Slot> slots) {
+        this.ghostSlots.addSlot(recipe.getResultItem(), slots.get(7).x, slots.get(7).y);
         if (recipe instanceof CookingPotRecipe cookingPotRecipe) {
             this.ghostSlots.addSlot(cookingPotRecipe.getContainer(), slots.get(0).x, slots.get(0).y);
         }
@@ -42,14 +41,11 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
         }
     }
 
-
-
-
     @Override
-    public void insertRecipe(Recipe<?> recipe) {
+    public void insertRecipe(Recipe<?> recipe, List<Slot> slots) {
         if (recipe instanceof CookingPotRecipe cookingPotRecipe) {
             int slotIndex = 0;
-            for (Slot slot : this.screenHandler.slots) {
+            for (Slot slot : slots) {
                 if (cookingPotRecipe.getContainer().getItem() == slot.getItem().getItem()) {
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slotIndex, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, 0, 0, ClickType.PICKUP, Minecraft.getInstance().player);
@@ -61,7 +57,7 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
         int usedInputSlots = 1;
         for (Ingredient ingredient : recipe.getIngredients()) {
             int slotIndex = 0;
-            for (Slot slot : this.screenHandler.slots) {
+            for (Slot slot : slots) {
                 ItemStack itemStack = slot.getItem();
 
                 if (ingredient.test(itemStack) && usedInputSlots < 7) {
@@ -101,15 +97,5 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
 
     static {
         TOGGLE_COOKABLE_TEXT = Component.translatable("gui.candlelight.recipebook.toggleRecipes.cookable");
-    }
-
-    @Override
-    public void setFocused(boolean bl) {
-
-    }
-
-    @Override
-    public boolean isFocused() {
-        return false;
     }
 }

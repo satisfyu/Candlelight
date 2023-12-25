@@ -51,7 +51,7 @@ public class CandlelightGeneralUtil {
 	}
 
 	public static boolean isSolid(LevelReader levelReader, BlockPos blockPos){
-		return levelReader.getBlockState(blockPos.below()).isSolid();
+		return levelReader.getBlockState(blockPos.below()).getMaterial().isSolid();
 	}
 
 	public static ItemStack convertStackAfterFinishUsing(LivingEntity entity, ItemStack used, Item returnItem, Item usedItem){

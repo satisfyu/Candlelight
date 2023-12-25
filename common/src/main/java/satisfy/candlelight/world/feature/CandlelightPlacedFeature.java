@@ -1,6 +1,6 @@
 package satisfy.candlelight.world.feature;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import satisfy.candlelight.util.CandlelightIdentifier;
@@ -13,7 +13,6 @@ public class CandlelightPlacedFeature {
 
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new CandlelightIdentifier(name));
+        return ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, new CandlelightIdentifier(name));
     }
 }
-

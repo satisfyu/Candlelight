@@ -3,7 +3,6 @@ package satisfy.candlelight.recipe;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -34,18 +33,20 @@ public class CookingPanRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+    public ItemStack assemble(Container inventory) {
         return ItemStack.EMPTY;
     }
+
     @Override
     public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.output.copy();
     }
+
     @Override
     public ResourceLocation getId() {
         return this.id;
@@ -101,8 +102,8 @@ public class CookingPanRecipe implements Recipe<Container> {
             buf.writeVarInt(recipe.inputs.size());
             recipe.inputs.forEach(entry -> entry.toNetwork(buf));
             buf.writeItem(recipe.getContainer());
-            buf.writeItem(recipe.output);
+            buf.writeItem(recipe.getResultItem());
         }
     }
-    
+
 }

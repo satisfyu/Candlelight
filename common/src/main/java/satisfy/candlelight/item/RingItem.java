@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -15,8 +16,8 @@ import satisfy.candlelight.registry.ArmorMaterialRegistry;
 import java.util.List;
 
 public class RingItem extends ArmorItem {
-    public RingItem(ArmorMaterial material, Type type, Properties settings) {
-        super(material, type, settings);
+    public RingItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
+        super(material, slot, settings);
     }
 
     @Override

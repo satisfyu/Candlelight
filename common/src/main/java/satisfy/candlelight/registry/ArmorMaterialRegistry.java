@@ -2,7 +2,7 @@ package satisfy.candlelight.registry;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Items;
@@ -12,14 +12,13 @@ public class ArmorMaterialRegistry {
 
     public static final ArmorMaterial COOK_ARMOR = new ArmorMaterial() {
         @Override
-        public int getDurabilityForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDurabilityForType(type);
+        public int getDurabilityForSlot(EquipmentSlot slot) {
+            return ArmorMaterials.LEATHER.getDurabilityForSlot(slot);
         }
 
-
         @Override
-        public int getDefenseForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDefenseForType(type);
+        public int getDefenseForSlot(EquipmentSlot slot) {
+            return ArmorMaterials.LEATHER.getDefenseForSlot(slot);
         }
 
         @Override
@@ -58,14 +57,15 @@ public class ArmorMaterialRegistry {
         private static final int[] PROTECTION_VALUES = new int[] {1, 1, 1, 1};
 
         @Override
-        public int getDurabilityForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDurabilityForType(type);
+        public int getDurabilityForSlot(EquipmentSlot slot) {
+            return BASE_DURABILITY[slot.getIndex()] * 1;
         }
 
         @Override
-        public int getDefenseForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDefenseForType(type);
+        public int getDefenseForSlot(EquipmentSlot slot) {
+            return PROTECTION_VALUES[slot.getIndex()];
         }
+
         @Override
         public int getEnchantmentValue() {
             return 15;

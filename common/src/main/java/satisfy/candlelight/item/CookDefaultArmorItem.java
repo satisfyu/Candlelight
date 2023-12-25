@@ -1,6 +1,7 @@
 package satisfy.candlelight.item;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
@@ -12,8 +13,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class CookDefaultArmorItem extends ArmorItem implements CookArmorItem {
-    public CookDefaultArmorItem(ArmorMaterial material, Type type, Properties settings) {
-        super(material, type, settings);
+    public CookDefaultArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
+        super(material, slot, settings);
     }
 
     @Override

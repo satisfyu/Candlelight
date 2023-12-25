@@ -1,14 +1,17 @@
 package satisfy.candlelight.client.gui;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.*;
@@ -25,7 +28,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
-
 @Environment(EnvType.CLIENT)
 public class SignedPaperGui extends Screen{
     public static final Contents EMPTY_PROVIDER = new Contents() {
@@ -70,19 +72,21 @@ public class SignedPaperGui extends Screen{
     }
 
     protected void addCloseButton() {
-        this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (button) -> {
+        this.addRenderableWidget(new Button(this.width / 2 - 100, 196, 200, 20, CommonComponents.GUI_DONE, (button) -> {
             this.minecraft.setScreen(null);
-        }).bounds(this.width / 2 - 100, 196, 200, 20).build());
+        }));
     }
-
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        this.renderBackground(guiGraphics);
+    public void render(PoseStack matrices, int mouseX, int mouseY, float delta) {
+        this.renderBackground(matrices);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
         int i = (this.width - 192) / 2;
-        guiGraphics.blit(BOOK_TEXTURE, i, 2, 0, 0, 192, 192);
+        this.blit(matrices, i, 2, 0, 0, 192, 192);
         if (this.cachedPageIndex != this.pageIndex) {
             FormattedText stringVisitable = this.contents.getPage(this.pageIndex);
             this.cachedPage = this.font.split(stringVisitable, 114);
@@ -94,17 +98,18 @@ public class SignedPaperGui extends Screen{
 
         for(int m = 0; m < l; ++m) {
             FormattedCharSequence orderedText = this.cachedPage.get(m);
-            int var10003 = i + 36;
+            Font var10000 = this.font;
+            float var10003 = (float)(i + 36);
             Objects.requireNonNull(this.font);
-            guiGraphics.drawString(this.font, orderedText, var10003, 32 + m * 9, 0, false);
+            var10000.draw(matrices, orderedText, var10003, (float)(32 + m * 9), 0);
         }
 
         Style style = this.getTextStyleAt(mouseX, mouseY);
         if (style != null) {
-            guiGraphics.renderComponentHoverEffect(this.font, style, mouseX, mouseY);
+            this.renderComponentHoverEffect(matrices, style, mouseX, mouseY);
         }
 
-        super.render(guiGraphics, mouseX, mouseY, delta);
+        super.render(matrices, mouseX, mouseY, delta);
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {

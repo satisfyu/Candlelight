@@ -1,5 +1,6 @@
 package satisfy.candlelight.compat.jei.category;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -11,7 +12,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -62,14 +62,13 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
             }
         }
 
-        // Output
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 124 - WIDTH_OF,  28 - HEIGHT_OF).addItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 124 - WIDTH_OF,  28 - HEIGHT_OF).addItemStack(recipe.getResultItem());
     }
 
     @Override
-    public void draw(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        arrow.draw(guiGraphics, CookingPotGui.ARROW_X - WIDTH_OF, CookingPotGui.ARROW_Y - HEIGHT_OF);
-        burnIcon.draw(guiGraphics, 124 - WIDTH_OF, 56 - HEIGHT_OF);
+    public void draw(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+        arrow.draw(stack, CookingPotGui.ARROW_X - WIDTH_OF, CookingPotGui.ARROW_Y - HEIGHT_OF);
+        burnIcon.draw(stack, 124 - WIDTH_OF, 56 - HEIGHT_OF);
     }
 
     @Override

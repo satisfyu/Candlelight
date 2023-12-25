@@ -34,9 +34,10 @@ public class CookingPotRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+    public ItemStack assemble(Container inventory) {
         return ItemStack.EMPTY;
     }
+
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
@@ -44,9 +45,10 @@ public class CookingPotRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem() {
         return this.output.copy();
     }
+
 
     @Override
     public ResourceLocation getId() {
@@ -76,6 +78,7 @@ public class CookingPotRecipe implements Recipe<Container> {
     public boolean isSpecial() {
         return true;
     }
+
 
     public static class Serializer implements RecipeSerializer<CookingPotRecipe> {
 

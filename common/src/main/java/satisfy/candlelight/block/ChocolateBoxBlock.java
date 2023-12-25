@@ -86,7 +86,7 @@ public class ChocolateBoxBlock extends FacingBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        return world.getBlockState(pos.below()).isSolid();
+        return world.getBlockState(pos.below()).getMaterial().isSolid();
     }
 
     @Override

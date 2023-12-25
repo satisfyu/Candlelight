@@ -1,7 +1,7 @@
 package satisfy.candlelight.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -28,14 +28,14 @@ public class ToolRackRenderer implements StorageTypeRenderer {
                 if (item instanceof Item && item.equals(ObjectRegistry.COOKING_PAN_ITEM.get())) {
                     matrices.translate(translate - (2D / 3), 0.6f, 0.38f);
                     matrices.scale(0.5f, 0.5f, 0.5f);
-                    matrices.mulPose(Axis.ZN.rotationDegrees(135f));
-                    matrices.mulPose(Axis.YN.rotationDegrees(0f));
+                    matrices.mulPose(Vector3f.ZN.rotationDegrees(135f));
+                    matrices.mulPose(Vector3f.YN.rotationDegrees(0f));
                     ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 } else {
                     matrices.translate(translate - (2D / 3), 0.6f, 0.38f);
                     matrices.scale(0.6f, 0.6f, 0.6f);
-                    matrices.mulPose(Axis.ZN.rotationDegrees(135f));
-                    matrices.mulPose(Axis.YN.rotationDegrees(0f));
+                    matrices.mulPose(Vector3f.ZN.rotationDegrees(135f));
+                    matrices.mulPose(Vector3f.YN.rotationDegrees(0f));
                     ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 }
                 matrices.popPose();

@@ -4,8 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerProfessionBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -20,7 +18,7 @@ public class VillagersFabric {
 
     private static final CandlelightIdentifier COOK_POI_IDENTIFIER = new CandlelightIdentifier("cook_poi");
     public static final PoiType COOK_POI = PointOfInterestHelper.register(COOK_POI_IDENTIFIER, 1, 12, ObjectRegistry.COOKING_POT.get());
-    public static final VillagerProfession COOK = Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, new ResourceLocation("candlelight", "cook"), VillagerProfessionBuilder.create().id(new ResourceLocation("candlelight", "cook")).workstation(ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, COOK_POI_IDENTIFIER)).build());
+    public static final VillagerProfession COOK = Registry.register(Registry.VILLAGER_PROFESSION, new ResourceLocation("candlelight", "cook"), VillagerProfessionBuilder.create().id(new ResourceLocation("candlelight", "cook")).workstation(ResourceKey.create(Registry.POINT_OF_INTEREST_TYPE_REGISTRY, COOK_POI_IDENTIFIER)).build());
 
 
     public static void init() {

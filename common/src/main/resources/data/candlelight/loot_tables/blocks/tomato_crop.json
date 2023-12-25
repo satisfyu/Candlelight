@@ -32,8 +32,7 @@
           ]
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     },
     {
       "bonus_rolls": 0.0,
@@ -63,8 +62,7 @@
           "name": "candlelight:tomato_seeds"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     }
   ]
 }

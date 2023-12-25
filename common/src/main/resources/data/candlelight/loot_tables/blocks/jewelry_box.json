@@ -9,14 +9,13 @@
           "name": "candlelight:jewelry_box"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     },
     {
       "bonus_rolls": 0.0,
       "conditions": [
         {
-         "condition": "minecraft:any_of",
+          "condition": "minecraft:alternative",
           "terms": [
             {
               "block": "candlelight:jewelry_box",
@@ -34,8 +33,7 @@
           "name": "candlelight:gold_ring"
         }
       ],
-      "rolls": 1
-
+      "rolls": 1.0
     }
   ]
 }
