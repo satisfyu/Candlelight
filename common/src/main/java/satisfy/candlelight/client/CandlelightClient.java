@@ -36,7 +36,7 @@ public class CandlelightClient {
                     return BiomeColors.getAverageWaterColor(world, pos);
                 }, ObjectRegistry.MUD_KITCHEN_SINK, ObjectRegistry.SANDSTONE_KITCHEN_SINK, ObjectRegistry.DEEPSLATE_KITCHEN_SINK, ObjectRegistry.END_KITCHEN_SINK,
                 ObjectRegistry.STONE_BRICKS_KITCHEN_SINK, ObjectRegistry.COBBLESTONE_KITCHEN_SINK, ObjectRegistry.GRANITE_KITCHEN_SINK,
-                ObjectRegistry.QUARTZ_KITCHEN_SINK, ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK, ObjectRegistry.BASALT_KITCHEN_SINK);
+                ObjectRegistry.QUARTZ_KITCHEN_SINK, ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK);
 
         ClientStorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get(), ObjectRegistry.GLASS_BLOCK.get());

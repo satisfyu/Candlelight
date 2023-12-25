@@ -201,7 +201,7 @@
   "item.candlelight.tomato_seeds": "Насіння помідора",
   "item.candlelight.tomato_soup": "Помідорний суп",
   "item.candlelight.veggie_plate": "Повна тарілка овочів",
-  "creativetab.candlelight.tab": "Candlelight",
+  "itemGroup.candlelight.creativetab.candlelight.tab": "Candlelight",
   "rei.candlelight.cooking_pan_category": "Сковорода",
   "rei.candlelight.cooking_pot_category": "Каструля",
   "container.sideboard": "Буфет",

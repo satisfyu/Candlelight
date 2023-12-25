@@ -207,7 +207,7 @@
   "candlelight.tooltip.cook_armor3": "",
   "container.cabinet": "Schrank",
   "container.sideboard": "Kommode",
-  "creativetab.candlelight.tab": "Candlelight",
+  "itemGroup.candlelight.creativetab.candlelight.tab": "Candlelight",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "Zeige Herstellbares",
   "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJo",
   "item.candlelight.beef": "Gekochtes Rind",
@@ -232,7 +232,6 @@
   "item.candlelight.ingredientitem.tooltip.item.candlelight.butter": "Handwerkszutat",
   "item.candlelight.ingredientitem.tooltip.item.candlelight.chocolate": "Feinste Schokolade",
   "item.candlelight.ingredientitem.tooltip.item.candlelight.lettuce": "Handwerkszutat - Wilder Salat kann in gemäßigten Biomen gefunden werden",
-  "item.candlelight.ingredientitem.tooltip.item.candlelight.lettuce_seeds": "Benötigt Sonnenlicht zum Wachsen",
   "item.candlelight.ingredientitem.tooltip.item.candlelight.mozzarella": "Handwerkszutat",
   "item.candlelight.ingredientitem.tooltip.item.candlelight.tomato": "Handwerkszutat - Wilde Tomaten können in warmen Biomen gefunden werden",
   "item.candlelight.letter": "Briefumschlag",
@@ -282,6 +281,8 @@
   "tooltip.candlelight.thankyou_3": "Danke, dass du Candlelight spielst!",
   "tooltip.candlelight.thankyou_4": "Erhöht die Feuerresistenz um 5% in einem Radius von 8 Blöcken",
   "item.candlelight.candlelight_standard": "Vervollständigungsbanner: §6Candlelight",
-  "entity.minecraft.villager.cook": "Koch"
+  "entity.minecraft.villager.cook": "Koch",
+  "item.candlelight.ingredientitem.tooltip.block.candlelight.lettuce_crop": "Benötigt feuchten Ackerboden zum Wachsen",
+  "item.candlelight.ingredientitem.tooltip.block.candlelight.tomato_crop": "Benötigt feuchten Ackerboden zum Wachsen."
 
 }

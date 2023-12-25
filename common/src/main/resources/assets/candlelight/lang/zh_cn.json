@@ -209,7 +209,7 @@
   "candlelight.tooltip.cook_armor3": "",
   "container.cabinet": "橱柜",
   "container.sideboard": "餐具柜",
-  "creativetab.candlelight.tab": "烛火晚宴",
+  "itemGroup.candlelight.creativetab.candlelight.tab": "烛火晚宴",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "显示可烹饪菜品",
   "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJO",
   "item.candlelight.beef": "烹牛肉",

@@ -201,7 +201,7 @@
   "item.candlelight.tomato_seeds": "Semi di pomodoro",
   "item.candlelight.tomato_soup": "Zuppa di pomodoro",
   "item.candlelight.veggie_plate": "Piatto pieno di verdure",
-  "creativetab.candlelight.tab": "Candlelight",
+  "itemGroup.candlelight.creativetab.candlelight.tab": "Candlelight",
   "rei.candlelight.cooking_pan_category": "Padella",
   "rei.candlelight.cooking_pot_category": "Pentola",
   "container.sideboard": "Credenza",

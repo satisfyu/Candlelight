@@ -208,7 +208,7 @@
   "candlelight.tooltip.cook_armor3": "",
   "container.cabinet": "Cabinet",
   "container.sideboard": "Sideboard",
-  "creativetab.candlelight.tab": "Candlelight",
+  "itemGroup.candlelight.creativetab.candlelight.tab": "Candlelight",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "Showing Cookable",
   "item.candlelight.baumeisterjo.press_shift": "- BaumeisterJO",
   "item.candlelight.beef": "Cooked Beef",
