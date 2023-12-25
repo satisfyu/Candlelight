@@ -224,5 +224,7 @@
   "block.candlelight.bamboo_chair": "Sedia in bambù",
   "block.candlelight.bamboo_drawer": "Cassettiera in bambù",
   "block.candlelight.bamboo_shelf": "Mensola di bambù",
-  "block.candlelight.bamboo_table": "Tavolo in bambù"
+  "block.candlelight.bamboo_table": "Tavolo in bambù",
+  "entity.minecraft.villager.cook": "Cuoco"
+
 }

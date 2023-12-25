@@ -201,7 +201,6 @@
   "item.candlelight.tomato_seeds": "Semillas de tomate",
   "item.candlelight.tomato_soup": "Sopa de tomate",
   "item.candlelight.veggie_plate": "Plato lleno de verduras",
-  "itemGroup.candlelight.candlelight_tab": "A laluz de las velas",
   "rei.candlelight.cooking_pan_category": "Sartén para cocinar",
   "rei.candlelight.cooking_pot_category": "Olla de cocina",
   "container.sideboard": "Aparador",
@@ -224,5 +223,7 @@
   "block.candlelight.bamboo_chair": "Silla de bambú",
   "block.candlelight.bamboo_drawer": "Cajón de bambú",
   "block.candlelight.bamboo_shelf": "Estante de bambú",
-  "block.candlelight.bamboo_table": "Mesa de bambú"
+  "block.candlelight.bamboo_table": "Mesa de bambú",
+  "entity.minecraft.villager.cook": "Cocinar"
+
 }

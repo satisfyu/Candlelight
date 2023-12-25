@@ -282,4 +282,6 @@
   "tooltip.candlelight.thankyou_3": "Danke, dass du Candlelight spielst!",
   "tooltip.candlelight.thankyou_4": "Erhöht die Feuerresistenz um 5% in einem Radius von 8 Blöcken",
   "item.candlelight.candlelight_standard": "Vervollständigungsbanner: §6Candlelight",
+  "entity.minecraft.villager.cook": "Koch"
+
 }

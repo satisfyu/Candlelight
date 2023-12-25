@@ -4,7 +4,6 @@
     "minecraft:plains",
     "#minecraft:is_savanna",
     "#minecraft:is_badlands",
-    "#minecraft:is_river",
     {
       "id": "terralith:blooming_plateau",
       "required": false

@@ -282,5 +282,6 @@
   "tooltip.candlelight.thankyou_1": "A reward for crafting all Dishes",
   "tooltip.candlelight.thankyou_2": "When placed:",
   "tooltip.candlelight.thankyou_3": "Thank you for playing Candlelight!",
-  "tooltip.candlelight.thankyou_4": "Grants Fire Resistance in a radius of 8 blocks"
+  "tooltip.candlelight.thankyou_4": "Grants Fire Resistance in a radius of 8 blocks",
+  "entity.minecraft.villager.cook": "Cook"
 }

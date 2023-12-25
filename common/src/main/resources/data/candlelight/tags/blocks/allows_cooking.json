@@ -11,6 +11,10 @@
     "candlelight:red_nether_bricks_stove",
     "candlelight:quartz_stove",
     "#c:allows_cooking",
-    "#forge:allows_cooking"
+    "#forge:allows_cooking",
+    {
+      "id": "farmersdelight:stove",
+      "required": false
+    }
   ]
 }

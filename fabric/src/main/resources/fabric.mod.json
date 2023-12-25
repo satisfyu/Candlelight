@@ -18,19 +18,19 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "satisfyu.candlelight.fabric.CandlelightFabric"
+      "satisfy.candlelight.fabric.CandlelightFabric"
     ],
     "client": [
-      "satisfyu.candlelight.fabric.client.CandlelightClientFabric"
+      "satisfy.candlelight.fabric.client.CandlelightClientFabric"
     ],
     "doapi": [
-      "satisfyu.candlelight.util.DoAPIImpl"
+      "satisfy.candlelight.util.DoAPIImpl"
     ],
     "rei_client": [
-      "satisfyu.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
+      "satisfy.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
     ],
     "jei_mod_plugin": [
-      "satisfyu.candlelight.compat.jei.CandlelightJEIPlugin"
+      "satisfy.candlelight.compat.jei.CandlelightJEIPlugin"
     ]
   },
   "mixins": [
