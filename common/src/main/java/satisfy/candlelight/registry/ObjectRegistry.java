@@ -104,7 +104,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> TOOL_RACK = registerWithItem("tool_rack", () -> new ToolRackBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
     public static final RegistrySupplier<Block> PAINTING = registerWithItem("painting", () -> new SmallPaintingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
     public static final RegistrySupplier<Block> HEARTH = registerWithItem("hearth", () -> new DecorationBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
-    public static final RegistrySupplier<Block> ROSE = registerWithItem("rose", () -> new FlowerBlock(MobEffect.byId(6), 1, BlockBehaviour.Properties.copy(Blocks.RED_TULIP)));
+    public static final RegistrySupplier<Block> ROSE = registerWithItem("rose", () -> new RoseFlowerBlock(MobEffect.byId(6), 1, BlockBehaviour.Properties.copy(Blocks.RED_TULIP)));
     public static final RegistrySupplier<Block> JEWELRY_BOX = registerWithItem("jewelry_box", () -> new JewelryBoxBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new ChocolateBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     public static final RegistrySupplier<Item> GOLD_RING = registerItem("gold_ring", () -> new RingItem(ArmorMaterialRegistry.RING_ARMOR, ArmorItem.Type.CHESTPLATE, getSettings().rarity(Rarity.EPIC)));

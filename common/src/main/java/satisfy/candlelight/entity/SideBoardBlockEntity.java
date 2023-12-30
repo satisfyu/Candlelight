@@ -11,7 +11,6 @@ public class SideBoardBlockEntity extends ChestBlockEntity {
         super(BlockEntityRegistry.SIDEBOARD.get(), blockPos, blockState);
     }
 
-    @Override
     protected Component getDefaultName() {
         return Component.translatable("container.sideboard");
     }
