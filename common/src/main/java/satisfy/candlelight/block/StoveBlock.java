@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -43,8 +44,8 @@ public class StoveBlock extends DirectionalBlock {
     @Override
     public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
         boolean isLit = world.getBlockState(pos).getValue(LIT);
-        if (isLit && !entity.fireImmune() && entity instanceof LivingEntity livingEntity &&
-                !EnchantmentHelper.hasFrostWalker(livingEntity)) {
+        if (isLit && !entity.fireImmune() && entity instanceof Player player &&
+                !EnchantmentHelper.hasFrostWalker(player)) {
             entity.hurt(world.damageSources().inFire(), 1.f);
         }
 

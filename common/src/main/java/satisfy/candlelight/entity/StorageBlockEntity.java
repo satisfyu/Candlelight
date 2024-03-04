@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.registry.BlockEntityRegistry;
 
 public class StorageBlockEntity extends RandomizableContainerBlockEntity {
@@ -104,12 +105,12 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    protected Component getDefaultName() {
-        return Component.empty();
+    protected @NotNull Component getDefaultName() {
+        return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
     }
 
     @Override
-    protected AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
+    protected @NotNull AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
         return new ChestMenu(MenuType.GENERIC_9x2, syncId, playerInventory, this, 2);
     }
 
