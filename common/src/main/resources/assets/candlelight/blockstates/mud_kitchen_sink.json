@@ -1,34 +1,63 @@
 {
   "variants": {
-    "facing=east,filled=false": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet",
+    "half=lower,filled=false,facing=north": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom"
+    },
+    "half=upper,filled=false,facing=north": {
+      "model": "candlelight:block/kitchen_sink_faucet"
+    },
+    "half=lower,filled=true,facing=north": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom_water"
+    },
+    "half=upper,filled=true,facing=north": {
+      "model": "candlelight:block/kitchen_sink_faucet"
+    },
+    "half=lower,filled=false,facing=east": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom",
       "y": 90
     },
-    "facing=north,filled=false": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet"
+    "half=lower,filled=true,facing=east": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom_water",
+      "y": 90
     },
-    "facing=south,filled=false": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet",
+    "half=upper,filled=false,facing=east": {
+      "model": "candlelight:block/kitchen_sink_faucet",
+      "y": 90
+    },
+    "half=upper,filled=true,facing=east": {
+      "model": "candlelight:block/kitchen_sink_faucet",
+      "y": 90
+    },
+    "half=lower,filled=false,facing=south": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom",
       "y": 180
     },
-    "facing=west,filled=false": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet",
+    "half=lower,filled=true,facing=south": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom_water",
+      "y": 180
+    },
+    "half=upper,filled=false,facing=south": {
+      "model": "candlelight:block/kitchen_sink_faucet",
+      "y": 180
+    },
+    "half=upper,filled=true,facing=south": {
+      "model": "candlelight:block/kitchen_sink_faucet",
+      "y": 180
+    },
+    "half=lower,filled=false,facing=west": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom",
       "y": 270
     },
-
-    "facing=east,filled=true": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet_water",
-      "y": 90
+    "half=lower,filled=true,facing=west": {
+      "model": "candlelight:block/mud_kitchen_sink_bottom_water",
+      "y": 270
     },
-    "facing=north,filled=true": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet_water"
+    "half=upper,filled=false,facing=west": {
+      "model": "candlelight:block/kitchen_sink_faucet",
+      "y": 270
     },
-    "facing=south,filled=true": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet_water",
-      "y": 180
-    },
-    "facing=west,filled=true": {
-      "model": "candlelight:block/mud_kitchen_sink_faucet_water",
+    "half=upper,filled=true,facing=west": {
+      "model": "candlelight:block/kitchen_sink_faucet",
       "y": 270
     }
   }
