@@ -1,46 +1,44 @@
 {
-  "juice_boiling": {
-    "subtitle": "candlelight.sound.juice_boiling",
+  "cooking_pot_boiling": {
+    "subtitle": "sound.candlelight.cooking_pot_boiling",
     "sounds": [
-      "candlelight:block/cooking_pot/juice_boiling"
+      "candlelight:cooking_pot_boiling"
     ]
   },
-  "pan_frying": {
-    "subtitle": "candlelight.sound.pan_frying",
+  "cooking_pot_hit": {
+    "subtitle": "sound.candlelight.cooking_pot_hit",
     "sounds": [
-      "candlelight:block/cooking_pan/pan_frying"
-    ]
-  },
-  "faucet": {
-    "subtitle": "candlelight.sound.faucet",
-    "sounds": [
-      "candlelight:block/kitchen_sink/faucet1",
-      "candlelight:block/kitchen_sink/faucet2",
-      "candlelight:block/kitchen_sink/faucet3"
+      "candlelight:cooking_pot_hit"
     ]
   },
   "drawer_open": {
-    "subtitle": "candlelight.sound.drawer_open",
+    "subtitle": "sound.candlelight.drawer_open",
     "sounds": [
-      "candlelight:block/wine_rack/drawer_open"
+      "candlelight:drawer_open"
     ]
   },
   "drawer_close": {
-    "subtitle": "candlelight.sound.drawer_close",
+    "subtitle": "sound.candlelight.drawer_close",
     "sounds": [
-      "candlelight:block/wine_rack/drawer_close"
+      "candlelight:drawer_close"
     ]
   },
   "cabinet_open": {
-    "subtitle": "candlelight.sound.cabinet_open",
+    "subtitle": "sound.candlelight.cabinet_open",
     "sounds": [
-      "candlelight:block/wine_rack/cabinet_open"
+      "candlelight:cabinet_open"
     ]
   },
   "cabinet_close": {
-    "subtitle": "candlelight.sound.cabinet_close",
+    "subtitle": "sound.candlelight.cabinet_close",
     "sounds": [
-        "candlelight:block/wine_rack/cabinet_close"
+      "candlelight:cabinet_close"
+    ]
+  },
+  "cake_cut": {
+    "subtitle": "sound.candlelight.cake_cut",
+    "sounds": [
+      "candlelight:cake_cut"
     ]
   }
 }

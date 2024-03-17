@@ -26,10 +26,13 @@ public class DoAPIImpl implements DoApiAPI {
     @SuppressWarnings("deprecation")
     public <T extends LivingEntity> void registerHat(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
         ArmorRegistry.registerHatModels(models, modelLoader);
+
     }
 
     @Override
     public <T extends LivingEntity> void registerArmor(CustomArmorManager<T> customArmorManager, EntityModelSet entityModelSet) {
-
+        ArmorRegistry.registerArmorModels(customArmorManager, entityModelSet);
     }
 }
+
+

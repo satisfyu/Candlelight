@@ -1,46 +1,26 @@
 package satisfy.candlelight.util;
 
 import com.google.gson.JsonArray;
-import net.minecraft.advancements.CriteriaTriggers;
+import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.world.Container;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 public class GeneralUtil {
-	public static Collection<ServerPlayer> tracking(ServerLevel world, BlockPos pos) {
-		Objects.requireNonNull(pos, "BlockPos cannot be null");
-
-		return tracking(world, new ChunkPos(pos));
-	}
-
 	public static boolean isFullAndSolid(LevelReader levelReader, BlockPos blockPos){
 		return isFaceFull(levelReader, blockPos) && isSolid(levelReader, blockPos);
 	}
@@ -50,60 +30,9 @@ public class GeneralUtil {
 		return Block.isFaceFull(levelReader.getBlockState(belowPos).getShape(levelReader, belowPos), Direction.UP);
 	}
 
+    @SuppressWarnings("deprecation")
 	public static boolean isSolid(LevelReader levelReader, BlockPos blockPos){
 		return levelReader.getBlockState(blockPos.below()).isSolid();
-	}
-
-	public static ItemStack convertStackAfterFinishUsing(LivingEntity entity, ItemStack used, Item returnItem, Item usedItem){
-		if (entity instanceof ServerPlayer serverPlayer) {
-			CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, used);
-			serverPlayer.awardStat(Stats.ITEM_USED.get(usedItem));
-		}
-		if (used.isEmpty()) {
-			return new ItemStack(returnItem);
-		}
-		if (entity instanceof Player player && !((Player)entity).getAbilities().instabuild) {
-			ItemStack itemStack2 = new ItemStack(returnItem);
-			if (!player.getInventory().add(itemStack2)) {
-				player.drop(itemStack2, false);
-			}
-		}
-		return used;
-	}
-
-	public static InteractionResult fillBucket(Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack itemStack, ItemStack returnItem, BlockState blockState, SoundEvent soundEvent) {
-		if (!level.isClientSide) {
-			Item item = itemStack.getItem();
-			player.setItemInHand(interactionHand, ItemUtils.createFilledResult(itemStack, player, returnItem));
-			player.awardStat(Stats.ITEM_USED.get(item));
-			level.setBlockAndUpdate(blockPos, blockState);
-			level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-			level.gameEvent(null, GameEvent.FLUID_PICKUP, blockPos);
-		}
-		return InteractionResult.sidedSuccess(level.isClientSide);
-	}
-
-	public static InteractionResult emptyBucket(Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, ItemStack itemStack, ItemStack returnItem, BlockState blockState, SoundEvent soundEvent) {
-		if (!level.isClientSide) {
-			Item item = itemStack.getItem();
-			player.setItemInHand(interactionHand, ItemUtils.createFilledResult(itemStack, player, returnItem));
-			player.awardStat(Stats.ITEM_USED.get(item));
-			level.setBlockAndUpdate(blockPos, blockState);
-			level.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-			level.gameEvent(null, GameEvent.FLUID_PLACE, blockPos);
-		}
-
-		return InteractionResult.sidedSuccess(level.isClientSide);
-	}
-
-
-
-
-	public static Collection<ServerPlayer> tracking(ServerLevel world, ChunkPos pos) {
-		Objects.requireNonNull(world, "The world cannot be null");
-		Objects.requireNonNull(pos, "The chunk pos cannot be null");
-
-		return world.getChunkSource().chunkMap.getPlayers(pos, false);
 	}
 
 	public static boolean matchesRecipe(Container inventory, NonNullList<Ingredient> recipe, int startIndex, int endIndex) {
@@ -128,7 +57,7 @@ public class GeneralUtil {
 		}
 		return true;
 	}
-	
+
 	public static NonNullList<Ingredient> deserializeIngredients(JsonArray json) {
 		NonNullList<Ingredient> ingredients = NonNullList.create();
 		for (int i = 0; i < json.size(); i++) {
@@ -139,10 +68,10 @@ public class GeneralUtil {
 		}
 		return ingredients;
 	}
-	
+
 	public static VoxelShape rotateShape(Direction from, Direction to, VoxelShape shape) {
 		VoxelShape[] buffer = new VoxelShape[] { shape, Shapes.empty() };
-		
+
 		int times = (to.get2DDataValue() - from.get2DDataValue() + 4) % 4;
 		for (int i = 0; i < times; i++) {
 			buffer[0].forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> buffer[1] = Shapes.joinUnoptimized(buffer[1],
@@ -154,4 +83,15 @@ public class GeneralUtil {
 		}
 		return buffer[0];
 	}
+
+    public static void registerColorArmor(Item item, int defaultColor) {
+        ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> 0 < tintIndex ? 0x00FFFFFF : getColor(stack, defaultColor), item);
+    }
+
+    static int getColor(ItemStack itemStack, int defaultColor) {
+        CompoundTag displayTag = itemStack.getTagElement("display");
+        if (null != displayTag && displayTag.contains("color", Tag.TAG_ANY_NUMERIC))
+            return displayTag.getInt("color");
+        return defaultColor;
+    }
 }

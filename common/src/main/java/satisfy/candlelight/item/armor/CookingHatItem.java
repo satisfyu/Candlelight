@@ -1,36 +1,40 @@
-package satisfy.candlelight.item;
+package satisfy.candlelight.item.armor;
 
-import de.cristelknight.doapi.common.item.CustomHatItem;
+import de.cristelknight.doapi.common.item.ICustomArmor;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.DyeableArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.util.CandlelightIdentifier;
+import satisfy.candlelight.registry.ArmorRegistry;
 
 import java.util.List;
 
-@SuppressWarnings("deprecation")
-public class CookingHatItem extends CustomHatItem implements CookArmorItem {
+public class CookingHatItem extends DyeableArmorItem implements ICustomArmor {
     public CookingHatItem(ArmorMaterial material, Properties settings) {
         super(material, Type.HELMET, settings);
     }
 
     @Override
-    public ResourceLocation getTexture() {
-        return new CandlelightIdentifier("textures/models/armor/cook.png");
+    public int getColor(ItemStack stack) {
+        if (this.hasCustomColor(stack)) {
+            return super.getColor(stack);
+        }
+        return 0xFFFFFFFF;
     }
 
     @Override
-    public Float getOffset() {
+    public Float getYOffset() {
         return -1.9f;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
-        tooltip(tooltip);
+        if (null != world && world.isClientSide()) {
+            ArmorRegistry.appendtooltip(tooltip);
+        }
     }
 }

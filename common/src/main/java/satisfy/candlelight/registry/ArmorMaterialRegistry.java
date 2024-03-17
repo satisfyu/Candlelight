@@ -7,6 +7,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 public class ArmorMaterialRegistry {
 
@@ -16,10 +17,9 @@ public class ArmorMaterialRegistry {
             return ArmorMaterials.LEATHER.getDurabilityForType(type);
         }
 
-
         @Override
         public int getDefenseForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDefenseForType(type);
+            return 0;
         }
 
         @Override
@@ -28,17 +28,17 @@ public class ArmorMaterialRegistry {
         }
 
         @Override
-        public SoundEvent getEquipSound() {
+        public @NotNull SoundEvent getEquipSound() {
             return ArmorMaterials.LEATHER.getEquipSound();
         }
 
         @Override
-        public Ingredient getRepairIngredient() {
+        public @NotNull Ingredient getRepairIngredient() {
             return ArmorMaterials.LEATHER.getRepairIngredient();
         }
 
         @Override
-        public String getName() {
+        public @NotNull String getName() {
             return "cook";
         }
 
@@ -54,9 +54,6 @@ public class ArmorMaterialRegistry {
     };
 
     public static final ArmorMaterial RING_ARMOR = new ArmorMaterial() {
-        private static final int[] BASE_DURABILITY = new int[] {1, 1, 1, 1};
-        private static final int[] PROTECTION_VALUES = new int[] {1, 1, 1, 1};
-
         @Override
         public int getDurabilityForType(ArmorItem.Type type) {
             return ArmorMaterials.LEATHER.getDurabilityForType(type);
@@ -64,25 +61,26 @@ public class ArmorMaterialRegistry {
 
         @Override
         public int getDefenseForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDefenseForType(type);
+            return 0;
         }
+
         @Override
         public int getEnchantmentValue() {
             return 15;
         }
 
         @Override
-        public SoundEvent getEquipSound() {
+        public @NotNull SoundEvent getEquipSound() {
             return SoundEvents.ARMOR_EQUIP_GOLD;
         }
 
         @Override
-        public Ingredient getRepairIngredient() {
+        public @NotNull Ingredient getRepairIngredient() {
             return Ingredient.of(Items.GOLD_INGOT);
         }
 
         @Override
-        public String getName() {
+        public @NotNull String getName() {
             return "gold_ring";
         }
 

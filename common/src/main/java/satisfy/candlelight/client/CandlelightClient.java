@@ -13,6 +13,7 @@ import satisfy.candlelight.client.gui.LetterGui;
 import satisfy.candlelight.registry.ArmorRegistry;
 import satisfy.candlelight.registry.ObjectRegistry;
 import satisfy.candlelight.registry.ScreenHandlerTypeRegistry;
+import satisfy.candlelight.util.GeneralUtil;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
@@ -33,10 +34,19 @@ public class CandlelightClient {
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), CookingPanGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
+
+        initColorItems();
     }
 
     public static void preInitClient() {
         registerEntityModelLayer();
+    }
+
+    private static void initColorItems() {
+        GeneralUtil.registerColorArmor(ObjectRegistry.COOKING_HAT.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(ObjectRegistry.CHEFS_JACKET.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(ObjectRegistry.CHEFS_PANTS.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(ObjectRegistry.CHEFS_BOOTS.get(), 0xFFFFFFFF);
     }
 
     public static void registerEntityModelLayer() {

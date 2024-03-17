@@ -23,6 +23,10 @@ import satisfy.candlelight.block.crops.TomatoCropBlock;
 import satisfy.candlelight.food.CandlelightFoods;
 import satisfy.candlelight.food.EffectFoodBlockItem;
 import satisfy.candlelight.item.*;
+import satisfy.candlelight.item.armor.CookBootsItem;
+import satisfy.candlelight.item.armor.CookChestplateItem;
+import satisfy.candlelight.item.armor.CookLeggingsItem;
+import satisfy.candlelight.item.armor.CookingHatItem;
 import satisfy.candlelight.item.food.EffectFoodItem;
 import satisfy.candlelight.util.CandlelightIdentifier;
 
@@ -110,9 +114,9 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> CHOCOLATE_BOX = registerWithItem("chocolate_box", () -> new ChocolateBoxBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     public static final RegistrySupplier<Item> GOLD_RING = registerItem("gold_ring", () -> new RingItem(ArmorMaterialRegistry.RING_ARMOR, ArmorItem.Type.CHESTPLATE, getSettings().rarity(Rarity.EPIC)));
     public static final RegistrySupplier<Item> COOKING_HAT = registerItem("cooking_hat", () -> new CookingHatItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
-    public static final RegistrySupplier<Item> CHEFS_JACKET = registerItem("chefs_jacket", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, ArmorItem.Type.CHESTPLATE, getSettings().rarity(Rarity.COMMON)));
-    public static final RegistrySupplier<Item> CHEFS_PANTS = registerItem("chefs_pants", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, ArmorItem.Type.LEGGINGS, getSettings().rarity(Rarity.COMMON)));
-    public static final RegistrySupplier<Item> CHEFS_BOOTS = registerItem("chefs_boots", () -> new CookDefaultArmorItem(ArmorMaterialRegistry.COOK_ARMOR, ArmorItem.Type.BOOTS, getSettings().rarity(Rarity.COMMON)));
+    public static final RegistrySupplier<Item> CHEFS_JACKET = registerItem("chefs_jacket", () -> new CookChestplateItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
+    public static final RegistrySupplier<Item> CHEFS_PANTS = registerItem("chefs_pants", () -> new CookLeggingsItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
+    public static final RegistrySupplier<Item> CHEFS_BOOTS = registerItem("chefs_boots", () -> new CookBootsItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Block> TYPEWRITER_IRON = registerWithItem("typewriter_iron", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> TYPEWRITER_COPPER = registerWithItem("typewriter_copper", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> NOTE_PAPER_BLOCK = registerWithoutItem("note_paper", () -> new LetterBlock(BlockBehaviour.Properties.copy(Blocks.DRIED_KELP_BLOCK)));
