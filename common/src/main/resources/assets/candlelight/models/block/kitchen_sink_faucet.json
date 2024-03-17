@@ -1,7 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"4": "candlelight:block/faucet"
+		"4": "candlelight:block/faucet",
+		"particle": "candlelight:block/faucet"
 	},
 	"elements": [
 		{

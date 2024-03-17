@@ -1,63 +1,33 @@
 {
   "variants": {
-    "facing=east,open=false,ring=false": {
+    "facing=east,open=false": {
       "model": "candlelight:block/jewelry_box_closed",
       "y": 90
     },
-    "facing=north,open=false,ring=false": {
+    "facing=north,open=false": {
       "model": "candlelight:block/jewelry_box_closed"
     },
-    "facing=south,open=false,ring=false": {
+    "facing=south,open=false": {
       "model": "candlelight:block/jewelry_box_closed",
       "y": 180
     },
-    "facing=west,open=false,ring=false": {
+    "facing=west,open=false": {
       "model": "candlelight:block/jewelry_box_closed",
       "y": 270
     },
-    "facing=east,open=true,ring=false": {
-      "model": "candlelight:block/jewelry_box_empty",
+    "facing=east,open=true": {
+      "model": "candlelight:block/jewelry_box_open",
       "y": 90
     },
-    "facing=north,open=true,ring=false": {
-      "model": "candlelight:block/jewelry_box_empty"
+    "facing=north,open=true": {
+      "model": "candlelight:block/jewelry_box_open"
     },
-    "facing=south,open=true,ring=false": {
-      "model": "candlelight:block/jewelry_box_empty",
+    "facing=south,open=true": {
+      "model": "candlelight:block/jewelry_box_open",
       "y": 180
     },
-    "facing=west,open=true,ring=false": {
-      "model": "candlelight:block/jewelry_box_empty",
-      "y": 270
-    },
-    "facing=east,open=false,ring=true": {
-      "model": "candlelight:block/jewelry_box_closed",
-      "y": 90
-    },
-    "facing=north,open=false,ring=true": {
-      "model": "candlelight:block/jewelry_box_closed"
-    },
-    "facing=south,open=false,ring=true": {
-      "model": "candlelight:block/jewelry_box_closed",
-      "y": 180
-    },
-    "facing=west,open=false,ring=true": {
-      "model": "candlelight:block/jewelry_box_closed",
-      "y": 270
-    },
-    "facing=east,open=true,ring=true": {
-      "model": "candlelight:block/jewelry_box_filled",
-      "y": 90
-    },
-    "facing=north,open=true,ring=true": {
-      "model": "candlelight:block/jewelry_box_filled"
-    },
-    "facing=south,open=true,ring=true": {
-      "model": "candlelight:block/jewelry_box_filled",
-      "y": 180
-    },
-    "facing=west,open=true,ring=true": {
-      "model": "candlelight:block/jewelry_box_filled",
+    "facing=west,open=true": {
+      "model": "candlelight:block/jewelry_box_open",
       "y": 270
     }
   }

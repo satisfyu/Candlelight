@@ -1,10 +1,14 @@
 package satisfy.candlelight.block;
 
+import de.cristelknight.doapi.common.block.StorageBlock;
+import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -16,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -28,48 +33,88 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.registry.ObjectRegistry;
+import satisfy.candlelight.registry.StorageTypesRegistry;
+import satisfy.candlelight.registry.TagsRegistry;
 import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
-public class JewelryBoxBlock extends Block {
+public class JewelryBoxBlock extends StorageBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-    public static final BooleanProperty RING = BooleanProperty.create("ring");
 
     public JewelryBoxBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(OPEN, false).setValue(RING, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
     }
 
-    @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (world.isClientSide) return InteractionResult.SUCCESS;
-        final ItemStack stack = player.getItemInHand(hand);
-        if (player.isShiftKeyDown()) return InteractionResult.PASS;
 
-        if (state.getValue(RING) && state.getValue(OPEN)) {
-            world.setBlock(pos, state.setValue(RING, false), Block.UPDATE_ALL);
-            player.addItem(new ItemStack(ObjectRegistry.GOLD_RING.get()));
-            return InteractionResult.SUCCESS;
-        }
-        if (stack.isEmpty()) {
+    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (world.isClientSide) return InteractionResult.SUCCESS;
+        if (player.isShiftKeyDown() && blockEntity instanceof StorageBlockEntity) {
             world.setBlock(pos, state.setValue(OPEN, !state.getValue(OPEN)), Block.UPDATE_ALL);
             return InteractionResult.SUCCESS;
         }
-        if (stack.getItem().equals(ObjectRegistry.GOLD_RING.get()) && !state.getValue(RING) && state.getValue(OPEN)) {
-            world.setBlock(pos, state.setValue(RING, true), Block.UPDATE_ALL);
-            if (!player.isCreative()) stack.shrink(1);
-            return InteractionResult.SUCCESS;
+        if (blockEntity instanceof StorageBlockEntity shelfBlockEntity) {
+            Optional<Tuple<Float, Float>> optional = de.cristelknight.doapi.Util.getRelativeHitCoordinatesForBlockFace(hit, state.getValue(FACING), this.unAllowedDirections());
+            if (optional.isEmpty()) {
+                return InteractionResult.PASS;
+            } else {
+                Tuple<Float, Float> ff = optional.get();
+                int i = this.getSection(ff.getA(), ff.getB());
+                if (i == Integer.MIN_VALUE) {
+                    return InteractionResult.PASS;
+                } else {
+                    ItemStack stack = player.getItemInHand(hand);
+                    if (!((ItemStack)shelfBlockEntity.getInventory().get(i)).isEmpty()) {
+                        this.remove(world, pos, player, shelfBlockEntity, i);
+                        return InteractionResult.sidedSuccess(false);
+                    } else if (!stack.isEmpty() && this.canInsertStack(stack)) {
+                        this.add(world, pos, player, shelfBlockEntity, stack, i);
+                        return InteractionResult.sidedSuccess(false);
+                    } else {
+                        return InteractionResult.CONSUME;
+                    }
+                }
+            }
+        } else {
+            return InteractionResult.PASS;
         }
-
-        return super.use(state, world, pos, player, hand, hit);
     }
 
+
+    @Override
+    public int size() {
+        return 1;
+    }
+
+    @Override
+    public ResourceLocation type() {
+        return StorageTypesRegistry.JEWELRY_BOX;
+    }
+
+    @Override
+    public Direction[] unAllowedDirections() {
+        return new Direction[0];
+    }
+
+    @Override
+    public boolean canInsertStack(ItemStack stack) {
+        return stack.getItem() == ObjectRegistry.GOLD_RING.get();
+    }
+
+    @Override
+    public int getSection(Float f, Float y) {
+        float oneS = 1.0f;
+        int nSection = (int) (f / oneS);
+        return -nSection;
+    }
 
     @Override
     public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) {
@@ -84,7 +129,7 @@ public class JewelryBoxBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, OPEN, RING);
+        builder.add(FACING, OPEN);
     }
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
@@ -108,8 +153,6 @@ public class JewelryBoxBlock extends Block {
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
-
-
 
     @Override
     public @NotNull BlockState rotate(BlockState state, Rotation rotation) {

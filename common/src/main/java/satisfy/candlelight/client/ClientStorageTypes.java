@@ -4,6 +4,7 @@ import de.cristelknight.doapi.client.render.block.storage.StorageBlockEntityRend
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import net.minecraft.resources.ResourceLocation;
 import satisfy.candlelight.Candlelight;
+import satisfy.candlelight.client.render.block.JewelryRenderer;
 import satisfy.candlelight.client.render.block.ShelfRenderer;
 import satisfy.candlelight.client.render.block.TableSetRenderer;
 import satisfy.candlelight.client.render.block.ToolRackRenderer;
@@ -19,5 +20,6 @@ public class ClientStorageTypes {
         registerStorageType(StorageTypesRegistry.TABLE_SET, new TableSetRenderer());
         registerStorageType(StorageTypesRegistry.SHELF, new ShelfRenderer());
         registerStorageType(StorageTypesRegistry.TOOL_RACK, new ToolRackRenderer());
+        registerStorageType(StorageTypesRegistry.JEWELRY_BOX, new JewelryRenderer());
     }
 }

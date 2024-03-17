@@ -20,7 +20,6 @@ import satisfy.candlelight.util.LineConnectingType;
 
 @SuppressWarnings("deprecation")
 public class LineConnectingBlock extends Block {
-
     public static final DirectionProperty FACING;
     public static final EnumProperty<LineConnectingType> TYPE;
 
