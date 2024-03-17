@@ -1,7 +1,7 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"3": "candlelight:block/bag_side_handle",
+		"3": "candlelight:block/bag_side_knot",
 		"4": "candlelight:block/bag_bottom",
 		"7": "candlelight:block/bag_side",
 		"8": "candlelight:block/bag_top_beetroot",

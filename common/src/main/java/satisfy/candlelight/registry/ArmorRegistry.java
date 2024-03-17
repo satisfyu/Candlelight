@@ -64,15 +64,15 @@ public class ArmorRegistry {
                 boots != null && boots.getItem() instanceof CookBootsItem;
 
         tooltip.add(Component.nullToEmpty(""));
-        tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("candlelight.tooltip.cook_armor")));
+        tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("tooltip.candlelight.cook_armor.")));
         tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof CookingHatItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.COOKING_HAT.get().getDescription().getString() + "]"));
         tooltip.add(Component.nullToEmpty((chestplate != null && chestplate.getItem() instanceof CookChestplateItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.CHEFS_JACKET.get().getDescription().getString() + "]"));
         tooltip.add(Component.nullToEmpty((leggings != null && leggings.getItem() instanceof CookLeggingsItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.CHEFS_PANTS.get().getDescription().getString() + "]"));
         tooltip.add(Component.nullToEmpty((boots != null && boots.getItem() instanceof CookBootsItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.CHEFS_BOOTS.get().getDescription().getString() + "]"));
         tooltip.add(Component.nullToEmpty(""));
 
-        tooltip.add(Component.nullToEmpty(ChatFormatting.GRAY + I18n.get("candlelight.tooltip.cook_armor2")));
-        tooltip.add(Component.nullToEmpty((hasCompleteSet ? ChatFormatting.DARK_GREEN.toString() : ChatFormatting.GRAY.toString()) + I18n.get("candlelight.tooltip.cook_armor3")));
+        tooltip.add(Component.nullToEmpty(ChatFormatting.GRAY + I18n.get("tooltip.candlelight.cook_armor.2")));
+        tooltip.add(Component.nullToEmpty((hasCompleteSet ? ChatFormatting.DARK_GREEN.toString() : ChatFormatting.GRAY.toString()) + I18n.get("tooltip.candlelight.cook_armor.3")));
         if (hasCompleteSet) {
             player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 1));
         }

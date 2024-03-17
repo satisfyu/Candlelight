@@ -5,10 +5,10 @@
       "item": "candlelight:salmon_wine"
     },
     "title": {
-      "translate": "candlelight.advancement.cook_everything"
+      "translate": "advancement.candlelight.cook_everything"
     },
     "description": {
-      "translate": "candlelight.advancement.cook_everything.desc"
+      "translate": "advancement.candlelight.cook_everything.desc"
     },
     "frame": "challenge",
     "show_toast": true,

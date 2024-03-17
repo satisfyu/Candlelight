@@ -12,9 +12,9 @@ import satisfy.candlelight.util.CandlelightIdentifier;
 public class SoundEventsRegistry {
 
     private static final Registrar<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Candlelight.MOD_ID, Registries.SOUND_EVENT).getRegistrar();
-    public static final RegistrySupplier<SoundEvent> BLOCK_COOKING_POT_JUICE_BOILING = create("juice_boiling");
-    public static final RegistrySupplier<SoundEvent> BLOCK_COOKING_PAN_FRYING = create("pan_frying");
-    public static final RegistrySupplier<SoundEvent> BLOCK_FAUCET = create("faucet");
+    public static final RegistrySupplier<SoundEvent> COOKING_POT_BOILING = create("cooking_pot_boiling");
+    public static final RegistrySupplier<SoundEvent> COOKING_PAN_COOKING = create("cooking_pan_cooking");
+    public static final RegistrySupplier<SoundEvent> COOKING_PAN_HIT = create("cooking_pan_hit");
     public static final RegistrySupplier<SoundEvent> DRAWER_OPEN = create("drawer_open");
     public static final RegistrySupplier<SoundEvent> DRAWER_CLOSE = create("drawer_close");
     public static final RegistrySupplier<SoundEvent> CABINET_OPEN = create("cabinet_open");

@@ -8,12 +8,12 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import satisfy.candlelight.Candlelight;
 
+@SuppressWarnings("unused")
 public class TabRegistry {
-    public static final DeferredRegister<CreativeModeTab> CANDLELIGHT_TABS = DeferredRegister.create(Candlelight.MOD_ID, Registries.CREATIVE_MODE_TAB);
-
-    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_TAB = CANDLELIGHT_TABS.register("candlelight", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
-            .icon(() -> new ItemStack(ObjectRegistry.HEARTH.get()))
-            .title(Component.translatable("creativetab.candlelight.tab"))
+    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Candlelight.MOD_ID, Registries.CREATIVE_MODE_TAB);
+    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_TAB = TABS.register("candlelight", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+            .icon(() -> new ItemStack(ObjectRegistry.COOKING_POT.get()))
+            .title(Component.translatable("creativetab.candlelight.tab_main"))
             .displayItems((parameters, output) -> {
                 output.accept(ObjectRegistry.TOMATO_CROP.get());
                 output.accept(ObjectRegistry.TOMATO.get());
@@ -24,15 +24,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.CARROT_CRATE.get());
                 output.accept(ObjectRegistry.POTATO_CRATE.get());
                 output.accept(ObjectRegistry.BEETROOT_CRATE.get());
-                output.accept(ObjectRegistry.FLOORBOARD.get());
-                output.accept(ObjectRegistry.DRAWER.get());
-                output.accept(ObjectRegistry.CABINET.get());
-                output.accept(ObjectRegistry.SIDEBOARD.get());
-                output.accept(ObjectRegistry.CHAIR.get());
-                output.accept(ObjectRegistry.SOFA.get());
-                output.accept(ObjectRegistry.TABLE.get());
-                output.accept(ObjectRegistry.LAMP.get());
-                output.accept(ObjectRegistry.SIDE_TABLE.get());
                 output.accept(ObjectRegistry.COOKING_POT.get());
                 output.accept(ObjectRegistry.COOKING_PAN.get());
                 output.accept(ObjectRegistry.TABLE_SET.get());
@@ -87,6 +78,23 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.NOTE_PAPER_WRITEABLE.get());
                 output.accept(ObjectRegistry.LETTER_OPEN.get());
                 output.accept(ObjectRegistry.LOVE_LETTER_OPEN.get());
+
+            })
+            .build());
+
+    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_FURNITURE_TAB = TABS.register("candlelight_furniture", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 1)
+            .icon(() -> new ItemStack(ObjectRegistry.OAK_TABLE.get()))
+            .title(Component.translatable("creativetab.candlelight.tab_furniture"))
+            .displayItems((parameters, output) -> {
+                output.accept(ObjectRegistry.FLOORBOARD.get());
+                output.accept(ObjectRegistry.DRAWER.get());
+                output.accept(ObjectRegistry.CABINET.get());
+                output.accept(ObjectRegistry.SIDEBOARD.get());
+                output.accept(ObjectRegistry.CHAIR.get());
+                output.accept(ObjectRegistry.SOFA.get());
+                output.accept(ObjectRegistry.TABLE.get());
+                output.accept(ObjectRegistry.LAMP.get());
+                output.accept(ObjectRegistry.SIDE_TABLE.get());
                 output.accept(ObjectRegistry.COBBLESTONE_STOVE.get());
                 output.accept(ObjectRegistry.COBBLESTONE_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.COBBLESTONE_COUNTER.get());
@@ -190,6 +198,6 @@ public class TabRegistry {
             .build());
 
     public static void init() {
-        CANDLELIGHT_TABS.register();
+        TABS.register();
     }
 }

@@ -5,10 +5,10 @@
       "item": "candlelight:rose"
     },
     "title": {
-      "translate": "candlelight.advancement.find_rose"
+      "translate": "advancement.candlelight.find_rose"
     },
     "description": {
-      "translate": "candlelight.advancement.find_rose.desc"
+      "translate": "advancement.candlelight.find_rose.desc"
     },
     "frame": "task",
     "show_toast": true,

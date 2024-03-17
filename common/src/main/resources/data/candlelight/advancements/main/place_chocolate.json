@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.chocolate_box.desc"
+      "translate": "advancement.candlelight.chocolate_box.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.chocolate_box"
+      "translate": "advancement.candlelight.chocolate_box"
     }
   },
   "requirements": [

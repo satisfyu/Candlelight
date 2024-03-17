@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.place_table.desc"
+      "translate": "advancement.candlelight.place_table.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.place_table"
+      "translate": "advancement.candlelight.place_table"
     }
   },
   "requirements": [

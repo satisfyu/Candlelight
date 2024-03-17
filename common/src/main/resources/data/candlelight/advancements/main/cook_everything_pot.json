@@ -5,10 +5,10 @@
       "item": "candlelight:chicken"
     },
     "title": {
-      "translate": "candlelight.advancement.cook_everything_pot"
+      "translate": "advancement.candlelight.cook_everything_pot"
     },
     "description": {
-      "translate": "candlelight.advancement.cook_everything_pot.desc"
+      "translate": "advancement.candlelight.cook_everything_pot.desc"
     },
     "frame": "challenge",
     "show_toast": true,

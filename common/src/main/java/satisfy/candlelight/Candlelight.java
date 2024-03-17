@@ -7,6 +7,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import satisfy.candlelight.event.CommonEvents;
 import satisfy.candlelight.networking.CandlelightMessages;
 import satisfy.candlelight.registry.*;
 
@@ -25,6 +26,7 @@ public class Candlelight {
         ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
         SoundEventsRegistry.init();
+        CommonEvents.init();
         TabRegistry.init();
         CandlelightMessages.registerC2SPackets();
     }

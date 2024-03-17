@@ -17,7 +17,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.write_letter.desc"
+      "translate": "advancement.candlelight.write_letter.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -26,7 +26,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.write_letter"
+      "translate": "advancement.candlelight.write_letter"
     }
   },
   "requirements": [

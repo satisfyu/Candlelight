@@ -5,10 +5,16 @@
       "candlelight:cooking_pot_boiling"
     ]
   },
-  "cooking_pot_hit": {
-    "subtitle": "sound.candlelight.cooking_pot_hit",
+  "cooking_pan_hit": {
+    "subtitle": "sound.candlelight.cooking_pan_hit",
     "sounds": [
-      "candlelight:cooking_pot_hit"
+      "candlelight:cooking_pan_hit"
+    ]
+  },
+  "cooking_pan_cooking": {
+    "subtitle": "sound.candlelight.cooking_pan_cooking",
+    "sounds": [
+      "candlelight:cooking_pan_cooking"
     ]
   },
   "drawer_open": {
@@ -33,12 +39,6 @@
     "subtitle": "sound.candlelight.cabinet_close",
     "sounds": [
       "candlelight:cabinet_close"
-    ]
-  },
-  "cake_cut": {
-    "subtitle": "sound.candlelight.cake_cut",
-    "sounds": [
-      "candlelight:cake_cut"
     ]
   }
 }

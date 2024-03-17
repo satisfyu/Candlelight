@@ -30,7 +30,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.eat_enchanted_golden_apple_from_plate.desc"
+      "translate": "advancement.candlelight.eat_enchanted_golden_apple_from_plate.desc"
     },
     "frame": "challenge",
     "hidden": false,
@@ -39,7 +39,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.eat_enchanted_golden_apple_from_plate"
+      "translate": "advancement.candlelight.eat_enchanted_golden_apple_from_plate"
     }
   },
   "requirements": [

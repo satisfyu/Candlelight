@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.cooking_pot.desc"
+      "translate": "advancement.candlelight.cooking_pot.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.cooking_pot"
+      "translate": "advancement.candlelight.cooking_pot"
     }
   },
   "requirements": [

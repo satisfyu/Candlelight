@@ -4,10 +4,10 @@
       "item": "candlelight:cooking_hat"
     },
     "title": {
-      "translate": "candlelight.advancement.root"
+      "translate": "advancement.candlelight.root"
     },
     "description": {
-      "translate": "candlelight.advancement.root.desc"
+      "translate": "advancement.candlelight.root.desc"
     },
     "frame": "task",
     "show_toast": false,

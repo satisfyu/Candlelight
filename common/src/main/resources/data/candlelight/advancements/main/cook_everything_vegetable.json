@@ -5,10 +5,10 @@
       "item": "candlelight:lettuce_salad"
     },
     "title": {
-      "translate": "candlelight.advancement.cook_everything_vegetable"
+      "translate": "advancement.candlelight.cook_everything_vegetable"
     },
     "description": {
-      "translate": "candlelight.advancement.cook_everything_vegetable.desc"
+      "translate": "advancement.candlelight.cook_everything_vegetable.desc"
     },
     "frame": "challenge",
     "show_toast": true,

@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.eat_tomato.desc"
+      "translate": "advancement.candlelight.eat_tomato.desc"
     },
     "frame": "goal",
     "hidden": false,
@@ -24,7 +24,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.eat_tomato"
+      "translate": "advancement.candlelight.eat_tomato"
     }
   },
   "requirements": [

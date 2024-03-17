@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.cooking_pan.desc"
+      "translate": "advancement.candlelight.cooking_pan.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.cooking_pan"
+      "translate": "advancement.candlelight.cooking_pan"
     }
   },
   "requirements": [

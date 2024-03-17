@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.beef_wellington.desc"
+      "translate": "advancement.candlelight.beef_wellington.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.beef_wellington"
+      "translate": "advancement.candlelight.beef_wellington"
     }
   },
   "requirements": [

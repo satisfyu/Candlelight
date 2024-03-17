@@ -16,7 +16,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.tomato_mozzarella_salad.desc"
+      "translate": "advancement.candlelight.tomato_mozzarella_salad.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.tomato_mozzarella_salad"
+      "translate": "advancement.candlelight.tomato_mozzarella_salad"
     }
   },
   "requirements": [

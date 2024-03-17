@@ -5,10 +5,10 @@
       "item": "candlelight:pancake"
     },
     "title": {
-      "translate": "candlelight.advancement.cook_everything_pan"
+      "translate": "advancement.candlelight.cook_everything_pan"
     },
     "description": {
-      "translate": "candlelight.advancement.cook_everything_pan.desc"
+      "translate": "advancement.candlelight.cook_everything_pan.desc"
     },
     "frame": "challenge",
     "show_toast": true,

@@ -27,7 +27,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "candlelight.advancement.place_seeds.desc"
+      "translate": "advancement.candlelight.place_seeds.desc"
     },
     "frame": "task",
     "hidden": false,
@@ -36,7 +36,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "candlelight.advancement.place_seeds"
+      "translate": "advancement.candlelight.place_seeds"
     }
   },
   "requirements": [

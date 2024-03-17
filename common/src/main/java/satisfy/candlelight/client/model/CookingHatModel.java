@@ -21,12 +21,11 @@ public class CookingHatModel<T extends Entity> extends EntityModel<T> {
 		this.cookHat = root.getChild("cooking_hat");
 	}
 
+	@SuppressWarnings("unused")
 	public static LayerDefinition getTexturedModelData() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition ModelPartData = meshdefinition.getRoot();
-		PartDefinition cookhat = ModelPartData.addOrReplaceChild("cooking_hat", CubeListBuilder.create().texOffs(40, 43).addBox(-4.0F, -5.0F, -4.0F, 8.0F, 5.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(40, 59).addBox(-4.0F, -1.0F, -4.0F, 8.0F, 1.0F, 8.0F, new CubeDeformation(0.2F))
-				.texOffs(40, 23).addBox(-5.0F, -11.0F, -5.0F, 10.0F, 6.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition cookhat = ModelPartData.addOrReplaceChild("cooking_hat", CubeListBuilder.create().texOffs(40, 43).addBox(-4.0F, -5.0F, -4.0F, 8.0F, 5.0F, 8.0F, new CubeDeformation(0.05F)).texOffs(40, 59).addBox(-4.0F, -1.0F, -4.0F, 8.0F, 1.0F, 8.0F, new CubeDeformation(0.2F)).texOffs(40, 23).addBox(-5.0F, -11.0F, -5.0F, 10.0F, 6.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 96, 96);
 	}
