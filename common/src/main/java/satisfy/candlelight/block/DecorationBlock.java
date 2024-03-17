@@ -2,6 +2,7 @@ package satisfy.candlelight.block;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import de.cristelknight.doapi.common.block.FacingBlock;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,11 +19,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("deprecation")
 public class DecorationBlock extends FacingBlock {
     private static final Map<Direction, VoxelShape> BOUNDING_SHAPES = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.box(0, 0, 15.0, 16, 16, 16.0), Direction.SOUTH, Block.box(0, 0, 0.0, 16, 16, 1.0), Direction.WEST, Block.box(15.0, 0, 0, 16.0, 16, 16), Direction.EAST, Block.box(0.0, 0, 0, 1.0, 16, 16)));
 
@@ -32,7 +35,7 @@ public class DecorationBlock extends FacingBlock {
 
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return getBoundingShape(state);
     }
 
@@ -62,7 +65,7 @@ public class DecorationBlock extends FacingBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
         if (direction.getOpposite() == state.getValue(FACING) && !state.canSurvive(world, pos)) {
             return Blocks.AIR.defaultBlockState();
         }
@@ -71,7 +74,7 @@ public class DecorationBlock extends FacingBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.candlelight.decoration.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.candlelight.decoration").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
 
     }
 }

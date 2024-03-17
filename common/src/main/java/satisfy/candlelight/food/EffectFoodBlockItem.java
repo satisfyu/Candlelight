@@ -14,6 +14,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.EffectFoodBlock;
 import satisfy.candlelight.item.food.EffectFood;
@@ -40,7 +41,7 @@ public class EffectFoodBlockItem extends BlockItem implements EffectFood {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity user) {
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity user) {
         if (!world.isClientSide) {
             List<Pair<MobEffectInstance, Float>> effects = EffectFoodHelper.getEffects(stack);
             for (Pair<MobEffectInstance, Float> effect : effects) {
@@ -73,7 +74,7 @@ public class EffectFoodBlockItem extends BlockItem implements EffectFood {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
-        tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
         EffectFoodHelper.getTooltip(stack, tooltip);
     }
 }

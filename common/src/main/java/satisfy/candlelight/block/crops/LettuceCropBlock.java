@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.registry.ObjectRegistry;
 
 public class LettuceCropBlock extends CropBlock {
@@ -17,7 +18,7 @@ public class LettuceCropBlock extends CropBlock {
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NotNull ItemLike getBaseSeedId() {
         return ObjectRegistry.LETTUCE_SEEDS.get();
     }
 
@@ -27,7 +28,7 @@ public class LettuceCropBlock extends CropBlock {
     }
 
     @Override
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 

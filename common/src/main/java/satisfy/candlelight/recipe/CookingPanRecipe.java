@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import satisfy.candlelight.registry.RecipeTypeRegistry;
-import satisfy.candlelight.util.CandlelightGeneralUtil;
+import satisfy.candlelight.util.GeneralUtil;
 
 public class CookingPanRecipe implements Recipe<Container> {
 
@@ -30,7 +30,7 @@ public class CookingPanRecipe implements Recipe<Container> {
 
     @Override
     public boolean matches(Container inventory, Level world) {
-        return CandlelightGeneralUtil.matchesRecipe(inventory, this.inputs, 0, 6);
+        return GeneralUtil.matchesRecipe(inventory, this.inputs, 0, 6);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class CookingPanRecipe implements Recipe<Container> {
 
         @Override
         public CookingPanRecipe fromJson(ResourceLocation id, JsonObject json) {
-            final var ingredients = CandlelightGeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
+            final var ingredients = GeneralUtil.deserializeIngredients(GsonHelper.getAsJsonArray(json, "ingredients"));
             if (ingredients.isEmpty()) {
                 throw new JsonParseException("No ingredients for CookingPan Recipe");
             } else if (ingredients.size() > 6) {

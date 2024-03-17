@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class EffectFoodItem extends Item implements EffectFood {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity user) {
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity user) {
         if (!world.isClientSide) {
             List<Pair<MobEffectInstance, Float>> effects = EffectFoodHelper.getEffects(stack);
             for (Pair<MobEffectInstance, Float> effect : effects) {

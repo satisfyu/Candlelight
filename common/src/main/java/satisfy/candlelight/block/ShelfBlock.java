@@ -19,14 +19,16 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.registry.StorageTypesRegistry;
-import satisfy.candlelight.util.CandlelightGeneralUtil;
+import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class ShelfBlock extends StorageBlock {
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
@@ -38,7 +40,7 @@ public class ShelfBlock extends StorageBlock {
 
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
 
@@ -74,7 +76,7 @@ public class ShelfBlock extends StorageBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
@@ -129,7 +131,7 @@ public class ShelfBlock extends StorageBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
         if (!state.canSurvive(world, pos)) {
             world.scheduleTick(pos, this, 1);
         }

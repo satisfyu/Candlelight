@@ -10,7 +10,7 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
-public class CandlelightVillagerUtil {
+public class VillagerUtil {
 
     public static class BuyForOneEmeraldFactory implements VillagerTrades.ItemListing {
         private final Item buy;

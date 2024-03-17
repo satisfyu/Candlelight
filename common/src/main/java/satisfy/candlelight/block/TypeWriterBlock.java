@@ -34,13 +34,14 @@ import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.TypeWriterEntity;
 import satisfy.candlelight.client.ClientUtil;
 import satisfy.candlelight.registry.ObjectRegistry;
-import satisfy.candlelight.util.CandlelightGeneralUtil;
+import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class TypeWriterBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING;
 
@@ -109,7 +110,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
@@ -138,9 +139,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.candlelight.typewriter.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-
+        tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 
     public boolean useShapeForLightOcclusion(BlockState state) {
@@ -151,7 +150,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
         FACING = HorizontalDirectionalBlock.FACING;
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
             }
         });
     }

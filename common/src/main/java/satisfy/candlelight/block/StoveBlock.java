@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -70,7 +69,7 @@ public class StoveBlock extends DirectionalBlock {
             double k = axis == Direction.Axis.Z ? (double) direction.getStepZ() * 0.52 : h;
             world.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
             world.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
-            double particleHeight = pos.getY() + 0.5 + 16.0 / 16.0;
+            double particleHeight = pos.getY() + 0.5 + 1.0;
             world.addParticle(ParticleTypes.SMOKE, d, particleHeight, f, 0.0, 0.0, 0.0);
         }
     }

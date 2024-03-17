@@ -1,16 +1,12 @@
 package satisfy.candlelight.block;
 
 import de.cristelknight.doapi.common.util.ChairUtil;
-import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,13 +14,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import satisfy.candlelight.util.CandlelightGeneralUtil;
+import org.jetbrains.annotations.NotNull;
+import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class SofaBlock extends LineConnectingBlock {
     public static final Map<Direction, VoxelShape> SHAPE;
     public static final Map<Direction, VoxelShape> MIDDLE_SHAPE;
@@ -77,7 +74,7 @@ public class SofaBlock extends LineConnectingBlock {
     };
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         Map<Direction, VoxelShape> voxelShape;
         switch (state.getValue(TYPE)) {
             case MIDDLE -> voxelShape = MIDDLE_SHAPE;
@@ -88,15 +85,12 @@ public class SofaBlock extends LineConnectingBlock {
         return voxelShape.get(state.getValue(FACING));
     }
 
-
     public SofaBlock(Properties settings) {
         super(settings);
     }
 
-
-
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         return ChairUtil.onUse(world, player, hand, hit, 0);
     }
 
@@ -104,30 +98,26 @@ public class SofaBlock extends LineConnectingBlock {
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
         ChairUtil.onStateReplaced(world, pos);
     }
-    @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.candlelight.expandable.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-    }
 
     static {
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, noneShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, noneShapeSupplier.get()));
             }
         });
         MIDDLE_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, middleShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, middleShapeSupplier.get()));
             }
         });
         LEFT_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, leftShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, leftShapeSupplier.get()));
             }
         });
         RIGHT_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, rightShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, rightShapeSupplier.get()));
             }
         });
     }

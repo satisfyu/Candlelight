@@ -36,15 +36,17 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.registry.StorageTypesRegistry;
 import satisfy.candlelight.registry.ObjectRegistry;
-import satisfy.candlelight.util.CandlelightGeneralUtil;
+import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class TableSetBlock extends StorageBlock {
     public static final EnumProperty<PlateType> PLATE_TYPE = EnumProperty.create("plate", PlateType.class);
     private static final Supplier<VoxelShape> voxelShapeSupplier;
@@ -57,7 +59,7 @@ public class TableSetBlock extends StorageBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
@@ -96,6 +98,7 @@ public class TableSetBlock extends StorageBlock {
             world.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (itemStack.isEdible()) {
                 FoodProperties foodComponent = itemStack.getItem().getFoodProperties();
+                assert foodComponent != null;
                 player.getFoodData().eat(Math.round(foodComponent.getNutrition() * 1.3f), foodComponent.getSaturationModifier() * 1.3f);
                 List<Pair<MobEffectInstance, Float>> list = foodComponent.getEffects();
                 for (Pair<MobEffectInstance, Float> pair : list) {
@@ -153,7 +156,7 @@ public class TableSetBlock extends StorageBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
         if (!state.canSurvive(world, pos)) {
             world.scheduleTick(pos, this, 1);
         }
@@ -170,16 +173,14 @@ public class TableSetBlock extends StorageBlock {
             this.name = name;
         }
         @Override
-        public String getSerializedName() {
+        public @NotNull String getSerializedName() {
             return this.name;
         }
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("block.candlelight.table_set.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GOLD));
-        tooltip.add(Component.translatable("block.candlelight.table_set2.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GOLD));
+        tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 
     static {
@@ -191,7 +192,7 @@ public class TableSetBlock extends StorageBlock {
         };
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
             }
         });
     }

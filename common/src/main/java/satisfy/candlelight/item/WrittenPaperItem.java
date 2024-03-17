@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.client.ClientUtil;
 
@@ -23,7 +24,7 @@ public class WrittenPaperItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         if(world.isClientSide())
         {
@@ -38,7 +39,7 @@ public class WrittenPaperItem extends Item {
     }
 
     @Override
-    public Component getName(ItemStack stack) {
+    public @NotNull Component getName(ItemStack stack) {
         CompoundTag nbtCompound = stack.getTag();
         if (nbtCompound != null) {
             String string = nbtCompound.getString("title");
@@ -54,13 +55,11 @@ public class WrittenPaperItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
         if (stack.hasTag()) {
             CompoundTag nbtCompound = stack.getTag();
+            assert nbtCompound != null;
             String string = nbtCompound.getString("author");
             if (!StringUtil.isNullOrEmpty(string)) {
                 tooltip.add(Component.translatable("book.byAuthor", string).withStyle(ChatFormatting.GRAY));
             }
-
-           // tooltip.add(Text.translatable("book.generation." + nbtCompound.getInt("generation")).formatted(Formatting.GRAY));
         }
-
     }
 }

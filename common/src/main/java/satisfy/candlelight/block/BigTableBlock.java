@@ -27,14 +27,16 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.util.CandlelightGeneralUtil;
+import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class BigTableBlock extends HorizontalDirectionalBlock {
 	public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;
 
@@ -51,7 +53,7 @@ public class BigTableBlock extends HorizontalDirectionalBlock {
 
 	public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
 		for (Direction direction : Direction.Plane.HORIZONTAL) {
-			map.put(direction, CandlelightGeneralUtil.rotateShape(Direction.EAST, direction, voxelShapeSupplier.get()));
+			map.put(direction, GeneralUtil.rotateShape(Direction.EAST, direction, voxelShapeSupplier.get()));
 		}
 	});
 	
@@ -62,7 +64,7 @@ public class BigTableBlock extends HorizontalDirectionalBlock {
 		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(PART, BedPart.FOOT));
 	}
 
-	public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+	public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
 		if (direction == getDirectionTowardsOtherPart(state.getValue(PART), state.getValue(FACING))) {
 			return neighborState.is(this) && neighborState.getValue(PART) != state.getValue(PART) ? state : Blocks.AIR.defaultBlockState();
 		} else {
@@ -91,7 +93,7 @@ public class BigTableBlock extends HorizontalDirectionalBlock {
 		return world.getBlockState(blockPos2).canBeReplaced(ctx) && world.getWorldBorder().isWithinBounds(blockPos2) ? this.defaultBlockState().setValue(FACING, direction) : null;
 	}
 
-	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+	public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		Direction direction = getOppositePartDirection(state).getOpposite();
 		return SHAPE.get(direction);
 	}
@@ -135,6 +137,6 @@ public class BigTableBlock extends HorizontalDirectionalBlock {
 
 	@Override
 	public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-		tooltip.add(Component.translatable("block.candlelight.canbeplaced.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+		tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
 	}
 }

@@ -2,6 +2,7 @@ package satisfy.candlelight.registry;
 
 import de.cristelknight.doapi.Util;
 import de.cristelknight.doapi.common.block.ChairBlock;
+import de.cristelknight.doapi.common.block.FacingBlock;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -36,11 +37,11 @@ public class ObjectRegistry {
     public static final Registrar<Block> BLOCK_REGISTRAR = BLOCKS.getRegistrar();
 
     public static final RegistrySupplier<Block> LETTUCE_CROP = registerWithoutItem("lettuce_crop", () -> new LettuceCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
-    public static final RegistrySupplier<Item> LETTUCE_SEEDS = registerItem("lettuce_seeds", () -> new SeedItem(LETTUCE_CROP.get(), getSettings()));
+    public static final RegistrySupplier<Item> LETTUCE_SEEDS = registerItem("lettuce_seeds", () -> new ItemNameBlockItem(LETTUCE_CROP.get(), getSettings()));
     public static final RegistrySupplier<Block> TOMATO_CROP = registerWithoutItem("tomato_crop", () -> new TomatoCropBlock( getBushSettings()));
-    public static final RegistrySupplier<Item> TOMATO_SEEDS = registerItem("tomato_seeds", () -> new SeedItem(TOMATO_CROP.get(), getSettings()));
-    public static final RegistrySupplier<Item> TOMATO = registerItem("tomato", () -> new IngredientItem(getSettings().food(Foods.APPLE)));
-    public static final RegistrySupplier<Item> LETTUCE = registerItem("lettuce", () -> new IngredientItem(getSettings().food(Foods.POTATO)));
+    public static final RegistrySupplier<Item> TOMATO_SEEDS = registerItem("tomato_seeds", () -> new ItemNameBlockItem(TOMATO_CROP.get(), getSettings()));
+    public static final RegistrySupplier<Item> TOMATO = registerItem("tomato", () -> new Item(getSettings().food(Foods.APPLE)));
+    public static final RegistrySupplier<Item> LETTUCE = registerItem("lettuce", () -> new Item(getSettings().food(Foods.POTATO)));
     public static final RegistrySupplier<Block> TOMATO_CRATE = registerWithItem("tomato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> LETTUCE_CRATE = registerWithItem("lettuce_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> CARROT_CRATE = registerWithItem("carrot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -63,9 +64,9 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> TABLE_SET = registerWithItem("table_set", () -> new TableSetBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistrySupplier<Block> GLASS_BLOCK = registerWithoutItem("glass", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)));
     public static final RegistrySupplier<Item> GLASS = registerItem("glass", () -> new TableSetBlockItem(GLASS_BLOCK.get(), getSettings()));
-    public static final RegistrySupplier<Item> NAPKIN = registerItem("napkin", () -> new TableSetItem(getSettings()));
-    public static final RegistrySupplier<Item> BUTTER = registerItem("butter", () -> new IngredientItem(getSettings()));
-    public static final RegistrySupplier<Item> MOZZARELLA = registerItem("mozzarella", () -> new IngredientItem(getSettings().food(Foods.BREAD)));
+    public static final RegistrySupplier<Item> NAPKIN = registerItem("napkin", () -> new Item(getSettings()));
+    public static final RegistrySupplier<Item> BUTTER = registerItem("butter", () -> new Item(getSettings()));
+    public static final RegistrySupplier<Item> MOZZARELLA = registerItem("mozzarella", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> DOUGH = registerItem("dough", () -> new Item(getSettings()));
     public static final RegistrySupplier<Item> PASTA_RAW = registerItem("pasta_raw", () -> new Item(getSettings()));
     public static final RegistrySupplier<Item> TOMATO_SOUP = registerItem("tomato_soup", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.TOMATO_SOUP), 1));
@@ -99,8 +100,8 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> BEEF_WELLINGTON = registerItem("beef_wellington", () -> new EffectFoodBlockItem(BEEF_WELLINGTON_BLOCK.get(), getSettings().food(CandlelightFoods.BEEF_WELLINGTON), 2));
     public static final RegistrySupplier<Item> PIZZA_SLICE = registerItem("pizza_slice", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
     public static final RegistrySupplier<Block> PIZZA = registerWithItem("pizza", () -> new PizzaBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), PIZZA_SLICE));
-    public static final RegistrySupplier<Item> CHOCOLATE = registerItem("chocolate", () -> new IngredientItem(getSettings().food(Foods.APPLE)));
-    public static final RegistrySupplier<Block> TABLE_SIGN = registerWithItem("table_sign", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT), false));
+    public static final RegistrySupplier<Item> CHOCOLATE = registerItem("chocolate", () -> new Item(getSettings().food(Foods.APPLE)));
+    public static final RegistrySupplier<Block> TABLE_SIGN = registerWithItem("table_sign", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistrySupplier<Block> TOOL_RACK = registerWithItem("tool_rack", () -> new ToolRackBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
     public static final RegistrySupplier<Block> PAINTING = registerWithItem("painting", () -> new SmallPaintingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
     public static final RegistrySupplier<Block> HEARTH = registerWithItem("hearth", () -> new DecorationBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
@@ -232,7 +233,7 @@ public class ObjectRegistry {
     }
 
     public static void registerCompostable() {
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_SEEDS.get(), .2f);
+        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_SEEDS.get().asItem(), .2f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_CROP.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO.get(), .3f);

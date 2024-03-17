@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.client.ClientUtil;
 
 public class WriteablePaperItem extends Item {
@@ -15,7 +16,7 @@ public class WriteablePaperItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         if(world.isClientSide())
         {

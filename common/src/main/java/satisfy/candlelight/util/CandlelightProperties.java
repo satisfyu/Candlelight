@@ -2,7 +2,6 @@ package satisfy.candlelight.util;
 
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import satisfy.candlelight.block.LineConnectingType;
 
 public class CandlelightProperties {
     public static final EnumProperty<LineConnectingType> LINE_CONNECTING_TYPE;

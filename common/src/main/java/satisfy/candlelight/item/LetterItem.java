@@ -23,26 +23,22 @@ public class LetterItem extends Item {
         super(settings);
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         if(!world.isClientSide())
         {
             MenuProvider screenHandlerFactory = new MenuProvider() {
                 @Override
-                public Component getDisplayName() {
+                public @NotNull Component getDisplayName() {
                     return Component.literal("");
                 }
 
-                @Nullable
                 @Override
-                public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
+                public @NotNull AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
                     return new LetterGuiHandler(syncId, inv);
                 }
             };
-            if(screenHandlerFactory != null)
-            {
-                user.openMenu(screenHandlerFactory);
-            }
+            user.openMenu(screenHandlerFactory);
         }
         return InteractionResultHolder.sidedSuccess(itemStack, world.isClientSide());
     }

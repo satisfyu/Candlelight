@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class SmallPaintingBlock extends DecorationBlock {
 
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (player.isDiscrete()) return InteractionResult.PASS;
         ItemStack itemStack = player.getItemInHand(hand);
         if (world.isClientSide) {
@@ -68,19 +69,4 @@ public class SmallPaintingBlock extends DecorationBlock {
         builder.add(PAINTING);
     }
 
-    @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("block.candlelight.decoration.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-
-        if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("item.candlelight.thankyou1.press_shift").withStyle(ChatFormatting.WHITE, ChatFormatting.ITALIC));
-            tooltip.add(Component.translatable("item.candlelight.thankyou2.press_shift").withStyle(ChatFormatting.WHITE, ChatFormatting.BOLD));
-            tooltip.add(Component.translatable("item.candlelight.lilitu.press_shift").withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("item.candlelight.baumeisterjo.press_shift").withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("item.candlelight.cristelknight.press_shift").withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("item.candlelight.satisfyu.press_shift").withStyle(ChatFormatting.GOLD));
-        } else {
-            tooltip.add(Component.translatable("item.candlelight.press_shift.tooltip").withStyle(ChatFormatting.WHITE));
-        }
-    }
 }

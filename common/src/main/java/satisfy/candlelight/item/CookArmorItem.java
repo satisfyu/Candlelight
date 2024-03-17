@@ -14,7 +14,6 @@ import satisfy.candlelight.registry.ObjectRegistry;
 import java.util.List;
 
 public interface CookArmorItem {
-
 	default void tooltip(List<Component> tooltip){
 		Player player = CandlelightClient.getClientPlayer();
 		if (player == null) return;

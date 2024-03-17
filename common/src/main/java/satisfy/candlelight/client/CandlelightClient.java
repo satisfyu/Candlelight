@@ -1,12 +1,10 @@
 package satisfy.candlelight.client;
 
-import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.player.Player;
 import satisfy.candlelight.client.gui.CookingPanGui;
@@ -30,32 +28,15 @@ public class CandlelightClient {
                 ObjectRegistry.BAMBOO_TABLE.get(), ObjectRegistry.BAMBOO_STOVE.get(), ObjectRegistry.CHERRY_TABLE.get(), ObjectRegistry.CHERRY_CHAIR.get(), ObjectRegistry.GLASS_BLOCK.get()
         );
 
-        ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
-                    if (world == null || pos == null) {
-                        return -1;
-                    }
-                    return BiomeColors.getAverageWaterColor(world, pos);
-                }, ObjectRegistry.MUD_KITCHEN_SINK, ObjectRegistry.SANDSTONE_KITCHEN_SINK, ObjectRegistry.DEEPSLATE_KITCHEN_SINK, ObjectRegistry.END_KITCHEN_SINK,
-                ObjectRegistry.STONE_BRICKS_KITCHEN_SINK, ObjectRegistry.COBBLESTONE_KITCHEN_SINK, ObjectRegistry.GRANITE_KITCHEN_SINK,
-                ObjectRegistry.QUARTZ_KITCHEN_SINK, ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK, ObjectRegistry.BASALT_KITCHEN_SINK,
-                ObjectRegistry.BAMBOO_KITCHEN_SINK);
-
         ClientStorageTypes.init();
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get(), ObjectRegistry.GLASS_BLOCK.get());
-
-
-
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), CookingPanGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
     }
 
     public static void preInitClient() {
-        registerEntityRenderers();
         registerEntityModelLayer();
-    }
-
-    public static void registerEntityRenderers() {
     }
 
     public static void registerEntityModelLayer() {

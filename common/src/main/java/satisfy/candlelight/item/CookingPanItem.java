@@ -17,9 +17,9 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.util.CandlelightTiers;
 
-@SuppressWarnings({"deprecation"})
 public class CookingPanItem extends BlockItem {
     private final Multimap<Attribute, AttributeModifier> toolAttributes;
 
@@ -54,7 +54,7 @@ public class CookingPanItem extends BlockItem {
     }
 
     @Override
-    public InteractionResult place(BlockPlaceContext context) {
+    public @NotNull InteractionResult place(BlockPlaceContext context) {
         Player player = context.getPlayer();
         if (player != null && player.isShiftKeyDown()) {
             return super.place(context);
@@ -68,7 +68,7 @@ public class CookingPanItem extends BlockItem {
         return COOKING_PAN_TIER.getEnchantmentValue();
     }
 
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
+    public @NotNull Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot equipmentSlot) {
         return equipmentSlot == EquipmentSlot.MAINHAND ? this.toolAttributes : super.getDefaultAttributeModifiers(equipmentSlot);
     }
 }

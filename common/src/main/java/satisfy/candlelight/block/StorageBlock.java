@@ -26,6 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.StorageBlockEntity;
 
+@SuppressWarnings("deprecation")
 public class StorageBlock extends BaseEntityBlock {
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final BooleanProperty OPEN = BlockStateProperties.OPEN;

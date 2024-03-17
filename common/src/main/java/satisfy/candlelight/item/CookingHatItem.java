@@ -13,6 +13,7 @@ import satisfy.candlelight.util.CandlelightIdentifier;
 
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class CookingHatItem extends CustomHatItem implements CookArmorItem {
     public CookingHatItem(ArmorMaterial material, Properties settings) {
         super(material, Type.HELMET, settings);

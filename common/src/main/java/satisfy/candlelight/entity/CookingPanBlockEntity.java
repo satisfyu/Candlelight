@@ -1,5 +1,6 @@
 package satisfy.candlelight.entity;
 
+import de.cristelknight.doapi.common.entity.ImplementedInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.CookingPanBlock;
 import satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
@@ -30,7 +32,8 @@ import satisfy.candlelight.recipe.CookingPanRecipe;
 import satisfy.candlelight.registry.BlockEntityRegistry;
 import satisfy.candlelight.registry.RecipeTypeRegistry;
 import satisfy.candlelight.registry.TagsRegistry;
-import satisfy.candlelight.util.ImplementedInventory;
+
+import java.util.Objects;
 
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
@@ -38,7 +41,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 
 	private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
 	private static final int MAX_CAPACITY = 8;
-	public static final int MAX_COOKING_TIME = 600; // Time in ticks (30s)
+	public static final int MAX_COOKING_TIME = 600;
 	private int cookingTime;
 
 	private static final int[] SLOTS_FOR_UP = new int[]{0, 1, 2, 3, 4, 5, 6};
@@ -78,7 +81,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 	}
 
 	@Override
-	public int[] getSlotsForFace(Direction side) {
+	public int @NotNull [] getSlotsForFace(Direction side) {
 		if(side.equals(Direction.UP)){
 			return SLOTS_FOR_UP;
 		} else if (side.equals(Direction.DOWN)){
@@ -186,7 +189,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 
 	private ItemStack getRemainderItem(ItemStack stack) {
 		if (stack.getItem().hasCraftingRemainingItem()) {
-			return new ItemStack(stack.getItem().getCraftingRemainingItem());
+			return new ItemStack(Objects.requireNonNull(stack.getItem().getCraftingRemainingItem()));
 		}
 		return ItemStack.EMPTY;
 	}
@@ -222,7 +225,8 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 			return;
 		}
 		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_PAN_RECIPE_TYPE.get(), this, world).orElse(null);
-		RegistryAccess access = level.registryAccess();
+        assert level != null;
+        RegistryAccess access = level.registryAccess();
 		boolean canCraft = this.canCraft(recipe, access);
 		if (canCraft) {
 			this.cookingTime++;
@@ -251,7 +255,8 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 
 	@Override
 	public boolean stillValid(Player player) {
-		if (this.level.getBlockEntity(this.worldPosition) != this) {
+        assert this.level != null;
+        if (this.level.getBlockEntity(this.worldPosition) != this) {
 			return false;
 		} else {
 			return player.distanceToSqr((double) this.worldPosition.getX() + 0.5, (double) this.worldPosition.getY() + 0.5, (double) this.worldPosition.getZ() + 0.5) <= 64.0;
@@ -259,7 +264,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 	}
 	
 	@Override
-	public Component getDisplayName() {
+	public @NotNull Component getDisplayName() {
 		return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
 	}
 	

@@ -16,8 +16,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.registry.ObjectRegistry;
 
+@SuppressWarnings("deprecation")
 public class TomatoCropBlock extends CropBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 4);
 
@@ -26,7 +28,7 @@ public class TomatoCropBlock extends CropBlock {
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NotNull ItemLike getBaseSeedId() {
         return ObjectRegistry.TOMATO_SEEDS.get();
     }
 
@@ -36,7 +38,7 @@ public class TomatoCropBlock extends CropBlock {
     }
 
     @Override
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 
@@ -46,7 +48,7 @@ public class TomatoCropBlock extends CropBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int i = state.getValue(AGE);
         boolean bl = i == 4;
         if (!bl && player.getItemInHand(hand).is(Items.BONE_MEAL)) {

@@ -34,11 +34,13 @@ public class ClosedLetterItem extends Item {
         tooltip.add(Component.translatable("item.candlelight.letter.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
         ItemStack output = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
         if (itemStack.hasTag()) {
+            assert itemStack.getTag() != null;
             output.setTag(itemStack.getTag().copy());
+            assert output.getTag() != null;
             output.getTag().remove("letter_title");
         }
         user.setItemInHand(hand, output);
