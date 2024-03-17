@@ -19,6 +19,7 @@ public class SoundEventsRegistry {
     public static final RegistrySupplier<SoundEvent> DRAWER_CLOSE = create("drawer_close");
     public static final RegistrySupplier<SoundEvent> CABINET_OPEN = create("cabinet_open");
     public static final RegistrySupplier<SoundEvent> CABINET_CLOSE = create("cabinet_close");
+    public static final RegistrySupplier<SoundEvent> TYPEWRITER = create("typewriter");
 
 
     private static RegistrySupplier<SoundEvent> create(String name) {

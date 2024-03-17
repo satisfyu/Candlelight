@@ -40,5 +40,12 @@
     "sounds": [
       "candlelight:cabinet_close"
     ]
+  },
+  "typewriter": {
+    "subtitle": "sound.candlelight.typewriter",
+    "sounds": [
+      "candlelight:typewriter"
+    ]
   }
+
 }
