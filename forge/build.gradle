@@ -21,6 +21,7 @@ loom {
 
         mixinConfig "candlelight-common.mixins.json"
         mixinConfig "candlelight.mixins.json"
+
     }
 }
 
@@ -41,10 +42,11 @@ dependencies {
     modImplementation("top.theillusivec4.curios:curios-forge:${rootProject.curios_version}")
     modImplementation "maven.modrinth:do-api:${project.doapi_version}-forge"
     modImplementation "me.shedaniel:RoughlyEnoughItems-forge:$rei_version"
-
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
+
+
 
 processResources {
     inputs.property "version", project.version

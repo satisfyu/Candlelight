@@ -106,7 +106,7 @@ public class JewelryBoxBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.getItem() == ObjectRegistry.GOLD_RING.get();
+        return stack.is(TagsRegistry.RINGS);
     }
 
     @Override
