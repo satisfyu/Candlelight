@@ -3,9 +3,21 @@ package satisfy.candlelight.block;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -19,9 +31,17 @@ import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class SideTableBlock extends LineConnectingBlock {
+    public static final BooleanProperty HAS_LANTERN = BooleanProperty.create("has_lantern");
+    public static final BooleanProperty HAS_BOOK = BooleanProperty.create("has_book");
 
     public SideTableBlock(Properties properties) {
-        super(properties);
+        super(properties.lightLevel(state -> state.getValue(HAS_LANTERN) ? 15 : 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HAS_LANTERN, false).setValue(HAS_BOOK, false));
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.get(state.getValue(FACING));
     }
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
@@ -45,7 +65,42 @@ public class SideTableBlock extends LineConnectingBlock {
     }
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE.get(state.getValue(FACING));
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(HAS_LANTERN, HAS_BOOK);
     }
+
+    @Override
+    public @NotNull InteractionResult use(@NotNull BlockState state, @NotNull Level world, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
+        if (!world.isClientSide) {
+            boolean isSneaking = player.isCrouching();
+            if (player.getItemInHand(hand).is(Items.LANTERN) && !state.getValue(HAS_LANTERN) && !isSneaking) {
+                world.setBlock(pos, state.setValue(HAS_LANTERN, true), 3);
+                if (!player.getAbilities().instabuild) {
+                    player.getItemInHand(hand).shrink(1);
+                }
+                world.playSound(null, pos, SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(false);
+            } else if (player.getItemInHand(hand).is(Items.BOOK) && !state.getValue(HAS_BOOK) && !isSneaking) {
+                world.setBlock(pos, state.setValue(HAS_BOOK, true), 3);
+                if (!player.getAbilities().instabuild) {
+                    player.getItemInHand(hand).shrink(1);
+                }
+                world.playSound(null, pos, SoundEvents.BOOK_PUT, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(false);
+            } else if (isSneaking && state.getValue(HAS_LANTERN)) {
+                world.setBlock(pos, state.setValue(HAS_LANTERN, false), 3);
+                popResource(world, pos, new ItemStack(Items.LANTERN));
+                world.playSound(null, pos, SoundEvents.LANTERN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(false);
+            } else if (isSneaking && state.getValue(HAS_BOOK)) {
+                world.setBlock(pos, state.setValue(HAS_BOOK, false), 3);
+                popResource(world, pos, new ItemStack(Items.BOOK));
+                world.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(false);
+            }
+        }
+        return super.use(state, world, pos, player, hand, hit);
+    }
+
 }

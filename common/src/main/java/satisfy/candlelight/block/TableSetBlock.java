@@ -46,7 +46,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings("all")
 public class TableSetBlock extends StorageBlock {
     public static final EnumProperty<PlateType> PLATE_TYPE = EnumProperty.create("plate", PlateType.class);
     private static final Supplier<VoxelShape> voxelShapeSupplier;
