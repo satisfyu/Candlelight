@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
-    "candlelight:wild_lettuce"
+    "candlelight:wild_lettuce",
+    "candlelight:tomato_crate",
+    "candlelight:lettuce_crate",
+    "candlelight:potato_crate",
+    "candlelight:carrot_crate",
+    "candlelight:beetroot_crate"
   ]
 }

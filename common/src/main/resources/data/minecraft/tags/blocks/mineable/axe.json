@@ -1,11 +1,6 @@
 {
   "replace": false,
   "values": [
-    "candlelight:tomato_crate",
-    "candlelight:lettuce_crate",
-    "candlelight:potato_crate",
-    "candlelight:carrot_crate",
-    "candlelight:beetroot_crate",
     "candlelight:sofa",
     "candlelight:chair",
     "candlelight:table",

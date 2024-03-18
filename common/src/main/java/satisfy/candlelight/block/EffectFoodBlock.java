@@ -37,8 +37,8 @@ import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Supplier;
-
 
 @SuppressWarnings("deprecation")
 public class EffectFoodBlock extends BaseEntityBlock {
@@ -57,6 +57,10 @@ public class EffectFoodBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        if (!Objects.requireNonNull(ctx.getPlayer()).isShiftKeyDown()) {
+            return null;
+        }
+
         return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 

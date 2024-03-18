@@ -13,7 +13,6 @@ import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.block.GlassBlock;
 import satisfy.candlelight.block.LampBlock;
@@ -46,11 +45,11 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> TOMATO_SEEDS = registerItem("tomato_seeds", () -> new ItemNameBlockItem(TOMATO_CROP.get(), getSettings()));
     public static final RegistrySupplier<Item> TOMATO = registerItem("tomato", () -> new Item(getSettings().food(Foods.APPLE)));
     public static final RegistrySupplier<Item> LETTUCE = registerItem("lettuce", () -> new Item(getSettings().food(Foods.POTATO)));
-    public static final RegistrySupplier<Block> TOMATO_CRATE = registerWithItem("tomato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistrySupplier<Block> LETTUCE_CRATE = registerWithItem("lettuce_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistrySupplier<Block> CARROT_CRATE = registerWithItem("carrot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistrySupplier<Block> POTATO_CRATE = registerWithItem("potato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-    public static final RegistrySupplier<Block> BEETROOT_CRATE = registerWithItem("beetroot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistrySupplier<Block> TOMATO_CRATE = registerWithItem("tomato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+    public static final RegistrySupplier<Block> LETTUCE_CRATE = registerWithItem("lettuce_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+    public static final RegistrySupplier<Block> CARROT_CRATE = registerWithItem("carrot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+    public static final RegistrySupplier<Block> POTATO_CRATE = registerWithItem("potato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+    public static final RegistrySupplier<Block> BEETROOT_CRATE = registerWithItem("beetroot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
     public static final RegistrySupplier<Block> WILD_TOMATOES = registerWithItem("wild_tomatoes", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistrySupplier<Block> WILD_LETTUCE = registerWithItem("wild_lettuce", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistrySupplier<Block> FLOORBOARD = registerWithItem("floorboard", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
@@ -229,25 +228,9 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> POTTED_ROSE = registerWithoutItem("potted_rose", () -> new FlowerPotBlock(ROSE.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
     public static final RegistrySupplier<Item>  CANDLELIGHT_STANDARD = registerItem("candlelight_standard", () -> new CandlelightStandardItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
 
-
-
     public static void init() {
         ITEMS.register();
         BLOCKS.register();
-    }
-
-    public static void registerCompostable() {
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_SEEDS.get().asItem(), .2f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_CROP.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO_SEEDS.get(), .2f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO_CROP.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.ROSE.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.DOUGH.get(), .4f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.PASTA_RAW.get(), .4f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_TOMATO.get(), 1f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.VEGGIE_PLATE.get(), 1f);
     }
 
     private static Item.Properties getSettings(Consumer<Item.Properties> consumer) {
@@ -276,16 +259,11 @@ public class ObjectRegistry {
         return BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F).sound(SoundType.WOOD);
     }
 
-
     private static BlockBehaviour.Properties getWineSettings() {
         return BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion().instabreak();
     }
 
     public static <T extends Block> RegistrySupplier<T> registerWithItem(String name, Supplier<T> block) {
-        return registerWithItem(name, block, Candlelight.CANDLELIGHT_TAB);
-    }
-
-    public static <T extends Block> RegistrySupplier<T> registerWithItem(String name, Supplier<T> block, @Nullable CreativeModeTab tab) {
         return Util.registerWithItem(BLOCKS, BLOCK_REGISTRAR, ITEMS, ITEM_REGISTRAR, new CandlelightIdentifier(name), block);
     }
 
@@ -296,5 +274,4 @@ public class ObjectRegistry {
     public static <T extends Item> RegistrySupplier<T> registerItem(String path, Supplier<T> itemSupplier) {
         return Util.registerItem(ITEMS, ITEM_REGISTRAR, new CandlelightIdentifier(path), itemSupplier);
     }
-
 }
