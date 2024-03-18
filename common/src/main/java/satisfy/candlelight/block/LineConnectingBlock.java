@@ -17,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.util.CandlelightProperties;
 import satisfy.candlelight.util.LineConnectingType;
 
-
 @SuppressWarnings("deprecation")
 public class LineConnectingBlock extends Block {
     public static final DirectionProperty FACING;

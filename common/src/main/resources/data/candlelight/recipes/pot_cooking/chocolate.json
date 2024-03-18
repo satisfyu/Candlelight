@@ -15,10 +15,10 @@
     }
   ],
   "container": {
-    "item": "minecraft:bowl"
+    "item": "candlelight:table_bowl"
   },
   "result": {
     "item": "candlelight:chocolate",
-    "count": 4
+    "count": 2
   }
 }

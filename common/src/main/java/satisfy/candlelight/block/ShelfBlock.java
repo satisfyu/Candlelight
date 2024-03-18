@@ -72,7 +72,10 @@ public class ShelfBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return !(stack.getItem() instanceof BlockItem);
+        if (!(stack.getItem() instanceof BlockItem)) {
+            stack.getItem();
+        }
+        return true;
     }
 
     @Override

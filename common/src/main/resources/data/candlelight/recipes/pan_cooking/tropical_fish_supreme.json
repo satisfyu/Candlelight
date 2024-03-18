@@ -2,20 +2,20 @@
   "type": "candlelight:pan_cooking",
   "ingredients": [
     {
-      "item": "candlelight:bolognese"
+      "item": "minecraft:tropical_fish"
     },
     {
-      "tag": "candlelight:dough"
+      "tag": "candlelight:crops/cabbage"
     },
     {
-      "item": "candlelight:mushroom_soup"
+      "tag": "candlelight:white_effect"
     }
   ],
   "container": {
     "item": "candlelight:table_set"
   },
   "result": {
-    "item": "candlelight:beef_wellington",
+    "item": "candlelight:tropical_fish_supreme",
     "count": 1
   }
 }

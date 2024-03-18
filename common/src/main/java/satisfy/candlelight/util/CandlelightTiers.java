@@ -4,13 +4,13 @@ import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public enum CandlelightTiers implements Tier
-{
+@SuppressWarnings("deprecation")
+public enum CandlelightTiers implements Tier {
     COPPER(2, 200, 5.0f, 2.0f, 12, () -> Ingredient.of(Items.COPPER_INGOT));
-
     private final int level;
     private final int uses;
     private final float speed;
@@ -18,13 +18,13 @@ public enum CandlelightTiers implements Tier
     private final int enchantmentValue;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    private CandlelightTiers(int j, int k, float f, float g, int l, Supplier<Ingredient> supplier) {
+    CandlelightTiers(int j, int k, float f, float g, int l, Supplier<Ingredient> supplier) {
         this.level = j;
         this.uses = k;
         this.speed = f;
         this.damage = g;
         this.enchantmentValue = l;
-        this.repairIngredient = new LazyLoadedValue<Ingredient>(supplier);
+        this.repairIngredient = new LazyLoadedValue<>(supplier);
     }
 
     @Override
@@ -53,7 +53,7 @@ public enum CandlelightTiers implements Tier
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
+    public @NotNull Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 }

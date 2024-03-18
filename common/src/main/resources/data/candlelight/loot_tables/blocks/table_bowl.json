@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "candlelight:table_set"
+          "name": "candlelight:table_bowl"
         }
       ],
       "rolls": 1
@@ -19,14 +19,14 @@
          "condition": "minecraft:any_of",
           "terms": [
             {
-              "block": "candlelight:table_set",
+              "block": "candlelight:table_bowl",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "plate": "glass"
               }
             },
             {
-              "block": "candlelight:table_set",
+              "block": "candlelight:table_bowl",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "plate": "all"
@@ -51,14 +51,14 @@
          "condition": "minecraft:any_of",
           "terms": [
             {
-              "block": "candlelight:table_set",
+              "block": "candlelight:table_bowl",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "plate": "napkin"
               }
             },
             {
-              "block": "candlelight:table_set",
+              "block": "candlelight:table_bowl",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "plate": "all"

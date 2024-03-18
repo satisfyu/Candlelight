@@ -4,7 +4,6 @@ import com.mojang.datafixers.util.Pair;
 import de.cristelknight.doapi.common.block.StorageBlock;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -37,30 +36,73 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.candlelight.registry.StorageTypesRegistry;
 import satisfy.candlelight.registry.ObjectRegistry;
-import satisfy.candlelight.util.GeneralUtil;
+import satisfy.candlelight.registry.StorageTypesRegistry;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
 
 @SuppressWarnings("all")
 public class TableSetBlock extends StorageBlock {
     public static final EnumProperty<PlateType> PLATE_TYPE = EnumProperty.create("plate", PlateType.class);
-    private static final Supplier<VoxelShape> voxelShapeSupplier;
+    private final boolean useBowlShape;
 
-    public static final Map<Direction, VoxelShape> SHAPE;
-
-    public TableSetBlock(Properties settings) {
+    public TableSetBlock(Properties settings, boolean useBowlShape) {
         super(settings);
         this.registerDefaultState(super.defaultBlockState().setValue(PLATE_TYPE, PlateType.PLATE));
+        this.useBowlShape = useBowlShape;
+    }
+
+    private VoxelShape makeBowlShape() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.125, 0.3125, 0.1875, 0.75), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.8125, 0, 0.125, 0.875, 0.1875, 0.75), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.3125, 0, 0.125, 0.8125, 0.1875, 0.1875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.3125, 0, 0.6875, 0.8125, 0.1875, 0.75), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.3125, 0, 0.1875, 0.8125, 0.0625, 0.6875), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.875, 0.1875, 0.3125, 1, 0.1875, 0.5625), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.125, 0.1875, 0.3125, 0.25, 0.1875, 0.5625), BooleanOp.OR);
+        return shape;
+    }
+
+    private VoxelShape makePlateShape() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.0625, 0.9375, 0.0625, 0.75), BooleanOp.OR);
+        return shape;
     }
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE.get(state.getValue(FACING));
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        Direction direction = state.getValue(FACING);
+        if (this.useBowlShape) {
+            return rotateShape(direction, makeBowlShape());
+        } else {
+            return rotateShape(direction, makePlateShape());
+        }
+    }
+
+    private VoxelShape rotateShape(Direction direction, VoxelShape shape) {
+        if (direction == Direction.NORTH) {
+            return shape;
+        }
+
+        VoxelShape[] rotatedShapes = new VoxelShape[]{shape};
+        for (int i = 0; i < (direction.get2DDataValue() - Direction.NORTH.get2DDataValue() + 4) % 4; i++) {
+            rotatedShapes[0] = rotateShapeClockwise(rotatedShapes[0]);
+        }
+
+        return rotatedShapes[0];
+    }
+
+    private VoxelShape rotateShapeClockwise(VoxelShape shape) {
+        VoxelShape[] result = {Shapes.empty()};
+        shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> {
+            double newMinX = 1 - maxZ;
+            double newMinZ = minX;
+            double newMaxX = 1 - minZ;
+            double newMaxZ = maxX;
+            result[0] = Shapes.or(result[0], Shapes.box(newMinX, minY, newMinZ, newMaxX, maxY, newMaxZ));
+        });
+        return result[0];
     }
 
     @Override
@@ -181,19 +223,5 @@ public class TableSetBlock extends StorageBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
         tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
-    }
-
-    static {
-        voxelShapeSupplier = () -> {
-            VoxelShape shape = Shapes.empty();
-            shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.0625, 0.9375, 0.0625, 0.75), BooleanOp.OR);
-
-            return shape;
-        };
-        SHAPE = Util.make(new HashMap<>(), map -> {
-            for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-            }
-        });
     }
 }

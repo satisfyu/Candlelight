@@ -12,7 +12,7 @@
     }
   ],
   "container": {
-    "item": "minecraft:bowl"
+    "item": "candlelight:table_bowl"
   },
   "result": {
     "item": "candlelight:chicken_teriyaki",

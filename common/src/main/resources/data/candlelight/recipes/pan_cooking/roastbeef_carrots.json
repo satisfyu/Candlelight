@@ -12,7 +12,7 @@
     }
   ],
   "container": {
-    "item": "minecraft:bowl"
+    "item": "candlelight:table_set"
   },
   "result": {
     "item": "candlelight:roastbeef_carrots",
