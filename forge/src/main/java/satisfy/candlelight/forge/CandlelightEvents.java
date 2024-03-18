@@ -53,7 +53,7 @@ public class CandlelightEvents {
                 level5.add(new VillagerUtil.SellItemFactory(ObjectRegistry.CHOCOLATE_BOX.get(), 9, 1, 5));
                 level5.add(new VillagerUtil.SellItemFactory(ObjectRegistry.GLASS.get(), 3, 1, 5));
                 level5.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.BEEF_WELLINGTON.get(), 1, 2, 5));
-                level5.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.PIZZA_SLICE.get(), 1, 2, 5));
+                level5.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.TROPICAL_FISH_SUPREME.get(), 1, 2, 5));
 
                 event.getTrades().clear();
                 event.getTrades().putAll(trades);

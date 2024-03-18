@@ -61,7 +61,7 @@ public class VillagersFabric {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.CHOCOLATE_BOX.get(), 9, 1, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.GLASS.get(), 3, 1, 5));
             factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.BEEF_WELLINGTON.get(), 1, 1, 5));
-            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.PIZZA_SLICE.get(), 1, 1, 5));
+            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.TROPICAL_FISH_SUPREME.get(), 1, 1, 5));
 
 
         });

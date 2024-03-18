@@ -102,8 +102,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> ROASTBEEF_CARROTS = registerItem("roastbeef_carrots", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.ROASTBEEF_CARROTS), 2));
     public static final RegistrySupplier<Block> BEEF_WELLINGTON_BLOCK = registerWithoutItem("beef_wellington_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.BEEF_WELLINGTON));
     public static final RegistrySupplier<Item> BEEF_WELLINGTON = registerItem("beef_wellington", () -> new EffectFoodBlockItem(BEEF_WELLINGTON_BLOCK.get(), getSettings().food(CandlelightFoods.BEEF_WELLINGTON), 2));
-    public static final RegistrySupplier<Item> PIZZA_SLICE = registerItem("pizza_slice", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
-    public static final RegistrySupplier<Block> PIZZA = registerWithItem("pizza", () -> new PizzaBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), PIZZA_SLICE));
+    public static final RegistrySupplier<Item> TROPICAL_FISH_SUPREME = registerItem("tropical_fish_supreme", () -> new EffectFoodItem(getSettings().food(Foods.GOLDEN_CARROT), 1));
     public static final RegistrySupplier<Item> CHOCOLATE = registerItem("chocolate", () -> new Item(getSettings().food(Foods.APPLE)));
     public static final RegistrySupplier<Block> TABLE_SIGN = registerWithItem("table_sign", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistrySupplier<Block> TOOL_RACK = registerWithItem("tool_rack", () -> new ToolRackBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));

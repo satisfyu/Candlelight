@@ -58,8 +58,7 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.LASAGNA.get());
                 output.accept(ObjectRegistry.ROASTBEEF_CARROTS.get());
                 output.accept(ObjectRegistry.BEEF_WELLINGTON.get());
-                output.accept(ObjectRegistry.PIZZA.get());
-                output.accept(ObjectRegistry.PIZZA_SLICE.get());
+                output.accept(ObjectRegistry.TROPICAL_FISH_SUPREME.get());
                 output.accept(ObjectRegistry.CHOCOLATE.get());
                 output.accept(ObjectRegistry.TABLE_SIGN.get());
                 output.accept(ObjectRegistry.TOOL_RACK.get());
