@@ -27,12 +27,12 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.COOKING_POT.get());
                 output.accept(ObjectRegistry.COOKING_PAN.get());
                 output.accept(ObjectRegistry.TABLE_SET.get());
+                output.accept(ObjectRegistry.TABLE_BOWL.get());
                 output.accept(ObjectRegistry.GLASS.get());
                 output.accept(ObjectRegistry.NAPKIN.get());
                 output.accept(ObjectRegistry.BUTTER.get());
                 output.accept(ObjectRegistry.MOZZARELLA.get());
                 output.accept(ObjectRegistry.DOUGH.get());
-                output.accept(ObjectRegistry.PASTA_RAW.get());
                 output.accept(ObjectRegistry.TOMATO_SOUP.get());
                 output.accept(ObjectRegistry.MUSHROOM_SOUP.get());
                 output.accept(ObjectRegistry.BEETROOT_SALAD.get());
@@ -48,6 +48,7 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.SALMON_WINE.get());
                 output.accept(ObjectRegistry.VEGGIE_PLATE.get());
                 output.accept(ObjectRegistry.PORK_RIBS.get());
+                output.accept(ObjectRegistry.PASTA_RAW.get());
                 output.accept(ObjectRegistry.PASTA_BOLOGNESE.get());
                 output.accept(ObjectRegistry.PASTA_LETTUCE.get());
                 output.accept(ObjectRegistry.PANCAKE.get());

@@ -117,7 +117,7 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return StorageTypesRegistry.TABLE_SET;
+        return StorageTypesRegistry.TABLE_BOWL;
     }
 
     @Override

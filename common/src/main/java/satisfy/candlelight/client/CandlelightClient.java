@@ -30,6 +30,7 @@ public class CandlelightClient {
         );
 
         ClientStorageTypes.init();
+        RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_BOWL.get(), ObjectRegistry.GLASS_BLOCK.get());
         RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_SET.get(), ObjectRegistry.GLASS_BLOCK.get());
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_PAN_SCREEN_HANDLER.get(), CookingPanGui::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);

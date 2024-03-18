@@ -17,6 +17,7 @@ public class ClientStorageTypes {
 
     public static void init(){
         Candlelight.LOGGER.debug("Registering Storage Block Renderers!");
+        registerStorageType(StorageTypesRegistry.TABLE_BOWL, new TableSetRenderer());
         registerStorageType(StorageTypesRegistry.TABLE_SET, new TableSetRenderer());
         registerStorageType(StorageTypesRegistry.SHELF, new ShelfRenderer());
         registerStorageType(StorageTypesRegistry.TOOL_RACK, new ToolRackRenderer());

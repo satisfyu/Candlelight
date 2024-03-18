@@ -57,14 +57,5 @@
 			"translation": [0, 0, -15.25],
 			"scale": [1.95703, 1.95703, 1.95703]
 		}
-	},
-	"groups": [
-		{
-			"name": "plate",
-			"origin": [0, 0, 0],
-			"color": 0,
-			"children": []
-		},
-		0
-	]
+	}
 }
