@@ -19,6 +19,7 @@ import satisfy.candlelight.block.LampBlock;
 import satisfy.candlelight.block.*;
 import satisfy.candlelight.block.crops.LettuceCropBlock;
 import satisfy.candlelight.block.crops.TomatoCropBlock;
+import satisfy.candlelight.config.CandlelightConfig;
 import satisfy.candlelight.util.CandlelightFoods;
 import satisfy.candlelight.item.EffectFoodBlockItem;
 import satisfy.candlelight.item.*;
@@ -39,19 +40,19 @@ public class ObjectRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Candlelight.MOD_ID, Registries.BLOCK);
     public static final Registrar<Block> BLOCK_REGISTRAR = BLOCKS.getRegistrar();
 
-    public static final RegistrySupplier<Block> LETTUCE_CROP = registerWithoutItem("lettuce_crop", () -> new LettuceCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
-    public static final RegistrySupplier<Item> LETTUCE_SEEDS = registerItem("lettuce_seeds", () -> new ItemNameBlockItem(LETTUCE_CROP.get(), getSettings()));
-    public static final RegistrySupplier<Block> TOMATO_CROP = registerWithoutItem("tomato_crop", () -> new TomatoCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
-    public static final RegistrySupplier<Item> TOMATO_SEEDS = registerItem("tomato_seeds", () -> new ItemNameBlockItem(TOMATO_CROP.get(), getSettings()));
-    public static final RegistrySupplier<Item> TOMATO = registerItem("tomato", () -> new Item(getSettings().food(Foods.APPLE)));
-    public static final RegistrySupplier<Item> LETTUCE = registerItem("lettuce", () -> new Item(getSettings().food(Foods.POTATO)));
-    public static final RegistrySupplier<Block> TOMATO_CRATE = registerWithItem("tomato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
-    public static final RegistrySupplier<Block> LETTUCE_CRATE = registerWithItem("lettuce_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+    public static RegistrySupplier<Block> TOMATO_CROP;
+    public static RegistrySupplier<Item> TOMATO_SEEDS;
+    public static RegistrySupplier<Item> TOMATO;
+    public static RegistrySupplier<Block> WILD_TOMATOES;
+    public static RegistrySupplier<Block> TOMATO_CRATE;
+    public static RegistrySupplier<Block> LETTUCE_CROP;
+    public static RegistrySupplier<Item> LETTUCE_SEEDS;
+    public static RegistrySupplier<Item> LETTUCE;
+    public static RegistrySupplier<Block> WILD_LETTUCE;
+    public static RegistrySupplier<Block> LETTUCE_CRATE;
     public static final RegistrySupplier<Block> CARROT_CRATE = registerWithItem("carrot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
     public static final RegistrySupplier<Block> POTATO_CRATE = registerWithItem("potato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
     public static final RegistrySupplier<Block> BEETROOT_CRATE = registerWithItem("beetroot_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
-    public static final RegistrySupplier<Block> WILD_TOMATOES = registerWithItem("wild_tomatoes", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
-    public static final RegistrySupplier<Block> WILD_LETTUCE = registerWithItem("wild_lettuce", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistrySupplier<Block> FLOORBOARD = registerWithItem("floorboard", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> DRAWER = registerWithItem("drawer", () -> new StorageBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventsRegistry.DRAWER_OPEN.get(), SoundEventsRegistry.DRAWER_CLOSE.get()));
     public static final RegistrySupplier<Block> CABINET = registerWithItem("cabinet", () -> new StorageBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD), SoundEventsRegistry.CABINET_OPEN.get(), SoundEventsRegistry.CABINET_CLOSE.get()));
@@ -227,6 +228,34 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> BAMBOO_BIG_TABLE = registerWithItem("bamboo_big_table", () -> new BigTableBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS).strength(2.0F, 2.0F)));
     public static final RegistrySupplier<Block> POTTED_ROSE = registerWithoutItem("potted_rose", () -> new FlowerPotBlock(ROSE.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
     public static final RegistrySupplier<Item>  CANDLELIGHT_STANDARD = registerItem("candlelight_standard", () -> new CandlelightStandardItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
+
+    static {
+        if (CandlelightConfig.getActiveInstance().enableCandlelightTomatoes()) {
+            TOMATO_CROP = registerWithoutItem("tomato_crop", () -> new TomatoCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+            TOMATO_SEEDS = registerItem("tomato_seeds", () -> new ItemNameBlockItem(TOMATO_CROP.get(), getSettings()));
+            TOMATO = registerItem("tomato", () -> new Item(getSettings().food(Foods.APPLE)));
+            WILD_TOMATOES = registerWithItem("wild_tomatoes", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+            TOMATO_CRATE = registerWithItem("tomato_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.RED_WOOL)));
+        }
+        if (CandlelightConfig.getActiveInstance().enableCandlelightLettuce()) {
+            LETTUCE_CROP = registerWithoutItem("lettuce_crop", () -> new LettuceCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+            LETTUCE_SEEDS = registerItem("lettuce_seeds", () -> new ItemNameBlockItem(LETTUCE_CROP.get(), getSettings()));
+            LETTUCE = registerItem("lettuce", () -> new Item(getSettings().food(Foods.CARROT)));
+            WILD_LETTUCE = registerWithItem("wild_lettuce", () -> new FlowerBlock(MobEffects.HEAL, 1, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+            LETTUCE_CRATE = registerWithItem("lettuce_crate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.GREEN_WOOL)));
+        } else {
+            TOMATO_CROP = null;
+            TOMATO_SEEDS = null;
+            TOMATO = null;
+            WILD_TOMATOES = null;
+            TOMATO_CRATE = null;
+            LETTUCE_CROP = null;
+            LETTUCE_SEEDS = null;
+            LETTUCE = null;
+            WILD_LETTUCE = null;
+            LETTUCE_CRATE = null;
+        }
+    }
 
     public static void init() {
         ITEMS.register();

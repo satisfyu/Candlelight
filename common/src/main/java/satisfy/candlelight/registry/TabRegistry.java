@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import satisfy.candlelight.Candlelight;
+import satisfy.candlelight.config.CandlelightConfig;
 
 @SuppressWarnings("unused")
 public class TabRegistry {
@@ -15,12 +16,18 @@ public class TabRegistry {
             .icon(() -> new ItemStack(ObjectRegistry.COOKING_POT.get()))
             .title(Component.translatable("creativetab.candlelight.tab_main"))
             .displayItems((parameters, output) -> {
-                output.accept(ObjectRegistry.TOMATO_CROP.get());
-                output.accept(ObjectRegistry.TOMATO.get());
-                output.accept(ObjectRegistry.LETTUCE_CROP.get());
+                if (CandlelightConfig.getActiveInstance().enableCandlelightTomatoes()) {
+                    output.accept(ObjectRegistry.TOMATO_SEEDS.get().asItem());
+                    output.accept(ObjectRegistry.TOMATO.get());
+                }
+                if (CandlelightConfig.getActiveInstance().enableCandlelightLettuce()) {
+                    output.accept(ObjectRegistry.LETTUCE_CROP.get());
                 output.accept(ObjectRegistry.LETTUCE.get());
                 output.accept(ObjectRegistry.LETTUCE_CRATE.get());
-                output.accept(ObjectRegistry.TOMATO_CRATE.get());
+                }
+                if (CandlelightConfig.getActiveInstance().enableCandlelightTomatoes()) {
+                    output.accept(ObjectRegistry.TOMATO_CRATE.get().asItem());
+                }
                 output.accept(ObjectRegistry.CARROT_CRATE.get());
                 output.accept(ObjectRegistry.POTATO_CRATE.get());
                 output.accept(ObjectRegistry.BEETROOT_CRATE.get());

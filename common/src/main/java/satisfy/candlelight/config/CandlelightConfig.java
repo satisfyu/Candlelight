@@ -6,12 +6,15 @@ import de.cristelknight.doapi.config.jankson.config.CommentedConfig;
 
 import java.util.HashMap;
 
-public record CandlelightConfig(boolean enableChefSetBonus) implements CommentedConfig<CandlelightConfig> {
+public record CandlelightConfig(boolean enableChefSetBonus, boolean enableCandlelightTomatoes, boolean enableCandlelightLettuce) implements CommentedConfig<CandlelightConfig> {
     private static CandlelightConfig INSTANCE;
 
     public static final Codec<CandlelightConfig> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.BOOL.fieldOf("enable_chef_armor_set_bonus").orElse(true).forGetter(CandlelightConfig::enableChefSetBonus)
+                    Codec.BOOL.fieldOf("enable_chef_armor_set_bonus").orElse(true).forGetter(CandlelightConfig::enableChefSetBonus),
+                    Codec.BOOL.fieldOf("enable_candlelight_tomatoes").orElse(true).forGetter(CandlelightConfig::enableCandlelightTomatoes),
+                    Codec.BOOL.fieldOf("enable_candlelight_lettuce").orElse(true).forGetter(CandlelightConfig::enableCandlelightLettuce)
+
             ).apply(instance, CandlelightConfig::new));
 
     public static CandlelightConfig getActiveInstance() {
@@ -22,16 +25,18 @@ public record CandlelightConfig(boolean enableChefSetBonus) implements Commented
     }
 
     private static CandlelightConfig loadConfig() {
-        return new CandlelightConfig(true);
+        return new CandlelightConfig(true, true, true);
     }
 
     @Override
     public HashMap<String, String> getComments() {
         HashMap<String, String> comments = new HashMap<>();
         comments.put("enable_chef_armor_set_bonus", "Whether the chef armor should give a set bonus");
+        comments.put("enable_candlelight_tomatoes", "Whether candlelight tomatoes should be enabled");
+        comments.put("enable_candlelight_lettuce", "Whether candlelight tomatoes should be enabled");
+
         return comments;
     }
-
     @Override
     public String getHeader() {
         return """
@@ -56,7 +61,7 @@ public record CandlelightConfig(boolean enableChefSetBonus) implements Commented
 
     @Override
     public CandlelightConfig getDefault() {
-        return new CandlelightConfig(true);
+        return new CandlelightConfig(true, true, true);
     }
 
     @Override
