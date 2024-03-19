@@ -1,6 +1,7 @@
 package satisfy.candlelight.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -18,8 +19,9 @@ public class JewelryRenderer implements StorageTypeRenderer {
             ItemStack stack = itemStacks.get(0);
             if (!stack.isEmpty()) {
                 matrices.pushPose();
-                matrices.translate(-0.01, 0.15, 0);
-                matrices.scale(0.3f, 0.3f, 0.3f);
+                matrices.mulPose(Axis.ZN.rotationDegrees(45f));
+                matrices.translate(-0.15, 0.15, 0);
+                matrices.scale(0.25f, 0.25f, 0.25f);
                 ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 matrices.popPose();
             }
