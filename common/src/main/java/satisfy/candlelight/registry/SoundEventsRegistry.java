@@ -10,7 +10,6 @@ import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.util.CandlelightIdentifier;
 
 public class SoundEventsRegistry {
-
     private static final Registrar<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Candlelight.MOD_ID, Registries.SOUND_EVENT).getRegistrar();
     public static final RegistrySupplier<SoundEvent> COOKING_POT_BOILING = create("cooking_pot_boiling");
     public static final RegistrySupplier<SoundEvent> COOKING_PAN_COOKING = create("cooking_pan_cooking");

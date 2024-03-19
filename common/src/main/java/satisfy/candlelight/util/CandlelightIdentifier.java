@@ -3,6 +3,7 @@ package satisfy.candlelight.util;
 import net.minecraft.resources.ResourceLocation;
 import satisfy.candlelight.Candlelight;
 
+@SuppressWarnings("unused")
 public class CandlelightIdentifier extends ResourceLocation {
 
     public CandlelightIdentifier(String path) {

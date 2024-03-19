@@ -15,6 +15,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.client.gui.CookingPanGui;
 import satisfy.candlelight.compat.jei.CandlelightJEIPlugin;
@@ -46,8 +47,6 @@ public class CookingPanCategory implements IRecipeCategory<CookingPanRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CookingPanRecipe recipe, IFocusGroup focuses) {
-
-        // Wine input
         NonNullList<Ingredient> ingredients = recipe.getIngredients();
         int s = ingredients.size();
 
@@ -60,8 +59,7 @@ public class CookingPanCategory implements IRecipeCategory<CookingPanRecipe> {
                 CandlelightJEIPlugin.addSlot(builder,30 + (slot * 18) - WIDTH_OF, 17 + (row * 18) - HEIGHT_OF, ingredients.get(current));
             }
         }
-
-        // Output
+        assert Minecraft.getInstance().level != null;
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124 - WIDTH_OF,  28 - HEIGHT_OF).addItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
     }
 
@@ -72,22 +70,22 @@ public class CookingPanCategory implements IRecipeCategory<CookingPanRecipe> {
     }
 
     @Override
-    public RecipeType<CookingPanRecipe> getRecipeType() {
+    public @NotNull RecipeType<CookingPanRecipe> getRecipeType() {
         return COOKING_PAN;
     }
 
     @Override
-    public Component getTitle() {
+    public @NotNull Component getTitle() {
         return this.localizedName;
     }
 
     @Override
-    public IDrawable getBackground() {
+    public @NotNull IDrawable getBackground() {
         return this.background;
     }
 
     @Override
-    public IDrawable getIcon() {
+    public @NotNull IDrawable getIcon() {
         return this.icon;
     }
 }

@@ -38,7 +38,6 @@ import java.util.Objects;
 import static net.minecraft.world.item.ItemStack.isSameItemSameTags;
 
 public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTicker<CookingPanBlockEntity>, ImplementedInventory, MenuProvider {
-
 	private final NonNullList<ItemStack> inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
 	private static final int MAX_CAPACITY = 8;
 	public static final int MAX_COOKING_TIME = 600;

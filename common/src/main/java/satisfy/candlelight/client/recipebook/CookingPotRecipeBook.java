@@ -51,6 +51,7 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
             int slotIndex = 0;
             for (Slot slot : this.screenHandler.slots) {
                 if (cookingPotRecipe.getContainer().getItem() == slot.getItem().getItem()) {
+                    assert Minecraft.getInstance().gameMode != null;
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slotIndex, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, 0, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     break;
@@ -65,6 +66,7 @@ public class CookingPotRecipeBook extends PrivateRecipeBookWidget {
                 ItemStack itemStack = slot.getItem();
 
                 if (ingredient.test(itemStack) && usedInputSlots < 7) {
+                    assert Minecraft.getInstance().gameMode != null;
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slotIndex, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, usedInputSlots, 0, ClickType.PICKUP, Minecraft.getInstance().player);
                     ++usedInputSlots;

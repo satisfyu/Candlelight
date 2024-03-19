@@ -22,7 +22,6 @@ public class VillagersFabric {
     public static final PoiType COOK_POI = PointOfInterestHelper.register(COOK_POI_IDENTIFIER, 1, 12, ObjectRegistry.COOKING_POT.get());
     public static final VillagerProfession COOK = Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, new ResourceLocation("candlelight", "cook"), VillagerProfessionBuilder.create().id(new ResourceLocation("candlelight", "cook")).workstation(ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, COOK_POI_IDENTIFIER)).build());
 
-
     public static void init() {
         TradeOfferHelper.registerVillagerOffers(COOK, 1, factories -> {
             factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.LETTUCE.get(), 4, 4, 1));
@@ -60,7 +59,7 @@ public class VillagersFabric {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.COOKING_HAT.get(), 9, 1, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.CHOCOLATE_BOX.get(), 9, 1, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.GLASS.get(), 3, 1, 5));
-            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.BEEF_WELLINGTON.get(), 1, 1, 5));
+            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.BEEF_WELLINGTON.get(), 24, 1, 5));
             factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.TROPICAL_FISH_SUPREME.get(), 1, 1, 5));
 
 

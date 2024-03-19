@@ -24,7 +24,7 @@ public class EffectFoodBlockEntity extends BlockEntity  {
 		super(BlockEntityRegistry.EFFECT_FOOD_BLOCK_ENTITY.get(), blockPos, blockState);
 	}
 
-
+	@SuppressWarnings("all")
 	public void addEffects(List<Pair<MobEffectInstance, Float>> effects) {
 		List<Pair<MobEffectInstance, Float>> filteredEffects = effects.stream()
 				.filter(effectPair -> effectPair.getFirst().getEffect() != MobEffects.HUNGER)

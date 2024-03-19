@@ -1,20 +1,20 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/food/cooked_beef_3"
+    "layer0": "candlelight:item/cooked_beef_3"
   },
   "overrides": [
     {
       "predicate": {
         "custom_model_data": 1
       },
-      "model": "candlelight:item/food/cooked_beef_2"
+      "model": "candlelight:item/cooked_beef_2"
     },
     {
       "predicate": {
         "custom_model_data": 2
       },
-      "model": "candlelight:item/food/cooked_beef_1"
+      "model": "candlelight:item/cooked_beef_1"
     }
   ]
 }

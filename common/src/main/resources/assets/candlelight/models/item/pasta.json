@@ -1,14 +1,14 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/food/pasta_2"
+    "layer0": "candlelight:item/pasta_2"
   },
   "overrides": [
     {
       "predicate": {
         "custom_model_data": 1
       },
-      "model": "candlelight:item/food/pasta_1"
+      "model": "candlelight:item/pasta_1"
     }
   ]
 }

@@ -4,6 +4,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.transfer.IRecipeTransferInfo;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.client.gui.handler.CookingPotGuiHandler;
 import satisfy.candlelight.compat.jei.category.CookingPotCategory;
 import satisfy.candlelight.recipe.CookingPotRecipe;
@@ -15,17 +16,17 @@ import java.util.Optional;
 
 public class CookingPotTransferInfo implements IRecipeTransferInfo<CookingPotGuiHandler, CookingPotRecipe> {
     @Override
-    public Class<? extends CookingPotGuiHandler> getContainerClass() {
+    public @NotNull Class<? extends CookingPotGuiHandler> getContainerClass() {
         return CookingPotGuiHandler.class;
     }
 
     @Override
-    public Optional<MenuType<CookingPotGuiHandler>> getMenuType() {
+    public @NotNull Optional<MenuType<CookingPotGuiHandler>> getMenuType() {
         return Optional.of(ScreenHandlerTypeRegistry.COOKING_POT_SCREEN_HANDLER.get());
     }
 
     @Override
-    public RecipeType<CookingPotRecipe> getRecipeType() {
+    public @NotNull RecipeType<CookingPotRecipe> getRecipeType() {
         return CookingPotCategory.COOKING_POT;
     }
 
@@ -35,7 +36,7 @@ public class CookingPotTransferInfo implements IRecipeTransferInfo<CookingPotGui
     }
 
     @Override
-    public List<Slot> getRecipeSlots(CookingPotGuiHandler container, CookingPotRecipe recipe) {
+    public @NotNull List<Slot> getRecipeSlots(CookingPotGuiHandler container, CookingPotRecipe recipe) {
         List<Slot> slots = new ArrayList<>();
         for(int i = 0; i < recipe.getIngredients().size(); i++){
             slots.add(container.getSlot(i));
@@ -45,7 +46,7 @@ public class CookingPotTransferInfo implements IRecipeTransferInfo<CookingPotGui
     }
 
     @Override
-    public List<Slot> getInventorySlots(CookingPotGuiHandler container, CookingPotRecipe recipe) {
+    public @NotNull List<Slot> getInventorySlots(CookingPotGuiHandler container, CookingPotRecipe recipe) {
         List<Slot> slots = new ArrayList<>();
         for (int i = 8; i < 8 + 36; i++) {
             Slot slot = container.getSlot(i);

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "candlelight:item/food/cooked_beef_1"
-  }
-}

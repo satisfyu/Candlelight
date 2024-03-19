@@ -25,7 +25,7 @@ import satisfy.candlelight.registry.BlockEntityRegistry;
 
 public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> inventory;
-    private ContainerOpenersCounter stateManager;
+    private final ContainerOpenersCounter stateManager;
 
     public StorageBlockEntity(BlockPos pos, BlockState state) {
         this(pos, state, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE);

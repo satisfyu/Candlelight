@@ -253,5 +253,6 @@
   "tooltip.candlelight.cook_armor.": "Culinary Mastery:",
   "tooltip.candlelight.cook_armor.2": "Full set bonus:",
   "tooltip.candlelight.cook_armor.3": "Fire Resistance II",
-  "tooltip.candlelight.ring": "Improved Luck: Luck +2"
+  "tooltip.candlelight.ring": "Improved Luck: Luck +2",
+  "gui.candlelight.recipebook.toggleRecipes.cookable": "Cookable"
 }

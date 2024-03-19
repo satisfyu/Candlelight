@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.registry.BlockEntityRegistry;
 
+@SuppressWarnings("all")
 public class TypeWriterEntity extends BlockEntity {
 
     public static final String PAPER_KEY ="paper";
@@ -30,10 +31,10 @@ public class TypeWriterEntity extends BlockEntity {
         paper = itemStack;
     }
 
-    public ItemStack removePaper() {
+    public void removePaper() {
+        assert paper != null;
         ItemStack returnStack = paper.copy();
         this.paper = ItemStack.EMPTY;
-        return returnStack;
     }
 
     @Override

@@ -71,6 +71,7 @@ public class SignedPaperGui extends Screen{
 
     protected void addCloseButton() {
         this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (button) -> {
+            assert this.minecraft != null;
             this.minecraft.setScreen(null);
         }).bounds(this.width / 2 - 100, 196, 200, 20).build());
     }
@@ -119,6 +120,7 @@ public class SignedPaperGui extends Screen{
     }
 
     public boolean handleComponentClicked(Style style) {
+        assert style != null;
         ClickEvent clickEvent = style.getClickEvent();
         if (clickEvent == null) {
             return false;
@@ -142,6 +144,7 @@ public class SignedPaperGui extends Screen{
     }
 
     protected void closeScreen() {
+        assert this.minecraft != null;
         this.minecraft.setScreen(null);
     }
 
@@ -183,6 +186,7 @@ public class SignedPaperGui extends Screen{
         return builder.build();
     }
 
+    @SuppressWarnings("all")
     public static void filterPages(CompoundTag nbt, Consumer<String> pageConsumer) {
         ListTag nbtList = nbt.getList("text", 8).copy();
         IntFunction intFunction;

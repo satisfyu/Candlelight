@@ -20,6 +20,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings({"unused", "deprecation"})
 public class GeneralUtil {
 	public static boolean isFullAndSolid(LevelReader levelReader, BlockPos blockPos){
 		return isFaceFull(levelReader, blockPos) && isSolid(levelReader, blockPos);
@@ -30,7 +31,6 @@ public class GeneralUtil {
 		return Block.isFaceFull(levelReader.getBlockState(belowPos).getShape(levelReader, belowPos), Direction.UP);
 	}
 
-    @SuppressWarnings("deprecation")
 	public static boolean isSolid(LevelReader levelReader, BlockPos blockPos){
 		return levelReader.getBlockState(blockPos.below()).isSolid();
 	}

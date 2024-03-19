@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/food/chicken_alfredo"
+    "layer0": "candlelight:item/chicken_alfredo"
   }
 }

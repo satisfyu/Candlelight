@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.compat.jei.category.CookingPanCategory;
 import satisfy.candlelight.compat.jei.category.CookingPotCategory;
 import satisfy.candlelight.compat.jei.transfer.CookingPanTransferInfo;
@@ -51,7 +52,7 @@ public class CandlelightJEIPlugin implements IModPlugin {
     }
 
     @Override
-    public ResourceLocation getPluginUid() {
+    public @NotNull ResourceLocation getPluginUid() {
         return new CandlelightIdentifier("jei_plugin");
     }
 

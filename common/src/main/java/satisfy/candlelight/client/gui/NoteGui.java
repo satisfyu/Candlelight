@@ -37,6 +37,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 
+@SuppressWarnings("unused")
 public abstract class NoteGui extends Screen {
     public static final ResourceLocation NOTE_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
     private static final Component EDIT_TITLE_TEXT = Component.literal("Enter Note Title");
@@ -90,12 +91,14 @@ public abstract class NoteGui extends Screen {
             this.updateButtons();
         }).bounds(this.width / 2 - 100, 196, 98, 20).build());
         this.doneButton = this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (button) -> {
+            assert this.minecraft != null;
             this.minecraft.setScreen(null);
             this.finalizeNote(false);
         }).bounds(this.width / 2 + 2, 196, 98, 20).build());
         this.finalizeButton = this.addRenderableWidget(Button.builder(Component.translatable("book.finalizeButton"), (button) -> {
             if (this.signing) {
                 this.finalizeNote(true);
+                assert this.minecraft != null;
                 this.minecraft.setScreen(null);
             }
 
@@ -344,11 +347,11 @@ public abstract class NoteGui extends Screen {
     }
 
     private String getCurrentDisplayCache() {
-        return this.text.size() > 0 ? this.text.get(0) : "";
+        return !this.text.isEmpty() ? this.text.get(0) : "";
     }
 
     private void setDisplayCache(String newContent) {
-        if (this.text.size() > 0) {
+        if (!this.text.isEmpty()) {
             this.text.set(0, newContent);
             this.dirty = true;
             this.invalidateDisplayCache();
@@ -407,11 +410,9 @@ public abstract class NoteGui extends Screen {
     }
 
     private void renderHighlight(GuiGraphics guiGraphics, Rect2i[] rect2is) {
-        Rect2i[] var3 = rect2is;
         int var4 = rect2is.length;
 
-        for (int var5 = 0; var5 < var4; ++var5) {
-            Rect2i rect2i = var3[var5];
+        for (Rect2i rect2i : rect2is) {
             int i = rect2i.getX();
             int j = rect2i.getY();
             int k = i + rect2i.getWidth();
@@ -603,6 +604,7 @@ public abstract class NoteGui extends Screen {
     }
 
     @Environment(EnvType.CLIENT)
+    @SuppressWarnings("all")
     static class DisplayCache {
         static final DisplayCache EMPTY;
         private final String fullText;

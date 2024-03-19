@@ -10,6 +10,7 @@ public class ExtendedSlot extends Slot {
 
     private final Predicate<ItemStack> filter;
 
+    @SuppressWarnings("unused")
     public ExtendedSlot(Container inventory, int index, int x, int y) {
         this(inventory, index, x, y, stack -> true);
     }

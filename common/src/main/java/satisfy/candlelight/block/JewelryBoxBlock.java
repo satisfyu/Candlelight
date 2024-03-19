@@ -72,7 +72,7 @@ public class JewelryBoxBlock extends StorageBlock {
                     return InteractionResult.PASS;
                 } else {
                     ItemStack stack = player.getItemInHand(hand);
-                    if (!((ItemStack)shelfBlockEntity.getInventory().get(i)).isEmpty()) {
+                    if (!shelfBlockEntity.getInventory().get(i).isEmpty()) {
                         this.remove(world, pos, player, shelfBlockEntity, i);
                         return InteractionResult.sidedSuccess(false);
                     } else if (!stack.isEmpty() && this.canInsertStack(stack)) {

@@ -11,6 +11,8 @@ import net.minecraft.world.entity.player.Inventory;
 import satisfy.candlelight.client.gui.handler.LetterGuiHandler;
 import satisfy.candlelight.util.CandlelightIdentifier;
 
+import java.util.Objects;
+
 
 @Environment(EnvType.CLIENT)
 public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
@@ -49,6 +51,8 @@ public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
 
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         if (keyCode == 256) {
+            assert Objects.requireNonNull(this.minecraft).player != null;
+            assert this.minecraft.player != null;
             this.minecraft.player.closeContainer();
         }
 

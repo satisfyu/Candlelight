@@ -1,20 +1,20 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/food/tomato_mozzarella_salad_3"
+    "layer0": "candlelight:item/tomato_mozzarella_salad_3"
   },
   "overrides": [
     {
       "predicate": {
         "custom_model_data": 1
       },
-      "model": "candlelight:item/food/tomato_mozzarella_salad_2"
+      "model": "candlelight:item/tomato_mozzarella_salad_2"
     },
     {
       "predicate": {
         "custom_model_data": 2
       },
-      "model": "candlelight:item/food/tomato_mozzarella_salad_1"
+      "model": "candlelight:item/tomato_mozzarella_salad_1"
     }
   ]
 }

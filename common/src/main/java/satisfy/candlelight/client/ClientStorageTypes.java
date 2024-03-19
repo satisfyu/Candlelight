@@ -4,10 +4,10 @@ import de.cristelknight.doapi.client.render.block.storage.StorageBlockEntityRend
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import net.minecraft.resources.ResourceLocation;
 import satisfy.candlelight.Candlelight;
-import satisfy.candlelight.client.render.block.JewelryRenderer;
-import satisfy.candlelight.client.render.block.ShelfRenderer;
-import satisfy.candlelight.client.render.block.TableSetRenderer;
-import satisfy.candlelight.client.render.block.ToolRackRenderer;
+import satisfy.candlelight.client.render.JewelryRenderer;
+import satisfy.candlelight.client.render.ShelfRenderer;
+import satisfy.candlelight.client.render.TableSetRenderer;
+import satisfy.candlelight.client.render.ToolRackRenderer;
 import satisfy.candlelight.registry.StorageTypesRegistry;
 
 public class ClientStorageTypes {
