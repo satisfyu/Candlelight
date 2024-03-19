@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "minecraft:bowl"
+    "minecraft:bowl",
+    "candlelight:table_set",
+    "candlelight:table_bowl"
   ]
 }
