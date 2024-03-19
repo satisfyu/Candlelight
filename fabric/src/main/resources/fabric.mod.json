@@ -31,7 +31,17 @@
     ],
     "jei_mod_plugin": [
       "satisfy.candlelight.compat.jei.CandlelightJEIPlugin"
+    ],
+    "modmenu": [
+      "satisfy.candlelight.fabric.client.ModMenuConfig"
     ]
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/Vqu6wYZwdZ"
+      }
+    }
   },
   "mixins": [
     "candlelight.mixins.json"
@@ -40,6 +50,6 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "architectury": ">=9.0.8",
-    "doapi": ">=1.2.3"
+    "doapi": ">=1.2.9"
   }
 }

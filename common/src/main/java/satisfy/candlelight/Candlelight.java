@@ -2,6 +2,7 @@ package satisfy.candlelight;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import satisfy.candlelight.config.CandlelightConfig;
 import satisfy.candlelight.event.CommonEvents;
 import satisfy.candlelight.networking.CandlelightMessages;
 import satisfy.candlelight.registry.*;
@@ -12,6 +13,7 @@ public class Candlelight {
 
 
     public static void init() {
+        CandlelightConfig.getActiveInstance().getConfig();
         RecipeTypeRegistry.init();
         ObjectRegistry.init();
         ScreenHandlerTypeRegistry.init();

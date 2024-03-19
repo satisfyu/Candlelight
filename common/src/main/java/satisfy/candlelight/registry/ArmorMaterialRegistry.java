@@ -19,7 +19,7 @@ public class ArmorMaterialRegistry {
 
         @Override
         public int getDefenseForType(ArmorItem.Type type) {
-            return 0;
+            return 1;
         }
 
         @Override

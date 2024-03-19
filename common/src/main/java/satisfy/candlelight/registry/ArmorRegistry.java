@@ -19,6 +19,7 @@ import satisfy.candlelight.client.CandlelightClient;
 import satisfy.candlelight.client.model.CookOuter;
 import satisfy.candlelight.client.model.CookInner;
 import satisfy.candlelight.client.model.CookingHatModel;
+import satisfy.candlelight.config.CandlelightConfig;
 import satisfy.candlelight.item.armor.CookBootsItem;
 import satisfy.candlelight.item.armor.CookChestplateItem;
 import satisfy.candlelight.item.armor.CookLeggingsItem;
@@ -50,9 +51,17 @@ public class ArmorRegistry {
     }
 
     @SuppressWarnings("all")
-    public static void appendtooltip(List<Component> tooltip){
+    public static void appendTooltip(List<Component> tooltip) {
+        CandlelightConfig config = CandlelightConfig.getActiveInstance();
+
+        if (!config.enableChefSetBonus()) {
+            return;
+        }
         Player player = CandlelightClient.getClientPlayer();
-        if (player == null) return;
+        if (player == null) {
+            return;
+        }
+
         ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
         ItemStack leggings = player.getItemBySlot(EquipmentSlot.LEGS);

@@ -29,7 +29,7 @@ public class CookLeggingsItem extends DyeableArmorItem implements ICustomArmor {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
         if (null != world && world.isClientSide()) {
-            ArmorRegistry.appendtooltip(tooltip);
+            ArmorRegistry.appendTooltip(tooltip);
         }
     }
 }
