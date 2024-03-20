@@ -1,97 +1,63 @@
 package satisfy.candlelight.registry;
 
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ArmorMaterials;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
 public class ArmorMaterialRegistry {
+    public static final ArmorMaterial COOK_ARMOR = new SimpleArmorMaterial(ArmorMaterials.LEATHER, 1, "cook");
+    public static final ArmorMaterial RING_ARMOR = new SimpleArmorMaterial(ArmorMaterials.LEATHER, 0, "gold_ring", 15, Ingredient.of(new ItemStack(Items.GOLD_INGOT)));
 
-    public static final ArmorMaterial COOK_ARMOR = new ArmorMaterial() {
-        @Override
+    private static class SimpleArmorMaterial implements ArmorMaterial {
+        private final ArmorMaterial base;
+        private final int defense;
+        private final String name;
+        private final int enchantability;
+        private final Ingredient repairIngredient;
+
+        SimpleArmorMaterial(ArmorMaterial base, int defense, String name) {
+            this(base, defense, name, base.getEnchantmentValue(), base.getRepairIngredient());
+        }
+
+        SimpleArmorMaterial(ArmorMaterial base, int defense, String name, int enchantability, Ingredient repairIngredient) {
+            this.base = base;
+            this.defense = defense;
+            this.name = name;
+            this.enchantability = enchantability;
+            this.repairIngredient = repairIngredient;
+        }
+
         public int getDurabilityForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDurabilityForType(type);
+            return base.getDurabilityForType(type);
         }
 
-        @Override
         public int getDefenseForType(ArmorItem.Type type) {
-            return 1;
+            return defense;
         }
 
-        @Override
         public int getEnchantmentValue() {
-            return ArmorMaterials.LEATHER.getEnchantmentValue();
+            return enchantability;
         }
 
-        @Override
         public @NotNull SoundEvent getEquipSound() {
-            return ArmorMaterials.LEATHER.getEquipSound();
+            return base.getEquipSound();
         }
 
-        @Override
         public @NotNull Ingredient getRepairIngredient() {
-            return ArmorMaterials.LEATHER.getRepairIngredient();
+            return repairIngredient;
         }
 
-        @Override
         public @NotNull String getName() {
-            return "cook";
+            return name;
         }
 
-        @Override
         public float getToughness() {
-            return ArmorMaterials.LEATHER.getToughness();
+            return base.getToughness();
         }
 
-        @Override
         public float getKnockbackResistance() {
-            return ArmorMaterials.LEATHER.getKnockbackResistance();
+            return base.getKnockbackResistance();
         }
-    };
-
-    public static final ArmorMaterial RING_ARMOR = new ArmorMaterial() {
-        @Override
-        public int getDurabilityForType(ArmorItem.Type type) {
-            return ArmorMaterials.LEATHER.getDurabilityForType(type);
-        }
-
-        @Override
-        public int getDefenseForType(ArmorItem.Type type) {
-            return 0;
-        }
-
-        @Override
-        public int getEnchantmentValue() {
-            return 15;
-        }
-
-        @Override
-        public @NotNull SoundEvent getEquipSound() {
-            return SoundEvents.ARMOR_EQUIP_GOLD;
-        }
-
-        @Override
-        public @NotNull Ingredient getRepairIngredient() {
-            return Ingredient.of(Items.GOLD_INGOT);
-        }
-
-        @Override
-        public @NotNull String getName() {
-            return "gold_ring";
-        }
-
-        @Override
-        public float getToughness() {
-            return 0.0F;
-        }
-
-        @Override
-        public float getKnockbackResistance() {
-            return 0.0F;
-        }
-    };
+    }
 }
