@@ -3,17 +3,17 @@
   "id": "candlelight",
   "version": "${version}",
   "name": "Candlelight",
-  "description": "A Food Themed Mod focusing on cooking with Wine and Potions",
+  "description": "Ever dreamed of the perfect dinner in Minecraft? Candlelight Dinner provides almost everything necessary to make it happen!",
   "authors": [
     "satisfy_u",
     "BaumeisterJo",
     "Cristelknight"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/candlelight-lets-do-a-candlelight-dinner",
-    "sources": "https://github.com/satisfyu/Candlelight-Dinner"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/lets-do-candlelight",
+    "sources": "https://github.com/satisfyu/Candlelight"
   },
-  "license": "All Rights Reserved",
+  "license": "Custom",
   "icon": "pack.png",
   "environment": "*",
   "entrypoints": {

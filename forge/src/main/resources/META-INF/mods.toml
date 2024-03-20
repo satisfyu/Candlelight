@@ -1,7 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
-#issueTrackerURL = ""
-license = "All Rights Reserved"
+license = "Custom"
 
 [[mods]]
 modId = "candlelight"
@@ -9,7 +8,7 @@ version = "${version}"
 displayName = "Candlelight Dinner"
 authors = "satisfy_u, Cristelknight, BaumeisterJo"
 description = '''
-A Food Themed Expansion for the 'Let's Do Wine' Mod focusing on cooking with Wine
+Ever dreamed of the perfect dinner in Minecraft? Candlelight Dinner provides almost everything necessary to make it happen!
 '''
 logoFile = "pack.png"
 
@@ -37,6 +36,6 @@ side = "BOTH"
 [[dependencies.candlelight]]
 modId = "doapi"
 mandatory = true
-versionRange = "[1.2.3,)"
+versionRange = "[1.2.9,)"
 ordering = "AFTER"
 side = "BOTH"
