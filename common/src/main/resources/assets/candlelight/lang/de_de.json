@@ -166,8 +166,8 @@
   "block.candlelight.stone_bricks_kitchen_sink": "Steinziegelspüle",
   "block.candlelight.stone_bricks_stove": "Steinziegelofen",
   "block.candlelight.table": "Tisch",
-  "block.candlelight.table_bowl": "Teller",
-  "block.candlelight.table_set": "Table Set",
+  "block.candlelight.table_bowl": "Schüssel",
+  "block.candlelight.table_set": "Teller",
   "block.candlelight.table_sign": "Tischkarte",
   "block.candlelight.tomato_crate": "Kiste voller Tomaten",
   "block.candlelight.tomato_crop": "Tomatonpflanze",
@@ -254,5 +254,11 @@
   "tooltip.candlelight.thankyou_1": "Eine Belohnung für die Herstellung aller Gerichte",
   "tooltip.candlelight.thankyou_2": "Wenn platziert:",
   "tooltip.candlelight.thankyou_3": "Danke, dass du Candlelight spielst!",
-  "tooltip.candlelight.thankyou_4": "Erhöht die Feuerresistenz um 5% in einem Radius von 8 Blöcken"
+  "tooltip.candlelight.thankyou_4": "Erhöht die Feuerresistenz um 5% in einem Radius von 8 Blöcken",
+  "config.candlelight.subCategory.chef": "Chef Armor Set Bonus",
+  "config.candlelight.subCategory.crops": "Crops - Experimental",
+  "candlelight.config.title": "Candlelight",
+  "candlelight.config.enablecandlelighttomatoes": "Enable Candlelight Tomatoes",
+  "candlelight.config.enablecandlelightlettuce": "Enable Candlelight Lettuce",
+  "candlelight.config.enableChefSetBonus": "Enable Chef Armor Set Bonus"
 }
