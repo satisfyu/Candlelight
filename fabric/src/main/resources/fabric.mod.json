@@ -43,9 +43,6 @@
       }
     }
   },
-  "mixins": [
-    "candlelight.mixins.json"
-  ],
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.20",
