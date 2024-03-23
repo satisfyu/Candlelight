@@ -85,7 +85,7 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.NOTE_PAPER_WRITEABLE.get());
                 output.accept(ObjectRegistry.LETTER_OPEN.get());
                 output.accept(ObjectRegistry.LOVE_LETTER_OPEN.get());
-
+                output.accept(ObjectRegistry.CANDLELIGHT_STANDARD.get());
             })
             .build());
 
