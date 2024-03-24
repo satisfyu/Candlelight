@@ -13,6 +13,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -69,6 +71,7 @@ public class CookingPanBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
+    public static final IntegerProperty DAMAGE = IntegerProperty.create("damage", 0, 25);
 
     public CookingPanBlock(Properties settings) {
         super(settings);
@@ -114,6 +117,16 @@ public class CookingPanBlock extends BaseEntityBlock {
     }
 
     @Override
+    public void playerWillDestroy(@NotNull Level level, BlockPos blockPos, @NotNull BlockState blockState, @NotNull Player player) {
+        ItemStack stack = new ItemStack(this);
+        stack.setDamageValue(blockState.getValue(DAMAGE));
+        ItemEntity itemEntity = new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), stack);
+        itemEntity.setDefaultPickUpDelay();
+        level.addFreshEntity(itemEntity);
+        super.playerWillDestroy(level, blockPos, blockState, player);
+    }
+
+    @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         if (state.getValue(COOKING) || state.getValue(LIT)) {
             double d = (double) pos.getX() + 0.5;
@@ -134,7 +147,7 @@ public class CookingPanBlock extends BaseEntityBlock {
     
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, COOKING, LIT);
+        builder.add(FACING, COOKING, LIT, DAMAGE);
     }
 
     @Override

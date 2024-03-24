@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -18,6 +19,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import satisfy.candlelight.block.CookingPanBlock;
 import satisfy.candlelight.util.CandlelightTiers;
 
 public class CookingPanItem extends BlockItem {
@@ -62,6 +65,26 @@ public class CookingPanItem extends BlockItem {
         return InteractionResult.PASS;
     }
 
+    public static void damage(ItemStack stack, Player entity) {
+        if (entity.getAbilities().instabuild) return;
+        int damage = stack.getDamageValue();
+        if (damage < 25) {
+            stack.setDamageValue(damage + 1);
+        }
+    }
+
+    @Override
+    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean bl) {
+        super.inventoryTick(itemStack, level, entity, i, bl);
+    }
+
+    @Nullable
+    @Override
+    protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
+        BlockState state = super.getPlacementState(blockPlaceContext);
+        if(state != null) state = state.setValue(CookingPanBlock.DAMAGE, blockPlaceContext.getItemInHand().getDamageValue());
+        return state;
+    }
 
     @Override
     public int getEnchantmentValue() {

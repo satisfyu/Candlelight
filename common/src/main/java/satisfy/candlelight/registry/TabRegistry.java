@@ -90,7 +90,7 @@ public class TabRegistry {
             .build());
 
     public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_FURNITURE_TAB = TABS.register("candlelight_furniture", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 1)
-            .icon(() -> new ItemStack(ObjectRegistry.OAK_TABLE.get()))
+            .icon(() -> new ItemStack(ObjectRegistry.PAINTING.get()))
             .title(Component.translatable("creativetab.candlelight.tab_furniture"))
             .displayItems((parameters, output) -> {
                 output.accept(ObjectRegistry.FLOORBOARD.get());
