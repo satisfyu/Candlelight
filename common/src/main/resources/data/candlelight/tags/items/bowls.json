@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#forge:bowls",
-    "#c:bowls"
+    "minecraft:bowl",
+    "candlelight:table_set",
+    "candlelight:table_bowl"
   ]
 }

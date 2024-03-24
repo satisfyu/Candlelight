@@ -43,7 +43,6 @@ public class SmallPaintingBlock extends DecorationBlock {
 
     private InteractionResult switchPaintings(LevelAccessor world, BlockPos pos, BlockState state, Player player) {
         world.playSound(null, pos, SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 0.5f, world.getRandom().nextFloat() * 0.1f + 0.9f);
-        player.getFoodData().eat(1, 0.4f);
         int i = state.getValue(PAINTING);
         world.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
         int nextStage = i + 1;

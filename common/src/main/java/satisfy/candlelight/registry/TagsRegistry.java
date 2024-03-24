@@ -13,5 +13,6 @@ public class TagsRegistry {
     public static final TagKey<Block> ALLOWS_COOKING = TagKey.create(Registries.BLOCK, new CandlelightIdentifier("allows_cooking"));
     public static final TagKey<Item> RED_EFFECT = TagKey.create(Registries.ITEM, new CandlelightIdentifier("red_effect"));
     public static final TagKey<Item> WHITE_EFFECT = TagKey.create(Registries.ITEM, new CandlelightIdentifier("white_effect"));
+    public static final TagKey<Item> BOWLS = TagKey.create(Registries.ITEM, new CandlelightIdentifier("bowls"));
 
 }

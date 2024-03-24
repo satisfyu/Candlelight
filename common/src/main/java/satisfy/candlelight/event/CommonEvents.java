@@ -22,7 +22,7 @@ public class CommonEvents {
         ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.is(ObjectRegistry.COOKING_PAN_ITEM.get())) {
             level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEventsRegistry.COOKING_PAN_HIT.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-            target.hurt(level.damageSources().generic(), 1.2F);
+            target.hurt(level.damageSources().generic(), 5.0F);
             itemStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
             return EventResult.interruptTrue();
         }
