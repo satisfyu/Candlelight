@@ -12,7 +12,7 @@
             "tag": "candlelight:crops/tomato"
         },
         "B": {
-            "item": "candlelight:table_bowl"
+            "tag": "candlelight:bowls"
         },
         "C": {
             "tag": "candlelight:cheese"

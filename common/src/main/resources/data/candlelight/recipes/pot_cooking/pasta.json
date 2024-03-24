@@ -12,7 +12,7 @@
     }
   ],
   "container": {
-    "item": "candlelight:table_bowl"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:pasta",

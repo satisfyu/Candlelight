@@ -15,7 +15,7 @@
       "tag": "candlelight:crops/tomato"
         },
         "B": {
-          "item": "candlelight:table_set"
+          "tag": "candlelight:bowls"
         }
     },
     "result": {

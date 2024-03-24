@@ -35,7 +35,7 @@
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "candlelight:table_bowl"
+      "tag": "candlelight:bowls"
     },
     "show_toast": true,
     "title": {

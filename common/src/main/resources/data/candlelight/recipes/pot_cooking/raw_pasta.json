@@ -6,7 +6,7 @@
     }
   ],
   "container": {
-    "item": "candlelight:table_set"
+    "item": "minecraft:bowl"
   },
   "result": {
     "item": "candlelight:pasta_raw",
