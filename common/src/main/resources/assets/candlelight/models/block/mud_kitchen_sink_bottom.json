@@ -35,7 +35,7 @@
 			"from": [0, 12, 3],
 			"to": [2.975, 16, 12],
 			"faces": {
-				"east": {"uv": [6, 0, 14, 4], "texture": "#4"},
+				"east": {"uv": [3, 6, 11, 2], "texture": "#4"},
 				"west": {"uv": [3, 0, 11, 4], "texture": "#1", "cullface": "west"},
 				"up": {"uv": [4, 13, 12, 16], "rotation": 90, "texture": "#4", "cullface": "up"}
 			}
