@@ -26,18 +26,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.StorageBlockEntity;
 
+import java.util.function.Supplier;
+
 @SuppressWarnings("deprecation")
 public class StorageBlock extends BaseEntityBlock {
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-	private final SoundEvent openSound;
-	private final SoundEvent closeSound;
+	private final Supplier<SoundEvent> openSound;
+	private final Supplier<SoundEvent> closeSound;
 
-	public StorageBlock(Properties settings, SoundEvent openSound, SoundEvent closeSound) {
+	public StorageBlock(Properties settings, Supplier<SoundEvent> openSound, Supplier<SoundEvent> closeSound) {
 		super(settings);
 		this.openSound = openSound;
 		this.closeSound = closeSound;
-		this.registerDefaultState(((this.stateDefinition.any()).setValue(FACING, Direction.NORTH)).setValue(OPEN, false));
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
 	}
 
 	@Override
@@ -58,8 +60,8 @@ public class StorageBlock extends BaseEntityBlock {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
 		if (!state.is(newState.getBlock())) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof Container) {
-				Containers.dropContents(world, pos, (Container)blockEntity);
+			if (blockEntity instanceof Container container) {
+				Containers.dropContents(world, pos, container);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
 
@@ -70,7 +72,7 @@ public class StorageBlock extends BaseEntityBlock {
 	@Nullable
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new StorageBlockEntity(pos, state, this.openSound, this.closeSound);
+		return new StorageBlockEntity(pos, state);
 	}
 
 	@Override
@@ -118,7 +120,7 @@ public class StorageBlock extends BaseEntityBlock {
 		return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
 	}
 
-	public void playSound(Level world, BlockPos pos, boolean open) {
-		world.playSound(null, pos, open ? this.openSound : this.closeSound, SoundSource.BLOCKS, 1.0f, 1.0f);
+	public void playSound(Level world, BlockPos pos, boolean isOpen) {
+		world.playSound(null, pos, isOpen ? openSound.get() : closeSound.get(), SoundSource.BLOCKS, 1.0f, 1.1f);
 	}
 }

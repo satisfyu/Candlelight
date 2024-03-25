@@ -252,7 +252,7 @@
   "tooltip.candlelight.thankyou_4": "Предоставляет сопротивление к огню в радиусе 8 блоков",
   "tooltip.candlelight.cook_armor.": "Мастерство кулинарии:",
   "tooltip.candlelight.cook_armor.2": "Бонус полного комплекта:",
-  "tooltip.candlelight.cook_armor.3": "Сопротивление к огню II",
+  "tooltip.candlelight.cook_armor.3": "+",
   "tooltip.candlelight.ring": "Улучшенная удача: Удача +2",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "Можно приготовить"
 }

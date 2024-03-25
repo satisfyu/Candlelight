@@ -13,7 +13,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "block": "candlelight:sandstone_bricks_kitchen_sink",
+              "block": "candlelight:sandstone_kitchen_sink",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "half": "lower"

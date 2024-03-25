@@ -252,7 +252,7 @@
   "tooltip.candlelight.thankyou_4": "Otorga Resistencia al Fuego en un radio de 8 bloques",
   "tooltip.candlelight.cook_armor.": "Maestría Culinaria:",
   "tooltip.candlelight.cook_armor.2": "Bonificación de set completo:",
-  "tooltip.candlelight.cook_armor.3": "Resistencia al Fuego II",
+  "tooltip.candlelight.cook_armor.3": "+",
   "tooltip.candlelight.ring": "Suerte Mejorada: Suerte +2",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "Cocinable"
 }

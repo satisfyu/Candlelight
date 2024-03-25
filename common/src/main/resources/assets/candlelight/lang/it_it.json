@@ -251,7 +251,7 @@
   "tooltip.candlelight.thankyou_4": "Conferisce Resistenza al Fuoco in un raggio di 8 blocchi",
   "tooltip.candlelight.cook_armor.": "Maestria Culinaria:",
   "tooltip.candlelight.cook_armor.2": "Bonus set completo:",
-  "tooltip.candlelight.cook_armor.3": "Resistenza al Fuoco II",
+  "tooltip.candlelight.cook_armor.3": "+",
   "tooltip.candlelight.ring": "Fortuna Migliorata: Fortuna +2",
   "gui.candlelight.recipebook.toggleRecipes.cookable": "Cucinabile"
 }

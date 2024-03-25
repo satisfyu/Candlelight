@@ -83,7 +83,7 @@ public class ArmorRegistry {
         tooltip.add(Component.nullToEmpty(ChatFormatting.GRAY + I18n.get("tooltip.candlelight.cook_armor.2")));
         tooltip.add(Component.nullToEmpty((hasCompleteSet ? ChatFormatting.DARK_GREEN.toString() : ChatFormatting.GRAY.toString()) + I18n.get("tooltip.candlelight.cook_armor.3")));
         if (hasCompleteSet) {
-            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 1));
+            player.addEffect(new MobEffectInstance(MobEffects.LUCK, 200, 1));
         }
     }
 }
