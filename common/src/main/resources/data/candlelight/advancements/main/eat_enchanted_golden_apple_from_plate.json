@@ -9,7 +9,7 @@
             "predicate": {
               "block": {
                 "blocks": [
-                  "candlelight:table_bowl"
+                  "candlelight:table_set"
                 ]
               }
             }
@@ -35,7 +35,7 @@
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "tag": "candlelight:bowls"
+      "item": "candlelight:table_set"
     },
     "show_toast": true,
     "title": {
