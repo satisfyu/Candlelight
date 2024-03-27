@@ -23,6 +23,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import satisfy.candlelight.registry.ObjectRegistry;
 import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
@@ -33,10 +34,11 @@ import java.util.function.Supplier;
 public class SideTableBlock extends LineConnectingBlock {
     public static final BooleanProperty HAS_LANTERN = BooleanProperty.create("has_lantern");
     public static final BooleanProperty HAS_BOOK = BooleanProperty.create("has_book");
+    public static final BooleanProperty HAS_LAMP = BooleanProperty.create("has_lamp");
 
     public SideTableBlock(Properties properties) {
-        super(properties.lightLevel(state -> state.getValue(HAS_LANTERN) ? 15 : 0));
-        this.registerDefaultState(this.stateDefinition.any().setValue(HAS_LANTERN, false).setValue(HAS_BOOK, false));
+        super(properties.lightLevel(state -> (state.getValue(HAS_LANTERN) || state.getValue(HAS_LAMP)) ? 15 : 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HAS_LANTERN, false).setValue(HAS_BOOK, false).setValue(HAS_LAMP, false));
     }
 
     @Override
@@ -67,7 +69,7 @@ public class SideTableBlock extends LineConnectingBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(HAS_LANTERN, HAS_BOOK);
+        builder.add(HAS_LANTERN, HAS_BOOK, HAS_LAMP);
     }
 
     @Override
@@ -88,6 +90,17 @@ public class SideTableBlock extends LineConnectingBlock {
                 }
                 world.playSound(null, pos, SoundEvents.BOOK_PUT, SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.sidedSuccess(false);
+
+
+            } else if (Block.byItem(player.getItemInHand(hand).getItem()).equals(ObjectRegistry.LAMP.get()) && !state.getValue(HAS_LAMP) && !isSneaking) {
+                world.setBlock(pos, state.setValue(HAS_LAMP, true), 3);
+                if (!player.getAbilities().instabuild) {
+                    player.getItemInHand(hand).shrink(1);
+                }
+                world.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(false);
+
+
             } else if (isSneaking && state.getValue(HAS_LANTERN)) {
                 world.setBlock(pos, state.setValue(HAS_LANTERN, false), 3);
                 popResource(world, pos, new ItemStack(Items.LANTERN));
@@ -99,6 +112,14 @@ public class SideTableBlock extends LineConnectingBlock {
                 world.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.sidedSuccess(false);
             }
+            else if (isSneaking && state.getValue(HAS_LAMP)) {
+                world.setBlock(pos, state.setValue(HAS_LAMP, false), 3);
+                popResource(world, pos, new ItemStack(ObjectRegistry.LAMP.get()));
+                world.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.sidedSuccess(false);
+            }
+
+
         }
         return super.use(state, world, pos, player, hand, hit);
     }

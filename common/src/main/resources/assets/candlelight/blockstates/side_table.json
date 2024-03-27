@@ -1,244 +1,487 @@
 {
   "variants": {
-    "facing=north,has_lantern=false,has_book=false,type=none": {
+    "facing=north,has_lantern=false,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table"
     },
-    "facing=east,has_lantern=false,has_book=false,type=none": {
+    "facing=east,has_lantern=false,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table",
       "y": 90
     },
-    "facing=south,has_lantern=false,has_book=false,type=none": {
+    "facing=south,has_lantern=false,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table",
       "y": 180
     },
-    "facing=west,has_lantern=false,has_book=false,type=none": {
+    "facing=west,has_lantern=false,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table",
       "y": 270
     },
-    "facing=north,has_lantern=true,has_book=false,type=none": {
+    "facing=north,has_lantern=true,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_lantern"
     },
-    "facing=east,has_lantern=true,has_book=false,type=none": {
+    "facing=east,has_lantern=true,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_lantern",
       "y": 90
     },
-    "facing=south,has_lantern=true,has_book=false,type=none": {
+    "facing=south,has_lantern=true,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_lantern",
       "y": 180
     },
-    "facing=west,has_lantern=true,has_book=false,type=none": {
+    "facing=west,has_lantern=true,has_book=false,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_lantern",
       "y": 270
     },
-    "facing=north,has_lantern=false,has_book=true,type=none": {
+    "facing=north,has_lantern=false,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_book"
     },
-    "facing=east,has_lantern=false,has_book=true,type=none": {
+    "facing=east,has_lantern=false,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_book",
       "y": 90
     },
-    "facing=south,has_lantern=false,has_book=true,type=none": {
+    "facing=south,has_lantern=false,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_book",
       "y": 180
     },
-    "facing=west,has_lantern=false,has_book=true,type=none": {
+    "facing=west,has_lantern=false,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table_book",
       "y": 270
     },
-    "facing=north,has_lantern=true,has_book=true,type=none": {
+    "facing=north,has_lantern=true,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table"
     },
-    "facing=east,has_lantern=true,has_book=true,type=none": {
+    "facing=east,has_lantern=true,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table",
       "y": 90
     },
-    "facing=south,has_lantern=true,has_book=true,type=none": {
+    "facing=south,has_lantern=true,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table",
       "y": 180
     },
-    "facing=west,has_lantern=true,has_book=true,type=none": {
+    "facing=west,has_lantern=true,has_book=true,type=none,has_lamp=false": {
       "model": "candlelight:block/side_table",
       "y": 270
     },
-    "facing=north,has_lantern=false,has_book=false,type=middle": {
+    "facing=north,has_lantern=false,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle"
     },
-    "facing=east,has_lantern=false,has_book=false,type=middle": {
+    "facing=east,has_lantern=false,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle",
       "y": 90
     },
-    "facing=south,has_lantern=false,has_book=false,type=middle": {
+    "facing=south,has_lantern=false,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle",
       "y": 180
     },
-    "facing=west,has_lantern=false,has_book=false,type=middle": {
+    "facing=west,has_lantern=false,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle",
       "y": 270
     },
-    "facing=north,has_lantern=true,has_book=false,type=middle": {
+    "facing=north,has_lantern=true,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_lantern"
     },
-    "facing=east,has_lantern=true,has_book=false,type=middle": {
+    "facing=east,has_lantern=true,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_lantern",
       "y": 90
     },
-    "facing=south,has_lantern=true,has_book=false,type=middle": {
+    "facing=south,has_lantern=true,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_lantern",
       "y": 180
     },
-    "facing=west,has_lantern=true,has_book=false,type=middle": {
+    "facing=west,has_lantern=true,has_book=false,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_lantern",
       "y": 270
     },
-    "facing=north,has_lantern=false,has_book=true,type=middle": {
+    "facing=north,has_lantern=false,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_book"
     },
-    "facing=east,has_lantern=false,has_book=true,type=middle": {
+    "facing=east,has_lantern=false,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_book",
       "y": 90
     },
-    "facing=south,has_lantern=false,has_book=true,type=middle": {
+    "facing=south,has_lantern=false,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_book",
       "y": 180
     },
-    "facing=west,has_lantern=false,has_book=true,type=middle": {
+    "facing=west,has_lantern=false,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle_book",
       "y": 270
     },
-    "facing=north,has_lantern=true,has_book=true,type=middle": {
+    "facing=north,has_lantern=true,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle"
     },
-    "facing=east,has_lantern=true,has_book=true,type=middle": {
+    "facing=east,has_lantern=true,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle",
       "y": 90
     },
-    "facing=south,has_lantern=true,has_book=true,type=middle": {
+    "facing=south,has_lantern=true,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle",
       "y": 180
     },
-    "facing=west,has_lantern=true,has_book=true,type=middle": {
+    "facing=west,has_lantern=true,has_book=true,type=middle,has_lamp=false": {
       "model": "candlelight:block/side_table_middle",
       "y": 270
     },
-    "facing=north,has_lantern=false,has_book=false,type=left": {
+    "facing=north,has_lantern=false,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected"
     },
-    "facing=east,has_lantern=false,has_book=false,type=left": {
+    "facing=east,has_lantern=false,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 90
     },
-    "facing=south,has_lantern=false,has_book=false,type=left": {
+    "facing=south,has_lantern=false,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 180
     },
-    "facing=west,has_lantern=false,has_book=false,type=left": {
+    "facing=west,has_lantern=false,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 270
     },
-    "facing=north,has_lantern=true,has_book=false,type=left": {
+    "facing=north,has_lantern=true,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern"
     },
-    "facing=east,has_lantern=true,has_book=false,type=left": {
+    "facing=east,has_lantern=true,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern",
       "y": 90
     },
-    "facing=south,has_lantern=true,has_book=false,type=left": {
+    "facing=south,has_lantern=true,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern",
       "y": 180
     },
-    "facing=west,has_lantern=true,has_book=false,type=left": {
+    "facing=west,has_lantern=true,has_book=false,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern",
       "y": 270
     },
-    "facing=north,has_lantern=false,has_book=true,type=left": {
+    "facing=north,has_lantern=false,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book"
     },
-    "facing=east,has_lantern=false,has_book=true,type=left": {
+    "facing=east,has_lantern=false,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book",
       "y": 90
     },
-    "facing=south,has_lantern=false,has_book=true,type=left": {
+    "facing=south,has_lantern=false,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book",
       "y": 180
     },
-    "facing=west,has_lantern=false,has_book=true,type=left": {
+    "facing=west,has_lantern=false,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book",
       "y": 270
     },
-    "facing=north,has_lantern=true,has_book=true,type=left": {
+    "facing=north,has_lantern=true,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected"
     },
-    "facing=east,has_lantern=true,has_book=true,type=left": {
+    "facing=east,has_lantern=true,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 90
     },
-    "facing=south,has_lantern=true,has_book=true,type=left": {
+    "facing=south,has_lantern=true,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 180
     },
-    "facing=west,has_lantern=true,has_book=true,type=left": {
+    "facing=west,has_lantern=true,has_book=true,type=left,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 270
     },
-    "facing=north,has_lantern=false,has_book=false,type=right": {
+    "facing=north,has_lantern=false,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 180
     },
-    "facing=east,has_lantern=false,has_book=false,type=right": {
+    "facing=east,has_lantern=false,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 270
     },
-    "facing=south,has_lantern=false,has_book=false,type=right": {
+    "facing=south,has_lantern=false,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected"
     },
-    "facing=west,has_lantern=false,has_book=false,type=right": {
+    "facing=west,has_lantern=false,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 90
     },
-    "facing=north,has_lantern=true,has_book=false,type=right": {
+    "facing=north,has_lantern=true,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern",
       "y": 180
     },
-    "facing=east,has_lantern=true,has_book=false,type=right": {
+    "facing=east,has_lantern=true,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern",
       "y": 270
     },
-    "facing=south,has_lantern=true,has_book=false,type=right": {
+    "facing=south,has_lantern=true,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern"
     },
-    "facing=west,has_lantern=true,has_book=false,type=right": {
+    "facing=west,has_lantern=true,has_book=false,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_lantern",
       "y": 90
     },
-    "facing=north,has_lantern=false,has_book=true,type=right": {
+    "facing=north,has_lantern=false,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book",
       "y": 180
     },
-    "facing=east,has_lantern=false,has_book=true,type=right": {
+    "facing=east,has_lantern=false,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book",
       "y": 270
     },
-    "facing=south,has_lantern=false,has_book=true,type=right": {
+    "facing=south,has_lantern=false,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book"
     },
-    "facing=west,has_lantern=false,has_book=true,type=right": {
+    "facing=west,has_lantern=false,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected_book",
       "y": 90
     },
-    "facing=north,has_lantern=true,has_book=true,type=right": {
+    "facing=north,has_lantern=true,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 180
     },
-    "facing=east,has_lantern=true,has_book=true,type=right": {
+    "facing=east,has_lantern=true,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
       "y": 270
     },
-    "facing=south,has_lantern=true,has_book=true,type=right": {
+    "facing=south,has_lantern=true,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected"
     },
-    "facing=west,has_lantern=true,has_book=true,type=right": {
+    "facing=west,has_lantern=true,has_book=true,type=right,has_lamp=false": {
       "model": "candlelight:block/side_table_connected",
+      "y": 90
+    },
+    "facing=north,has_lantern=false,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp"
+    },
+    "facing=east,has_lantern=false,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp",
+      "y": 90
+    },
+    "facing=south,has_lantern=false,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp",
+      "y": 180
+    },
+    "facing=west,has_lantern=false,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp",
+      "y": 270
+    },
+    "facing=north,has_lantern=true,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table"
+    },
+    "facing=east,has_lantern=true,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table",
+      "y": 90
+    },
+    "facing=south,has_lantern=true,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table",
+      "y": 180
+    },
+    "facing=west,has_lantern=true,has_book=false,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table",
+      "y": 270
+    },
+    "facing=north,has_lantern=false,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table"
+    },
+    "facing=east,has_lantern=false,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table",
+      "y": 90
+    },
+    "facing=south,has_lantern=false,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table",
+      "y": 180
+    },
+    "facing=west,has_lantern=false,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table",
+      "y": 270
+    },
+    "facing=north,has_lantern=true,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp"
+    },
+    "facing=east,has_lantern=true,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp",
+      "y": 90
+    },
+    "facing=south,has_lantern=true,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp",
+      "y": 180
+    },
+    "facing=west,has_lantern=true,has_book=true,type=none,has_lamp=true": {
+      "model": "candlelight:block/side_table_lamp",
+      "y": 270
+    },
+    "facing=north,has_lantern=false,has_book=false,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp"
+    },
+    "facing=east,has_lantern=false,has_book=false,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp",
+      "y": 90
+    },
+    "facing=south,has_lantern=false,has_book=false,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp",
+      "y": 180
+    },
+    "facing=west,has_lantern=false,has_book=false,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp",
+      "y": 270
+    },
+    "facing=north,has_lantern=true,has_book=false,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle",
+      "y": 90
+    },
+    "facing=south,has_lantern=true,has_book=false,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle",
+      "y": 180
+    },
+    "facing=west,has_lantern=true,has_book=false,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle",
+      "y": 270
+    },
+    "facing=north,has_lantern=false,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle"
+    },
+    "facing=east,has_lantern=false,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle",
+      "y": 90
+    },
+    "facing=south,has_lantern=false,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle",
+      "y": 180
+    },
+    "facing=west,has_lantern=false,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle",
+      "y": 270
+    },
+    "facing=north,has_lantern=true,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp"
+    },
+    "facing=east,has_lantern=true,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp",
+      "y": 90
+    },
+    "facing=south,has_lantern=true,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp",
+      "y": 180
+    },
+    "facing=west,has_lantern=true,has_book=true,type=middle,has_lamp=true": {
+      "model": "candlelight:block/side_table_middle_lamp",
+      "y": 270
+    },
+    "facing=north,has_lantern=false,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp"
+    },
+    "facing=east,has_lantern=false,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 90
+    },
+    "facing=south,has_lantern=false,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 180
+    },
+    "facing=west,has_lantern=false,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 270
+    },
+    "facing=north,has_lantern=true,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected"
+    },
+    "facing=east,has_lantern=true,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 90
+    },
+    "facing=south,has_lantern=true,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 180
+    },
+    "facing=west,has_lantern=true,has_book=false,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 270
+    },
+    "facing=north,has_lantern=false,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected"
+    },
+    "facing=east,has_lantern=false,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 90
+    },
+    "facing=south,has_lantern=false,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 180
+    },
+    "facing=west,has_lantern=false,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 270
+    },
+    "facing=north,has_lantern=true,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp"
+    },
+    "facing=east,has_lantern=true,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 90
+    },
+    "facing=south,has_lantern=true,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 180
+    },
+    "facing=west,has_lantern=true,has_book=true,type=left,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 270
+    },
+    "facing=north,has_lantern=false,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 180
+    },
+    "facing=east,has_lantern=false,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 270
+    },
+    "facing=south,has_lantern=false,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp"
+    },
+    "facing=west,has_lantern=false,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 90
+    },
+    "facing=north,has_lantern=true,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 180
+    },
+    "facing=east,has_lantern=true,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 270
+    },
+    "facing=south,has_lantern=true,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected"
+    },
+    "facing=west,has_lantern=true,has_book=false,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 90
+    },
+    "facing=north,has_lantern=false,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 180
+    },
+    "facing=east,has_lantern=false,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 270
+    },
+    "facing=south,has_lantern=false,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected"
+    },
+    "facing=west,has_lantern=false,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected",
+      "y": 90
+    },
+    "facing=north,has_lantern=true,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 180
+    },
+    "facing=east,has_lantern=true,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 270
+    },
+    "facing=south,has_lantern=true,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp"
+    },
+    "facing=west,has_lantern=true,has_book=true,type=right,has_lamp=true": {
+      "model": "candlelight:block/side_table_connected_lamp",
+      "y": 90
+    },
+    "facing=east,has_book=false,has_lamp=true,has_lantern=true,type=middle": {
+      "model": "candlelight:block/side_table_connected_lamp",
       "y": 90
     }
   }
 }
+
+
