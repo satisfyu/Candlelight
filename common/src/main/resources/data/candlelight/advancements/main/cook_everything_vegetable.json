@@ -19,36 +19,110 @@
     "experience": 250
   },
   "criteria": {
-    "cook_everything_vegetable": {
+    "candlelight:tomato_mozzarella_salad": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["candlelight:tomato_mozzarella_salad"]
-          },
+            "items": [
+              "candlelight:tomato_mozzarella_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:beetroot_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:beetroot_salad"]
-          },
+            "items": [
+              "candlelight:beetroot_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:butter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:butter"]
-          },
+            "items": [
+              "candlelight:butter"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:lettuce_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:lettuce_salad"]
-          },
+            "items": [
+              "candlelight:lettuce_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:mozzarella": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:mozzarella"]
-          },
+            "items": [
+              "candlelight:mozzarella"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:dough": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:dough"]
-          },
+            "items": [
+              "candlelight:dough"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:beef_tartare": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:beef_tartare"]
-          },
+            "items": [
+              "candlelight:beef_tartare"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:veggie_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:veggie_plate"]
-          },
+            "items": [
+              "candlelight:veggie_plate"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:lettuce_tomato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:lettuce_tomato"]
+            "items": [
+              "candlelight:lettuce_tomato"
+            ]
           }
         ]
       }
@@ -56,7 +130,31 @@
   },
   "requirements": [
     [
-      "cook_everything_vegetable"
+      "candlelight:tomato_mozzarella_salad"
+    ],
+    [
+      "candlelight:beetroot_salad"
+    ],
+    [
+      "candlelight:butter"
+    ],
+    [
+      "candlelight:lettuce_salad"
+    ],
+    [
+      "candlelight:mozzarella"
+    ],
+    [
+      "candlelight:dough"
+    ],
+    [
+      "candlelight:beef_tartare"
+    ],
+    [
+      "candlelight:veggie_plate"
+    ],
+    [
+      "candlelight:lettuce_tomato"
     ]
   ]
 }

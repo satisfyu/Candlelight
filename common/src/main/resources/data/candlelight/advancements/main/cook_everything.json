@@ -22,99 +22,362 @@
     ]
   },
   "criteria": {
-    "cook_everything": {
+    "candlelight:chicken": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["candlelight:chicken"]
-          },
+            "items": [
+              "candlelight:chicken"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:mushroom_soup": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:mushroom_soup"]
-          },
+            "items": [
+              "candlelight:mushroom_soup"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:pasta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:pasta"]
-          },
+            "items": [
+              "candlelight:pasta"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:chocolate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:chocolate"]
-          },
+            "items": [
+              "candlelight:chocolate"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:pork_ribs": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:pork_ribs"]
-          },
+            "items": [
+              "candlelight:pork_ribs"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:chicken_teriyaki": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:chicken_teriyaki"]
-          },
+            "items": [
+              "candlelight:chicken_teriyaki"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:salmon_wine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:salmon_wine"]
-          },
+            "items": [
+              "candlelight:salmon_wine"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:lasagne": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:lasagne"]
-          },
+            "items": [
+              "candlelight:lasagne"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:pasta_raw": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:pasta_raw"]
-          },
+            "items": [
+              "candlelight:pasta_raw"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:tomato_soup": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:tomato_soup"]
-          },
+            "items": [
+              "candlelight:tomato_soup"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:pancake": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:pancake"]
-          },
+            "items": [
+              "candlelight:pancake"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:cooked_beef": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:cooked_beef"]
-          },
+            "items": [
+              "candlelight:cooked_beef"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:beef_wellington": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:beef_wellington"]
-          },
+            "items": [
+              "candlelight:beef_wellington"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:roastbeef_carrots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:roastbeef_carrots"]
-          },
+            "items": [
+              "candlelight:roastbeef_carrots"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:tropical_fish_supreme": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:tropical_fish_supreme"]
-          },
+            "items": [
+              "candlelight:tropical_fish_supreme"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:chicken_alfredo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:chicken_alfredo"]
-          },
+            "items": [
+              "candlelight:chicken_alfredo"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:pasta_lettuce": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:pasta_lettuce"]
-          },
+            "items": [
+              "candlelight:pasta_lettuce"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:lettuce_beef": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:lettuce_beef"]
-          },
+            "items": [
+              "candlelight:lettuce_beef"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:fricasse": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:fricasse"]
-          },
+            "items": [
+              "candlelight:fricasse"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:pasta_bolognese": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:pasta_bolognese"]
-          },
+            "items": [
+              "candlelight:pasta_bolognese"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:bolognese": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:bolognese"]
-          },
+            "items": [
+              "candlelight:bolognese"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:tomato_mozzarella_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:tomato_mozzarella_salad"]
-          },
+            "items": [
+              "candlelight:tomato_mozzarella_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:beetroot_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:beetroot_salad"]
-          },
+            "items": [
+              "candlelight:beetroot_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:butter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:butter"]
-          },
+            "items": [
+              "candlelight:butter"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:lettuce_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:lettuce_salad"]
-          },
+            "items": [
+              "candlelight:lettuce_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:mozzarella": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:mozzarella"]
-          },
+            "items": [
+              "candlelight:mozzarella"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:dough": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:dough"]
-          },
+            "items": [
+              "candlelight:dough"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:beef_tartare": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:beef_tartare"]
-          },
+            "items": [
+              "candlelight:beef_tartare"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:veggie_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:veggie_plate"]
-          },
+            "items": [
+              "candlelight:veggie_plate"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:lettuce_tomato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
           {
-            "items": ["candlelight:lettuce_tomato"]
+            "items": [
+              "candlelight:lettuce_tomato"
+            ]
           }
         ]
       }
@@ -122,7 +385,94 @@
   },
   "requirements": [
     [
-      "cook_everything"
+      "candlelight:chicken"
+    ],
+    [
+      "candlelight:mushroom_soup"
+    ],
+    [
+      "candlelight:pasta"
+    ],
+    [
+      "candlelight:chocolate"
+    ],
+    [
+      "candlelight:pork_ribs"
+    ],
+    [
+      "candlelight:chicken_teriyaki"
+    ],
+    [
+      "candlelight:salmon_wine"
+    ],
+    [
+      "candlelight:lasagne"
+    ],
+    [
+      "candlelight:pasta_raw"
+    ],
+    [
+      "candlelight:tomato_soup"
+    ],
+    [
+      "candlelight:pancake"
+    ],
+    [
+      "candlelight:cooked_beef"
+    ],
+    [
+      "candlelight:beef_wellington"
+    ],
+    [
+      "candlelight:roastbeef_carrots"
+    ],
+    [
+      "candlelight:tropical_fish_supreme"
+    ],
+    [
+      "candlelight:chicken_alfredo"
+    ],
+    [
+      "candlelight:pasta_lettuce"
+    ],
+    [
+      "candlelight:lettuce_beef"
+    ],
+    [
+      "candlelight:fricasse"
+    ],
+    [
+      "candlelight:pasta_bolognese"
+    ],
+    [
+      "candlelight:bolognese"
+    ],
+    [
+      "candlelight:tomato_mozzarella_salad"
+    ],
+    [
+      "candlelight:beetroot_salad"
+    ],
+    [
+      "candlelight:butter"
+    ],
+    [
+      "candlelight:lettuce_salad"
+    ],
+    [
+      "candlelight:mozzarella"
+    ],
+    [
+      "candlelight:dough"
+    ],
+    [
+      "candlelight:beef_tartare"
+    ],
+    [
+      "candlelight:veggie_plate"
+    ],
+    [
+      "candlelight:lettuce_tomato"
     ]
   ]
 }
