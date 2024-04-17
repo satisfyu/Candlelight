@@ -35,20 +35,21 @@ allprojects {
         exclusiveContent {
             forRepository {
                 maven {
-                    name "Ladysnake Libs"
-                    url 'https://maven.ladysnake.org/releases'
-                }
-                maven {
-                    name "curios"
-                    url "https://maven.theillusivec4.top/"
-                }
-                maven {
                     name = "Modrinth"
                     url = "https://api.modrinth.com/maven"
                 }
             }
             filter {
                 includeGroup "maven.modrinth"
+            }
+
+            maven {
+                name "Ladysnake Libs"
+                url 'https://maven.ladysnake.org/releases'
+            }
+            maven {
+                name "curios"
+                url "https://maven.theillusivec4.top/"
             }
         }
 
