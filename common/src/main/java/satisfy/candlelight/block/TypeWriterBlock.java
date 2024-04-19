@@ -1,5 +1,6 @@
 package satisfy.candlelight.block;
 
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -31,10 +32,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import satisfy.candlelight.util.CandlelightUtil;
 import satisfy.candlelight.entity.TypeWriterEntity;
-import satisfy.candlelight.client.ClientUtil;
 import satisfy.candlelight.registry.ObjectRegistry;
-import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +85,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
             if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
             {
                 if(world.isClientSide)
-                    ClientUtil.setTypeWriterScreen(player, typeWriterEntity);
+                    CandlelightUtil.setTypeWriterScreen(player, typeWriterEntity);
             }
             return InteractionResult.SUCCESS;
         }

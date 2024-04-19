@@ -10,7 +10,6 @@ public class StorageTypesRegistry {
     public static final ResourceLocation SHELF = new CandlelightIdentifier("shelf");
     public static final ResourceLocation TABLE_BOWL = new CandlelightIdentifier("table_bowl");
     public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
-    public static final ResourceLocation TOOL_RACK = new CandlelightIdentifier("tool_rack");
     public static final ResourceLocation JEWELRY_BOX = new CandlelightIdentifier("jewelry_box");
 
     public static void registerBlocks(Set<Block> blocks) {
@@ -27,7 +26,6 @@ public class StorageTypesRegistry {
         blocks.add(ObjectRegistry.CHERRY_SHELF.get());
         blocks.add(ObjectRegistry.TABLE_BOWL.get());
         blocks.add(ObjectRegistry.TABLE_SET.get());
-        blocks.add(ObjectRegistry.TOOL_RACK.get());
         blocks.add(ObjectRegistry.JEWELRY_BOX.get());
     }
 }

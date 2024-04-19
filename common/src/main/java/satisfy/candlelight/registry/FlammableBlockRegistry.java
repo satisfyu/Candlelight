@@ -6,11 +6,6 @@ import net.minecraft.world.level.block.Block;
 public class FlammableBlockRegistry {
 
     public static void init(){
-        add(5, 20, ObjectRegistry.BEETROOT_CRATE.get());
-        add(5, 20, ObjectRegistry.LETTUCE_CRATE.get());
-        add(5, 20, ObjectRegistry.CARROT_CRATE.get());
-        add(5, 20, ObjectRegistry.POTATO_CRATE.get());
-        add(5, 20, ObjectRegistry.TOMATO_CRATE.get());
         add(5, 20, ObjectRegistry.FLOORBOARD.get());
         add(5, 20, ObjectRegistry.OAK_CABINET.get());
         add(5, 20, ObjectRegistry.OAK_DRAWER.get());

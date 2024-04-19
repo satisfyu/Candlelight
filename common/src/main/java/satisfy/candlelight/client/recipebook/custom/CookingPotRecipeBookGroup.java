@@ -9,8 +9,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
-import satisfy.candlelight.item.food.EffectFoodItem;
 import satisfy.candlelight.registry.ObjectRegistry;
+import satisfy.farm_and_charm.item.food.EffectFoodItem;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 public enum CookingPotRecipeBookGroup implements IRecipeBookGroup {
     SEARCH(new ItemStack(Items.COMPASS)),
     EFFECT(new ItemStack(Items.POTION)),
-    MISC(new ItemStack(ObjectRegistry.DOUGH.get())),
+    MISC(new ItemStack(satisfy.farm_and_charm.registry.ObjectRegistry.DOUGH.get())),
     BIG(new ItemStack(ObjectRegistry.LASAGNA.get()));
 
     public static final List<IRecipeBookGroup> POT_GROUPS = ImmutableList.of(SEARCH, MISC, EFFECT, BIG);

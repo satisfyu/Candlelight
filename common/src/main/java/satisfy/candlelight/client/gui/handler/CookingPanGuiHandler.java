@@ -2,6 +2,7 @@ package satisfy.candlelight.client.gui.handler;
 
 import de.cristelknight.doapi.client.recipebook.IRecipeBookGroup;
 import de.cristelknight.doapi.client.recipebook.handler.AbstractRecipeBookGUIScreenHandler;
+import de.cristelknight.doapi.common.world.slot.ExtendedSlot;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,7 +14,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import satisfy.candlelight.entity.CookingPanBlockEntity;
-import satisfy.candlelight.client.gui.handler.slot.ExtendedSlot;
 import satisfy.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
 import satisfy.candlelight.recipe.CookingPanRecipe;
 import satisfy.candlelight.registry.ScreenHandlerTypeRegistry;

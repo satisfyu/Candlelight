@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "stack=1": {
+      "model": "candlelight:block/drinking_glass_1"
+    },
+    "stack=2": {
+      "model": "candlelight:block/drinking_glass_2"
+    },
+    "stack=3": {
+      "model": "candlelight:block/drinking_glass_3"
+    },
+    "stack=4": {
+      "model": "candlelight:block/drinking_glass_4"
+    }
+  }
+}

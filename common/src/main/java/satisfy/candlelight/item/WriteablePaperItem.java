@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import satisfy.candlelight.client.ClientUtil;
+import satisfy.candlelight.util.CandlelightUtil;
 
 public class WriteablePaperItem extends Item {
     public WriteablePaperItem(Properties settings) {
@@ -20,7 +20,7 @@ public class WriteablePaperItem extends Item {
         ItemStack itemStack = user.getItemInHand(hand);
         if(world.isClientSide())
         {
-            ClientUtil.setNotePaperScreen(user, itemStack, hand);
+            CandlelightUtil.setNotePaperScreen(user, itemStack, hand);
         }
         else
         {

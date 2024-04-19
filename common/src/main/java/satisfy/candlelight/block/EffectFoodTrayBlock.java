@@ -11,7 +11,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.candlelight.util.GeneralUtil;
+import satisfy.farm_and_charm.block.EffectFoodBlock;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.Map;

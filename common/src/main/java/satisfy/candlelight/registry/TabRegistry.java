@@ -16,30 +16,14 @@ public class TabRegistry {
             .icon(() -> new ItemStack(ObjectRegistry.COOKING_POT.get()))
             .title(Component.translatable("creativetab.candlelight.tab_main"))
             .displayItems((parameters, output) -> {
-                if (CandlelightConfig.getActiveInstance().enableCandlelightTomatoes()) {
-                    output.accept(ObjectRegistry.TOMATO_SEEDS.get().asItem());
-                    output.accept(ObjectRegistry.TOMATO.get());
-                }
-                if (CandlelightConfig.getActiveInstance().enableCandlelightLettuce()) {
-                    output.accept(ObjectRegistry.LETTUCE_CROP.get());
-                output.accept(ObjectRegistry.LETTUCE.get());
-                output.accept(ObjectRegistry.LETTUCE_CRATE.get());
-                }
-                if (CandlelightConfig.getActiveInstance().enableCandlelightTomatoes()) {
-                    output.accept(ObjectRegistry.TOMATO_CRATE.get().asItem());
-                }
-                output.accept(ObjectRegistry.CARROT_CRATE.get());
-                output.accept(ObjectRegistry.POTATO_CRATE.get());
-                output.accept(ObjectRegistry.BEETROOT_CRATE.get());
                 output.accept(ObjectRegistry.COOKING_POT.get());
                 output.accept(ObjectRegistry.COOKING_PAN.get());
                 output.accept(ObjectRegistry.TABLE_SET.get());
                 output.accept(ObjectRegistry.TABLE_BOWL.get());
+                output.accept(ObjectRegistry.DRINKING_GLASS.get());
                 output.accept(ObjectRegistry.GLASS.get());
                 output.accept(ObjectRegistry.NAPKIN.get());
-                output.accept(ObjectRegistry.BUTTER.get());
                 output.accept(ObjectRegistry.MOZZARELLA.get());
-                output.accept(ObjectRegistry.DOUGH.get());
                 output.accept(ObjectRegistry.TOMATO_SOUP.get());
                 output.accept(ObjectRegistry.MUSHROOM_SOUP.get());
                 output.accept(ObjectRegistry.BEETROOT_SALAD.get());
@@ -75,7 +59,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.JEWELRY_BOX.get());
                 output.accept(ObjectRegistry.PAINTING.get());
                 output.accept(ObjectRegistry.HEARTH.get());
-                output.accept(ObjectRegistry.TOOL_RACK.get());
                 output.accept(ObjectRegistry.ROSE.get());
                 output.accept(ObjectRegistry.CHOCOLATE_BOX.get());
                 output.accept(ObjectRegistry.TABLE_SIGN.get());
@@ -102,7 +85,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.TABLE.get());
                 output.accept(ObjectRegistry.LAMP.get());
                 output.accept(ObjectRegistry.SIDE_TABLE.get());
-                output.accept(ObjectRegistry.COBBLESTONE_STOVE.get());
                 output.accept(ObjectRegistry.COBBLESTONE_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.COBBLESTONE_COUNTER.get());
                 output.accept(ObjectRegistry.OAK_CABINET.get());
@@ -111,7 +93,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.OAK_CHAIR.get());
                 output.accept(ObjectRegistry.OAK_SHELF.get());
                 output.accept(ObjectRegistry.OAK_BIG_TABLE.get());
-                output.accept(ObjectRegistry.SANDSTONE_STOVE.get());
                 output.accept(ObjectRegistry.SANDSTONE_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.SANDSTONE_COUNTER.get());
                 output.accept(ObjectRegistry.BIRCH_CABINET.get());
@@ -120,7 +101,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.BIRCH_CHAIR.get());
                 output.accept(ObjectRegistry.BIRCH_SHELF.get());
                 output.accept(ObjectRegistry.BIRCH_BIG_TABLE.get());
-                output.accept(ObjectRegistry.STONE_BRICKS_STOVE.get());
                 output.accept(ObjectRegistry.STONE_BRICKS_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.STONE_BRICKS_COUNTER.get());
                 output.accept(ObjectRegistry.SPRUCE_CABINET.get());
@@ -129,7 +109,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.SPRUCE_CHAIR.get());
                 output.accept(ObjectRegistry.SPRUCE_SHELF.get());
                 output.accept(ObjectRegistry.SPRUCE_BIG_TABLE.get());
-                output.accept(ObjectRegistry.DEEPSLATE_STOVE.get());
                 output.accept(ObjectRegistry.DEEPSLATE_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.DEEPSLATE_COUNTER.get());
                 output.accept(ObjectRegistry.DARK_OAK_CABINET.get());
@@ -138,7 +117,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.DARK_OAK_CHAIR.get());
                 output.accept(ObjectRegistry.DARK_OAK_SHELF.get());
                 output.accept(ObjectRegistry.DARK_OAK_BIG_TABLE.get());
-                output.accept(ObjectRegistry.GRANITE_STOVE.get());
                 output.accept(ObjectRegistry.GRANITE_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.GRANITE_COUNTER.get());
                 output.accept(ObjectRegistry.ACACIA_CABINET.get());
@@ -147,7 +125,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.ACACIA_CHAIR.get());
                 output.accept(ObjectRegistry.ACACIA_SHELF.get());
                 output.accept(ObjectRegistry.ACACIA_BIG_TABLE.get());
-                output.accept(ObjectRegistry.END_STOVE.get());
                 output.accept(ObjectRegistry.END_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.END_COUNTER.get());
                 output.accept(ObjectRegistry.JUNGLE_CABINET.get());
@@ -156,7 +133,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.JUNGLE_CHAIR.get());
                 output.accept(ObjectRegistry.JUNGLE_SHELF.get());
                 output.accept(ObjectRegistry.JUNGLE_BIG_TABLE.get());
-                output.accept(ObjectRegistry.MUD_STOVE.get());
                 output.accept(ObjectRegistry.MUD_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.MUD_COUNTER.get());
                 output.accept(ObjectRegistry.MANGROVE_CABINET.get());
@@ -165,7 +141,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.MANGROVE_CHAIR.get());
                 output.accept(ObjectRegistry.MANGROVE_SHELF.get());
                 output.accept(ObjectRegistry.MANGROVE_BIG_TABLE.get());
-                output.accept(ObjectRegistry.QUARTZ_STOVE.get());
                 output.accept(ObjectRegistry.QUARTZ_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.QUARTZ_COUNTER.get());
                 output.accept(ObjectRegistry.WARPED_CABINET.get());
@@ -174,7 +149,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.WARPED_CHAIR.get());
                 output.accept(ObjectRegistry.WARPED_SHELF.get());
                 output.accept(ObjectRegistry.WARPED_BIG_TABLE.get());
-                output.accept(ObjectRegistry.RED_NETHER_BRICKS_STOVE.get());
                 output.accept(ObjectRegistry.RED_NETHER_BRICKS_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.RED_NETHER_BRICKS_COUNTER.get());
                 output.accept(ObjectRegistry.CRIMSON_CABINET.get());
@@ -183,7 +157,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.CRIMSON_CHAIR.get());
                 output.accept(ObjectRegistry.CRIMSON_SHELF.get());
                 output.accept(ObjectRegistry.CRIMSON_BIG_TABLE.get());
-                output.accept(ObjectRegistry.BASALT_STOVE.get());
                 output.accept(ObjectRegistry.BASALT_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.BASALT_COUNTER.get());
                 output.accept(ObjectRegistry.CHERRY_CABINET.get());
@@ -192,7 +165,6 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.CHERRY_CHAIR.get());
                 output.accept(ObjectRegistry.CHERRY_SHELF.get());
                 output.accept(ObjectRegistry.CHERRY_BIG_TABLE.get());
-                output.accept(ObjectRegistry.BAMBOO_STOVE.get());
                 output.accept(ObjectRegistry.BAMBOO_KITCHEN_SINK.get());
                 output.accept(ObjectRegistry.BAMBOO_COUNTER.get());
                 output.accept(ObjectRegistry.BAMBOO_CABINET.get());

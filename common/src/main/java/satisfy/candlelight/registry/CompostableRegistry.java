@@ -5,16 +5,8 @@ import net.minecraft.world.level.block.ComposterBlock;
 public class CompostableRegistry {
 
     public static void init() {
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_SEEDS.get().asItem(), .2f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.LETTUCE_CROP.get().asItem(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO_SEEDS.get().asItem(), .2f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO_CROP.get().asItem().asItem(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.ROSE.get().asItem(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BUTTER.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.MOZZARELLA.get(), .3f);
-        ComposterBlock.COMPOSTABLES.put(ObjectRegistry.DOUGH.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.TOMATO_SOUP.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.MUSHROOM_SOUP.get(), .3f);
         ComposterBlock.COMPOSTABLES.put(ObjectRegistry.BEETROOT_SALAD.get(), .3f);

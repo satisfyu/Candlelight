@@ -16,13 +16,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.block.EffectFoodBlock;
-import satisfy.candlelight.item.food.EffectFood;
-import satisfy.candlelight.item.food.EffectFoodHelper;
+import satisfy.farm_and_charm.block.EffectFoodBlock;
+import satisfy.farm_and_charm.item.food.EffectFood;
+import satisfy.farm_and_charm.item.food.EffectFoodHelper;
 
 import java.util.List;
-
-import static satisfy.candlelight.block.EffectFoodBlock.BITES;
 
 public class EffectFoodBlockItem extends BlockItem implements EffectFood {
 
@@ -37,7 +35,7 @@ public class EffectFoodBlockItem extends BlockItem implements EffectFood {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext context) {
         BlockState blockState = this.getBlock().getStateForPlacement(context);
-        return blockState != null && this.canPlace(context, blockState) ? blockState.getBlock() instanceof EffectFoodBlock ? blockState.setValue(BITES , EffectFoodHelper.getStage(context.getItemInHand())) : blockState : null;
+        return blockState != null && this.canPlace(context, blockState) ? blockState.getBlock() instanceof EffectFoodBlock ? blockState.setValue(EffectFoodBlock.BITES , EffectFoodHelper.getStage(context.getItemInHand())) : blockState : null;
     }
 
     @Override

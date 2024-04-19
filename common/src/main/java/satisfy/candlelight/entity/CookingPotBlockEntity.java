@@ -1,6 +1,6 @@
 package satisfy.candlelight.entity;
 
-import de.cristelknight.doapi.common.entity.ImplementedInventory;
+import de.cristelknight.doapi.common.world.ImplementedInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -26,12 +26,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.CookingPotBlock;
 import satisfy.candlelight.client.gui.handler.CookingPotGuiHandler;
-import satisfy.candlelight.item.food.EffectFood;
-import satisfy.candlelight.item.food.EffectFoodHelper;
 import satisfy.candlelight.recipe.CookingPotRecipe;
 import satisfy.candlelight.registry.BlockEntityRegistry;
 import satisfy.candlelight.registry.RecipeTypeRegistry;
 import satisfy.candlelight.registry.TagsRegistry;
+import satisfy.farm_and_charm.item.food.EffectFood;
+import satisfy.farm_and_charm.item.food.EffectFoodHelper;
 
 import java.util.Objects;
 

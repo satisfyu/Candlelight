@@ -1,5 +1,6 @@
 package satisfy.candlelight.block;
 
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -42,7 +43,6 @@ import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.CookingPanBlockEntity;
 import satisfy.candlelight.registry.BlockEntityRegistry;
 import satisfy.candlelight.registry.SoundEventsRegistry;
-import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;

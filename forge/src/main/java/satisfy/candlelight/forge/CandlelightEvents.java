@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.Mod;
 import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.forge.registry.CandlelightForgeVillagers;
 import satisfy.candlelight.registry.ObjectRegistry;
-import satisfy.candlelight.util.VillagerUtil;
 
 import java.util.HashMap;
 import java.util.List;
