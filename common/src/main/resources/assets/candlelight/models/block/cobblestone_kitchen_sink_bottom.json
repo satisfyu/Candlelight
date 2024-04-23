@@ -1,10 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/cobblestone_sink_side",
-		"2": "candlelight:block/kitchen_hardware/cobblestone_sink_bottom",
-		"5": "candlelight:block/kitchen_hardware/sink_top",
-		"particle": "candlelight:block/kitchen_hardware/cobblestone_sink_side"
+		"1": "candlelight:block/cobblestone_sink_side",
+		"2": "candlelight:block/cobblestone_sink_bottom",
+		"5": "candlelight:block/sink_top",
+		"particle": "candlelight:block/cobblestone_sink_side"
 	},
 	"elements": [
 		{

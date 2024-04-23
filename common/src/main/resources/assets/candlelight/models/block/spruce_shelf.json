@@ -2,7 +2,7 @@
 	"credit": "Made by Satisfy",
 	"textures": {
 		"1": "candlelight:block/spruce_table_connected",
-		"2": "candlelight:block/kitchen_hardware/brick_stove_top",
+		"2": "candlelight:block/brick_stove_top",
 		"particle": "candlelight:block/spruce_table_connected"
 	},
 	"elements": [

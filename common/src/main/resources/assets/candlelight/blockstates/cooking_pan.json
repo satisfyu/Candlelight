@@ -33,34 +33,34 @@
     },
 
     "facing=east,lit=false,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking",
+      "model": "candlelight:block/cooking_pan",
       "y": 90
     },
     "facing=north,lit=false,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking"
+      "model": "candlelight:block/cooking_pan"
     },
     "facing=south,lit=false,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking",
+      "model": "candlelight:block/cooking_pan",
       "y": 180
     },
     "facing=west,lit=false,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking",
+      "model": "candlelight:block/cooking_pan",
       "y": 270
     },
 
     "facing=east,lit=true,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking",
+      "model": "candlelight:block/cooking_pan",
       "y": 90
     },
     "facing=north,lit=true,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking"
+      "model": "candlelight:block/cooking_pan"
     },
     "facing=south,lit=true,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking",
+      "model": "candlelight:block/cooking_pan",
       "y": 180
     },
     "facing=west,lit=true,cooking=true": {
-      "model": "candlelight:block/cooking_pan_cooking",
+      "model": "candlelight:block/cooking_pan",
       "y": 270
     }
   }

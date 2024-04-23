@@ -49,25 +49,27 @@ public class EffectFoodBlockItem extends BlockItem implements EffectFood {
             }
         }
 
-        int slot = -1;
-        Inventory playerInventory = null;
         if (user instanceof Player player && !player.isCreative()) {
-            playerInventory = player.getInventory();
-            slot = playerInventory.findSlotMatchingUnusedItem(stack);
-        }
-        ItemStack returnStack =  super.finishUsingItem(stack, world, user);
-        int stage = EffectFoodHelper.getStage(stack);
-        if (playerInventory != null && stage < this.foodStages) {
-            ItemStack itemStack = EffectFoodHelper.setStage(new ItemStack(this), stage + 1);
-            if (playerInventory.getItem(slot).isEmpty()) {
-                playerInventory.add(slot, itemStack);
+            Inventory playerInventory = player.getInventory();
+            int slot = playerInventory.findSlotMatchingUnusedItem(stack);
+            ItemStack returnStack =  super.finishUsingItem(stack, world, user);
+            int stage = EffectFoodHelper.getStage(stack);
+
+            if (stage < this.foodStages) {
+                ItemStack itemStack = EffectFoodHelper.setStage(new ItemStack(this), stage + 1);
+                if (slot != -1 && playerInventory.getItem(slot).isEmpty()) {
+                    playerInventory.setItem(slot, itemStack);
+                }
+                else {
+                    slot = playerInventory.getSlotWithRemainingSpace(itemStack);
+                    if (slot != -1) {
+                        playerInventory.setItem(slot, itemStack);
+                    }
+                }
             }
-            else {
-                slot = playerInventory.getSlotWithRemainingSpace(itemStack);
-                playerInventory.add(slot, itemStack);
-            }
+            return returnStack;
         }
-        return returnStack;
+        return super.finishUsingItem(stack, world, user);
     }
 
     @Override

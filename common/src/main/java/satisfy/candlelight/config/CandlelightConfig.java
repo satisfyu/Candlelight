@@ -6,15 +6,12 @@ import de.cristelknight.doapi.config.jankson.config.CommentedConfig;
 
 import java.util.HashMap;
 
-public record CandlelightConfig(boolean enableChefSetBonus, boolean enableCandlelightTomatoes, boolean enableCandlelightLettuce) implements CommentedConfig<CandlelightConfig> {
+public record CandlelightConfig(boolean enableChefSetBonus) implements CommentedConfig<CandlelightConfig> {
     private static CandlelightConfig INSTANCE;
 
     public static final Codec<CandlelightConfig> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.BOOL.fieldOf("enable_chef_armor_set_bonus").orElse(true).forGetter(CandlelightConfig::enableChefSetBonus),
-                    Codec.BOOL.fieldOf("enable_candlelight_tomatoes").orElse(true).forGetter(CandlelightConfig::enableCandlelightTomatoes),
-                    Codec.BOOL.fieldOf("enable_candlelight_lettuce").orElse(true).forGetter(CandlelightConfig::enableCandlelightLettuce)
-
+                    Codec.BOOL.fieldOf("enable_chef_armor_set_bonus").orElse(true).forGetter(CandlelightConfig::enableChefSetBonus)
             ).apply(instance, CandlelightConfig::new));
 
     public static CandlelightConfig getActiveInstance() {
@@ -25,7 +22,7 @@ public record CandlelightConfig(boolean enableChefSetBonus, boolean enableCandle
     }
 
     private static CandlelightConfig loadConfig() {
-        return new CandlelightConfig(true, true, true);
+        return new CandlelightConfig(true);
     }
 
     @Override
@@ -61,7 +58,7 @@ public record CandlelightConfig(boolean enableChefSetBonus, boolean enableCandle
 
     @Override
     public CandlelightConfig getDefault() {
-        return new CandlelightConfig(true, true, true);
+        return new CandlelightConfig(true);
     }
 
     @Override

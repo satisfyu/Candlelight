@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/red_nether_bricks_sink_side",
-		"2": "candlelight:block/kitchen_hardware/red_nether_bricks_sink_bottom",
+		"1": "candlelight:block/red_nether_bricks_sink_side",
+		"2": "candlelight:block/red_nether_bricks_sink_bottom",
 		"4": "candlelight:block/water_still",
-		"5": "candlelight:block/kitchen_hardware/red_nether_bricks_stove_top",
-		"particle": "candlelight:block/kitchen_hardware/red_nether_bricks_sink_side"
+		"5": "candlelight:block/red_nether_bricks_stove_top",
+		"particle": "candlelight:block/red_nether_bricks_sink_side"
 	},
 	"elements": [
 		{

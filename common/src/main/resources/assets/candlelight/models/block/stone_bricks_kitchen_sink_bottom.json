@@ -1,10 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/bricks_sink_side",
-		"5": "candlelight:block/kitchen_hardware/sink_top",
-		"6": "candlelight:block/kitchen_hardware/bricks_sink_bottom",
-		"particle": "candlelight:block/kitchen_hardware/bricks_sink_side"
+		"1": "candlelight:block/bricks_sink_side",
+		"5": "candlelight:block/sink_top",
+		"6": "candlelight:block/bricks_sink_bottom",
+		"particle": "candlelight:block/bricks_sink_side"
 	},
 	"elements": [
 		{

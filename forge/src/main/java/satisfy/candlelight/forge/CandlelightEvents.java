@@ -1,5 +1,6 @@
 package satisfy.candlelight.forge;
-
+/*
+import de.cristelknight.doapi.common.util.VillagerUtil;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,6 +12,7 @@ import satisfy.candlelight.registry.ObjectRegistry;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+//TODO
 
 public class CandlelightEvents {
 
@@ -60,3 +62,4 @@ public class CandlelightEvents {
         }
     }
 }
+*/

@@ -1,5 +1,6 @@
 package satisfy.candlelight.client.gui;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import dev.architectury.networking.NetworkManager;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.api.EnvType;
@@ -12,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import org.lwjgl.glfw.GLFW;
 import satisfy.candlelight.entity.TypeWriterEntity;
 import satisfy.candlelight.networking.CandlelightMessages;
-import satisfy.candlelight.registry.SoundEventsRegistry;
 
 @Environment(EnvType.CLIENT)
 public class TypeWriterGui extends NoteGui {
@@ -61,6 +61,6 @@ public class TypeWriterGui extends NoteGui {
     }
 
     private void playTypingSound() {
-        Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEventsRegistry.TYPEWRITER.get(), 1.2F));
+        Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(DoApiSoundEventRegistry.TYPEWRITER.get(), 2.0F));
     }
 }

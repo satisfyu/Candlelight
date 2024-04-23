@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/sandstone_sink_side",
-		"2": "candlelight:block/kitchen_hardware/sandstone_sink_bottom",
-		"3": "candlelight:block/kitchen_hardware/sandstone_stove_top",
+		"1": "candlelight:block/sandstone_sink_side",
+		"2": "candlelight:block/sandstone_sink_bottom",
+		"3": "candlelight:block/sandstone_stove_top",
 		"4": "candlelight:block/water_still",
-		"particle": "candlelight:block/kitchen_hardware/sandstone_sink_side"
+		"particle": "candlelight:block/sandstone_sink_side"
 	},
 	"elements": [
 		{

@@ -1,10 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/basalt_stove_side",
-		"2": "candlelight:block/kitchen_hardware/basalt_sink_bottom",
-		"5": "candlelight:block/kitchen_hardware/basalt_sink_top",
-		"particle": "candlelight:block/kitchen_hardware/basalt_stove_side"
+		"1": "candlelight:block/basalt_stove_side",
+		"2": "candlelight:block/basalt_sink_bottom",
+		"5": "candlelight:block/basalt_sink_top",
+		"particle": "candlelight:block/basalt_stove_side"
 	},
 	"elements": [
 		{

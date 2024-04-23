@@ -1,5 +1,5 @@
 {
-  "parent": "candlelight:main/place_chocolate",
+  "parent": "candlelight:main/root",
   "display": {
     "icon": {
       "item": "candlelight:salmon_wine"
@@ -113,18 +113,6 @@
           {
             "items": [
               "candlelight:lasagne"
-            ]
-          }
-        ]
-      }
-    },
-    "candlelight:pasta_raw": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "candlelight:pasta_raw"
             ]
           }
         ]
@@ -298,18 +286,6 @@
         ]
       }
     },
-    "candlelight:butter": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "candlelight:butter"
-            ]
-          }
-        ]
-      }
-    },
     "candlelight:lettuce_salad": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -329,18 +305,6 @@
           {
             "items": [
               "candlelight:mozzarella"
-            ]
-          }
-        ]
-      }
-    },
-    "candlelight:dough": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "candlelight:dough"
             ]
           }
         ]
@@ -409,9 +373,6 @@
       "candlelight:lasagne"
     ],
     [
-      "candlelight:pasta_raw"
-    ],
-    [
       "candlelight:tomato_soup"
     ],
     [
@@ -454,16 +415,10 @@
       "candlelight:beetroot_salad"
     ],
     [
-      "candlelight:butter"
-    ],
-    [
       "candlelight:lettuce_salad"
     ],
     [
       "candlelight:mozzarella"
-    ],
-    [
-      "candlelight:dough"
     ],
     [
       "candlelight:beef_tartare"

@@ -1,5 +1,6 @@
 package satisfy.candlelight.fabric.registry;
 
+import de.cristelknight.doapi.common.util.VillagerUtil;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerProfessionBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
@@ -14,7 +15,7 @@ import net.minecraft.world.entity.npc.VillagerProfession;
 import satisfy.candlelight.registry.ObjectRegistry;
 import satisfy.candlelight.util.CandlelightIdentifier;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings("deprecation, unused")
 public class VillagersFabric {
 
     private static final CandlelightIdentifier COOK_POI_IDENTIFIER = new CandlelightIdentifier("cook_poi");
@@ -41,7 +42,7 @@ public class VillagersFabric {
 
         TradeOfferHelper.registerVillagerOffers(COOK, 3, factories -> {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.TOMATO_SOUP.get(), 2, 1, 2));
-            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.PASTA_RAW.get(), 2, 2, 3));
+            factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.RAW_PASTA.get(), 2, 2, 3));
             factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.DOUGH.get(), 1, 3, 3));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.MUSHROOM_SOUP.get(), 1, 4, 2));
         });

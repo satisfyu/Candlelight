@@ -1,0 +1,20 @@
+{
+  "type": "farm_and_charm:roaster",
+  "ingredients": [
+    {
+      "tag": "candlelight:tomato_soups"
+    },
+    {
+      "tag": "candlelight:cooked_beef"
+    },
+    {
+      "tag": "candlelight:red_effect"
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "candlelight:bolognese"
+  }
+}

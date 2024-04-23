@@ -22,7 +22,6 @@ import satisfy.candlelight.config.CandlelightConfig;
 
 @SuppressWarnings("all")
 public class ClothConfigScreen {
-
     private static Screen lastScreen;
 
     public static Screen create(Screen parent) {
@@ -47,8 +46,7 @@ public class ClothConfigScreen {
         private final ConfigEntryBuilder builder;
         private final ConfigCategory category;
         private final BooleanListEntry enableChefSetBonus;
-        private final BooleanListEntry enableCandlelightTomatoes;
-        private final BooleanListEntry enableCandlelightLettuce;
+
 
         public ConfigEntries(ConfigEntryBuilder builder, CandlelightConfig config, ConfigCategory category) {
             this.builder = builder;
@@ -57,18 +55,13 @@ public class ClothConfigScreen {
             SubCategoryBuilder Chef = new SubCategoryBuilder(Component.empty(), Component.translatable("config.candlelight.subCategory.chef"));
             enableChefSetBonus = createBooleanField("enableChefSetBonus", config.enableChefSetBonus(), "Whether the chef armor should give a set bonus", Chef);
 
-            SubCategoryBuilder Crop = new SubCategoryBuilder(Component.empty(), Component.translatable("config.candlelight.subCategory.crops"));
-            enableCandlelightTomatoes = createBooleanField("enablecandlelighttomatoes", config.enableCandlelightTomatoes(), "Whether candlelight tomatoes should be enabled", Crop);
-            enableCandlelightLettuce = createBooleanField("enablecandlelightlettuce", config.enableCandlelightLettuce(), "Whether candlelight lettuce should be enabled", Crop);
-
             category.addEntry(Chef.build());
-            category.addEntry(Crop.build());
             linkButtons(Candlelight.MOD_ID, category, builder, "https://discord.gg/Vqu6wYZwdZ", "https://www.curseforge.com/minecraft/mc-mods/lets-do-candlelight", lastScreen);
         }
 
 
         public CandlelightConfig createConfig() {
-            return new CandlelightConfig(enableChefSetBonus.getValue(), enableCandlelightTomatoes.getValue(), enableCandlelightLettuce.getValue());
+            return new CandlelightConfig(enableChefSetBonus.getValue());
         }
 
 

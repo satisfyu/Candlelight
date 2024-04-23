@@ -1,0 +1,21 @@
+{
+  "type": "farm_and_charm:roaster",
+  "ingredients": [
+    {
+      "tag": "farm_and_charm:dough"
+    },
+    {
+      "tag": "farm_and_charm:butter"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "candlelight:pancake",
+    "count": 6
+  }
+}

@@ -1,8 +1,8 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"4": "candlelight:block/kitchen_hardware/quartz_stove_side",
-		"particle": "candlelight:block/kitchen_hardware/quartz_stove_side"
+		"4": "candlelight:block/quartz_stove_side",
+		"particle": "candlelight:block/quartz_stove_side"
 	},
 	"elements": [
 		{

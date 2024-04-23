@@ -115,18 +115,6 @@
         ]
       }
     },
-    "candlelight:pasta_raw": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "candlelight:pasta_raw"
-            ]
-          }
-        ]
-      }
-    },
     "candlelight:tomato_soup": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -164,9 +152,6 @@
     ],
     [
       "candlelight:lasagne"
-    ],
-    [
-      "candlelight:pasta_raw"
     ],
     [
       "candlelight:tomato_soup"

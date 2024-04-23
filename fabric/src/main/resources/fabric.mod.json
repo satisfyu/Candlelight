@@ -24,12 +24,6 @@
     "doapi": [
       "satisfy.candlelight.util.DoAPIImpl"
     ],
-    "rei_client": [
-      "satisfy.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
-    ],
-    "jei_mod_plugin": [
-      "satisfy.candlelight.compat.jei.CandlelightJEIPlugin"
-    ],
     "modmenu": [
       "satisfy.candlelight.fabric.client.ModMenuConfig"
     ]

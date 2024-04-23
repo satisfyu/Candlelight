@@ -1,5 +1,6 @@
 package satisfy.candlelight.block;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
@@ -40,7 +41,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.CookingPotBlockEntity;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.candlelight.registry.SoundEventsRegistry;
 
 import java.util.HashMap;
 import java.util.List;
@@ -131,7 +131,7 @@ public class CookingPotBlock extends BaseEntityBlock {
             double e = pos.getY() + 0.7;
             double f = (double) pos.getZ() + 0.5;
             if (random.nextDouble() < 0.1) {
-                world.playLocalSound(d, e, f, SoundEventsRegistry.COOKING_POT_BOILING.get(), SoundSource.BLOCKS, 0.05F, 0.05F, false);
+                world.playLocalSound(d, e, f, DoApiSoundEventRegistry.COOKING_POT_BOILING.get(), SoundSource.BLOCKS, 0.05F, 0.05F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();

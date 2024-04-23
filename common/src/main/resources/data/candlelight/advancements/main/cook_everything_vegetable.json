@@ -1,5 +1,5 @@
 {
-  "parent": "candlelight:main/place_seeds",
+  "parent": "candlelight:main/place_stove",
   "display": {
     "icon": {
       "item": "candlelight:lettuce_salad"
@@ -43,18 +43,6 @@
         ]
       }
     },
-    "candlelight:butter": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "candlelight:butter"
-            ]
-          }
-        ]
-      }
-    },
     "candlelight:lettuce_salad": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -74,18 +62,6 @@
           {
             "items": [
               "candlelight:mozzarella"
-            ]
-          }
-        ]
-      }
-    },
-    "candlelight:dough": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "candlelight:dough"
             ]
           }
         ]
@@ -136,16 +112,10 @@
       "candlelight:beetroot_salad"
     ],
     [
-      "candlelight:butter"
-    ],
-    [
       "candlelight:lettuce_salad"
     ],
     [
       "candlelight:mozzarella"
-    ],
-    [
-      "candlelight:dough"
     ],
     [
       "candlelight:beef_tartare"

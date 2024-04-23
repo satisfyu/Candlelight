@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#candlelight:spawns_tomatoes",
-  "features": "candlelight:tomatoes_patch_chance",
-  "step": "vegetal_decoration"
-}

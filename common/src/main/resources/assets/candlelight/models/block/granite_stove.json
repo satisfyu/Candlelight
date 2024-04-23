@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/kitchen_hardware/granite_stove_side",
-		"4": "candlelight:block/kitchen_hardware/granite_stove_bottom",
-		"5": "candlelight:block/kitchen_hardware/granite_stove_front",
-		"6": "candlelight:block/kitchen_hardware/brick_stove_top",
-		"particle": "candlelight:block/kitchen_hardware/granite_stove_side"
+		"1": "candlelight:block/granite_stove_side",
+		"4": "candlelight:block/granite_stove_bottom",
+		"5": "candlelight:block/granite_woodfiredoven_front",
+		"6": "candlelight:block/wood_fired_oven_top",
+		"particle": "candlelight:block/granite_stove_side"
 	},
 	"elements": [
 		{

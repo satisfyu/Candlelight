@@ -1,9 +1,9 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"0": "candlelight:block/kitchen_hardware/end_stove_side",
-		"1": "candlelight:block/kitchen_hardware/end_counter_top",
-		"particle": "candlelight:block/kitchen_hardware/end_stove_side"
+		"0": "candlelight:block/end_stove_side",
+		"1": "candlelight:block/end_counter_top",
+		"particle": "candlelight:block/end_stove_side"
 	},
 	"elements": [
 		{

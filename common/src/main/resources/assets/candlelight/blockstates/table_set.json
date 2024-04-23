@@ -1,39 +1,33 @@
 {
   "variants": {
-    "facing=east,plate=all":
-    { "model": "candlelight:block/table_set_complete",  "y": 90},
-    "facing=north,plate=all":
-    { "model": "candlelight:block/table_set_complete"},
-    "facing=south,plate=all":
-    { "model": "candlelight:block/table_set_complete",  "y": 180},
-    "facing=west,plate=all":
-    { "model": "candlelight:block/table_set_complete",  "y": 270},
+    "facing=east,plate=all": { "model": "candlelight:block/table_set_complete", "y": 90 },
+    "facing=north,plate=all": { "model": "candlelight:block/table_set_complete" },
+    "facing=south,plate=all": { "model": "candlelight:block/table_set_complete", "y": 180 },
+    "facing=west,plate=all": { "model": "candlelight:block/table_set_complete", "y": 270 },
 
-    "facing=east,plate=glass":
-    { "model": "candlelight:block/table_set_wine_glass",  "y": 90},
-    "facing=north,plate=glass":
-    { "model": "candlelight:block/table_set_wine_glass"},
-    "facing=south,plate=glass":
-    { "model": "candlelight:block/table_set_wine_glass",  "y": 180},
-    "facing=west,plate=glass":
-    { "model": "candlelight:block/table_set_wine_glass",  "y": 270},
+    "facing=east,plate=glass": { "model": "candlelight:block/table_set_wine_glass", "y": 90 },
+    "facing=north,plate=glass": { "model": "candlelight:block/table_set_wine_glass" },
+    "facing=south,plate=glass": { "model": "candlelight:block/table_set_wine_glass", "y": 180 },
+    "facing=west,plate=glass": { "model": "candlelight:block/table_set_wine_glass", "y": 270 },
 
-    "facing=east,plate=napkin":
-    { "model": "candlelight:block/table_set_napkin",  "y": 90},
-    "facing=north,plate=napkin":
-    { "model": "candlelight:block/table_set_napkin"},
-    "facing=south,plate=napkin":
-    { "model": "candlelight:block/table_set_napkin",  "y": 180},
-    "facing=west,plate=napkin":
-    { "model": "candlelight:block/table_set_napkin",  "y": 270},
+    "facing=east,plate=napkin": { "model": "candlelight:block/table_set_napkin", "y": 90 },
+    "facing=north,plate=napkin": { "model": "candlelight:block/table_set_napkin" },
+    "facing=south,plate=napkin": { "model": "candlelight:block/table_set_napkin", "y": 180 },
+    "facing=west,plate=napkin": { "model": "candlelight:block/table_set_napkin", "y": 270 },
 
-    "facing=east,plate=plate":
-    { "model": "candlelight:block/table_set",  "y": 90},
-    "facing=north,plate=plate":
-    { "model": "candlelight:block/table_set"},
-    "facing=south,plate=plate":
-    { "model": "candlelight:block/table_set",  "y": 180},
-    "facing=west,plate=plate":
-    { "model": "candlelight:block/table_set",  "y": 270}
+    "facing=east,plate=plate": { "model": "candlelight:block/table_set", "y": 90 },
+    "facing=north,plate=plate": { "model": "candlelight:block/table_set" },
+    "facing=south,plate=plate": { "model": "candlelight:block/table_set", "y": 180 },
+    "facing=west,plate=plate": { "model": "candlelight:block/table_set", "y": 270 },
+
+    "facing=east,plate=drinking_glass": { "model": "candlelight:block/table_set_drinking_glass", "y": 90 },
+    "facing=north,plate=drinking_glass": { "model": "candlelight:block/table_set_drinking_glass" },
+    "facing=south,plate=drinking_glass": { "model": "candlelight:block/table_set_drinking_glass", "y": 180 },
+    "facing=west,plate=drinking_glass": { "model": "candlelight:block/table_set_drinking_glass", "y": 270 },
+
+    "facing=east,plate=cloche": { "model": "candlelight:block/table_set_cloche", "y": 90 },
+    "facing=north,plate=cloche": { "model": "candlelight:block/table_set_cloche" },
+    "facing=south,plate=cloche": { "model": "candlelight:block/table_set_cloche", "y": 180 },
+    "facing=west,plate=cloche": { "model": "candlelight:block/table_set_cloche", "y": 270 }
   }
 }

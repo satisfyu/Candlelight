@@ -41,7 +41,7 @@ import satisfy.candlelight.registry.StorageTypesRegistry;
 
 import java.util.List;
 
-@SuppressWarnings("all")
+@SuppressWarnings("deprecation")
 public class TableSetBlock extends StorageBlock {
     public static final EnumProperty<PlateType> PLATE_TYPE = EnumProperty.create("plate", PlateType.class);
     private final boolean useBowlShape;
@@ -71,7 +71,7 @@ public class TableSetBlock extends StorageBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         Direction direction = state.getValue(FACING);
         if (this.useBowlShape) {
             return rotateShape(direction, makeBowlShape());
@@ -106,24 +106,43 @@ public class TableSetBlock extends StorageBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
         Item item = stack.getItem();
         PlateType type = state.getValue(PLATE_TYPE);
         if(stack.isEmpty() && player.isShiftKeyDown()) world.destroyBlock(pos, true, player);
         else if(type == PlateType.ALL) return super.use(state, world, pos, player, hand, hit);
+        else if(type == PlateType.GLASS && item.equals(ObjectRegistry.CLOCHE.get())){
+            if(!world.isClientSide()){
+                world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.NAPKIN));
+                if (!player.isCreative()) stack.shrink(1);
+            }
+            return InteractionResult.sidedSuccess(world.isClientSide());
+        }
         else if(type != PlateType.GLASS && item.equals(ObjectRegistry.GLASS.get())){
             if(!world.isClientSide()){
-                if(type == PlateType.PLATE) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.GLASS));
-                else world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.ALL));
+                world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.GLASS));
+                if (!player.isCreative()) stack.shrink(1);
+            }
+            return InteractionResult.sidedSuccess(world.isClientSide());
+        }
+        else if(type != PlateType.DRINKING_GLASS && item.equals(ObjectRegistry.DRINKING_GLASS.get())){
+            if(!world.isClientSide()){
+                world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.DRINKING_GLASS));
+                if (!player.isCreative()) stack.shrink(1);
+            }
+            return InteractionResult.sidedSuccess(world.isClientSide());
+        }
+        else if(type != PlateType.CLOCHE && item.equals(ObjectRegistry.CLOCHE.get())){
+            if(!world.isClientSide()){
+                world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.CLOCHE));
                 if (!player.isCreative()) stack.shrink(1);
             }
             return InteractionResult.sidedSuccess(world.isClientSide());
         }
         else if(type != PlateType.NAPKIN && item.equals(ObjectRegistry.NAPKIN.get())){
             if(!world.isClientSide()){
-                if(type == PlateType.PLATE) world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.NAPKIN));
-                else world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.ALL));
+                world.setBlockAndUpdate(pos, state.setValue(PLATE_TYPE, PlateType.NAPKIN));
                 if (!player.isCreative()) stack.shrink(1);
             }
             return InteractionResult.sidedSuccess(world.isClientSide());
@@ -134,19 +153,22 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public void remove(Level world, BlockPos blockPos, Player player, StorageBlockEntity shelfBlockEntity, int i) {
-        if (!world.isClientSide()) {
-            ItemStack itemStack = shelfBlockEntity.removeStack(i);
-            SoundEvent soundEvent = SoundEvents.GENERIC_EAT;
-            world.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (itemStack.isEdible()) {
-                FoodProperties foodComponent = itemStack.getItem().getFoodProperties();
-                assert foodComponent != null;
-                player.getFoodData().eat(Math.round(foodComponent.getNutrition() * 1.3f), foodComponent.getSaturationModifier() * 1.3f);
-                List<Pair<MobEffectInstance, Float>> list = foodComponent.getEffects();
-                for (Pair<MobEffectInstance, Float> pair : list) {
-                    if (pair.getFirst() == null || !(world.random.nextFloat() < pair.getSecond()))
-                        continue;
-                    player.addEffect(new MobEffectInstance(pair.getFirst()));
+        BlockState state = world.getBlockState(blockPos);
+        if (state.getValue(PLATE_TYPE) != PlateType.CLOCHE) {
+            if (!world.isClientSide()) {
+                ItemStack itemStack = shelfBlockEntity.removeStack(i);
+                SoundEvent soundEvent = SoundEvents.GENERIC_EAT;
+                world.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (itemStack.isEdible()) {
+                    FoodProperties foodComponent = itemStack.getItem().getFoodProperties();
+                    assert foodComponent != null;
+                    player.getFoodData().eat(Math.round(foodComponent.getNutrition() * 1.3f), foodComponent.getSaturationModifier() * 1.3f);
+                    List<Pair<MobEffectInstance, Float>> list = foodComponent.getEffects();
+                    for (Pair<MobEffectInstance, Float> pair : list) {
+                        if (pair.getFirst() == null || !(world.random.nextFloat() < pair.getSecond()))
+                            continue;
+                        player.addEffect(new MobEffectInstance(pair.getFirst()));
+                    }
                 }
             }
         }
@@ -208,6 +230,8 @@ public class TableSetBlock extends StorageBlock {
     private enum PlateType implements StringRepresentable {
         PLATE("plate"),
         GLASS("glass"),
+        DRINKING_GLASS("drinking_glass"),
+        CLOCHE("cloche"),
         NAPKIN("napkin"),
         ALL("all");
         private final String name;

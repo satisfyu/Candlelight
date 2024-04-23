@@ -25,13 +25,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.CookingPanBlock;
-import satisfy.candlelight.client.gui.handler.CookingPanGuiHandler;
-import satisfy.candlelight.recipe.CookingPanRecipe;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.candlelight.registry.RecipeTypeRegistry;
 import satisfy.candlelight.registry.TagsRegistry;
+import satisfy.farm_and_charm.client.gui.handler.CookingPotGuiHandler;
 import satisfy.farm_and_charm.item.food.EffectFood;
 import satisfy.farm_and_charm.item.food.EffectFoodHelper;
+import satisfy.farm_and_charm.recipe.CookingPotRecipe;
+import satisfy.farm_and_charm.registry.RecipeTypeRegistry;
 
 import java.util.Objects;
 
@@ -120,7 +120,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 		if (recipe == null || recipe.getResultItem(access).isEmpty()) {
 			return false;
 		}
-		if(recipe instanceof CookingPanRecipe cookingPanRecipe){
+		if(recipe instanceof CookingPotRecipe cookingPanRecipe){
 			if (!this.getItem(BOTTLE_INPUT_SLOT).is(cookingPanRecipe.getContainer().getItem())) {
 				return false;
 			} else if (this.getItem(OUTPUT_SLOT).isEmpty()) {
@@ -223,7 +223,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 			}
 			return;
 		}
-		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_PAN_RECIPE_TYPE.get(), this, world).orElse(null);
+		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
         assert level != null;
         RegistryAccess access = level.registryAccess();
 		boolean canCraft = this.canCraft(recipe, access);
@@ -270,7 +270,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 	@Nullable
 	@Override
 	public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
-		return new CookingPanGuiHandler(syncId, inv, this, this.delegate);
+		return new CookingPotGuiHandler(syncId, inv, this, this.delegate);
 	}
 }
 

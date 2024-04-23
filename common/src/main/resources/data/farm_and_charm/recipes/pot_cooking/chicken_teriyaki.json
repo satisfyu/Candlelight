@@ -1,0 +1,22 @@
+{
+  "type": "farm_and_charm:pot_cooking",
+  "ingredients": [
+    {
+      "item": "candlelight:veggie_plate"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "tag": "farm_and_charm:cabbage"
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "candlelight:chicken_teriyaki",
+    "count": 4,
+    "experience": 0.4
+  }
+}

@@ -2,7 +2,7 @@
 	"credit": "Made by Satisfy",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"2": "candlelight:block/kitchen_hardware/brick_stove_top",
+		"2": "candlelight:block/brick_stove_top",
 		"3": "candlelight:block/table_cloth_side",
 		"4": "candlelight:block/sideboard_back",
 		"5": "candlelight:block/lantern_e",

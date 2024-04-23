@@ -3,7 +3,6 @@ package satisfy.candlelight.block;
 import de.cristelknight.doapi.common.block.StorageBlock;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -28,31 +27,27 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.registry.StorageTypesRegistry;
 import satisfy.candlelight.registry.TagsRegistry;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class JewelryBoxBlock extends StorageBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
+    private static final VoxelShape SHAPE = Block.box(5, 0, 5, 11, 5, 11);
 
     public JewelryBoxBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
     }
 
-
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (world.isClientSide) return InteractionResult.SUCCESS;
         if (player.isShiftKeyDown() && blockEntity instanceof StorageBlockEntity) {
@@ -130,28 +125,6 @@ public class JewelryBoxBlock extends StorageBlock {
         builder.add(FACING, OPEN);
     }
 
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.or(shape, Shapes.box(0.3125, 0, 0.3125, 0.6875, 0.125, 0.6875));
-        shape = Shapes.or(shape, Shapes.box(0.625, 0.125, 0.3125, 0.6875, 0.1875, 0.6875));
-        shape = Shapes.or(shape, Shapes.box(0.3125, 0, 0.3125, 0.6875, 0.125, 0.6875));
-        shape = Shapes.or(shape, Shapes.box(0.375, 0.125, 0.3125, 0.625, 0.1875, 0.375));
-        shape = Shapes.or(shape, Shapes.box(0.375, 0.125, 0.3125, 0.625, 0.1875, 0.375));
-
-        return shape;
-    };
-
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
-
-    @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE.get(state.getValue(FACING));
-    }
-
     @Override
     public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
@@ -160,6 +133,11 @@ public class JewelryBoxBlock extends StorageBlock {
     @Override
     public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 
     @Override

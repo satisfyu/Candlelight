@@ -1,5 +1,6 @@
 package satisfy.candlelight.event;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.PlayerEvent;
 import net.minecraft.sounds.SoundSource;
@@ -14,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.registry.ObjectRegistry;
-import satisfy.candlelight.registry.SoundEventsRegistry;
 import net.minecraft.world.entity.EquipmentSlot;
 import java.util.UUID;
 
@@ -28,7 +28,7 @@ public class CommonEvents {
     public static EventResult attack(Player player, Level level, Entity target, InteractionHand hand, @Nullable EntityHitResult result) {
         ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.is(ObjectRegistry.COOKING_PAN_ITEM.get())) {
-            level.playSound(null, target.getX(), target.getY(), target.getZ(), SoundEventsRegistry.COOKING_PAN_HIT.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            level.playSound(null, target.getX(), target.getY(), target.getZ(), DoApiSoundEventRegistry.COOKING_POT_HIT.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             target.hurt(level.damageSources().generic(), 5.0F);
             itemStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
 

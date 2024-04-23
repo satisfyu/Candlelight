@@ -1,11 +1,11 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"2": "candlelight:block/kitchen_hardware/deepslate_sink_top",
+		"2": "candlelight:block/deepslate_sink_top",
 		"3": "candlelight:block/water_still",
-		"4": "candlelight:block/kitchen_hardware/deepslate_stove_side",
-		"5": "candlelight:block/kitchen_hardware/deeplsate_stove_stove_bottom",
-		"particle": "candlelight:block/kitchen_hardware/deepslate_stove_side"
+		"4": "candlelight:block/deepslate_stove_side",
+		"5": "candlelight:block/deeplsate_stove_stove_bottom",
+		"particle": "candlelight:block/deepslate_stove_side"
 	},
 	"elements": [
 		{

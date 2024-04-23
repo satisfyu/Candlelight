@@ -11,14 +11,11 @@ public class Candlelight {
     public static final String MOD_ID = "candlelight";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-
     public static void init() {
         CandlelightConfig.getActiveInstance().getConfig();
-        RecipeTypeRegistry.init();
         ObjectRegistry.init();
         ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
-        SoundEventsRegistry.init();
         CommonEvents.init();
         TabRegistry.init();
         CandlelightMessages.registerC2SPackets();

@@ -11,6 +11,18 @@
     },
     "stack=4": {
       "model": "candlelight:block/drinking_glass_4"
+    },
+    "stack=5": {
+      "model": "candlelight:block/drinking_glass_1"
+    },
+    "stack=6": {
+      "model": "candlelight:block/drinking_glass_2"
+    },
+    "stack=7": {
+      "model": "candlelight:block/drinking_glass_3"
+    },
+    "stack=8": {
+      "model": "candlelight:block/drinking_glass_4"
     }
   }
 }

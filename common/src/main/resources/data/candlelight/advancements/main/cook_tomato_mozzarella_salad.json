@@ -1,5 +1,5 @@
 {
-  "parent": "candlelight:main/place_seeds",
+  "parent": "candlelight:main/place_stove",
   "criteria": {
     "tomato_mozzarella_salad": {
       "conditions": {

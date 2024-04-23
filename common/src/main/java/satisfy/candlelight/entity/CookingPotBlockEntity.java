@@ -25,13 +25,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.CookingPotBlock;
-import satisfy.candlelight.client.gui.handler.CookingPotGuiHandler;
-import satisfy.candlelight.recipe.CookingPotRecipe;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.candlelight.registry.RecipeTypeRegistry;
 import satisfy.candlelight.registry.TagsRegistry;
+import satisfy.farm_and_charm.client.gui.handler.CookingPotGuiHandler;
 import satisfy.farm_and_charm.item.food.EffectFood;
 import satisfy.farm_and_charm.item.food.EffectFoodHelper;
+import satisfy.farm_and_charm.recipe.CookingPotRecipe;
+import satisfy.farm_and_charm.registry.RecipeTypeRegistry;
 
 import java.util.Objects;
 
