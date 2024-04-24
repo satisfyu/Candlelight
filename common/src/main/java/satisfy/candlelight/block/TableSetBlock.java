@@ -37,7 +37,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.registry.ObjectRegistry;
-import satisfy.candlelight.registry.StorageTypesRegistry;
+import satisfy.candlelight.registry.StorageTypeRegistry;
 
 import java.util.List;
 
@@ -181,7 +181,7 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return StorageTypesRegistry.TABLE_BOWL;
+        return StorageTypeRegistry.TABLE_BOWL;
     }
 
     @Override

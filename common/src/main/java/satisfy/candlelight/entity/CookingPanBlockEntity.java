@@ -26,12 +26,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.CookingPanBlock;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.candlelight.registry.TagsRegistry;
 import satisfy.farm_and_charm.client.gui.handler.CookingPotGuiHandler;
 import satisfy.farm_and_charm.item.food.EffectFood;
 import satisfy.farm_and_charm.item.food.EffectFoodHelper;
 import satisfy.farm_and_charm.recipe.CookingPotRecipe;
 import satisfy.farm_and_charm.registry.RecipeTypeRegistry;
+import satisfy.farm_and_charm.registry.TagRegistry;
 
 import java.util.Objects;
 
@@ -106,7 +106,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 		if (this.level == null)
 			throw new NullPointerException("Null world invoked");
 		final BlockState belowState = this.level.getBlockState(this.getBlockPos().below());
-		if (belowState.is(TagsRegistry.ALLOWS_COOKING)) {
+		if (belowState.is(TagRegistry.ALLOWS_COOKING)) {
 			try {
 				return belowState.getValue(BlockStateProperties.LIT);
 			} catch (IllegalArgumentException e) {
@@ -237,9 +237,9 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 			this.cookingTime = 0;
 		}
 		if (canCraft) {
-			world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPanBlock.COOKING, true).setValue(CookingPanBlock.LIT, true), Block.UPDATE_ALL);
-		} else if (state.getValue(CookingPanBlock.COOKING)) {
-			world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPanBlock.COOKING, false).setValue(CookingPanBlock.LIT, true), Block.UPDATE_ALL);
+			world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPanBlock.LIT, true).setValue(CookingPanBlock.LIT, true), Block.UPDATE_ALL);
+		} else if (state.getValue(CookingPanBlock.LIT)) {
+			world.setBlock(pos, this.getBlockState().getBlock().defaultBlockState().setValue(CookingPanBlock.LIT, false).setValue(CookingPanBlock.LIT, true), Block.UPDATE_ALL);
 		}
 		else if(state.getValue(CookingPanBlock.LIT) != this.isBeingBurned){
 			world.setBlock(pos, state.setValue(CookingPanBlock.LIT, this.isBeingBurned), Block.UPDATE_ALL);

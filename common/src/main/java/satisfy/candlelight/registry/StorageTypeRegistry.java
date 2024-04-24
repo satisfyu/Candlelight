@@ -6,7 +6,7 @@ import satisfy.candlelight.util.CandlelightIdentifier;
 
 import java.util.Set;
 
-public class StorageTypesRegistry {
+public class StorageTypeRegistry {
     public static final ResourceLocation SHELF = new CandlelightIdentifier("shelf");
     public static final ResourceLocation TABLE_BOWL = new CandlelightIdentifier("table_bowl");
     public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");

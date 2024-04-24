@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import satisfy.candlelight.registry.ArmorRegistry;
-import satisfy.candlelight.registry.StorageTypesRegistry;
+import satisfy.candlelight.registry.StorageTypeRegistry;
 
 import java.util.Map;
 import java.util.Set;
@@ -19,7 +19,7 @@ public class DoAPIImpl implements DoApiAPI {
 
     @Override
     public void registerBlocks(Set<Block> blocks) {
-        StorageTypesRegistry.registerBlocks(blocks);
+        StorageTypeRegistry.registerBlocks(blocks);
     }
 
     @Override

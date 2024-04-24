@@ -15,25 +15,27 @@ import satisfy.candlelight.client.model.DinnerBellModel;
 import satisfy.candlelight.client.render.DinnerBellRenderer;
 import satisfy.candlelight.registry.ArmorRegistry;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.candlelight.registry.ObjectRegistry;
 import satisfy.candlelight.registry.ScreenHandlerTypeRegistry;
+
+import static satisfy.candlelight.registry.ObjectRegistry.*;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
 
     public static void initClient() {
-        RenderTypeRegistry.register(RenderType.cutout(), ObjectRegistry.ROSE.get(), ObjectRegistry.POTTED_ROSE.get(), ObjectRegistry.DRINKING_GLASS_BLOCK.get(),
-                ObjectRegistry.OAK_CHAIR.get(), ObjectRegistry.DARK_OAK_CHAIR.get(), ObjectRegistry.SPRUCE_CHAIR.get(), ObjectRegistry.WARPED_CHAIR.get(),
-                ObjectRegistry.BIRCH_CHAIR.get(), ObjectRegistry.MANGROVE_CHAIR.get(), ObjectRegistry.ACACIA_CHAIR.get(), ObjectRegistry.CRIMSON_CHAIR.get(),
-                ObjectRegistry.JUNGLE_CHAIR.get(), ObjectRegistry.OAK_TABLE.get(), ObjectRegistry.ACACIA_TABLE.get(), ObjectRegistry.DARK_OAK_TABLE.get(),
-                ObjectRegistry.BIRCH_TABLE.get(), ObjectRegistry.SPRUCE_TABLE.get(), ObjectRegistry.JUNGLE_TABLE.get(), ObjectRegistry.MANGROVE_TABLE.get(),
-                ObjectRegistry.WARPED_TABLE.get(), ObjectRegistry.CRIMSON_TABLE.get(), ObjectRegistry.CHAIR.get(), ObjectRegistry.TABLE.get(), ObjectRegistry.BAMBOO_CHAIR.get(),
-                ObjectRegistry.BAMBOO_TABLE.get(), ObjectRegistry.CHERRY_TABLE.get(), ObjectRegistry.CHERRY_CHAIR.get(), ObjectRegistry.GLASS_BLOCK.get()
+        RenderTypeRegistry.register(RenderType.cutout(), ROSE.get(), POTTED_ROSE.get(), DRINKING_GLASS_BLOCK.get(),
+                OAK_CHAIR.get(), DARK_OAK_CHAIR.get(), SPRUCE_CHAIR.get(), WARPED_CHAIR.get(),
+                BIRCH_CHAIR.get(), MANGROVE_CHAIR.get(), ACACIA_CHAIR.get(), CRIMSON_CHAIR.get(),
+                JUNGLE_CHAIR.get(), OAK_TABLE.get(), ACACIA_TABLE.get(), DARK_OAK_TABLE.get(),
+                BIRCH_TABLE.get(), SPRUCE_TABLE.get(), JUNGLE_TABLE.get(), MANGROVE_TABLE.get(),
+                WARPED_TABLE.get(), CRIMSON_TABLE.get(), CHAIR.get(), TABLE.get(), BAMBOO_CHAIR.get(),
+                BAMBOO_TABLE.get(), CHERRY_TABLE.get(), CHERRY_CHAIR.get(), GLASS_BLOCK.get(),
+                COOKING_POT.get(), COOKING_PAN.get()
         );
 
         ClientStorageTypes.init();
         BlockEntityRendererRegistry.register(BlockEntityRegistry.DINNER_BELL_BLOCK_ENTITY.get(), DinnerBellRenderer::new);
-        RenderTypeRegistry.register(RenderType.translucent(), ObjectRegistry.TABLE_BOWL.get(), ObjectRegistry.GLASS_BLOCK.get(), ObjectRegistry.TABLE_SET.get(), ObjectRegistry.DRINKING_GLASS_BLOCK.get());
+        RenderTypeRegistry.register(RenderType.translucent(), TABLE_BOWL.get(), GLASS_BLOCK.get(), TABLE_SET.get(), DRINKING_GLASS_BLOCK.get());
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
 
         initColorItems();
@@ -44,10 +46,10 @@ public class CandlelightClient {
     }
 
     private static void initColorItems() {
-        GeneralUtil.registerColorArmor(ObjectRegistry.COOKING_HAT.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(ObjectRegistry.CHEFS_JACKET.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(ObjectRegistry.CHEFS_PANTS.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(ObjectRegistry.CHEFS_BOOTS.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(COOKING_HAT.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(CHEFS_JACKET.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(CHEFS_PANTS.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(CHEFS_BOOTS.get(), 0xFFFFFFFF);
     }
 
     public static void registerEntityModelLayer() {

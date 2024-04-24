@@ -1,8 +1,5 @@
 {
-	"credit": "Made by Satisfy",
-	"textures": {
-		"particle": "minecraft:block/iron_block"
-	},
-	"render_type": "translucent"
+  "textures": {
+    "particle": "minecraft:block/oak_planks"
+  }
 }
-

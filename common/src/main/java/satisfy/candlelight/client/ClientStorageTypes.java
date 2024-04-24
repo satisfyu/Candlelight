@@ -7,7 +7,7 @@ import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.client.render.JewelryRenderer;
 import satisfy.candlelight.client.render.ShelfRenderer;
 import satisfy.candlelight.client.render.TableSetRenderer;
-import satisfy.candlelight.registry.StorageTypesRegistry;
+import satisfy.candlelight.registry.StorageTypeRegistry;
 
 public class ClientStorageTypes {
     public static void registerStorageType(ResourceLocation location, StorageTypeRenderer renderer){
@@ -16,9 +16,9 @@ public class ClientStorageTypes {
 
     public static void init(){
         Candlelight.LOGGER.debug("Registering Storage Block Renderers!");
-        registerStorageType(StorageTypesRegistry.TABLE_BOWL, new TableSetRenderer());
-        registerStorageType(StorageTypesRegistry.TABLE_SET, new TableSetRenderer());
-        registerStorageType(StorageTypesRegistry.SHELF, new ShelfRenderer());
-        registerStorageType(StorageTypesRegistry.JEWELRY_BOX, new JewelryRenderer());
+        registerStorageType(StorageTypeRegistry.TABLE_BOWL, new TableSetRenderer());
+        registerStorageType(StorageTypeRegistry.TABLE_SET, new TableSetRenderer());
+        registerStorageType(StorageTypeRegistry.SHELF, new ShelfRenderer());
+        registerStorageType(StorageTypeRegistry.JEWELRY_BOX, new JewelryRenderer());
     }
 }

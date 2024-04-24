@@ -23,8 +23,8 @@ public class DinnerBellBlockEntity extends BlockEntity {
     @SuppressWarnings("unused")
     public static void clientTick(Level level, BlockPos pos, BlockState state, DinnerBellBlockEntity blockEntity) {
         if (blockEntity.ringed) {
-            if (blockEntity.ticks < 20) {
-                blockEntity.yOffset = -0.02f * (1.0f - (float)Math.cos(Math.PI * blockEntity.ticks / 20.0f));
+            if (blockEntity.ticks < 10) {
+                blockEntity.yOffset = -0.04f * (1.0f - (float)Math.cos(Math.PI * blockEntity.ticks / 10.0f));
             } else {
                 blockEntity.yOffset = 0.0f;
                 blockEntity.ringed = false;

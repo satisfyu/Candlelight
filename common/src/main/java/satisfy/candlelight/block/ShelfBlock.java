@@ -22,7 +22,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.registry.StorageTypesRegistry;
+import satisfy.candlelight.registry.StorageTypeRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -90,7 +90,7 @@ public class ShelfBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return StorageTypesRegistry.SHELF;
+        return StorageTypeRegistry.SHELF;
     }
 
     @Override

@@ -28,7 +28,6 @@ import satisfy.candlelight.item.armor.CookingHatItem;
 import satisfy.candlelight.util.CandlelightFoods;
 import satisfy.candlelight.util.CandlelightIdentifier;
 import satisfy.farm_and_charm.block.EffectFoodBlock;
-import satisfy.farm_and_charm.block.StoveBlock;
 import satisfy.farm_and_charm.item.food.EffectFoodItem;
 
 import java.util.Objects;
@@ -52,7 +51,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> LAMP = registerWithItem("lamp", () -> new LampBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).lightLevel(s -> s.getValue(LampBlock.LUMINANCE) ? 15 : 0).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> SIDE_TABLE = registerWithItem("side_table", () -> new SideTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistrySupplier<Block> DINNER_BELL = registerWithItem("dinner_bell", () -> new DinnerBellBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
-    public static final RegistrySupplier<Block> COOKING_POT = registerWithItem("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final RegistrySupplier<Block> COOKING_POT = registerWithItem("cooking_pot", () -> new LargeCookingPotBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistrySupplier<Block> COOKING_PAN = registerWithoutItem("cooking_pan", () -> new CookingPanBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistrySupplier<Item> COOKING_PAN_ITEM = registerItem("cooking_pan", () -> new CookingPanItem(COOKING_PAN.get(), getSettings()));
     public static final RegistrySupplier<Block> TABLE_SET = registerWithItem("table_set", () -> new TableSetBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT), false));

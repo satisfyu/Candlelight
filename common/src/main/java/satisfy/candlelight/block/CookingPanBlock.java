@@ -10,11 +10,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +20,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -34,7 +33,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -51,6 +49,21 @@ import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public class CookingPanBlock extends BaseEntityBlock {
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty LIT = BooleanProperty.create("lit");
+    public static final IntegerProperty DAMAGE = IntegerProperty.create("damage", 0, 25);
+    public static final BooleanProperty NEEDS_SUPPORT = BooleanProperty.create("needs_support");
+
+    public CookingPanBlock(Properties settings) {
+        super(settings);
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, false).setValue(NEEDS_SUPPORT, false));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, LIT, DAMAGE, NEEDS_SUPPORT);
+    }
+
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.0625, 0.8125), BooleanOp.OR);
@@ -68,36 +81,17 @@ public class CookingPanBlock extends BaseEntityBlock {
         }
     });
 
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final BooleanProperty LIT = BooleanProperty.create("lit");
-    public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
-    public static final IntegerProperty DAMAGE = IntegerProperty.create("damage", 0, 25);
-
-    public CookingPanBlock(Properties settings) {
-        super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(COOKING, false).setValue(LIT, false));
-    }
-
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection());
-    }
-
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
-
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        final BlockEntity entity = world.getBlockEntity(pos);
-        if (entity instanceof MenuProvider factory) {
-            player.openMenu(factory);
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.use(state, world, pos, player, hand, hit);
+    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        super.neighborChanged(state, world, pos, block, fromPos, isMoving);
+        boolean hasSupport = world.getBlockState(pos.below()).is(BlockTags.CAMPFIRES);
+        if (state.getValue(NEEDS_SUPPORT) != hasSupport) {
+            world.setBlock(pos, state.setValue(NEEDS_SUPPORT, hasSupport), Block.UPDATE_ALL);
         }
     }
 
@@ -127,8 +121,35 @@ public class CookingPanBlock extends BaseEntityBlock {
     }
 
     @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        Level world = ctx.getLevel();
+        BlockPos pos = ctx.getClickedPos();
+        BlockState belowState = world.getBlockState(pos.below());
+        boolean needsSupport = belowState.is(BlockTags.CAMPFIRES);
+        return this.defaultBlockState()
+                .setValue(FACING, ctx.getHorizontalDirection().getOpposite()).setValue(NEEDS_SUPPORT, needsSupport);
+    }
+
+
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+        BlockPos belowPos = pos.below();
+        BlockState belowState = world.getBlockState(belowPos);
+        boolean isCampfireBelow = belowState.is(BlockTags.CAMPFIRES);
+        boolean isSolidBelow = belowState.isFaceSturdy(world, belowPos, Direction.UP);
+        return isCampfireBelow || isSolidBelow;
+    }
+
+    @Override
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        if (!state.canSurvive(world, pos)) {
+            world.destroyBlock(pos, true);
+        }
+    }
+
+    @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
-        if (state.getValue(COOKING) || state.getValue(LIT)) {
+        if (state.getValue(LIT)) {
             double d = (double) pos.getX() + 0.5;
             double e = pos.getY() + 0.7;
             double f = (double) pos.getZ() + 0.5;
@@ -143,11 +164,6 @@ public class CookingPanBlock extends BaseEntityBlock {
             double k = axis == Direction.Axis.Z ? (double) direction.getStepZ() * 0.0 : h;
             world.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         }
-    }
-    
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, COOKING, LIT, DAMAGE);
     }
 
     @Override

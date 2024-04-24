@@ -27,12 +27,13 @@ public class DinnerBellModel<T extends Entity> extends EntityModel<T> {
         PartDefinition partdefinition = meshdefinition.getRoot();
 
         PartDefinition dinner_bell_base = partdefinition.addOrReplaceChild("dinner_bell_base", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(4.0F, -24.0F, 4.0F, 8.0F, 2.0F, 8.0F, new CubeDeformation(0.0F)).mirror(false)
-                .texOffs(2, 2).mirror().addBox(5.0F, -22.0F, 5.0F, 6.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 24.0F, 0.0F));
+                .texOffs(0, 10).mirror().addBox(5.0F, -22.0F, 5.0F, 6.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-        PartDefinition dinner_bell_button = partdefinition.addOrReplaceChild("dinner_bell_button", CubeListBuilder.create().texOffs(6, 6).mirror().addBox(7.0F, -19.0F, 7.0F, 2.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 24.0F, 0.0F));
+        PartDefinition dinner_bell_button = partdefinition.addOrReplaceChild("dinner_bell_button", CubeListBuilder.create().texOffs(0, 0).mirror().addBox(7.0F, -19.0F, 7.0F, 2.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, 24.0F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
+
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

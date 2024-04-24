@@ -30,8 +30,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.registry.StorageTypesRegistry;
-import satisfy.candlelight.registry.TagsRegistry;
+import satisfy.candlelight.registry.StorageTypeRegistry;
+import satisfy.candlelight.registry.TagRegistry;
 
 import java.util.List;
 import java.util.Optional;
@@ -89,7 +89,7 @@ public class JewelryBoxBlock extends StorageBlock {
 
     @Override
     public ResourceLocation type() {
-        return StorageTypesRegistry.JEWELRY_BOX;
+        return StorageTypeRegistry.JEWELRY_BOX;
     }
 
     @Override
@@ -99,7 +99,7 @@ public class JewelryBoxBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.is(TagsRegistry.RINGS);
+        return stack.is(TagRegistry.RINGS);
     }
 
     @Override

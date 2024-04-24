@@ -2,7 +2,6 @@ package satisfy.candlelight.block;
 
 import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -18,6 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,10 +30,11 @@ public class DinnerBellBlock extends BaseEntityBlock {
         super(properties);
     }
 
-    protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 7.0D, 12.0D);
-
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+    @NotNull
+    public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
+        VoxelShape bottom = Block.box(4.0, 0.0, 4.0, 12.0, 2.0, 12.0);
+        VoxelShape top = Block.box(5.0, 2.0, 5.0, 11.0, 5.0, 11.0);
+        return Shapes.or(bottom, top);
     }
 
     @Override
