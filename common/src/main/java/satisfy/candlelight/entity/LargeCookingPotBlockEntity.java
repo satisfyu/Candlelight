@@ -109,14 +109,9 @@ public class LargeCookingPotBlockEntity extends BlockEntity implements BlockEnti
 
 	private void craft(Recipe<?> recipe, RegistryAccess access) {
 		if (!canCraft(recipe, access)) return;
-		ItemStack recipeOutput = generateOutputItem(recipe, access);
-		recipeOutput.setCount(recipeOutput.getCount() * 2);
-		ItemStack outputSlotStack = getItem(OUTPUT_SLOT);
-		if (outputSlotStack.isEmpty()) {
-			setItem(OUTPUT_SLOT, recipeOutput);
-		} else {
-			outputSlotStack.grow(recipeOutput.getCount());
-		}
+		ItemStack recipeOutput = generateOutputItem(recipe, access), outputSlotStack = getItem(OUTPUT_SLOT);
+		if (outputSlotStack.isEmpty()) setItem(OUTPUT_SLOT, recipeOutput);
+		else outputSlotStack.grow(recipeOutput.getCount());
 		recipe.getIngredients().forEach(ingredient -> {
 			for (int slot = 0; slot < INGREDIENTS_AREA; slot++) {
 				ItemStack stack = getItem(slot);

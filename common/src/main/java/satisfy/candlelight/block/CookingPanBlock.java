@@ -2,45 +2,48 @@ package satisfy.candlelight.block;
 
 import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import de.cristelknight.doapi.common.util.GeneralUtil;
-import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.network.chat.Component;
+import net.minecraft.ChatFormatting;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.CookingPanBlockEntity;
-import satisfy.candlelight.registry.BlockEntityRegistry;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,16 +55,21 @@ public class CookingPanBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final IntegerProperty DAMAGE = IntegerProperty.create("damage", 0, 25);
+    public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
     public static final BooleanProperty NEEDS_SUPPORT = BooleanProperty.create("needs_support");
 
-    public CookingPanBlock(Properties settings) {
-        super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(LIT, false).setValue(NEEDS_SUPPORT, false));
+    public CookingPanBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false).setValue(COOKING, false).setValue(NEEDS_SUPPORT, false));
+    }
+
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, LIT, COOKING, NEEDS_SUPPORT, DAMAGE);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT, DAMAGE, NEEDS_SUPPORT);
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.get(state.getValue(FACING));
     }
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
@@ -82,32 +90,33 @@ public class CookingPanBlock extends BaseEntityBlock {
     });
 
     @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE.get(state.getValue(FACING));
-    }
-
-    @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        super.neighborChanged(state, world, pos, block, fromPos, isMoving);
-        boolean hasSupport = world.getBlockState(pos.below()).is(BlockTags.CAMPFIRES);
-        if (state.getValue(NEEDS_SUPPORT) != hasSupport) {
-            world.setBlock(pos, state.setValue(NEEDS_SUPPORT, hasSupport), Block.UPDATE_ALL);
+        if (!world.isClientSide) {
+            if (state.getValue(NEEDS_SUPPORT) && !world.getBlockState(pos.below()).isSolidRender(world, pos.below())) {
+                world.setBlock(pos, state.setValue(NEEDS_SUPPORT, false), 3);
+            }
         }
+        super.neighborChanged(state, world, pos, block, fromPos, isMoving);
     }
 
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        Level world = ctx.getLevel();
+        BlockPos pos = ctx.getClickedPos();
+        BlockState belowState = world.getBlockState(pos.below());
+        boolean needsSupport = belowState.is(BlockTags.CAMPFIRES);
+        return this.defaultBlockState()
+                .setValue(FACING, ctx.getHorizontalDirection().getOpposite())
+                .setValue(NEEDS_SUPPORT, needsSupport);
+    }
 
     @Override
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
-        if (!state.is(newState.getBlock())) {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CookingPanBlockEntity pan) {
-                if (world instanceof ServerLevel) {
-                    Containers.dropContents(world, pos, pan);
-                }
-                world.updateNeighbourForOutputSignal(pos, this);
-            }
-            super.onRemove(state, world, pos, newState, moved);
-        }
+    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+        BlockPos belowPos = pos.below();
+        BlockState belowState = world.getBlockState(belowPos);
+        boolean isCampfireBelow = belowState.is(BlockTags.CAMPFIRES);
+        boolean isSolidBelow = belowState.isFaceSturdy(world, belowPos, Direction.UP);
+        return isCampfireBelow || isSolidBelow;
     }
 
     @Override
@@ -121,35 +130,50 @@ public class CookingPanBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        Level world = ctx.getLevel();
-        BlockPos pos = ctx.getClickedPos();
-        BlockState belowState = world.getBlockState(pos.below());
-        boolean needsSupport = belowState.is(BlockTags.CAMPFIRES);
-        return this.defaultBlockState()
-                .setValue(FACING, ctx.getHorizontalDirection().getOpposite()).setValue(NEEDS_SUPPORT, needsSupport);
-    }
-
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
-        BlockPos belowPos = pos.below();
-        BlockState belowState = world.getBlockState(belowPos);
-        boolean isCampfireBelow = belowState.is(BlockTags.CAMPFIRES);
-        boolean isSolidBelow = belowState.isFaceSturdy(world, belowPos, Direction.UP);
-        return isCampfireBelow || isSolidBelow;
-    }
-
-    @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         if (!state.canSurvive(world, pos)) {
             world.destroyBlock(pos, true);
         }
+        else {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof CookingPanBlockEntity) {
+                updateLitState(world, pos, state, (CookingPanBlockEntity) blockEntity);
+            }
+        }
+    }
+
+    private void updateLitState(Level world, BlockPos pos, BlockState state, CookingPanBlockEntity blockEntity) {
+        boolean isBeingBurned = blockEntity.isBeingBurned();
+        if (state.getValue(LIT) != isBeingBurned) {
+            world.setBlock(pos, state.setValue(LIT, isBeingBurned), 3);
+        }
+    }
+
+    @Override
+    public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+        boolean hasSupport = world.getBlockState(pos.below()).is(BlockTags.CAMPFIRES);
+        if (!hasSupport) {
+            return state.setValue(NEEDS_SUPPORT, false);
+        }
+        return super.updateShape(state, direction, neighborState, world, pos, neighborPos);
+    }
+
+
+    @Override
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!world.isClientSide) {
+            BlockEntity entity = world.getBlockEntity(pos);
+            if (entity instanceof MenuProvider) {
+                player.openMenu((MenuProvider)entity);
+                return InteractionResult.CONSUME;
+            }
+        }
+        return InteractionResult.SUCCESS;
     }
 
     @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
-        if (state.getValue(LIT)) {
+        if (state.getValue(COOKING) || state.getValue(LIT)) {
             double d = (double) pos.getX() + 0.5;
             double e = pos.getY() + 0.7;
             double f = (double) pos.getZ() + 0.5;
@@ -173,18 +197,24 @@ public class CookingPanBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityRegistry.COOKING_PAN_BLOCK_ENTITY.get(), (world1, pos, state1, be) -> be.tick(world1, pos, state1, be));
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
         return new CookingPanBlockEntity(pos, state);
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+        if (!world.isClientSide) {
+            return (lvl, pos, blkState, t) -> {
+                if (t instanceof CookingPanBlockEntity cookingPot) {
+                    cookingPot.tick(lvl, pos, blkState, cookingPot);
+                }
+            };
+        }
+        return null;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter world, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable("tooltip.farm_and_charm.canbeplaced").withStyle(ChatFormatting.GRAY));
     }
 }

@@ -66,7 +66,7 @@ public class LargeCookingPotBlock extends BaseEntityBlock {
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE.get(state.getValue(FACING));
+        return SHAPE.getOrDefault(state.getValue(FACING), Shapes.empty());
     }
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
@@ -160,7 +160,6 @@ public class LargeCookingPotBlock extends BaseEntityBlock {
 
         world.playLocalSound(d, e, f, DoApiSoundEventRegistry.COOKING_POT_BOILING.get(), SoundSource.BLOCKS, 0.05f, 1.0f, false);
 
-
         double h = random.nextDouble() * 0.6 - 0.3;
         double i = h * (random.nextBoolean() ? 1 : -1);
         double j = random.nextDouble() * 0.5625;
@@ -187,8 +186,8 @@ public class LargeCookingPotBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
         if (!world.isClientSide) {
             return (lvl, pos, blkState, t) -> {
-                if (t instanceof LargeCookingPotBlockEntity cookingPot) {
-                    cookingPot.tick(lvl, pos, blkState, cookingPot);
+                if (t instanceof LargeCookingPotBlockEntity largecookingPot) {
+                    largecookingPot.tick(lvl, pos, blkState, largecookingPot);
                 }
             };
         }
