@@ -30,7 +30,9 @@ public class CandlelightClient {
                 BIRCH_TABLE.get(), SPRUCE_TABLE.get(), JUNGLE_TABLE.get(), MANGROVE_TABLE.get(),
                 WARPED_TABLE.get(), CRIMSON_TABLE.get(), CHAIR.get(), TABLE.get(), BAMBOO_CHAIR.get(),
                 BAMBOO_TABLE.get(), CHERRY_TABLE.get(), CHERRY_CHAIR.get(), GLASS_BLOCK.get(),
-                COOKING_POT.get(), COOKING_PAN.get()
+                COOKING_POT.get(), COOKING_PAN.get(), RED_NETHER_BRICKS_STOVE.get(), QUARTZ_STOVE.get(),
+                MUD_STOVE.get(), END_STOVE.get(), GRANITE_STOVE.get(), DEEPSLATE_STOVE.get(), SANDSTONE_STOVE.get(),
+                STONE_BRICKS_STOVE.get(), COBBLESTONE_STOVE.get()
         );
 
         ClientStorageTypes.init();
@@ -50,6 +52,9 @@ public class CandlelightClient {
         GeneralUtil.registerColorArmor(CHEFS_JACKET.get(), 0xFFFFFFFF);
         GeneralUtil.registerColorArmor(CHEFS_PANTS.get(), 0xFFFFFFFF);
         GeneralUtil.registerColorArmor(CHEFS_BOOTS.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(DRESS.get(), 0xFFB6C1FF);
+        GeneralUtil.registerColorArmor(SUIT.get(), 0xB0E0E6FF);
+        GeneralUtil.registerColorArmor(SHIRT.get(), 0xFFFFFFFF);
     }
 
     public static void registerEntityModelLayer() {

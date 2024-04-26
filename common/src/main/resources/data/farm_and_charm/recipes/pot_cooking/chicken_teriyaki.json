@@ -2,10 +2,10 @@
   "type": "farm_and_charm:pot_cooking",
   "ingredients": [
     {
-      "item": "candlelight:veggie_plate"
+      "item": "candlelight:harvest_plate"
     },
     {
-      "item": "minecraft:chicken"
+      "item": "farm_and_charm:chicken_parts"
     },
     {
       "tag": "farm_and_charm:cabbage"

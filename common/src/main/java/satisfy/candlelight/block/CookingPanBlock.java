@@ -93,10 +93,9 @@ public class CookingPanBlock extends BaseEntityBlock {
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         if (!world.isClientSide) {
             if (state.getValue(NEEDS_SUPPORT) && !world.getBlockState(pos.below()).isSolidRender(world, pos.below())) {
-                world.setBlock(pos, state.setValue(NEEDS_SUPPORT, false), 3);
+                world.destroyBlock(pos, true);
             }
         }
-        super.neighborChanged(state, world, pos, block, fromPos, isMoving);
     }
 
     @Override
@@ -105,9 +104,7 @@ public class CookingPanBlock extends BaseEntityBlock {
         BlockPos pos = ctx.getClickedPos();
         BlockState belowState = world.getBlockState(pos.below());
         boolean needsSupport = belowState.is(BlockTags.CAMPFIRES);
-        return this.defaultBlockState()
-                .setValue(FACING, ctx.getHorizontalDirection().getOpposite())
-                .setValue(NEEDS_SUPPORT, needsSupport);
+        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite()).setValue(NEEDS_SUPPORT, needsSupport);
     }
 
     @Override
@@ -120,6 +117,13 @@ public class CookingPanBlock extends BaseEntityBlock {
     }
 
     @Override
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        if (!state.canSurvive(world, pos)) {
+            world.destroyBlock(pos, true);
+        }
+    }
+
+    @Override
     public void playerWillDestroy(@NotNull Level level, BlockPos blockPos, @NotNull BlockState blockState, @NotNull Player player) {
         ItemStack stack = new ItemStack(this);
         stack.setDamageValue(blockState.getValue(DAMAGE));
@@ -127,26 +131,6 @@ public class CookingPanBlock extends BaseEntityBlock {
         itemEntity.setDefaultPickUpDelay();
         level.addFreshEntity(itemEntity);
         super.playerWillDestroy(level, blockPos, blockState, player);
-    }
-
-    @Override
-    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        if (!state.canSurvive(world, pos)) {
-            world.destroyBlock(pos, true);
-        }
-        else {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CookingPanBlockEntity) {
-                updateLitState(world, pos, state, (CookingPanBlockEntity) blockEntity);
-            }
-        }
-    }
-
-    private void updateLitState(Level world, BlockPos pos, BlockState state, CookingPanBlockEntity blockEntity) {
-        boolean isBeingBurned = blockEntity.isBeingBurned();
-        if (state.getValue(LIT) != isBeingBurned) {
-            world.setBlock(pos, state.setValue(LIT, isBeingBurned), 3);
-        }
     }
 
     @Override

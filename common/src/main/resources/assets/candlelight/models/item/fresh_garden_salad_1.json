@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "candlelight:item/fresh_garden_salad_1"
+  }
+}

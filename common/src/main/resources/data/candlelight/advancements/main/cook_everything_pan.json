@@ -2,7 +2,7 @@
   "parent": "candlelight:main/place_cooking_pan",
   "display": {
     "icon": {
-      "item": "candlelight:pancake"
+      "item": "candlelight:omelet"
     },
     "title": {
       "translate": "advancement.candlelight.cook_everything_pan"
@@ -19,25 +19,25 @@
     "experience": 250
   },
   "criteria": {
-    "candlelight:pancake": {
+    "candlelight:omelet": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:pancake"
+              "candlelight:omelet"
             ]
           }
         ]
       }
     },
-    "candlelight:cooked_beef": {
+    "candlelight:fillet_steak": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:cooked_beef"
+              "candlelight:fillet_steak"
             ]
           }
         ]
@@ -55,13 +55,13 @@
         ]
       }
     },
-    "candlelight:roastbeef_carrots": {
+    "candlelight:roastbeef_with_glazed_carrots": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:roastbeef_carrots"
+              "candlelight:roastbeef_with_glazed_carrots"
             ]
           }
         ]
@@ -91,49 +91,49 @@
         ]
       }
     },
-    "candlelight:pasta_lettuce": {
+    "candlelight:pasta_with_lettuce": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:pasta_lettuce"
+              "candlelight:pasta_with_lettuce"
             ]
           }
         ]
       }
     },
-    "candlelight:lettuce_beef": {
+    "candlelight:roasted_lamb_with_lettuce": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:lettuce_beef"
+              "candlelight:roasted_lamb_with_lettuce"
             ]
           }
         ]
       }
     },
-    "candlelight:fricasse": {
+    "candlelight:beef_with_mushroom_in_wine_and_potatoes": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:fricasse"
+              "candlelight:beef_with_mushroom_in_wine_and_potatoes"
             ]
           }
         ]
       }
     },
-    "candlelight:pasta_bolognese": {
+    "candlelight:pasta_with_bolognese": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:pasta_bolognese"
+              "candlelight:pasta_with_bolognese"
             ]
           }
         ]
@@ -154,16 +154,16 @@
   },
   "requirements": [
     [
-      "candlelight:pancake"
+      "candlelight:omelet"
     ],
     [
-      "candlelight:cooked_beef"
+      "candlelight:fillet_steak"
     ],
     [
       "candlelight:beef_wellington"
     ],
     [
-      "candlelight:roastbeef_carrots"
+      "candlelight:roastbeef_with_glazed_carrots"
     ],
     [
       "candlelight:tropical_fish_supreme"
@@ -172,16 +172,16 @@
       "candlelight:chicken_alfredo"
     ],
     [
-      "candlelight:pasta_lettuce"
+      "candlelight:pasta_with_lettuce"
     ],
     [
-      "candlelight:lettuce_beef"
+      "candlelight:roasted_lamb_with_lettuce"
     ],
     [
-      "candlelight:fricasse"
+      "candlelight:beef_with_mushroom_in_wine_and_potatoes"
     ],
     [
-      "candlelight:pasta_bolognese"
+      "candlelight:pasta_with_bolognese"
     ],
     [
       "candlelight:bolognese"

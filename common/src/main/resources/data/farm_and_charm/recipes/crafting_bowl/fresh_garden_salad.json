@@ -1,0 +1,21 @@
+{
+  "type": "farm_and_charm:crafting_bowl",
+  "ingredients": [
+    {
+      "tag": "farm_and_charm:cabbage"
+    },
+    {
+      "tag": "farm_and_charm:tomato"
+    },
+    {
+      "tag": "candlelight:bowls"
+    },
+    {
+      "item": "minecraft:carrot"
+    }
+  ],
+  "result": {
+    "item": "candlelight:fresh_garden_salad",
+    "count": 2
+  }
+}

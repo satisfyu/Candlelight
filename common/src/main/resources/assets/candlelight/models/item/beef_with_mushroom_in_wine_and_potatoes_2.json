@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "candlelight:item/beef_with_mushroom_in_wine_and_potatoes_2"
+  }
+}

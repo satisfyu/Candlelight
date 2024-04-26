@@ -50,8 +50,8 @@ public class VillagersFabric {
         TradeOfferHelper.registerVillagerOffers(COOK, 4, factories -> {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BEEF_TARTARE.get(), 5, 2, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BEETROOT_SALAD.get(), 4, 1, 5));
-            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.PANCAKE.get(), 3, 4, 5));
-            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.LETTUCE_SALAD.get(), 3, 1, 5));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.OMELET.get(), 3, 4, 5));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.SALAD.get(), 3, 1, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.TABLE_BOWL.get(), 2, 1, 5));
         });
 

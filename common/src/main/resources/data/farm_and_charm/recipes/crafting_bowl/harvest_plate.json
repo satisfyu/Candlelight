@@ -1,0 +1,21 @@
+{
+  "type": "farm_and_charm:crafting_bowl",
+  "ingredients": [
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "farm_and_charm:tomato"
+    },
+    {
+      "tag": "candlelight:bowls"
+    }
+  ],
+  "result": {
+    "item": "candlelight:harvest_plate",
+    "count": 3
+  }
+}

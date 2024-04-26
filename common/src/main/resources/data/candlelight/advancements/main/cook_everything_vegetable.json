@@ -2,7 +2,7 @@
   "parent": "candlelight:main/place_stove",
   "display": {
     "icon": {
-      "item": "candlelight:lettuce_salad"
+      "item": "candlelight:salad"
     },
     "title": {
       "translate": "advancement.candlelight.cook_everything_vegetable"
@@ -43,13 +43,13 @@
         ]
       }
     },
-    "candlelight:lettuce_salad": {
+    "candlelight:salad": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:lettuce_salad"
+              "candlelight:salad"
             ]
           }
         ]
@@ -79,25 +79,25 @@
         ]
       }
     },
-    "candlelight:veggie_plate": {
+    "candlelight:harvest_plate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:veggie_plate"
+              "candlelight:harvest_plate"
             ]
           }
         ]
       }
     },
-    "candlelight:lettuce_tomato": {
+    "candlelight:fresh_garden_salad": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:lettuce_tomato"
+              "candlelight:fresh_garden_salad"
             ]
           }
         ]
@@ -112,7 +112,7 @@
       "candlelight:beetroot_salad"
     ],
     [
-      "candlelight:lettuce_salad"
+      "candlelight:salad"
     ],
     [
       "candlelight:mozzarella"
@@ -121,10 +121,10 @@
       "candlelight:beef_tartare"
     ],
     [
-      "candlelight:veggie_plate"
+      "candlelight:harvest_plate"
     ],
     [
-      "candlelight:lettuce_tomato"
+      "candlelight:fresh_garden_salad"
     ]
   ]
 }

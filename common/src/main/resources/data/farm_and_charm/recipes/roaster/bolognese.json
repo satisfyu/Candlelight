@@ -5,7 +5,16 @@
       "tag": "candlelight:tomato_soups"
     },
     {
-      "tag": "candlelight:cooked_beef"
+      "item": "farm_and_charm:minced_beef"
+    },
+    {
+      "item": "farm_and_charm:bacon"
+    },
+    {
+      "tag": "farm_and_charm:onion"
+    },
+    {
+      "item": "minecraft:carrot"
     },
     {
       "tag": "candlelight:red_effect"
@@ -15,6 +24,7 @@
     "item": "minecraft:bowl"
   },
   "result": {
-    "item": "candlelight:bolognese"
+    "item": "candlelight:bolognese",
+    "count": 4
   }
 }

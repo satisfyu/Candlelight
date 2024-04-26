@@ -2,7 +2,7 @@
   "type": "farm_and_charm:stove",
   "ingredients": [
     {
-      "item": "candlelight:bolognese"
+      "item": "farm_and_charm:lamb_ham"
     },
     {
       "tag": "farm_and_charm:dough"

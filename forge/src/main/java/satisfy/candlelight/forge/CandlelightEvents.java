@@ -45,7 +45,7 @@ public class CandlelightEvents {
                 List<VillagerTrades.ItemListing> level4 = trades.get(4);
                 level4.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BEEF_TARTARE.get(), 5, 1, 5));
                 level4.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BEETROOT_SALAD.get(), 4, 1, 5));
-                level4.add(new VillagerUtil.SellItemFactory(ObjectRegistry.PANCAKE.get(), 3, 1, 5));
+                level4.add(new VillagerUtil.SellItemFactory(ObjectRegistry.OMELET.get(), 3, 1, 5));
                 level4.add(new VillagerUtil.SellItemFactory(ObjectRegistry.LETTUCE_SALAD.get(), 3, 1, 5));
                 level4.add(new VillagerUtil.SellItemFactory(ObjectRegistry.TABLE_BOWL.get(), 2, 1, 5));
 

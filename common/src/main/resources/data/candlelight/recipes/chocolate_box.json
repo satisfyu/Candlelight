@@ -7,7 +7,7 @@
     ],
     "key": {
         "#": {
-            "item": "candlelight:chocolate"
+            "tag": "candlelight:chocolate"
         },
         "C": {
             "item": "minecraft:chest"

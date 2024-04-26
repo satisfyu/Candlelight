@@ -2,7 +2,7 @@
   "parent": "candlelight:main/place_cooking_pot",
   "display": {
     "icon": {
-      "item": "candlelight:chicken"
+      "item": "candlelight:chicken_with_vegetables"
     },
     "title": {
       "translate": "advancement.candlelight.cook_everything_pot"
@@ -19,13 +19,13 @@
     "experience": 250
   },
   "criteria": {
-    "candlelight:chicken": {
+    "candlelight:chicken_with_vegetables": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:chicken"
+              "candlelight:chicken_with_vegetables"
             ]
           }
         ]
@@ -43,25 +43,25 @@
         ]
       }
     },
-    "candlelight:pasta": {
+    "candlelight:pasta_with_mozzarella": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:pasta"
+              "candlelight:pasta_with_mozzarella"
             ]
           }
         ]
       }
     },
-    "candlelight:chocolate": {
+    "candlelight:chocolate_mousse": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:chocolate"
+              "candlelight:chocolate_mousse"
             ]
           }
         ]
@@ -91,13 +91,13 @@
         ]
       }
     },
-    "candlelight:salmon_wine": {
+    "candlelight:salmon_on_white_wine": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "candlelight:salmon_wine"
+              "candlelight:salmon_on_white_wine"
             ]
           }
         ]
@@ -130,16 +130,16 @@
   },
   "requirements": [
     [
-      "candlelight:chicken"
+      "candlelight:chicken_with_vegetables"
     ],
     [
       "candlelight:mushroom_soup"
     ],
     [
-      "candlelight:pasta"
+      "candlelight:pasta_with_mozzarella"
     ],
     [
-      "candlelight:chocolate"
+      "candlelight:chocolate_mousse"
     ],
     [
       "candlelight:pork_ribs"
@@ -148,7 +148,7 @@
       "candlelight:chicken_teriyaki"
     ],
     [
-      "candlelight:salmon_wine"
+      "candlelight:salmon_on_white_wine"
     ],
     [
       "candlelight:lasagne"

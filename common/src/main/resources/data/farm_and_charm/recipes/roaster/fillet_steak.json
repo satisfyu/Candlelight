@@ -1,0 +1,21 @@
+{
+  "type": "farm_and_charm:roaster",
+  "ingredients": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "tag": "farm_and_charm:butter"
+    },
+    {
+      "tag": "candlelight:all_effects"
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "result": {
+    "item": "candlelight:fillet_steak",
+    "count": 1
+  }
+}
