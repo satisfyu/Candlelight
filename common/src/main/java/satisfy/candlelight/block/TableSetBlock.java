@@ -3,7 +3,6 @@ package satisfy.candlelight.block;
 import com.mojang.datafixers.util.Pair;
 import de.cristelknight.doapi.common.block.StorageBlock;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
-import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -124,6 +123,15 @@ public class TableSetBlock extends StorageBlock {
     @Override
     public @NotNull List<ItemStack> getDrops(BlockState blockState, LootParams.Builder builder) {
         List<ItemStack> list = super.getDrops(blockState, builder);
+        PlateType type = blockState.getValue(PLATE_TYPE);
+        switch (type) {
+            case PLATE:
+                list.add(new ItemStack(ObjectRegistry.PLATE_ITEM.get()));
+                break;
+            case BOWL:
+                list.add(new ItemStack(ObjectRegistry.BOWL_ITEM.get()));
+                break;
+        }
         for(BooleanProperty property : itemHashMap().values()){
             if(!blockState.getValue(property)) continue;
             Item item = getItemFromProperty(property);
@@ -251,15 +259,12 @@ public class TableSetBlock extends StorageBlock {
         return rotatedShapes[0];
     }
 
-
     private VoxelShape rotateShapeClockwise(VoxelShape shape) {
         VoxelShape[] result = {Shapes.empty()};
         shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> {
             double newMinX = 1 - maxZ;
-            double newMinZ = minX;
             double newMaxX = 1 - minZ;
-            double newMaxZ = maxX;
-            result[0] = Shapes.or(result[0], Shapes.box(newMinX, minY, newMinZ, newMaxX, maxY, newMaxZ));
+            result[0] = Shapes.or(result[0], Shapes.box(newMinX, minY, minX, newMaxX, maxY, maxX));
         });
         return result[0];
     }

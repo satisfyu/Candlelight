@@ -13,7 +13,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "1"
                   }
@@ -27,7 +27,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "2"
                   }
@@ -41,7 +41,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "3"
                   }
@@ -55,7 +55,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "4"
                   }
@@ -69,7 +69,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "5"
                   }
@@ -83,7 +83,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "6"
                   }
@@ -97,7 +97,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "7"
                   }
@@ -111,7 +111,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "candlelight:drinking_glass",
+                  "block": "candlelight:wine_glass",
                   "properties": {
                     "stack": "8"
                   }
@@ -124,7 +124,7 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "candlelight:drinking_glass"
+          "name": "candlelight:wine_glass"
         }
       ]
     }
