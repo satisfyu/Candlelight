@@ -37,7 +37,7 @@ public class CandlelightClient {
 
         ClientStorageTypes.init();
         BlockEntityRendererRegistry.register(BlockEntityRegistry.DINNER_BELL_BLOCK_ENTITY.get(), DinnerBellRenderer::new);
-        RenderTypeRegistry.register(RenderType.translucent(), TABLE_BOWL.get(), GLASS_BLOCK.get(), TABLE_SET.get(), DRINKING_GLASS_BLOCK.get());
+        RenderTypeRegistry.register(RenderType.translucent(), GLASS_BLOCK.get(), TABLE_SET.get(), DRINKING_GLASS_BLOCK.get());
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
 
         initColorItems();

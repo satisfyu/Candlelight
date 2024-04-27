@@ -52,7 +52,7 @@ public class VillagersFabric {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BEETROOT_SALAD.get(), 4, 1, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.OMELET.get(), 3, 4, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.SALAD.get(), 3, 1, 5));
-            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.TABLE_BOWL.get(), 2, 1, 5));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BOWL_ITEM.get(), 2, 1, 5));
         });
 
         TradeOfferHelper.registerVillagerOffers(COOK, 5, factories -> {

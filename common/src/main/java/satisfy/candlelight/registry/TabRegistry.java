@@ -18,8 +18,8 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.COOKING_POT.get());
                 output.accept(ObjectRegistry.COOKING_PAN.get());
                 output.accept(ObjectRegistry.CLOCHE.get());
-                output.accept(ObjectRegistry.TABLE_BOWL.get());
-                output.accept(ObjectRegistry.TABLE_SET.get());
+                output.accept(ObjectRegistry.BOWL_ITEM.get());
+                output.accept(ObjectRegistry.PLATE_ITEM.get());
                 output.accept(ObjectRegistry.DRINKING_GLASS.get());
                 output.accept(ObjectRegistry.GLASS.get());
                 output.accept(ObjectRegistry.NAPKIN.get());
