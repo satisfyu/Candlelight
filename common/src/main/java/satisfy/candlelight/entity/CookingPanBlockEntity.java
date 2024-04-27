@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.CookingPanBlock;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.farm_and_charm.client.gui.handler.CookingPotGuiHandler;
+import satisfy.farm_and_charm.client.gui.handler.RoasterGuiHandler;
 import satisfy.farm_and_charm.item.food.EffectFood;
 import satisfy.farm_and_charm.item.food.EffectFoodHelper;
 import satisfy.farm_and_charm.recipe.RoasterRecipe;
@@ -45,7 +45,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 	private static final int[] SLOTS_FOR_UP = new int[]{0, 1, 2, 3, 4, 5, 6};
 	private int cookingTime;
 	private boolean isBeingBurned;
-	private static final int MAX_COOKING_TIME = 900;
+	private static final int MAX_COOKING_TIME = 300;
 	public static int getMaxCookingTime() {
 		return MAX_COOKING_TIME;
 	}
@@ -113,8 +113,11 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 	private void craft(Recipe<?> recipe, RegistryAccess access) {
 		if (!canCraft(recipe, access)) return;
 		ItemStack recipeOutput = generateOutputItem(recipe, access), outputSlotStack = getItem(OUTPUT_SLOT);
-		if (outputSlotStack.isEmpty()) setItem(OUTPUT_SLOT, recipeOutput);
-		else outputSlotStack.grow(recipeOutput.getCount());
+		if (outputSlotStack.isEmpty()) {
+			setItem(OUTPUT_SLOT, recipeOutput);
+		} else {
+			outputSlotStack.grow(recipeOutput.getCount());
+		}
 		recipe.getIngredients().forEach(ingredient -> {
 			for (int slot = 0; slot < INGREDIENTS_AREA; slot++) {
 				ItemStack stack = getItem(slot);
@@ -126,6 +129,11 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 				}
 			}
 		});
+		ItemStack containerSlotStack = getItem(CONTAINER_SLOT);
+		if (!containerSlotStack.isEmpty()) {
+			containerSlotStack.shrink(1);
+			if (containerSlotStack.isEmpty()) setItem(CONTAINER_SLOT, ItemStack.EMPTY);
+		}
 	}
 
 	private ItemStack generateOutputItem(Recipe<?> recipe, RegistryAccess access) {
@@ -156,7 +164,7 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 			return;
 		}
 
-		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
+		Recipe<?> recipe = world.getRecipeManager().getRecipeFor(RecipeTypeRegistry.ROASTER_RECIPE_TYPE.get(), this, world).orElse(null);
 		if (level == null) throw new IllegalStateException("Null world not allowed");
 		RegistryAccess access = level.registryAccess();
 		if (canCraft(recipe, access)) {
@@ -210,6 +218,6 @@ public class CookingPanBlockEntity extends BlockEntity implements BlockEntityTic
 
 	@Nullable
 	public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player player) {
-		return new CookingPotGuiHandler(syncId, inv, this, delegate);
+		return new RoasterGuiHandler(syncId, inv, this, delegate);
 	}
 }
