@@ -9,11 +9,11 @@
       "y": 0
     },
     "facing=north,lit=false,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 0
     },
     "facing=north,lit=false,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 0
     },
     "facing=north,lit=true,cooking=false,needs_support=false": {
@@ -25,11 +25,11 @@
       "y": 0
     },
     "facing=north,lit=true,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 0
     },
     "facing=north,lit=true,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 0
     },
     "facing=south,lit=false,cooking=false,needs_support=false": {
@@ -41,11 +41,11 @@
       "y": 180
     },
     "facing=south,lit=false,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 180
     },
     "facing=south,lit=false,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 180
     },
     "facing=south,lit=true,cooking=false,needs_support=false": {
@@ -57,11 +57,11 @@
       "y": 180
     },
     "facing=south,lit=true,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 180
     },
     "facing=south,lit=true,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 180
     },
     "facing=west,lit=false,cooking=false,needs_support=false": {
@@ -73,11 +73,11 @@
       "y": 270
     },
     "facing=west,lit=false,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 270
     },
     "facing=west,lit=false,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 270
     },
     "facing=west,lit=true,cooking=false,needs_support=false": {
@@ -89,11 +89,11 @@
       "y": 270
     },
     "facing=west,lit=true,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 270
     },
     "facing=west,lit=true,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 270
     },
     "facing=east,lit=false,cooking=false,needs_support=false": {
@@ -105,11 +105,11 @@
       "y": 90
     },
     "facing=east,lit=false,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 90
     },
     "facing=east,lit=false,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 90
     },
     "facing=east,lit=true,cooking=false,needs_support=false": {
@@ -121,11 +121,11 @@
       "y": 90
     },
     "facing=east,lit=true,cooking=true,needs_support=false": {
-      "model": "candlelight:block/cooking_pan",
+      "model": "candlelight:block/cooking_pan_cooking",
       "y": 90
     },
     "facing=east,lit=true,cooking=true,needs_support=true": {
-      "model": "candlelight:block/cooking_pan_with_support",
+      "model": "candlelight:block/cooking_pan_with_support_cooking",
       "y": 90
     }
   }

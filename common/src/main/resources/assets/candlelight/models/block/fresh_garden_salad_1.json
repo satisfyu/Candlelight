@@ -4,7 +4,7 @@
 	"textures": {
 		"1": "candlelight:block/plate_vegetable_fresh_garden_salad",
 		"2": "candlelight:block/plate_vegetable",
-		"particle": "candlelight:block/plate_vegetable"
+		"particle": "candlelight:block/plate_vegetable_fresh_garden_salad"
 	},
 	"elements": [
 		{

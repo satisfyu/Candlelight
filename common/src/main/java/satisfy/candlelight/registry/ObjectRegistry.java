@@ -8,6 +8,8 @@ import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -25,7 +27,10 @@ import satisfy.candlelight.item.armor.*;
 import satisfy.candlelight.util.CandlelightFoods;
 import satisfy.candlelight.util.CandlelightIdentifier;
 import satisfy.farm_and_charm.block.EffectFoodBlock;
+import satisfy.farm_and_charm.item.food.EffectBlockItem;
 import satisfy.farm_and_charm.item.food.EffectFoodItem;
+import satisfy.farm_and_charm.item.food.EffectItem;
+import satisfy.farm_and_charm.registry.MobEffectRegistry;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -60,39 +65,37 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> GLASS = registerItem("glass", () -> new TooltipItem(GLASS_BLOCK.get(), getSettings()));
     public static final RegistrySupplier<Item> NAPKIN = registerItem("napkin", () -> new Item(getSettings()));
     public static final RegistrySupplier<Item> MOZZARELLA = registerItem("mozzarella", () -> new Item(getSettings().food(Foods.BREAD)));
-
-
     public static final RegistrySupplier<Item> TOMATO_SOUP = registerItem("tomato_soup", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.TOMATO_SOUP), 1));
     public static final RegistrySupplier<Item> MUSHROOM_SOUP = registerItem("mushroom_soup", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.MUSHROOM_SOUP), 1));
-    public static final RegistrySupplier<Item> BEETROOT_SALAD = registerItem("beetroot_salad", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
+    public static final RegistrySupplier<Item> BEETROOT_SALAD = registerItem("beetroot_salad", () -> new  EffectItem(getFoodItemSettings(5, 0.6f, MobEffectRegistry.SUSTENANCE.get(), 2400), 2400));
     public static final RegistrySupplier<Item> PASTA_WITH_MOZZARELLA = registerItem("pasta_with_mozzarella", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.PASTA), 2));
     public static final RegistrySupplier<Item> BOLOGNESE = registerItem("bolognese", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.BOLOGNESE), 1));
-    public static final RegistrySupplier<Item> CHICKEN_TERIYAKI = registerItem("chicken_teriyaki", () -> new Item(getSettings().food(Foods.COOKED_BEEF)));
-    public static final RegistrySupplier<Item> SALAD = registerItem("salad", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
-    public static final RegistrySupplier<Item> BEEF_TARTARE = registerItem("beef_tartare", () -> new Item(getSettings().food(Foods.COOKED_BEEF)));
+    public static final RegistrySupplier<Item> CHICKEN_TERIYAKI = registerItem("chicken_teriyaki", () -> new  EffectItem(getFoodItemSettings(8, 0.8f, MobEffectRegistry.SATIATION.get(), 6000), 6000));
+    public static final RegistrySupplier<Item> SALAD = registerItem("salad", () -> new EffectItem(getFoodItemSettings(5, 0.7f, MobEffectRegistry.SUSTENANCE.get(), 3600), 3600));
+    public static final RegistrySupplier<Item> BEEF_TARTARE = registerItem("beef_tartare", () -> new  EffectItem(getFoodItemSettings(8, 0.9f, MobEffectRegistry.SATIATION.get(), 3000), 3000));
     public static final RegistrySupplier<Item> FILLET_STEAK = registerItem("fillet_steak", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.FILLET_STEAK), 2));
     public static final RegistrySupplier<Item> CHICKEN_ALFREDO = registerItem("chicken_alfredo", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.HARVEST_PLATE), 1));
     public static final RegistrySupplier<Item> PASTA_WITH_BOLOGNESE = registerItem("pasta_with_bolognese", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.HARVEST_PLATE), 1));
-    public static final RegistrySupplier<Item> PASTA_WITH_LETTUCE = registerItem("pasta_with_lettuce", () -> new Item(getSettings().food(CandlelightFoods.TOMATO_MOZZARELLA_SALAD)));
+    public static final RegistrySupplier<Item> PASTA_WITH_LETTUCE = registerItem("pasta_with_lettuce", () -> new EffectItem(getFoodItemSettings(8, 0.9f, MobEffectRegistry.SATIATION.get(), 3600), 3600));
     public static final RegistrySupplier<Item> SALMON_ON_WHITE_WINE = registerItem("salmon_on_white_wine", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.SALMON_ON_WHITE_WINE), 2));
-    public static final RegistrySupplier<Item> OMELET = registerItem("omelet", () -> new Item(getSettings().food(CandlelightFoods.BEEF_WITH_MUSHROOM_IN_WINE_AND_POTATOES)));
+    public static final RegistrySupplier<Item> OMELET = registerItem("omelet", () -> new EffectItem(getFoodItemSettings(8, 0.4f, MobEffectRegistry.SWEETS.get(), 4800), 4800));
     public static final RegistrySupplier<Item> ROASTED_LAMB_WITH_LETTUCE = registerItem("roasted_lamb_with_lettuce", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.ROASTED_LAMB_WITH_LETTUCE), 2));
-    public static final RegistrySupplier<Block> FRESH_GARDEN_SALAD_BLOCK = registerWithoutItem("fresh_garden_salad_block", () -> new EffectFoodTrayBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.FRESH_GARDEN_SALAD));
-    public static final RegistrySupplier<Item> FRESH_GARDEN_SALAD = registerItem("fresh_garden_salad", () -> new EffectFoodBlockItem(FRESH_GARDEN_SALAD_BLOCK.get(), getSettings().food(CandlelightFoods.FRESH_GARDEN_SALAD), 3));
-    public static final RegistrySupplier<Item> HARVEST_PLATE = registerItem("harvest_plate", () -> new Item(getSettings().food(CandlelightFoods.HARVEST_PLATE)));
+    public static final RegistrySupplier<Block> FRESH_GARDEN_SALAD_BLOCK = registerWithoutItem("fresh_garden_salad_block", () -> new EffectFoodTrayBlock(Block.Properties.of(), new MobEffectInstance(MobEffectRegistry.FARMERS_BLESSING.get(), 3600, 2), 6, 0.9f));
+    public static final RegistrySupplier<Item> FRESH_GARDEN_SALAD = registerItem("fresh_garden_salad", () -> new EffectBlockItem(FRESH_GARDEN_SALAD_BLOCK.get(), getFoodItemSettings(6, 0.9f, MobEffectRegistry.FARMERS_BLESSING.get(), 3600)));
+    public static final RegistrySupplier<Item> HARVEST_PLATE = registerItem("harvest_plate", () -> new EffectItem(getFoodItemSettings(7, 0.8f, MobEffectRegistry.FARMERS_BLESSING.get(), 4800), 4800));
     public static final RegistrySupplier<Item> BEEF_WITH_MUSHROOM_IN_WINE_AND_POTATOES = registerItem("beef_with_mushroom_in_wine_and_potatoes", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.BEEF_WITH_MUSHROOM_IN_WINE_AND_POTATOES), 2));
     public static final RegistrySupplier<Block> PORK_RIBS_BLOCK = registerWithoutItem("pork_ribs_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.PORK_RIBS));
     public static final RegistrySupplier<Item> PORK_RIBS = registerItem("pork_ribs", () -> new EffectFoodBlockItem(PORK_RIBS_BLOCK.get(), getSettings().food(CandlelightFoods.PORK_RIBS), 2));
     public static final RegistrySupplier<Item> CHICKEN_WITH_VEGETABLES = registerItem("chicken_with_vegetables", () -> new EffectFoodItem(getSettings().food(Foods.GOLDEN_CARROT), 2));
-    public static final RegistrySupplier<Block> TOMATO_MOZZARELLA_BLOCK = registerWithoutItem("tomato_mozzarella_block", () -> new EffectFoodTrayBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.TOMATO_MOZZARELLA_SALAD));
-    public static final RegistrySupplier<Item> TOMATO_MOZZARELLA_SALAD = registerItem("tomato_mozzarella_salad", () -> new EffectFoodBlockItem(TOMATO_MOZZARELLA_BLOCK.get(), getSettings().food(CandlelightFoods.TOMATO_MOZZARELLA_SALAD), 3));
+    public static final RegistrySupplier<Block> TOMATO_MOZZARELLA_BLOCK = registerWithoutItem("tomato_mozzarella_block", () -> new EffectFoodTrayBlock(Block.Properties.of(), new MobEffectInstance(MobEffectRegistry.FEAST.get(), 4800, 2), 5, 0.7f));
+    public static final RegistrySupplier<Item> TOMATO_MOZZARELLA_SALAD = registerItem("tomato_mozzarella_salad", () -> new EffectBlockItem(TOMATO_MOZZARELLA_BLOCK.get(), getFoodItemSettings(5, 0.7f, MobEffectRegistry.FEAST.get(), 4800)));
     public static final RegistrySupplier<Block> LASAGNE_BLOCK = registerWithoutItem("lasagne_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 3, CandlelightFoods.LASAGNE));
     public static final RegistrySupplier<Item> LASAGNE = registerItem("lasagne", () -> new EffectFoodBlockItem(LASAGNE_BLOCK.get(), getSettings().food(CandlelightFoods.LASAGNE), 3));
     public static final RegistrySupplier<Item> ROASTBEEF_WITH_GLAZED_CARROTS = registerItem("roastbeef_with_glazed_carrots", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.ROASTBEEF_WITH_GLAZED_CARROTS), 2));
     public static final RegistrySupplier<Block> BEEF_WELLINGTON_BLOCK = registerWithoutItem("beef_wellington_block", () -> new EffectFoodBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), 2, CandlelightFoods.BEEF_WELLINGTON));
     public static final RegistrySupplier<Item> BEEF_WELLINGTON = registerItem("beef_wellington", () -> new EffectFoodBlockItem(BEEF_WELLINGTON_BLOCK.get(), getSettings().food(CandlelightFoods.BEEF_WELLINGTON), 2));
     public static final RegistrySupplier<Item> TROPICAL_FISH_SUPREME = registerItem("tropical_fish_supreme", () -> new EffectFoodItem(getSettings().food(Foods.GOLDEN_CARROT), 1));
-    public static final RegistrySupplier<Item> CHOCOLATE_MOUSSE = registerItem("chocolate_mousse", () -> new Item(getSettings().food(Foods.APPLE)));
+    public static final RegistrySupplier<Item> CHOCOLATE_MOUSSE = registerItem("chocolate_mousse", () -> new  EffectItem(getFoodItemSettings(4, 0.3f, MobEffectRegistry.SWEETS.get(), 2400), 2400));
     public static final RegistrySupplier<Block> TABLE_SIGN = registerWithItem("table_sign", () -> new BoardBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistrySupplier<Block> PAINTING = registerWithItem("painting", () -> new SmallPaintingBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
     public static final RegistrySupplier<Block> HEARTH = registerWithItem("hearth", () -> new WallDecorationBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).noCollission()));
@@ -104,10 +107,10 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> CHEFS_JACKET = registerItem("chefs_jacket", () -> new CookChestplateItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> CHEFS_PANTS = registerItem("chefs_pants", () -> new CookLeggingsItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> CHEFS_BOOTS = registerItem("chefs_boots", () -> new CookBootsItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
-    public static final RegistrySupplier<Item> FLOWER_CROWN = registerItem("flower_crown", () -> new HelmetItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
+    public static final RegistrySupplier<Item> FLOWER_CROWN = registerItem("flower_crown", () -> new DressHelmetItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> DRESS = registerItem("dress", () -> new DressChestplateItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
-    public static final RegistrySupplier<Item> SHIRT = registerItem("shirt", () -> new ShirtChestplateItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
-    public static final RegistrySupplier<Item> NECKTIE = registerItem("necktie", () -> new HelmetItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
+    public static final RegistrySupplier<Item> SHIRT = registerItem("shirt", () -> new SuitShirtChestplateItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
+    public static final RegistrySupplier<Item> NECKTIE = registerItem("necktie", () -> new SuitNecktieItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Item> SUIT = registerItem("suit", () -> new SuitLeggingsItem(ArmorMaterialRegistry.COOK_ARMOR, getSettings().rarity(Rarity.COMMON)));
     public static final RegistrySupplier<Block> TYPEWRITER_IRON = registerWithItem("typewriter_iron", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> TYPEWRITER_COPPER = registerWithItem("typewriter_copper", () -> new TypeWriterBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0F, 3.0F).sound(SoundType.METAL)));
@@ -245,6 +248,23 @@ public class ObjectRegistry {
     private static Item.Properties getSettingsWithoutTab() {
         return getSettingsWithoutTab(settings -> {
         });
+    }
+
+    private static Item.Properties getFoodItemSettings(int nutrition, float saturationMod, MobEffect effect, int duration) {
+        return getFoodItemSettings(nutrition, saturationMod, effect, duration, true, false);
+    }
+
+    @SuppressWarnings("all")
+    private static Item.Properties getFoodItemSettings(int nutrition, float saturationMod, MobEffect effect, int duration, boolean alwaysEat, boolean fast) {
+        return getSettings().food(createFood(nutrition, saturationMod, effect, duration, alwaysEat, fast));
+    }
+
+    private static FoodProperties createFood(int nutrition, float saturationMod, MobEffect effect, int duration, boolean alwaysEat, boolean fast) {
+        FoodProperties.Builder food = new FoodProperties.Builder().nutrition(nutrition).saturationMod(saturationMod);
+        if (alwaysEat) food.alwaysEat();
+        if (fast) food.fast();
+        if (effect != null) food.effect(new MobEffectInstance(effect, duration), 1.0f);
+        return food.build();
     }
 
     private static BlockBehaviour.Properties getLogBlockSettings() {

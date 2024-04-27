@@ -13,9 +13,9 @@ import satisfy.candlelight.registry.ArmorRegistry;
 
 import java.util.List;
 
-public class CookLeggingsItem extends DyeableArmorItem implements ICustomArmor {
-    public CookLeggingsItem(ArmorMaterial material, Properties settings) {
-        super(material, Type.LEGGINGS, settings);
+public class SuitShirtChestplateItem extends DyeableArmorItem implements ICustomArmor {
+    public SuitShirtChestplateItem(ArmorMaterial material, Properties settings) {
+        super(material, Type.CHESTPLATE, settings);
     }
 
     @Override
@@ -23,13 +23,13 @@ public class CookLeggingsItem extends DyeableArmorItem implements ICustomArmor {
         if (this.hasCustomColor(stack)) {
             return super.getColor(stack);
         }
-        return 0xFFD3D3D3;
+        return 0xFFFFFFFF;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
         if (null != world && world.isClientSide()) {
-            ArmorRegistry.appendCookTooltip(tooltip);
+            ArmorRegistry.appendSuitTooltip(tooltip);
         }
     }
 }

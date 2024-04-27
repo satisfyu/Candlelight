@@ -1,29 +1,12 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "   ",
-        "#PB",
-        " GW"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:orange_dye"
-        },
-        "P": {
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
             "item": "minecraft:painting"
-        },
-        "B": {
-            "item": "minecraft:brown_dye"
-        },
-        "G": {
-            "item": "minecraft:green_dye"
-        },
-        "W": {
-            "item": "minecraft:white_dye"
         }
-    },
+    ],
     "result": {
         "item": "candlelight:painting",
-        "count": 1
+        "count": 2
     }
 }

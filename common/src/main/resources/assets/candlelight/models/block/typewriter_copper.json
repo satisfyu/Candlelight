@@ -1,10 +1,10 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/bag_side",
+		"1": "block/packed_mud",
 		"3": "block/copper_block",
-		"4": "candlelight:block/typewriter_paper",
 		"5": "block/anvil",
+		"6": "candlelight:block/typewriter_paper",
 		"particle": "block/copper_block"
 	},
 	"elements": [
@@ -48,12 +48,12 @@
 			"from": [4, 2, 8],
 			"to": [12, 4, 12],
 			"faces": {
-				"north": {"uv": [3, 7, 5, 15], "rotation": 90, "texture": "#1"},
-				"east": {"uv": [0, 0, 4, 2], "texture": "#3"},
-				"south": {"uv": [0, 0, 8, 2], "texture": "#3"},
-				"west": {"uv": [0, 0, 4, 2], "texture": "#3"},
-				"up": {"uv": [6, 4, 10, 12], "rotation": 90, "texture": "#1"},
-				"down": {"uv": [0, 0, 8, 4], "texture": "#3"}
+				"north": {"uv": [7, 7, 9, 15], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [0, 0, 4, 2], "texture": "#1"},
+				"south": {"uv": [0, 0, 8, 2], "texture": "#1"},
+				"west": {"uv": [0, 0, 4, 2], "texture": "#1"},
+				"up": {"uv": [5, 5, 9, 13], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [0, 0, 8, 4], "texture": "#1"}
 			}
 		},
 		{
@@ -120,12 +120,12 @@
 			"from": [3, 2, 3],
 			"to": [13, 3, 7],
 			"faces": {
-				"north": {"uv": [3, 13, 13, 14], "texture": "#4"},
-				"east": {"uv": [3, 10, 4, 14], "rotation": 90, "texture": "#4"},
-				"south": {"uv": [3, 10, 13, 11], "texture": "#4"},
-				"west": {"uv": [11, 10, 12, 14], "rotation": 90, "texture": "#4"},
-				"up": {"uv": [3, 14, 13, 10], "texture": "#4"},
-				"down": {"uv": [0, 0, 10, 4], "texture": "#4"}
+				"north": {"uv": [3, 13, 13, 14], "texture": "#6"},
+				"east": {"uv": [3, 10, 4, 14], "rotation": 90, "texture": "#6"},
+				"south": {"uv": [3, 10, 13, 11], "texture": "#6"},
+				"west": {"uv": [11, 10, 12, 14], "rotation": 90, "texture": "#6"},
+				"up": {"uv": [3, 14, 13, 10], "texture": "#6"},
+				"down": {"uv": [0, 0, 10, 4], "texture": "#6"}
 			}
 		}
 	],

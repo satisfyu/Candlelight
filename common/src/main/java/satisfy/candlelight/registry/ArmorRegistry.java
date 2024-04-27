@@ -20,10 +20,7 @@ import satisfy.candlelight.client.model.CookOuter;
 import satisfy.candlelight.client.model.CookInner;
 import satisfy.candlelight.client.model.CookingHatModel;
 import satisfy.candlelight.config.CandlelightConfig;
-import satisfy.candlelight.item.armor.CookBootsItem;
-import satisfy.candlelight.item.armor.CookChestplateItem;
-import satisfy.candlelight.item.armor.CookLeggingsItem;
-import satisfy.candlelight.item.armor.CookingHatItem;
+import satisfy.candlelight.item.armor.*;
 import satisfy.candlelight.util.CandlelightIdentifier;
 
 import java.util.List;
@@ -51,7 +48,7 @@ public class ArmorRegistry {
     }
 
     @SuppressWarnings("all")
-    public static void appendTooltip(List<Component> tooltip) {
+    public static void appendCookTooltip(List<Component> tooltip) {
         CandlelightConfig config = CandlelightConfig.getActiveInstance();
 
         if (!config.enableChefSetBonus()) {
@@ -85,5 +82,56 @@ public class ArmorRegistry {
         if (hasCompleteSet) {
             player.addEffect(new MobEffectInstance(MobEffects.LUCK, 200, 1));
         }
+    }
+
+    @SuppressWarnings("all")
+    public static void appendSuitTooltip(List<Component> tooltip) {
+        CandlelightConfig config = CandlelightConfig.getActiveInstance();
+
+        if (!config.enableChefSetBonus()) {
+            return;
+        }
+        Player player = CandlelightClient.getClientPlayer();
+        if (player == null) {
+            return;
+        }
+
+        ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
+        ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
+        ItemStack leggings = player.getItemBySlot(EquipmentSlot.LEGS);
+
+        boolean hasCompleteSet = helmet != null && helmet.getItem() instanceof SuitNecktieItem &&
+                chestplate != null && chestplate.getItem() instanceof SuitShirtChestplateItem &&
+                leggings != null && leggings.getItem() instanceof SuitLeggingsItem &&
+
+        tooltip.add(Component.nullToEmpty(""));
+        tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("tooltip.candlelight.suit_armor.")));
+        tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof SuitNecktieItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.NECKTIE.get().getDescription().getString() + "]"));
+        tooltip.add(Component.nullToEmpty((chestplate != null && chestplate.getItem() instanceof SuitShirtChestplateItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.SHIRT.get().getDescription().getString() + "]"));
+        tooltip.add(Component.nullToEmpty((leggings != null && leggings.getItem() instanceof SuitLeggingsItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.SUIT.get().getDescription().getString() + "]"));
+    }
+
+    @SuppressWarnings("all")
+    public static void appendDressTooltip(List<Component> tooltip) {
+        CandlelightConfig config = CandlelightConfig.getActiveInstance();
+
+        if (!config.enableChefSetBonus()) {
+            return;
+        }
+        Player player = CandlelightClient.getClientPlayer();
+        if (player == null) {
+            return;
+        }
+
+        ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
+        ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
+
+        boolean hasCompleteSet = helmet != null && helmet.getItem() instanceof DressHelmetItem &&
+                chestplate != null && chestplate.getItem() instanceof DressChestplateItem &&
+
+                tooltip.add(Component.nullToEmpty(""));
+        tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("tooltip.candlelight.dress_armor.")));
+        tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof DressHelmetItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.FLOWER_CROWN.get().getDescription().getString() + "]"));
+        tooltip.add(Component.nullToEmpty((chestplate != null && chestplate.getItem() instanceof DressChestplateItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.DRESS.get().getDescription().getString() + "]"));
     }
 }
