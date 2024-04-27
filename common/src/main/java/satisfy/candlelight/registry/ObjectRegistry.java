@@ -57,16 +57,14 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> COOKING_POT = registerWithItem("cooking_pot", () -> new LargeCookingPotBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistrySupplier<Block> COOKING_PAN = registerWithoutItem("cooking_pan", () -> new CookingPanBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistrySupplier<Item> COOKING_PAN_ITEM = registerItem("cooking_pan", () -> new CookingPanItem(COOKING_PAN.get(), getSettings()));
-
     public static final RegistrySupplier<Block> TABLE_SET = registerWithoutItem("table_set", () -> new TableSetBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistrySupplier<Item> PLATE_ITEM = registerItem("plate", () -> new TableSetBlockItem(TABLE_SET.get(), getSettings(), TableSetBlock.PlateType.PLATE));
     public static final RegistrySupplier<Item> BOWL_ITEM = registerItem("bowl", () -> new TableSetBlockItem(TABLE_SET.get(), getSettings(), TableSetBlock.PlateType.BOWL));
-
     public static final RegistrySupplier<Item> CLOCHE = registerItem("cloche", () -> new Item(getSettings()));
-    public static final RegistrySupplier<Block> DRINKING_GLASS_BLOCK = registerWithoutItem("drinking_glass", () -> new StackableBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noParticlesOnBreak(), 4));
-    public static final RegistrySupplier<Item> DRINKING_GLASS = registerItem("drinking_glass", () -> new TooltipItem(DRINKING_GLASS_BLOCK.get(), getSettings()));
     public static final RegistrySupplier<Block> GLASS_BLOCK = registerWithoutItem("glass", () -> new StackableBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noParticlesOnBreak(), 4));
     public static final RegistrySupplier<Item> GLASS = registerItem("glass", () -> new TooltipItem(GLASS_BLOCK.get(), getSettings()));
+    public static final RegistrySupplier<Block> WINE_GLASS_BLOCK = registerWithoutItem("wine_glass", () -> new StackableBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noParticlesOnBreak(), 4));
+    public static final RegistrySupplier<Item> WINE_GLASS = registerItem("wine_glass", () -> new TooltipItem(WINE_GLASS_BLOCK.get(), getSettings()));
     public static final RegistrySupplier<Item> NAPKIN = registerItem("napkin", () -> new Item(getSettings()));
     public static final RegistrySupplier<Item> MOZZARELLA = registerItem("mozzarella", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> TOMATO_SOUP = registerItem("tomato_soup", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.TOMATO_SOUP), 1));

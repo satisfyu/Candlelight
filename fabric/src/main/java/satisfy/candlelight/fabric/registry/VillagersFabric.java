@@ -58,7 +58,7 @@ public class VillagersFabric {
         TradeOfferHelper.registerVillagerOffers(COOK, 5, factories -> {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.COOKING_HAT.get(), 9, 1, 5));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.CHOCOLATE_BOX.get(), 9, 1, 5));
-            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.GLASS.get(), 3, 1, 5));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.WINE_GLASS.get(), 3, 1, 5));
             factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.BEEF_WELLINGTON.get(), 24, 1, 5));
             factories.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.TROPICAL_FISH_SUPREME.get(), 1, 1, 5));
         });

@@ -66,8 +66,8 @@ public class TableSetBlock extends StorageBlock {
 
     private static HashMap<Item, BooleanProperty> itemHashMap() {
         return Util.make(new HashMap<>(), map -> {
-                    map.put(ObjectRegistry.GLASS.get(), WINE_GLASS);
-                    map.put(ObjectRegistry.DRINKING_GLASS.get(), GLASS);
+                    map.put(ObjectRegistry.WINE_GLASS.get(), WINE_GLASS);
+                    map.put(ObjectRegistry.GLASS.get(), GLASS);
                     map.put(ObjectRegistry.CLOCHE.get(), CLOCHE);
                     map.put(ObjectRegistry.NAPKIN.get(), NAPKIN);
                 }
