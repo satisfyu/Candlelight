@@ -52,9 +52,10 @@ public class CandlelightClient {
         GeneralUtil.registerColorArmor(CHEFS_JACKET.get(), 0xFFFFFFFF);
         GeneralUtil.registerColorArmor(CHEFS_PANTS.get(), 0xFFFFFFFF);
         GeneralUtil.registerColorArmor(CHEFS_BOOTS.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(DRESS.get(), 0xFFB6C1FF);
+        GeneralUtil.registerColorArmor(DRESS.get(), 0xFFFFB6C1);
         GeneralUtil.registerColorArmor(SUIT.get(), 0xB0E0E6FF);
         GeneralUtil.registerColorArmor(SHIRT.get(), 0xFFFFFFFF);
+        GeneralUtil.registerColorArmor(NECKTIE.get(), 0x64B6C1FF);
     }
 
     public static void registerEntityModelLayer() {

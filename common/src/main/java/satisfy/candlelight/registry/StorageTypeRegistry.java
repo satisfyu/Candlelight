@@ -24,8 +24,6 @@ public class StorageTypeRegistry {
         blocks.add(ObjectRegistry.WARPED_SHELF.get());
         blocks.add(ObjectRegistry.BAMBOO_SHELF.get());
         blocks.add(ObjectRegistry.CHERRY_SHELF.get());
-        blocks.add(ObjectRegistry.TABLE_BOWL.get());
-        blocks.add(ObjectRegistry.TABLE_SET.get());
         blocks.add(ObjectRegistry.JEWELRY_BOX.get());
     }
 }

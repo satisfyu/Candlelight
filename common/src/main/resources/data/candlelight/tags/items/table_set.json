@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "candlelight:cloche",
+    "candlelight:table_set",
+    "candlelight:table_bowl",
+    "candlelight:drinking_glass",
+    "candlelight:glass",
+    "candlelight:napkin"
+  ]
+}

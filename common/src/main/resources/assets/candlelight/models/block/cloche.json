@@ -1,20 +1,31 @@
 {
 	"credit": "Made by Satisfy",
 	"textures": {
-		"1": "candlelight:block/plate",
-		"particle": "candlelight:block/plate"
+		"3": "candlelight:block/gloche"
 	},
 	"elements": [
 		{
-			"from": [4, 0, 1],
-			"to": [15, 1, 12],
+			"from": [3.95, -0.05, 0.95],
+			"to": [15.05, 5.05, 12.05],
 			"faces": {
-				"north": {"uv": [0, 10, 11, 11], "texture": "#1"},
-				"east": {"uv": [10, 0, 11, 11], "rotation": 90, "texture": "#1"},
-				"south": {"uv": [0, 0, 11, 1], "texture": "#1"},
-				"west": {"uv": [0, 0, 1, 11], "rotation": 90, "texture": "#1"},
-				"up": {"uv": [0, 0, 11, 11], "texture": "#1"},
-				"down": {"uv": [0, 0, 11, 11], "texture": "#1"}
+				"north": {"uv": [0, 11, 11, 16], "texture": "#3"},
+				"east": {"uv": [0, 11, 11, 16], "texture": "#3"},
+				"south": {"uv": [0, 11, 11, 16], "texture": "#3"},
+				"west": {"uv": [0, 11, 11, 16], "texture": "#3"},
+				"up": {"uv": [0, 0, 11, 11], "texture": "#3"}
+			}
+		},
+		{
+			"from": [8, 5, 5],
+			"to": [11, 6, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1.5, 0, 0]},
+			"faces": {
+				"north": {"uv": [14, 0, 11, 1], "texture": "#3"},
+				"east": {"uv": [13, 0, 14, 3], "rotation": 90, "texture": "#3"},
+				"south": {"uv": [11, 2, 14, 3], "texture": "#3"},
+				"west": {"uv": [11, 0, 12, 3], "rotation": 90, "texture": "#3"},
+				"up": {"uv": [11, 0, 14, 3], "texture": "#3"},
+				"down": {"uv": [0, 0, 3, 3], "texture": "#missing"}
 			}
 		}
 	],
@@ -57,19 +68,5 @@
 			"translation": [0, 0, -15.25],
 			"scale": [1.95703, 1.95703, 1.95703]
 		}
-	},
-	"groups": [
-		{
-			"name": "plate",
-			"origin": [0, 0, 0],
-			"color": 0,
-			"children": [0]
-		},
-		{
-			"name": "napkin",
-			"origin": [8, 8, 8],
-			"color": 0,
-			"children": []
-		}
-	]
+	}
 }

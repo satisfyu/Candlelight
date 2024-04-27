@@ -9,10 +9,10 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.LivingEntity;
 
 
-public class CookOuter<T extends LivingEntity> extends HumanoidModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DoApiRL("cook_outer"), "main");
-
-    public CookOuter(ModelPart root) {
+public class SuitOuter<T extends LivingEntity> extends HumanoidModel<T> {
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DoApiRL("suit_outer"), "main");
+//TODO
+    public SuitOuter(ModelPart root) {
         super(root);
     }
 

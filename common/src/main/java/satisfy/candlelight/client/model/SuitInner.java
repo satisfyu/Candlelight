@@ -9,13 +9,14 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.world.entity.LivingEntity;
 
 
-public class CookInner<T extends LivingEntity> extends HumanoidModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DoApiRL("cook_inner"), "main");
+public class SuitInner<T extends LivingEntity> extends HumanoidModel<T> {
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DoApiRL("suit_inner"), "main");
 
-    public CookInner(ModelPart root) {
+    public SuitInner(ModelPart root) {
         super(root);
     }
 
+    //TODO
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition ModelPartData = meshdefinition.getRoot();
