@@ -15,7 +15,7 @@
   "advancement.candlelight.cooking_pan.desc": "Wytwórz i postaw patelnię",
   "advancement.candlelight.cooking_pot": "Ścieżka garnka",
   "advancement.candlelight.cooking_pot.desc": "Wytwórz i postaw garnek",
-  "advancement.candlelight.eat_enchanted_golden_apple_from_plate": "Złoty Smakosz",
+  "advancement.candlelight.eat_enchanted_golden_apple_from_plate": "Złoty smakosz",
   "advancement.candlelight.eat_enchanted_golden_apple_from_plate.desc": "Podaj zaklęte złote jabłko na talerzu i je zjedz",
   "advancement.candlelight.eat_tomato": "Pomidor",
   "advancement.candlelight.eat_tomato.desc": "Zjedz pomidor. Można je znaleźć w umiarkowanym klimacie",
@@ -257,7 +257,7 @@
   "tooltip.candlelight.cook_armor.3": "+Szczęście",
   "tooltip.candlelight.decoration": "Można powiesić na ścianie",
   "tooltip.candlelight.ring": "Ulepszone szczęście: Szczęście +2",
-  "tooltip.candlelight.thankyou_1": "Nagroda za ukończenie §a[Let's Do] §6Bakery",
+  "tooltip.candlelight.thankyou_1": "Nagroda za ukończenie §a[Let's Do] §6Candlelight",
   "tooltip.candlelight.thankyou_2": "Gdy postawiony:",
   "tooltip.candlelight.thankyou_3": "Dziękujemy za zagranie w Candlelight!",
   "tooltip.candlelight.thankyou_4": "Gracze w promienu 8 bloków otrzymują Odporność na ogień"
