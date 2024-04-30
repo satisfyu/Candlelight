@@ -1,10 +1,8 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        " # ",
         "#W#",
         " # "
-
     ],
     "key": {
         "#": {
@@ -15,7 +13,7 @@
         }
     },
     "result": {
-        "item": "candlelight:table_bowl",
-        "count": 6
+        "item": "candlelight:plate",
+        "count": 2
     }
 }

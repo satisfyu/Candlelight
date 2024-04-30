@@ -23,7 +23,7 @@ public class DressChestplateItem extends DyeableArmorItem implements ICustomArmo
         if (this.hasCustomColor(stack)) {
             return super.getColor(stack);
         }
-        return 0xFFB6C1FF;
+        return 0xFFFFB6C1;
     }
 
     @Override

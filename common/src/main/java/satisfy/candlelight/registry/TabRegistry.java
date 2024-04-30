@@ -18,8 +18,8 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.COOKING_POT.get());
                 output.accept(ObjectRegistry.COOKING_PAN.get());
                 output.accept(ObjectRegistry.CLOCHE.get());
-                output.accept(ObjectRegistry.BOWL_ITEM.get());
-                output.accept(ObjectRegistry.PLATE_ITEM.get());
+                output.accept(ObjectRegistry.BOWL.get());
+                output.accept(ObjectRegistry.PLATE.get());
                 output.accept(ObjectRegistry.GLASS.get());
                 output.accept(ObjectRegistry.WINE_GLASS.get());
                 output.accept(ObjectRegistry.NAPKIN.get());
@@ -59,7 +59,7 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.DRESS.get());
                 output.accept(ObjectRegistry.NECKTIE.get());
                 output.accept(ObjectRegistry.SHIRT.get());
-                output.accept(ObjectRegistry.SUIT.get());
+                output.accept(ObjectRegistry.TROUSERS_AND_VEST.get());
                 output.accept(ObjectRegistry.GOLD_RING.get());
                 output.accept(ObjectRegistry.JEWELRY_BOX.get());
                 output.accept(ObjectRegistry.PAINTING.get());

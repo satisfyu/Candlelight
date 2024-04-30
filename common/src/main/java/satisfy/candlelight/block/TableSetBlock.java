@@ -126,10 +126,10 @@ public class TableSetBlock extends StorageBlock {
         PlateType type = blockState.getValue(PLATE_TYPE);
         switch (type) {
             case PLATE:
-                list.add(new ItemStack(ObjectRegistry.PLATE_ITEM.get()));
+                list.add(new ItemStack(ObjectRegistry.PLATE.get()));
                 break;
             case BOWL:
-                list.add(new ItemStack(ObjectRegistry.BOWL_ITEM.get()));
+                list.add(new ItemStack(ObjectRegistry.BOWL.get()));
                 break;
         }
         for(BooleanProperty property : itemHashMap().values()){

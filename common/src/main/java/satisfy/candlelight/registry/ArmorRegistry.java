@@ -16,9 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import satisfy.candlelight.client.CandlelightClient;
-import satisfy.candlelight.client.model.CookOuter;
-import satisfy.candlelight.client.model.CookInner;
-import satisfy.candlelight.client.model.CookingHatModel;
+import satisfy.candlelight.client.model.*;
 import satisfy.candlelight.config.CandlelightConfig;
 import satisfy.candlelight.item.armor.*;
 import satisfy.candlelight.util.CandlelightIdentifier;
@@ -31,6 +29,13 @@ public class ArmorRegistry {
         EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::getTexturedModelData);
         EntityModelLayerRegistry.register(CookInner.LAYER_LOCATION, CookInner::createBodyLayer);
         EntityModelLayerRegistry.register(CookOuter.LAYER_LOCATION, CookOuter::createBodyLayer);
+        EntityModelLayerRegistry.register(FlowerCrownModel.LAYER_LOCATION, FlowerCrownModel::getTexturedModelData);
+        EntityModelLayerRegistry.register(DressInner.LAYER_LOCATION, DressInner::createBodyLayer);
+        EntityModelLayerRegistry.register(DressOuter.LAYER_LOCATION, DressOuter::createBodyLayer);
+        EntityModelLayerRegistry.register(NecktieModel.LAYER_LOCATION, NecktieModel::getTexturedModelData);
+        EntityModelLayerRegistry.register(SuitInner.LAYER_LOCATION, SuitInner::createBodyLayer);
+        EntityModelLayerRegistry.register(SuitOuter.LAYER_LOCATION, SuitOuter::createBodyLayer);
+        EntityModelLayerRegistry.register(SuitFormalOuter.LAYER_LOCATION, SuitFormalOuter::createBodyLayer);
     }
 
 
@@ -40,12 +45,27 @@ public class ArmorRegistry {
                 .setOuterModel(new CookOuter<>(modelLoader.bakeLayer(CookOuter.LAYER_LOCATION)))
                 .setInnerModel(new CookInner<>(modelLoader.bakeLayer(CookInner.LAYER_LOCATION)))
                 .setHatModel(new CookingHatModel<>(modelLoader.bakeLayer(CookingHatModel.LAYER_LOCATION))));
-
+        armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.FLOWER_CROWN.get(), ObjectRegistry.DRESS.get())
+                .setTexture(new CandlelightIdentifier("dress"))
+                .setOuterModel(new DressOuter<>(modelLoader.bakeLayer(DressOuter.LAYER_LOCATION)))
+                .setInnerModel(new DressInner<>(modelLoader.bakeLayer(DressInner.LAYER_LOCATION)))
+                .setHatModel(new FlowerCrownModel<>(modelLoader.bakeLayer(FlowerCrownModel.LAYER_LOCATION))));
+        armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.TROUSERS_AND_VEST.get(), ObjectRegistry.SHIRT.get(), ObjectRegistry.NECKTIE.get())
+                .setTexture(new CandlelightIdentifier("suit"))
+                .setOuterModel(new SuitOuter<>(modelLoader.bakeLayer(SuitOuter.LAYER_LOCATION)))
+                .setInnerModel(new SuitInner<>(modelLoader.bakeLayer(SuitInner.LAYER_LOCATION)))
+                .setHatModel(new NecktieModel<>(modelLoader.bakeLayer(NecktieModel.LAYER_LOCATION))));
+        armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.FORMAL_SHIRT.get())
+                .setTexture(new CandlelightIdentifier("suit"))
+                .setOuterModel(new SuitFormalOuter<>(modelLoader.bakeLayer(SuitFormalOuter.LAYER_LOCATION)))
+       );
     }
 
         public static  <T extends LivingEntity> void registerHatModels(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
         models.put(ObjectRegistry.COOKING_HAT.get(), new CookingHatModel<>(modelLoader.bakeLayer(CookingHatModel.LAYER_LOCATION)));
-    }
+        models.put(ObjectRegistry.FLOWER_CROWN.get(), new FlowerCrownModel<>(modelLoader.bakeLayer(FlowerCrownModel.LAYER_LOCATION)));
+        models.put(ObjectRegistry.NECKTIE.get(), new NecktieModel<>(modelLoader.bakeLayer(NecktieModel.LAYER_LOCATION)));
+        }
 
     @SuppressWarnings("all")
     public static void appendCookTooltip(List<Component> tooltip) {
@@ -108,7 +128,7 @@ public class ArmorRegistry {
         tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("tooltip.candlelight.suit_armor.")));
         tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof SuitNecktieItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.NECKTIE.get().getDescription().getString() + "]"));
         tooltip.add(Component.nullToEmpty((chestplate != null && chestplate.getItem() instanceof SuitShirtChestplateItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.SHIRT.get().getDescription().getString() + "]"));
-        tooltip.add(Component.nullToEmpty((leggings != null && leggings.getItem() instanceof SuitLeggingsItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.SUIT.get().getDescription().getString() + "]"));
+        tooltip.add(Component.nullToEmpty((leggings != null && leggings.getItem() instanceof SuitLeggingsItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.TROUSERS_AND_VEST.get().getDescription().getString() + "]"));
     }
 
     @SuppressWarnings("all")
@@ -128,7 +148,6 @@ public class ArmorRegistry {
 
         boolean hasCompleteSet = helmet != null && helmet.getItem() instanceof DressHelmetItem &&
                 chestplate != null && chestplate.getItem() instanceof DressChestplateItem &&
-
                 tooltip.add(Component.nullToEmpty(""));
         tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("tooltip.candlelight.dress_armor.")));
         tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof DressHelmetItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.FLOWER_CROWN.get().getDescription().getString() + "]"));

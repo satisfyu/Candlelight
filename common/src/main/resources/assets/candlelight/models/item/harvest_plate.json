@@ -1,20 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "candlelight:item/harvest_plate_3"
-  },
-  "overrides": [
-    {
-      "predicate": {
-        "custom_model_data": 1
-      },
-      "model": "candlelight:item/harvest_plate_2"
-    },
-    {
-      "predicate": {
-        "custom_model_data": 2
-      },
-      "model": "candlelight:item/harvest_plate_1"
-    }
-  ]
+    "layer0": "candlelight:item/harvest_plate"
+  }
 }
