@@ -6,6 +6,7 @@ import dev.architectury.event.events.common.PlayerEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.registry.ObjectRegistry;
-import net.minecraft.world.entity.EquipmentSlot;
+
 import java.util.UUID;
 
 public class CommonEvents {

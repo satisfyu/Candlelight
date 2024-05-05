@@ -32,9 +32,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.util.CandlelightUtil;
 import satisfy.candlelight.entity.TypeWriterEntity;
 import satisfy.candlelight.registry.ObjectRegistry;
+import satisfy.candlelight.util.CandlelightUtil;
 
 import java.util.HashMap;
 import java.util.List;

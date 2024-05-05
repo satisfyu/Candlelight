@@ -3,7 +3,6 @@ package satisfy.candlelight.networking;
 
 import dev.architectury.networking.NetworkManager;
 import net.minecraft.resources.ResourceLocation;
-//import satisfyu.candlelight.networking.packet.SyncTypewriterDataC2SPacket;
 import satisfy.candlelight.networking.packet.SignNoteC2SPacket;
 import satisfy.candlelight.networking.packet.SyncTypewriterDataC2SPacket;
 import satisfy.candlelight.util.CandlelightIdentifier;

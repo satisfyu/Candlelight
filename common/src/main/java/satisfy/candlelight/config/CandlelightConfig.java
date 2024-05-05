@@ -29,9 +29,6 @@ public record CandlelightConfig(boolean enableChefSetBonus) implements Commented
     public HashMap<String, String> getComments() {
         HashMap<String, String> comments = new HashMap<>();
         comments.put("enable_chef_armor_set_bonus", "Whether the chef armor should give a set bonus");
-        comments.put("enable_candlelight_tomatoes", "Whether candlelight tomatoes should be enabled");
-        comments.put("enable_candlelight_lettuce", "Whether candlelight tomatoes should be enabled");
-
         return comments;
     }
     @Override

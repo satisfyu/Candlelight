@@ -10,7 +10,6 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-import satisfy.candlelight.Candlelight;
 
 @Environment(EnvType.CLIENT)
 public class TableSetRenderer implements StorageTypeRenderer {

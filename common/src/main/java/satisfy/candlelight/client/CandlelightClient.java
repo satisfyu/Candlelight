@@ -32,7 +32,7 @@ public class CandlelightClient {
                 BAMBOO_TABLE.get(), CHERRY_TABLE.get(), CHERRY_CHAIR.get(), WINE_GLASS_BLOCK.get(),
                 COOKING_POT.get(), COOKING_PAN.get(), RED_NETHER_BRICKS_STOVE.get(), QUARTZ_STOVE.get(),
                 MUD_STOVE.get(), END_STOVE.get(), GRANITE_STOVE.get(), DEEPSLATE_STOVE.get(), SANDSTONE_STOVE.get(),
-                STONE_BRICKS_STOVE.get(), COBBLESTONE_STOVE.get()
+                STONE_BRICKS_STOVE.get(), COBBLESTONE_STOVE.get(), BAMBOO_STOVE.get()
         );
 
         ClientStorageTypes.init();
