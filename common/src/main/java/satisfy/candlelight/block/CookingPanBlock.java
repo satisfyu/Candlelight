@@ -1,5 +1,7 @@
 package satisfy.candlelight.block;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -39,10 +41,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.entity.CookingPanBlockEntity;
+import satisfy.candlelight.block.entity.CookingPanBlockEntity;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.candlelight.registry.SoundEventsRegistry;
-import satisfy.candlelight.util.GeneralUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -133,7 +133,7 @@ public class CookingPanBlock extends BaseEntityBlock {
             double e = pos.getY() + 0.7;
             double f = (double) pos.getZ() + 0.5;
             if (random.nextDouble() < 0.1) {
-                world.playLocalSound(d, e, f, SoundEventsRegistry.COOKING_PAN_COOKING.get(), SoundSource.BLOCKS, 0.05F, 0.05F, false);
+                world.playLocalSound(d, e, f, DoApiSoundEventRegistry.ROASTER_COOKING.get(), SoundSource.BLOCKS, 0.05F, 0.05F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();

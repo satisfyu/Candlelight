@@ -20,7 +20,7 @@ import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.client.gui.CookingPanGui;
 import satisfy.candlelight.client.gui.CookingPotGui;
 import satisfy.candlelight.compat.jei.CandlelightJEIPlugin;
-import satisfy.candlelight.entity.CookingPotBlockEntity;
+import satisfy.candlelight.block.entity.CookingPotBlockEntity;
 import satisfy.candlelight.recipe.CookingPotRecipe;
 import satisfy.candlelight.registry.ObjectRegistry;
 

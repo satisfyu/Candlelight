@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
-import satisfy.candlelight.entity.CookingPanBlockEntity;
+import satisfy.candlelight.block.entity.CookingPanBlockEntity;
 import satisfy.candlelight.client.gui.handler.slot.ExtendedSlot;
 import satisfy.candlelight.client.recipebook.custom.CookingPanRecipeBookGroup;
 import satisfy.candlelight.recipe.CookingPanRecipe;

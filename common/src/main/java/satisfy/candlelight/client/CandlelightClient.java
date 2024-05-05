@@ -1,5 +1,6 @@
 package satisfy.candlelight.client;
 
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
@@ -13,7 +14,6 @@ import satisfy.candlelight.client.gui.LetterGui;
 import satisfy.candlelight.registry.ArmorRegistry;
 import satisfy.candlelight.registry.ObjectRegistry;
 import satisfy.candlelight.registry.ScreenHandlerTypeRegistry;
-import satisfy.candlelight.util.GeneralUtil;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {

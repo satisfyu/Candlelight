@@ -14,7 +14,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.client.ClientUtil;
+import satisfy.candlelight.util.TypewriterUtil;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class WrittenPaperItem extends Item {
         ItemStack itemStack = user.getItemInHand(hand);
         if(world.isClientSide())
         {
-            ClientUtil.setSignedPaperScreen(itemStack);
+            TypewriterUtil.setSignedPaperScreen(itemStack);
         }
         else
         {

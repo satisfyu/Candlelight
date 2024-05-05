@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.client.gui.CookingPanGui;
 import satisfy.candlelight.compat.jei.CandlelightJEIPlugin;
-import satisfy.candlelight.entity.CookingPanBlockEntity;
+import satisfy.candlelight.block.entity.CookingPanBlockEntity;
 import satisfy.candlelight.recipe.CookingPanRecipe;
 import satisfy.candlelight.registry.ObjectRegistry;
 

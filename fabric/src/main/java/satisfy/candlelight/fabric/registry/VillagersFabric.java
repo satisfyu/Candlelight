@@ -1,5 +1,6 @@
 package satisfy.candlelight.fabric.registry;
 
+import de.cristelknight.doapi.common.util.VillagerUtil;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerProfessionBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
@@ -13,7 +14,6 @@ import net.minecraft.world.entity.npc.VillagerProfession;
 
 import satisfy.candlelight.registry.ObjectRegistry;
 import satisfy.candlelight.util.CandlelightIdentifier;
-import satisfy.candlelight.util.VillagerUtil;
 
 @SuppressWarnings("deprecation")
 public class VillagersFabric {

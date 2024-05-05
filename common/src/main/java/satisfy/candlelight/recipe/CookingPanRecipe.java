@@ -2,6 +2,7 @@ package satisfy.candlelight.recipe;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -13,7 +14,6 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import satisfy.candlelight.registry.RecipeTypeRegistry;
-import satisfy.candlelight.util.GeneralUtil;
 
 public class CookingPanRecipe implements Recipe<Container> {
     final ResourceLocation id;

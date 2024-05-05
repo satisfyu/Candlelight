@@ -1,4 +1,4 @@
-package satisfy.candlelight.item;
+package satisfy.candlelight.item.food;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.ChatFormatting;

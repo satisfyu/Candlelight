@@ -1,5 +1,6 @@
 package satisfy.candlelight.block;
 
+import de.cristelknight.doapi.common.block.WallDecorationBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,7 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"unused", "deprecation"})
-public class SmallPaintingBlock extends DecorationBlock {
+public class SmallPaintingBlock extends WallDecorationBlock {
     public SmallPaintingBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(this.stateDefinition.any().setValue(PAINTING, 0));

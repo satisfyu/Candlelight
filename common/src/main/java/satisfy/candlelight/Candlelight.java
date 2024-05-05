@@ -18,7 +18,6 @@ public class Candlelight {
         ObjectRegistry.init();
         ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
-        SoundEventsRegistry.init();
         CommonEvents.init();
         TabRegistry.init();
         CandlelightMessages.registerC2SPackets();

@@ -2,6 +2,7 @@ package satisfy.candlelight.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import de.cristelknight.doapi.client.ClientUtil;
 import de.cristelknight.doapi.client.render.block.storage.StorageTypeRenderer;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.fabricmc.api.EnvType;
@@ -10,7 +11,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import satisfy.candlelight.client.ClientUtil;
+import satisfy.candlelight.util.TypewriterUtil;
 import satisfy.candlelight.registry.ObjectRegistry;
 
 @Environment(EnvType.CLIENT)
