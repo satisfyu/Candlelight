@@ -1,4 +1,4 @@
-package satisfy.candlelight.entity;
+package satisfy.candlelight.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

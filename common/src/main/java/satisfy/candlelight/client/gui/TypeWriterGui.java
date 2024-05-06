@@ -11,7 +11,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
 import org.lwjgl.glfw.GLFW;
-import satisfy.candlelight.entity.TypeWriterEntity;
+import satisfy.candlelight.block.entity.TypeWriterEntity;
 import satisfy.candlelight.networking.CandlelightMessages;
 
 @Environment(EnvType.CLIENT)

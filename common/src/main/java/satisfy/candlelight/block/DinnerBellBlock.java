@@ -25,7 +25,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.candlelight.entity.DinnerBellBlockEntity;
+import satisfy.candlelight.block.entity.DinnerBellBlockEntity;
 import satisfy.candlelight.registry.BlockEntityRegistry;
 
 import java.util.List;

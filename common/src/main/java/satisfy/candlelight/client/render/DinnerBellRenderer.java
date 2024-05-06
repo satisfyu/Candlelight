@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.client.model.DinnerBellModel;
-import satisfy.candlelight.entity.DinnerBellBlockEntity;
+import satisfy.candlelight.block.entity.DinnerBellBlockEntity;
 
 public class DinnerBellRenderer implements BlockEntityRenderer<DinnerBellBlockEntity> {
     private static final ResourceLocation BELL_TEXTURE = new ResourceLocation(Candlelight.MOD_ID, "textures/entity/dinner_bell.png");

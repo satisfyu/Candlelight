@@ -6,7 +6,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import satisfy.candlelight.Candlelight;
-import satisfy.candlelight.entity.*;
+import satisfy.candlelight.block.entity.*;
 
 import java.util.function.Supplier;
 
