@@ -1,4 +1,4 @@
-package satisfy.candlelight.block.entity;
+package satisfy.candlelight.entity;
 
 import de.cristelknight.doapi.common.world.ImplementedInventory;
 import net.minecraft.core.BlockPos;

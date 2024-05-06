@@ -1,4 +1,4 @@
-package satisfy.candlelight.block.entity;
+package satisfy.candlelight.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;

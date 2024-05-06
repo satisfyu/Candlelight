@@ -1,4 +1,4 @@
-package satisfy.candlelight.block.entity;
+package satisfy.candlelight.entity;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;

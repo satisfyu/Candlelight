@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import satisfy.candlelight.client.gui.NotePaperGui;
 import satisfy.candlelight.client.gui.SignedPaperGui;
 import satisfy.candlelight.client.gui.TypeWriterGui;
-import satisfy.candlelight.block.entity.TypeWriterEntity;
+import satisfy.candlelight.entity.TypeWriterEntity;
 
 public class CandlelightUtil {
     public static void setNotePaperScreen(Player user, ItemStack stack, InteractionHand hand){

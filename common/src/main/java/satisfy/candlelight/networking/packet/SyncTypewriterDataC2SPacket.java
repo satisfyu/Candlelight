@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import satisfy.candlelight.block.TypeWriterBlock;
-import satisfy.candlelight.block.entity.TypeWriterEntity;
+import satisfy.candlelight.entity.TypeWriterEntity;
 import satisfy.candlelight.registry.ObjectRegistry;
 
 public class SyncTypewriterDataC2SPacket implements NetworkManager.NetworkReceiver {
