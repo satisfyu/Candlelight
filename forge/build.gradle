@@ -33,7 +33,8 @@ dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
     modImplementation("top.theillusivec4.curios:curios-forge:${rootProject.curios_version}")
-    //modImplementation "maven.modrinth:do-api:${project.doapi_version}-forge"
+    modImplementation "maven.modrinth:do-api:${project.doapi_version}-forge"
+    modImplementation "maven.modrinth:lets-do-farm-charm:${project.farm_and_charm_version}-forge"
     modImplementation "me.shedaniel:RoughlyEnoughItems-forge:$rei_version"
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }

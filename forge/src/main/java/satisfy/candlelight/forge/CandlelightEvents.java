@@ -7,13 +7,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.forge.registry.CandlelightForgeVillagers;
-import satisfy.farm_and_charm.registry.ObjectRegistry;
+import satisfy.candlelight.registry.ObjectRegistry;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static satisfy.candlelight.registry.ObjectRegistry.*;
+import static satisfy.farm_and_charm.registry.ObjectRegistry.*;
 
 public class CandlelightEvents {
 
@@ -25,29 +26,29 @@ public class CandlelightEvents {
                 Map<Integer, List<VillagerTrades.ItemListing>> trades = new HashMap<>(event.getTrades());
 
                 List<VillagerTrades.ItemListing> level1 = trades.get(1);
-                level1.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.LETTUCE.get(), 4, 4, 2));
-                level1.add(new VillagerUtil.BuyForOneEmeraldFactory(ObjectRegistry.TOMATO.get(), 4, 4, 2));
-                level1.add(new VillagerUtil.SellItemFactory(ObjectRegistry.TOMATO_SEEDS.get(), 5, 2, 3));
-                level1.add(new VillagerUtil.SellItemFactory(ObjectRegistry.LETTUCE_SEEDS.get(), 4, 2, 2));
-                level1.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BUTTER.get(), 2, 6, 4));
+                level1.add(new VillagerUtil.BuyForOneEmeraldFactory(LETTUCE.get(), 4, 4, 2));
+                level1.add(new VillagerUtil.BuyForOneEmeraldFactory(TOMATO.get(), 4, 4, 2));
+                level1.add(new VillagerUtil.SellItemFactory(TOMATO_SEEDS.get(), 5, 2, 3));
+                level1.add(new VillagerUtil.SellItemFactory(LETTUCE_SEEDS.get(), 4, 2, 2));
+                level1.add(new VillagerUtil.SellItemFactory(BUTTER.get(), 2, 6, 4));
 
                 List<VillagerTrades.ItemListing> level2 = trades.get(2);
                 level2.add(new VillagerUtil.SellItemFactory(COOKING_PAN.get(), 6, 1, 3));
                 level2.add(new VillagerUtil.SellItemFactory(ObjectRegistry.COOKING_POT.get(), 7, 1, 3));
-                level2.add(new VillagerUtil.SellItemFactory(ObjectRegistry.TOOL_RACK.get(), 4, 2, 2));
+                level2.add(new VillagerUtil.SellItemFactory(TOOL_RACK.get(), 4, 2, 2));
                 level2.add(new VillagerUtil.SellItemFactory(NAPKIN.get(), 1, 2, 4));
 
                 List<VillagerTrades.ItemListing> level3 = trades.get(3);
                 level3.add(new VillagerUtil.SellItemFactory(TOMATO_SOUP.get(), 2, 1, 2));
-                level3.add(new VillagerUtil.SellItemFactory(ObjectRegistry.RAW_PASTA.get(), 2, 1, 2));
-                level3.add(new VillagerUtil.SellItemFactory(ObjectRegistry.DOUGH.get(), 1, 1, 1));
+                level3.add(new VillagerUtil.SellItemFactory(RAW_PASTA.get(), 2, 1, 2));
+                level3.add(new VillagerUtil.SellItemFactory(DOUGH.get(), 1, 1, 1));
                 level3.add(new VillagerUtil.SellItemFactory(MUSHROOM_SOUP.get(), 1, 4, 2));
 
                 List<VillagerTrades.ItemListing> level4 = trades.get(4);
                 level4.add(new VillagerUtil.SellItemFactory(BEEF_TARTARE.get(), 5, 1, 5));
                 level4.add(new VillagerUtil.SellItemFactory(BEETROOT_SALAD.get(), 4, 1, 5));
                 level4.add(new VillagerUtil.SellItemFactory(OMELET.get(), 3, 1, 5));
-                level4.add(new VillagerUtil.SellItemFactory(ObjectRegistry.FARMER_SALAD.get(), 3, 1, 5));
+                level4.add(new VillagerUtil.SellItemFactory(FARMER_SALAD.get(), 3, 1, 5));
                 level4.add(new VillagerUtil.SellItemFactory(BOWL.get(), 2, 1, 5));
 
                 List<VillagerTrades.ItemListing> level5 = trades.get(5);
