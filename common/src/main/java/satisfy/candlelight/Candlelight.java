@@ -13,6 +13,7 @@ public class Candlelight {
 
     public static void init() {
         CandlelightConfig.getActiveInstance().getConfig();
+        DataFixerRegistry.init();
         ObjectRegistry.init();
         ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
