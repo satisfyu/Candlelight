@@ -10,6 +10,7 @@ import satisfy.candlelight.Candlelight;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import satisfy.candlelight.client.gui.ClothConfigScreen;
+import satisfy.candlelight.forge.registry.CandlelightForgeVillagers;
 import satisfy.candlelight.registry.CompostableRegistry;
 
 @Mod(Candlelight.MOD_ID)
@@ -18,6 +19,7 @@ public class CandlelightForge {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(Candlelight.MOD_ID, modEventBus);
         Candlelight.init();
+        CandlelightForgeVillagers.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
 
         modEventBus.addListener(this::commonSetup);
