@@ -27,11 +27,11 @@ import satisfy.candlelight.item.*;
 import satisfy.candlelight.item.armor.*;
 import satisfy.candlelight.util.CandlelightFoods;
 import satisfy.candlelight.util.CandlelightIdentifier;
-import satisfy.farm_and_charm.block.EffectFoodBlock;
-import satisfy.farm_and_charm.item.food.EffectBlockItem;
-import satisfy.farm_and_charm.item.food.EffectFoodItem;
-import satisfy.farm_and_charm.item.food.EffectItem;
-import satisfy.farm_and_charm.registry.MobEffectRegistry;
+import net.satisfy.farm_and_charm.block.EffectFoodBlock;
+import net.satisfy.farm_and_charm.item.food.EffectBlockItem;
+import net.satisfy.farm_and_charm.item.food.EffectFoodItem;
+import net.satisfy.farm_and_charm.item.food.EffectItem;
+import net.satisfy.farm_and_charm.registry.MobEffectRegistry;
 
 import java.util.Objects;
 import java.util.function.Consumer;

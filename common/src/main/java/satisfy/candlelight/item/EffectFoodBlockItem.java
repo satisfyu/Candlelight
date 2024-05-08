@@ -16,9 +16,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.farm_and_charm.block.EffectFoodBlock;
-import satisfy.farm_and_charm.item.food.EffectFood;
-import satisfy.farm_and_charm.item.food.EffectFoodHelper;
+import net.satisfy.farm_and_charm.block.EffectFoodBlock;
+import net.satisfy.farm_and_charm.item.food.EffectFood;
+import net.satisfy.farm_and_charm.item.food.EffectFoodHelper;
 
 import java.util.List;
 

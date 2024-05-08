@@ -12,7 +12,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import satisfy.farm_and_charm.block.FoodBlock;
+import net.satisfy.farm_and_charm.block.FoodBlock;
 
 import java.util.HashMap;
 import java.util.Map;

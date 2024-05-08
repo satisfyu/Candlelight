@@ -43,7 +43,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.LargeCookingPotBlockEntity;
-import satisfy.farm_and_charm.block.CookingPotBlock;
+import net.satisfy.farm_and_charm.block.CookingPotBlock;
 
 import java.util.HashMap;
 import java.util.List;

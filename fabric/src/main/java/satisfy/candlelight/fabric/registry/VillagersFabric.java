@@ -24,26 +24,26 @@ public class VillagersFabric {
 
     public static void init() {
         TradeOfferHelper.registerVillagerOffers(COOK, 1, factories -> {
-            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(satisfy.farm_and_charm.registry.ObjectRegistry.LETTUCE.get(), 4, 4, 1));
-            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(satisfy.farm_and_charm.registry.ObjectRegistry.TOMATO.get(), 4, 4, 1));
-            factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.TOMATO_SEEDS.get(), 5, 2, 1));
-            factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.LETTUCE_SEEDS.get(), 4, 2, 1));
-            factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.BUTTER.get(), 2, 6, 2));
+            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.LETTUCE.get(), 4, 4, 1));
+            factories.add(new VillagerUtil.BuyForOneEmeraldFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.TOMATO.get(), 4, 4, 1));
+            factories.add(new VillagerUtil.SellItemFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.TOMATO_SEEDS.get(), 5, 2, 1));
+            factories.add(new VillagerUtil.SellItemFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.LETTUCE_SEEDS.get(), 4, 2, 1));
+            factories.add(new VillagerUtil.SellItemFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.BUTTER.get(), 2, 6, 2));
 
         });
 
         TradeOfferHelper.registerVillagerOffers(COOK, 2, factories -> {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.COOKING_PAN.get(), 6, 1, 3));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.COOKING_POT.get(), 7, 1, 3));
-            factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.TOOL_RACK.get(), 4, 2, 2));
+            factories.add(new VillagerUtil.SellItemFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.TOOL_RACK.get(), 4, 2, 2));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.NAPKIN.get(), 1, 2, 4));
 
         });
 
         TradeOfferHelper.registerVillagerOffers(COOK, 3, factories -> {
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.TOMATO_SOUP.get(), 2, 1, 2));
-            factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.RAW_PASTA.get(), 2, 2, 3));
-            factories.add(new VillagerUtil.SellItemFactory(satisfy.farm_and_charm.registry.ObjectRegistry.DOUGH.get(), 1, 3, 3));
+            factories.add(new VillagerUtil.SellItemFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.RAW_PASTA.get(), 2, 2, 3));
+            factories.add(new VillagerUtil.SellItemFactory(net.satisfy.farm_and_charm.registry.ObjectRegistry.DOUGH.get(), 1, 3, 3));
             factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.MUSHROOM_SOUP.get(), 1, 4, 2));
         });
 

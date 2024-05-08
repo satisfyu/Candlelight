@@ -11,7 +11,7 @@ import satisfy.candlelight.Candlelight;
 @SuppressWarnings("unused")
 public class TabRegistry {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Candlelight.MOD_ID, Registries.CREATIVE_MODE_TAB);
-    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_TAB = TABS.register("candlelight", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_TAB = TABS.register("candlelight", () -> CreativeModeTab.builder(CreativeModeTab.Row.BOTTOM, 0)
             .icon(() -> new ItemStack(ObjectRegistry.COOKING_POT.get()))
             .title(Component.translatable("creativetab.candlelight.tab_main"))
             .displayItems((parameters, output) -> {
@@ -77,7 +77,7 @@ public class TabRegistry {
             })
             .build());
 
-    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_FURNITURE_TAB = TABS.register("candlelight_furniture", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 1)
+    public static final RegistrySupplier<CreativeModeTab> CANDLELIGHT_FURNITURE_TAB = TABS.register("candlelight_furniture", () -> CreativeModeTab.builder(CreativeModeTab.Row.BOTTOM, 1)
             .icon(() -> new ItemStack(ObjectRegistry.PAINTING.get()))
             .title(Component.translatable("creativetab.candlelight.tab_furniture"))
             .displayItems((parameters, output) -> {

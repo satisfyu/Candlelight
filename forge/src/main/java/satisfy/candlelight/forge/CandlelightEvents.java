@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static satisfy.candlelight.registry.ObjectRegistry.*;
-import static satisfy.farm_and_charm.registry.ObjectRegistry.*;
+import static net.satisfy.farm_and_charm.registry.ObjectRegistry.*;
 
 public class CandlelightEvents {
 

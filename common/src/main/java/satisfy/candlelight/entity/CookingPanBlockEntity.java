@@ -27,12 +27,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.CookingPanBlock;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.farm_and_charm.client.gui.handler.RoasterGuiHandler;
-import satisfy.farm_and_charm.item.food.EffectFood;
-import satisfy.farm_and_charm.item.food.EffectFoodHelper;
-import satisfy.farm_and_charm.recipe.RoasterRecipe;
-import satisfy.farm_and_charm.registry.RecipeTypeRegistry;
-import satisfy.farm_and_charm.registry.TagRegistry;
+import net.satisfy.farm_and_charm.client.gui.handler.RoasterGuiHandler;
+import net.satisfy.farm_and_charm.item.food.EffectFood;
+import net.satisfy.farm_and_charm.item.food.EffectFoodHelper;
+import net.satisfy.farm_and_charm.recipe.RoasterRecipe;
+import net.satisfy.farm_and_charm.registry.RecipeTypeRegistry;
+import net.satisfy.farm_and_charm.registry.TagRegistry;
 
 import java.util.Objects;
 

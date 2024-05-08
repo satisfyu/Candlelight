@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.apache.commons.compress.utils.Lists;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.farm_and_charm.item.food.EffectFoodHelper;
+import net.satisfy.farm_and_charm.item.food.EffectFoodHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;

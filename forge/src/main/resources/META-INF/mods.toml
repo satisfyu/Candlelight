@@ -39,3 +39,10 @@ mandatory = true
 versionRange = "[1.2.9,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.candlelight]]
+modId = "farm_and_charm"
+mandatory = true
+versionRange = "[0.0.1,)"
+ordering = "AFTER"
+side = "BOTH"

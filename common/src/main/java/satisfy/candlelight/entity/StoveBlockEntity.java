@@ -32,9 +32,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.block.StoveBlock;
 import satisfy.candlelight.registry.BlockEntityRegistry;
-import satisfy.farm_and_charm.client.gui.handler.StoveGuiHandler;
-import satisfy.farm_and_charm.recipe.StoveRecipe;
-import satisfy.farm_and_charm.registry.RecipeTypeRegistry;
+import net.satisfy.farm_and_charm.client.gui.handler.StoveGuiHandler;
+import net.satisfy.farm_and_charm.recipe.StoveRecipe;
+import net.satisfy.farm_and_charm.registry.RecipeTypeRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
