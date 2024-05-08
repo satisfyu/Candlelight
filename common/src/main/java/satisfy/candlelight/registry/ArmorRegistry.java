@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ArmorRegistry {
-    public static void registerArmorModelLayers(){
+    public static void registerArmorModelLayers() {
         EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::getTexturedModelData);
         EntityModelLayerRegistry.register(CookInner.LAYER_LOCATION, CookInner::createBodyLayer);
         EntityModelLayerRegistry.register(CookOuter.LAYER_LOCATION, CookOuter::createBodyLayer);
@@ -58,14 +58,14 @@ public class ArmorRegistry {
         armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.FORMAL_SHIRT.get())
                 .setTexture(new CandlelightIdentifier("suit"))
                 .setOuterModel(new SuitFormalOuter<>(modelLoader.bakeLayer(SuitFormalOuter.LAYER_LOCATION)))
-       );
+        );
     }
 
-        public static  <T extends LivingEntity> void registerHatModels(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
+    public static <T extends LivingEntity> void registerHatModels(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
         models.put(ObjectRegistry.COOKING_HAT.get(), new CookingHatModel<>(modelLoader.bakeLayer(CookingHatModel.LAYER_LOCATION)));
         models.put(ObjectRegistry.FLOWER_CROWN.get(), new FlowerCrownModel<>(modelLoader.bakeLayer(FlowerCrownModel.LAYER_LOCATION)));
         models.put(ObjectRegistry.NECKTIE.get(), new NecktieModel<>(modelLoader.bakeLayer(NecktieModel.LAYER_LOCATION)));
-        }
+    }
 
     @SuppressWarnings("all")
     public static void appendCookTooltip(List<Component> tooltip) {
@@ -124,7 +124,7 @@ public class ArmorRegistry {
                 chestplate != null && chestplate.getItem() instanceof SuitShirtChestplateItem &&
                 leggings != null && leggings.getItem() instanceof SuitLeggingsItem &&
 
-        tooltip.add(Component.nullToEmpty(""));
+                tooltip.add(Component.nullToEmpty(""));
         tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("tooltip.candlelight.suit_armor.")));
         tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof SuitNecktieItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.NECKTIE.get().getDescription().getString() + "]"));
         tooltip.add(Component.nullToEmpty((chestplate != null && chestplate.getItem() instanceof SuitShirtChestplateItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.SHIRT.get().getDescription().getString() + "]"));

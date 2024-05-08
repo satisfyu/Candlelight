@@ -9,6 +9,7 @@ import satisfy.candlelight.block.TableSetBlock;
 
 public class TableSetBlockItem extends BlockItem {
     private final TableSetBlock.PlateType type;
+
     public TableSetBlockItem(Block block, Properties settings, TableSetBlock.PlateType type) {
         super(block, settings);
         this.type = type;
@@ -18,7 +19,7 @@ public class TableSetBlockItem extends BlockItem {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
         BlockState state = super.getPlacementState(blockPlaceContext);
-        if(state == null) return null;
+        if (state == null) return null;
         state = state.setValue(TableSetBlock.PLATE_TYPE, type);
         return state;
     }

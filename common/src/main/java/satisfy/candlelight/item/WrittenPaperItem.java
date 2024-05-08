@@ -26,12 +26,9 @@ public class WrittenPaperItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
-        if(world.isClientSide())
-        {
+        if (world.isClientSide()) {
             CandlelightUtil.setSignedPaperScreen(itemStack);
-        }
-        else
-        {
+        } else {
             user.containerMenu.broadcastChanges();
         }
         user.awardStat(Stats.ITEM_USED.get(this));

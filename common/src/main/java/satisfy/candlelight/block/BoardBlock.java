@@ -18,6 +18,7 @@ import java.util.List;
 
 public class BoardBlock extends FacingBlock {
     private static final VoxelShape SHAPE = Block.box(5, 0, 5, 11, 11, 11);
+
     public BoardBlock(Properties settings) {
         super(settings);
     }

@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.Block;
 
 public class FlammableBlockRegistry {
 
-    public static void init(){
+    public static void init() {
         add(5, 20, ObjectRegistry.FLOORBOARD.get());
         add(5, 20, ObjectRegistry.OAK_CABINET.get());
         add(5, 20, ObjectRegistry.OAK_DRAWER.get());
@@ -71,7 +71,7 @@ public class FlammableBlockRegistry {
         add(5, 20, ObjectRegistry.CRIMSON_BIG_TABLE.get());
     }
 
-    public static void add(int burnOdd, int igniteOdd, Block... blocks){
+    public static void add(int burnOdd, int igniteOdd, Block... blocks) {
         DoApiCommonEP.addFlammable(burnOdd, igniteOdd, blocks);
     }
 }

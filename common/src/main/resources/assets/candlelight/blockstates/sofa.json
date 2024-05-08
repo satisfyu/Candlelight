@@ -15,7 +15,6 @@
       "model": "candlelight:block/sofa",
       "y": 270
     },
-
     "facing=north,type=middle": {
       "model": "candlelight:block/sofa_middle"
     },
@@ -31,7 +30,6 @@
       "model": "candlelight:block/sofa_middle",
       "y": 270
     },
-
     "facing=north,type=left": {
       "model": "candlelight:block/sofa_side_right"
     },
@@ -47,7 +45,6 @@
       "model": "candlelight:block/sofa_side_right",
       "y": 270
     },
-
     "facing=north,type=right": {
       "model": "candlelight:block/sofa_side_left",
       "y": 0

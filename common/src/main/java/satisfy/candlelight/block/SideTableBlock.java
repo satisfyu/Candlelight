@@ -36,6 +36,16 @@ public class SideTableBlock extends LineConnectingBlock {
     public static final BooleanProperty HAS_LANTERN = BooleanProperty.create("has_lantern");
     public static final BooleanProperty HAS_BOOK = BooleanProperty.create("has_book");
     public static final BooleanProperty HAS_LAMP = BooleanProperty.create("has_lamp");
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0, 0.375, 0, 1, 0.625, 1), BooleanOp.OR);
+        return shape;
+    };
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
 
     public SideTableBlock(Properties properties) {
         super(properties.lightLevel(state -> (state.getValue(HAS_LANTERN) || state.getValue(HAS_LAMP)) ? 15 : 0));
@@ -46,18 +56,6 @@ public class SideTableBlock extends LineConnectingBlock {
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
-
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0, 0.375, 0, 1, 0.625, 1), BooleanOp.OR);
-        return shape;
-    };
-
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
 
     @Override
     public @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
@@ -112,8 +110,7 @@ public class SideTableBlock extends LineConnectingBlock {
                 popResource(world, pos, new ItemStack(Items.BOOK));
                 world.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 return InteractionResult.sidedSuccess(false);
-            }
-            else if (isSneaking && state.getValue(HAS_LAMP)) {
+            } else if (isSneaking && state.getValue(HAS_LAMP)) {
                 world.setBlock(pos, state.setValue(HAS_LAMP, false), 3);
                 popResource(world, pos, new ItemStack(ObjectRegistry.LAMP.get()));
                 world.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);

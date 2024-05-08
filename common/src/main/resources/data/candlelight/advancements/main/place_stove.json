@@ -8,7 +8,6 @@
             "block": "farm_and_charm:stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -20,7 +19,6 @@
             "block": "candlelight:granite_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -32,7 +30,6 @@
             "block": "candlelight:cobblestone_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -44,7 +41,6 @@
             "block": "candlelight:stone_bricks_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -56,7 +52,6 @@
             "block": "candlelight:sandstone_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -68,7 +63,6 @@
             "block": "candlelight:deepslate_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -80,7 +74,6 @@
             "block": "candlelight:end_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -92,7 +85,6 @@
             "block": "candlelight:quartz_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -104,7 +96,6 @@
             "block": "candlelight:red_nether_bricks_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -116,7 +107,6 @@
             "block": "candlelight:basalt_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"
@@ -128,7 +118,6 @@
             "block": "candlelight:bamboo_stove",
             "condition": "minecraft:block_state_property"
           }
-
         ]
       },
       "trigger": "minecraft:placed_block"

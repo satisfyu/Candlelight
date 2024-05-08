@@ -20,14 +20,13 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"unused", "deprecation"})
 public class SmallPaintingBlock extends WallDecorationBlock {
+    public static final IntegerProperty PAINTING = IntegerProperty.create("painting", 0, 6);
+
+
     public SmallPaintingBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(this.stateDefinition.any().setValue(PAINTING, 0));
     }
-
-
-    public static final IntegerProperty PAINTING = IntegerProperty.create("painting", 0, 6);
-
 
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {

@@ -16,7 +16,7 @@ public class TableSetRenderer implements StorageTypeRenderer {
     @Override
     public void render(StorageBlockEntity entity, PoseStack matrices, MultiBufferSource vertexConsumers, NonNullList<ItemStack> itemStacks) {
         ItemStack stack = itemStacks.get(0);
-        if(stack.isEmpty()) return;
+        if (stack.isEmpty()) return;
         float oP = (float) 1 / 16;
         matrices.translate(oP, oP, -oP);
         matrices.scale(0.5f, 0.5f, 0.5f);

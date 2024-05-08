@@ -7,12 +7,11 @@ import de.cristelknight.doapi.config.jankson.config.CommentedConfig;
 import java.util.HashMap;
 
 public record CandlelightConfig(boolean enableChefSetBonus) implements CommentedConfig<CandlelightConfig> {
-    private static CandlelightConfig INSTANCE;
-
     public static final Codec<CandlelightConfig> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.BOOL.fieldOf("enable_chef_armor_set_bonus").orElse(true).forGetter(CandlelightConfig::enableChefSetBonus)
             ).apply(instance, CandlelightConfig::new));
+    private static CandlelightConfig INSTANCE;
 
     public static CandlelightConfig getActiveInstance() {
         if (INSTANCE == null) {
@@ -31,6 +30,7 @@ public record CandlelightConfig(boolean enableChefSetBonus) implements Commented
         comments.put("enable_chef_armor_set_bonus", "Whether the chef armor should give a set bonus");
         return comments;
     }
+
     @Override
     public String getHeader() {
         return """
@@ -54,6 +54,11 @@ public record CandlelightConfig(boolean enableChefSetBonus) implements Commented
     }
 
     @Override
+    public void setInstance(CandlelightConfig instance) {
+        INSTANCE = instance;
+    }
+
+    @Override
     public CandlelightConfig getDefault() {
         return new CandlelightConfig(true);
     }
@@ -66,10 +71,5 @@ public record CandlelightConfig(boolean enableChefSetBonus) implements Commented
     @Override
     public boolean isSorted() {
         return false;
-    }
-
-    @Override
-    public void setInstance(CandlelightConfig instance) {
-        INSTANCE = instance;
     }
 }

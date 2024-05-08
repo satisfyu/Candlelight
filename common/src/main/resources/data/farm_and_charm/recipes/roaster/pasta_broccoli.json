@@ -1,6 +1,5 @@
 {
   "type": "farm_and_charm:roaster",
-
   "ingredients": [
     {
       "tag": "farm_and_charm:cabbage"

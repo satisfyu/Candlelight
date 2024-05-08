@@ -1,4 +1,3 @@
-
 package satisfy.candlelight.client.gui;
 
 import dev.architectury.networking.NetworkManager;

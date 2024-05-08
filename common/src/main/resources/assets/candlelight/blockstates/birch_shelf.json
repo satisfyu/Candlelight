@@ -3,7 +3,7 @@
     "facing=east": {
       "model": "candlelight:block/birch_shelf",
       "y": 90
-    },  
+    },
     "facing=north": {
       "model": "candlelight:block/birch_shelf"
     },

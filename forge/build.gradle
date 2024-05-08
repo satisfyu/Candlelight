@@ -41,7 +41,6 @@ dependencies {
 }
 
 
-
 processResources {
     inputs.property "version", project.version
 

@@ -12,10 +12,10 @@
     },
     "_": {
       "item": "minecraft:oak_slab"
-  },
-  "B": {
-    "item": "minecraft:barrel"
-  }
+    },
+    "B": {
+      "item": "minecraft:barrel"
+    }
   },
   "result": {
     "item": "candlelight:oak_cabinet"

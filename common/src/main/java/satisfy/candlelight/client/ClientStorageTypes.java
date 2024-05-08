@@ -10,11 +10,11 @@ import satisfy.candlelight.client.render.TableSetRenderer;
 import satisfy.candlelight.registry.StorageTypeRegistry;
 
 public class ClientStorageTypes {
-    public static void registerStorageType(ResourceLocation location, StorageTypeRenderer renderer){
+    public static void registerStorageType(ResourceLocation location, StorageTypeRenderer renderer) {
         StorageBlockEntityRenderer.registerStorageType(location, renderer);
     }
 
-    public static void init(){
+    public static void init() {
         Candlelight.LOGGER.debug("Registering Storage Block Renderers!");
         registerStorageType(StorageTypeRegistry.TABLE_SET, new TableSetRenderer());
         registerStorageType(StorageTypeRegistry.SHELF, new ShelfRenderer());

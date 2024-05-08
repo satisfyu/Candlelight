@@ -1,12 +1,12 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "candlelight:chocolate_mousse"
-        }
-    ],
-    "result": {
-        "item": "minecraft:brown_dye",
-        "count": 2
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "candlelight:chocolate_mousse"
     }
+  ],
+  "result": {
+    "item": "minecraft:brown_dye",
+    "count": 2
+  }
 }

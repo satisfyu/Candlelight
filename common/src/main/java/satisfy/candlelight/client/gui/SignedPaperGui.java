@@ -27,7 +27,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 
 @Environment(EnvType.CLIENT)
-public class SignedPaperGui extends Screen{
+public class SignedPaperGui extends Screen {
     public static final Contents EMPTY_PROVIDER = new Contents() {
         public int getPageCount() {
             return 0;
@@ -48,6 +48,34 @@ public class SignedPaperGui extends Screen{
         this.cachedPage = Collections.emptyList();
         this.cachedPageIndex = -1;
         this.contents = contents;
+    }
+
+    static List<String> readPages(CompoundTag nbt) {
+        ImmutableList.Builder<String> builder = ImmutableList.builder();
+        Objects.requireNonNull(builder);
+        filterPages(nbt, builder::add);
+        return builder.build();
+    }
+
+    @SuppressWarnings("all")
+    public static void filterPages(CompoundTag nbt, Consumer<String> pageConsumer) {
+        ListTag nbtList = nbt.getList("text", 8).copy();
+        IntFunction intFunction;
+        if (Minecraft.getInstance().isTextFilteringEnabled() && nbt.contains("filtered_pages", 10)) {
+            CompoundTag nbtCompound = nbt.getCompound("filtered_pages");
+            intFunction = (page) -> {
+                String string = String.valueOf(page);
+                return nbtCompound.contains(string) ? nbtCompound.getString(string) : nbtList.getString(page);
+            };
+        } else {
+            Objects.requireNonNull(nbtList);
+            intFunction = nbtList::getString;
+        }
+
+        for (int i = 0; i < nbtList.size(); ++i) {
+            pageConsumer.accept((String) intFunction.apply(i));
+        }
+
     }
 
     public boolean setPage(int index) {
@@ -93,7 +121,7 @@ public class SignedPaperGui extends Screen{
         Objects.requireNonNull(this.font);
         int l = Math.min(128 / 9, this.cachedPage.size());
 
-        for(int m = 0; m < l; ++m) {
+        for (int m = 0; m < l; ++m) {
             FormattedCharSequence orderedText = this.cachedPage.get(m);
             int var10003 = i + 36;
             Objects.requireNonNull(this.font);
@@ -153,7 +181,7 @@ public class SignedPaperGui extends Screen{
         if (this.cachedPage.isEmpty()) {
             return null;
         } else {
-            int i = Mth.floor(x - (double)((this.width - 192) / 2) - 36.0);
+            int i = Mth.floor(x - (double) ((this.width - 192) / 2) - 36.0);
             int j = Mth.floor(y - 2.0 - 30.0);
             if (i >= 0 && j >= 0) {
                 Objects.requireNonNull(this.font);
@@ -179,50 +207,22 @@ public class SignedPaperGui extends Screen{
         }
     }
 
-    static List<String> readPages(CompoundTag nbt) {
-        ImmutableList.Builder<String> builder = ImmutableList.builder();
-        Objects.requireNonNull(builder);
-        filterPages(nbt, builder::add);
-        return builder.build();
-    }
-
-    @SuppressWarnings("all")
-    public static void filterPages(CompoundTag nbt, Consumer<String> pageConsumer) {
-        ListTag nbtList = nbt.getList("text", 8).copy();
-        IntFunction intFunction;
-        if (Minecraft.getInstance().isTextFilteringEnabled() && nbt.contains("filtered_pages", 10)) {
-            CompoundTag nbtCompound = nbt.getCompound("filtered_pages");
-            intFunction = (page) -> {
-                String string = String.valueOf(page);
-                return nbtCompound.contains(string) ? nbtCompound.getString(string) : nbtList.getString(page);
-            };
-        } else {
-            Objects.requireNonNull(nbtList);
-            intFunction = nbtList::getString;
-        }
-
-        for(int i = 0; i < nbtList.size(); ++i) {
-            pageConsumer.accept((String)intFunction.apply(i));
-        }
-
-    }
-
     @Environment(EnvType.CLIENT)
     public interface Contents {
-        int getPageCount();
-
-        FormattedText getPageUnchecked(int index);
-
-        default FormattedText getPage(int index) {
-            return index >= 0 && index < this.getPageCount() ? this.getPageUnchecked(index) : FormattedText.EMPTY;
-        }
-
         static Contents create(ItemStack stack) {
             if (stack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get())) {
                 return new WrittenPaperContents(stack);
             } else {
                 return stack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get()) ? new WritablePaperContents(stack) : EMPTY_PROVIDER;
             }
+        }
+
+        int getPageCount();
+
+        FormattedText getPageUnchecked(int index);
+
+        default FormattedText getPage(int index) {
+            return index >= 0 && index < this.getPageCount() ? this.getPageUnchecked(index) : FormattedText.EMPTY;
         }
     }
 

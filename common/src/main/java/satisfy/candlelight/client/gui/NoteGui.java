@@ -44,14 +44,20 @@ public abstract class NoteGui extends Screen {
     private static final Component FINALIZE_WARNING_TEXT = Component.translatable("book.finalizeWarning");
     private static final FormattedCharSequence BLACK_CURSOR_TEXT;
     private static final FormattedCharSequence GRAY_CURSOR_TEXT;
+
+    static {
+        BLACK_CURSOR_TEXT = FormattedCharSequence.forward("_", Style.EMPTY.withColor(ChatFormatting.BLACK));
+        GRAY_CURSOR_TEXT = FormattedCharSequence.forward("_", Style.EMPTY.withColor(ChatFormatting.GRAY));
+    }
+
     protected final Player player;
     protected final ItemStack itemStack;
+    private final List<String> text = Lists.newArrayList();
+    private final Component signedByText;
     protected boolean dirty;
     private boolean signing;
     private int frameTick;
-    private final List<String> text = Lists.newArrayList();
     private String title = "";
-    private final TextFieldHelper currentPageSelectionManager = new TextFieldHelper(this::getCurrentDisplayCache, this::setDisplayCache, this::getClipboard, this::setClipboard, (string) -> string.length() < 1024 && this.font.wordWrapHeight(string, 114) <= 128);
     private final TextFieldHelper noteTitleSelectionManager = new TextFieldHelper(() -> this.title, (title) -> this.title = title, this::getClipboard, this::setClipboard, (string) -> string.length() < 16);
     private long lastClickTime;
     private int lastClickIndex = -1;
@@ -61,7 +67,7 @@ public abstract class NoteGui extends Screen {
     private Button cancelButton;
     @Nullable
     private NoteGui.DisplayCache pageContent;
-    private final Component signedByText;
+    private final TextFieldHelper currentPageSelectionManager = new TextFieldHelper(this::getCurrentDisplayCache, this::setDisplayCache, this::getClipboard, this::setClipboard, (string) -> string.length() < 1024 && this.font.wordWrapHeight(string, 114) <= 128);
 
     public NoteGui(Player player, ItemStack itemStack) {
         super(GameNarrator.NO_TITLE);
@@ -81,6 +87,16 @@ public abstract class NoteGui extends Screen {
 
         this.signedByText = Component.translatable("book.byAuthor", player.getName()).withStyle(ChatFormatting.DARK_GRAY);
 
+    }
+
+    static int getLineFromOffset(int[] lineStarts, int position) {
+        int i = Arrays.binarySearch(lineStarts, position);
+        return i < 0 ? -(i + 2) : i;
+    }
+
+    static int findLineFromPos(int[] is, int i) {
+        int j = Arrays.binarySearch(is, i);
+        return j < 0 ? -(j + 2) : j;
     }
 
     @Override
@@ -133,7 +149,7 @@ public abstract class NoteGui extends Screen {
     protected void removeEmptyPages() {
         ListIterator<String> listIterator = this.text.listIterator(this.text.size());
 
-        while(listIterator.hasPrevious() && listIterator.previous().isEmpty()) {
+        while (listIterator.hasPrevious() && listIterator.previous().isEmpty()) {
             listIterator.remove();
         }
     }
@@ -155,14 +171,14 @@ public abstract class NoteGui extends Screen {
         }
     }
 
+    private String getClipboard() {
+        return this.minecraft != null ? TextFieldHelper.getClipboardContents(this.minecraft) : "";
+    }
+
     private void setClipboard(String clipboard) {
         if (this.minecraft != null) {
             TextFieldHelper.setClipboardContents(this.minecraft, clipboard);
         }
-    }
-
-    private String getClipboard() {
-        return this.minecraft != null ? TextFieldHelper.getClipboardContents(this.minecraft) : "";
     }
 
     public void tick() {
@@ -350,15 +366,6 @@ public abstract class NoteGui extends Screen {
         return !this.text.isEmpty() ? this.text.get(0) : "";
     }
 
-    private void setDisplayCache(String newContent) {
-        if (!this.text.isEmpty()) {
-            this.text.set(0, newContent);
-            this.dirty = true;
-            this.invalidateDisplayCache();
-        }
-
-    }
-
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
         this.renderBackground(guiGraphics);
         this.setFocused(null);
@@ -488,6 +495,15 @@ public abstract class NoteGui extends Screen {
         return this.pageContent;
     }
 
+    private void setDisplayCache(String newContent) {
+        if (!this.text.isEmpty()) {
+            this.text.set(0, newContent);
+            this.dirty = true;
+            this.invalidateDisplayCache();
+        }
+
+    }
+
     private void invalidateDisplayCache() {
         this.pageContent = null;
     }
@@ -548,11 +564,11 @@ public abstract class NoteGui extends Screen {
                     Objects.requireNonNull(this.font);
                     list2.add(this.getLineSelectionRectangle(string, textHandler, l, p, n * 9, is[n]));
 
-                    for(q = n + 1; q < o; ++q) {
+                    for (q = n + 1; q < o; ++q) {
                         Objects.requireNonNull(this.font);
                         int r = q * 9;
                         String string2 = string.substring(is[q], is[q + 1]);
-                        int s = (int)textHandler.stringWidth(string2);
+                        int s = (int) textHandler.stringWidth(string2);
                         NoteGui.Position var10002 = new NoteGui.Position(0, r);
                         Objects.requireNonNull(this.font);
                         list2.add(this.getRectFromCorners(var10002, new NoteGui.Position(s, r + 9)));
@@ -568,16 +584,11 @@ public abstract class NoteGui extends Screen {
         }
     }
 
-    static int getLineFromOffset(int[] lineStarts, int position) {
-        int i = Arrays.binarySearch(lineStarts, position);
-        return i < 0 ? -(i + 2) : i;
-    }
-
     private Rect2i getLineSelectionRectangle(String string, StringSplitter handler, int selectionStart, int selectionEnd, int lineY, int lineStart) {
         String string2 = string.substring(lineStart, selectionStart);
         String string3 = string.substring(lineStart, selectionEnd);
-        NoteGui.Position position = new NoteGui.Position((int)handler.stringWidth(string2), lineY);
-        int var10002 = (int)handler.stringWidth(string3);
+        NoteGui.Position position = new NoteGui.Position((int) handler.stringWidth(string2), lineY);
+        int var10002 = (int) handler.stringWidth(string3);
         Objects.requireNonNull(this.font);
         NoteGui.Position position2 = new NoteGui.Position(var10002, lineY + 9);
         return this.getRectFromCorners(position, position2);
@@ -593,26 +604,21 @@ public abstract class NoteGui extends Screen {
         return new Rect2i(i, k, j - i, l - k);
     }
 
-    static int findLineFromPos(int[] is, int i) {
-        int j = Arrays.binarySearch(is, i);
-        return j < 0 ? -(j + 2) : j;
-    }
-
-    static {
-        BLACK_CURSOR_TEXT = FormattedCharSequence.forward("_", Style.EMPTY.withColor(ChatFormatting.BLACK));
-        GRAY_CURSOR_TEXT = FormattedCharSequence.forward("_", Style.EMPTY.withColor(ChatFormatting.GRAY));
-    }
-
     @Environment(EnvType.CLIENT)
     @SuppressWarnings("all")
     static class DisplayCache {
         static final DisplayCache EMPTY;
-        private final String fullText;
+
+        static {
+            EMPTY = new DisplayCache("", new Pos2i(0, 0), true, new int[]{0}, new LineInfo[]{new LineInfo(Style.EMPTY, "", 0, 0)}, new Rect2i[0]);
+        }
+
         final Pos2i cursor;
         final boolean cursorAtEnd;
-        private final int[] lineStarts;
         final LineInfo[] lines;
         final Rect2i[] selection;
+        private final String fullText;
+        private final int[] lineStarts;
 
         public DisplayCache(String string, Pos2i pos2i, boolean bl, int[] is, LineInfo[] lineInfos, Rect2i[] rect2is) {
             this.fullText = string;
@@ -660,10 +666,6 @@ public abstract class NoteGui extends Screen {
         public int findLineEnd(int i) {
             int j = findLineFromPos(this.lineStarts, i);
             return this.lineStarts[j] + this.lines[j].contents.length();
-        }
-
-        static {
-            EMPTY = new DisplayCache("", new Pos2i(0, 0), true, new int[]{0}, new LineInfo[]{new LineInfo(Style.EMPTY, "", 0, 0)}, new Rect2i[0]);
         }
     }
 

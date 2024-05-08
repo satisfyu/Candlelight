@@ -21,11 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class BambooStoveBlock extends StoveBlock{
-    public BambooStoveBlock(Properties settings) {
-        super(settings);
-    }
-
+public class BambooStoveBlock extends StoveBlock {
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0, 0, 0.8125, 0.1875, 0.125, 1), BooleanOp.OR);
@@ -35,18 +31,21 @@ public class BambooStoveBlock extends StoveBlock{
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0, 0.125, 0, 1, 1, 1), BooleanOp.OR);
         return shape;
     };
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
+
+    public BambooStoveBlock(Properties settings) {
+        super(settings);
+    }
 
     @Override
     @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
-
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
 
     @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {

@@ -64,6 +64,15 @@ public class TypeWriterBlock extends BaseEntityBlock {
         return shape;
     };
 
+    static {
+        FACING = HorizontalDirectionalBlock.FACING;
+        SHAPE = Util.make(new HashMap<>(), map -> {
+            for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            }
+        });
+    }
+
     public TypeWriterBlock(Properties settings) {
         super(settings);
     }
@@ -73,31 +82,26 @@ public class TypeWriterBlock extends BaseEntityBlock {
         if (stack.getItem() == ObjectRegistry.NOTE_PAPER.get() && state.getValue(FULL) == 0) {
             world.setBlock(pos, state.setValue(FULL, 1), 2);
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
-            {
+            if (blockEntity instanceof TypeWriterEntity typeWriterEntity) {
                 typeWriterEntity.addPaper(new ItemStack(ObjectRegistry.NOTE_PAPER_WRITEABLE.get()));
                 stack.setCount(stack.getCount() - 1);
             }
             return InteractionResult.SUCCESS;
-        }
-        else if (state.getValue(FULL) == 1) {
+        } else if (state.getValue(FULL) == 1) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
-            {
-                if(world.isClientSide)
+            if (blockEntity instanceof TypeWriterEntity typeWriterEntity) {
+                if (world.isClientSide)
                     CandlelightUtil.setTypeWriterScreen(player, typeWriterEntity);
             }
             return InteractionResult.SUCCESS;
-        }
-        else if (state.getValue(FULL) == 2) {
+        } else if (state.getValue(FULL) == 2) {
             world.setBlock(pos, state.setValue(FULL, 0), 2);
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if(blockEntity instanceof TypeWriterEntity typeWriterEntity)
-            {
+            if (blockEntity instanceof TypeWriterEntity typeWriterEntity) {
                 ItemStack paper = typeWriterEntity.getPaper();
                 ItemStack result = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
 
-                if(paper.getTag() != null)
+                if (paper.getTag() != null)
                     result.setTag(paper.getTag().copy());
                 result.addTagElement("author", StringTag.valueOf(player.getName().getString()));
                 player.addItem(result);
@@ -125,7 +129,7 @@ public class TypeWriterBlock extends BaseEntityBlock {
         if (!blockState.is(blockState2.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof TypeWriterEntity typeWriterEntity) {
-                ItemStack  dropStack = typeWriterEntity.getPaper();
+                ItemStack dropStack = typeWriterEntity.getPaper();
                 Containers.dropItemStack(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), dropStack);
             }
         }
@@ -144,15 +148,6 @@ public class TypeWriterBlock extends BaseEntityBlock {
 
     public boolean useShapeForLightOcclusion(BlockState state) {
         return true;
-    }
-
-    static {
-        FACING = HorizontalDirectionalBlock.FACING;
-        SHAPE = Util.make(new HashMap<>(), map -> {
-            for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-            }
-        });
     }
 
     @Nullable

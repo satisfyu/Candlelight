@@ -1,6 +1,6 @@
 {
-    "parent": "block/cross",
-    "textures": {
-        "cross": "candlelight:block/rose_3"
-    }
+  "parent": "block/cross",
+  "textures": {
+    "cross": "candlelight:block/rose_3"
+  }
 }

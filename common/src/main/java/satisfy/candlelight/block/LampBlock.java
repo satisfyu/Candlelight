@@ -25,6 +25,11 @@ public class LampBlock extends net.minecraft.world.level.block.LanternBlock {
     protected static final VoxelShape HANGING_SHAPE = makeShapeHS();
     protected static final VoxelShape AABB = makeShapeSS();
 
+    public LampBlock(Properties settings) {
+        super(settings);
+        this.registerDefaultState(this.defaultBlockState().setValue(HANGING, false).setValue(WATERLOGGED, false).setValue(LUMINANCE, false));
+    }
+
     public static VoxelShape makeShapeHS() {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.3125, 0.875, 0.3125, 0.6875, 1, 0.6875), BooleanOp.OR);
@@ -33,19 +38,12 @@ public class LampBlock extends net.minecraft.world.level.block.LanternBlock {
         return shape;
     }
 
-
-
     public static VoxelShape makeShapeSS() {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.3125, 0, 0.3125, 0.6875, 0.375, 0.6875), BooleanOp.OR);
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.5, 0.1875, 0.8125, 1, 0.8125), BooleanOp.OR);
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.4375, 0.3125, 0.4375, 0.5625, 0.9375, 0.5625), BooleanOp.OR);
         return shape;
-    }
-
-    public LampBlock(Properties settings) {
-        super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(HANGING, false).setValue(WATERLOGGED, false).setValue(LUMINANCE, false));
     }
 
     @Override

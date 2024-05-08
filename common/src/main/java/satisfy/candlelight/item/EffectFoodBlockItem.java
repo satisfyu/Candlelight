@@ -14,11 +14,11 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import net.satisfy.farm_and_charm.block.EffectFoodBlock;
 import net.satisfy.farm_and_charm.item.food.EffectFood;
 import net.satisfy.farm_and_charm.item.food.EffectFoodHelper;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class EffectFoodBlockItem extends BlockItem implements EffectFood {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext context) {
         BlockState blockState = this.getBlock().getStateForPlacement(context);
-        return blockState != null && this.canPlace(context, blockState) ? blockState.getBlock() instanceof EffectFoodBlock ? blockState.setValue(EffectFoodBlock.BITES , EffectFoodHelper.getStage(context.getItemInHand())) : blockState : null;
+        return blockState != null && this.canPlace(context, blockState) ? blockState.getBlock() instanceof EffectFoodBlock ? blockState.setValue(EffectFoodBlock.BITES, EffectFoodHelper.getStage(context.getItemInHand())) : blockState : null;
     }
 
     @Override
@@ -52,15 +52,14 @@ public class EffectFoodBlockItem extends BlockItem implements EffectFood {
         if (user instanceof Player player && !player.isCreative()) {
             Inventory playerInventory = player.getInventory();
             int slot = playerInventory.findSlotMatchingUnusedItem(stack);
-            ItemStack returnStack =  super.finishUsingItem(stack, world, user);
+            ItemStack returnStack = super.finishUsingItem(stack, world, user);
             int stage = EffectFoodHelper.getStage(stack);
 
             if (stage < this.foodStages) {
                 ItemStack itemStack = EffectFoodHelper.setStage(new ItemStack(this), stage + 1);
                 if (slot != -1 && playerInventory.getItem(slot).isEmpty()) {
                     playerInventory.setItem(slot, itemStack);
-                }
-                else {
+                } else {
                     slot = playerInventory.getSlotWithRemainingSpace(itemStack);
                     if (slot != -1) {
                         playerInventory.setItem(slot, itemStack);

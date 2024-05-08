@@ -6,7 +6,7 @@ import satisfy.candlelight.Candlelight;
 
 public class DataFixerRegistry {
 
-    public static void init(){
+    public static void init() {
         StringPairs p = DataFixers.getOrCreate(Candlelight.MOD_ID);
         p.add("candlelight:pasta", "candlelight:pasta_with_mozzarella");
         p.add("candlelight:lettuce_salad", "candlelight:salad");

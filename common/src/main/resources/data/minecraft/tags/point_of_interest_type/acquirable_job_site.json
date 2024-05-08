@@ -1,8 +1,6 @@
 {
   "replace": false,
-  "values":
-  [
-  "candlelight:cook_poi"
-    ]
-
+  "values": [
+    "candlelight:cook_poi"
+  ]
 }

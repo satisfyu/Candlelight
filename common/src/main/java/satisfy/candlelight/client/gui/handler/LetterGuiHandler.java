@@ -16,8 +16,8 @@ import satisfy.candlelight.registry.ObjectRegistry;
 import satisfy.candlelight.registry.ScreenHandlerTypeRegistry;
 
 public class LetterGuiHandler extends AbstractContainerMenu {
-    private final Container inventory;
     public static String name = "";
+    private final Container inventory;
 
     public LetterGuiHandler(int syncId, Inventory playerInventory) {
         this(syncId, playerInventory, new SimpleContainer(3));

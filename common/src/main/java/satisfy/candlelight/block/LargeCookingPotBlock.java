@@ -40,10 +40,10 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.satisfy.farm_and_charm.block.CookingPotBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.LargeCookingPotBlockEntity;
-import net.satisfy.farm_and_charm.block.CookingPotBlock;
 
 import java.util.HashMap;
 import java.util.List;
@@ -56,21 +56,6 @@ public class LargeCookingPotBlock extends BaseEntityBlock {
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
     public static final BooleanProperty NEEDS_SUPPORT = BooleanProperty.create("needs_support");
-
-    public LargeCookingPotBlock(Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false).setValue(COOKING, false).setValue(NEEDS_SUPPORT, false));
-    }
-
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT, COOKING, NEEDS_SUPPORT);
-    }
-
-    @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE.getOrDefault(state.getValue(FACING), Shapes.empty());
-    }
-
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.25, 0.75, 0.0625, 0.75), BooleanOp.OR);
@@ -91,12 +76,25 @@ public class LargeCookingPotBlock extends BaseEntityBlock {
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.875, 0.5625, 0.3125, 0.9375, 0.6875, 0.6875), BooleanOp.OR);
         return shape;
     };
-
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
+
+    public LargeCookingPotBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false).setValue(COOKING, false).setValue(NEEDS_SUPPORT, false));
+    }
+
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, LIT, COOKING, NEEDS_SUPPORT);
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        return SHAPE.getOrDefault(state.getValue(FACING), Shapes.empty());
+    }
 
     @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
@@ -158,7 +156,7 @@ public class LargeCookingPotBlock extends BaseEntityBlock {
         if (!world.isClientSide) {
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof MenuProvider) {
-                player.openMenu((MenuProvider)entity);
+                player.openMenu((MenuProvider) entity);
                 return InteractionResult.CONSUME;
             }
         }

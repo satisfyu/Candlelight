@@ -24,6 +24,7 @@ import satisfy.candlelight.block.CookingPanBlock;
 import satisfy.candlelight.util.CandlelightTiers;
 
 public class CookingPanItem extends BlockItem {
+    public static final CandlelightTiers COOKING_PAN_TIER = CandlelightTiers.COPPER;
     private final Multimap<Attribute, AttributeModifier> toolAttributes;
 
     public CookingPanItem(Block block, Item.Properties properties) {
@@ -40,8 +41,6 @@ public class CookingPanItem extends BlockItem {
         stack.hurtAndBreak(1, attacker, (user) -> user.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         return true;
     }
-
-    public static final CandlelightTiers COOKING_PAN_TIER = CandlelightTiers.COPPER;
 
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
@@ -74,7 +73,8 @@ public class CookingPanItem extends BlockItem {
     @Override
     protected BlockState getPlacementState(BlockPlaceContext blockPlaceContext) {
         BlockState state = super.getPlacementState(blockPlaceContext);
-        if(state != null) state = state.setValue(CookingPanBlock.DAMAGE, blockPlaceContext.getItemInHand().getDamageValue());
+        if (state != null)
+            state = state.setValue(CookingPanBlock.DAMAGE, blockPlaceContext.getItemInHand().getDamageValue());
         return state;
     }
 

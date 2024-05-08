@@ -14,7 +14,7 @@ import satisfy.candlelight.registry.BlockEntityRegistry;
 @SuppressWarnings("all")
 public class TypeWriterEntity extends BlockEntity {
 
-    public static final String PAPER_KEY ="paper";
+    public static final String PAPER_KEY = "paper";
 
     @Nullable
     ItemStack paper = ItemStack.EMPTY;
@@ -59,7 +59,7 @@ public class TypeWriterEntity extends BlockEntity {
 
     public ItemStack readPaper(CompoundTag nbt) {
         super.load(nbt);
-        if(nbt.contains(PAPER_KEY)) {
+        if (nbt.contains(PAPER_KEY)) {
             CompoundTag nbtCompound = nbt.getCompound(PAPER_KEY);
             if (!nbtCompound.isEmpty()) {
                 return ItemStack.of(nbtCompound);

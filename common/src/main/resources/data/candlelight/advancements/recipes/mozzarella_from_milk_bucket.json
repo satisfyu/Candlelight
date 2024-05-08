@@ -22,7 +22,6 @@
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "candlelight:mozzarella"
-
       }
     }
   },

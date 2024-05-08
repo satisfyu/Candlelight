@@ -11,18 +11,14 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
 import net.satisfy.farm_and_charm.block.FoodBlock;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
 public class EffectFoodTrayBlock extends FoodBlock {
-    public EffectFoodTrayBlock(Properties settings, MobEffectInstance effect, int nutrition, float saturationMod) {
-        super(settings, effect, nutrition, saturationMod);
-    }
-
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.1875, 0.75, 0.0625, 0.8125), BooleanOp.OR);
@@ -33,14 +29,15 @@ public class EffectFoodTrayBlock extends FoodBlock {
 
         return shape;
     };
-
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
             map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
 
-
+    public EffectFoodTrayBlock(Properties settings, MobEffectInstance effect, int nutrition, float saturationMod) {
+        super(settings, effect, nutrition, saturationMod);
+    }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {

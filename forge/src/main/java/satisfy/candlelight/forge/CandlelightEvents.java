@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static satisfy.candlelight.registry.ObjectRegistry.*;
 import static net.satisfy.farm_and_charm.registry.ObjectRegistry.*;
+import static satisfy.candlelight.registry.ObjectRegistry.*;
 
 public class CandlelightEvents {
 

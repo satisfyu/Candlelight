@@ -1,6 +1,5 @@
 {
   "variants": {
-
     "facing=north,type=none": {
       "model": "candlelight:block/stone_bricks_counter"
     },
@@ -16,7 +15,6 @@
       "model": "candlelight:block/stone_bricks_counter",
       "y": 270
     },
-
     "facing=north,type=middle": {
       "model": "candlelight:block/stone_bricks_counter_middle"
     },
@@ -32,7 +30,6 @@
       "model": "candlelight:block/stone_bricks_counter_middle",
       "y": 270
     },
-
     "facing=north,type=left": {
       "model": "candlelight:block/stone_bricks_counter_connected"
     },
@@ -48,7 +45,6 @@
       "model": "candlelight:block/stone_bricks_counter_connected",
       "y": 270
     },
-
     "facing=north,type=right": {
       "model": "candlelight:block/stone_bricks_counter_connected",
       "y": 180

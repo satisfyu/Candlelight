@@ -1,6 +1,5 @@
 {
   "type": "farm_and_charm:roaster",
-
   "ingredients": [
     {
       "item": "candlelight:bolognese"

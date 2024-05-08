@@ -15,7 +15,6 @@
       "model": "candlelight:block/sideboard",
       "y": 270
     },
-
     "facing=north,type=left": {
       "model": "candlelight:block/sideboard_connected_left"
     },
@@ -31,7 +30,6 @@
       "model": "candlelight:block/sideboard_connected_left",
       "y": 270
     },
-
     "facing=north,type=right": {
       "model": "candlelight:block/sideboard_connected_right"
     },

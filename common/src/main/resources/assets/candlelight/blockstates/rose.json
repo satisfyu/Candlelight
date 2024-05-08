@@ -1,7 +1,18 @@
 {
-    "variants": {
-        "": [   { "model": "candlelight:block/rose_1", "weight":1 },
-                { "model": "candlelight:block/rose_2", "weight":1 },
-                { "model": "candlelight:block/rose_3", "weight":1 }
- ]   }
+  "variants": {
+    "": [
+      {
+        "model": "candlelight:block/rose_1",
+        "weight": 1
+      },
+      {
+        "model": "candlelight:block/rose_2",
+        "weight": 1
+      },
+      {
+        "model": "candlelight:block/rose_3",
+        "weight": 1
+      }
+    ]
+  }
 }

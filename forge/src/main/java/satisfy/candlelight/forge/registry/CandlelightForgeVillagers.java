@@ -12,7 +12,6 @@ import net.minecraftforge.registries.RegistryObject;
 import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.registry.ObjectRegistry;
 
-
 import java.lang.reflect.InvocationTargetException;
 
 public class CandlelightForgeVillagers {
@@ -27,10 +26,10 @@ public class CandlelightForgeVillagers {
             new VillagerProfession("cook", x -> x.get() == COOK_POI.get(), x -> x.get() == COOK_POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_FARMER));
 
 
-    public static void registerPOIs(){
+    public static void registerPOIs() {
         try {
             ObfuscationReflectionHelper.findMethod(PoiType.class, "registerBlockStates", PoiType.class).invoke(null, COOK_POI.get());
-        } catch (InvocationTargetException | IllegalAccessException exception){
+        } catch (InvocationTargetException | IllegalAccessException exception) {
             exception.printStackTrace();
         }
     }

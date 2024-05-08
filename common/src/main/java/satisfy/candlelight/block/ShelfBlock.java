@@ -84,7 +84,7 @@ public class ShelfBlock extends StorageBlock {
     }
 
     @Override
-    public int size(){
+    public int size() {
         return 9;
     }
 

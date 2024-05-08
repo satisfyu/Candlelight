@@ -5,10 +5,10 @@ import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import satisfy.candlelight.Candlelight;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import satisfy.candlelight.Candlelight;
 import satisfy.candlelight.client.gui.ClothConfigScreen;
 import satisfy.candlelight.forge.registry.CandlelightForgeVillagers;
 import satisfy.candlelight.registry.CompostableRegistry;
@@ -23,15 +23,16 @@ public class CandlelightForge {
         modEventBus.addListener(this::commonSetup);
 
         modEventBus.addListener(this::commonSetup);
-        if(isClothConfigLoaded()) ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((client, parent) -> ClothConfigScreen.create(parent)));
+        if (isClothConfigLoaded())
+            ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((client, parent) -> ClothConfigScreen.create(parent)));
+    }
+
+    public static boolean isClothConfigLoaded() {
+        return ModList.get().isLoaded("cloth_config");
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(CompostableRegistry::init);
         Candlelight.commonInit();
-    }
-
-    public static boolean isClothConfigLoaded(){
-        return ModList.get().isLoaded("cloth_config");
     }
 }

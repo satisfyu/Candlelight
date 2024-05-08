@@ -1,16 +1,28 @@
 {
   "variants": {
     "facing=east": [
-      { "model": "candlelight:block/table_sign",  "y": 90}
+      {
+        "model": "candlelight:block/table_sign",
+        "y": 90
+      }
     ],
     "facing=north": [
-      { "model": "candlelight:block/table_sign", "weight":1 }
+      {
+        "model": "candlelight:block/table_sign",
+        "weight": 1
+      }
     ],
     "facing=south": [
-      { "model": "candlelight:block/table_sign",  "y": 180}
+      {
+        "model": "candlelight:block/table_sign",
+        "y": 180
+      }
     ],
     "facing=west": [
-      { "model": "candlelight:block/table_sign",  "y": 270}
+      {
+        "model": "candlelight:block/table_sign",
+        "y": 270
+      }
     ]
   }
 }

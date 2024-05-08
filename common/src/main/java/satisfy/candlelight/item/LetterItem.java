@@ -25,8 +25,7 @@ public class LetterItem extends Item {
 
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
         ItemStack itemStack = user.getItemInHand(hand);
-        if(!world.isClientSide())
-        {
+        if (!world.isClientSide()) {
             MenuProvider screenHandlerFactory = new MenuProvider() {
                 @Override
                 public @NotNull Component getDisplayName() {
@@ -45,6 +44,6 @@ public class LetterItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
-        tooltip.add(Component.translatable(  "item.candlelight.letter.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("item.candlelight.letter.tooltip").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 }

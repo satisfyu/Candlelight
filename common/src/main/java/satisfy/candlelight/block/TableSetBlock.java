@@ -62,7 +62,6 @@ public class TableSetBlock extends StorageBlock {
     }
 
 
-
     private static HashMap<Item, BooleanProperty> itemHashMap() {
         return Util.make(new HashMap<>(), map -> {
                     map.put(ObjectRegistry.WINE_GLASS.get(), WINE_GLASS);
@@ -87,11 +86,11 @@ public class TableSetBlock extends StorageBlock {
         ItemStack stack = player.getItemInHand(hand);
         Item item = stack.getItem();
         HashMap<Item, BooleanProperty> items = itemHashMap();
-        if(!items.containsKey(item)) return super.use(state, world, pos, player, hand, hit);
+        if (!items.containsKey(item)) return super.use(state, world, pos, player, hand, hit);
         BooleanProperty property = items.get(item);
-        if(state.getValue(property)) return InteractionResult.PASS;
+        if (state.getValue(property)) return InteractionResult.PASS;
 
-        if(!world.isClientSide()){
+        if (!world.isClientSide()) {
             world.setBlockAndUpdate(pos, state.setValue(property, true));
             if (!player.isCreative()) stack.shrink(1);
         }
@@ -132,10 +131,10 @@ public class TableSetBlock extends StorageBlock {
                 list.add(new ItemStack(ObjectRegistry.BOWL.get()));
                 break;
         }
-        for(BooleanProperty property : itemHashMap().values()){
-            if(!blockState.getValue(property)) continue;
+        for (BooleanProperty property : itemHashMap().values()) {
+            if (!blockState.getValue(property)) continue;
             Item item = getItemFromProperty(property);
-            if(item == null) continue;
+            if (item == null) continue;
             list.add(new ItemStack(item));
         }
         return list;
@@ -166,22 +165,6 @@ public class TableSetBlock extends StorageBlock {
         return 0;
     }
 
-
-
-    public enum PlateType implements StringRepresentable {
-        PLATE("plate"),
-        BOWL("bowl");
-        private final String name;
-        PlateType(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public @NotNull String getSerializedName() {
-            return this.name;
-        }
-    }
-
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         if (!state.canSurvive(world, pos)) {
@@ -203,7 +186,6 @@ public class TableSetBlock extends StorageBlock {
         }
         return super.updateShape(state, direction, neighborState, world, pos, neighborPos);
     }
-
 
     @Override
     public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
@@ -267,5 +249,20 @@ public class TableSetBlock extends StorageBlock {
             result[0] = Shapes.or(result[0], Shapes.box(newMinX, minY, minX, newMaxX, maxY, maxX));
         });
         return result[0];
+    }
+
+    public enum PlateType implements StringRepresentable {
+        PLATE("plate"),
+        BOWL("bowl");
+        private final String name;
+
+        PlateType(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public @NotNull String getSerializedName() {
+            return this.name;
+        }
     }
 }

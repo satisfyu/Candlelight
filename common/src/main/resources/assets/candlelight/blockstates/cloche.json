@@ -3,7 +3,7 @@
     "facing=east": {
       "model": "candlelight:block/cloche",
       "y": 90
-    },  
+    },
     "facing=north": {
       "model": "candlelight:block/cloche"
     },

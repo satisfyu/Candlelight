@@ -39,8 +39,6 @@
         "y": 90
       }
     },
-
-
     {
       "when": {
         "plate_tye": "bowl",
@@ -80,8 +78,6 @@
         "y": 90
       }
     },
-
-
     {
       "when": {
         "wine_glass": "true",

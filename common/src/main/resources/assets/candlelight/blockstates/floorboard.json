@@ -1,9 +1,22 @@
 {
   "variants": {
-    "": [ 
-      { "model": "candlelight:block/planks1", "weight":1 },
-      { "model": "candlelight:block/planks2", "weight":1 },
-      { "model": "candlelight:block/planks3", "weight":1 },
-      { "model": "candlelight:block/planks4", "weight":1 }
-    ]   }
+    "": [
+      {
+        "model": "candlelight:block/planks1",
+        "weight": 1
+      },
+      {
+        "model": "candlelight:block/planks2",
+        "weight": 1
+      },
+      {
+        "model": "candlelight:block/planks3",
+        "weight": 1
+      },
+      {
+        "model": "candlelight:block/planks4",
+        "weight": 1
+      }
+    ]
+  }
 }

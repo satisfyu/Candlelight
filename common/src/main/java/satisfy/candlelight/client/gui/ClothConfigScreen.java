@@ -41,6 +41,26 @@ public class ClothConfigScreen {
         return builder.build();
     }
 
+    public static void linkButtons(String MOD_ID, ConfigCategory category, ConfigEntryBuilder builder, String dcLink, String cfLink, Screen lastScreen) {
+        if (lastScreen == null) lastScreen = Minecraft.getInstance().screen;
+
+        TextListEntry tle = builder.startTextDescription(Component.literal(" ")).build();
+        category.addEntry(tle);
+        Screen finalLastScreen = lastScreen;
+        category.addEntry(new LinkEntry(CCUtil.entryName(MOD_ID, "dc"), buttonWidget -> Minecraft.getInstance().setScreen(new ConfirmLinkScreen(confirmed -> {
+            if (confirmed) {
+                Util.getPlatform().openUri(dcLink);
+            }
+            Minecraft.getInstance().setScreen(create(finalLastScreen));
+        }, dcLink, true)), new DoApiRL("textures/gui/dc.png"), 3));
+        category.addEntry(tle);
+        category.addEntry(new LinkEntry(CCUtil.entryName(MOD_ID, "h"), buttonWidget -> Minecraft.getInstance().setScreen(new ConfirmLinkScreen(confirmed -> {
+            if (confirmed) {
+                Util.getPlatform().openUri(cfLink);
+            }
+            Minecraft.getInstance().setScreen(create(finalLastScreen));
+        }, cfLink, true)), new DoApiRL("textures/gui/cf.png"), 10));
+    }
 
     private static class ConfigEntries {
         private final ConfigEntryBuilder builder;
@@ -75,32 +95,13 @@ public class ClothConfigScreen {
         }
 
 
-        public IntegerListEntry createIntField(String id, int value, int defaultValue, SubCategoryBuilder subCategoryBuilder, int min, int max){
+        public IntegerListEntry createIntField(String id, int value, int defaultValue, SubCategoryBuilder subCategoryBuilder, int min, int max) {
             IntegerListEntry e = CCUtil.createIntField(Candlelight.MOD_ID, id, value, defaultValue, builder).setMaximum(max).setMinimum(min);
 
-            if(subCategoryBuilder == null) category.addEntry(e);
+            if (subCategoryBuilder == null) category.addEntry(e);
             else subCategoryBuilder.add(e);
 
             return e;
         }
-    }
-
-    public static void linkButtons(String MOD_ID, ConfigCategory category, ConfigEntryBuilder builder, String dcLink, String cfLink, Screen lastScreen){
-        if(lastScreen == null) lastScreen = Minecraft.getInstance().screen;
-
-        TextListEntry tle = builder.startTextDescription(Component.literal(" ")).build();
-        category.addEntry(tle);
-        Screen finalLastScreen = lastScreen;
-        category.addEntry(new LinkEntry(CCUtil.entryName(MOD_ID,"dc"), buttonWidget -> Minecraft.getInstance().setScreen(new ConfirmLinkScreen(confirmed -> {
-            if (confirmed) {
-                Util.getPlatform().openUri(dcLink);
-            }
-            Minecraft.getInstance().setScreen(create(finalLastScreen)); }, dcLink, true)), new DoApiRL("textures/gui/dc.png"), 3));
-        category.addEntry(tle);
-        category.addEntry(new LinkEntry(CCUtil.entryName(MOD_ID,"h"), buttonWidget -> Minecraft.getInstance().setScreen(new ConfirmLinkScreen(confirmed -> {
-            if (confirmed) {
-                Util.getPlatform().openUri(cfLink);
-            }
-            Minecraft.getInstance().setScreen(create(finalLastScreen)); }, cfLink, true)), new DoApiRL("textures/gui/cf.png"), 10));
     }
 }

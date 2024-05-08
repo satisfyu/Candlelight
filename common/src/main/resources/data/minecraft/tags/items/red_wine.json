@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    {"id":"candlelight:red_wine","required":false}
+    {
+      "id": "candlelight:red_wine",
+      "required": false
+    }
   ]
 }

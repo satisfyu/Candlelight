@@ -74,32 +74,6 @@ public class SofaBlock extends LineConnectingBlock {
         return shape;
     };
 
-    @Override
-    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        Map<Direction, VoxelShape> voxelShape;
-        switch (state.getValue(TYPE)) {
-            case MIDDLE -> voxelShape = MIDDLE_SHAPE;
-            case LEFT -> voxelShape = LEFT_SHAPE;
-            case RIGHT -> voxelShape = RIGHT_SHAPE;
-            default -> voxelShape = SHAPE;
-        }
-        return voxelShape.get(state.getValue(FACING));
-    }
-
-    public SofaBlock(Properties settings) {
-        super(settings);
-    }
-
-    @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        return ChairUtil.onUse(world, player, hand, hit, 0);
-    }
-
-    @Override
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
-        ChairUtil.onStateReplaced(world, pos);
-    }
-
     static {
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
@@ -121,5 +95,31 @@ public class SofaBlock extends LineConnectingBlock {
                 map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, rightShapeSupplier.get()));
             }
         });
+    }
+
+    public SofaBlock(Properties settings) {
+        super(settings);
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        Map<Direction, VoxelShape> voxelShape;
+        switch (state.getValue(TYPE)) {
+            case MIDDLE -> voxelShape = MIDDLE_SHAPE;
+            case LEFT -> voxelShape = LEFT_SHAPE;
+            case RIGHT -> voxelShape = RIGHT_SHAPE;
+            default -> voxelShape = SHAPE;
+        }
+        return voxelShape.get(state.getValue(FACING));
+    }
+
+    @Override
+    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        return ChairUtil.onUse(world, player, hand, hit, 0);
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
+        ChairUtil.onStateReplaced(world, pos);
     }
 }

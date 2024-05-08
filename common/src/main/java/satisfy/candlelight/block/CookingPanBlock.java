@@ -42,10 +42,10 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.satisfy.farm_and_charm.block.CookingPotBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.candlelight.entity.CookingPanBlockEntity;
-import net.satisfy.farm_and_charm.block.CookingPotBlock;
 
 import java.util.HashMap;
 import java.util.List;
@@ -59,6 +59,21 @@ public class CookingPanBlock extends BaseEntityBlock {
     public static final IntegerProperty DAMAGE = IntegerProperty.create("damage", 0, 25);
     public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
     public static final BooleanProperty NEEDS_SUPPORT = BooleanProperty.create("needs_support");
+    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.0625, 0.8125), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.75, 0.75, 0.25, 0.8125), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.1875, 0.75, 0.25, 0.25), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.75, 0.0625, 0.1875, 0.8125, 0.25, 0.8125), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.0625, 0.1875, 0.25, 0.25, 0.8125), BooleanOp.OR);
+        shape = Shapes.joinUnoptimized(shape, Shapes.box(-0.3125, 0.0625, 0.4375, 0.1875, 0.1875, 0.5625), BooleanOp.OR);
+        return shape;
+    };
+    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
+        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+        }
+    });
 
     public CookingPanBlock(Properties properties) {
         super(properties);
@@ -73,23 +88,6 @@ public class CookingPanBlock extends BaseEntityBlock {
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
-
-    private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
-        VoxelShape shape = Shapes.empty();
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0, 0.1875, 0.8125, 0.0625, 0.8125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.75, 0.75, 0.25, 0.8125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0.0625, 0.1875, 0.75, 0.25, 0.25), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.75, 0.0625, 0.1875, 0.8125, 0.25, 0.8125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(0.1875, 0.0625, 0.1875, 0.25, 0.25, 0.8125), BooleanOp.OR);
-        shape = Shapes.joinUnoptimized(shape, Shapes.box(-0.3125, 0.0625, 0.4375, 0.1875, 0.1875, 0.5625), BooleanOp.OR);
-        return shape;
-    };
-
-    public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
-        for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
-        }
-    });
 
     @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
@@ -163,7 +161,7 @@ public class CookingPanBlock extends BaseEntityBlock {
         if (!world.isClientSide) {
             BlockEntity entity = world.getBlockEntity(pos);
             if (entity instanceof MenuProvider) {
-                player.openMenu((MenuProvider)entity);
+                player.openMenu((MenuProvider) entity);
                 return InteractionResult.CONSUME;
             }
         }

@@ -22,7 +22,7 @@ public class Candlelight {
         CandlelightMessages.registerC2SPackets();
     }
 
-    public static void commonInit(){
+    public static void commonInit() {
         FlammableBlockRegistry.init();
     }
 }

@@ -18,7 +18,7 @@ public class SignNoteC2SPacket implements NetworkManager.NetworkReceiver {
         ItemStack itemStack = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
         itemStack.setTag(stack);
 
-        if(sign) {
+        if (sign) {
             player.getInventory().setItem(slot, itemStack);
         }
     }
