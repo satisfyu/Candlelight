@@ -44,8 +44,6 @@ public class LetterGuiHandler extends AbstractContainerMenu {
         for (m = 0; m < 9; ++m) {
             this.addSlot(new Slot(playerInventory, m, 8 + m * 18, 142));
         }
-
-
     }
 
     @Override
@@ -110,11 +108,14 @@ public class LetterGuiHandler extends AbstractContainerMenu {
 
     @Override
     public @NotNull ItemStack quickMoveStack(Player player, int invSlot) {
-        ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
+        if (slot instanceof OutputSlot) {
+            return ItemStack.EMPTY;
+        }
+
         if (slot.hasItem()) {
             ItemStack originalStack = slot.getItem();
-            newStack = originalStack.copy();
+            ItemStack copyOfStack = originalStack.copy();
             if (invSlot < this.inventory.getContainerSize()) {
                 if (!this.moveItemStackTo(originalStack, this.inventory.getContainerSize(), this.slots.size(), true)) {
                     return ItemStack.EMPTY;
@@ -122,15 +123,14 @@ public class LetterGuiHandler extends AbstractContainerMenu {
             } else if (!this.moveItemStackTo(originalStack, 0, this.inventory.getContainerSize(), false)) {
                 return ItemStack.EMPTY;
             }
-
             if (originalStack.isEmpty()) {
                 slot.set(ItemStack.EMPTY);
             } else {
                 slot.setChanged();
             }
+            return copyOfStack;
         }
-
-        return newStack;
+        return ItemStack.EMPTY;
     }
 
     public static class OutputSlot extends Slot {
