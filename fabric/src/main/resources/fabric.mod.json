@@ -16,22 +16,22 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "satisfy.candlelight.fabric.CandlelightFabric"
+      "net.satisfy.candlelight.fabric.CandlelightFabric"
     ],
     "client": [
-      "satisfy.candlelight.fabric.client.CandlelightClientFabric"
+      "net.satisfy.candlelight.fabric.client.CandlelightClientFabric"
     ],
     "doapi": [
-      "satisfy.candlelight.util.DoAPIImpl"
+      "net.satisfy.candlelight.util.DoAPIImpl"
     ],
     "rei_client": [
-      "satisfy.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
+      "net.satisfy.candlelight.fabric.rei.CandlelightReiClientPluginFabric"
     ],
     "jei_mod_plugin": [
-      "satisfy.candlelight.compat.jei.CandlelightJEIPlugin"
+      "net.satisfy.candlelight.compat.jei.CandlelightJEIPlugin"
     ],
     "modmenu": [
-      "satisfy.candlelight.fabric.client.ModMenuConfig"
+      "net.satisfy.candlelight.fabric.client.ModMenuConfig"
     ]
   },
   "custom": {
