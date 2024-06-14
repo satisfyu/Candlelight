@@ -16,16 +16,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "satisfy.candlelight.fabric.CandlelightFabric"
+      "net.satisfy.candlelight.fabric.CandlelightFabric"
     ],
     "client": [
-      "satisfy.candlelight.fabric.client.CandlelightClientFabric"
+      "net.satisfy.candlelight.fabric.client.CandlelightClientFabric"
     ],
     "doapi": [
-      "satisfy.candlelight.util.DoAPIImpl"
+      "net.satisfy.candlelight.util.DoAPIImpl"
     ],
     "modmenu": [
-      "satisfy.candlelight.fabric.client.ModMenuConfig"
+      "net.satisfy.candlelight.fabric.client.ModMenuConfig"
     ]
   },
   "custom": {
