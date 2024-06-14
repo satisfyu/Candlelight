@@ -5,6 +5,7 @@ import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -35,9 +36,10 @@ public class EffectFoodTrayBlock extends FoodBlock {
         }
     });
 
-    public EffectFoodTrayBlock(Properties settings, MobEffectInstance effect, int nutrition, float saturationMod) {
-        super(settings, effect, nutrition, saturationMod);
+    public EffectFoodTrayBlock(Properties settings, int maxBites, FoodProperties foodComponent) {
+        super(settings, maxBites, foodComponent);
     }
+
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
