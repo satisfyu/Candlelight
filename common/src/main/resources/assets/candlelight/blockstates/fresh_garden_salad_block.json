@@ -15,10 +15,6 @@
       "model": "candlelight:block/fresh_garden_salad_3",
       "y": 270
     },
-    "bites=1,facing=west": {
-      "model": "candlelight:block/fresh_garden_salad_2",
-      "y": 270
-    },
     "bites=1,facing=north": {
       "model": "candlelight:block/fresh_garden_salad_2"
     },
@@ -29,6 +25,10 @@
     "bites=1,facing=south": {
       "model": "candlelight:block/fresh_garden_salad_2",
       "y": 180
+    },
+    "bites=1,facing=west": {
+      "model": "candlelight:block/fresh_garden_salad_2",
+      "y": 270
     },
     "bites=2,facing=north": {
       "model": "candlelight:block/fresh_garden_salad_1"
@@ -57,6 +57,96 @@
       "y": 180
     },
     "bites=3,facing=west": {
+      "model": "candlelight:block/tray",
+      "y": 270
+    },
+    "bites=4,facing=north": {
+      "model": "candlelight:block/tray"
+    },
+    "bites=4,facing=east": {
+      "model": "candlelight:block/tray",
+      "y": 90
+    },
+    "bites=4,facing=south": {
+      "model": "candlelight:block/tray",
+      "y": 180
+    },
+    "bites=4,facing=west": {
+      "model": "candlelight:block/tray",
+      "y": 270
+    },
+    "bites=5,facing=north": {
+      "model": "candlelight:block/tray"
+    },
+    "bites=5,facing=east": {
+      "model": "candlelight:block/tray",
+      "y": 90
+    },
+    "bites=5,facing=south": {
+      "model": "candlelight:block/tray",
+      "y": 180
+    },
+    "bites=5,facing=west": {
+      "model": "candlelight:block/tray",
+      "y": 270
+    },
+    "bites=6,facing=north": {
+      "model": "candlelight:block/tray"
+    },
+    "bites=6,facing=east": {
+      "model": "candlelight:block/tray",
+      "y": 90
+    },
+    "bites=6,facing=south": {
+      "model": "candlelight:block/tray",
+      "y": 180
+    },
+    "bites=6,facing=west": {
+      "model": "candlelight:block/tray",
+      "y": 270
+    },
+    "bites=7,facing=north": {
+      "model": "candlelight:block/tray"
+    },
+    "bites=7,facing=east": {
+      "model": "candlelight:block/tray",
+      "y": 90
+    },
+    "bites=7,facing=south": {
+      "model": "candlelight:block/tray",
+      "y": 180
+    },
+    "bites=7,facing=west": {
+      "model": "candlelight:block/tray",
+      "y": 270
+    },
+    "bites=8,facing=north": {
+      "model": "candlelight:block/tray"
+    },
+    "bites=8,facing=east": {
+      "model": "candlelight:block/tray",
+      "y": 90
+    },
+    "bites=8,facing=south": {
+      "model": "candlelight:block/tray",
+      "y": 180
+    },
+    "bites=8,facing=west": {
+      "model": "candlelight:block/tray",
+      "y": 270
+    },
+    "bites=9,facing=north": {
+      "model": "candlelight:block/tray"
+    },
+    "bites=9,facing=east": {
+      "model": "candlelight:block/tray",
+      "y": 90
+    },
+    "bites=9,facing=south": {
+      "model": "candlelight:block/tray",
+      "y": 180
+    },
+    "bites=9,facing=west": {
       "model": "candlelight:block/tray",
       "y": 270
     }
