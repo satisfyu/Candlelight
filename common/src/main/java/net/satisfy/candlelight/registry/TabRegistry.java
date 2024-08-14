@@ -42,6 +42,7 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.BEEF_WITH_MUSHROOM_IN_WINE_AND_POTATOES.get());
                 output.accept(ObjectRegistry.TOMATO_MOZZARELLA_SALAD.get());
                 output.accept(ObjectRegistry.PORK_RIBS.get());
+                output.accept(ObjectRegistry.KHINKALI.get());
                 output.accept(ObjectRegistry.ROASTBEEF_WITH_GLAZED_CARROTS.get());
                 output.accept(ObjectRegistry.ROASTED_LAMB_WITH_LETTUCE.get());
                 output.accept(ObjectRegistry.TROPICAL_FISH_SUPREME.get());

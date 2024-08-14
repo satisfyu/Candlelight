@@ -20,7 +20,7 @@ public class JewelryRenderer implements StorageTypeRenderer {
             if (!stack.isEmpty()) {
                 matrices.pushPose();
                 matrices.mulPose(Axis.ZN.rotationDegrees(45f));
-                matrices.translate(-0.15, 0.15, 0);
+                matrices.translate(-0.15, 0.1, 0);
                 matrices.scale(0.25f, 0.25f, 0.25f);
                 ClientUtil.renderItem(stack, matrices, vertexConsumers, entity);
                 matrices.popPose();
