@@ -1,6 +1,5 @@
 package net.satisfy.candlelight.client;
 
-import de.cristelknight.doapi.common.util.GeneralUtil;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
@@ -38,24 +37,15 @@ public class CandlelightClient {
         ClientStorageTypes.init();
         BlockEntityRendererRegistry.register(BlockEntityRegistry.DINNER_BELL_BLOCK_ENTITY.get(), DinnerBellRenderer::new);
         RenderTypeRegistry.register(RenderType.translucent(), WINE_GLASS_BLOCK.get(), TABLE_SET.get(), GLASS_BLOCK.get());
-        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
+        registerMenu();
+    }
 
-        initColorItems();
+    public static void registerMenu(){
+        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
     }
 
     public static void preInitClient() {
         registerEntityModelLayer();
-    }
-
-    private static void initColorItems() {
-        GeneralUtil.registerColorArmor(COOKING_HAT.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(CHEFS_JACKET.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(CHEFS_PANTS.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(CHEFS_BOOTS.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(DRESS.get(), 0xFFFFB6C1);
-        GeneralUtil.registerColorArmor(TROUSERS_AND_VEST.get(), 0xB0E0E6FF);
-        GeneralUtil.registerColorArmor(SHIRT.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(NECKTIE.get(), 0x64B6C1FF);
     }
 
     public static void registerEntityModelLayer() {

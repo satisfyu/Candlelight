@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "acacia_rack",
+  "pattern": [
+    "#V#",
+    "VBV",
+    "#B#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:acacia_planks"
+    },
+    "V": {
+      "item": "minecraft:acacia_slab"
+    },
+    "B": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "id": "candlelight:acacia_cabinet",
+    "count": 1
+  }
+}

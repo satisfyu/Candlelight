@@ -1,0 +1,38 @@
+{
+  "parent": "candlelight:main/place_stove",
+  "criteria": {
+    "cooking_pan": {
+      "conditions": {
+        "location": [
+          {
+            "block": "candlelight:cooking_pan",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.candlelight.cooking_pan.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "candlelight:cooking_pan",
+      "count": 1
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.candlelight.cooking_pan"
+    }
+  },
+  "requirements": [
+    [
+      "cooking_pan"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

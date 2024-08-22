@@ -1,18 +1,22 @@
 package net.satisfy.candlelight.block;
 
+import com.mojang.serialization.MapCodec;
 import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.StringTag;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -77,7 +81,14 @@ public class TypeWriterBlock extends BaseEntityBlock {
         super(settings);
     }
 
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return null;
+    }
+
+    @Override
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionHand hand = player.getUsedItemHand();
         ItemStack stack = player.getItemInHand(hand);
         if (stack.getItem() == ObjectRegistry.NOTE_PAPER.get() && state.getValue(FULL) == 0) {
             world.setBlock(pos, state.setValue(FULL, 1), 2);
@@ -101,16 +112,19 @@ public class TypeWriterBlock extends BaseEntityBlock {
                 ItemStack paper = typeWriterEntity.getPaper();
                 ItemStack result = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
 
-                if (paper.getTag() != null)
-                    result.setTag(paper.getTag().copy());
-                result.addTagElement("author", StringTag.valueOf(player.getName().getString()));
+
+                CustomData customData = paper.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+                CompoundTag tag = customData.copyTag();
+                tag.putString("author", player.getName().getString());
+
+                result.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
                 player.addItem(result);
 
                 typeWriterEntity.removePaper();
             }
             return InteractionResult.SUCCESS;
         }
-        return super.use(state, world, pos, player, hand, hit);
+        return InteractionResult.PASS;
     }
 
     @Override
@@ -142,8 +156,8 @@ public class TypeWriterBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        list.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 
     public boolean useShapeForLightOcclusion(BlockState state) {

@@ -1,0 +1,28 @@
+{
+  "type": "farm_and_charm:roaster",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "tag": "farm_and_charm:butter"
+    },
+    {
+      "item": "farm_and_charm:flour"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "farm_and_charm:strawberries"
+    }
+  ],
+  "container": {
+    "id": "minecraft:bowl",
+    "count": 1
+  },
+  "result": {
+    "id": "candlelight:omelet",
+    "count": 6
+  }
+}

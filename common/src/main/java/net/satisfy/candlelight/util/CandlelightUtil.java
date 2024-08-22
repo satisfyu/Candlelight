@@ -22,6 +22,10 @@ public class CandlelightUtil {
     }
 
     public static void setSignedPaperScreen(ItemStack stack) {
-        Minecraft.getInstance().setScreen(new SignedPaperGui(new SignedPaperGui.WrittenPaperContents(stack)));
+        Minecraft.getInstance().setScreen(new SignedPaperGui(new SignedPaperGui.WrittenPaperContents(stack, Minecraft.getInstance().level.registryAccess())));
+    }
+
+    public static boolean isAllowedChatCharacter(char c) {
+        return c != 167 && c >= ' ' && c != 127;
     }
 }

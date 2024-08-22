@@ -1,5 +1,6 @@
 package net.satisfy.candlelight.util;
 
+import de.cristelknight.doapi.DoApi;
 import de.cristelknight.doapi.api.DoApiAPI;
 import de.cristelknight.doapi.api.DoApiPlugin;
 import de.cristelknight.doapi.client.render.feature.CustomArmorManager;
@@ -31,6 +32,7 @@ public class DoAPIImpl implements DoApiAPI {
 
     @Override
     public <T extends LivingEntity> void registerArmor(CustomArmorManager<T> customArmorManager, EntityModelSet entityModelSet) {
+        DoApi.LOGGER.info("Registering armor models");
         ArmorRegistry.registerArmorModels(customArmorManager, entityModelSet);
     }
 }

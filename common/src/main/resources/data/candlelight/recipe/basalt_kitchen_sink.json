@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "basalt_kitchen",
+  "pattern": [
+    "iCi",
+    "BBB"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:cauldron"
+    },
+    "B": {
+      "item": "minecraft:basalt"
+    }
+  },
+  "result": {
+    "id": "candlelight:basalt_kitchen_sink",
+    "count": 1
+  }
+}

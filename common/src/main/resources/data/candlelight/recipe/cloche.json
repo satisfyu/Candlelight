@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "BBB",
+    "B B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "result": {
+    "id": "candlelight:cloche",
+    "count": 1
+  }
+}

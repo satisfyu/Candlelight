@@ -6,6 +6,6 @@ import net.minecraft.world.item.Item;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 
 public class TagRegistry {
-    public static final TagKey<Item> IGNORE_BLOCK_ITEM = TagKey.create(Registries.ITEM, new CandlelightIdentifier("ignore_block_item"));
-    public static final TagKey<Item> RINGS = TagKey.create(Registries.ITEM, new CandlelightIdentifier("rings"));
+    public static final TagKey<Item> IGNORE_BLOCK_ITEM = TagKey.create(Registries.ITEM, CandlelightIdentifier.of("ignore_block_item"));
+    public static final TagKey<Item> RINGS = TagKey.create(Registries.ITEM, CandlelightIdentifier.of("rings"));
 }

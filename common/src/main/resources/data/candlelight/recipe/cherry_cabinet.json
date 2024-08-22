@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "cherry_rack",
+  "pattern": [
+    "#V#",
+    "VBV",
+    "#B#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cherry_planks"
+    },
+    "V": {
+      "item": "minecraft:cherry_slab"
+    },
+    "B": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "id": "candlelight:cherry_cabinet",
+    "count": 1
+  }
+}

@@ -29,8 +29,9 @@ public class SmallPaintingBlock extends WallDecorationBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
         if (player.isDiscrete()) return InteractionResult.PASS;
+        InteractionHand hand = player.getUsedItemHand();
         ItemStack itemStack = player.getItemInHand(hand);
         if (world.isClientSide) {
             if (switchPaintings(world, pos, state, player).consumesAction()) {

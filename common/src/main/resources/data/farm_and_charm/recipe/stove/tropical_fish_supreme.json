@@ -1,0 +1,19 @@
+{
+  "type": "farm_and_charm:stove",
+  "ingredients": [
+    {
+      "item": "minecraft:tropical_fish"
+    },
+    {
+      "tag": "farm_and_charm:cabbage"
+    },
+    {
+      "tag": "candlelight:white_effect"
+    }
+  ],
+  "result": {
+    "id": "candlelight:tropical_fish_supreme",
+    "count": 3
+  },
+  "experience": 0.75
+}

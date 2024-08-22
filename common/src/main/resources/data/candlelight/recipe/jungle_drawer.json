@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jungle_rack",
+  "pattern": [
+    "# #",
+    " B ",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_planks"
+    },
+    "B": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "id": "candlelight:jungle_drawer",
+    "count": 1
+  }
+}

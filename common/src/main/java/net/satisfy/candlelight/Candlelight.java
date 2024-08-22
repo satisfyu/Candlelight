@@ -15,6 +15,7 @@ public class Candlelight {
         CandlelightConfig.getActiveInstance().getConfig();
         DataFixerRegistry.init();
         ObjectRegistry.init();
+        ArmorMaterialRegistry.init();
         ScreenHandlerTypeRegistry.init();
         BlockEntityRegistry.init();
         CommonEvents.init();

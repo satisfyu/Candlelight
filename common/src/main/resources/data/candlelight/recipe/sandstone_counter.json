@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sandstone_kitchen",
+  "pattern": [
+    "III",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:sandstone"
+    }
+  },
+  "result": {
+    "id": "candlelight:sandstone_counter",
+    "count": 1
+  }
+}

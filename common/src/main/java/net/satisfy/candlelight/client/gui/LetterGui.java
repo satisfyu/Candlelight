@@ -16,7 +16,7 @@ import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
 public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
-    private static final ResourceLocation TEXTURE = new CandlelightIdentifier("textures/gui/letter_gui.png");
+    private static final ResourceLocation TEXTURE = CandlelightIdentifier.of("textures/gui/letter_gui.png");
     private EditBox nameField;
 
     public LetterGui(LetterGuiHandler handler, Inventory inventory, Component title) {
@@ -25,7 +25,6 @@ public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
 
     public void containerTick() {
         super.containerTick();
-        this.nameField.tick();
     }
 
     @Override
@@ -43,7 +42,7 @@ public class LetterGui extends AbstractContainerScreen<LetterGuiHandler> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics, mouseX, mouseY, delta);
         super.render(guiGraphics, mouseX, mouseY, delta);
         this.renderForeground(guiGraphics, mouseX, mouseY, delta);
         this.renderTooltip(guiGraphics, mouseX, mouseY);

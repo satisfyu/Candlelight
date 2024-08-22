@@ -13,7 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 
 public class DressInner<T extends LivingEntity> extends HumanoidModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DoApiRL("dress_inner"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(DoApiRL.asResourceLocation("dress_inner"), "main");
 
     public DressInner(ModelPart root) {
         super(root);

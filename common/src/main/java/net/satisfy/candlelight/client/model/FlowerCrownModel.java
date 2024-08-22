@@ -14,7 +14,7 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 
 @Environment(EnvType.CLIENT)
 public class FlowerCrownModel<T extends Entity> extends EntityModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new CandlelightIdentifier("flower_crown"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(CandlelightIdentifier.of("flower_crown"), "main");
     private final ModelPart flower_crown;
 
     public FlowerCrownModel(ModelPart root) {
@@ -35,7 +35,7 @@ public class FlowerCrownModel<T extends Entity> extends EntityModel<T> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-        this.flower_crown.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int j, int k) {
+        this.flower_crown.render(poseStack, vertexConsumer, i, j, k);
     }
 }

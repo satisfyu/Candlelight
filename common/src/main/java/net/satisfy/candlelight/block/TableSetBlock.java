@@ -1,12 +1,12 @@
 package net.satisfy.candlelight.block;
 
-import com.mojang.datafixers.util.Pair;
 import de.cristelknight.doapi.common.block.StorageBlock;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -17,7 +17,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -82,11 +81,12 @@ public class TableSetBlock extends StorageBlock {
 
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionHand hand = player.getUsedItemHand();
         ItemStack stack = player.getItemInHand(hand);
         Item item = stack.getItem();
         HashMap<Item, BooleanProperty> items = itemHashMap();
-        if (!items.containsKey(item)) return super.use(state, world, pos, player, hand, hit);
+        if (!items.containsKey(item)) return super.useWithoutItem(state, world, pos, player, hit);
         BooleanProperty property = items.get(item);
         if (state.getValue(property)) return InteractionResult.PASS;
 
@@ -104,15 +104,15 @@ public class TableSetBlock extends StorageBlock {
             ItemStack itemStack = shelfBlockEntity.removeStack(i);
             SoundEvent soundEvent = SoundEvents.GENERIC_EAT;
             world.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (itemStack.isEdible()) {
-                FoodProperties foodComponent = itemStack.getItem().getFoodProperties();
+            if (itemStack.has(DataComponents.FOOD)) {
+                FoodProperties foodComponent = itemStack.get(DataComponents.FOOD);
                 assert foodComponent != null;
-                player.getFoodData().eat(Math.round(foodComponent.getNutrition() * 1.3f), foodComponent.getSaturationModifier() * 1.3f);
-                List<Pair<MobEffectInstance, Float>> list = foodComponent.getEffects();
-                for (Pair<MobEffectInstance, Float> pair : list) {
-                    if (pair.getFirst() == null || !(world.random.nextFloat() < pair.getSecond()))
+                player.getFoodData().eat(Math.round(foodComponent.nutrition() * 1.3f), foodComponent.saturation() * 1.3f);
+                List<FoodProperties.PossibleEffect> list = foodComponent.effects();
+                for (FoodProperties.PossibleEffect pair : list) {
+                    if(pair == null || !(world.random.nextFloat() < pair.probability()))
                         continue;
-                    player.addEffect(new MobEffectInstance(pair.getFirst()));
+                    player.addEffect(pair.effect());
                 }
             }
             world.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
@@ -157,7 +157,7 @@ public class TableSetBlock extends StorageBlock {
 
     @Override
     public boolean canInsertStack(ItemStack stack) {
-        return stack.isEdible();
+        return stack.has(DataComponents.FOOD);
     }
 
     @Override
@@ -188,8 +188,8 @@ public class TableSetBlock extends StorageBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
-        tooltip.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        list.add(Component.translatable("tooltip.candlelight.canbeplaced").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
     }
 
     @Override

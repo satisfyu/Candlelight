@@ -12,7 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.satisfy.candlelight.Candlelight;
 
 public class DinnerBellModel<T extends Entity> extends EntityModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Candlelight.MOD_ID, "dinner_bell"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Candlelight.MOD_ID, "dinner_bell"), "main");
     private final ModelPart dinner_bell_base;
     private final ModelPart dinner_bell_button;
 
@@ -34,14 +34,12 @@ public class DinnerBellModel<T extends Entity> extends EntityModel<T> {
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
 
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        dinner_bell_base.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-        dinner_bell_button.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-    }
-
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
     }
 
+    @Override
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int j, int k) {
+        dinner_bell_base.render(poseStack, vertexConsumer, i, j);
+        dinner_bell_button.render(poseStack, vertexConsumer, i, j);
+    }
 }

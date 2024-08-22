@@ -10,7 +10,7 @@ public class CandlelightPlacedFeature {
     public static final ResourceKey<PlacedFeature> ROSE_PATCH_CHANCE_KEY = registerKey("rose_patch_chance");
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new CandlelightIdentifier(name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, CandlelightIdentifier.of(name));
     }
 }
 

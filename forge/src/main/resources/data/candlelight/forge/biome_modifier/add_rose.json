@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#candlelight:spawns_rose",
-  "features": "candlelight:rose_patch_chance",
-  "step": "vegetal_decoration"
-}

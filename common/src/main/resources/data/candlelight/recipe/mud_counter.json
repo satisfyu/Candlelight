@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "mud_bricks_kitchen",
+  "pattern": [
+    "III",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:mud_bricks"
+    }
+  },
+  "result": {
+    "id": "candlelight:mud_counter",
+    "count": 1
+  }
+}

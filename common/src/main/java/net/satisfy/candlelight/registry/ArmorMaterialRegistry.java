@@ -1,63 +1,66 @@
 package net.satisfy.candlelight.registry;
 
-import net.minecraft.sounds.SoundEvent;
+import dev.architectury.registry.registries.DeferredRegister;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
+import net.satisfy.candlelight.util.CandlelightIdentifier;
+
+import java.util.EnumMap;
+import java.util.List;
 
 public class ArmorMaterialRegistry {
-    public static final ArmorMaterial COOK_ARMOR = new SimpleArmorMaterial(ArmorMaterials.LEATHER, 1, "cook");
-    public static final ArmorMaterial RING_ARMOR = new SimpleArmorMaterial(ArmorMaterials.LEATHER, 0, "gold_ring", 15, Ingredient.of(new ItemStack(Items.GOLD_INGOT)));
+    public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create("candlelight", Registries.ARMOR_MATERIAL);
 
-    private static class SimpleArmorMaterial implements ArmorMaterial {
-        private final ArmorMaterial base;
-        private final int defense;
-        private final String name;
-        private final int enchantability;
-        private final Ingredient repairIngredient;
+    public static final Holder<ArmorMaterial> COOK_ARMOR =
+            ARMOR_MATERIALS.register("copper", () -> new ArmorMaterial(
+                    Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                        map.put(ArmorItem.Type.BOOTS, 1);
+                        map.put(ArmorItem.Type.LEGGINGS, 1);
+                        map.put(ArmorItem.Type.CHESTPLATE, 1);
+                        map.put(ArmorItem.Type.HELMET, 1);
+                        map.put(ArmorItem.Type.BODY, 1);
+                    }),
+                    0,
+                    ArmorMaterials.LEATHER.value().equipSound(),
+                    () -> Ingredient.of(ItemStack.EMPTY),
+                    List.of(
+                            new ArmorMaterial.Layer(
+                                    CandlelightIdentifier.of("cook")
+                            ),
+                            new ArmorMaterial.Layer(
+                                    CandlelightIdentifier.of("cook"), "_overlay", true
+                            )
+                    ),
+                    ArmorMaterials.LEATHER.value().toughness(),
+                    ArmorMaterials.LEATHER.value().knockbackResistance()
+            ));
 
-        SimpleArmorMaterial(ArmorMaterial base, int defense, String name) {
-            this(base, defense, name, base.getEnchantmentValue(), base.getRepairIngredient());
-        }
+    public static final Holder<ArmorMaterial> RING_ARMOR =
+            ARMOR_MATERIALS.register("gold_ring", () -> new ArmorMaterial(
+                    Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                        map.put(ArmorItem.Type.BOOTS, 0);
+                        map.put(ArmorItem.Type.LEGGINGS, 0);
+                        map.put(ArmorItem.Type.CHESTPLATE, 0);
+                        map.put(ArmorItem.Type.HELMET, 0);
+                        map.put(ArmorItem.Type.BODY, 0);
+                    }),
+                    15,
+                    ArmorMaterials.LEATHER.value().equipSound(),
+                    () -> Ingredient.of(new ItemStack(Items.GOLD_INGOT)),
+                    List.of(
+                            new ArmorMaterial.Layer(
+                                    ResourceLocation.withDefaultNamespace("gold_ring")
+                            )
+                    ),
+                    ArmorMaterials.LEATHER.value().toughness(),
+                    ArmorMaterials.LEATHER.value().knockbackResistance()
+            ));
 
-        SimpleArmorMaterial(ArmorMaterial base, int defense, String name, int enchantability, Ingredient repairIngredient) {
-            this.base = base;
-            this.defense = defense;
-            this.name = name;
-            this.enchantability = enchantability;
-            this.repairIngredient = repairIngredient;
-        }
-
-        public int getDurabilityForType(ArmorItem.Type type) {
-            return base.getDurabilityForType(type);
-        }
-
-        public int getDefenseForType(ArmorItem.Type type) {
-            return defense;
-        }
-
-        public int getEnchantmentValue() {
-            return enchantability;
-        }
-
-        public @NotNull SoundEvent getEquipSound() {
-            return base.getEquipSound();
-        }
-
-        public @NotNull Ingredient getRepairIngredient() {
-            return repairIngredient;
-        }
-
-        public @NotNull String getName() {
-            return name;
-        }
-
-        public float getToughness() {
-            return base.getToughness();
-        }
-
-        public float getKnockbackResistance() {
-            return base.getKnockbackResistance();
-        }
+    public static void init() {
+        ARMOR_MATERIALS.register();
     }
 }

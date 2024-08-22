@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "candlelight:floorboard"
+    }
+  },
+  "result": {
+    "id": "candlelight:side_table",
+    "count": 1
+  }
+}

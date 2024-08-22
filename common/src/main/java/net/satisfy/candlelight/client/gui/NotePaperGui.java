@@ -1,14 +1,14 @@
 package net.satisfy.candlelight.client.gui;
 
 import dev.architectury.networking.NetworkManager;
-import io.netty.buffer.Unpooled;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.satisfy.candlelight.networking.CandlelightMessages;
+import net.minecraft.world.item.component.CustomData;
+import net.satisfy.candlelight.networking.packet.SignNoteC2SPacket;
 
 @Environment(EnvType.CLIENT)
 public class NotePaperGui extends NoteGui {
@@ -25,11 +25,8 @@ public class NotePaperGui extends NoteGui {
             this.removeEmptyPages();
             this.writeNbtData(signNote);
             int slot = this.hand == InteractionHand.MAIN_HAND ? this.player.getInventory().selected : 40;
-            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
-            buf.writeNbt(itemStack.getTag());
-            buf.writeInt(slot);
-            buf.writeBoolean(signNote);
-            NetworkManager.sendToServer(CandlelightMessages.SIGN_NOTE, buf);
+            SignNoteC2SPacket packet = new SignNoteC2SPacket(itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag(), slot, signNote);
+            NetworkManager.sendToServer(packet);
         }
     }
 }

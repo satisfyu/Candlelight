@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stone_bricks_kitchen",
+  "pattern": [
+    "III",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:stone_bricks"
+    }
+  },
+  "result": {
+    "id": "candlelight:stone_bricks_counter",
+    "count": 1
+  }
+}

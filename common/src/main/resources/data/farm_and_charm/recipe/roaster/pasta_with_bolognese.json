@@ -1,0 +1,22 @@
+{
+  "type": "farm_and_charm:roaster",
+  "ingredients": [
+    {
+      "item": "candlelight:bolognese"
+    },
+    {
+      "tag": "farm_and_charm:pasta"
+    },
+    {
+      "tag": "candlelight:cheeses"
+    }
+  ],
+  "container": {
+    "id": "minecraft:bowl",
+    "count": 1
+  },
+  "result": {
+    "id": "candlelight:pasta_with_bolognese",
+    "count": 1
+  }
+}

@@ -58,7 +58,8 @@ public class LampBlock extends net.minecraft.world.level.block.LanternBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionHand hand = player.getUsedItemHand();
         if (player.getItemInHand(hand).isEmpty()) {
             if (!world.isClientSide()) {
                 BlockState newState = state.setValue(LUMINANCE, !state.getValue(LUMINANCE));

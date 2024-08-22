@@ -13,13 +13,13 @@ import java.util.function.Predicate;
 public class CandlelightBiomeModification {
 
     public static void init() {
-        BiomeModification world = BiomeModifications.create(new CandlelightIdentifier("world_features"));
+        BiomeModification world = BiomeModifications.create(CandlelightIdentifier.of("world_features"));
         Predicate<BiomeSelectionContext> spawnsRose = getCandlelightSelector();
         world.add(ModificationPhase.ADDITIONS, spawnsRose, ctx -> ctx.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, CandlelightPlacedFeature.ROSE_PATCH_CHANCE_KEY));
     }
 
     private static Predicate<BiomeSelectionContext> getCandlelightSelector() {
-        return BiomeSelectors.tag(TagKey.create(Registries.BIOME, new CandlelightIdentifier("spawns_rose")));
+        return BiomeSelectors.tag(TagKey.create(Registries.BIOME, CandlelightIdentifier.of("spawns_rose")));
     }
 
 

@@ -9,6 +9,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.*;
@@ -16,6 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.satisfy.candlelight.util.CandlelightIdentifier;
 import org.jetbrains.annotations.Nullable;
 import net.satisfy.candlelight.registry.ObjectRegistry;
@@ -37,7 +40,7 @@ public class SignedPaperGui extends Screen {
             return FormattedText.EMPTY;
         }
     };
-    public static final ResourceLocation BOOK_TEXTURE = new CandlelightIdentifier("textures/gui/note_paper_gui.png");
+    public static final ResourceLocation BOOK_TEXTURE = CandlelightIdentifier.of("textures/gui/note_paper_gui.png");
     private final Contents contents;
     private int pageIndex;
     private List<FormattedCharSequence> cachedPage;
@@ -109,7 +112,7 @@ public class SignedPaperGui extends Screen {
     }
 
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics, mouseX, mouseY, delta);
         int i = (this.width - 192) / 2;
         guiGraphics.blit(BOOK_TEXTURE, i, 2, 0, 0, 192, 192);
         if (this.cachedPageIndex != this.pageIndex) {
@@ -211,7 +214,7 @@ public class SignedPaperGui extends Screen {
     public interface Contents {
         static Contents create(ItemStack stack) {
             if (stack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get())) {
-                return new WrittenPaperContents(stack);
+                return new WrittenPaperContents(stack, Minecraft.getInstance().level.registryAccess());
             } else {
                 return stack.is(ObjectRegistry.NOTE_PAPER_WRITEABLE.get()) ? new WritablePaperContents(stack) : EMPTY_PROVIDER;
             }
@@ -235,8 +238,11 @@ public class SignedPaperGui extends Screen {
         }
 
         private static List<String> getPages(ItemStack stack) {
-            CompoundTag nbtCompound = stack.getTag();
-            return nbtCompound != null ? readPages(nbtCompound) : ImmutableList.of();
+            CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+            CompoundTag nbtCompound = customData.copyTag();
+            List<String> pages = readPages(nbtCompound);
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbtCompound));
+            return pages;
         }
 
         public int getPageCount() {
@@ -251,14 +257,20 @@ public class SignedPaperGui extends Screen {
     @Environment(EnvType.CLIENT)
     public static class WrittenPaperContents implements Contents {
         private final List<String> pages;
+        private final RegistryAccess registryAccess;
 
-        public WrittenPaperContents(ItemStack stack) {
+        public WrittenPaperContents(ItemStack stack, RegistryAccess registryAccess) {
             this.pages = getPages(stack);
+            this.registryAccess = registryAccess;
         }
 
         private static List<String> getPages(ItemStack stack) {
-            CompoundTag nbtCompound = stack.getTag();
-            return makeSureTagIsValid(nbtCompound) ? readPages(nbtCompound) : ImmutableList.of(Component.Serializer.toJson(Component.translatable("book.invalid.tag").withStyle(ChatFormatting.DARK_RED)));
+            CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+            CompoundTag nbtCompound = customData.copyTag();
+
+            List<String> pages = makeSureTagIsValid(nbtCompound) ? readPages(nbtCompound) : ImmutableList.of(Component.translatable("book.invalid.tag").withStyle(ChatFormatting.DARK_RED).toString());
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbtCompound));
+            return pages;
         }
 
         private static boolean makeSureTagIsValid(CompoundTag nbtCompound) {
@@ -285,7 +297,7 @@ public class SignedPaperGui extends Screen {
             String string = this.pages.get(index);
 
             try {
-                FormattedText stringVisitable = Component.Serializer.fromJson(string);
+                FormattedText stringVisitable = Component.Serializer.fromJson(string, registryAccess);
                 if (stringVisitable != null) {
                     return stringVisitable;
                 }

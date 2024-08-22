@@ -1,35 +1,25 @@
 package net.satisfy.candlelight.item.armor;
 
 import de.cristelknight.doapi.common.item.ICustomArmor;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.DyeableArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.item.component.DyedItemColor;
 import net.satisfy.candlelight.registry.ArmorRegistry;
 
 import java.util.List;
 
-public class SuitNecktieItem extends DyeableArmorItem implements ICustomArmor {
-    public SuitNecktieItem(ArmorMaterial material, Properties settings) {
-        super(material, Type.HELMET, settings);
+public class SuitNecktieItem extends ArmorItem implements ICustomArmor {
+    public SuitNecktieItem(Holder<ArmorMaterial> material, Properties settings) {
+        super(material, Type.HELMET, settings.component(DataComponents.DYED_COLOR, new DyedItemColor(0xFFFFFFFF, false)));
     }
 
     @Override
-    public int getColor(ItemStack stack) {
-        if (this.hasCustomColor(stack)) {
-            return super.getColor(stack);
-        }
-        return 0xFFFFFFFF;
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
-        if (null != world && world.isClientSide()) {
-            ArmorRegistry.appendSuitTooltip(tooltip);
-        }
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        ArmorRegistry.appendSuitTooltip(list);
     }
 }

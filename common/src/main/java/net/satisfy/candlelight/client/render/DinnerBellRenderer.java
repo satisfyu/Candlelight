@@ -14,7 +14,7 @@ import net.satisfy.candlelight.client.model.DinnerBellModel;
 import net.satisfy.candlelight.entity.DinnerBellBlockEntity;
 
 public class DinnerBellRenderer implements BlockEntityRenderer<DinnerBellBlockEntity> {
-    private static final ResourceLocation BELL_TEXTURE = new ResourceLocation(Candlelight.MOD_ID, "textures/entity/dinner_bell.png");
+    private static final ResourceLocation BELL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Candlelight.MOD_ID, "textures/entity/dinner_bell.png");
 
     private final ModelPart dinner_bell_base;
     private final ModelPart dinner_bell_button;
@@ -30,10 +30,10 @@ public class DinnerBellRenderer implements BlockEntityRenderer<DinnerBellBlockEn
     public void render(DinnerBellBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
         poseStack.pushPose();
         VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(BELL_TEXTURE));
-        dinner_bell_base.render(poseStack, vertexConsumer, combinedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        dinner_bell_base.render(poseStack, vertexConsumer, combinedLight, OverlayTexture.NO_OVERLAY);
         float yOffset = blockEntity.getYOffset();
         poseStack.translate(0.0f, yOffset, 0.0f);
-        dinner_bell_button.render(poseStack, vertexConsumer, combinedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        dinner_bell_button.render(poseStack, vertexConsumer, combinedLight, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
     }
 }

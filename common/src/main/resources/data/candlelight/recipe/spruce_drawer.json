@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "spruce_rack",
+  "pattern": [
+    "# #",
+    " B ",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:spruce_planks"
+    },
+    "B": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "id": "candlelight:spruce_drawer",
+    "count": 1
+  }
+}

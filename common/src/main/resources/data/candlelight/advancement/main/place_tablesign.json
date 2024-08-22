@@ -1,0 +1,38 @@
+{
+  "parent": "candlelight:main/root",
+  "criteria": {
+    "table_sign": {
+      "conditions": {
+        "location": [
+          {
+            "block": "candlelight:table_sign",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.candlelight.table_sign.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "candlelight:table_sign",
+      "count": 1
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.candlelight.table_sign"
+    }
+  },
+  "requirements": [
+    [
+      "table_sign"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
