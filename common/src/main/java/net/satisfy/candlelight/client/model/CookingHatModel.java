@@ -14,7 +14,7 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 
 @Environment(EnvType.CLIENT)
 public class CookingHatModel<T extends Entity> extends EntityModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new CandlelightIdentifier("cooking_hat"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(CandlelightIdentifier.of("cooking_hat"), "main");
     private final ModelPart cookHat;
 
     public CookingHatModel(ModelPart root) {
@@ -35,7 +35,7 @@ public class CookingHatModel<T extends Entity> extends EntityModel<T> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-        this.cookHat.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int j, int k) {
+        this.cookHat.render(poseStack, vertexConsumer, i, j, k);
     }
 }

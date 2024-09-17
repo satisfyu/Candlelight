@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "B B",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "result": {
+    "id": "candlelight:glass",
+    "count": 3
+  }
+}

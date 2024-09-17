@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "mangrove_rack",
+  "pattern": [
+    "# #",
+    " B ",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:mangrove_planks"
+    },
+    "B": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "id": "candlelight:mangrove_drawer",
+    "count": 1
+  }
+}

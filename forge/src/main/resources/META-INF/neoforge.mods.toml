@@ -1,0 +1,49 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "Custom"
+#issueTrackerURL = ""
+
+[[mods]]
+modId = "candlelight"
+version = "${version}"
+displayName = "[Let's Do] Candlelight"
+authors = "satisfy_u, Cristelknight, BaumeisterJo"
+description = '''
+Ever dreamed of the perfect dinner? Prepare mouth-watering meals, transform your dining space into a masterpiece, and create unforgettable dining experiences!
+'''
+logoFile = "pack.png"
+
+[[dependencies.candlelight]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.candlelight]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.candlelight]]
+modId = "architectury"
+type = "required"
+versionRange = "[9.0.8,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.candlelight]]
+modId = "doapi"
+type = "required"
+versionRange = "[1.3.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.candlelight]]
+modId = "farm_and_charm"
+type = "required"
+versionRange = "[1.2.0,)"
+ordering = "AFTER"
+side = "BOTH"

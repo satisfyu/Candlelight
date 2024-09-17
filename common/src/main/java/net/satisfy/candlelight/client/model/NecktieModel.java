@@ -14,7 +14,7 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 
 @Environment(EnvType.CLIENT)
 public class NecktieModel<T extends Entity> extends EntityModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new CandlelightIdentifier("necktie"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(CandlelightIdentifier.of("necktie"), "main");
     private final ModelPart necktie;
 
     public NecktieModel(ModelPart root) {
@@ -35,7 +35,7 @@ public class NecktieModel<T extends Entity> extends EntityModel<T> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-        this.necktie.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int j, int k) {
+        this.necktie.render(poseStack, vertexConsumer, i, j, k);
     }
 }

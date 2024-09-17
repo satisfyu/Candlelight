@@ -1,6 +1,6 @@
 package net.satisfy.candlelight.client.gui.handler;
 
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
@@ -11,6 +11,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import org.jetbrains.annotations.NotNull;
 import net.satisfy.candlelight.registry.ObjectRegistry;
 import net.satisfy.candlelight.registry.ScreenHandlerTypeRegistry;
@@ -53,23 +54,21 @@ public class LetterGuiHandler extends AbstractContainerMenu {
         if ((inputItem == ObjectRegistry.LETTER_OPEN.get() || inputItem == ObjectRegistry.LOVE_LETTER_OPEN.get()) && this.inventory.getItem(1).getItem() == ObjectRegistry.NOTE_PAPER_WRITTEN.get()) {
             ItemStack stack = inputItem == ObjectRegistry.LETTER_OPEN.get() ? new ItemStack(ObjectRegistry.LETTER_CLOSED.get()) : new ItemStack(ObjectRegistry.LOVE_LETTER_CLOSED.get());
 
-            CompoundTag nbtCompound = this.inventory.getItem(1).getTag();
-            if (nbtCompound != null) {
-                stack.setTag(nbtCompound.copy());
-            }
+            CustomData customData = this.inventory.getItem(1).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+            stack.set(DataComponents.CUSTOM_DATA, customData);
 
-            stack.addTagElement("letter_title", StringTag.valueOf(name));
+            CustomData customData1 = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+            customData1.copyTag().put("letter_title", StringTag.valueOf(name));
 
             this.inventory.setItem(2, stack);
         } else if ((this.inventory.getItem(1).getItem() == ObjectRegistry.LETTER_OPEN.get() && this.inventory.getItem(0).getItem() == ObjectRegistry.NOTE_PAPER_WRITTEN.get())) {
             ItemStack stack = new ItemStack(ObjectRegistry.LETTER_CLOSED.get());
 
-            CompoundTag nbtCompound = this.inventory.getItem(0).getTag();
-            if (nbtCompound != null) {
-                stack.setTag(nbtCompound.copy());
-            }
+            CustomData customData = this.inventory.getItem(0).getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+            stack.set(DataComponents.CUSTOM_DATA, customData);
 
-            stack.addTagElement("letter_title", StringTag.valueOf(name));
+            CustomData customData1 = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+            customData1.copyTag().put("letter_title", StringTag.valueOf(name));
 
             this.inventory.setItem(2, stack);
         } else {

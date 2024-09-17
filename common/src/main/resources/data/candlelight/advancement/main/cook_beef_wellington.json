@@ -1,0 +1,38 @@
+{
+  "parent": "candlelight:main/place_cooking_pan",
+  "criteria": {
+    "beef_wellington": {
+      "conditions": {
+        "location": [
+          {
+            "block": "candlelight:beef_wellington_block",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.candlelight.beef_wellington.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "candlelight:beef_wellington",
+      "count": 1
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.candlelight.beef_wellington"
+    }
+  },
+  "requirements": [
+    [
+      "beef_wellington"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

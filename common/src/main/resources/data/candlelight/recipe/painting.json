@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:painting"
+    }
+  ],
+  "result": {
+    "id": "candlelight:painting",
+    "count": 2
+  }
+}

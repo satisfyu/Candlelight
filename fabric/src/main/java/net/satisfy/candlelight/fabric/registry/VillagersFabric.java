@@ -17,9 +17,9 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 @SuppressWarnings("deprecation, unused")
 public class VillagersFabric {
 
-    private static final CandlelightIdentifier COOK_POI_IDENTIFIER = new CandlelightIdentifier("cook_poi");
+    private static final ResourceLocation COOK_POI_IDENTIFIER = CandlelightIdentifier.of("cook_poi");
     public static final PoiType COOK_POI = PointOfInterestHelper.register(COOK_POI_IDENTIFIER, 1, 12, ObjectRegistry.COOKING_POT.get());
-    public static final VillagerProfession COOK = Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, new ResourceLocation("candlelight", "cook"), VillagerProfessionBuilder.create().id(new ResourceLocation("candlelight", "cook")).workstation(ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, COOK_POI_IDENTIFIER)).build());
+    public static final VillagerProfession COOK = Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, ResourceLocation.fromNamespaceAndPath("candlelight", "cook"), VillagerProfessionBuilder.create().id(ResourceLocation.fromNamespaceAndPath("candlelight", "cook")).workstation(ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, COOK_POI_IDENTIFIER)).build());
 
     public static void init() {
         TradeOfferHelper.registerVillagerOffers(COOK, 1, factories -> {

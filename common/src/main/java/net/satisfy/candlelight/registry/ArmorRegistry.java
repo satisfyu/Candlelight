@@ -41,22 +41,22 @@ public class ArmorRegistry {
 
     public static <T extends LivingEntity> void registerArmorModels(CustomArmorManager<T> armors, EntityModelSet modelLoader) {
         armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.COOKING_HAT.get(), ObjectRegistry.CHEFS_JACKET.get(), ObjectRegistry.CHEFS_PANTS.get(), ObjectRegistry.CHEFS_BOOTS.get())
-                .setTexture(new CandlelightIdentifier("cook"))
+                .setTexture(CandlelightIdentifier.of("cook"))
                 .setOuterModel(new CookOuter<>(modelLoader.bakeLayer(CookOuter.LAYER_LOCATION)))
                 .setInnerModel(new CookInner<>(modelLoader.bakeLayer(CookInner.LAYER_LOCATION)))
                 .setHatModel(new CookingHatModel<>(modelLoader.bakeLayer(CookingHatModel.LAYER_LOCATION))));
         armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.FLOWER_CROWN.get(), ObjectRegistry.DRESS.get())
-                .setTexture(new CandlelightIdentifier("dress"))
+                .setTexture(CandlelightIdentifier.of("dress"))
                 .setOuterModel(new DressOuter<>(modelLoader.bakeLayer(DressOuter.LAYER_LOCATION)))
                 .setInnerModel(new DressInner<>(modelLoader.bakeLayer(DressInner.LAYER_LOCATION)))
                 .setHatModel(new FlowerCrownModel<>(modelLoader.bakeLayer(FlowerCrownModel.LAYER_LOCATION))));
         armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.TROUSERS_AND_VEST.get(), ObjectRegistry.SHIRT.get(), ObjectRegistry.NECKTIE.get())
-                .setTexture(new CandlelightIdentifier("suit"))
+                .setTexture(CandlelightIdentifier.of("suit"))
                 .setOuterModel(new SuitOuter<>(modelLoader.bakeLayer(SuitOuter.LAYER_LOCATION)))
                 .setInnerModel(new SuitInner<>(modelLoader.bakeLayer(SuitInner.LAYER_LOCATION)))
                 .setHatModel(new NecktieModel<>(modelLoader.bakeLayer(NecktieModel.LAYER_LOCATION))));
         armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.FORMAL_SHIRT.get())
-                .setTexture(new CandlelightIdentifier("suit"))
+                .setTexture(CandlelightIdentifier.of("suit"))
                 .setOuterModel(new SuitFormalOuter<>(modelLoader.bakeLayer(SuitFormalOuter.LAYER_LOCATION)))
         );
     }

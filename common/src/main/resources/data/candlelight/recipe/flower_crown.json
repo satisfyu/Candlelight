@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#B#",
+    "B B",
+    "#B#"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:string"
+    },
+    "#": {
+      "item": "candlelight:rose"
+    }
+  },
+  "result": {
+    "id": "candlelight:flower_crown",
+    "count": 1
+  }
+}

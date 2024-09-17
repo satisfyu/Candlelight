@@ -1,0 +1,52 @@
+{
+  "parent": "candlelight:main/place_table",
+  "criteria": {
+    "eat_enchanted_golden_apple_from_plate": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "candlelight:table_set"
+                ]
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "minecraft:enchanted_golden_apple"
+              ]
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.candlelight.eat_enchanted_golden_apple_from_plate.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "candlelight:plate",
+      "count": 1
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.candlelight.eat_enchanted_golden_apple_from_plate"
+    }
+  },
+  "requirements": [
+    [
+      "eat_enchanted_golden_apple_from_plate"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

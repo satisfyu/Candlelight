@@ -1,0 +1,25 @@
+{
+  "type": "farm_and_charm:pot_cooking",
+  "ingredients": [
+    {
+      "tag": "candlelight:mushrooms"
+    },
+    {
+      "tag": "candlelight:red_effect"
+    },
+    {
+      "tag": "farm_and_charm:butter"
+    },
+    {
+      "tag": "farm_and_charm:milk"
+    }
+  ],
+  "container": {
+    "id": "minecraft:bowl",
+    "count": 1
+  },
+  "result": {
+    "id": "candlelight:mushroom_soup",
+    "count": 1
+  }
+}

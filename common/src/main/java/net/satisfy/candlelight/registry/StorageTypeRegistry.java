@@ -7,9 +7,9 @@ import net.satisfy.candlelight.util.CandlelightIdentifier;
 import java.util.Set;
 
 public class StorageTypeRegistry {
-    public static final ResourceLocation SHELF = new CandlelightIdentifier("shelf");
-    public static final ResourceLocation TABLE_SET = new CandlelightIdentifier("table_set");
-    public static final ResourceLocation JEWELRY_BOX = new CandlelightIdentifier("jewelry_box");
+    public static final ResourceLocation SHELF = CandlelightIdentifier.of("shelf");
+    public static final ResourceLocation TABLE_SET = CandlelightIdentifier.of("table_set");
+    public static final ResourceLocation JEWELRY_BOX = CandlelightIdentifier.of("jewelry_box");
 
     public static void registerBlocks(Set<Block> blocks) {
         blocks.add(ObjectRegistry.OAK_SHELF.get());

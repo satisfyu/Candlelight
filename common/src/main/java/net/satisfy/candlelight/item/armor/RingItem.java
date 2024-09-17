@@ -1,6 +1,7 @@
 package net.satisfy.candlelight.item.armor;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -8,14 +9,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import net.satisfy.candlelight.registry.ArmorMaterialRegistry;
 
 import java.util.List;
 
 public class RingItem extends ArmorItem {
-    public RingItem(ArmorMaterial material, Type type, Properties settings) {
+    public RingItem(Holder<ArmorMaterial> material, Type type, Properties settings) {
         super(material, type, settings);
     }
 
@@ -39,7 +38,7 @@ public class RingItem extends ArmorItem {
         if (player.getInventory().getArmor(2).isEmpty()) return false;
         Item item = player.getInventory().getArmor(2).getItem();
         if (item instanceof ArmorItem armorItem) {
-            return armorItem.getMaterial() == ArmorMaterialRegistry.RING_ARMOR;
+            return armorItem == ArmorMaterialRegistry.RING_ARMOR;
         }
         return false;
     }
@@ -54,7 +53,7 @@ public class RingItem extends ArmorItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
-        tooltip.add(Component.translatable("tooltip.candlelight.ring").withStyle(ChatFormatting.GREEN));
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        list.add(Component.translatable("tooltip.candlelight.ring").withStyle(ChatFormatting.GREEN));
     }
 }

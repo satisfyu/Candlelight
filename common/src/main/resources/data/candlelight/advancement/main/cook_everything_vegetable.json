@@ -1,0 +1,131 @@
+{
+  "parent": "candlelight:main/place_stove",
+  "display": {
+    "icon": {
+      "id": "candlelight:salad",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancement.candlelight.cook_everything_vegetable"
+    },
+    "description": {
+      "translate": "advancement.candlelight.cook_everything_vegetable.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 250
+  },
+  "criteria": {
+    "candlelight:tomato_mozzarella_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:tomato_mozzarella_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:beetroot_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:beetroot_salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:salad"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:mozzarella": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:mozzarella"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:beef_tartare": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:beef_tartare"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:harvest_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:harvest_plate"
+            ]
+          }
+        ]
+      }
+    },
+    "candlelight:fresh_garden_salad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "candlelight:fresh_garden_salad"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "candlelight:tomato_mozzarella_salad"
+    ],
+    [
+      "candlelight:beetroot_salad"
+    ],
+    [
+      "candlelight:salad"
+    ],
+    [
+      "candlelight:mozzarella"
+    ],
+    [
+      "candlelight:beef_tartare"
+    ],
+    [
+      "candlelight:harvest_plate"
+    ],
+    [
+      "candlelight:fresh_garden_salad"
+    ]
+  ]
+}

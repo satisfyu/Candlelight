@@ -1,7 +1,7 @@
 package net.satisfy.candlelight.item;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.StringUtil;
@@ -11,9 +11,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import net.satisfy.candlelight.util.CandlelightUtil;
 
 import java.util.List;
@@ -37,11 +37,12 @@ public class WrittenPaperItem extends Item {
 
     @Override
     public @NotNull Component getName(ItemStack stack) {
-        CompoundTag nbtCompound = stack.getTag();
-        if (nbtCompound != null) {
-            String string = nbtCompound.getString("title");
-            if (!StringUtil.isNullOrEmpty(string)) {
-                return Component.literal(string);
+        CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+
+        if(customData.contains("title")) {
+            String title = customData.copyTag().getString("title");
+            if(!StringUtil.isNullOrEmpty(title)) {
+                return Component.literal(title);
             }
         }
 
@@ -49,13 +50,13 @@ public class WrittenPaperItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
-        if (stack.hasTag()) {
-            CompoundTag nbtCompound = stack.getTag();
-            assert nbtCompound != null;
-            String string = nbtCompound.getString("author");
-            if (!StringUtil.isNullOrEmpty(string)) {
-                tooltip.add(Component.translatable("book.byAuthor", string).withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        CustomData customData = itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+
+        if(customData.contains("author")) {
+            String author = customData.copyTag().getString("author");
+            if(!StringUtil.isNullOrEmpty(author)) {
+                list.add(Component.translatable("book.byAuthor", author).withStyle(ChatFormatting.GRAY));
             }
         }
     }

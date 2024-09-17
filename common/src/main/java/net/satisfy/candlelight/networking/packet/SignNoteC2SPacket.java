@@ -1,26 +1,28 @@
 package net.satisfy.candlelight.networking.packet;
 
-import dev.architectury.networking.NetworkManager;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.satisfy.candlelight.registry.ObjectRegistry;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.satisfy.candlelight.util.CandlelightIdentifier;
+import org.jetbrains.annotations.NotNull;
 
-public class SignNoteC2SPacket implements NetworkManager.NetworkReceiver {
+public record SignNoteC2SPacket(CompoundTag tag, int slot, boolean sigh) implements CustomPacketPayload {
+    public static final ResourceLocation PACKET_RESOURCE_LOCATION = CandlelightIdentifier.of("sign_note");
+    public static final CustomPacketPayload.Type<SignNoteC2SPacket> PACKET_ID = new CustomPacketPayload.Type<>(PACKET_RESOURCE_LOCATION);
+
+    public static final StreamCodec<RegistryFriendlyByteBuf, SignNoteC2SPacket> PACKET_CODEC = StreamCodec.composite(
+            ByteBufCodecs.COMPOUND_TAG, SignNoteC2SPacket::tag,
+            ByteBufCodecs.INT, SignNoteC2SPacket::slot,
+            ByteBufCodecs.BOOL, SignNoteC2SPacket::sigh,
+            SignNoteC2SPacket::new
+    );
+
     @Override
-    public void receive(FriendlyByteBuf buf, NetworkManager.PacketContext context) {
-        Player player = context.getPlayer();
-        CompoundTag stack = buf.readNbt();
-        int slot = buf.readInt();
-        boolean sign = buf.readBoolean();
-
-        ItemStack itemStack = new ItemStack(ObjectRegistry.NOTE_PAPER_WRITTEN.get());
-        itemStack.setTag(stack);
-
-        if (sign) {
-            player.getInventory().setItem(slot, itemStack);
-        }
+    public @NotNull Type<? extends CustomPacketPayload> type() {
+        return PACKET_ID;
     }
 }
 

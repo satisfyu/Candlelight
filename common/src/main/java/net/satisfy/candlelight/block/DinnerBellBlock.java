@@ -1,13 +1,14 @@
 package net.satisfy.candlelight.block;
 
+import com.mojang.serialization.MapCodec;
 import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -32,8 +33,14 @@ import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class DinnerBellBlock extends BaseEntityBlock {
+    public static final MapCodec<DinnerBellBlock> CODEC = simpleCodec(DinnerBellBlock::new);
     public DinnerBellBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @NotNull
@@ -44,7 +51,7 @@ public class DinnerBellBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (!level.isClientSide) {
             level.playSound(null, pos, DoApiSoundEventRegistry.DINNER_BELL.get(), SoundSource.BLOCKS, 0.25f, 1.0f);
         }
@@ -72,7 +79,7 @@ public class DinnerBellBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.farm_and_charm.canbeplaced").withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        list.add(Component.translatable("tooltip.farm_and_charm.canbeplaced").withStyle(ChatFormatting.GRAY));
     }
 }

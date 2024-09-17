@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "BBB",
+    "___"
+  ],
+  "key": {
+    "_": {
+      "item": "minecraft:birch_slab"
+    },
+    "B": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "result": {
+    "id": "candlelight:dinner_bell",
+    "count": 1
+  }
+}

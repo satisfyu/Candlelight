@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "candlelight:rose"
+    }
+  ],
+  "result": {
+    "id": "minecraft:red_dye",
+    "count": 2
+  }
+}
