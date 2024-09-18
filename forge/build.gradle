@@ -7,13 +7,13 @@ architectury {
     neoForge()
 }
 
-def jarFileName = 'letsdo-candlelight-forge'
+def jarFileName = 'letsdo-candlelight-neoforge'
 
 archivesBaseName = jarFileName
 
 configurations {
     common
-    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    shadowCommon
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
     developmentNeoForge.extendsFrom common
@@ -32,12 +32,11 @@ dependencies {
     neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
     modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
 
-   //modImplementation("top.theillusivec4.curios:curios-neoforge:${rootProject.curios_version}")
 
     forgeRuntimeLibrary("blue.endless:jankson:1.2.3")
 
-    modImplementation "maven.modrinth:do-api:${project.doapi_version}-forge"
-    modImplementation "maven.modrinth:lets-do-farm-charm:${project.farm_and_charm_version}-forge"
+    modImplementation "maven.modrinth:do-api:${project.doapi_version}-neoforge"
+    modImplementation "maven.modrinth:lets-do-farm-charm:${project.farm_and_charm_version}-neoforge"
 
     modImplementation "me.shedaniel:RoughlyEnoughItems-neoforge:$rei_version"
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
