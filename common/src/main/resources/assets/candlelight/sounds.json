@@ -1,0 +1,44 @@
+{
+  "dinner_bell": {
+    "subtitle": "candlelight.sound.dinner_bell",
+    "sounds": [
+      "candlelight:dinner_bell"
+    ]
+  },
+  "typewriter": {
+    "subtitle": "candlelight.sound.typewriter",
+    "sounds": [
+      "candlelight:typewriter"
+    ]
+  },
+  "cooking_pot_hit": {
+    "subtitle": "candlelight.sound.cooking_pot_hit",
+    "sounds": [
+      "candlelight:cooking_pot_hit"
+    ]
+  },
+  "drawer_open": {
+    "subtitle": "candlelight.sound.drawer_open",
+    "sounds": [
+      "candlelight:drawer_open"
+    ]
+  },
+  "drawer_close": {
+    "subtitle": "candlelight.sound.drawer_close",
+    "sounds": [
+      "candlelight:drawer_close"
+    ]
+  },
+  "cabinet_open": {
+    "subtitle": "candlelight.sound.cabinet_open",
+    "sounds": [
+      "candlelight:cabinet_open"
+    ]
+  },
+  "cabinet_close": {
+    "subtitle": "candlelight.sound.cabinet_close",
+    "sounds": [
+      "candlelight:cabinet_close"
+    ]
+  }
+}

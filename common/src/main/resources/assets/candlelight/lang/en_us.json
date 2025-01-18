@@ -230,16 +230,17 @@
   "item.candlelight.formal_shirt": "Formal Shirt",
   "item.candlelight.table_set": "Table Set",
   "item.candlelight.necktie": "Necktie",
-  "tooltip.candlelight.canbeplaced": "Can be placed",
-  "tooltip.candlelight.cook_armor.": "Culinary Mastery:",
-  "tooltip.candlelight.cook_armor.2": "Full Set Bonus:",
-  "tooltip.candlelight.cook_armor.3": "+Luck",
-  "tooltip.candlelight.suit_armor.": "Tailored Dominance:",
-  "tooltip.candlelight.dress_armor.": "Rosy Regalia:",
   "tooltip.candlelight.decoration": "Can be placed on Walls",
   "tooltip.candlelight.ring": "Improved Luck: Luck +2",
   "tooltip.candlelight.thankyou_1": "A reward for crafting all Dishes",
   "tooltip.candlelight.thankyou_2": "When placed:",
   "tooltip.candlelight.thankyou_3": "Thank you for playing Candlelight!",
-  "tooltip.candlelight.thankyou_4": "Grants Fire Resistance in a radius of 8 blocks"
+  "tooltip.candlelight.thankyou_4": "Grants Fire Resistance in a radius of 8 blocks",
+  "sound.candlelight.drawer_open": "Drawer Opens",
+  "sound.candlelight.drawer_close": "Drawer Closes",
+  "sound.candlelight.cabinet_open": "Cabinet Opens",
+  "sound.candlelight.cooking_pot_hit": "Clang!",
+  "sound.candlelight.dinner_bell": "Dinner Bell Rings",
+  "sound.candlelight.typewriter": "Typewriter clatters"
+
 }
