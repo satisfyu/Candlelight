@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "candlelight:candlelight_standard"
+          "name": "candlelight:candlelight_banner"
         }
       ],
       "conditions": [
@@ -16,5 +16,5 @@
       ]
     }
   ],
-  "random_sequence": "candlelight:blocks/candlelight_standard"
+  "random_sequence": "candlelight:blocks/candlelight_banner"
 }

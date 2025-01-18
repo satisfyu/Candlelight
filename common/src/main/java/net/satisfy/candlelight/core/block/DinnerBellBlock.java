@@ -46,7 +46,7 @@ public class DinnerBellBlock extends BaseEntityBlock {
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!level.isClientSide) {
-            level.playSound(null, pos, SoundEventRegistry.DINNER_BELL_RING.get(), SoundSource.BLOCKS, 0.25f, 1.0f);
+            level.playSound(null, pos, SoundEventRegistry.DINNER_BELL_RING.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
         }
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof DinnerBellBlockEntity dinnerBell) {

@@ -17,12 +17,12 @@ public class TabRegistry {
             .displayItems((parameters, output) -> {
                 output.accept(ObjectRegistry.COOKING_POT.get());
                 output.accept(ObjectRegistry.COOKING_PAN.get());
-                output.accept(ObjectRegistry.CLOCHE.get());
                 output.accept(ObjectRegistry.BOWL.get());
                 output.accept(ObjectRegistry.PLATE.get());
                 output.accept(ObjectRegistry.GLASS.get());
                 output.accept(ObjectRegistry.WINE_GLASS.get());
                 output.accept(ObjectRegistry.NAPKIN.get());
+                output.accept(ObjectRegistry.CLOCHE.get());
                 output.accept(ObjectRegistry.DINNER_BELL.get());
                 output.accept(ObjectRegistry.TOMATO_SOUP.get());
                 output.accept(ObjectRegistry.MUSHROOM_SOUP.get());
@@ -67,9 +67,9 @@ public class TabRegistry {
                 output.accept(ObjectRegistry.HEARTH.get());
                 output.accept(ObjectRegistry.ROSE.get());
                 output.accept(ObjectRegistry.CHOCOLATE_BOX.get());
-                output.accept(ObjectRegistry.TABLE_SIGN.get());
                 output.accept(ObjectRegistry.TYPEWRITER_IRON.get());
                 output.accept(ObjectRegistry.TYPEWRITER_COPPER.get());
+                output.accept(ObjectRegistry.TABLE_SIGN.get());
                 output.accept(ObjectRegistry.NOTE_PAPER.get());
                 output.accept(ObjectRegistry.NOTE_PAPER_WRITEABLE.get());
                 output.accept(ObjectRegistry.LETTER_OPEN.get());

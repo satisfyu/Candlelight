@@ -4,10 +4,10 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "candlelight:candlelight_standard"
+    "item": "candlelight:candlelight_banner"
   },
   "result": {
-    "item": "candlelight:candlelight_standard",
+    "item": "candlelight:candlelight_banner",
     "count": 2
   },
   "template": {

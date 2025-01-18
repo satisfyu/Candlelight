@@ -6,12 +6,12 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.satisfy.farm_and_charm.FarmAndCharm;
-import net.satisfy.farm_and_charm.core.util.FarmAndCharmIdentifier;
+import net.satisfy.candlelight.Candlelight;
+import net.satisfy.candlelight.core.util.CandlelightIdentifier;
 
 public class SoundEventRegistry {
 
-    private static final Registrar<SoundEvent> SOUND_EVENTS = DeferredRegister.create(FarmAndCharm.MOD_ID, Registries.SOUND_EVENT).getRegistrar();
+    private static final Registrar<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Candlelight.MOD_ID, Registries.SOUND_EVENT).getRegistrar();
 
     public static final RegistrySupplier<SoundEvent> COOKING_POT_HIT = create("cooking_pot_hit");
     public static final RegistrySupplier<SoundEvent> DINNER_BELL_RING = create("dinner_bell_ring");
@@ -24,7 +24,7 @@ public class SoundEventRegistry {
     public static void init() {}
 
     private static RegistrySupplier<SoundEvent> create(String name) {
-        ResourceLocation id = new FarmAndCharmIdentifier(name);
+        ResourceLocation id = new CandlelightIdentifier(name);
         return SOUND_EVENTS.register(id, () -> SoundEvent.createVariableRangeEvent(id));
     }
 }

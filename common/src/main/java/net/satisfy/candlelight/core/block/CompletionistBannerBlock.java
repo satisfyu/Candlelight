@@ -115,17 +115,16 @@ public class CompletionistBannerBlock extends BaseEntityBlock {
     }
 
     public ResourceLocation getRenderTexture() {
-        return new CandlelightIdentifier("textures/banner/brewery_banner.png");
+        return new CandlelightIdentifier("textures/banner/candlelight_banner.png");
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, net.minecraft.world.item.TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.brewery.banner.thankyou_1").withStyle(style -> style.withColor(TextColor.fromRgb(0xa5b485))));
+        tooltip.add(Component.translatable("tooltip.candlelight.banner.thankyou_1").withStyle(style -> style.withColor(TextColor.fromRgb(0xD27666))));
         tooltip.add(Component.empty());
-        tooltip.add(Component.translatable("tooltip.brewery.banner.thankyou_2").withStyle(style -> style.withColor(TextColor.fromRgb(0xa5b485))));
-        tooltip.add(Component.translatable("tooltip.brewery.banner.thankyou_4").withStyle(style -> style.withColor(TextColor.fromRgb(0xa5b485))));
+        tooltip.add(Component.translatable("tooltip.candlelight.banner.thankyou_2").withStyle(style -> style.withColor(TextColor.fromRgb(0xD27666))));
+        tooltip.add(Component.translatable("tooltip.candlelight.banner.thankyou_4").withStyle(style -> style.withColor(TextColor.fromRgb(0xD27666))));
         tooltip.add(Component.empty());
-        tooltip.add(Component.translatable("tooltip.brewery.banner.thankyou_3").withStyle(style -> style.withColor(TextColor.fromRgb(0xa5b485))));
+        tooltip.add(Component.translatable("tooltip.candlelight.banner.thankyou_3").withStyle(style -> style.withColor(TextColor.fromRgb(0xD27666))));
     }
-
 }
