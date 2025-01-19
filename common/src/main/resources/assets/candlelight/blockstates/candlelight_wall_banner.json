@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "brewery:block/candlelight_banner"
+      "model": "candlelight:block/candlelight_banner"
     }
   }
 }

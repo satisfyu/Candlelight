@@ -42,11 +42,11 @@ public class ObjectRegistry {
     public static final Registrar<Item> ITEM_REGISTRAR = ITEMS.getRegistrar();
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Candlelight.MOD_ID, Registries.BLOCK);
     public static final Registrar<Block> BLOCK_REGISTRAR = BLOCKS.getRegistrar();
+
     public static final RegistrySupplier<Item> CLOCHE = registerItem("cloche", () -> new Item(getSettings()));
     public static final RegistrySupplier<Item> NAPKIN = registerItem("napkin", () -> new Item(getSettings()));
     public static final RegistrySupplier<Item> MOZZARELLA = registerItem("mozzarella", () -> new Item(getSettings().food(Foods.BREAD)));
     public static final RegistrySupplier<Item> KHINKALI = registerItem("khinkali", () -> new Item(getSettings().food(Foods.GOLDEN_CARROT)));
-
     public static final RegistrySupplier<Item> TOMATO_SOUP = registerItem("tomato_soup", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.TOMATO_SOUP), 1));
     public static final RegistrySupplier<Item> MUSHROOM_SOUP = registerItem("mushroom_soup", () -> new EffectFoodItem(getSettings().food(CandlelightFoods.MUSHROOM_SOUP), 1));
     public static final RegistrySupplier<Item> BEETROOT_SALAD = registerItem("beetroot_salad", () -> new EffectItem(getFoodItemSettings(5, 0.6f, MobEffectRegistry.SUSTENANCE.get(), 2400), 2400, true));
