@@ -79,12 +79,23 @@ public class TableSetBlock extends StorageBlock {
                 .orElse(null);
     }
 
-
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
-        Item item = stack.getItem();
         HashMap<Item, BooleanProperty> items = itemHashMap();
+
+        if (player.isShiftKeyDown() && state.getValue(CLOCHE)) {
+            if (!world.isClientSide()) {
+                world.setBlockAndUpdate(pos, state.setValue(CLOCHE, false));
+                ItemStack clocheItem = new ItemStack(getItemFromProperty(CLOCHE));
+                if (!player.getInventory().add(clocheItem)) {
+                    player.drop(clocheItem, false);
+                }
+            }
+            return InteractionResult.sidedSuccess(world.isClientSide());
+        }
+
+        Item item = stack.getItem();
         if (!items.containsKey(item)) return super.use(state, world, pos, player, hand, hit);
         BooleanProperty property = items.get(item);
         if (state.getValue(property)) return InteractionResult.PASS;
@@ -95,6 +106,7 @@ public class TableSetBlock extends StorageBlock {
         }
         return InteractionResult.sidedSuccess(world.isClientSide());
     }
+
 
     @Override
     public void remove(Level world, BlockPos blockPos, Player player, StorageBlockEntity shelfBlockEntity, int i) {

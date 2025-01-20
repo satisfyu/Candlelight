@@ -14,6 +14,7 @@ import java.util.Map;
 
 @Environment(EnvType.CLIENT)
 public class ArmorRegistry {
+    private static final Map<Item, TieModel<?>> TieModels = new HashMap<>();
     private static final Map<Item, FlowerCrownModel<?>> crownModels = new HashMap<>();
     private static final Map<Item, CookingHatModel<?>> hatModels = new HashMap<>();
     private static final Map<Item, CookingChestplateModel<?>> chestplateModels = new HashMap<>();
@@ -49,6 +50,23 @@ public class ArmorRegistry {
 
         if (model != null) {
             model.copyHead(baseHead);
+        }
+
+        return model;
+    }
+
+    public static Model getTieModel(Item item, ModelPart baseHead, ModelPart baseBody) {
+        EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
+        TieModel<?> model = TieModels.computeIfAbsent(item, key -> {
+            if (key == ObjectRegistry.NECKTIE.get()) {
+                return new TieModel<>(modelSet.bakeLayer(TieModel.LAYER_LOCATION));
+            } else {
+                return null;
+            }
+        });
+
+        if (model != null) {
+            model.copyHead(baseHead, baseBody);
         }
 
         return model;

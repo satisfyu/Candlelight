@@ -25,5 +25,9 @@ public class CandlelightHatRenderer implements ArmorRenderer {
         if (crownModel != null) {
             crownModel.renderToBuffer(matrices, vertexConsumers.getBuffer(crownModel.renderType(hat.getHatTexture())), light, OverlayTexture.NO_OVERLAY, 1F, 1F, 1F, 1F);
         }
+        Model tieModel = ArmorRegistry.getTieModel(hat, contextModel.getHead(), contextModel.body);
+        if (tieModel != null) {
+            tieModel.renderToBuffer(matrices, vertexConsumers.getBuffer(tieModel.renderType(hat.getHatTexture())), light, OverlayTexture.NO_OVERLAY, 1F, 1F, 1F, 1F);
+        }
     }
 }

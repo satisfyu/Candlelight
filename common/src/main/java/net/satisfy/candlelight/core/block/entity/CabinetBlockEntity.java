@@ -26,7 +26,7 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity {
 
     public CabinetBlockEntity(BlockPos pos, BlockState state) {
         super(EntityTypeRegistry.CABINET_BLOCK_ENTITY.get(), pos, state);
-        this.inventory = NonNullList.withSize(18, ItemStack.EMPTY);
+        this.inventory = NonNullList.withSize(36, ItemStack.EMPTY);
         this.stateManager = new ContainerOpenersCounter() {
             @Override
             protected void onOpen(Level world, BlockPos pos, BlockState state) {
@@ -73,7 +73,7 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity {
 
     @Override
     public int getContainerSize() {
-        return 18;
+        return 36;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class CabinetBlockEntity extends RandomizableContainerBlockEntity {
 
     @Override
     protected @NotNull AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
-        return new ChestMenu(MenuType.GENERIC_9x2, syncId, playerInventory, this, 2);
+        return new ChestMenu(MenuType.GENERIC_9x4, syncId, playerInventory, this, 4);
     }
 
     @Override

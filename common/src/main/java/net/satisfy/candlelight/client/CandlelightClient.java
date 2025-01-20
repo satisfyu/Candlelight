@@ -60,6 +60,7 @@ public class CandlelightClient {
         EntityModelLayerRegistry.register(DinnerBellModel.LAYER_LOCATION, DinnerBellModel::getTexturedModelData);
         EntityModelLayerRegistry.register(CompletionistBannerRenderer.LAYER_LOCATION, CompletionistBannerRenderer::createBodyLayer);
         EntityModelLayerRegistry.register(FlowerCrownModel.LAYER_LOCATION, FlowerCrownModel::createBodyLayer);
+        EntityModelLayerRegistry.register(TieModel.LAYER_LOCATION, TieModel::createBodyLayer);
         EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::createBodyLayer);
         EntityModelLayerRegistry.register(CookingChestplateModel.LAYER_LOCATION, CookingChestplateModel::createBodyLayer);
         EntityModelLayerRegistry.register(CookingLeggingsModel.LAYER_LOCATION, CookingLeggingsModel::createBodyLayer);
