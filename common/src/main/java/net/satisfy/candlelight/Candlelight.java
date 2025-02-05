@@ -10,6 +10,7 @@ public class Candlelight {
     public static void init() {
         ObjectRegistry.init();
         ScreenHandlerTypeRegistry.init();
+        SoundEventRegistry.init();
         EntityTypeRegistry.init();
         CommonEvents.init();
         TabRegistry.init();
