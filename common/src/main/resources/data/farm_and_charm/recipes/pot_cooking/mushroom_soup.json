@@ -15,7 +15,10 @@
     }
   ],
   "container": {
-    "item": "minecraft:bowl"
+    "required": true,
+    "item": {
+      "item": "minecraft:bowl"
+    }
   },
   "result": {
     "item": "candlelight:mushroom_soup",

@@ -16,9 +16,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
-import net.satisfy.candlelight.util.CandlelightIdentifier;
+import net.satisfy.candlelight.core.util.CandlelightIdentifier;
 import org.jetbrains.annotations.Nullable;
-import net.satisfy.candlelight.registry.ObjectRegistry;
+import net.satisfy.candlelight.core.registry.ObjectRegistry;
 
 import java.util.Collections;
 import java.util.List;

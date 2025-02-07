@@ -8,7 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.satisfy.candlelight.networking.CandlelightMessages;
+import net.satisfy.candlelight.core.networking.CandlelightMessages;
 
 @Environment(EnvType.CLIENT)
 public class NotePaperGui extends NoteGui {

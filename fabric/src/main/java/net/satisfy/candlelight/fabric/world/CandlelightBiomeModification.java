@@ -4,8 +4,8 @@ import net.fabricmc.fabric.api.biome.v1.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.satisfy.candlelight.util.CandlelightIdentifier;
-import net.satisfy.candlelight.world.feature.CandlelightPlacedFeature;
+import net.satisfy.candlelight.core.util.CandlelightIdentifier;
+import net.satisfy.candlelight.core.world.feature.CandlelightPlacedFeature;
 
 import java.util.function.Predicate;
 

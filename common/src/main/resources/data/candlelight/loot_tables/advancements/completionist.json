@@ -7,7 +7,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "candlelight:candlelight_standard",
+          "name": "candlelight:candlelight_banner",
           "functions": [
             {
               "function": "minecraft:set_count",

@@ -6,7 +6,7 @@ license = "Custom"
 modId = "candlelight"
 version = "${version}"
 displayName = "[Let's Do] Candlelight"
-authors = "satisfy_u, Cristelknight, BaumeisterJo"
+authors = "satisfy"
 description = '''
 Ever dreamed of the perfect dinner? Prepare mouth-watering meals, transform your dining space into a masterpiece, and create unforgettable dining experiences!
 '''
@@ -30,13 +30,6 @@ side = "BOTH"
 modId = "architectury"
 mandatory = true
 versionRange = "[9.0.8,)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.candlelight]]
-modId = "doapi"
-mandatory = true
-versionRange = "[1.2.9,)"
 ordering = "AFTER"
 side = "BOTH"
 

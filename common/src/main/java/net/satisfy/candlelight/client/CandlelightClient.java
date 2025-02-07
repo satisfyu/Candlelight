@@ -1,23 +1,21 @@
 package net.satisfy.candlelight.client;
 
-import de.cristelknight.doapi.common.util.GeneralUtil;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.resources.ResourceLocation;
 import net.satisfy.candlelight.client.gui.LetterGui;
-import net.satisfy.candlelight.client.model.DinnerBellModel;
-import net.satisfy.candlelight.client.render.DinnerBellRenderer;
-import net.satisfy.candlelight.registry.ArmorRegistry;
-import net.satisfy.candlelight.registry.BlockEntityRegistry;
-import net.satisfy.candlelight.registry.ScreenHandlerTypeRegistry;
+import net.satisfy.candlelight.client.model.*;
+import net.satisfy.candlelight.client.renderer.block.*;
+import net.satisfy.candlelight.core.registry.EntityTypeRegistry;
+import net.satisfy.candlelight.core.registry.ScreenHandlerTypeRegistry;
+import net.satisfy.candlelight.core.registry.StorageTypeRegistry;
 
-import static net.satisfy.candlelight.registry.ObjectRegistry.*;
+import static net.satisfy.candlelight.core.registry.ObjectRegistry.*;
 
 @Environment(EnvType.CLIENT)
 public class CandlelightClient {
@@ -35,36 +33,37 @@ public class CandlelightClient {
                 STONE_BRICKS_STOVE.get(), COBBLESTONE_STOVE.get(), BAMBOO_STOVE.get()
         );
 
-        ClientStorageTypes.init();
-        BlockEntityRendererRegistry.register(BlockEntityRegistry.DINNER_BELL_BLOCK_ENTITY.get(), DinnerBellRenderer::new);
         RenderTypeRegistry.register(RenderType.translucent(), WINE_GLASS_BLOCK.get(), TABLE_SET.get(), GLASS_BLOCK.get());
-        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
 
-        initColorItems();
+        BlockEntityRendererRegistry.register(EntityTypeRegistry.CANDLELIGHT_BANNER.get(), CompletionistBannerRenderer::new);
+        BlockEntityRendererRegistry.register(EntityTypeRegistry.STORAGE_BLOCK_ENTITY.get(), context -> new StorageBlockEntityRenderer());
+        BlockEntityRendererRegistry.register(EntityTypeRegistry.DINNER_BELL_BLOCK_ENTITY.get(), DinnerBellRenderer::new);
+        MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
+        registerStorageType();
+    }
+
+    public static void registerStorageType(ResourceLocation location, StorageTypeRenderer renderer) {
+        StorageBlockEntityRenderer.registerStorageType(location, renderer);
+    }
+
+    public static void registerStorageType() {
+        registerStorageType(StorageTypeRegistry.SHELF, new ShelfRenderer());
+        registerStorageType(StorageTypeRegistry.TABLE_SET, new TableSetRenderer());
+        registerStorageType(StorageTypeRegistry.JEWELRY_BOX, new JewelryRenderer());
     }
 
     public static void preInitClient() {
-        registerEntityModelLayer();
+        registerEntityModelLayers();
     }
 
-    private static void initColorItems() {
-        GeneralUtil.registerColorArmor(COOKING_HAT.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(CHEFS_JACKET.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(CHEFS_PANTS.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(CHEFS_BOOTS.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(DRESS.get(), 0xFFFFB6C1);
-        GeneralUtil.registerColorArmor(TROUSERS_AND_VEST.get(), 0xB0E0E6FF);
-        GeneralUtil.registerColorArmor(SHIRT.get(), 0xFFFFFFFF);
-        GeneralUtil.registerColorArmor(NECKTIE.get(), 0x64B6C1FF);
-    }
-
-    public static void registerEntityModelLayer() {
-        ArmorRegistry.registerArmorModelLayers();
+    public static void registerEntityModelLayers() {
         EntityModelLayerRegistry.register(DinnerBellModel.LAYER_LOCATION, DinnerBellModel::getTexturedModelData);
-
-    }
-
-    public static Player getClientPlayer() {
-        return Minecraft.getInstance().player;
+        EntityModelLayerRegistry.register(CompletionistBannerRenderer.LAYER_LOCATION, CompletionistBannerRenderer::createBodyLayer);
+        EntityModelLayerRegistry.register(FlowerCrownModel.LAYER_LOCATION, FlowerCrownModel::createBodyLayer);
+        EntityModelLayerRegistry.register(TieModel.LAYER_LOCATION, TieModel::createBodyLayer);
+        EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::createBodyLayer);
+        EntityModelLayerRegistry.register(CookingChestplateModel.LAYER_LOCATION, CookingChestplateModel::createBodyLayer);
+        EntityModelLayerRegistry.register(CookingLeggingsModel.LAYER_LOCATION, CookingLeggingsModel::createBodyLayer);
+        EntityModelLayerRegistry.register(CookingBootsModel.LAYER_LOCATION, CookingBootsModel::createBodyLayer);
     }
 }

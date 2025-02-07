@@ -9,7 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.satisfy.candlelight.client.gui.handler.LetterGuiHandler;
-import net.satisfy.candlelight.util.CandlelightIdentifier;
+import net.satisfy.candlelight.core.util.CandlelightIdentifier;
 
 import java.util.Objects;
 
