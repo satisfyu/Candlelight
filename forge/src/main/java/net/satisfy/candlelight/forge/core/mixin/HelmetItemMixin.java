@@ -8,10 +8,12 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.satisfy.candlelight.core.item.CandlelightHatItem;
 import net.satisfy.candlelight.core.registry.ArmorRegistry;
+import net.satisfy.candlelight.core.registry.ObjectRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -28,14 +30,18 @@ public abstract class HelmetItemMixin extends ArmorItem {
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(
-                new IClientItemExtensions() {
-                    @Override
-                    public @NotNull Model getGenericArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
-                        return ArmorRegistry.getHatModel(itemStack.getItem(), original.getHead());
-                    }
+        consumer.accept(new IClientItemExtensions() {
+            @Override
+            public @NotNull Model getGenericArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+                Item item = itemStack.getItem();
+                if (item == ObjectRegistry.NECKTIE.get()) {
+                    return ArmorRegistry.getTieModel(item, original.getHead(), original.body);
+                } else if (item == ObjectRegistry.FLOWER_CROWN.get()) {
+                    return ArmorRegistry.getCrownModel(item, original.getHead());
                 }
-        );
+                return ArmorRegistry.getHatModel(item, original.getHead());
+            }
+        });
     }
 
     @Override
@@ -47,3 +53,4 @@ public abstract class HelmetItemMixin extends ArmorItem {
         super(armorMaterial, armorType, itemProperties);
     }
 }
+

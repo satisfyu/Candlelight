@@ -22,13 +22,9 @@
       "net.satisfy.candlelight.fabric.client.CandlelightClientFabric"
     ]
   },
-  "custom": {
-    "modmenu": {
-      "links": {
-        "modmenu.discord": "https://discord.gg/Vqu6wYZwdZ"
-      }
-    }
-  },
+  "mixins": [
+    "candlelight-common.mixins.json"
+  ],
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.20",

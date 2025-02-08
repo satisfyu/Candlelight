@@ -1,8 +1,14 @@
 <p align="center"><img src="https://imgur.com/RRfGT1P.png" width="1200"></p>
 
+<div style="text-align: center;">
+
 <p>Ever dreamed of the perfect dinner in Minecraft? Your dreams are just a crafting station away.</p>
 
-<p>Explore a wide array of kitchen hardware, savor delectable foods, and adorn your surroundings with exquisite decorations. From elegant table settings to mouthwatering dishes, Candlelight makes all these experiences possible</p>
+<br> 
+
+<p>Explore a wide array of kitchen hardware, savor delectable foods, and adorn your surroundings with exquisite decorations. From elegant table settings to mouthwatering dishes, Candlelight makes all these experiences possible.</p>
+
+</div>
 
 <h1 align="center">Available for  <br></h1>
 <p align="center"><img src="https://imgur.com/gREqi3m.png" width="240" height="120"></p>

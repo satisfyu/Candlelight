@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.satisfy.candlelight.Candlelight;
 import net.satisfy.candlelight.core.block.entity.*;
 import net.satisfy.candlelight.core.util.CandlelightIdentifier;
+import net.satisfy.farm_and_charm.core.block.entity.EffectFoodBlockEntity;
 
 import java.util.HashSet;
 import java.util.function.Supplier;

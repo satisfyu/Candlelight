@@ -19,6 +19,7 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
+        mixinConfig "candlelight-common.mixins.json"
         mixinConfig "candlelight.mixins.json"
 
     }
