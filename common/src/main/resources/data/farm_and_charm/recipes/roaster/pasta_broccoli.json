@@ -16,5 +16,6 @@
   },
   "result": {
     "item": "candlelight:pasta_with_lettuce"
-  }
+  },
+  "requiresLearning": false
 }

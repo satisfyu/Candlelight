@@ -17,5 +17,6 @@
   "result": {
     "item": "candlelight:roasted_lamb_with_lettuce",
     "count": 2
-  }
+  },
+  "requiresLearning": false
 }

@@ -11,7 +11,10 @@
       "item": "candlelight:mushroom_soup"
     }
   ],
-  "item": "candlelight:beef_wellington",
-  "count": 1,
-  "experience": 1
+  "result": {
+    "item": "candlelight:beef_wellington",
+    "count": 1
+  },
+  "experience": 0.5,
+  "requiresLearning": false
 }

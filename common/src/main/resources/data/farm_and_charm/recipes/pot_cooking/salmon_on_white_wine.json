@@ -19,7 +19,7 @@
   },
   "result": {
     "item": "candlelight:salmon_on_white_wine",
-    "count": 2,
-    "experience": 0.25
-  }
+    "count": 2
+  },
+  "requiresLearning": false
 }

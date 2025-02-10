@@ -19,7 +19,7 @@
   },
   "result": {
     "item": "candlelight:chicken_teriyaki",
-    "count": 4,
-    "experience": 0.4
-  }
+    "count": 4
+  },
+  "requiresLearning": false
 }

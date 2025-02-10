@@ -20,5 +20,6 @@
   "result": {
     "item": "candlelight:tomato_soup",
     "count": 4
-  }
+  },
+  "requiresLearning": false
 }

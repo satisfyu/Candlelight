@@ -16,7 +16,7 @@
   },
   "result": {
     "item": "candlelight:khinkali",
-    "count": 4,
-    "experience": 0.3
-  }
+    "count": 4
+  },
+  "requiresLearning": false
 }

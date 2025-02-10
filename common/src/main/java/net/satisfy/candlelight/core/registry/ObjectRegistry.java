@@ -31,7 +31,7 @@ import net.satisfy.farm_and_charm.core.item.food.EffectFoodBlockItem;
 import net.satisfy.farm_and_charm.core.item.food.EffectFoodItem;
 import net.satisfy.farm_and_charm.core.item.food.EffectItem;
 import net.satisfy.farm_and_charm.core.registry.MobEffectRegistry;
-import net.satisfy.farm_and_charm.core.util.Util;
+import net.satisfy.farm_and_charm.core.util.GeneralUtil;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -285,14 +285,14 @@ public class ObjectRegistry {
     }
 
     public static <T extends Block> RegistrySupplier<T> registerWithItem(String name, Supplier<T> block) {
-        return Util.registerWithItem(BLOCKS, BLOCK_REGISTRAR, ITEMS, ITEM_REGISTRAR, new CandlelightIdentifier(name), block);
+        return GeneralUtil.registerWithItem(BLOCKS, BLOCK_REGISTRAR, ITEMS, ITEM_REGISTRAR, new CandlelightIdentifier(name), block);
     }
 
     public static <T extends Block> RegistrySupplier<T> registerWithoutItem(String path, Supplier<T> block) {
-        return Util.registerWithoutItem(BLOCKS, BLOCK_REGISTRAR, new CandlelightIdentifier(path), block);
+        return GeneralUtil.registerWithoutItem(BLOCKS, BLOCK_REGISTRAR, new CandlelightIdentifier(path), block);
     }
 
     public static <T extends Item> RegistrySupplier<T> registerItem(String path, Supplier<T> itemSupplier) {
-        return Util.registerItem(ITEMS, ITEM_REGISTRAR, new CandlelightIdentifier(path), itemSupplier);
+        return GeneralUtil.registerItem(ITEMS, ITEM_REGISTRAR, new CandlelightIdentifier(path), itemSupplier);
     }
 }

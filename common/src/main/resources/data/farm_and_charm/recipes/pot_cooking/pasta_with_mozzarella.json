@@ -23,5 +23,6 @@
   "result": {
     "item": "candlelight:pasta_with_mozzarella",
     "count": 4
-  }
+  },
+  "requiresLearning": false
 }

@@ -11,7 +11,10 @@
       "tag": "candlelight:white_effect"
     }
   ],
-  "item": "candlelight:tropical_fish_supreme",
-  "count": 3,
-  "experience": 0.75
+  "result": {
+    "item": "candlelight:tropical_fish_supreme",
+    "count": 3
+  },
+  "experience": 0.2,
+  "requiresLearning": false
 }

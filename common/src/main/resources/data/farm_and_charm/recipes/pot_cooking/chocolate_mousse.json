@@ -20,5 +20,6 @@
   "result": {
     "item": "candlelight:chocolate_mousse",
     "count": 4
-  }
+  },
+  "requiresLearning": false
 }

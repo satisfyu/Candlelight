@@ -11,7 +11,10 @@
       "tag": "candlelight:red_effect"
     }
   ],
-  "item": "candlelight:roastbeef_with_glazed_carrots",
-  "count": 6,
-  "experience": 0.4
+  "result": {
+    "item": "candlelight:roastbeef_with_glazed_carrots",
+    "count": 6
+  },
+  "experience": 0.2,
+  "requiresLearning": false
 }

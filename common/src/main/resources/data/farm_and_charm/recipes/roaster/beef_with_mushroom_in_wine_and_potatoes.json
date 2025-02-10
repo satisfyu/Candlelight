@@ -23,5 +23,6 @@
   "result": {
     "item": "candlelight:beef_with_mushroom_in_wine_and_potatoes",
     "count": 4
-  }
+  },
+  "requiresLearning": false
 }

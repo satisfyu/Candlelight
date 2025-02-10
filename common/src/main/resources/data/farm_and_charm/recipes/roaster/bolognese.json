@@ -26,5 +26,6 @@
   "result": {
     "item": "candlelight:bolognese",
     "count": 4
-  }
+  },
+  "requiresLearning": false
 }

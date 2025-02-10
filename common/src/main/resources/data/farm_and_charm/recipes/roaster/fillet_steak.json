@@ -17,5 +17,6 @@
   "result": {
     "item": "candlelight:fillet_steak",
     "count": 1
-  }
+  },
+  "requiresLearning": false
 }
