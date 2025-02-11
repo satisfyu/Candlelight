@@ -14,6 +14,7 @@ import net.satisfy.candlelight.client.renderer.block.*;
 import net.satisfy.candlelight.core.registry.EntityTypeRegistry;
 import net.satisfy.candlelight.core.registry.ScreenHandlerTypeRegistry;
 import net.satisfy.candlelight.core.registry.StorageTypeRegistry;
+import net.satisfy.candlelight.core.util.CandlelightUtil;
 
 import static net.satisfy.candlelight.core.registry.ObjectRegistry.*;
 
@@ -40,6 +41,9 @@ public class CandlelightClient {
         BlockEntityRendererRegistry.register(EntityTypeRegistry.DINNER_BELL_BLOCK_ENTITY.get(), DinnerBellRenderer::new);
         MenuRegistry.registerScreenFactory(ScreenHandlerTypeRegistry.LETTER_SCREEN_HANDLER.get(), LetterGui::new);
         registerStorageType();
+
+        CandlelightUtil.registerColorArmor(DRESS.get(), 16744576);
+        CandlelightUtil.registerColorArmor(TROUSERS_AND_VEST.get(), 987135);
     }
 
     public static void registerStorageType(ResourceLocation location, StorageTypeRenderer renderer) {
@@ -61,6 +65,7 @@ public class CandlelightClient {
         EntityModelLayerRegistry.register(CompletionistBannerRenderer.LAYER_LOCATION, CompletionistBannerRenderer::createBodyLayer);
         EntityModelLayerRegistry.register(FlowerCrownModel.LAYER_LOCATION, FlowerCrownModel::createBodyLayer);
         EntityModelLayerRegistry.register(TieModel.LAYER_LOCATION, TieModel::createBodyLayer);
+        EntityModelLayerRegistry.register(DressChestplateModel.LAYER_LOCATION, DressChestplateModel::createBodyLayer);
         EntityModelLayerRegistry.register(CookingHatModel.LAYER_LOCATION, CookingHatModel::createBodyLayer);
         EntityModelLayerRegistry.register(CookingChestplateModel.LAYER_LOCATION, CookingChestplateModel::createBodyLayer);
         EntityModelLayerRegistry.register(CookingLeggingsModel.LAYER_LOCATION, CookingLeggingsModel::createBodyLayer);

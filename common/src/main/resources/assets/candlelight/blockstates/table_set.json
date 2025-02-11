@@ -158,6 +158,84 @@
     },
     {
       "when": {
+        "glass_drink": "true",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_glass_drink"
+      }
+    },
+    {
+      "when": {
+        "glass_drink": "true",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_glass_drink",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "glass_drink": "true",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_glass_drink",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "glass_drink": "true",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_glass_drink",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "wine_glass_drink": "true",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_wine_glass_drink"
+      }
+    },
+    {
+      "when": {
+        "wine_glass_drink": "true",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_wine_glass_drink",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "wine_glass_drink": "true",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_wine_glass_drink",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "wine_glass_drink": "true",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "candlelight:block/table_set_wine_glass_drink",
+        "y": 90
+      }
+    },
+    {
+      "when": {
         "cloche": "true",
         "facing": "north"
       },

@@ -20,6 +20,7 @@ public class ArmorRegistry {
     private static final Map<Item, CookingChestplateModel<?>> chestplateModels = new HashMap<>();
     private static final Map<Item, CookingLeggingsModel<?>> leggingsModels = new HashMap<>();
     private static final Map<Item, CookingBootsModel<?>> bootsModels = new HashMap<>();
+    private static final Map<Item, DressChestplateModel<?>> dressModels = new HashMap<>();
 
     public static Model getHatModel(Item item, ModelPart baseHead) {
         EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
@@ -76,9 +77,24 @@ public class ArmorRegistry {
         CookingChestplateModel<?> model = chestplateModels.computeIfAbsent(item, key -> {
             if (key == ObjectRegistry.CHEFS_JACKET.get() ||
                     key == ObjectRegistry.FORMAL_SHIRT.get() ||
-                    key == ObjectRegistry.DRESS.get() ||
                     key == ObjectRegistry.SHIRT.get()) {
                 return new CookingChestplateModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(CookingChestplateModel.LAYER_LOCATION));
+            } else {
+                return null;
+            }
+        });
+
+        if (model != null) {
+            model.copyBody(body, leftArm, rightArm, leftLeg, rightLeg);
+        }
+
+        return model;
+    }
+
+    public static Model getDressModel(Item item, ModelPart body, ModelPart leftArm, ModelPart rightArm, ModelPart leftLeg, ModelPart rightLeg) {
+        DressChestplateModel<?> model = dressModels.computeIfAbsent(item, key -> {
+            if (key == ObjectRegistry.DRESS.get()) {
+                return new DressChestplateModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(DressChestplateModel.LAYER_LOCATION));
             } else {
                 return null;
             }

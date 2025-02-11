@@ -1,9 +1,14 @@
 [Unreleased] - 2025.02.08
 
-* Make Glasses fillable
+To-Do: 
+* Dinner Bell - wall
+* Suit
+
 
 **Added**
 * Zombies have a really low Chance to spawn wearing a Cooking Hat - Zombies wearing a Cooking Hat are immune to sunlight
+* You can now fill Table Set Glasses & Wine Glasses with Potions and Wines
+* Gloche can now be removed by Shift Right-Clicking
 
 **Changed**
 * Adjusted all Recipe .json the the new format

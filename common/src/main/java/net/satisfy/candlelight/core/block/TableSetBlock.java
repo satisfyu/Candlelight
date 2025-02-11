@@ -5,12 +5,14 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
@@ -21,11 +23,13 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -38,9 +42,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.satisfy.candlelight.core.block.entity.StorageBlockEntity;
-import org.jetbrains.annotations.NotNull;
+import net.satisfy.candlelight.core.block.entity.TableSetBlockEntity;
 import net.satisfy.candlelight.core.registry.ObjectRegistry;
 import net.satisfy.candlelight.core.registry.StorageTypeRegistry;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,37 +58,112 @@ public class TableSetBlock extends StorageBlock {
     public static final BooleanProperty GLASS = BooleanProperty.create("glass");
     public static final BooleanProperty CLOCHE = BooleanProperty.create("cloche");
     public static final BooleanProperty NAPKIN = BooleanProperty.create("napkin");
+    public static final BooleanProperty GLASS_DRINK = BooleanProperty.create("glass_drink");
+    public static final BooleanProperty WINE_GLASS_DRINK = BooleanProperty.create("wine_glass_drink");
+    private static final TagKey<Item> ALL_EFFECTS = TagKey.create(Registries.ITEM, new ResourceLocation("candlelight", "all_effects"));
 
     public TableSetBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(super.defaultBlockState().setValue(WINE_GLASS, false).setValue(GLASS, false)
-                .setValue(CLOCHE, false).setValue(NAPKIN, false));
+        this.registerDefaultState(super.defaultBlockState()
+                .setValue(WINE_GLASS, false)
+                .setValue(GLASS, false)
+                .setValue(CLOCHE, false)
+                .setValue(NAPKIN, false)
+                .setValue(GLASS_DRINK, false)
+                .setValue(WINE_GLASS_DRINK, false));
     }
 
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new TableSetBlockEntity(pos, state, this.size());
+    }
 
     private static HashMap<Item, BooleanProperty> itemHashMap() {
         return Util.make(new HashMap<>(), map -> {
-                    map.put(ObjectRegistry.WINE_GLASS.get(), WINE_GLASS);
-                    map.put(ObjectRegistry.GLASS.get(), GLASS);
-                    map.put(ObjectRegistry.CLOCHE.get(), CLOCHE);
-                    map.put(ObjectRegistry.NAPKIN.get(), NAPKIN);
-                }
-        );
+            map.put(ObjectRegistry.WINE_GLASS.get(), WINE_GLASS);
+            map.put(ObjectRegistry.GLASS.get(), GLASS);
+            map.put(ObjectRegistry.CLOCHE.get(), CLOCHE);
+            map.put(ObjectRegistry.NAPKIN.get(), NAPKIN);
+        });
     }
 
     private static Item getItemFromProperty(BooleanProperty property) {
         return itemHashMap().entrySet().stream()
                 .filter(entry -> entry.getValue().equals(property))
                 .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
+                .findFirst().orElse(null);
     }
 
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
+        if (stack.isEmpty()) {
+            if (state.getValue(GLASS_DRINK)) {
+                if (!world.isClientSide()) {
+                    TableSetBlockEntity sbe = (TableSetBlockEntity) world.getBlockEntity(pos);
+                    if (sbe != null) {
+                        world.setBlockAndUpdate(pos, state.setValue(GLASS_DRINK, false));
+                        ItemStack effectStack = sbe.getEffectStack();
+                        if (!effectStack.isEmpty()) {
+                            List<MobEffectInstance> effects = PotionUtils.getMobEffects(effectStack);
+                            for (MobEffectInstance effect : effects) {
+                                player.addEffect(new MobEffectInstance(effect.getEffect(), 6000, effect.getAmplifier()));
+                            }
+                            sbe.setEffectStack(ItemStack.EMPTY);
+                        }
+                    }
+                }
+                return InteractionResult.sidedSuccess(world.isClientSide());
+            } else if (state.getValue(WINE_GLASS_DRINK)) {
+                if (!world.isClientSide()) {
+                    TableSetBlockEntity sbe = (TableSetBlockEntity) world.getBlockEntity(pos);
+                    if (sbe != null) {
+                        world.setBlockAndUpdate(pos, state.setValue(WINE_GLASS_DRINK, false));
+                        ItemStack effectStack = sbe.getEffectStack();
+                        if (!effectStack.isEmpty()) {
+                            List<MobEffectInstance> effects = PotionUtils.getMobEffects(effectStack);
+                            for (MobEffectInstance effect : effects) {
+                                player.addEffect(new MobEffectInstance(effect.getEffect(), 6000, effect.getAmplifier()));
+                            }
+                            sbe.setEffectStack(ItemStack.EMPTY);
+                        }
+                    }
+                }
+                return InteractionResult.sidedSuccess(world.isClientSide());
+            }
+        }
+        if (!stack.isEmpty() && stack.getItem().builtInRegistryHolder().is(ALL_EFFECTS)) {
+            if (state.getValue(GLASS) && !state.getValue(GLASS_DRINK)) {
+                if (!world.isClientSide()) {
+                    TableSetBlockEntity sbe = (TableSetBlockEntity) world.getBlockEntity(pos);
+                    if (sbe != null) {
+                        world.setBlockAndUpdate(pos, state.setValue(GLASS_DRINK, true));
+                        if (stack.hasTag()) {
+                            sbe.setEffectStack(stack.copy());
+                        }
+                        if (!player.isCreative()) {
+                            stack.shrink(1);
+                        }
+                    }
+                }
+                return InteractionResult.sidedSuccess(world.isClientSide());
+            } else if (state.getValue(WINE_GLASS) && !state.getValue(WINE_GLASS_DRINK)) {
+                if (!world.isClientSide()) {
+                    TableSetBlockEntity sbe = (TableSetBlockEntity) world.getBlockEntity(pos);
+                    if (sbe != null) {
+                        world.setBlockAndUpdate(pos, state.setValue(WINE_GLASS_DRINK, true));
+                        if (stack.hasTag()) {
+                            sbe.setEffectStack(stack.copy());
+                        }
+                        if (!player.isCreative()) {
+                            stack.shrink(1);
+                        }
+                    }
+                }
+                return InteractionResult.sidedSuccess(world.isClientSide());
+            }
+        }
         HashMap<Item, BooleanProperty> items = itemHashMap();
-
         if (player.isShiftKeyDown() && state.getValue(CLOCHE)) {
             if (!world.isClientSide()) {
                 world.setBlockAndUpdate(pos, state.setValue(CLOCHE, false));
@@ -94,12 +174,10 @@ public class TableSetBlock extends StorageBlock {
             }
             return InteractionResult.sidedSuccess(world.isClientSide());
         }
-
         Item item = stack.getItem();
         if (!items.containsKey(item)) return super.use(state, world, pos, player, hand, hit);
         BooleanProperty property = items.get(item);
         if (state.getValue(property)) return InteractionResult.PASS;
-
         if (!world.isClientSide()) {
             world.setBlockAndUpdate(pos, state.setValue(property, true));
             if (!player.isCreative()) stack.shrink(1);
@@ -107,12 +185,12 @@ public class TableSetBlock extends StorageBlock {
         return InteractionResult.sidedSuccess(world.isClientSide());
     }
 
-
     @Override
     public void remove(Level world, BlockPos blockPos, Player player, StorageBlockEntity shelfBlockEntity, int i) {
+        TableSetBlockEntity tsbe = (TableSetBlockEntity) shelfBlockEntity;
         BlockState state = world.getBlockState(blockPos);
         if (!state.getValue(CLOCHE) && !world.isClientSide()) {
-            ItemStack itemStack = shelfBlockEntity.removeStack(i);
+            ItemStack itemStack = tsbe.removeStack(i);
             SoundEvent soundEvent = SoundEvents.GENERIC_EAT;
             world.playSound(null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (itemStack.isEdible()) {
@@ -186,8 +264,7 @@ public class TableSetBlock extends StorageBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
         VoxelShape shape = world.getBlockState(pos.below()).getShape(world, pos.below());
-        Direction direction = Direction.UP;
-        return Block.isFaceFull(shape, direction);
+        return net.minecraft.world.level.block.Block.isFaceFull(shape, Direction.UP);
     }
 
     @Override
@@ -207,7 +284,7 @@ public class TableSetBlock extends StorageBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(PLATE_TYPE);
-        builder.add(WINE_GLASS, GLASS, CLOCHE, NAPKIN);
+        builder.add(WINE_GLASS, GLASS, CLOCHE, NAPKIN, GLASS_DRINK, WINE_GLASS_DRINK);
     }
 
     private VoxelShape makeBowlShape() {
@@ -240,15 +317,11 @@ public class TableSetBlock extends StorageBlock {
     }
 
     private VoxelShape rotateShape(Direction direction, VoxelShape shape) {
-        if (direction == Direction.NORTH) {
-            return shape;
-        }
-
+        if (direction == Direction.NORTH) return shape;
         VoxelShape[] rotatedShapes = new VoxelShape[]{shape};
         for (int i = 0; i < (direction.get2DDataValue() - Direction.NORTH.get2DDataValue() + 4) % 4; i++) {
             rotatedShapes[0] = rotateShapeClockwise(rotatedShapes[0]);
         }
-
         return rotatedShapes[0];
     }
 
@@ -266,11 +339,9 @@ public class TableSetBlock extends StorageBlock {
         PLATE("plate"),
         BOWL("bowl");
         private final String name;
-
         PlateType(String name) {
             this.name = name;
         }
-
         @Override
         public @NotNull String getSerializedName() {
             return this.name;
