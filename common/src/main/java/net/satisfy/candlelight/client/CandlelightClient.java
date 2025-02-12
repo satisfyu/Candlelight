@@ -43,7 +43,7 @@ public class CandlelightClient {
         registerStorageType();
 
         CandlelightUtil.registerColorArmor(DRESS.get(), 16744576);
-        CandlelightUtil.registerColorArmor(TROUSERS_AND_VEST.get(), 987135);
+        CandlelightUtil.registerColorArmor(TROUSERS_AND_VEST.get(), 0x333399);
     }
 
     public static void registerStorageType(ResourceLocation location, StorageTypeRenderer renderer) {

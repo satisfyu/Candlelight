@@ -24,10 +24,7 @@ public class TieModel<T extends Entity> extends EntityModel<T> {
         PartDefinition partdefinition = meshdefinition.getRoot();
 
         PartDefinition body = partdefinition.addOrReplaceChild("body",
-                CubeListBuilder.create()
-                        .texOffs(0, 2)
-                        .addBox(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 4.0F, new CubeDeformation(0.225F)),
-                PartPose.offset(0.0F, 24.0F, 0.0F));
+                CubeListBuilder.create().texOffs(0, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 4.0F, new CubeDeformation(0.225F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 16, 16);
     }

@@ -2,13 +2,12 @@
 
 To-Do: 
 * Dinner Bell - wall
-* Suit
-
 
 **Added**
 * Zombies have a really low Chance to spawn wearing a Cooking Hat - Zombies wearing a Cooking Hat are immune to sunlight
 * You can now fill Table Set Glasses & Wine Glasses with Potions and Wines
 * Gloche can now be removed by Shift Right-Clicking
+* Suit & Dress can now be colored again
 
 **Changed**
 * Adjusted all Recipe .json the the new format

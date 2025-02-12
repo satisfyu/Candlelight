@@ -21,6 +21,7 @@ public class ArmorRegistry {
     private static final Map<Item, CookingLeggingsModel<?>> leggingsModels = new HashMap<>();
     private static final Map<Item, CookingBootsModel<?>> bootsModels = new HashMap<>();
     private static final Map<Item, DressChestplateModel<?>> dressModels = new HashMap<>();
+    private static final Map<Item, SuitLeggingsModel<?>> suitModels = new HashMap<>();
 
     public static Model getHatModel(Item item, ModelPart baseHead) {
         EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
@@ -112,6 +113,23 @@ public class ArmorRegistry {
             if (key == ObjectRegistry.CHEFS_PANTS.get() ||
                     key == ObjectRegistry.TROUSERS_AND_VEST.get()) {
                 return new CookingLeggingsModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(CookingLeggingsModel.LAYER_LOCATION));
+            } else {
+                return null;
+            }
+        });
+
+        if (model != null) {
+            model.copyLegs(rightLeg, leftLeg);
+        }
+
+        return model;
+    }
+
+    public static Model getSuitModel(Item item, ModelPart rightLeg, ModelPart leftLeg) {
+        SuitLeggingsModel<?> model = suitModels.computeIfAbsent(item, key -> {
+            if (key == ObjectRegistry.CHEFS_PANTS.get() ||
+                    key == ObjectRegistry.TROUSERS_AND_VEST.get()) {
+                return new SuitLeggingsModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(SuitLeggingsModel.LAYER_LOCATION));
             } else {
                 return null;
             }
