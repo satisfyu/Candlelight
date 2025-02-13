@@ -1,7 +1,4 @@
-[Unreleased] - 2025.02.08
-
-To-Do: 
-* Dinner Bell - wall
+[2.0.4] - 2025.02.13
 
 **Added**
 * Zombies have a really low Chance to spawn wearing a Cooking Hat - Zombies wearing a Cooking Hat are immune to sunlight
