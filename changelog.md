@@ -8,6 +8,7 @@ To-Do:
 * You can now fill Table Set Glasses & Wine Glasses with Potions and Wines
 * Gloche can now be removed by Shift Right-Clicking
 * Suit & Dress can now be colored again
+* Added a small tweak to the bamboo stove - A Bamboo Stove? What an odd idea!
 
 **Changed**
 * Adjusted all Recipe .json the the new format
