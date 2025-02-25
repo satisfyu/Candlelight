@@ -97,41 +97,33 @@ public class TableSetBlock extends StorageBlock {
     @Override
     public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
+
         if (stack.isEmpty()) {
-            if (state.getValue(GLASS_DRINK)) {
+            if (state.getValue(GLASS_DRINK) || state.getValue(WINE_GLASS_DRINK)) {
                 if (!world.isClientSide()) {
                     TableSetBlockEntity sbe = (TableSetBlockEntity) world.getBlockEntity(pos);
                     if (sbe != null) {
-                        world.setBlockAndUpdate(pos, state.setValue(GLASS_DRINK, false));
-                        ItemStack effectStack = sbe.getEffectStack();
-                        if (!effectStack.isEmpty()) {
-                            List<MobEffectInstance> effects = PotionUtils.getMobEffects(effectStack);
-                            for (MobEffectInstance effect : effects) {
-                                player.addEffect(new MobEffectInstance(effect.getEffect(), 6000, effect.getAmplifier()));
-                            }
-                            sbe.setEffectStack(ItemStack.EMPTY);
+                        if (state.getValue(GLASS_DRINK)) {
+                            world.setBlockAndUpdate(pos, state.setValue(GLASS_DRINK, false));
+                        } else if (state.getValue(WINE_GLASS_DRINK)) {
+                            world.setBlockAndUpdate(pos, state.setValue(WINE_GLASS_DRINK, false));
                         }
-                    }
-                }
-                return InteractionResult.sidedSuccess(world.isClientSide());
-            } else if (state.getValue(WINE_GLASS_DRINK)) {
-                if (!world.isClientSide()) {
-                    TableSetBlockEntity sbe = (TableSetBlockEntity) world.getBlockEntity(pos);
-                    if (sbe != null) {
-                        world.setBlockAndUpdate(pos, state.setValue(WINE_GLASS_DRINK, false));
+
                         ItemStack effectStack = sbe.getEffectStack();
                         if (!effectStack.isEmpty()) {
+                            int duration = sbe.getEffectDuration();
                             List<MobEffectInstance> effects = PotionUtils.getMobEffects(effectStack);
                             for (MobEffectInstance effect : effects) {
-                                player.addEffect(new MobEffectInstance(effect.getEffect(), 6000, effect.getAmplifier()));
+                                player.addEffect(new MobEffectInstance(effect.getEffect(), duration, effect.getAmplifier()));
                             }
-                            sbe.setEffectStack(ItemStack.EMPTY);
+                            sbe.setEffectStack(ItemStack.EMPTY, 0);
                         }
                     }
                 }
                 return InteractionResult.sidedSuccess(world.isClientSide());
             }
         }
+
         if (!stack.isEmpty() && stack.getItem().builtInRegistryHolder().is(ALL_EFFECTS)) {
             if (state.getValue(GLASS) && !state.getValue(GLASS_DRINK)) {
                 if (!world.isClientSide()) {
@@ -139,7 +131,11 @@ public class TableSetBlock extends StorageBlock {
                     if (sbe != null) {
                         world.setBlockAndUpdate(pos, state.setValue(GLASS_DRINK, true));
                         if (stack.hasTag()) {
-                            sbe.setEffectStack(stack.copy());
+                            int duration = PotionUtils.getMobEffects(stack).stream()
+                                    .mapToInt(MobEffectInstance::getDuration)
+                                    .max()
+                                    .orElse(6000);
+                            sbe.setEffectStack(stack.copy(), duration);
                         }
                         if (!player.isCreative()) {
                             stack.shrink(1);
@@ -153,7 +149,11 @@ public class TableSetBlock extends StorageBlock {
                     if (sbe != null) {
                         world.setBlockAndUpdate(pos, state.setValue(WINE_GLASS_DRINK, true));
                         if (stack.hasTag()) {
-                            sbe.setEffectStack(stack.copy());
+                            int duration = PotionUtils.getMobEffects(stack).stream()
+                                    .mapToInt(MobEffectInstance::getDuration)
+                                    .max()
+                                    .orElse(6000);
+                            sbe.setEffectStack(stack.copy(), duration);
                         }
                         if (!player.isCreative()) {
                             stack.shrink(1);
@@ -163,6 +163,7 @@ public class TableSetBlock extends StorageBlock {
                 return InteractionResult.sidedSuccess(world.isClientSide());
             }
         }
+
         HashMap<Item, BooleanProperty> items = itemHashMap();
         if (player.isShiftKeyDown() && state.getValue(CLOCHE)) {
             if (!world.isClientSide()) {
@@ -174,6 +175,7 @@ public class TableSetBlock extends StorageBlock {
             }
             return InteractionResult.sidedSuccess(world.isClientSide());
         }
+
         Item item = stack.getItem();
         if (!items.containsKey(item)) return super.use(state, world, pos, player, hand, hit);
         BooleanProperty property = items.get(item);
